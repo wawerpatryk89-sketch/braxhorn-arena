@@ -35,9 +35,17 @@ export const visible=(page,selector)=>page.locator(selector).first().isVisible()
 
 // Elements that overlap each other although both are visible and interactive.
 export async function overlaps(page){return page.evaluate(()=>{
- const els=[...document.querySelectorAll('button,a,[role=button],input,select,h1,h2,h3,label')].filter(e=>{const s=getComputedStyle(e),r=e.getBoundingClientRect();return s.visibility!=='hidden'&&s.display!=='none'&&+s.opacity>.05&&r.width>4&&r.height>4&&r.right>0&&r.bottom>0&&r.left<innerWidth&&r.top<innerHeight&&!e.closest('.off,[hidden]');});
+ // Only elements the player can actually see on top: a screen covered by a modal or by the next
+ // screen is not an overlap problem. An element counts when any of 5 probe points hits it.
+ const onTop=e=>{const r=e.getBoundingClientRect();return [[.5,.5],[.15,.5],[.85,.5],[.5,.2],[.5,.8]].some(([x,y])=>{const px=r.left+r.width*x,py=r.top+r.height*y;if(px<0||py<0||px>=innerWidth||py>=innerHeight)return false;const t=document.elementFromPoint(px,py);return t&&(t===e||e.contains(t)||t.contains(e));});};
+ const els=[...document.querySelectorAll('button,a,[role=button],input,select,h1,h2,h3,label')].filter(e=>{const s=getComputedStyle(e),r=e.getBoundingClientRect();return s.visibility!=='hidden'&&s.display!=='none'&&+s.opacity>.05&&r.width>4&&r.height>4&&r.right>0&&r.bottom>0&&r.left<innerWidth&&r.top<innerHeight&&!e.closest('.off,[hidden]')&&(onTop(e)||r.left<-2||r.top<-2||r.right>innerWidth+2||r.bottom>innerHeight+2);});
  const name=e=>e.id?'#'+e.id:(e.className&&typeof e.className==='string'?e.tagName.toLowerCase()+'.'+e.className.split(' ')[0]:e.tagName.toLowerCase())+'«'+(e.textContent||'').trim().slice(0,18)+'»';
- const out=[];for(let i=0;i<els.length;i++)for(let j=i+1;j<els.length;j++){const a=els[i],b=els[j];if(a.contains(b)||b.contains(a))continue;const r=a.getBoundingClientRect(),q=b.getBoundingClientRect(),w=Math.min(r.right,q.right)-Math.max(r.left,q.left),h=Math.min(r.bottom,q.bottom)-Math.max(r.top,q.top);if(w>6&&h>6){const top=document.elementFromPoint(Math.max(r.left,q.left)+w/2,Math.max(r.top,q.top)+h/2);out.push({a:name(a),b:name(b),area:Math.round(w*h),top:top?name(top):null});}}
- const offscreen=els.filter(e=>{const r=e.getBoundingClientRect();return r.left<-2||r.top<-2||r.right>innerWidth+2||r.bottom>innerHeight+2;}).map(e=>name(e));
+ // Visible box: headings and labels by their text (a centred block title is mostly empty space),
+ // everything clipped by overflow ancestors (arena strips, scroll lists).
+ const box=e=>{let r=e.getBoundingClientRect();if(/^(H1|H2|H3|LABEL)$/.test(e.tagName)){const g=document.createRange();g.selectNodeContents(e);const t=g.getBoundingClientRect();if(t.width>0&&t.height>0)r=t;}let L=r.left,T=r.top,R=r.right,B=r.bottom;for(let p=e.parentElement;p&&p!==document.body;p=p.parentElement){const s=getComputedStyle(p);if(s.overflowX!=='visible'||s.overflowY!=='visible'){const c=p.getBoundingClientRect();L=Math.max(L,c.left);T=Math.max(T,c.top);R=Math.min(R,c.right);B=Math.min(B,c.bottom);}}return {left:L,top:T,right:R,bottom:B};};
+ const out=[];for(let i=0;i<els.length;i++)for(let j=i+1;j<els.length;j++){const a=els[i],b=els[j];if(a.contains(b)||b.contains(a))continue;const r=box(a),q=box(b),w=Math.min(r.right,q.right)-Math.max(r.left,q.left),h=Math.min(r.bottom,q.bottom)-Math.max(r.top,q.top);if(w>6&&h>6){const top=document.elementFromPoint(Math.max(r.left,q.left)+w/2,Math.max(r.top,q.top)+h/2);out.push({a:name(a),b:name(b),area:Math.round(w*h),top:top?name(top):null});}}
+ // Content scrolled inside its own scroll box (arena strips, long lists) is reachable, not cut off.
+ const scrolled=e=>{for(let p=e.parentElement;p&&p!==document.body;p=p.parentElement){const s=getComputedStyle(p);if(/(auto|scroll)/.test(s.overflowX+s.overflowY)&&(p.scrollWidth>p.clientWidth+1||p.scrollHeight>p.clientHeight+1))return true;}return false;};
+ const offscreen=els.filter(e=>{const r=e.getBoundingClientRect();return (r.left<-2||r.top<-2||r.right>innerWidth+2||r.bottom>innerHeight+2)&&!scrolled(e);}).map(e=>name(e));
  return {overlaps:out.sort((x,y)=>y.area-x.area).slice(0,12),offscreen};
 });}

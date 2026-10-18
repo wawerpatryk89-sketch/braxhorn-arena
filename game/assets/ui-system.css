@@ -88,3 +88,28 @@
 #onlineTournaments .tx-empty-state>b{font-size:22px!important}
 #onlineTournaments .tx-empty-state h3{font-size:16px!important;margin:0!important}
 #onlineTournaments .tx-empty-state p{margin:0 0 0 auto!important}}
+/* Multiplayer lobby: cards start at the top (centred overflow hid "01 · ZAPROŚ RYWALA"), the lobby
+   starts below the status line, and arena names fit on two short lines instead of being cut. */
+#mpLobby,#mpRoom{top:92px!important}
+#mpPanel .mp-room-option{justify-content:flex-start!important;gap:6px!important;padding:12px 14px!important}
+.ui-arena-picker{min-height:0;align-items:stretch;padding-bottom:2px}
+.ui-arena-picker button{flex:0 0 112px;display:flex;flex-direction:column;height:auto}
+.ui-arena-picker img{height:44px;object-fit:cover}
+.ui-arena-picker span{display:flex;align-items:center;justify-content:center;min-height:2.5em;padding:2px 4px;font-size:10px;line-height:1.2;text-align:center;overflow-wrap:anywhere}
+@media (max-height:480px){#mpPanel .mp-room-option p{display:none}#mpPanel .mp-room-option h2{font-size:20px!important}}
+/* Online guest: combo meter under the guest's own (right) health bar. */
+#hud .side.right .combo-meter{margin-left:auto;text-align:right}
+#hud .side.right .combo-meter .meter{transform:scaleX(-1)}
+/* Tournaments on a landscape phone: the code entry (the main action) fits without scrolling. */
+@media (max-height:480px){#onlineTournaments .tx-list-head{margin-bottom:6px!important;align-items:center}
+#onlineTournaments .tx-list-head small{display:none}
+#onlineTournaments .tx-list-head h2{margin:0!important;font-size:20px!important}
+#onlineTournaments .tx-owner-login{padding:6px 10px!important}
+#onlineTournaments .tx-empty-state{padding:6px 12px!important}
+#onlineTournaments .ui-segments{padding:2px!important}
+#onlineTournaments .ui-segments button{min-height:34px;padding:6px 12px!important}
+#txCodeForm{margin-top:8px!important;padding:8px 12px!important;gap:6px!important}
+#txCodeForm .ui-code-cells{padding:4px 0!important}
+#txCodeForm .ui-code-cells span{height:34px!important}
+#txCodeForm .ui-code-edit{height:42px!important}
+#txCodeForm .ui-code-meta button{min-height:34px;padding:6px 12px!important}}
