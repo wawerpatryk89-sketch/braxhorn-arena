@@ -1,0 +1,361 @@
+{
+ "multipliers": {
+  "BRAX": 0.84,
+  "NYXA": 1.9,
+  "VEXA": 1.65,
+  "KROV": 1.52,
+  "NINA": 1.36,
+  "DANNY": 1.3,
+  "BEAR": 0.36,
+  "DEMON": 0.7
+ },
+ "moves": {
+  "BRAX": {
+   "LIGHT_PUNCH": {
+    "before": 9,
+    "after": 7
+   },
+   "HEAVY_PUNCH": {
+    "before": 13,
+    "after": 11
+   },
+   "DOUBLE_PUNCH": {
+    "before": 12,
+    "after": 10
+   },
+   "LIGHT_KICK": {
+    "before": 10,
+    "after": 8
+   },
+   "HEAVY_KICK": {
+    "before": 14,
+    "after": 12
+   },
+   "TEEP": {
+    "before": 12,
+    "after": 10
+   },
+   "COMBO": {
+    "before": 48,
+    "after": 40
+   },
+   "HOOK": {
+    "before": 13,
+    "after": 11
+   },
+   "UPPERCUT": {
+    "before": 12,
+    "after": 10
+   },
+   "ELBOW": {
+    "before": 13,
+    "after": 11
+   },
+   "COUNTER": {
+    "before": 13,
+    "after": 11
+   },
+   "CHAIN_STRIKES": {
+    "before": 12,
+    "after": 10
+   },
+   "KNEE_CHAIN": {
+    "before": 12,
+    "after": 10
+   },
+   "CLINCH_KNEE": {
+    "before": 12,
+    "after": 10
+   },
+   "CAPOEIRA": {
+    "before": 14,
+    "after": 12
+   },
+   "MUAY_THAI_ROUNDHOUSE": {
+    "before": 14,
+    "after": 12
+   },
+   "CROUCH_KICK": {
+    "before": 10,
+    "after": 8
+   },
+   "CROUCH_PUNCH": {
+    "before": 9,
+    "after": 7
+   },
+   "HEAVY_STOMP": {
+    "before": 12,
+    "after": 10
+   }
+  },
+  "NYXA": {
+   "LIGHT_PUNCH": {
+    "before": 7,
+    "after": 13
+   },
+   "HEAVY_PUNCH": {
+    "before": 12,
+    "after": 23
+   },
+   "ELBOW": {
+    "before": 10,
+    "after": 19
+   },
+   "CLINCH_KNEE": {
+    "before": 12,
+    "after": 23
+   },
+   "LIGHT_KICK": {
+    "before": 11,
+    "after": 21
+   },
+   "HEAVY_KICK": {
+    "before": 11,
+    "after": 21
+   },
+   "CROUCH_KICK": {
+    "before": 11,
+    "after": 21
+   },
+   "COMBO": {
+    "before": 44,
+    "after": 85
+   },
+   "HOOK": {
+    "before": 12,
+    "after": 23
+   },
+   "UPPERCUT": {
+    "before": 10,
+    "after": 19
+   },
+   "LUNGE_PUNCH": {
+    "before": 10,
+    "after": 20
+   },
+   "PUNCH_CHAIN": {
+    "before": 10,
+    "after": 20
+   },
+   "COUNTER": {
+    "before": 10,
+    "after": 19
+   },
+   "SPIN_KICK": {
+    "before": 11,
+    "after": 21
+   },
+   "TEEP": {
+    "before": 11,
+    "after": 21
+   },
+   "CROUCH_PUNCH": {
+    "before": 10,
+    "after": 20
+   },
+   "HEAVY_STOMP": {
+    "before": 11,
+    "after": 21
+   }
+  },
+  "VEXA": {
+   "LIGHT_PUNCH": {
+    "before": 10,
+    "after": 16
+   },
+   "HEAVY_PUNCH": {
+    "before": 12,
+    "after": 20
+   },
+   "LIGHT_KICK": {
+    "before": 10,
+    "after": 16
+   },
+   "HEAVY_KICK": {
+    "before": 13,
+    "after": 21
+   },
+   "SPIN_KICK": {
+    "before": 14,
+    "after": 23
+   },
+   "FLYING_KICK": {
+    "before": 13,
+    "after": 21
+   },
+   "COMBO": {
+    "before": 44,
+    "after": 72
+   }
+  },
+  "KROV": {
+   "LIGHT_PUNCH": {
+    "before": 11,
+    "after": 17
+   },
+   "HEAVY_PUNCH": {
+    "before": 14,
+    "after": 21
+   },
+   "LIGHT_KICK": {
+    "before": 11,
+    "after": 17
+   },
+   "HEAVY_KICK": {
+    "before": 15,
+    "after": 23
+   },
+   "ELBOW": {
+    "before": 13,
+    "after": 20
+   },
+   "UPPERCUT": {
+    "before": 13,
+    "after": 20
+   },
+   "COMBO": {
+    "before": 44,
+    "after": 66
+   }
+  },
+  "NINA": {
+   "LIGHT_PUNCH": {
+    "before": 13,
+    "after": 18
+   },
+   "HEAVY_PUNCH": {
+    "before": 14,
+    "after": 19
+   },
+   "LIGHT_KICK": {
+    "before": 12,
+    "after": 16
+   },
+   "HEAVY_KICK": {
+    "before": 15,
+    "after": 20
+   },
+   "CRESCENT_KICK": {
+    "before": 10,
+    "after": 14
+   },
+   "SPIN_KICK": {
+    "before": 14,
+    "after": 19
+   },
+   "COMBO": {
+    "before": 39,
+    "after": 54
+   },
+   "MEIA_LUA": {
+    "before": 13,
+    "after": 18
+   },
+   "GROUND_KICK": {
+    "before": 15,
+    "after": 20
+   }
+  },
+  "DANNY": {
+   "LIGHT_PUNCH": {
+    "before": 7,
+    "after": 9
+   },
+   "HEAVY_PUNCH": {
+    "before": 11,
+    "after": 14
+   },
+   "LIGHT_KICK": {
+    "before": 10,
+    "after": 13
+   },
+   "HEAVY_KICK": {
+    "before": 14,
+    "after": 18
+   },
+   "HOOK": {
+    "before": 12,
+    "after": 16
+   },
+   "SIDE_KICK": {
+    "before": 13,
+    "after": 17
+   },
+   "COMBO": {
+    "before": 45,
+    "after": 59
+   },
+   "ACROBATIC_PUNCH": {
+    "before": 15,
+    "after": 20
+   }
+  },
+  "BEAR": {
+   "LIGHT_PUNCH": {
+    "before": 9,
+    "after": 3
+   },
+   "HEAVY_PUNCH": {
+    "before": 15,
+    "after": 6
+   },
+   "LIGHT_KICK": {
+    "before": 12,
+    "after": 4
+   },
+   "HEAVY_KICK": {
+    "before": 14,
+    "after": 5
+   },
+   "SHOULDER": {
+    "before": 16,
+    "after": 6
+   },
+   "UPPERCUT": {
+    "before": 16,
+    "after": 6
+   },
+   "COMBO": {
+    "before": 41,
+    "after": 15
+   }
+  },
+  "DEMON": {
+   "LIGHT_PUNCH": {
+    "before": 7,
+    "after": 5
+   },
+   "HEAVY_PUNCH": {
+    "before": 12,
+    "after": 8
+   },
+   "LIGHT_KICK": {
+    "before": 10,
+    "after": 7
+   },
+   "HEAVY_KICK": {
+    "before": 15,
+    "after": 10
+   },
+   "SHOULDER": {
+    "before": 13,
+    "after": 9
+   },
+   "UPPERCUT": {
+    "before": 16,
+    "after": 11
+   },
+   "COMBO": {
+    "before": 34,
+    "after": 24
+   }
+  }
+ },
+ "second_pass": {
+  "multipliers": {
+   "NYXA": 0.95,
+   "VEXA": 1.05
+  },
+  "note": "fine tuning after 60-sample matrix (reaction/impact stays unscaled)"
+ }
+}

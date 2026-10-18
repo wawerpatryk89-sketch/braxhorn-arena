@@ -10,6 +10,7 @@ const browser=await launch();
 const stubModels=process.env.BRAX_STUB==='1'||!fs.existsSync('game/assets/brax-new/model.json.gz');
 const host=(await phone(browser,size,{stubModels})).page,guest=(await phone(browser,size,{stubModels})).page;
 const report={size,checks:{},problems:[]};
+const t0=Date.now();report.checks.apiFailures=[];report.checks.slow=[];for(const [p,who] of [[host,'host'],[guest,'gosc']]){const st=new Map();p.on('request',r=>st.set(r,Date.now()));p.on('requestfinished',r=>{const d=Date.now()-(st.get(r)||Date.now());if(d>1500&&!/\/api\/duel/.test(r.url()))report.checks.slow.push(who+' '+d+'ms '+r.url().replace(base,'/').slice(0,90));});p.on('requestfailed',r=>report.checks.slow.push(who+' FAILED '+r.url().slice(0,90)));}report.checks.apiTrail=[];for(const [p,who] of [[host,'host'],[guest,'gosc']])p.on('request',r=>{if(/\/api\/duel/.test(r.url())&&r.method()==='POST'){try{const b=JSON.parse(r.postData()||'{}');if(b.action!=='sync')report.checks.apiTrail.push(((Date.now()-t0)/1000).toFixed(1)+' '+who+' '+b.action);}catch{}}});for(const [p,who] of [[host,'host'],[guest,'gosc']])p.on('response',async r=>{if(/\/api\//.test(r.url())&&r.status()>=400)report.checks.apiFailures.push(((Date.now()-t0)/1000).toFixed(1)+' '+who+' '+r.status()+' '+r.url().replace(base,'/')+' '+(await r.text().catch(()=>'')).slice(0,120));});
 const fail=msg=>{report.problems.push(msg);};
 const vis=(p,s)=>p.locator(s).first().isVisible().catch(()=>false);
 async function tap(p,s,wait=8000){const l=p.locator(s).first();await l.waitFor({state:'visible',timeout:wait});await p.waitForTimeout(120);const b=await l.boundingBox();await p.touchscreen.tap(b.x+b.width/2,b.y+b.height/2);await p.waitForTimeout(300);}
@@ -33,6 +34,7 @@ async function fightState(p){return p.evaluate(()=>{
  return {covering,hp,arena:document.getElementById('game')?.dataset.arena||document.body.dataset.arena||null,controls:[...document.querySelectorAll('#controls button')].filter(b=>{const c=getComputedStyle(b),r=b.getBoundingClientRect();return c.display!=='none'&&c.visibility!=='hidden'&&+c.opacity>.1&&r.width>0;}).map(b=>b.dataset.tap||b.dataset.hold||b.id),hiddenControls:[...document.querySelectorAll('#controls button')].filter(b=>{const c=getComputedStyle(b),r=b.getBoundingClientRect();return !(c.display!=='none'&&c.visibility!=='hidden'&&+c.opacity>.1&&r.width>0);}).map(b=>(b.dataset.tap||b.dataset.hold||b.id)+':'+getComputedStyle(b).display+'/'+getComputedStyle(b).visibility+'/'+getComputedStyle(b).opacity+'/'+b.className+'/'+b.hidden),badge:document.getElementById('mpConnection')?.textContent||''};
 });}
 
+for(const p of [host,guest])await p.addInitScript(()=>{window.__st=[];addEventListener('DOMContentLoaded',()=>{const e=document.getElementById('mpStatus');if(e)new MutationObserver(()=>window.__st.push([Math.round(performance.now()),e.textContent])).observe(e,{childList:true,characterData:true,subtree:true});});});
 await toLobby(host,'HOSTA','BRAX');await toLobby(guest,'GOSC','NINA');
 report.checks.lobbyHost=await shot(host,'01-host-lobby');
 // Host picks the local METRO arena and creates the room.
@@ -47,6 +49,7 @@ await guest.evaluate(()=>document.getElementById('mpCode').click());await guest.
 for(const ch of code)await tap(guest,`#codePad [data-key="${ch}"]`);
 report.checks.guestPad=await shot(guest,'03-gosc-kod');
 await tap(guest,'#codePadSubmit');
+report.checks.statusTrail=[];for(let i=0;i<10;i++){await guest.waitForTimeout(1500);report.checks.statusTrail.push([await host.locator('#mpStatus').textContent().catch(()=>''),await guest.locator('#mpStatus').textContent().catch(()=>'')]);if(await vis(guest,'#voiceDeny')&&await vis(host,'#voiceDeny'))break;}
 // Voice consent on both phones.
 for(const p of [host,guest]){try{await tap(p,'#voiceDeny',30000);}catch{fail('brak pytania o rozmowę głosową u '+(p===host?'hosta':'gościa'));}}
 report.checks.voiceAfter=await shot(guest,'04-gosc-po-zgodzie');
@@ -65,6 +68,7 @@ report.checks.arenaHost=await arena(host);report.checks.arenaGuest=await arena(g
 report.checks.hostOverlaps=(await overlaps(host)).overlaps;report.checks.guestOverlaps=(await overlaps(guest)).overlaps;
 // Guest walks in (hold ←, keyboard like a pad) and punches; the host must see the guest move and act.
 const actors=p=>p.evaluate(()=>window.BRAX_MULTIPLAYER_ENGINE.snapshot(false).actors.map(a=>({x:Math.round(a.x),hp:a.hp,a:a.a})));
+await host.waitForFunction(()=>{const e=window.BRAX_MULTIPLAYER_ENGINE?.snapshot(false);return e&&!e.state.preFight&&!e.freeze;},null,{timeout:40000}).catch(()=>fail('walka nie wyszła z odliczania w 40 s'));
 const before=await actors(host);
 const timeline=[];await guest.keyboard.down('ArrowLeft');for(let i=0;i<6;i++){await guest.waitForTimeout(300);timeline.push(await host.evaluate(()=>{const s=window.BRAX_MULTIPLAYER_ENGINE.snapshot(false);return {t:Math.round(s.state.t*10)/10,paused:s.state.paused,freeze:s.freeze,pre:s.state.preFight,x:Math.round(s.actors[1].x),a:s.actors[1].a};}));}await guest.keyboard.up('ArrowLeft');report.checks.holdTimeline=timeline;
 const moved=await actors(host);
@@ -72,10 +76,11 @@ const seen=new Set();for(let i=0;i<10;i++){await guest.keyboard.press('a');for(l
 const after=await actors(host);
 report.checks.hostActors={before,moved,after,guestActionsSeenOnHost:[...seen]};
 if(Math.abs(moved[1].x-before[1].x)<5)fail('host nie widzi ruchu gościa');
-if(![...seen].some(a=>/PUNCH|JAB|HOOK|STRIKE|ATTACK|KICK|CROSS/i.test(a)))fail('host nie widzi ciosu gościa: '+[...seen].join(','));
+if(![...seen].some(a=>!['IDLE','WALK_FORWARD','WALK_BACK','APPROACH','RUN','BLOCK','BLOCK_LOW','LEAN'].includes(a)))fail('host nie widzi ciosu gościa: '+[...seen].join(','));
 report.checks.hostAfterGuestAttack=await shot(host,'06-host-po-ataku-goscia');report.checks.guestAfterAttack=await shot(guest,'06-gosc-po-ataku');
 report.checks.badges=[await host.locator('#mpConnection').textContent().catch(()=>''),await guest.locator('#mpConnection').textContent().catch(()=>'')];
 report.errors={host:[...new Set(host.errors)].filter(e=>!/404|Failed to load resource/.test(e)),guest:[...new Set(guest.errors)].filter(e=>!/404|Failed to load resource/.test(e))};
+report.checks.statusLog=[await host.evaluate(()=>window.__st),await guest.evaluate(()=>window.__st)];
 fs.writeFileSync(`${out}/${size}-raport.json`,JSON.stringify(report,null,1));
 await browser.close();
-console.log(JSON.stringify({problems:report.problems,code:report.checks.code,hostState:hs,guestState:gs,actors:report.checks.hostActors,pos:[report.checks.positionHOSTA,report.checks.positionGOSC],timeline:report.checks.holdTimeline,badges:report.checks.badges,arena:[report.checks.arenaHost,report.checks.arenaGuest],errors:report.errors,ov:[report.checks.hostOverlaps?.slice(0,4),report.checks.guestOverlaps?.slice(0,4),report.checks.roomHostOverlaps?.slice(0,4)]},null,1));
+console.log(JSON.stringify({problems:report.problems,code:report.checks.code,hostState:hs,guestState:gs,actors:report.checks.hostActors,pos:[report.checks.positionHOSTA,report.checks.positionGOSC],timeline:report.checks.holdTimeline,badges:report.checks.badges,arena:[report.checks.arenaHost,report.checks.arenaGuest],errors:report.errors,api:report.checks.apiFailures,trail:report.checks.statusTrail,slow:report.checks.slow,statusLog:report.checks.statusLog,calls:report.checks.apiTrail,ov:[report.checks.hostOverlaps?.slice(0,4),report.checks.guestOverlaps?.slice(0,4),report.checks.roomHostOverlaps?.slice(0,4)]},null,1));

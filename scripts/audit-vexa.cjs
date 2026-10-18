@@ -8,7 +8,7 @@ async function enter(){return require('./review/runtime.cjs').ready('VEXA');}
  g.context.BRAX_ROSTER.bind(index=>t.selectSlot(index,true));
  g.elements.get('card-vexa').dispatch('click');assert.equal(g.context.BRAX_ROSTER.state().player,2);
  g.elements.get('card-vexa').dispatch('click');assert.equal(g.context.BRAX_ROSTER.opponent,'VEXA');
- const expected=['LIGHT_PUNCH','HEAVY_PUNCH','LIGHT_KICK','HEAVY_KICK','SPIN_KICK','FLYING_KICK'],cfg=t.CFG();assert.equal(new Set(expected.map(n=>cfg[n].clip)).size,6);
+ const expected=['HEAVY_PUNCH','LIGHT_PUNCH','LIGHT_KICK','HEAVY_KICK','SPIN_KICK','FLYING_KICK'],cfg=t.CFG();assert.equal(new Set(expected.map(n=>cfg[n].clip)).size,6);
  const seen=new Set();
  for(const face of [1,-1])for(const dir of [-1,0,1])for(const [i,kind]of ['punch','heavy','kick','kick2'].entries()){
   g.send('blur');g.proof.reset();B.x=50;O.x=face>0?85:15;t.faceOpponents();K.left=dir*face<0;K.right=dir*face>0;

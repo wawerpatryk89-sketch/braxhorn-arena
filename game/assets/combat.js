@@ -9,7 +9,14 @@ const BRAX_CFG=window.BRAX_3D.config,NYXA_CFG=window.NYXA_3D.config;let playerCh
 const FIGHTER_ACTION_SPEED=1.10,FIGHTER_MOVE_SPEED=1.20;
 const CHARACTER_NAMES=['BRAX','NYXA','VEXA','KROV','NINA','DANNY','BEAR','DEMON'];
 // Six basic attacks per fighter. Combo, evasion and throws are separate actions.
-const SOURCE_ATTACKS={DEMON:['LIGHT_PUNCH','HEAVY_PUNCH','LIGHT_KICK','HEAVY_KICK','SHOULDER','UPPERCUT'],DANNY:['LIGHT_PUNCH','HEAVY_PUNCH','LIGHT_KICK','HEAVY_KICK','HOOK','SIDE_KICK'],NINA:['LIGHT_PUNCH','HEAVY_PUNCH','LIGHT_KICK','HEAVY_KICK','CRESCENT_KICK','SPIN_KICK','MEIA_LUA','GROUND_KICK'],BEAR:['LIGHT_PUNCH','HEAVY_PUNCH','LIGHT_KICK','HEAVY_KICK','SHOULDER','UPPERCUT'],BRAX:['LIGHT_PUNCH','HEAVY_PUNCH','LIGHT_KICK','HEAVY_KICK','DOUBLE_PUNCH','UPPERCUT'],NYXA:['LIGHT_PUNCH','HEAVY_PUNCH','LIGHT_KICK','HEAVY_KICK','ELBOW','CLINCH_KNEE'],KROV:['LIGHT_PUNCH','HEAVY_PUNCH','LIGHT_KICK','HEAVY_KICK','ELBOW','UPPERCUT'],VEXA:['LIGHT_PUNCH','HEAVY_PUNCH','LIGHT_KICK','HEAVY_KICK','SPIN_KICK','FLYING_KICK']};
+// Button layout per fighter: [P1, P2, K1, K2, forward+P1, forward+P2, (forward+K1, forward+K2)].
+// P1 is always the fighter's fastest strike; forward moves are the slower signature/wind-up strikes.
+// Every entry is an existing clip with its own frame data; nothing here changes an animation.
+const SOURCE_ATTACKS={DEMON:['LIGHT_PUNCH','HEAVY_PUNCH','LIGHT_KICK','HEAVY_KICK','SHOULDER','UPPERCUT'],DANNY:['LIGHT_PUNCH','HEAVY_PUNCH','LIGHT_KICK','HEAVY_KICK','HOOK','SIDE_KICK'],NINA:['LIGHT_KICK','HEAVY_PUNCH','MEIA_LUA','HEAVY_KICK','CRESCENT_KICK','SPIN_KICK','LIGHT_PUNCH','GROUND_KICK'],BEAR:['LIGHT_PUNCH','HEAVY_PUNCH','LIGHT_KICK','HEAVY_KICK','SHOULDER','UPPERCUT'],BRAX:['LIGHT_PUNCH','HEAVY_PUNCH','LIGHT_KICK','HEAVY_KICK','DOUBLE_PUNCH','UPPERCUT','TEEP','CAPOEIRA'],NYXA:['LIGHT_PUNCH','HEAVY_PUNCH','LIGHT_KICK','HEAVY_KICK','LUNGE_PUNCH','ELBOW','CLINCH_KNEE','CROUCH_KICK'],KROV:['LIGHT_PUNCH','HEAVY_PUNCH','LIGHT_KICK','HEAVY_KICK','ELBOW','UPPERCUT'],VEXA:['HEAVY_PUNCH','LIGHT_PUNCH','LIGHT_KICK','HEAVY_KICK','SPIN_KICK','FLYING_KICK']};
+// One mapping for the local player, the host applying guest input and the guest's own prediction.
+function buttonMove(who,cfg,kind,forward,sprint,down){const list=SOURCE_ATTACKS[who]||[];if(down&&kind==='heavy'&&cfg.ACROBATIC_PUNCH)return 'ACROBATIC_PUNCH';
+ if(forward&&sprint){const move={punch:who==='NINA'?'LIGHT_KICK':list[0],heavy:who==='NINA'?'SPIN_KICK':list[1],kick:list[2],kick2:who==='VEXA'?'FLYING_KICK':who==='NINA'?'SPIN_KICK':list[3]}[kind];if(move)return move;}
+ const index=(list.length>6?{punch:forward?4:0,heavy:forward?5:1,kick:forward?6:2,kick2:forward?7:3}:{punch:forward?4:0,heavy:forward?5:1,kick:2,kick2:3})[kind];return index===undefined?null:list[index]||null;}
 function characterConfig(name){return characterRenderer(name)?.config;}
 function characterRenderer(name){return window[name+'_3D'];}
 
@@ -28,9 +35,7 @@ function remoteOpponentStep(dt){
   if(e.kind==='grab'){beginSourcePair(O);continue;}
   if(e.kind==='special'){if(O.en>=100&&O.comboUses<2&&!B.downState){O.en=0;O.comboUses++;NET.combo=true;}continue;}
   const forward=dir*O.face>0;let name;
-  if(h.down&&e.kind==='heavy'&&O.cfg.ACROBATIC_PUNCH)name='ACROBATIC_PUNCH';
-  else if(forward&&O.sprintHeld)name=({punch:O.character==='NINA'?'LIGHT_KICK':'LIGHT_PUNCH',heavy:O.character==='NINA'?'SPIN_KICK':'HEAVY_PUNCH',kick:'LIGHT_KICK',kick2:O.character==='VEXA'?'FLYING_KICK':O.character==='NINA'?'SPIN_KICK':'HEAVY_KICK'})[e.kind];
-  else{const i=(O.character==='NINA'?{punch:forward?4:0,heavy:forward?5:1,kick:forward?6:2,kick2:forward?7:3}:{punch:forward?4:0,heavy:forward?5:1,kick:2,kick2:3})[e.kind];name=SOURCE_ATTACKS[O.character][i];}
+  name=buttonMove(O.character,O.cfg,e.kind,forward,O.sprintHeld,h.down);
   if(name&&O.cfg[name]?.attack){opponentPose(name,true);if(forward&&!h.block&&SOURCE_ATTACKS[O.character].includes(name))O.strikeMotion={action:name,face:O.face,clock:0,weight:0,run:!!O.sprintHeld,legStrike:Object.values(O.cfg[name].hits).some(h=>/Foot|Leg|Toe/.test(h.bone||''))};}
  }
  movingStrikeStep(dt,dir,O);
@@ -79,7 +84,7 @@ function networkRender(){const latest=NET.latest;if(!latest)return;const now=per
  }
  if(NET.inputAt!=null&&NET.inputExpected&&(NET.inputExpected.action?O.a===NET.inputExpected.action&&O.a!==NET.inputPose:NET.inputExpected.direction*(O.x-NET.inputX)>.001&&['WALK_FORWARD','WALK_BACK','RUN'].includes(O.a))){NET.inputs.push(now-NET.inputAt);if(NET.inputs.length>600)NET.inputs.shift();NET.inputAt=null;}
  const effects=u<1?prev:p;if(effects.snapshotId!==(NET.effectsId||0)){NET.effectsId=effects.snapshotId;if(effects.blood)blood?.restoreNetwork?.(effects.blood);if(effects.bloodEvents)blood?.restoreEvents?.(effects.bloodEvents);for(const e of effects.sounds||[]){if(e&&e.id>NET.heard){NET.heard=e.id;if(['punch','kick','impact','heavy','step','land'].includes(e.key))fightAudio.play(e.key,e.volume,e.pitch);}}}
- Object.assign(S,p.state);S.running=true;S.cinematic=false;draw();captureReplay();syncGuestArena();
+ Object.assign(S,p.state);S.running=true;S.cinematic=false;draw();updateComboBanner();captureReplay();syncGuestArena();
  const v=arenaSize(),next=p.camera||{z:1,x:0,y:0},before=prev?.camera||next,c=Object.fromEntries(['z','x','y'].map(k=>[k,before[k]+(next[k]-before[k])*u]));$('#combatStage').style.transform=`translate(${c.x*v.width}px,${c.y*v.height}px) scale(${c.z})`;
  game.classList.toggle('air-attack-enabled',!!O.cfg.ACROBATIC_PUNCH&&!S.ended);$('#playerName').textContent=NET.hostName+' · '+displayFighterName(playerCharacter);$('#opponentName').textContent=NET.guestName+' · '+displayFighterName(O.character)+' · TY';energy.style.width=O.en+'%';$('#comboCharge').textContent='COMBO '+Math.floor(O.en)+'% · '+O.comboUses+'/2';const special=document.querySelector('[data-tap=special]');if(special)special.disabled=O.en<100||O.comboUses>=2||S.ended||S.preFight;
  if(call.firstElementChild.textContent!==displayFighterName(p.state.callout||'')){call.classList.remove('show');void call.offsetWidth;}call.firstElementChild.textContent=displayFighterName(p.state.callout||'');call.classList.toggle('show',!!p.state.callout);
@@ -94,16 +99,18 @@ window.BRAX_MULTIPLAYER_ENGINE={
  connection(ok){NET.connected=ok;if(NET.host&&NET.ready)S.paused=!ok||document.hidden||NET.remoteVisible===false;if(!ok){NET.held={};releaseInputs();}},
  localRun(kind){NET.localRun=!!kind&&(kind==='right'?1:-1)===O.face;},
  localInput(i){if(!NET.active||NET.host)return;if(!i.held?.left&&!i.held?.right)NET.localRun=false;const now=performance.now(),changed=JSON.stringify(i.held)!==JSON.stringify(NET.localHeld);NET.localHeld={...i.held};const fresh=(i.events||[]).filter(e=>e.id>NET.localEvent);if(changed||fresh.length){NET.inputAt=now;NET.inputPose=O.a;NET.inputX=O.x;NET.inputExpected=i.held.block?{action:i.held.down&&O.cfg.BLOCK_LOW?'BLOCK_LOW':'BLOCK'}:{direction:(i.held.right?1:0)-(i.held.left?1:0)};}
-  for(const e of fresh){NET.localEvent=e.id;if(O.locked||NET.latest?.freeze||NET.latest?.actors[1]?.controlBlocked)continue;const dir=(i.held.right?1:0)-(i.held.left?1:0),forward=dir*O.face>0;let name;if(i.held.down&&e.kind==='heavy'&&O.cfg.ACROBATIC_PUNCH)name='ACROBATIC_PUNCH';else{const idx=(O.character==='NINA'?{punch:forward?4:0,heavy:forward?5:1,kick:forward?6:2,kick2:forward?7:3}:{punch:forward?4:0,heavy:forward?5:1,kick:2,kick2:3})[e.kind];name=SOURCE_ATTACKS[O.character][idx];}if(name&&O.cfg[name]?.attack){NET.prediction={id:e.id,a:name,at:now};NET.inputExpected={action:name};}}
+  for(const e of fresh){NET.localEvent=e.id;if(O.locked||NET.latest?.freeze||NET.latest?.actors[1]?.controlBlocked)continue;const dir=(i.held.right?1:0)-(i.held.left?1:0),forward=dir*O.face>0;let name;name=buttonMove(O.character,O.cfg,e.kind,forward,!!NET.localRun,i.held.down);if(name&&O.cfg[name]?.attack){NET.prediction={id:e.id,a:name,at:now};NET.inputExpected={action:name};}}
  },
  snapshot:networkSnapshot,
+ // Reliable keyframe (own channel): only the full blood state is applied; motion comes from the fast frames.
+ receiveKey(p){if(NET.host||!NET.active||!p?.keyframe||!p.blood||!Array.isArray(p.blood.stains)||!Array.isArray(p.blood.particles)||!Array.isArray(p.blood.marks)||!Array.isArray(p.blood.damageMarks)||p.blood.damageMarks.length!==2)return;if(!Number.isSafeInteger(p.snapshotId)||p.snapshotId<(NET.keyId||0))return;NET.keyId=p.snapshotId;blood?.restoreNetwork?.(p.blood);},
  receive(p){if(p?.bloodEvents&&(!Array.isArray(p.bloodEvents)||p.bloodEvents.length>8||!p.bloodEvents.every(e=>Array.isArray(e)&&e.length===10&&(e[9]===null||Array.isArray(e[9])&&e[9].length===3&&Number.isInteger(e[9][0])&&e[9][0]>=0&&Number.isFinite(e[9][1])&&e[9][1]>=0&&e[9][1]<=1&&Number.isInteger(e[9][2])&&e[9][2]>0)&&Number.isSafeInteger(e[0])&&e[0]>0&&[0,1].includes(e[1])&&Number.isFinite(e[2])&&e[2]>=4&&e[2]<=100&&[0,1,2].includes(e[3])&&(e[4]===null||Number.isFinite(e[4]))&&(e[5]===null||Number.isFinite(e[5]))&&Math.abs(e[6])===1&&Number.isSafeInteger(e[7])&&e[7]>=0&&e[7]<=4294967295&&Number.isFinite(e[8]))))return;if(!p||!Number.isSafeInteger(p.ack)||p.ack<0||!Array.isArray(p.state?.wins)||p.state.wins.length!==2||!p.state.wins.every(n=>Number.isInteger(n)&&n>=0&&n<=2)||!Number.isFinite(p.state.t)||p.state.t<0||p.state.t>60||(p.sounds!==undefined&&(!Array.isArray(p.sounds)||p.sounds.length>64))||(p.blood&&(!Array.isArray(p.blood.stains)||!Array.isArray(p.blood.particles)||!Array.isArray(p.blood.marks)||!Array.isArray(p.blood.damageMarks)||p.blood.damageMarks.length!==2||!p.blood.damageMarks.every(Array.isArray))))return;if(!Array.isArray(p?.actors)||p.actors.length!==2||!p.state||!Number.isSafeInteger(p.snapshotId)||p.snapshotId<1||p.snapshotId<=(NET.latest?.snapshotId||0))return;if(!p.actors.every((a,i)=>{const c=a&&(i?O.cfg:CFG)[a.a];return c&&[a.x,a.y,a.face,a.hp,a.en,a.frame].every(Number.isFinite)&&a.x>=0&&a.x<=100&&Math.abs(a.face)===1&&a.en>=0&&a.en<=100&&a.hp>=0&&a.hp<=100&&a.frame>=0&&a.frame<c.durations.length+1;}))return;if(!Number.isFinite(p.state.simTime)||p.state.simTime<(NET.lastSim??0))return;const at=performance.now();if(NET.lastArrival!=null&&Number.isFinite(p.sentAt)&&Number.isFinite(NET.lastSentAt)&&p.sentAt>=NET.lastSentAt){NET.jitter.push(Math.abs((at-NET.lastArrival)-(p.sentAt-NET.lastSentAt)));if(NET.jitter.length>600)NET.jitter.shift();}NET.lastArrival=at;NET.lastSentAt=p.sentAt;NET.lastSim=p.state.simTime;(NET.buffer||=[]).push(p);NET.buffer=NET.buffer.filter(q=>q.state.simTime>=p.state.simTime-500).slice(-32);NET.renderFrom=NET.latest?[{x:B.x,a:B.a},{x:O.x,a:O.a}]:null;NET.previous=NET.latest;NET.latest=p;NET.receivedAt=performance.now();},
  stop(){if(!NET.active)return;NET.active=false;comboMeterSide(false);NET.held={};NET.events=[];game.classList.remove('multiplayer');returnToSelectionNow();$('#selection').classList.add('off');$('#matchSetup').classList.remove('off');}
 };
 
 let progressStorage;try{progressStorage=window.localStorage;}catch{}
 const progress=FEATURES.createProgress(progressStorage);
-const DIFFICULTY={easy:{label:'ŁATWY',reaction:650,cooldown:8500,speed:5.5,approach:.65,block:.22,grabChance:.04,grabCooldown:12000,breakChance:.12,breakReaction:185},normal:{label:'ŚREDNI',reaction:180,cooldown:280,speed:7,approach:.90,block:.60,grabChance:.07,grabCooldown:10000,breakChance:.4,breakReaction:155},hard:{label:'TRUDNY',reaction:100,cooldown:0,speed:8.5,approach:1.15,block:.86,grabChance:.10,grabCooldown:8000,breakChance:.7,breakReaction:110}};
+const DIFFICULTY={easy:{label:'ŁATWY',reaction:650,cooldown:3000,power:.6,speed:5.5,approach:.65,block:.22,grabChance:.04,grabCooldown:12000,breakChance:.12,breakReaction:185},normal:{label:'ŚREDNI',power:1,reaction:180,cooldown:280,speed:7,approach:.90,block:.60,grabChance:.07,grabCooldown:10000,breakChance:.4,breakReaction:155},hard:{label:'TRUDNY',power:1,reaction:100,cooldown:0,speed:8.5,approach:1.15,block:.86,grabChance:.10,grabCooldown:8000,breakChance:.7,breakReaction:110}};
 const B={x:28,y:0,vy:0,face:1,jumpTime:null,moveHeld:0,pushTime:0,pushSpeed:0,hp:100,recover:0,en:0,a:'IDLE',phase:'IDLE',lock:false,ground:true,anim:null,frame:0,frameT:0,hitGroups:new Set()};
 const K={left:false,right:false,block:false,down:false};
 const decoded=new Map(),lru=[];const MAX_CACHE_BYTES=96*1024*1024;
@@ -227,7 +234,7 @@ function applyCombatHit(e){
  const {actor,target,c,hit,key,groups,rect,region,name,serial,defense}=e,player=actor===B;
  if(!S.training)captureReplay({poses:e.contactPoses,force:true});
  if(!damage(target,hit.damage,rect,{...hit,moveName:name,kickToken:(player?'player-':'cpu-')+serial,target:region,contactPoint:e.contact,comboPart:c.finisherGroup!==undefined,comboFinish:c.finisherGroup!==undefined&&hit.group===c.finisherGroup,defense}))return;
- if(!target.lastHitBlocked&&name==='COMBO'&&actor.a==='COMBO'&&!S.comboCinema)S.comboCinema={actor,serial,timeScale:.60};
+ if(!target.lastHitBlocked&&name==='COMBO'&&actor.a==='COMBO'&&!S.comboCinema)S.comboCinema={actor,serial,timeScale:1};
  holdSourceContact(c);groups.add(key);comboFinisher(actor,target,c,hit,target.lastHitBlocked);
  if(!target.lastHitBlocked){if(player){S.combo++;S.comboT=1400;}if(name!=='COMBO'&&(!player||S.comboUses<2)&&!groups.has('energy')){actor.en=Math.min(100,(actor.en||0)+(c.gain||5));groups.add('energy');}}
 }
@@ -264,13 +271,24 @@ function contactRenderConfig(f,c){
 function draw(){if(CFG.IDLE.sourceVersion){const c=contactRenderConfig(B,CFG[B.a]),fraction=B.anim?B.frameT/c.durations[B.frame]:(B.frameT-B.frame*c.durations[0])/c.durations[0];const renderer=characterRenderer(playerCharacter);renderer.render(ctx,B.strikeMotion?.weight>0?{...c,movingGait:{config:B.strikeMotion.run&&CFG.RUN?CFG.RUN:CFG.WALK_FORWARD||CFG.APPROACH,time:B.strikeMotion.clock/1000,weight:B.strikeMotion.weight}}:c,B.frame+Math.max(0,Math.min(1,fraction)),B.face,S.poseClock||0);}if(isLegacyKrov(B))render(B.a,B.frame);drawOpponent();const r=game.getBoundingClientRect();b.style.left=B.x+'%';b.style.bottom=(groundInset()+B.y*.007*r.height)+'px';b.classList.toggle('krov',isLegacyKrov(B));b.classList.toggle('leftface',B.face<0);b.classList.toggle('rightface',B.face>=0);pHp.style.width=B.hp+'%';energy.style.width=B.en+'%';$('#comboCharge').textContent=S.comboUses>=2?'COMBO 2/2':(B.en>=100?'COMBO GOTOWE':'COMBO '+Math.floor(B.en)+'%')+' · '+S.comboUses+'/2';attackButtons.forEach(el=>{if(el.dataset.tap==='grab'){const held=S.clinch?.sourcePair;const guest=NET.active&&!NET.host,localConfig=guest?O.cfg:CFG,ownSide=guest?'opponent':'player';el.classList.toggle('off',!localConfig.THROW_ATTACKER&&!(held&&S.clinch.attacker!==ownSide));el.textContent=held?(S.clinch.attacker===ownSide?'PUŚĆ':'ZERWIJ'):'CHWYT';el.title=held?'C lub U: zerwij w początkowym oknie':'CHWYT: rzut z bliska';}if(el.dataset.tap==='special'){const ready=B.en>=100&&S.comboUses<2&&!S.comboApproach&&!S.ended&&!S.preFight;el.disabled=!ready;el.classList.toggle('charging',!ready);el.classList.toggle('ready',ready);el.title=S.comboUses>=2?'Limit dwóch combo wykorzystany':ready?'Combo gotowe':'Combo ładuje się';}});clock.textContent=S.training?'∞':String(Math.ceil(S.t)).padStart(2,'0');$('#round').textContent=S.training?'TRENING':'RUNDA '+S.round+'/3';combo.textContent=S.combo>1?'TRAFIENIA '+S.combo:S.wins[0]+' : '+S.wins[1]}
 // Presentation follows confirmed contact; simulation and both actors share one clock.
 function activeComboCinema(){const e=S.comboCinema;if(!e)return false;const f=e.actor;if(S.ended||S.preFight||!S.running||f.a!=='COMBO'||f.attackSerial!==e.serial||!(f===B?B.anim:O.locked)){S.comboCinema=null;return false;}return true;}
+// Combo plays at full speed; only the finisher gets one short slow-down (about 0.4 s of real time).
 function comboTimeScale(){
  const e=S.comboCinema,f=e.actor,c=krovConfig(f).COMBO;
- if(e.finisherFrame===undefined)e.finisherFrame=Math.min(...Object.entries(c.hits).filter(([,h])=>h.group===c.finisherGroup).map(([i])=>Number(i)));
- const target=f===B?O:B,finishing=f.frame>=e.finisherFrame-8;
- const desired=target.downState?.phase==='FLY'?.48:finishing?.36:.60;
- e.timeScale=(e.timeScale??.60)+(desired-(e.timeScale??.60))*.08;
+ if(e.finisherFrame===undefined){const frames=Object.entries(c.hits||{}).filter(([,h])=>h.group===c.finisherGroup).map(([i])=>Number(i));e.finisherFrame=frames.length?Math.min(...frames):Infinity;}
+ if(e.slowMs===undefined&&f.frame>=e.finisherFrame){e.slowMs=380;e.kick=1;}
+ const desired=e.slowMs>0?.4:1;if(e.slowMs>0)e.slowMs-=SIM_STEP;
+ e.timeScale=(e.timeScale??1)+(desired-(e.timeScale??1))*.3;
  return e.timeScale;
+}
+// Banner with the fighter's portrait while a combo runs (local, host and guest alike).
+let comboBannerEl=null,comboBannerKey=null;
+function updateComboBanner(){
+ if(!comboBannerEl){comboBannerEl=document.createElement('div');comboBannerEl.id='comboBanner';comboBannerEl.className='off';comboBannerEl.setAttribute('aria-hidden','true');const img=document.createElement('img'),box=document.createElement('div'),small=document.createElement('small'),strong=document.createElement('strong');img.alt='';img.draggable=false;small.textContent='COMBO';box.appendChild(small);box.appendChild(strong);comboBannerEl.appendChild(img);comboBannerEl.appendChild(box);comboBannerEl.parts={img,strong};game.appendChild(comboBannerEl);}
+ const f=S.running&&!S.ended&&!S.preFight?(B.a==='COMBO'?B:O.a==='COMBO'?O:null):null,name=f?(f===B?playerCharacter:O.character):null,key=f?name+(f===B?':L':':R'):null;
+ if(key===comboBannerKey)return;comboBannerKey=key;
+ if(!f){comboBannerEl.classList.add('off');comboBannerEl.classList.remove('play');return;}
+ comboBannerEl.parts.img.src='/assets/portraits/'+name.toLowerCase()+'.webp';comboBannerEl.parts.strong.textContent=displayFighterName(name);
+ comboBannerEl.classList.toggle('right',f===O);comboBannerEl.classList.remove('off');comboBannerEl.classList.remove('play');void comboBannerEl.offsetWidth;comboBannerEl.classList.add('play');
 }
 function updateComboCamera(dt){
  const stage=$('#combatStage');if(!stage)return;
@@ -281,16 +299,17 @@ function updateComboCamera(dt){
   if(!e.framing||e.framing.width!==W||e.framing.height!==H){
    const boxes=[B,O].map(f=>{const c=krovConfig(f)[f.a],q=c.boxes[Math.min(f.frame,c.boxes.length-1)],sc=baseScale()*c.scale,p=framePivotX(f.a,f.frame,c),x=f.x/100*W;return {left:x+(f.face>0?q[0]-p:p-q[2])*sc,right:x+(f.face>0?q[2]-p:p-q[0])*sc,top:groundY()+(q[1]-c.anchorY)*sc,bottom:groundY()+(q[3]-c.anchorY)*sc};});
    const l=Math.min(...boxes.map(b=>b.left))-30,r=Math.max(...boxes.map(b=>b.right))+30,t=Math.min(...boxes.map(b=>b.top))-22,bottom=Math.max(...boxes.map(b=>b.bottom))+18;
-   e.framing={width:W,height:H,zoom:Math.max(1,Math.min(1.30,(W-28)/(r-l),(H-24)/(bottom-t))),x:(l+r)/2,y:(t+bottom)/2,root:(B.x+O.x)/200*W};
+   e.framing={width:W,height:H,zoom:Math.max(1,Math.min(1.12,(W-28)/(r-l),(H-24)/(bottom-t))),x:(l+r)/2,y:(t+bottom)/2,root:(B.x+O.x)/200*W};
   }
   if(target.downState)e.releasing=true;
   if(!e.releasing){const f=e.framing,shift=(B.x+O.x)/200*W-f.root;
    // A dead zone absorbs tiny combat corrections; follow only actual travel.
    const follow=Math.sign(shift)*Math.max(0,Math.abs(shift)-W*.025);
-   z=f.zoom;tx=Math.max(W*(1-z),Math.min(0,W/2-z*(f.x+follow)));ty=Math.max(H*(1-z),Math.min(0,H*.52-z*f.y));
+   const kick=e.kick||0;z=f.zoom; // impact shows as a tiny shake only; the zoom itself never pumps
+   tx=Math.max(W*(1-z),Math.min(0,W/2-z*(f.x+follow)))+(kick?(Math.random()-.5)*6*kick:0);ty=Math.max(H*(1-z),Math.min(0,H*.52-z*f.y))+(kick?(Math.random()-.5)*5*kick:0);if(kick)e.kick=kick<.02?0:kick*Math.exp(-dt/160);
   }
  }
- const c=S.comboCamera||{z:1,x:0,y:0},w=1-Math.exp(-dt/240);c.z+=(z-c.z)*w;c.x+=(tx-c.x)*w;c.y+=(ty-c.y)*w;S.comboCamera=c;
+ const c=S.comboCamera||{z:1,x:0,y:0},w=1-Math.exp(-dt/(active?110:200));c.z+=(z-c.z)*w;c.x+=(tx-c.x)*w;c.y+=(ty-c.y)*w;S.comboCamera=c;
  if(!active&&Math.abs(c.z-1)<.001){c.z=1;c.x=c.y=0;}stage.style.transform=`translate(${c.x}px,${c.y}px) scale(${c.z})`;
 }
 function koTimeScale(remaining){const t=Math.max(0,Math.min(1,(520-remaining)/520));return .28+.72*t*t*(3-2*t);}
@@ -311,7 +330,7 @@ function loop(now){
    const slow=S.koSlowMs>0&&!window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
    S.koSlowMs=Math.max(0,(S.koSlowMs||0)-SIM_STEP);
    const cinematicCombo=activeComboCinema();const elapsed=SIM_STEP*(cinematicCombo?comboTimeScale():slow?koTimeScale(S.koSlowMs):1);physics(elapsed);S.simTime=(S.simTime||0)+elapsed;captureReplay();if(NET.active&&NET.host)window.BRAX_NETWORK_STEP?.(networkSnapshot());
-  }draw();updateComboCamera(dt);if(!S.preFight&&!S.cinematic&&!S.ended){frameSamples.push(rawDt);workSamples.push(performance.now()-started);if(frameSamples.length>3600){frameSamples.shift();workSamples.shift();}}
+  }draw();updateComboCamera(dt);updateComboBanner();if(!S.preFight&&!S.cinematic&&!S.ended){frameSamples.push(rawDt);workSamples.push(performance.now()-started);if(frameSamples.length>3600){frameSamples.shift();workSamples.shift();}}
  }else S.acc=0;
  requestAnimationFrame(loop);
 }
@@ -364,6 +383,7 @@ function hitRecoil(target,amount,strong=false){
  }
 }
 function damage(target,amount,rect=null,hit={}){
+ const amountHp=amount*(target===B&&!S.training&&!NET.active?DIFFICULTY[S.difficulty]?.power??1:1);amount=Number.isFinite(hit.impact)?hit.impact:amount;
  const config=krovConfig(target),isKrov=isLegacyKrov(target),region=(hit.target||'body').toLowerCase(),old=hit.defense?.config||config[target.a],fi=hit.defense?.frame??target.frame,defense=hit.defense||combatSnapshot(target);
  if(S.ended||defense.downState||defense.a==='GETUP'||defense.getupProtection>0)return false;
  const evasion=old.evadeFrames,evading=defense.evade||(evasion&&fi>=evasion[0]&&fi<=evasion[1]);
@@ -380,10 +400,10 @@ function damage(target,amount,rect=null,hit={}){
  }
  target.lastHitBlocked=blocked;
  const sourceRecovery=!!config.FLY;
- const counter=!blocked&&old.attack&&(target===B?defense.phase==='STARTUP':fi<Math.min(...Object.keys(old.hits).map(Number)));target.hp=Math.max(S.training?1:0,target.hp-(blocked?0:amount));
+ const counter=!blocked&&old.attack&&(target===B?defense.phase==='STARTUP':fi<Math.min(...Object.keys(old.hits).map(Number)));target.hp=Math.max(S.training?1:0,target.hp-(blocked?0:amountHp));
  if(rect)contactFeedback(target,rect,blocked,hit.contactPoint);
  if(blocked){target.hitSeries=null;if(target===B)featureEvent('block');}
- else{if(blood&&rect){const bounds=game.getBoundingClientRect();blood.hit(target===B?0:1,amount,region,{x:(hit.contactPoint?.x??(rect.left+rect.right)/2)-bounds.left,y:(hit.contactPoint?.y??(rect.top+rect.bottom)/2)-bounds.top},-target.face);}const pressure=recordCleanHit(target,amount,hit);if(target===O){featureEvent('hit');if((hit.moveName||'').includes('KICK')||['MEIA_LUA'].includes(hit.moveName))featureEvent('kick');if(hit.comboPart)featureEvent('combohit');const last=old.attack?Math.max(...Object.keys(old.hits).map(Number)):-1;if(old.attack&&fi>last&&![...O.hits].some(h=>typeof h==='number'))featureEvent('counter');if(pressure.push)featureEvent('push');}if(sourceRecovery)target.airDamage=(target.airDamage||0)+amount;if(S.grabAttempt?.attacker===(target===B?'player':'opponent'))S.grabAttempt=null;if(target===B)attackQueue.length=0;
+ else{if(blood&&rect){const bounds=game.getBoundingClientRect();blood.hit(target===B?0:1,amount,region,{x:(hit.contactPoint?.x??(rect.left+rect.right)/2)-bounds.left,y:(hit.contactPoint?.y??(rect.top+rect.bottom)/2)-bounds.top},-target.face);}const pressure=recordCleanHit(target,amount,hit);if(target===O){featureEvent('hit');if((hit.moveName||'').includes('KICK')||['MEIA_LUA','TEEP','CAPOEIRA','CLINCH_KNEE'].includes(hit.moveName)||/Foot|Leg|Toe/.test(hit.bone||''))featureEvent('kick');if(hit.comboPart)featureEvent('combohit');const last=old.attack?Math.max(...Object.keys(old.hits).map(Number)):-1;if(old.attack&&fi>last&&![...O.hits].some(h=>typeof h==='number'))featureEvent('counter');if(pressure.push)featureEvent('push');}if(sourceRecovery)target.airDamage=(target.airDamage||0)+amountHp;if(S.grabAttempt?.attacker===(target===B?'player':'opponent'))S.grabAttempt=null;if(target===B)attackQueue.length=0;
   if(target.hp<=0){if(sourceRecovery&&hit.comboFinish)launchSource(target);else knockdown(target);}
   else if(sourceRecovery&&pressure.launch){launchSource(target,!!hit.comboFinish);}
   else if(hit.masterId==='K04'&&counter){knockdown(target);}
@@ -468,7 +488,7 @@ function playerCpuStep(dt){
 
 
 
-const AI_CONTACT_DISTANCES={"BRAX":{"DEMON":{"LIGHT_PUNCH":210,"HEAVY_PUNCH":260,"LIGHT_KICK":280,"DOUBLE_PUNCH":180}},"NYXA":{"DEMON":{"HEAVY_PUNCH":280,"LIGHT_KICK":280,"HEAVY_KICK":280,"ELBOW":195,"CLINCH_KNEE":230}},"NINA":{"BEAR":{"CRESCENT_KICK":265}}};
+const AI_CONTACT_DISTANCES={"BRAX":{"DEMON":{"LIGHT_PUNCH":210,"HEAVY_PUNCH":260,"LIGHT_KICK":280,"DOUBLE_PUNCH":180,"TEEP":235,"CAPOEIRA":255},"BRAX":{"CAPOEIRA":230},"NYXA":{"CAPOEIRA":255},"VEXA":{"CAPOEIRA":240},"KROV":{"CAPOEIRA":245},"NINA":{"CAPOEIRA":280},"DANNY":{"CAPOEIRA":260},"BEAR":{"CAPOEIRA":250}},"NYXA":{"DEMON":{"HEAVY_PUNCH":280,"LIGHT_KICK":280,"HEAVY_KICK":280,"ELBOW":195,"CLINCH_KNEE":230,"LUNGE_PUNCH":255,"CROUCH_KICK":280},"BRAX":{"LUNGE_PUNCH":245,"CROUCH_KICK":280},"NYXA":{"LUNGE_PUNCH":225,"CROUCH_KICK":280},"VEXA":{"LUNGE_PUNCH":240,"CROUCH_KICK":280},"KROV":{"LUNGE_PUNCH":230,"CROUCH_KICK":280},"NINA":{"LUNGE_PUNCH":255,"CROUCH_KICK":1},"DANNY":{"LUNGE_PUNCH":235,"CROUCH_KICK":280},"BEAR":{"LUNGE_PUNCH":240,"CROUCH_KICK":280}},"NINA":{"BEAR":{"CRESCENT_KICK":265},"BRAX":{"CRESCENT_KICK":280}},"DEMON":{"NINA":{"HEAVY_PUNCH":280}}};
 function attackDistance(c,target,attacker=O,defender=B){const move=Object.keys(krovConfig(attacker)).find(name=>krovConfig(attacker)[name]===c),calibrated=AI_CONTACT_DISTANCES[krovName(attacker)]?.[krovName(defender)]?.[move];const reachPx=calibrated??c?.attackRangeByOpponent?.[krovName(defender)]??c?.attackRangePx;if(reachPx)return reachPx*baseScale()*c.scale/arenaSize().width*100*.94;if(!c?.hits||!Object.keys(c.hits).length)return 0;const reach=Math.min(...Object.entries(c.hits).map(([i,h])=>h.box[0]+h.box[2]-framePivotX('',Number(i),c)))*baseScale()*c.scale;const root=game.getBoundingClientRect().left+defender.x/100*arenaSize().width,near=attacker.face>0?root-target.left:target.right-root;return Math.max(1,(reach+near-12)/arenaSize().width*100)}
 function sourcePushBody(f){
  const c=f===B?CFG[f.a]:O.cfg[f.a],p=c.pushCenters?.[f.frame];
@@ -640,7 +660,7 @@ function updateKrovButtons(){
  const kinds=['punch','heavy','kick','kick2'],labels=['P1','P2','K1','K2'],moves=SOURCE_ATTACKS[localCharacter]||[];
  for(const el of attackButtons){
   const index=kinds.indexOf(el.dataset.tap);let label;
-  if(index>=0){label=labels[index]+': '+localConfig[moves[index]].label;const extra=localCharacter==='NINA'?{0:4,1:5,2:6,3:7}:{0:4,1:5};if(extra[index]!==undefined)label+='; przód + '+labels[index]+': '+localConfig[moves[extra[index]]].label;}
+  if(index>=0){label=labels[index]+': '+localConfig[moves[index]].label;const extra=moves.length>6?{0:4,1:5,2:6,3:7}:{0:4,1:5};if(extra[index]!==undefined)label+='; przód + '+labels[index]+': '+localConfig[moves[extra[index]]].label;}
   else if(el.dataset.tap==='special')label='COMBO: '+localConfig.COMBO.label;
   else if(el.dataset.tap==='evade')label='Unik';
   else if(el.dataset.tap==='grab')label=localConfig.THROW_ATTACKER?'Chwyt / rzut / zerwanie':'Zerwij chwyt przeciwnika';
@@ -727,10 +747,7 @@ function vib(x){try{navigator.vibrate?.(x)}catch{}}
 function playerButtonAttack(kind){if(CFG.IDLE.sourceVersion){
  if(!canInput())return false;if(S.clinch?.showcase){if(kind!=='grab'||S.clinch.elapsed>=550||['NINA','DANNY'].includes(playerCharacter)||!CFG.THROW_ATTACKER)return false;releaseShowcaseContact();B.grabProtection=O.grabProtection=0;return beginSourcePair(B);}if(S.clinch?.sourcePair)return sourcePairInput(kind);if(kind==='evade')return evade();if(kind==='special')return startCombo();if(kind==='grab')return beginSourcePair(B);if(B.jumpTime!==null||!B.ground)return false;
  const forward=((K.right?1:0)-(K.left?1:0))*B.face>0;
- if(K.down&&kind==='heavy'&&CFG.ACROBATIC_PUNCH)return doAttack('ACROBATIC_PUNCH');
- if(forward&&B.sprintHeld){const sprintMoves={punch:playerCharacter==='NINA'?'LIGHT_KICK':'LIGHT_PUNCH',heavy:playerCharacter==='NINA'?'SPIN_KICK':'HEAVY_PUNCH',kick:'LIGHT_KICK',kick2:playerCharacter==='VEXA'?'FLYING_KICK':playerCharacter==='NINA'?'SPIN_KICK':'HEAVY_KICK'};if(sprintMoves[kind])return doAttack(sprintMoves[kind]);}
- const index=(playerCharacter==='NINA'?{punch:forward?4:0,heavy:forward?5:1,kick:forward?6:2,kick2:forward?7:3}:{punch:forward?4:0,heavy:forward?5:1,kick:2,kick2:3})[kind];
- return index===undefined?false:doAttack(SOURCE_ATTACKS[playerCharacter][index]);
+ const move=buttonMove(playerCharacter,CFG,kind,forward,B.sprintHeld,K.down);return move?doAttack(move):false;
  }
 if(!canInput())return false;if(S.clinch&&(S.clinch.krov||isLegacyKrov(B)))return handleKrovClinchInput(kind);if(kind==='grab')return beginClinch();if(isLegacyKrov(B)){if(kind==='evade')return evade();if(kind==='special')return startCombo();if(!B.ground||B.jumpTime!==null)return false;const direction=((K.right?1:0)-(K.left?1:0))*B.face;const name=kind==='punch'?['UPPERCUT','OVERHAND','ELBOW'][direction+1]:({heavy:'BODY_HOOK',kick:'LOW_KICK',kick2:'KNEE'})[kind];return name?doAttack(name):false;}if(K.block&&kind==='heavy')return beginClinch();if(kind==='evade')return evade();if(kind==='special')return startCombo();const direction=((K.right?1:0)-(K.left?1:0))*B.face,nyxa=playerCharacter==='NYXA';if(!B.ground)return kind==='punch'?doAttack('JUMP_PUNCH'):false;const moves=nyxa?{punch:['HOOK','LIGHT_PUNCH','PUNCH_CHAIN'],heavy:['COUNTER','HEAVY_PUNCH','PUNCH_CHAIN'],kick:['SPIN_KICK','LIGHT_KICK','SPIN_KICK'],kick2:['CROUCH_KICK','HEAVY_KICK','CROUCH_KICK']}:{punch:['UPPERCUT','LIGHT_PUNCH','DOUBLE_PUNCH'],heavy:['COUNTER','HEAVY_PUNCH','CHAIN_STRIKES'],kick:['LIGHT_KICK','LIGHT_KICK','LIGHT_KICK'],kick2:['HEAVY_KICK','HEAVY_KICK','HEAVY_KICK']};if(!moves[kind])return false;const crouch={punch:'CROUCH_PUNCH',heavy:nyxa?'CROUCH_PUNCH':'HEAVY_STOMP',kick:'CROUCH_KICK',kick2:'CROUCH_KICK'};return doAttack(K.block?crouch[kind]:moves[kind][direction+1])}
 let selectedSlot=0,selectionTouch=null,selectionMoved=false,selectionRequest=0;
@@ -781,7 +798,7 @@ function showFighterHelp(revisit=false){
  $('#fighterHelpMoves').innerHTML=helpRows(helpCharacter,helpConfig).map(row=>'<div><b>'+row.input+'</b><span>'+safeText(row.label)+'</span></div>').join('');
  const canThrow=!['NINA','DANNY'].includes(helpCharacter)&&!!helpConfig.THROW_ATTACKER;
  $('#fighterHelpDefense').textContent=helpCharacter==='NINA'?'U: unik. Dwa dotknięcia od rywala: obrót w tył. Bez gardy i rzutu.':'U: unik · przytrzymaj tarczę: garda wysoka · gest w dół: garda niska.';
- $('#fighterHelpCombo').textContent='COMBO: '+helpConfig.COMBO.label+'. Pełna energia, 2× na rundę. Zwolnienie i przybliżenie od czystego trafienia do końca sekwencji. Czysty ostatni cios zawsze wyrzuca i powala. Kilka mocnych trafionych ataków w serii również wyrzuca przeciwnika; blok przerywa serię.'+(canThrow?' CHWYT: rzut z bliska. Zerwanie: U lub CHWYT w pierwszych 0,2 s.':' Bez rzutu; U lub CHWYT zrywa chwyt rywala w pierwszych 0,2 s.');
+ $('#fighterHelpCombo').textContent='COMBO: '+helpConfig.COMBO.label+'. Pełna energia, 2× na rundę. Ostatni czysty cios wyrzuca i powala (krótkie zwolnienie). Seria mocnych trafień też wyrzuca; blok ją przerywa.'+(canThrow?' CHWYT: rzut z bliska. Zerwanie: U lub CHWYT w pierwszych 0,2 s.':' Bez rzutu; U lub CHWYT zrywa chwyt rywala w pierwszych 0,2 s.');
  $('#fighterHelpMovement').textContent='◀ ▶: ruch. Dwa naciśnięcia do rywala: bieg; podczas biegu atak zachowuje rozpęd. Dwa naciśnięcia od rywala: '+(helpConfig.BACKFLIP||helpConfig.BACK_ROLL||helpConfig.QUICK_BACK).label+'. U: osobny unik. PRZÓD + atak: dodatkowy cios.'+(helpConfig.ACROBATIC_PUNCH?' DÓŁ + P2: '+helpConfig.ACROBATIC_PUNCH.label+'.':'');
  $('#helpPortrait').src='/assets/campaign-portraits/'+helpCharacter.toLowerCase()+'.webp';
  $('#helpFighterName').textContent=displayFighterName(helpCharacter);

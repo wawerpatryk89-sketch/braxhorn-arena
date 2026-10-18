@@ -1487,5 +1487,14 @@
   ],
   "before": "NEW",
   "suite": "main"
+ },
+ {
+  "test": "scripts/audit-moveset-149.cjs",
+  "command": [
+   "node",
+   "scripts/audit-moveset-149.cjs"
+  ],
+  "before": "NOWY",
+  "suite": "main"
  }
 ]

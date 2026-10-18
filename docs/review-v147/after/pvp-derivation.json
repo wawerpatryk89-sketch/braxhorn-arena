@@ -3,476 +3,446 @@
   "rows": [
     {
       "fighter": "BRAX",
-      "optimisticKoMs": 5878.2467125764415,
-      "roundMinimumMs": 4702,
+      "optimisticKoMs": 7064.393913173233,
+      "roundMinimumMs": 5651,
       "witness": [
         {
-          "action": "CAPOEIRA",
-          "damage": 14,
-          "timeMs": 1030.3030230782276,
-          "terminal": false
-        },
-        {
           "action": "UPPERCUT",
-          "damage": 12,
-          "timeMs": 811.6883116883117,
-          "terminal": false
-        },
-        {
-          "action": "CAPOEIRA",
-          "damage": 14,
-          "timeMs": 1030.3030230782276,
-          "terminal": false
-        },
-        {
-          "action": "UPPERCUT",
-          "damage": 12,
+          "damage": 10,
           "timeMs": 811.6883116883117,
           "terminal": false
         },
         {
           "action": "UPPERCUT",
-          "damage": 12,
+          "damage": 10,
+          "timeMs": 811.6883116883117,
+          "terminal": false
+        },
+        {
+          "action": "UPPERCUT",
+          "damage": 10,
+          "timeMs": 811.6883116883117,
+          "terminal": false
+        },
+        {
+          "action": "UPPERCUT",
+          "damage": 10,
+          "timeMs": 811.6883116883117,
+          "terminal": false
+        },
+        {
+          "action": "UPPERCUT",
+          "damage": 10,
+          "timeMs": 811.6883116883117,
+          "terminal": false
+        },
+        {
+          "action": "UPPERCUT",
+          "damage": 10,
+          "timeMs": 811.6883116883117,
+          "terminal": false
+        },
+        {
+          "action": "UPPERCUT",
+          "damage": 10,
           "timeMs": 811.6883116883117,
           "terminal": false
         },
         {
           "action": "COMBO",
-          "damage": 36,
+          "damage": 30,
           "timeMs": 1382.5757313550514,
           "terminal": true,
           "lastFrame": 146
         }
       ],
       "pvp": {
-        "roundWinMs": 4702,
-        "twoRoundWinMs": 9404
+        "roundWinMs": 5651,
+        "twoRoundWinMs": 11302
       }
     },
     {
       "fighter": "NYXA",
-      "optimisticKoMs": 6865.829777253359,
-      "roundMinimumMs": 5492,
+      "optimisticKoMs": 3292.9292960870225,
+      "roundMinimumMs": 2634,
       "witness": [
         {
-          "action": "LIGHT_PUNCH",
-          "damage": 7,
-          "timeMs": 522.9466147365063,
+          "action": "LUNGE_PUNCH",
+          "damage": 20,
+          "timeMs": 828.2828330993638,
           "terminal": false
         },
         {
-          "action": "LIGHT_PUNCH",
-          "damage": 7,
-          "timeMs": 522.9466147365063,
-          "terminal": false
-        },
-        {
-          "action": "LIGHT_PUNCH",
-          "damage": 7,
-          "timeMs": 522.9466147365063,
-          "terminal": false
-        },
-        {
-          "action": "LIGHT_PUNCH",
-          "damage": 7,
-          "timeMs": 522.9466147365063,
-          "terminal": false
-        },
-        {
-          "action": "LIGHT_PUNCH",
-          "damage": 7,
-          "timeMs": 522.9466147365063,
-          "terminal": false
-        },
-        {
-          "action": "LIGHT_PUNCH",
-          "damage": 7,
-          "timeMs": 522.9466147365063,
-          "terminal": false
-        },
-        {
-          "action": "LIGHT_PUNCH",
-          "damage": 7,
-          "timeMs": 522.9466147365063,
-          "terminal": false
-        },
-        {
-          "action": "LIGHT_PUNCH",
-          "damage": 7,
-          "timeMs": 522.9466147365063,
-          "terminal": false
-        },
-        {
-          "action": "LIGHT_PUNCH",
-          "damage": 7,
-          "timeMs": 522.9466147365063,
-          "terminal": false
-        },
-        {
-          "action": "LIGHT_PUNCH",
-          "damage": 7,
-          "timeMs": 522.9466147365063,
+          "action": "LUNGE_PUNCH",
+          "damage": 20,
+          "timeMs": 828.2828330993638,
           "terminal": false
         },
         {
           "action": "COMBO",
-          "damage": 32,
+          "damage": 60,
           "timeMs": 1636.3636298882948,
           "terminal": true,
           "lastFrame": 216
         }
       ],
       "pvp": {
-        "roundWinMs": 5492,
-        "twoRoundWinMs": 10984
+        "roundWinMs": 2634,
+        "twoRoundWinMs": 5268
       }
     },
     {
       "fighter": "VEXA",
-      "optimisticKoMs": 6517.1601997919215,
-      "roundMinimumMs": 5213,
+      "optimisticKoMs": 3817.4356950215997,
+      "roundMinimumMs": 3053,
       "witness": [
         {
           "action": "SPIN_KICK",
-          "damage": 14,
+          "damage": 24,
           "timeMs": 899.9081682567739,
           "terminal": false
         },
         {
           "action": "SPIN_KICK",
-          "damage": 14,
+          "damage": 24,
           "timeMs": 899.9081682567739,
           "terminal": false
         },
         {
           "action": "SPIN_KICK",
-          "damage": 14,
+          "damage": 24,
           "timeMs": 899.9081682567739,
           "terminal": false
         },
         {
           "action": "SPIN_KICK",
-          "damage": 14,
-          "timeMs": 899.9081682567739,
-          "terminal": false
-        },
-        {
-          "action": "SPIN_KICK",
-          "damage": 14,
-          "timeMs": 899.9081682567739,
-          "terminal": false
-        },
-        {
-          "action": "SPIN_KICK",
-          "damage": 14,
-          "timeMs": 899.9081682567739,
-          "terminal": false
-        },
-        {
-          "action": "SPIN_KICK",
-          "damage": 14,
+          "damage": 24,
           "timeMs": 899.9081682567739,
           "terminal": false
         },
         {
           "action": "HEAVY_PUNCH",
-          "damage": 5,
+          "damage": 8,
           "timeMs": 217.8030219945041,
           "terminal": true,
           "lastFrame": 23
         }
       ],
       "pvp": {
-        "roundWinMs": 5213,
-        "twoRoundWinMs": 10426
+        "roundWinMs": 3053,
+        "twoRoundWinMs": 6106
       }
     },
     {
       "fighter": "KROV",
-      "optimisticKoMs": 5915.949795962353,
-      "roundMinimumMs": 4732,
+      "optimisticKoMs": 3491.7072994718783,
+      "roundMinimumMs": 2793,
       "witness": [
         {
           "action": "UPPERCUT",
-          "damage": 13,
+          "damage": 20,
           "timeMs": 808.0808321634918,
           "terminal": false
         },
         {
           "action": "UPPERCUT",
-          "damage": 13,
+          "damage": 20,
           "timeMs": 808.0808321634918,
           "terminal": false
         },
         {
           "action": "UPPERCUT",
-          "damage": 13,
+          "damage": 20,
           "timeMs": 808.0808321634918,
           "terminal": false
         },
         {
           "action": "UPPERCUT",
-          "damage": 13,
+          "damage": 20,
           "timeMs": 808.0808321634918,
           "terminal": false
         },
         {
           "action": "UPPERCUT",
-          "damage": 13,
-          "timeMs": 808.0808321634918,
-          "terminal": false
-        },
-        {
-          "action": "UPPERCUT",
-          "damage": 13,
-          "timeMs": 808.0808321634918,
-          "terminal": false
-        },
-        {
-          "action": "UPPERCUT",
-          "damage": 13,
-          "timeMs": 808.0808321634918,
-          "terminal": false
-        },
-        {
-          "action": "UPPERCUT",
-          "damage": 13,
+          "damage": 20,
           "timeMs": 259.3839708179114,
           "terminal": true,
           "lastFrame": 26
         }
       ],
       "pvp": {
-        "roundWinMs": 4732,
-        "twoRoundWinMs": 9464
+        "roundWinMs": 2793,
+        "twoRoundWinMs": 5586
       }
     },
     {
       "fighter": "NINA",
-      "optimisticKoMs": 5139.938695748699,
-      "roundMinimumMs": 4111,
+      "optimisticKoMs": 3749.2197045876906,
+      "roundMinimumMs": 2999,
       "witness": [
         {
-          "action": "MEIA_LUA",
-          "damage": 13,
-          "timeMs": 735.8253206499954,
+          "action": "SPIN_KICK",
+          "damage": 19,
+          "timeMs": 764.3720590032742,
           "terminal": false
         },
         {
-          "action": "MEIA_LUA",
-          "damage": 13,
-          "timeMs": 735.8253206499954,
+          "action": "LIGHT_KICK",
+          "damage": 16,
+          "timeMs": 747.7444073662081,
           "terminal": false
         },
         {
-          "action": "MEIA_LUA",
-          "damage": 13,
-          "timeMs": 735.8253206499954,
+          "action": "SPIN_KICK",
+          "damage": 19,
+          "timeMs": 764.3720590032742,
           "terminal": false
         },
         {
-          "action": "MEIA_LUA",
-          "damage": 13,
-          "timeMs": 735.8253206499954,
-          "terminal": false
-        },
-        {
-          "action": "MEIA_LUA",
-          "damage": 13,
-          "timeMs": 735.8253206499954,
-          "terminal": false
-        },
-        {
-          "action": "MEIA_LUA",
-          "damage": 13,
-          "timeMs": 735.8253206499954,
+          "action": "LIGHT_KICK",
+          "damage": 16,
+          "timeMs": 747.7444073662081,
           "terminal": false
         },
         {
           "action": "COMBO",
-          "damage": 23,
+          "damage": 32,
           "timeMs": 724.9867718487262,
           "terminal": true,
           "lastFrame": 67
         }
       ],
       "pvp": {
-        "roundWinMs": 4111,
-        "twoRoundWinMs": 8222
+        "roundWinMs": 2999,
+        "twoRoundWinMs": 5998
       }
     },
     {
       "fighter": "DANNY",
-      "optimisticKoMs": 7155.276902841457,
-      "roundMinimumMs": 5724,
+      "optimisticKoMs": 4307.550594295726,
+      "roundMinimumMs": 3446,
       "witness": [
         {
           "action": "HEAVY_PUNCH",
-          "damage": 11,
-          "timeMs": 850.0000000000016,
+          "damage": 14,
+          "timeMs": 658.7122819090472,
           "terminal": false
         },
         {
           "action": "HEAVY_PUNCH",
-          "damage": 11,
-          "timeMs": 850.0000000000016,
+          "damage": 14,
+          "timeMs": 658.7122819090472,
           "terminal": false
         },
         {
           "action": "HEAVY_PUNCH",
-          "damage": 11,
-          "timeMs": 850.0000000000016,
+          "damage": 14,
+          "timeMs": 658.7122819090472,
           "terminal": false
         },
         {
           "action": "HEAVY_PUNCH",
-          "damage": 11,
-          "timeMs": 850.0000000000016,
+          "damage": 14,
+          "timeMs": 658.7122819090472,
           "terminal": false
         },
         {
           "action": "HEAVY_PUNCH",
-          "damage": 11,
-          "timeMs": 850.0000000000016,
+          "damage": 14,
+          "timeMs": 658.7122819090472,
           "terminal": false
         },
         {
           "action": "HEAVY_PUNCH",
-          "damage": 11,
-          "timeMs": 850.0000000000016,
-          "terminal": false
-        },
-        {
-          "action": "HEAVY_PUNCH",
-          "damage": 11,
-          "timeMs": 850.0000000000016,
-          "terminal": false
-        },
-        {
-          "action": "HEAVY_PUNCH",
-          "damage": 11,
-          "timeMs": 850.0000000000016,
+          "damage": 14,
+          "timeMs": 658.7122819090472,
           "terminal": false
         },
         {
           "action": "COMBO",
-          "damage": 12,
+          "damage": 16,
           "timeMs": 355.2769028414431,
           "terminal": true,
           "lastFrame": 34
         }
       ],
       "pvp": {
-        "roundWinMs": 5724,
-        "twoRoundWinMs": 11448
+        "roundWinMs": 3446,
+        "twoRoundWinMs": 6892
       }
     },
     {
       "fighter": "BEAR",
-      "optimisticKoMs": 2900.05638522385,
-      "roundMinimumMs": 2320,
+      "optimisticKoMs": 7002.408875148167,
+      "roundMinimumMs": 5601,
       "witness": [
         {
           "action": "SHOULDER",
-          "damage": 16,
-          "timeMs": 462.8099173553721,
+          "damage": 6,
+          "timeMs": 429.5621460796008,
           "terminal": false
         },
         {
           "action": "SHOULDER",
-          "damage": 16,
-          "timeMs": 462.8099173553721,
+          "damage": 6,
+          "timeMs": 429.5621460796008,
           "terminal": false
         },
         {
           "action": "SHOULDER",
-          "damage": 16,
-          "timeMs": 462.8099173553721,
+          "damage": 6,
+          "timeMs": 429.5621460796008,
           "terminal": false
         },
         {
           "action": "SHOULDER",
-          "damage": 16,
-          "timeMs": 462.8099173553721,
+          "damage": 6,
+          "timeMs": 429.5621460796008,
           "terminal": false
         },
         {
           "action": "SHOULDER",
-          "damage": 16,
-          "timeMs": 462.8099173553721,
+          "damage": 6,
+          "timeMs": 429.5621460796008,
           "terminal": false
         },
         {
           "action": "SHOULDER",
-          "damage": 16,
-          "timeMs": 462.8099173553721,
+          "damage": 6,
+          "timeMs": 429.5621460796008,
           "terminal": false
         },
         {
-          "action": "COMBO",
-          "damage": 8,
-          "timeMs": 123.19688109161794,
+          "action": "SHOULDER",
+          "damage": 6,
+          "timeMs": 429.5621460796008,
+          "terminal": false
+        },
+        {
+          "action": "SHOULDER",
+          "damage": 6,
+          "timeMs": 429.5621460796008,
+          "terminal": false
+        },
+        {
+          "action": "SHOULDER",
+          "damage": 6,
+          "timeMs": 429.5621460796008,
+          "terminal": false
+        },
+        {
+          "action": "SHOULDER",
+          "damage": 6,
+          "timeMs": 429.5621460796008,
+          "terminal": false
+        },
+        {
+          "action": "SHOULDER",
+          "damage": 6,
+          "timeMs": 429.5621460796008,
+          "terminal": false
+        },
+        {
+          "action": "SHOULDER",
+          "damage": 6,
+          "timeMs": 429.5621460796008,
+          "terminal": false
+        },
+        {
+          "action": "SHOULDER",
+          "damage": 6,
+          "timeMs": 429.5621460796008,
+          "terminal": false
+        },
+        {
+          "action": "SHOULDER",
+          "damage": 6,
+          "timeMs": 429.5621460796008,
+          "terminal": false
+        },
+        {
+          "action": "SHOULDER",
+          "damage": 6,
+          "timeMs": 429.5621460796008,
+          "terminal": false
+        },
+        {
+          "action": "SHOULDER",
+          "damage": 6,
+          "timeMs": 429.5621460796008,
+          "terminal": false
+        },
+        {
+          "action": "SHOULDER",
+          "damage": 6,
+          "timeMs": 129.41453787455112,
           "terminal": true,
           "lastFrame": 11
         }
       ],
       "pvp": {
-        "roundWinMs": 2320,
-        "twoRoundWinMs": 4640
+        "roundWinMs": 5601,
+        "twoRoundWinMs": 11202
       }
     },
     {
       "fighter": "DEMON",
-      "optimisticKoMs": 4182.700031515075,
-      "roundMinimumMs": 3346,
+      "optimisticKoMs": 5943.322109972958,
+      "roundMinimumMs": 4754,
       "witness": [
         {
           "action": "UPPERCUT",
-          "damage": 16,
-          "timeMs": 680.6958473625142,
-          "terminal": false
-        },
-        {
-          "action": "LIGHT_PUNCH",
-          "damage": 7,
-          "timeMs": 551.9480674297779,
-          "terminal": false
-        },
-        {
-          "action": "UPPERCUT",
-          "damage": 16,
+          "damage": 11,
           "timeMs": 680.6958473625142,
           "terminal": false
         },
         {
           "action": "UPPERCUT",
-          "damage": 16,
+          "damage": 11,
           "timeMs": 680.6958473625142,
           "terminal": false
         },
         {
           "action": "UPPERCUT",
-          "damage": 16,
+          "damage": 11,
           "timeMs": 680.6958473625142,
           "terminal": false
         },
         {
           "action": "UPPERCUT",
-          "damage": 16,
+          "damage": 11,
           "timeMs": 680.6958473625142,
           "terminal": false
         },
         {
-          "action": "HEAVY_KICK",
-          "damage": 15,
-          "timeMs": 227.27272727272745,
+          "action": "UPPERCUT",
+          "damage": 11,
+          "timeMs": 680.6958473625142,
+          "terminal": false
+        },
+        {
+          "action": "UPPERCUT",
+          "damage": 11,
+          "timeMs": 680.6958473625142,
+          "terminal": false
+        },
+        {
+          "action": "UPPERCUT",
+          "damage": 11,
+          "timeMs": 680.6958473625142,
+          "terminal": false
+        },
+        {
+          "action": "COMBO",
+          "damage": 24,
+          "timeMs": 1178.4511784353595,
           "terminal": true,
-          "lastFrame": 59
+          "lastFrame": 105
         }
       ],
       "pvp": {
-        "roundWinMs": 3346,
-        "twoRoundWinMs": 6692
+        "roundWinMs": 4754,
+        "twoRoundWinMs": 9508
       }
     }
   ],

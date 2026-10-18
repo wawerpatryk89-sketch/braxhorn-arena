@@ -113,3 +113,17 @@
 #txCodeForm .ui-code-cells span{height:34px!important}
 #txCodeForm .ui-code-edit{height:42px!important}
 #txCodeForm .ui-code-meta button{min-height:34px;padding:6px 12px!important}}
+/* Combo banner: portrait + name slide in from the attacker's side; the HUD and controls stay clear. */
+#comboBanner{position:absolute;top:24%;left:0;z-index:12;display:flex;align-items:center;gap:10px;padding:6px 34px 6px 10px;background:linear-gradient(90deg,#07100bf0 62%,#07100b00);border-left:4px solid #b9f68a;pointer-events:none;transform:translateX(-110%);will-change:transform,opacity}
+#comboBanner.right{left:auto;right:0;flex-direction:row-reverse;padding:6px 10px 6px 34px;background:linear-gradient(270deg,#07100bf0 62%,#07100b00);border-left:0;border-right:4px solid #ff5a4e;transform:translateX(110%);text-align:right}
+#comboBanner.off{display:none}
+#comboBanner img{width:clamp(48px,14vh,72px);height:clamp(48px,14vh,72px);object-fit:cover;object-position:center 18%;border:2px solid #b9f68a;border-radius:4px;background:#0b130e}
+#comboBanner.right img{border-color:#ff5a4e}
+#comboBanner small{display:block;font:800 clamp(10px,2.6vh,13px)/1 inherit;letter-spacing:.32em;color:#b9f68a}
+#comboBanner.right small{color:#ff8a80}
+#comboBanner strong{display:block;margin-top:3px;font:italic 900 clamp(22px,7vh,34px)/1 var(--ui-display,inherit);letter-spacing:.04em;color:#fff;text-shadow:0 2px 10px #000}
+#comboBanner.play{animation:comboBannerIn 1.7s cubic-bezier(.2,.9,.25,1) forwards}
+#comboBanner.right.play{animation-name:comboBannerInRight}
+@keyframes comboBannerIn{0%{transform:translateX(-110%)}11%{transform:translateX(0)}80%{transform:translateX(0);opacity:1}100%{transform:translateX(-25%);opacity:0}}
+@keyframes comboBannerInRight{0%{transform:translateX(110%)}11%{transform:translateX(0)}80%{transform:translateX(0);opacity:1}100%{transform:translateX(25%);opacity:0}}
+@media (prefers-reduced-motion:reduce){#comboBanner.play,#comboBanner.right.play{animation:comboBannerFade 1.7s linear forwards;transform:none}@keyframes comboBannerFade{0%,80%{opacity:1}100%{opacity:0}}}

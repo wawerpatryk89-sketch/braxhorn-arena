@@ -1,6 +1,6 @@
 import concurrent.futures, os, subprocess, json,time
 from pathlib import Path
-out=Path('docs/review-v147/simulation');env=dict(os.environ,BRAX_REVIEW_ENGINE=str(out/'combat-candidate-v5.js'))
+out=Path('docs/review-v147/simulation');env=dict(os.environ,BRAX_REVIEW_ENGINE=str(out/'combat-candidate-v6.js'))
 def run(job):
  level,slot=job;start=time.time()
  names=['BRAX','NYXA','VEXA','KROV','NINA','DANNY','BEAR','DEMON']

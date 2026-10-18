@@ -2,61 +2,61 @@
   "method": "full action cycles + final hit-prefix dynamic programming; infinite energy, no approach/hitstop/KO sequence; 20% safety margin",
   "fighters": {
     "BRAX": {
-      "configSha256": "160339cf9c083b4c520e948e3bd3ff351ef204fac4b234c64b2df08da50739ba",
-      "optimisticKoMs": 5878,
-      "roundMinimumMs": 4702
+      "configSha256": "9bc1edc43981cb90f1b7b06e88b65496e770bc93f164190ec63339b8383cdd22",
+      "optimisticKoMs": 7064,
+      "roundMinimumMs": 5651
     },
     "NYXA": {
-      "configSha256": "5f7774f91b07252212c723a10c17f0b262cfcf83370bd245ca1edf0ce35b1a3a",
-      "optimisticKoMs": 6865,
-      "roundMinimumMs": 5492
+      "configSha256": "ad38fd21f8ce521ae47941783ab2a47288213a2c60bac0a37df6f636feb6ee96",
+      "optimisticKoMs": 3292,
+      "roundMinimumMs": 2634
     },
     "VEXA": {
-      "configSha256": "cd29eadd8dda7e5bde64edd315a9a2465a98b23223665872a4c29f03042e7372",
-      "optimisticKoMs": 6517,
-      "roundMinimumMs": 5213
+      "configSha256": "af431c91d6b411af5a09e4b778fdff9e41f03b1af5a6f09553e157a4bc1e84bc",
+      "optimisticKoMs": 3817,
+      "roundMinimumMs": 3053
     },
     "KROV": {
-      "configSha256": "93e215b9826f9970c0042d8e66055abe9422309cf2a133a2d6454480bde42486",
-      "optimisticKoMs": 5915,
-      "roundMinimumMs": 4732
+      "configSha256": "2baba3d76c1b1c063dafe13141a3d1f0727629cdb0522cd96ce4e77c160b79fd",
+      "optimisticKoMs": 3491,
+      "roundMinimumMs": 2793
     },
     "NINA": {
-      "configSha256": "faf6daf8e719cde653072365c7e06d3834cf9de8d0fce5c9722720a950f09896",
-      "optimisticKoMs": 5139,
-      "roundMinimumMs": 4111
+      "configSha256": "6c51a561cca065b3b867e5e7aeb5261e63a68606d5f9367f0bacd11ba512c7ba",
+      "optimisticKoMs": 3749,
+      "roundMinimumMs": 2999
     },
     "DANNY": {
-      "configSha256": "2603c9652e384d37665be0a29ca08fe3d85ecf0f972f2dd8cd1129e110e7f33e",
-      "optimisticKoMs": 7155,
-      "roundMinimumMs": 5724
+      "configSha256": "8a40a28de662940f4968d861eb5f263b2100bfa8d65c2b1cac8f4e152cb5afc2",
+      "optimisticKoMs": 4307,
+      "roundMinimumMs": 3446
     },
     "BEAR": {
-      "configSha256": "8378177fe4a08393a9c2eec602e006b3c277752e0d177305daa94381da69afcf",
-      "optimisticKoMs": 2900,
-      "roundMinimumMs": 2320
+      "configSha256": "6c1a610c5b13071761dfea07e3ffacf3221ca6f02764d25cd879f970b48c664e",
+      "optimisticKoMs": 7002,
+      "roundMinimumMs": 5601
     },
     "DEMON": {
-      "configSha256": "43e16c0823547880c151ea5dc7ea72d75f53f4ef69159982845df5d00b8fb0ac",
-      "optimisticKoMs": 4182,
-      "roundMinimumMs": 3346
+      "configSha256": "afa128d34112a8e09788928733dabe882ebd62233d832fbc5fd2b2ea0e8f199a",
+      "optimisticKoMs": 5943,
+      "roundMinimumMs": 4754
     }
   },
   "modes": {
     "fight": {
-      "roundMinimumMs": 2320,
+      "roundMinimumMs": 2634,
       "minimumRounds": 2
     },
     "arcade": {
-      "roundMinimumMs": 2320,
+      "roundMinimumMs": 2634,
       "minimumRounds": 2
     },
     "survival": {
-      "roundMinimumMs": 2320,
+      "roundMinimumMs": 2634,
       "minimumRounds": 1
     },
     "tournament": {
-      "roundMinimumMs": 2320,
+      "roundMinimumMs": 2634,
       "minimumRounds": 2
     }
   }
