@@ -63,7 +63,7 @@
 #pausePanel .pause-actions #pauseHelp,#pausePanel .pause-actions #pauseSelection{grid-column:auto}
 #pausePanel .pause-actions #pauseExit{grid-column:1/-1;border-color:#b4ef7077;color:#e5f1d7;background:#182718}
 #pausePanel .pause-actions button{min-height:38px}#pausePanel .pause-card>p{margin-bottom:12px}
-#game:not(.menu-open):not(.paused):not(.multiplayer) #fightMenu:not(.off){display:block;top:calc(54px + var(--safeT));right:calc(8px + var(--safeR));left:auto;width:44px;height:40px;z-index:76}
+#game:not(.menu-open):not(.paused):not(.multiplayer) #fightMenu:not(.off){display:block;top:calc(54px + var(--safeT));right:calc(66px + var(--safeR));left:auto;width:44px;height:40px;z-index:76}
 .film-exit{position:absolute;left:3%;top:4%;z-index:5;min-height:40px;padding:8px 14px;color:#e9f4dd;background:#07100cdd;border:1px solid #abc78a88;border-radius:4px;font-size:12px}
 @media(max-height:350px){#pausePanel .pause-card h2{font-size:23px;margin:5px}#pausePanel .pause-card>p{margin-bottom:8px}#pausePanel .pause-actions{gap:5px}#pausePanel .pause-actions button{min-height:34px}.mp-showcase{padding:0 4%}.mp-heading h1{font-size:20px}}
 @media(prefers-reduced-motion:reduce){#matchSetup .mode-card-row .mode-hit{transition:none}}
