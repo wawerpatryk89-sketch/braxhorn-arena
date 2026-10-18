@@ -15,7 +15,15 @@
   let fx = null, canvas = null, paused = null, audio = null;
   let elapsed = 0, frames = 0, previous = null, measured = false, fps = null;
   const controls = () => root.document.querySelectorAll('[data-arena-effects]');
-  function syncControls() { for (const el of controls()) el.value = quality; }
+  // Phones: three in-game buttons drive the (hidden) select, so no system picker opens.
+  function segmented(select) {
+    if (select.nextElementSibling?.classList?.contains('effects-choice')) return;
+    const group = root.document.createElement('span'); group.className = 'effects-choice'; group.setAttribute('role', 'radiogroup'); group.setAttribute('aria-label', 'Efekty areny');
+    for (const option of select.options) { const b = root.document.createElement('button'); b.type = 'button'; b.dataset.value = option.value; b.textContent = option.textContent; b.setAttribute('role', 'radio');
+      b.addEventListener('click', () => { select.value = option.value; select.dispatchEvent(new Event('change')); }); group.appendChild(b); }
+    select.hidden = true; select.after(group);
+  }
+  function syncControls() { for (const el of controls()) { el.value = quality; segmented(el); for (const b of el.nextElementSibling?.querySelectorAll?.('button') || []) b.setAttribute('aria-checked', String(b.dataset.value === quality)); } }
   function setQuality(q) {
     if (!valid(q)) return;
     quality = q;
@@ -76,7 +84,7 @@
     const dpr = Math.min(root.devicePixelRatio || 1, cap);
     return fx.getFeetY() * canvas.clientHeight / (canvas.height / dpr);
   }
-  for (const el of controls()) el.addEventListener('change', () => setQuality(el.value));
+  for (const el of controls()) el.addEventListener('change', () => { setQuality(el.value); syncControls(); });
   syncControls();
   root.addEventListener('pagehide', destroy);
   root.document.addEventListener('visibilitychange', () => {

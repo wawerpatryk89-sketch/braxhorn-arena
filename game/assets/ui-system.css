@@ -70,3 +70,21 @@
 .identity-dialog footer #identityError{order:1;flex:1 1 0!important;min-width:0;max-width:none;margin:0;text-align:center;font-size:11px;line-height:1.2;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .identity-dialog footer #identityError:empty{display:block!important;visibility:hidden}
 .identity-dialog footer #identityContinue{order:2;flex:0 0 auto;margin-left:0}
+/* Arena picker on phones: no search field (it opened the system keyboard), two full rows of
+   arenas that scroll sideways and never slide under the LOSUJ / WALCZ TUTAJ bar. */
+#arenaSelection .arena-search{display:none!important}
+#arenaSelection .arena-browser{overflow:hidden;min-height:0}
+#arenaSelection #arenaCategories button{min-height:40px!important}
+#arenaSelection #arenaStrip{grid-template-columns:none!important;grid-auto-flow:column;grid-template-rows:repeat(2,minmax(0,1fr));grid-auto-columns:calc((100% - 16px) / 3);overflow-x:auto;overflow-y:hidden;align-content:stretch;align-items:stretch;touch-action:pan-x;padding:0 0 6px 0!important}
+#arenaSelection #arenaStrip .arena-thumb{aspect-ratio:auto!important;height:100%;min-height:0!important;touch-action:pan-x}
+#arenaSelection #arenaStrip{-webkit-mask-image:linear-gradient(90deg,#000 90%,transparent);mask-image:linear-gradient(90deg,#000 90%,transparent);scroll-snap-type:x proximity}
+#arenaSelection #arenaStrip .arena-thumb{scroll-snap-align:start}
+.arena-effects-setting{display:flex!important;align-items:center;gap:10px;flex-wrap:wrap}
+.effects-choice{display:inline-flex;gap:4px}
+.effects-choice button{min-height:40px;min-width:76px;padding:0 10px;border:1px solid #59704c99;background:#09160d;color:#c8d8bd;font:700 12px/1 inherit;letter-spacing:.04em;border-radius:3px}
+.effects-choice button[aria-checked=true]{background:#b9f68a;color:#0d1a08;border-color:#d4ffaf}
+/* Tournaments on a landscape phone: a compact empty state keeps the code entry above the fold. */
+@media (max-height:480px){#onlineTournaments .tx-empty-state{padding:10px 14px!important;display:flex;align-items:center;gap:12px}
+#onlineTournaments .tx-empty-state>b{font-size:22px!important}
+#onlineTournaments .tx-empty-state h3{font-size:16px!important;margin:0!important}
+#onlineTournaments .tx-empty-state p{margin:0 0 0 auto!important}}

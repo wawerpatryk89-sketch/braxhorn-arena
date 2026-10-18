@@ -17,8 +17,8 @@ async function shot(name){n++;const file=`${out}/${size}-${String(n).padStart(2,
  const focused=await page.evaluate(()=>{const a=document.activeElement;return a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&!(a.readOnly&&a.inputMode==='none')?(a.id||a.name||a.tagName):null;});
  report.steps.push({name,file,overlaps:o.overlaps,offscreen:o.offscreen,nativeFields,focusedNativeField:focused});}
 async function step(name,fn){try{await fn();await page.waitForTimeout(700);await skipFilms();await shot(name);}catch(e){report.steps.push({name,error:String(e).split('\n')[0]});await shot(name+'-BLAD');}}
-async function openMode(id){const cards=await page.evaluate(()=>[...document.querySelectorAll('#matchSetup .mode-hit')].map(c=>c.id));if(!cards.includes(id))throw Error('brak trybu '+id+' w '+cards.join(','));for(let i=0;i<cards.length;i++){if(await page.evaluate(id=>document.getElementById(id)?.classList.contains('mode-focused'),id))break;await tapSel('#modeFollowing');}await tapSel('#modePlay');}
-async function toModes(){if(await isVisible('#go'))await tapSel('#go');if(await isVisible('#identityContinue'))await tapSel('#identityContinue');await skipFilms();}
+async function openMode(id){const cards=await page.evaluate(()=>[...document.querySelectorAll('#matchSetup .mode-hit')].map(c=>c.id));if(!cards.includes(id))throw Error('brak trybu '+id+' w '+cards.join(','));for(let i=0;i<cards.length;i++){if(await page.evaluate(id=>document.getElementById(id)?.classList.contains('mode-focused'),id))break;await tapSel('#modeFollowing');}for(let i=0;i<3;i++){await tapSel('#modePlay');await page.waitForTimeout(700);if(!(await isVisible('#modePlay')))break;}}
+async function toModes(){await page.goto(base,{waitUntil:'load'});await page.waitForTimeout(1500);await tapSel('#go');if(await isVisible('#identityContinue'))await tapSel('#identityContinue');for(let i=0;i<8&&!(await isVisible('#modePlay'));i++){await skipFilms();await page.waitForTimeout(600);}}
 async function name(text){for(const ch of text){const k=page.locator(`#arenaKeyboard button:text-is("${ch}")`).first();if(await k.count())await k.tap();}}
 
 await page.goto(base,{waitUntil:'load'});await page.waitForTimeout(2000);await shot('start');
@@ -39,7 +39,9 @@ await step('wyjscie-do-menu',async()=>{await tapSel('#pause');await tapSel('#pau
 // Remaining menu destinations.
 for(const [label,id] of [['arcade','arcadeMode'],['trening','mode-training'],['turniej-lokalny','tournamentMode'],['wyzwania-hub','hubMode'],['multiplayer','multiplayerMode'],['turnieje-online','onlineTournamentMode']]){
  await step(label,async()=>{await toModes();await openMode(id);});
- await step(label+'-dalej',async()=>{for(const s of ['#setupNext','#survivalMode','#mpCreate','[data-tx="create"]'])if(await isVisible(s)){await tapSel(s);break;}});
+ await step(label+'-dalej',async()=>{for(const s of ['#setupNext','#survivalMode','#mpNext','[data-tx="open"]'])if(await isVisible(s)){await tapSel(s);break;}});
+ if(label==='multiplayer')await step('multiplayer-kod',async()=>{for(const s of ['#mpCode','#mpJoin'])if(await isVisible(s)){await tapSel(s);break;}});
+ if(label==='turnieje-online')await step('turnieje-kod',async()=>{for(const s of ['#txCode','#txInviteCode'])if(await isVisible(s)){await tapSel(s);break;}});
  for(let i=0;i<4;i++)for(const back of ['#closeModeSettings','#backFighter','#backTitle','#hubBack','#survivalBack','#challengesBack','#setupBack','#mpExit','#mpLeave','[data-tx="close"]','#txClose'])if(await isVisible(back)){try{await tapSel(back);}catch{}}
 }
 report.errors=[...new Set(page.errors)].filter(e=>!/404|Failed to load resource/.test(e));
