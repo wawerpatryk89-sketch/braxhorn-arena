@@ -1,12 +1,12 @@
 const {createGame}=require('./audit-new-fighters.cjs');
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
-async function enter(slot=4){const g=await createGame(844,390,true);await g.start();for(let i=0;i<slot;i++)g.elements.get('nextFighter').dispatch('click');await g.flush();g.elements.get('chooseFighter').dispatch('click');g.elements.get('arena-rooftop').dispatch('click');await g.flush();if(slot!==4)g.elements.get('fighterFilm').dispatch('ended');g.step(17000);g.test.S.training=true;g.test.S.trainingBehavior='idle';g.proof.reset();return g;}
+async function enter(){return require('./review/runtime.cjs').ready('BEAR');}
 (async()=>{
  const g=await enter(),t=g.test,{B,O,S,K}=t;
  assert.equal(g.state().character,'BEAR');assert(!S.preFight&&!S.cinematic);
  vm.runInNewContext(fs.readFileSync('game/assets/roster.js','utf8'),g.context);
  g.context.BRAX_ROSTER.bind(index=>t.selectSlot(index,true));
- g.elements.get('card-bear').dispatch('click');assert.equal(g.context.BRAX_ROSTER.state().player,4);
+ g.elements.get('card-bear').dispatch('click');assert.equal(g.context.BRAX_ROSTER.state().player,6);
  g.elements.get('card-bear').dispatch('click');assert.equal(g.context.BRAX_ROSTER.opponent,'BEAR');
  const expected=['LIGHT_PUNCH','HEAVY_PUNCH','LIGHT_KICK','HEAVY_KICK','SHOULDER','UPPERCUT'],cfg=t.CFG();assert.equal(new Set(expected.map(n=>cfg[n].clip)).size,6);
  const seen=new Set();
@@ -18,7 +18,7 @@ async function enter(slot=4){const g=await createGame(844,390,true);await g.star
  g.proof.reset();B.x=20;O.x=80;const frames=new Set();g.step(2500,()=>frames.add(B.frame));assert(frames.size>100,'idle is animated');
  const right=g.buttons.find(b=>b.dataset.hold==='right');right.dispatch('pointerdown',{pointerId:90});g.step(500);assert.equal(B.a,'APPROACH');right.dispatch('pointerup',{pointerId:90});g.step(350);right.dispatch('pointerdown',{pointerId:91});g.step(32);right.dispatch('pointerup',{pointerId:91});g.step(32);right.dispatch('pointerdown',{pointerId:92});g.step(64);assert.equal(B.a,'RUN');right.dispatch('pointerup',{pointerId:92});g.send('blur');
  g.proof.reset();assert.equal(t.jump(),false);assert(!g.buttons.some(x=>x.dataset.tap==='jump'));
- g.proof.reset();K.block=true;g.step(32);assert.equal(B.a,'BLOCK');const hp=B.hp;t.damage(B,10);assert(B.hp<hp&&B.hp>hp-10);K.block=false;
+ g.proof.reset();K.block=true;g.step(32);assert.equal(B.a,'BLOCK');const hp=B.hp;t.damage(B,10);assert.equal(B.hp,hp,'successful guard prevents damage');K.block=false;
  g.proof.reset();assert(t.evade());let protectedFrames=0;for(let i=0;i<50;i++){if(B.a==='LEAN'&&B.frame>=cfg.LEAN.evadeFrames[0]&&B.frame<=cfg.LEAN.evadeFrames[1]){const hp=B.hp;assert.equal(t.damage(B,1,null,{target:'head'}),false);assert.equal(B.hp,hp);protectedFrames++;}g.step(16);}assert(protectedFrames>0,'duck has a protected window');
  // Real combo entry and contacts against each body type from either side.
  const comboResults=[];
@@ -28,8 +28,8 @@ async function enter(slot=4){const g=await createGame(844,390,true);await g.star
   assert.equal(groups.size,5,JSON.stringify({opponent,face,groups:[...groups],hp:O.hp,sawThrow}));assert(!B.lock&&!S.comboApproach,'combo returns control');assert(O.hp<100,'combo lands');assert(!sawThrow,'combo ends with launch');assert.equal(O.airLaunches,1,JSON.stringify({message:'finishing kick launches once',opponent,face,groups:[...groups],hp:O.hp}));
   comboResults.push({opponent,face,groups:[...groups],hp:O.hp});
  }
- // Ordinary knockdown recovers; the second airborne launch ends the round.
+ // Ordinary knockdown and nonlethal launches recover; zero HP ends the round.
  g.proof.reset();B.x=15;O.x=85;t.knockdown(B);g.step(4000);assert(!B.downState&&B.a==='IDLE');
- assert(t.launchSource(B));g.step(6000);assert(B.hp>0&&!B.downState);S.training=false;S.t=60;B.x=15;O.x=85;assert(t.launchSource(B));let n=0;while(!S.ended&&n++<300)t.physics(1000/60);assert(S.ended&&B.hp===0&&B.a==='KO_HOLD');
- console.log(JSON.stringify({pass:true,character:'BEAR',sixInputs:true,roster:true,freeJump:false,run:true,guard:true,evade:true,comboResults,twoLaunchKO:true}));
+ assert(t.launchSource(B));g.step(6000);assert(B.hp>0&&!B.downState);S.training=false;S.t=60;B.x=15;O.x=85;B.hp=1;B.getupProtection=0;K.block=K.down=false;assert(t.damage(B,2,null,{target:'body'}));let n=0;while(!S.ended&&n++<300)t.physics(1000/60);assert(S.ended&&B.hp===0,'zero HP ends round');let held=false;g.step(4000,()=>{held||=B.a==='KO_HOLD';});assert(held,'defeat animation reaches hold before the next round');
+ console.log(JSON.stringify({pass:true,character:'BEAR',sixInputs:true,roster:true,freeJump:false,run:true,guard:true,evade:true,comboResults,hpBasedKO:true}));
 })().catch(e=>{console.error(e);process.exitCode=1;});

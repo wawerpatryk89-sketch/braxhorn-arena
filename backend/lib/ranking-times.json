@@ -1,63 +1,243 @@
 {
-  "method": "full action cycles + final hit-prefix dynamic programming; infinite energy, no approach/hitstop/KO sequence; 20% safety margin",
+  "method": "200 seeded full matches per fighter/difficulty: aggressive button input versus production opponent AI; minimum elapsed (wins and losses), multiplied by 0.8 and rounded down. Survival uses minimum full-health round; a carried-health loss has no positive lower bound.",
   "fighters": {
     "BRAX": {
       "configSha256": "160339cf9c083b4c520e948e3bd3ff351ef204fac4b234c64b2df08da50739ba",
-      "optimisticKoMs": 5878,
-      "roundMinimumMs": 4702
+      "levels": {
+        "easy": {
+          "samples": 200,
+          "sampleSha256": "286947a382a49bb144d16f144221cbe037d1bb0e52ebc7c702e43cbdf7002858",
+          "fastestMatchMs": 26112,
+          "fastestRoundMs": 12000,
+          "matchMinimumMs": 20889,
+          "roundMinimumMs": 9600
+        },
+        "normal": {
+          "samples": 200,
+          "sampleSha256": "4232a29a66551ca9c518bd5db8ce324ab27a689e16fd89b6826f6de69d326c8d",
+          "fastestMatchMs": 24944,
+          "fastestRoundMs": 11216,
+          "matchMinimumMs": 19955,
+          "roundMinimumMs": 8972
+        },
+        "hard": {
+          "samples": 200,
+          "sampleSha256": "97239433a35fa2766a8df6ce8f8c9f6df67e73e3894c7a3fb112b8a4739083b4",
+          "fastestMatchMs": 19024,
+          "fastestRoundMs": 9424,
+          "matchMinimumMs": 15219,
+          "roundMinimumMs": 7539
+        }
+      }
     },
     "NYXA": {
       "configSha256": "5f7774f91b07252212c723a10c17f0b262cfcf83370bd245ca1edf0ce35b1a3a",
-      "optimisticKoMs": 6865,
-      "roundMinimumMs": 5492
+      "levels": {
+        "easy": {
+          "samples": 200,
+          "sampleSha256": "401ed1485ce22cf562ea37fc4117644e358529ebf2baa129d60c063168e066b5",
+          "fastestMatchMs": 31584,
+          "fastestRoundMs": 15232,
+          "matchMinimumMs": 25267,
+          "roundMinimumMs": 12185
+        },
+        "normal": {
+          "samples": 200,
+          "sampleSha256": "c7ea844ebe7d536f2a97e3603edada57a559d11e9eae9e28a526ee10ff855243",
+          "fastestMatchMs": 24528,
+          "fastestRoundMs": 11696,
+          "matchMinimumMs": 19622,
+          "roundMinimumMs": 9356
+        },
+        "hard": {
+          "samples": 200,
+          "sampleSha256": "57f2d09abdb82ebf40f34856b728838dee2b4333c5e418a0cecd6f130ce76d23",
+          "fastestMatchMs": 21712,
+          "fastestRoundMs": 10288,
+          "matchMinimumMs": 17369,
+          "roundMinimumMs": 8230
+        }
+      }
     },
     "VEXA": {
       "configSha256": "cd29eadd8dda7e5bde64edd315a9a2465a98b23223665872a4c29f03042e7372",
-      "optimisticKoMs": 6517,
-      "roundMinimumMs": 5213
+      "levels": {
+        "easy": {
+          "samples": 200,
+          "sampleSha256": "3d014d2a34a240d9a6fbff6dc844d4dd2bc3089a6b24f68f14b72ef67d57ce3d",
+          "fastestMatchMs": 29776,
+          "fastestRoundMs": 13360,
+          "matchMinimumMs": 23820,
+          "roundMinimumMs": 10688
+        },
+        "normal": {
+          "samples": 200,
+          "sampleSha256": "6ffb72e37945fbfbe66ff753918f9fa52c014585986c0fc1d2d2f46248386d74",
+          "fastestMatchMs": 24080,
+          "fastestRoundMs": 11104,
+          "matchMinimumMs": 19264,
+          "roundMinimumMs": 8883
+        },
+        "hard": {
+          "samples": 200,
+          "sampleSha256": "b184e81bb66989b33cf1eb5f755025a175def9578e352e9210a0309df4a842b0",
+          "fastestMatchMs": 17520,
+          "fastestRoundMs": 8368,
+          "matchMinimumMs": 14016,
+          "roundMinimumMs": 6694
+        }
+      }
     },
     "KROV": {
       "configSha256": "93e215b9826f9970c0042d8e66055abe9422309cf2a133a2d6454480bde42486",
-      "optimisticKoMs": 5915,
-      "roundMinimumMs": 4732
+      "levels": {
+        "easy": {
+          "samples": 200,
+          "sampleSha256": "36f169d462cb74d5c0d4f14ea1f9a26a8a87250268b27a44ee7596fade2612b0",
+          "fastestMatchMs": 19200,
+          "fastestRoundMs": 9600,
+          "matchMinimumMs": 15360,
+          "roundMinimumMs": 7680
+        },
+        "normal": {
+          "samples": 200,
+          "sampleSha256": "5d3051c5eb23b78390ac629078cbb88b42cc46f2259f7079bcf47710ac17b498",
+          "fastestMatchMs": 20800,
+          "fastestRoundMs": 10144,
+          "matchMinimumMs": 16640,
+          "roundMinimumMs": 8115
+        },
+        "hard": {
+          "samples": 200,
+          "sampleSha256": "173e4c26b0a280a7a9abd012efcb8dcb5d573e31ae1681c2ca9f160a9ee2f03a",
+          "fastestMatchMs": 19472,
+          "fastestRoundMs": 9216,
+          "matchMinimumMs": 15577,
+          "roundMinimumMs": 7372
+        }
+      }
     },
     "NINA": {
       "configSha256": "faf6daf8e719cde653072365c7e06d3834cf9de8d0fce5c9722720a950f09896",
-      "optimisticKoMs": 5139,
-      "roundMinimumMs": 4111
+      "levels": {
+        "easy": {
+          "samples": 200,
+          "sampleSha256": "1719c0f8d65f6c465f88c0589e5092513061eac65e9797d6be4f038b14665f13",
+          "fastestMatchMs": 19104,
+          "fastestRoundMs": 9552,
+          "matchMinimumMs": 15283,
+          "roundMinimumMs": 7641
+        },
+        "normal": {
+          "samples": 200,
+          "sampleSha256": "37b6ad2197b871c99580ef6d9213de33d73f9198a2fed5899a09313848cde4ef",
+          "fastestMatchMs": 20080,
+          "fastestRoundMs": 9312,
+          "matchMinimumMs": 16064,
+          "roundMinimumMs": 7449
+        },
+        "hard": {
+          "samples": 200,
+          "sampleSha256": "e676a88dee7baa9c27ff0f1173c77ed03b74055860e0a23d1213556c8f9d0b47",
+          "fastestMatchMs": 18160,
+          "fastestRoundMs": 8816,
+          "matchMinimumMs": 14528,
+          "roundMinimumMs": 7052
+        }
+      }
     },
     "DANNY": {
       "configSha256": "2603c9652e384d37665be0a29ca08fe3d85ecf0f972f2dd8cd1129e110e7f33e",
-      "optimisticKoMs": 7155,
-      "roundMinimumMs": 5724
+      "levels": {
+        "easy": {
+          "samples": 200,
+          "sampleSha256": "c9c3043f111b08aafe98fe0be0042ffdf63cf8a8ec548100c2d7f7935bc36bb6",
+          "fastestMatchMs": 28896,
+          "fastestRoundMs": 14448,
+          "matchMinimumMs": 23116,
+          "roundMinimumMs": 11558
+        },
+        "normal": {
+          "samples": 200,
+          "sampleSha256": "f077f95a989fcaec782b9b5bb776ab93347358fc660b7b5cb55c40e8e30c3010",
+          "fastestMatchMs": 25984,
+          "fastestRoundMs": 11552,
+          "matchMinimumMs": 20787,
+          "roundMinimumMs": 9241
+        },
+        "hard": {
+          "samples": 200,
+          "sampleSha256": "60a5ea7e1bcad5a59535f22d8b4585270cb01b6dbce25df27fd517cf8700bb94",
+          "fastestMatchMs": 19648,
+          "fastestRoundMs": 8896,
+          "matchMinimumMs": 15718,
+          "roundMinimumMs": 7116
+        }
+      }
     },
     "BEAR": {
       "configSha256": "8378177fe4a08393a9c2eec602e006b3c277752e0d177305daa94381da69afcf",
-      "optimisticKoMs": 2900,
-      "roundMinimumMs": 2320
+      "levels": {
+        "easy": {
+          "samples": 200,
+          "sampleSha256": "f2f3ddfca4e90e50a3de4a3383a92fcdeb2c8f13e416870508961b20c78b8660",
+          "fastestMatchMs": 14112,
+          "fastestRoundMs": 7056,
+          "matchMinimumMs": 11289,
+          "roundMinimumMs": 5644
+        },
+        "normal": {
+          "samples": 200,
+          "sampleSha256": "f78b2ce24ddcaa37faf8dc8d5377f937df6b342f5ec41000caedd77e05809e1c",
+          "fastestMatchMs": 10912,
+          "fastestRoundMs": 5264,
+          "matchMinimumMs": 8729,
+          "roundMinimumMs": 4211
+        },
+        "hard": {
+          "samples": 200,
+          "sampleSha256": "8ab125021cd1c236b5b3bc03ed422d966f0d61e2664323041e9e415e9d226645",
+          "fastestMatchMs": 11296,
+          "fastestRoundMs": 5648,
+          "matchMinimumMs": 9036,
+          "roundMinimumMs": 4518
+        }
+      }
     },
     "DEMON": {
       "configSha256": "43e16c0823547880c151ea5dc7ea72d75f53f4ef69159982845df5d00b8fb0ac",
-      "optimisticKoMs": 4182,
-      "roundMinimumMs": 3346
+      "levels": {
+        "easy": {
+          "samples": 200,
+          "sampleSha256": "3211dfc27d03c978186f0b58cba26cfa9464bde2a59605336946239524f8f9a5",
+          "fastestMatchMs": 16224,
+          "fastestRoundMs": 8112,
+          "matchMinimumMs": 12979,
+          "roundMinimumMs": 6489
+        },
+        "normal": {
+          "samples": 200,
+          "sampleSha256": "d6fef090c6a0edd46f72d117528df92ecf99bb8977adc863fe17bd021edca3ac",
+          "fastestMatchMs": 16544,
+          "fastestRoundMs": 8128,
+          "matchMinimumMs": 13235,
+          "roundMinimumMs": 6502
+        },
+        "hard": {
+          "samples": 200,
+          "sampleSha256": "6d8426582514b39243e1fe791f6d39a15a3426e02c470f6a70783c960b8e0996",
+          "fastestMatchMs": 18112,
+          "fastestRoundMs": 8000,
+          "matchMinimumMs": 14489,
+          "roundMinimumMs": 6400
+        }
+      }
     }
   },
-  "modes": {
-    "fight": {
-      "roundMinimumMs": 2320,
-      "minimumRounds": 2
-    },
-    "arcade": {
-      "roundMinimumMs": 2320,
-      "minimumRounds": 2
-    },
-    "survival": {
-      "roundMinimumMs": 2320,
-      "minimumRounds": 1
-    },
-    "tournament": {
-      "roundMinimumMs": 2320,
-      "minimumRounds": 2
-    }
-  }
+  "modes": [
+    "fight",
+    "arcade",
+    "tournament",
+    "survival"
+  ]
 }

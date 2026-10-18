@@ -1,0 +1,9 @@
+AssertionError [ERR_ASSERTION]: {"width":844,"slot":0,"face":1,"edge":false,"hitstop":false,"started":0}
+    at /workspace/scratch/de5ed6fc2c9c/braxhorn-review/scripts/audit-contact-deadline.cjs:10:3 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}

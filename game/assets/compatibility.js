@@ -1,0 +1,1 @@
+window.BRAX_COMPAT=Object.freeze({"protocol":2,"build":"090053afced91bcbfdd67648781609a4c3fe36af79a45b6c11d3d96973c38518","configs":"5d9ac55aa7c5e82895b0536e6eaa52286009e943adee875510b75a5af2fa87df"});

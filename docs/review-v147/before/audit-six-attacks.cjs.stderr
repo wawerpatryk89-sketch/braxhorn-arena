@@ -1,0 +1,12 @@
+AssertionError [ERR_ASSERTION]: slot=0 face=1 direction=1 button=heavy
+
+'UPPERCUT' !== 'TEEP'
+
+    at /workspace/scratch/de5ed6fc2c9c/braxhorn-review/scripts/audit-six-attacks.cjs:24:11 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 'UPPERCUT',
+  expected: 'TEEP',
+  operator: 'strictEqual',
+  diff: 'simple'
+}

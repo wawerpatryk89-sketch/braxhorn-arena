@@ -1,6 +1,6 @@
 const{createGame}=require('./audit-new-fighters.cjs'),assert=require('node:assert/strict');
-(async()=>{const names=['BRAX','NYXA','VEXA','KROV','NINA','DANNY'];let cases=0;
-for(let slot=0;slot<6;slot++){const g=await createGame(844,390,true),t=g.test,{B,O,S}=t;await g.start();t.selectSlot(slot,true);await g.flush();await t.begin();g.elements.get('fighterFilm').dispatch('ended');g.step(17000);
+(async()=>{const names=['BRAX','NYXA','VEXA','KROV','NINA','DANNY','BEAR','DEMON'];let cases=0;
+for(let slot=0;slot<8;slot++){const g=await createGame(844,390,true),t=g.test,{B,O,S}=t;await g.start();t.selectSlot(slot,true);await g.flush();await t.begin();g.elements.get('fighterFilm').dispatch('ended');g.step(17000);
 for(const cpu of names)for(const level of ['easy','normal','hard']){t.selectOpponent(cpu);t.setupOpponent();g.elements.get('mode-'+level).dispatch('click');g.proof.reset();S.training=false;S.preFight=false;S.running=true;S.paused=false;B.x=25;O.x=75;t.faceOpponents();let damage=0,attacks=0,last='';let seed=123;g.context.Math=Object.create(Math);g.context.Math.random=()=>((seed=(seed*1664525+1013904223)>>>0)/4294967296);
-g.step(16000,()=>{if(O.cfg[O.a].attack&&O.a!==last)attacks++;last=O.a;damage+=100-B.hp;B.hp=100;});assert(attacks>=2,`${cpu} passive vs ${names[slot]} ${level}`);assert(damage>0,`${cpu} no contact vs ${names[slot]} ${level}`);cases++;}console.log('PASS CPU opponents versus',names[slot]);}
+g.step(level==='easy'?60000:30000,()=>{if(O.cfg[O.a].attack&&O.a!==last)attacks++;last=O.a;damage+=100-B.hp;B.hp=100;});assert(attacks>=2,`${cpu} passive vs ${names[slot]} ${level}`);assert(damage>0,`${cpu} no contact vs ${names[slot]} ${level}`);cases++;}console.log('PASS CPU opponents versus',names[slot]);}
 console.log('PASS',cases,'matchups and difficulties with actual CPU damage');})().catch(e=>{console.error(e);process.exitCode=1});

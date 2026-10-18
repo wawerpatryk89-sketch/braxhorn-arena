@@ -1,3 +1,4 @@
+import compatibility from '../backend/lib/build-compatibility.json' with {type:'json'};
 import {DatabaseSync} from 'node:sqlite';
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
@@ -13,7 +14,7 @@ const statement=(q,a=[])=>({bind(...v){return statement(q,v);},async first(){ret
 let batches=0,selects=0;
 const db={prepare(q){selects++;return statement(q);},async batch(all){batches++;sql.exec('BEGIN');try{const r=[];for(const s of all)r.push(await s.run());sql.exec('COMMIT');return r;}catch(e){sql.exec('ROLLBACK');throw e;}}};
 const owner={'oai-authenticated-user-id':'owner','oai-authenticated-user-email':'owner@test.invalid'},other={'oai-authenticated-user-id':'other','oai-authenticated-user-email':'other@test.invalid'},guest={cookie:'brax_player=00000000-0000-0000-0000-000000000001'};
-async function call(fn,path,body,headers={},config='owner@test.invalid'){const r=await fn(new Request('https://game.test'+path,{method:body?'POST':'GET',headers:{'content-type':'application/json',...headers},body:body?JSON.stringify(body):undefined}),db,config);return{status:r.status,body:await r.json()};}
+async function call(fn,path,body,headers={},config='owner@test.invalid'){const r=await fn(new Request('https://game.test'+path,{method:body?'POST':'GET',headers:{'content-type':'application/json',...headers},body:body?JSON.stringify({compat:compatibility,...body}):undefined}),db,config);return{status:r.status,body:await r.json()};}
 const t=(a,h=guest,extra={})=>call(handleTournaments,'/api/tournaments',{action:a,...extra},h);
 const arena=(a,h=guest,body)=>call(handleArena,'/api/arena?action='+a,body,h);
 for(const h of [guest,other,{'oai-authenticated-user-email':'owner@test.invalid'}]){
@@ -66,8 +67,8 @@ assert.equal(room.hostName,'GRACZ');
 const joined=(await call(handleDuel,'/api/duel',{action:'join',code:room.code,fighter:'NINA'},owner)).body;assert.equal(joined.guestName,'WAWER');
 await call(handleDuel,'/api/duel',{...room,action:'sync',ready:true},guest);
 const sync=await call(handleDuel,'/api/duel',{...joined,action:'sync',ready:true},owner);assert.equal(sync.body.status,'playing');
-await call(handleDuel,'/api/duel',{...room,action:'sync',seq:3,snapshot:{ack:0,actors:[{},{}],state:{t:42}}},guest);
-await call(handleDuel,'/api/duel',{...room,action:'sync',seq:2,snapshot:{ack:0,actors:[{},{}],state:{t:60}}},guest);
+await call(handleDuel,'/api/duel',{...room,action:'sync',seq:3,snapshot:{snapshotId:3,ack:0,actors:[30,70].map((x,i)=>({x,y:0,face:i?-1:1,hp:100,en:0,frame:0,a:'IDLE'})),state:{t:42,round:1,wins:[0,0]}}},guest);
+await call(handleDuel,'/api/duel',{...room,action:'sync',seq:2,snapshot:{snapshotId:2,ack:0,actors:[30,70].map((x,i)=>({x,y:0,face:i?-1:1,hp:100,en:0,frame:0,a:'IDLE'})),state:{t:60,round:1,wins:[0,0]}}},guest);
 assert.equal((await call(handleDuel,'/api/duel',{...joined,action:'sync'},owner)).body.snapshot.state.t,42,'older state cannot overwrite newest packet');
 const realFetch=globalThis.fetch;let calls=0;
 globalThis.fetch=async(url,options)=>{calls++;assert.match(url,/\/turn\/keys\/key-id\/credentials\/generate-ice-servers$/);assert.equal(options.headers.Authorization,'Bearer permanent-private-token');assert.equal(JSON.parse(options.body).ttl,3600);return Response.json({iceServers:[{urls:['turn:relay.test:3478?transport=udp','turns:relay.test:443?transport=tcp','turn:relay.test:53'],username:'ephemeral-user',credential:'ephemeral-secret'}]});};

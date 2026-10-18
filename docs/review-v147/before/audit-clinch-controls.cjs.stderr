@@ -1,0 +1,9 @@
+AssertionError [ERR_ASSERTION]: hard two-second release
+    at /workspace/scratch/de5ed6fc2c9c/braxhorn-review/scripts/audit-clinch-controls.cjs:14:107 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}

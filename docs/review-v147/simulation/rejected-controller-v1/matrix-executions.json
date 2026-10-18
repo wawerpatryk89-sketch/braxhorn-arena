@@ -1,0 +1,98 @@
+[
+  {
+    "variant": "A",
+    "slot": 0,
+    "exitCode": 0,
+    "seconds": 245.55822658538818
+  },
+  {
+    "variant": "A",
+    "slot": 1,
+    "exitCode": 0,
+    "seconds": 264.7638418674469
+  },
+  {
+    "variant": "A",
+    "slot": 2,
+    "exitCode": 0,
+    "seconds": 265.44208574295044
+  },
+  {
+    "variant": "A",
+    "slot": 3,
+    "exitCode": 0,
+    "seconds": 273.36438179016113
+  },
+  {
+    "variant": "A",
+    "slot": 4,
+    "exitCode": 0,
+    "seconds": 269.08872389793396
+  },
+  {
+    "variant": "A",
+    "slot": 5,
+    "exitCode": 0,
+    "seconds": 261.64039754867554
+  },
+  {
+    "variant": "A",
+    "slot": 6,
+    "exitCode": 0,
+    "seconds": 265.85988306999207
+  },
+  {
+    "variant": "A",
+    "slot": 7,
+    "exitCode": 0,
+    "seconds": 285.4645023345947
+  },
+  {
+    "variant": "B",
+    "slot": 0,
+    "exitCode": 0,
+    "seconds": 280.74257040023804
+  },
+  {
+    "variant": "B",
+    "slot": 1,
+    "exitCode": 0,
+    "seconds": 292.01539850234985
+  },
+  {
+    "variant": "B",
+    "slot": 2,
+    "exitCode": 0,
+    "seconds": 290.25895285606384
+  },
+  {
+    "variant": "B",
+    "slot": 3,
+    "exitCode": 0,
+    "seconds": 289.6322865486145
+  },
+  {
+    "variant": "B",
+    "slot": 4,
+    "exitCode": 0,
+    "seconds": 256.5347697734833
+  },
+  {
+    "variant": "B",
+    "slot": 5,
+    "exitCode": 0,
+    "seconds": 257.54282116889954
+  },
+  {
+    "variant": "B",
+    "slot": 6,
+    "exitCode": 0,
+    "seconds": 215.08435702323914
+  },
+  {
+    "variant": "B",
+    "slot": 7,
+    "exitCode": 0,
+    "seconds": 234.17596220970154
+  }
+]

@@ -1,0 +1,9 @@
+who,action,hits,launches,resets,firstLaunch
+"BRAX","HEAVY_PUNCH","10","0","1","{""at"":3056,""hits"":3}"
+"NYXA","HEAVY_PUNCH","13","1","4","{""at"":3216,""hits"":3}"
+"VEXA","HEAVY_PUNCH","26","1","4","{""at"":4016,""hits"":6}"
+"KROV","HEAVY_PUNCH","12","1","4","{""at"":3520,""hits"":3}"
+"NINA","SPIN_KICK","19","1","7","{""at"":2080,""hits"":3}"
+"DANNY","HEAVY_PUNCH","16","1","2","{""at"":3776,""hits"":4}"
+"BEAR","HEAVY_PUNCH","26","1","6","{""at"":3296,""hits"":6}"
+"DEMON","HEAVY_PUNCH","15","1","0","{""at"":2448,""hits"":3}"

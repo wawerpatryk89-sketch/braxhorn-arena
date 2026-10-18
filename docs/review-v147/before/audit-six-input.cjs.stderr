@@ -1,0 +1,29 @@
+node:assert:152
+  throw new AssertionError(obj);
+  ^
+
+AssertionError [ERR_ASSERTION]: Control DOM changed
++ actual - expected
+
++ '<div id="controls" class="off"><div class="moves"><button class="evade-control" data-tap="evade" aria-label="Unik" title="Unik">U</button><button data-hold="left">◀</button><button data-hold="right" aria-label="Ruch w prawo; dwa dotknięcia — bieg">▶</button><button class="grab-control" data-tap="grab" aria-label="Chwyt / zerwanie klinczu" title="Chwyt / zerwanie">CHWYT</button><button data-hold="block" aria-label="Blok" title="Blok"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3 20 6v6c0 5-8 9-8 9s-8-4-8-9V6Z"/></svg></button></div><div class="attacks"><button data-tap="punch" aria-label="Pięść 1" title="Pięść 1">P1</button><button data-tap="kick" aria-label="Kopnięcie 1" title="Kopnięcie 1">K1</button><button data-tap="heavy" aria-label="Pięść 2" title="Pięść 2">P2</button><button data-tap="kick2" aria-label="Kopnięcie 2" title="Kopnięcie 2">K2</button><button class="special" data-tap="special" aria-label="Combo" title="Combo">COMBO</button></div></div>\n' +
++   '<button id="airAttackModifier" data-hold="down" aria-label="Przytrzymaj dół i naciśnij P2">↓ + P2</button><button id="trainingSettings" aria-label="Wybierz ćwiczenie i atak rywala">ĆWICZENIE</button>'
+- '<div id="controls" class="off"><div class="moves"><button class="evade-control" data-tap="evade" aria-label="Unik" title="Unik">U</button><button data-hold="left">◀</button><button data-hold="right" aria-label="Ruch w prawo; dwa dotknięcia — bieg">▶</button><button class="grab-control" data-tap="grab" aria-label="Chwyt / zerwanie klinczu" title="Chwyt / zerwanie">CHWYT</button><button data-hold="block" aria-label="Blok" title="Blok"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3 20 6v6c0 5-8 9-8 9s-8-4-8-9V6Z"/></svg></button></div><div class="attacks"><button data-tap="punch" aria-label="Pięść 1" title="Pięść 1">P1</button><button data-tap="kick" aria-label="Kopnięcie 1" title="Kopnięcie 1">K1</button><button data-tap="heavy" aria-label="Pięść 2" title="Pięść 2">P2</button><button data-tap="kick2" aria-label="Kopnięcie 2" title="Kopnięcie 2">K2</button><button class="special" data-tap="special" aria-label="Combo" title="Combo">COMBO</button></div></div>\n'
+
+    at Object.<anonymous> (/workspace/scratch/de5ed6fc2c9c/braxhorn-review/scripts/audit-six-input.cjs:5:8)
+    at Module._compile (node:internal/modules/cjs/loader:1872:14)
+    at Object..js (node:internal/modules/cjs/loader:2003:10)
+    at Module.load (node:internal/modules/cjs/loader:1594:32)
+    at Module._load (node:internal/modules/cjs/loader:1396:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: '<div id="controls" class="off"><div class="moves"><button class="evade-control" data-tap="evade" aria-label="Unik" title="Unik">U</button><button data-hold="left">◀</button><button data-hold="right" aria-label="Ruch w prawo; dwa dotknięcia — bieg">▶</button><button class="grab-control" data-tap="grab" aria-label="Chwyt / zerwanie klinczu" title="Chwyt / zerwanie">CHWYT</button><button data-hold="block" aria-label="Blok" title="Blok"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3 20 6v6c0 5-8 9-8 9s-8-4-8-9V6Z"/></svg></button></div><div class="attacks"><button data-tap="punch" aria-label="Pięść 1" title="Pięść 1">P1</button><button data-tap="kick" aria-label="Kopnięcie 1" title="Kopnięcie 1">K1</button><button data-tap="heavy" aria-label="Pięść 2" title="Pięść 2">P2</button><button data-tap="kick2" aria-label="Kopnięcie 2" title="Kopnięcie 2">K2</button><button class="special" data-tap="special" aria-label="Combo" title="Combo">COMBO</button></div></div>\n' +
+    '<button id="airAttackModifier" data-hold="down" aria-label="Przytrzymaj dół i naciśnij P2">↓ + P2</button><button id="trainingSettings" aria-label="Wybierz ćwiczenie i atak rywala">ĆWICZENIE</button>',
+  expected: '<div id="controls" class="off"><div class="moves"><button class="evade-control" data-tap="evade" aria-label="Unik" title="Unik">U</button><button data-hold="left">◀</button><button data-hold="right" aria-label="Ruch w prawo; dwa dotknięcia — bieg">▶</button><button class="grab-control" data-tap="grab" aria-label="Chwyt / zerwanie klinczu" title="Chwyt / zerwanie">CHWYT</button><button data-hold="block" aria-label="Blok" title="Blok"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3 20 6v6c0 5-8 9-8 9s-8-4-8-9V6Z"/></svg></button></div><div class="attacks"><button data-tap="punch" aria-label="Pięść 1" title="Pięść 1">P1</button><button data-tap="kick" aria-label="Kopnięcie 1" title="Kopnięcie 1">K1</button><button data-tap="heavy" aria-label="Pięść 2" title="Pięść 2">P2</button><button data-tap="kick2" aria-label="Kopnięcie 2" title="Kopnięcie 2">K2</button><button class="special" data-tap="special" aria-label="Combo" title="Combo">COMBO</button></div></div>\n',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.19.0

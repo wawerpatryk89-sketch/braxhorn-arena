@@ -10,7 +10,7 @@ const assert=require('node:assert/strict');
   g.elements.get('arena-rooftop').dispatch('click');await g.flush();
   g.elements.get('fighterFilm').dispatch('ended');g.step(17000);
   const {B,O,S,K}=g.test;S.training=true;S.trainingBehavior='idle';
-  const expected=['LIGHT_PUNCH','HEAVY_PUNCH','LIGHT_KICK','HEAVY_KICK',slot?'ELBOW':'DOUBLE_PUNCH',slot?'CLINCH_KNEE':'TEEP'];
+  const expected=['LIGHT_PUNCH','HEAVY_PUNCH','LIGHT_KICK','HEAVY_KICK',slot?'ELBOW':'DOUBLE_PUNCH',slot?'CLINCH_KNEE':'UPPERCUT'];
   const cfg=g.test.CFG();
   assert.equal(new Set(expected.map(n=>cfg[n].clip)).size,6,'six distinct supplied attack clips');
   assert(!expected.includes('COMBO'));assert(cfg.COMBO.sequence.length>1);

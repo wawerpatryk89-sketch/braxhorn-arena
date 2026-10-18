@@ -1,2 +1,2 @@
-import {prepareSource} from './fighter-source.js?v=bear-20261011';
+import {prepareSource} from './fighter-source.js?v=review-147';
 export function prepare(){return prepareSource('BRAX');}

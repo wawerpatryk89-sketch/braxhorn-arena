@@ -4,6 +4,7 @@ import path from 'node:path';
 import zlib from 'node:zlib';
 import assert from 'node:assert/strict';
 import './build-premium-stats.mjs';
+import './build-compatibility.mjs';
 const out='build';
 fs.rmSync(out,{recursive:true,force:true});fs.cpSync('game',out,{recursive:true,filter:source=>path.basename(source)!=='config.json'&&!path.basename(source).startsWith('.')});
 for(const entry of fs.readdirSync('game/assets').filter(n=>n.endsWith('-new'))){
@@ -13,7 +14,7 @@ for(const entry of fs.readdirSync('game/assets').filter(n=>n.endsWith('-new'))){
 // Legacy hidden selector preloads now use the retained campaign portraits.
 for(const name of ['brax-selection.gif','nyxa-selection.gif','vexa-selection.jpeg','danny-portrait.png'])fs.rmSync(out+'/assets/'+name,{force:true});
 const loader=out+'/assets/fighter-source.js';let code=fs.readFileSync(loader,'utf8');
-code=code.replace(/(\/config\.json)(\?v=[^']*')\)/,"$1.gz$2,true)");
+code=code.replace("/config.json?v='+(window.BRAX_COMPAT?.configs||'azrak-146'))", "/config.json.gz?v='+(window.BRAX_COMPAT?.configs||'azrak-146'),true)");
 assert(code.includes('/config.json.gz?'),'metadata uses compressed config');fs.writeFileSync(loader,code);
 const {packageFighters}=await import('./package-fighter-assets.mjs');packageFighters(out);
 execFileSync('python3',['scripts/optimize-runtime-png.py'],{stdio:'inherit'});

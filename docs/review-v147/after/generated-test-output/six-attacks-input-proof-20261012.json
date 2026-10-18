@@ -1,0 +1,298 @@
+{
+  "cases": 800,
+  "mandatorySeparations": 0,
+  "originalControlsUnchanged": true,
+  "ninaIdleUnchanged": true,
+  "results": [
+    {
+      "fighter": "BRAX",
+      "attacks": [
+        {
+          "control": "P1",
+          "action": "LIGHT_PUNCH",
+          "clip": "Jab Cross (1)"
+        },
+        {
+          "control": "P2",
+          "action": "HEAVY_PUNCH",
+          "clip": "Hook"
+        },
+        {
+          "control": "K1",
+          "action": "LIGHT_KICK",
+          "clip": "Mma Kick (1)"
+        },
+        {
+          "control": "K2",
+          "action": "HEAVY_KICK",
+          "clip": "Brax Side Kick"
+        },
+        {
+          "control": "PRZÓD + P1",
+          "action": "DOUBLE_PUNCH",
+          "clip": "Boxing"
+        },
+        {
+          "control": "PRZÓD + P2",
+          "action": "UPPERCUT",
+          "clip": "Uppercut Jab"
+        }
+      ]
+    },
+    {
+      "fighter": "NYXA",
+      "attacks": [
+        {
+          "control": "P1",
+          "action": "LIGHT_PUNCH",
+          "clip": "Nyxa Head Jab"
+        },
+        {
+          "control": "P2",
+          "action": "HEAVY_PUNCH",
+          "clip": "Hook"
+        },
+        {
+          "control": "K1",
+          "action": "LIGHT_KICK",
+          "clip": "Mma Kick (1)"
+        },
+        {
+          "control": "K2",
+          "action": "HEAVY_KICK",
+          "clip": "Mma Kick (1) (2)"
+        },
+        {
+          "control": "PRZÓD + P1",
+          "action": "ELBOW",
+          "clip": "Illegal Elbow Punch"
+        },
+        {
+          "control": "PRZÓD + P2",
+          "action": "CLINCH_KNEE",
+          "clip": "Illegal Knee"
+        }
+      ]
+    },
+    {
+      "fighter": "VEXA",
+      "attacks": [
+        {
+          "control": "P1",
+          "action": "LIGHT_PUNCH",
+          "clip": "Boxing"
+        },
+        {
+          "control": "P2",
+          "action": "HEAVY_PUNCH",
+          "clip": "Boxing (2)"
+        },
+        {
+          "control": "K1",
+          "action": "LIGHT_KICK",
+          "clip": "Pontera"
+        },
+        {
+          "control": "K2",
+          "action": "HEAVY_KICK",
+          "clip": "Roundhouse Kick (1)"
+        },
+        {
+          "control": "PRZÓD + P1",
+          "action": "SPIN_KICK",
+          "clip": "Armada"
+        },
+        {
+          "control": "PRZÓD + P2",
+          "action": "FLYING_KICK",
+          "clip": "Flying Kick"
+        }
+      ]
+    },
+    {
+      "fighter": "KROV",
+      "attacks": [
+        {
+          "control": "P1",
+          "action": "LIGHT_PUNCH",
+          "clip": "Jab Cross"
+        },
+        {
+          "control": "P2",
+          "action": "HEAVY_PUNCH",
+          "clip": "Hook Punch"
+        },
+        {
+          "control": "K1",
+          "action": "LIGHT_KICK",
+          "clip": "Mma Kick"
+        },
+        {
+          "control": "K2",
+          "action": "HEAVY_KICK",
+          "clip": "Kicking"
+        },
+        {
+          "control": "PRZÓD + P1",
+          "action": "ELBOW",
+          "clip": "Illegal Elbow Punch"
+        },
+        {
+          "control": "PRZÓD + P2",
+          "action": "UPPERCUT",
+          "clip": "Uppercut"
+        }
+      ]
+    },
+    {
+      "fighter": "NINA",
+      "attacks": [
+        {
+          "control": "P1",
+          "action": "LIGHT_PUNCH",
+          "clip": "Chapa-Giratoria"
+        },
+        {
+          "control": "P2",
+          "action": "HEAVY_PUNCH",
+          "clip": "Nina Extra Armada To Esquiva"
+        },
+        {
+          "control": "K1",
+          "action": "LIGHT_KICK",
+          "clip": "Nina Extra Chapa 2"
+        },
+        {
+          "control": "K2",
+          "action": "HEAVY_KICK",
+          "clip": "Nina Extra Chapaeu De Couro"
+        },
+        {
+          "control": "PRZÓD + P1",
+          "action": "CRESCENT_KICK",
+          "clip": "Nina Extra Rasteira 2"
+        },
+        {
+          "control": "PRZÓD + P2",
+          "action": "SPIN_KICK",
+          "clip": "Nina Extra Armada"
+        },
+        {
+          "control": "PRZÓD + K1",
+          "action": "MEIA_LUA",
+          "clip": "Meia Lua De Frente"
+        },
+        {
+          "control": "PRZÓD + K2",
+          "action": "GROUND_KICK",
+          "clip": "Martelo Do Chau Sem Mao"
+        }
+      ]
+    },
+    {
+      "fighter": "DANNY",
+      "attacks": [
+        {
+          "control": "P1",
+          "action": "LIGHT_PUNCH",
+          "clip": "Lead Jab"
+        },
+        {
+          "control": "P2",
+          "action": "HEAVY_PUNCH",
+          "clip": "Punching"
+        },
+        {
+          "control": "K1",
+          "action": "LIGHT_KICK",
+          "clip": "Mma Kick"
+        },
+        {
+          "control": "K2",
+          "action": "HEAVY_KICK",
+          "clip": "Kicking"
+        },
+        {
+          "control": "PRZÓD + P1",
+          "action": "HOOK",
+          "clip": "Hook"
+        },
+        {
+          "control": "PRZÓD + P2",
+          "action": "SIDE_KICK",
+          "clip": "Side Kick"
+        }
+      ]
+    },
+    {
+      "fighter": "BEAR",
+      "attacks": [
+        {
+          "control": "P1",
+          "action": "LIGHT_PUNCH",
+          "clip": "Jab Cross"
+        },
+        {
+          "control": "P2",
+          "action": "HEAVY_PUNCH",
+          "clip": "Smash"
+        },
+        {
+          "control": "K1",
+          "action": "LIGHT_KICK",
+          "clip": "Bencao"
+        },
+        {
+          "control": "K2",
+          "action": "HEAVY_KICK",
+          "clip": "Knee Jab"
+        },
+        {
+          "control": "PRZÓD + P1",
+          "action": "SHOULDER",
+          "clip": "Standing Sprint Forward"
+        },
+        {
+          "control": "PRZÓD + P2",
+          "action": "UPPERCUT",
+          "clip": "Surprise Uppercut"
+        }
+      ]
+    },
+    {
+      "fighter": "DEMON",
+      "attacks": [
+        {
+          "control": "P1",
+          "action": "LIGHT_PUNCH",
+          "clip": "Punching"
+        },
+        {
+          "control": "P2",
+          "action": "HEAVY_PUNCH",
+          "clip": "Hook Punch"
+        },
+        {
+          "control": "K1",
+          "action": "LIGHT_KICK",
+          "clip": "Mma Kick"
+        },
+        {
+          "control": "K2",
+          "action": "HEAVY_KICK",
+          "clip": "Roundhouse Kick"
+        },
+        {
+          "control": "PRZÓD + P1",
+          "action": "SHOULDER",
+          "clip": "Headbutt"
+        },
+        {
+          "control": "PRZÓD + P2",
+          "action": "UPPERCUT",
+          "clip": "Surprise Uppercut"
+        }
+      ]
+    }
+  ]
+}

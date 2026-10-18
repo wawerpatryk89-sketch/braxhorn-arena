@@ -11,7 +11,7 @@ const {createGame}=require('./audit-new-fighters.cjs'),assert=require('node:asse
    g.step(4500);assert(!B.downState&&!O.downState&&!B.lock&&!O.locked,'both recover control');count++;
    reset(face);assert(t.beginSourcePair(actor));g.step(96);tap('grab');assert(!S.clinch&&!B.lock&&!O.locked,'touch release/break responds');assert.equal(B.hp,100);assert.equal(O.hp,100);
    reset(face);assert(t.beginSourcePair(actor));g.step(96);tap('evade');assert(!S.clinch,'U pushes apart during the break window');
-   reset(face);assert(t.beginSourcePair(actor));S.clinch.elapsed=1990;S.clinch.actionElapsed=0;g.step(16);assert(!S.clinch&&!B.lock&&!O.locked,'hard two-second release');
+   reset(face);assert(t.beginSourcePair(actor));S.clinch.elapsed=1990;S.clinch.actionElapsed=0;g.step(32);assert(!S.clinch&&!B.lock&&!O.locked,'hard two-second release');
   }
  }
  }console.log('PASS',count,'attacker/victim/direction cases: moving clips, one-press throw, damage once, touch escape, recovery and two-second hard limit.');

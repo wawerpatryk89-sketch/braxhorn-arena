@@ -1,0 +1,12 @@
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+'IDLE' !== 'INTRO'
+
+    at /workspace/scratch/de5ed6fc2c9c/braxhorn-review/scripts/audit-corner-entry.cjs:7:17 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 'IDLE',
+  expected: 'INTRO',
+  operator: 'strictEqual',
+  diff: 'simple'
+}

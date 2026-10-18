@@ -14,13 +14,15 @@ const start=performance.now();for(let i=0;i<500;i++)context.decodePacket(context
 console.log(JSON.stringify({pass:true,jsonBytes:Buffer.byteLength(original),binaryBytes:packed.byteLength,reductionPercent:Math.round(100*(1-packed.byteLength/Buffer.byteLength(original))),encodeDecodeMs:(performance.now()-start)/500}));
 const pcs=[],received=[],inputs=[];let tick=0;
 class RTC{constructor(){pcs.push(this);}createDataChannel(){return this.channel={readyState:'open',bufferedAmount:0,close(){}};}createOffer(){return Promise.resolve({});}close(){}}
-context.window={RTCPeerConnection:RTC,BRAX_RTC:{fallback:{iceServers:[]},signaling(){return{publish(){},close(){}}}}};context.RTCPeerConnection=RTC;context.performance={now:()=>tick};context.setTimeout=setTimeout;context.clearTimeout=clearTimeout;
+context.window={BRAX_COMPAT:JSON.parse(fs.readFileSync('backend/lib/build-compatibility.json')),RTCPeerConnection:RTC,BRAX_RTC:{fallback:{iceServers:[]},signaling(){return{publish(){},close(){}}}}};context.RTCPeerConnection=RTC;context.performance={now:()=>tick};context.setTimeout=setTimeout;context.clearTimeout=clearTimeout;
 vm.runInNewContext(source,context);
 const host=context.window.BRAX_PEER.create({host:true,onInput:i=>inputs.push(i)}),guest=context.window.BRAX_PEER.create({host:false,onState:s=>received.push(s)});
 const outgoing=[],hc=pcs[0].channel,gc={readyState:'open',bufferedAmount:0,close(){}};
 pcs[1].ondatachannel({channel:gc});hc.send=raw=>{outgoing.push(raw);gc.onmessage({data:raw});};gc.send=raw=>hc.onmessage({data:raw});
-host.send('state',p.data);assert.equal(typeof outgoing[0],'string','starts in backward compatible JSON mode');
+assert.equal(host.send('state',p.data),false,'no gameplay before compatibility handshake');host.send('state',p.data);assert.equal(typeof outgoing[0],'string','starts in backward compatible JSON mode');
 tick=20;host.send('state',p.data);assert(outgoing.at(-1) instanceof ArrayBuffer,'switches only after capability exchange');
 assert.deepEqual(JSON.parse(JSON.stringify(received.at(-1))),p.data);guest.send('input',input.data);assert.deepEqual(JSON.parse(JSON.stringify(inputs[0])),input.data);
 assert.equal(hc.binaryType,'arraybuffer');assert.equal(gc.binaryType,'arraybuffer');
 host.close();guest.close();console.log('PASS two endpoint negotiation, binary state delivery and guest input.');
+for(const key of ['protocol','build','configs','missing']){let mismatch=null,closed=false;const probe=context.window.BRAX_PEER.create({host:true,onMismatch:message=>mismatch=message,onInput(){throw Error('incompatible input delivered');}}),channel=pcs.at(-1).channel;channel.close=()=>{closed=true};const compat={...context.window.BRAX_COMPAT};if(key!=='missing')compat[key]='different';channel.onmessage({data:JSON.stringify({type:'hello',...(key==='missing'?{}:{compat})})});assert.equal(mismatch,'Odśwież grę — inna wersja u przeciwnika');assert(closed);probe.close();}
+console.log('PASS peer rejects missing/protocol/build/config mismatch with exact Polish message');

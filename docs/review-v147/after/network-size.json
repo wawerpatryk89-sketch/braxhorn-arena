@@ -1,0 +1,482 @@
+{
+  "BRAX/heavy": {
+    "before": {
+      "count": 1875,
+      "mean": 1932.2229333333332,
+      "median": 2082,
+      "max": 2407
+    },
+    "after": {
+      "count": 1860,
+      "mean": 712.5532258064516,
+      "median": 698,
+      "max": 920
+    },
+    "keyframes": {
+      "count": 15,
+      "mean": 908.8,
+      "median": 913,
+      "max": 1026
+    }
+  },
+  "BRAX/combo": {
+    "before": {
+      "count": 1875,
+      "mean": 2071.5536,
+      "median": 2347,
+      "max": 2354
+    },
+    "after": {
+      "count": 1860,
+      "mean": 582.9521505376345,
+      "median": 552,
+      "max": 682
+    },
+    "keyframes": {
+      "count": 15,
+      "mean": 714,
+      "median": 703,
+      "max": 768
+    }
+  },
+  "BRAX/blood-stress": {
+    "before": {
+      "count": 1875,
+      "mean": 12840.6368,
+      "median": 13622,
+      "max": 14351
+    },
+    "after": {
+      "count": 1860,
+      "mean": 758.0575268817204,
+      "median": 755,
+      "max": 994
+    },
+    "keyframes": {
+      "count": 15,
+      "mean": 12069.266666666666,
+      "median": 12897,
+      "max": 13024
+    }
+  },
+  "NYXA/heavy": {
+    "before": {
+      "count": 1875,
+      "mean": 1915.3968,
+      "median": 2035,
+      "max": 2400
+    },
+    "after": {
+      "count": 1860,
+      "mean": 701.9521505376345,
+      "median": 694,
+      "max": 913
+    },
+    "keyframes": {
+      "count": 15,
+      "mean": 923.6666666666666,
+      "median": 914,
+      "max": 1023
+    }
+  },
+  "NYXA/combo": {
+    "before": {
+      "count": 1875,
+      "mean": 2052.812266666667,
+      "median": 2330,
+      "max": 2442
+    },
+    "after": {
+      "count": 1860,
+      "mean": 583.1467741935484,
+      "median": 565,
+      "max": 777
+    },
+    "keyframes": {
+      "count": 15,
+      "mean": 747.2666666666667,
+      "median": 730,
+      "max": 829
+    }
+  },
+  "NYXA/blood-stress": {
+    "before": {
+      "count": 1875,
+      "mean": 12830.240533333334,
+      "median": 13588,
+      "max": 14340
+    },
+    "after": {
+      "count": 1860,
+      "mean": 747.3924731182796,
+      "median": 754,
+      "max": 988
+    },
+    "keyframes": {
+      "count": 15,
+      "mean": 12081.466666666667,
+      "median": 12901,
+      "max": 12985
+    }
+  },
+  "VEXA/heavy": {
+    "before": {
+      "count": 1875,
+      "mean": 4742.701866666666,
+      "median": 5273,
+      "max": 7578
+    },
+    "after": {
+      "count": 1860,
+      "mean": 723.8209677419355,
+      "median": 698,
+      "max": 1119
+    },
+    "keyframes": {
+      "count": 15,
+      "mean": 3402.5333333333333,
+      "median": 3256,
+      "max": 6367
+    }
+  },
+  "VEXA/combo": {
+    "before": {
+      "count": 1875,
+      "mean": 1795.1338666666666,
+      "median": 1882,
+      "max": 2379
+    },
+    "after": {
+      "count": 1860,
+      "mean": 571.302688172043,
+      "median": 553,
+      "max": 845
+    },
+    "keyframes": {
+      "count": 15,
+      "mean": 730.8,
+      "median": 727,
+      "max": 790
+    }
+  },
+  "VEXA/blood-stress": {
+    "before": {
+      "count": 1875,
+      "mean": 13526.248533333333,
+      "median": 14251,
+      "max": 16274
+    },
+    "after": {
+      "count": 1860,
+      "mean": 769.3827956989247,
+      "median": 757,
+      "max": 1190
+    },
+    "keyframes": {
+      "count": 15,
+      "mean": 12511.8,
+      "median": 12920,
+      "max": 15094
+    }
+  },
+  "KROV/heavy": {
+    "before": {
+      "count": 1875,
+      "mean": 6700.774933333333,
+      "median": 7230,
+      "max": 11223
+    },
+    "after": {
+      "count": 1860,
+      "mean": 694.6069892473118,
+      "median": 679,
+      "max": 900
+    },
+    "keyframes": {
+      "count": 15,
+      "mean": 5442.8,
+      "median": 5479,
+      "max": 9996
+    }
+  },
+  "KROV/combo": {
+    "before": {
+      "count": 1875,
+      "mean": 1709.1248,
+      "median": 1695,
+      "max": 2349
+    },
+    "after": {
+      "count": 1860,
+      "mean": 563.5220430107527,
+      "median": 549,
+      "max": 681
+    },
+    "keyframes": {
+      "count": 15,
+      "mean": 719.4,
+      "median": 704,
+      "max": 768
+    }
+  },
+  "KROV/blood-stress": {
+    "before": {
+      "count": 1875,
+      "mean": 13773.025066666667,
+      "median": 13904,
+      "max": 17301
+    },
+    "after": {
+      "count": 1860,
+      "mean": 740.0311827956989,
+      "median": 740,
+      "max": 974
+    },
+    "keyframes": {
+      "count": 15,
+      "mean": 12941.2,
+      "median": 12833,
+      "max": 16200
+    }
+  },
+  "NINA/heavy": {
+    "before": {
+      "count": 1875,
+      "mean": 6780.000533333333,
+      "median": 7484,
+      "max": 11297
+    },
+    "after": {
+      "count": 1860,
+      "mean": 714.0360215053763,
+      "median": 696,
+      "max": 914
+    },
+    "keyframes": {
+      "count": 15,
+      "mean": 5645.2,
+      "median": 6052,
+      "max": 10213
+    }
+  },
+  "NINA/combo": {
+    "before": {
+      "count": 1875,
+      "mean": 1999.9776,
+      "median": 2337,
+      "max": 2345
+    },
+    "after": {
+      "count": 1860,
+      "mean": 577.6897849462366,
+      "median": 554,
+      "max": 682
+    },
+    "keyframes": {
+      "count": 15,
+      "mean": 737,
+      "median": 711,
+      "max": 773
+    }
+  },
+  "NINA/blood-stress": {
+    "before": {
+      "count": 1875,
+      "mean": 14069.8144,
+      "median": 14242,
+      "max": 17393
+    },
+    "after": {
+      "count": 1860,
+      "mean": 759.558064516129,
+      "median": 757,
+      "max": 988
+    },
+    "keyframes": {
+      "count": 15,
+      "mean": 13415.866666666667,
+      "median": 12957,
+      "max": 16350
+    }
+  },
+  "DANNY/heavy": {
+    "before": {
+      "count": 1875,
+      "mean": 6428.860266666667,
+      "median": 7018,
+      "max": 10945
+    },
+    "after": {
+      "count": 1860,
+      "mean": 703.3768817204301,
+      "median": 684,
+      "max": 904
+    },
+    "keyframes": {
+      "count": 15,
+      "mean": 4939.466666666666,
+      "median": 4583,
+      "max": 8523
+    }
+  },
+  "DANNY/combo": {
+    "before": {
+      "count": 1875,
+      "mean": 1726.6016,
+      "median": 1759,
+      "max": 2377
+    },
+    "after": {
+      "count": 1860,
+      "mean": 578.5451612903225,
+      "median": 564,
+      "max": 780
+    },
+    "keyframes": {
+      "count": 15,
+      "mean": 762.7333333333333,
+      "median": 767,
+      "max": 901
+    }
+  },
+  "DANNY/blood-stress": {
+    "before": {
+      "count": 1875,
+      "mean": 13715.737066666667,
+      "median": 14193,
+      "max": 17039
+    },
+    "after": {
+      "count": 1860,
+      "mean": 748.8924731182796,
+      "median": 744,
+      "max": 978
+    },
+    "keyframes": {
+      "count": 15,
+      "mean": 12673.6,
+      "median": 12917,
+      "max": 15835
+    }
+  },
+  "BEAR/heavy": {
+    "before": {
+      "count": 1875,
+      "mean": 7210.131733333334,
+      "median": 8146,
+      "max": 12621
+    },
+    "after": {
+      "count": 1860,
+      "mean": 713.7198924731183,
+      "median": 688,
+      "max": 896
+    },
+    "keyframes": {
+      "count": 15,
+      "mean": 6232,
+      "median": 6718,
+      "max": 10172
+    }
+  },
+  "BEAR/combo": {
+    "before": {
+      "count": 1875,
+      "mean": 2738.022933333333,
+      "median": 2448,
+      "max": 5469
+    },
+    "after": {
+      "count": 1860,
+      "mean": 626.3650537634409,
+      "median": 623,
+      "max": 804
+    },
+    "keyframes": {
+      "count": 15,
+      "mean": 1288.2666666666667,
+      "median": 846,
+      "max": 3998
+    }
+  },
+  "BEAR/blood-stress": {
+    "before": {
+      "count": 1875,
+      "mean": 14188.554666666667,
+      "median": 14298,
+      "max": 18703
+    },
+    "after": {
+      "count": 1860,
+      "mean": 759.2806451612903,
+      "median": 751,
+      "max": 969
+    },
+    "keyframes": {
+      "count": 15,
+      "mean": 13652.2,
+      "median": 12995,
+      "max": 17831
+    }
+  },
+  "DEMON/heavy": {
+    "before": {
+      "count": 1875,
+      "mean": 6994.032533333333,
+      "median": 7833,
+      "max": 10856
+    },
+    "after": {
+      "count": 1860,
+      "mean": 714.4951612903226,
+      "median": 685,
+      "max": 901
+    },
+    "keyframes": {
+      "count": 15,
+      "mean": 5505.133333333333,
+      "median": 6436,
+      "max": 9541
+    }
+  },
+  "DEMON/combo": {
+    "before": {
+      "count": 1875,
+      "mean": 1953.1765333333333,
+      "median": 2233,
+      "max": 2393
+    },
+    "after": {
+      "count": 1860,
+      "mean": 593.8715053763441,
+      "median": 566,
+      "max": 781
+    },
+    "keyframes": {
+      "count": 15,
+      "mean": 782.4,
+      "median": 779,
+      "max": 909
+    }
+  },
+  "DEMON/blood-stress": {
+    "before": {
+      "count": 1875,
+      "mean": 13948.9632,
+      "median": 14186,
+      "max": 17068
+    },
+    "after": {
+      "count": 1860,
+      "mean": 760.0198924731183,
+      "median": 749,
+      "max": 972
+    },
+    "keyframes": {
+      "count": 15,
+      "mean": 12867.333333333334,
+      "median": 12876,
+      "max": 15985
+    }
+  }
+}

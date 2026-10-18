@@ -1,0 +1,1473 @@
+[
+  {
+    "test": "scripts/audit-access-rtc.mjs",
+    "command": [
+      "node",
+      "--import",
+      "tsx",
+      "scripts/audit-access-rtc.mjs"
+    ],
+    "before": "FAIL",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-adversarial-ai.cjs",
+    "command": [
+      "node",
+      "scripts/audit-adversarial-ai.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-approach-walk.cjs",
+    "command": [
+      "node",
+      "scripts/audit-approach-walk.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-arena-audio.cjs",
+    "command": [
+      "node",
+      "scripts/audit-arena-audio.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-arena-bounds.cjs",
+    "command": [
+      "node",
+      "scripts/audit-arena-bounds.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-arena-interface.cjs",
+    "command": [
+      "node",
+      "scripts/audit-arena-interface.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-arena-launch.cjs",
+    "command": [
+      "node",
+      "scripts/audit-arena-launch.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-arena-loop-media.py",
+    "command": [
+      "python3",
+      "scripts/audit-arena-loop-media.py"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-arena-loop.mjs",
+    "command": [
+      "node",
+      "scripts/audit-arena-loop.mjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-arena-media.mjs",
+    "command": [
+      "node",
+      "--import",
+      "tsx",
+      "scripts/audit-arena-media.mjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-arena-pack.py",
+    "command": [
+      "python3",
+      "scripts/audit-arena-pack.py"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-arena-picker.cjs",
+    "command": [
+      "node",
+      "scripts/audit-arena-picker.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-arena-repair.cjs",
+    "command": [
+      "node",
+      "scripts/audit-arena-repair.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-arena-selection.cjs",
+    "command": [
+      "node",
+      "scripts/audit-arena-selection.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-arena-video-loader.mjs",
+    "command": [
+      "node",
+      "scripts/audit-arena-video-loader.mjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-asset-evidence.py",
+    "command": [
+      "python3",
+      "scripts/audit-asset-evidence.py"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-auto-clinch.cjs",
+    "command": [
+      "node",
+      "scripts/audit-auto-clinch.cjs"
+    ],
+    "before": "FAIL",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-azrak-combo.mjs",
+    "command": [
+      "node",
+      "--loader",
+      "./scripts/krov-three-loader.mjs",
+      "scripts/audit-azrak-combo.mjs"
+    ],
+    "before": "PASS",
+    "suite": "requires-media"
+  },
+  {
+    "test": "scripts/audit-bear-demon-assets.mjs",
+    "command": [
+      "node",
+      "--loader",
+      "./scripts/krov-three-loader.mjs",
+      "scripts/audit-bear-demon-assets.mjs"
+    ],
+    "before": "PASS",
+    "suite": "requires-media"
+  },
+  {
+    "test": "scripts/audit-bear.cjs",
+    "command": [
+      "node",
+      "scripts/audit-bear.cjs"
+    ],
+    "before": "FAIL",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-blood-effects.cjs",
+    "command": [
+      "node",
+      "scripts/audit-blood-effects.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-blood-gradual.cjs",
+    "command": [
+      "node",
+      "scripts/audit-blood-gradual.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-blood-visibility.cjs",
+    "command": [
+      "node",
+      "scripts/audit-blood-visibility.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-brax-input-paths.cjs",
+    "command": [
+      "node",
+      "scripts/audit-brax-input-paths.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-brax-recovery.cjs",
+    "command": [
+      "node",
+      "scripts/audit-brax-recovery.cjs"
+    ],
+    "before": "FAIL",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-brax-reported.cjs",
+    "command": [
+      "node",
+      "scripts/audit-brax-reported.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-brax-seven.cjs",
+    "command": [
+      "node",
+      "scripts/audit-brax-seven.cjs"
+    ],
+    "before": "NIEWYKONANE",
+    "suite": "requires-media"
+  },
+  {
+    "test": "scripts/audit-campaigns.cjs",
+    "command": [
+      "node",
+      "scripts/audit-campaigns.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-challenge-actions.cjs",
+    "command": [
+      "node",
+      "scripts/audit-challenge-actions.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-clean-kicks.cjs",
+    "command": [
+      "node",
+      "scripts/audit-clean-kicks.cjs"
+    ],
+    "before": "FAIL",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-clinch-controls.cjs",
+    "command": [
+      "node",
+      "scripts/audit-clinch-controls.cjs"
+    ],
+    "before": "FAIL",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-cold-boot-destinations.cjs",
+    "command": [
+      "node",
+      "scripts/audit-cold-boot-destinations.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-combat-integrity.cjs",
+    "command": [
+      "node",
+      "scripts/audit-combat-integrity.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-combo-approach.cjs",
+    "command": [
+      "node",
+      "scripts/audit-combo-approach.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-combo-confirm.cjs",
+    "command": [
+      "node",
+      "scripts/audit-combo-confirm.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-combo-finisher.cjs",
+    "command": [
+      "node",
+      "scripts/audit-combo-finisher.cjs"
+    ],
+    "before": "FAIL",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-compact-gait.mjs",
+    "command": [
+      "node",
+      "--loader",
+      "./scripts/krov-three-loader.mjs",
+      "scripts/audit-compact-gait.mjs"
+    ],
+    "before": "FAIL",
+    "suite": "requires-media"
+  },
+  {
+    "test": "scripts/audit-complete-motion.mjs",
+    "command": [
+      "node",
+      "--loader",
+      "./scripts/krov-three-loader.mjs",
+      "scripts/audit-complete-motion.mjs"
+    ],
+    "before": "PASS",
+    "suite": "requires-media"
+  },
+  {
+    "test": "scripts/audit-compressed-loader.cjs",
+    "command": [
+      "node",
+      "scripts/audit-compressed-loader.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-contact-break.cjs",
+    "command": [
+      "node",
+      "scripts/audit-contact-break.cjs"
+    ],
+    "before": "FAIL",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-contact-deadline.cjs",
+    "command": [
+      "node",
+      "scripts/audit-contact-deadline.cjs"
+    ],
+    "before": "FAIL",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-contact-showcase.cjs",
+    "command": [
+      "node",
+      "scripts/audit-contact-showcase.cjs"
+    ],
+    "before": "FAIL",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-contact-stagger.mjs",
+    "command": [
+      "node",
+      "--loader",
+      "./scripts/krov-three-loader.mjs",
+      "scripts/audit-contact-stagger.mjs"
+    ],
+    "before": "FAIL",
+    "suite": "requires-media"
+  },
+  {
+    "test": "scripts/audit-contact-timing.cjs",
+    "command": [
+      "node",
+      "scripts/audit-contact-timing.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-contact-ui.cjs",
+    "command": [
+      "node",
+      "scripts/audit-contact-ui.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-corner-entry.cjs",
+    "command": [
+      "node",
+      "scripts/audit-corner-entry.cjs"
+    ],
+    "before": "FAIL",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-counter-contact.cjs",
+    "command": [
+      "node",
+      "scripts/audit-counter-contact.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-cpu-combos.cjs",
+    "command": [
+      "node",
+      "scripts/audit-cpu-combos.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-cpu-grab-cooldown.cjs",
+    "command": [
+      "node",
+      "scripts/audit-cpu-grab-cooldown.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-cpu-levels.cjs",
+    "command": [
+      "node",
+      "scripts/audit-cpu-levels.cjs"
+    ],
+    "before": "FAIL",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-cpu-matchups.cjs",
+    "command": [
+      "node",
+      "scripts/audit-cpu-matchups.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-cpu-pressure.cjs",
+    "command": [
+      "node",
+      "scripts/audit-cpu-pressure.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-danny-controls.cjs",
+    "command": [
+      "node",
+      "scripts/audit-danny-controls.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-danny-strikes.cjs",
+    "command": [
+      "node",
+      "scripts/audit-danny-strikes.cjs"
+    ],
+    "before": "FAIL",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-deleted-arena-paths.cjs",
+    "command": [
+      "node",
+      "scripts/audit-deleted-arena-paths.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-diagnostics.cjs",
+    "command": [
+      "node",
+      "scripts/audit-diagnostics.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-direction-controls.cjs",
+    "command": [
+      "node",
+      "scripts/audit-direction-controls.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-drills.cjs",
+    "command": [
+      "node",
+      "scripts/audit-drills.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-duel-api.mjs",
+    "command": [
+      "node",
+      "--import",
+      "tsx",
+      "scripts/audit-duel-api.mjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-duel-controls.cjs",
+    "command": [
+      "node",
+      "scripts/audit-duel-controls.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-duel-engine.cjs",
+    "command": [
+      "node",
+      "scripts/audit-duel-engine.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-eight-fighter-reach.cjs",
+    "command": [
+      "node",
+      "scripts/audit-eight-fighter-reach.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-engine-acceptance.cjs",
+    "command": [
+      "node",
+      "scripts/audit-engine-acceptance.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-evasion-scoring.cjs",
+    "command": [
+      "node",
+      "scripts/audit-evasion-scoring.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-existing-arena-video.py",
+    "command": [
+      "python3",
+      "scripts/audit-existing-arena-video.py"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-expansion-models.mjs",
+    "command": [
+      "node",
+      "--loader",
+      "./scripts/krov-three-loader.mjs",
+      "scripts/audit-expansion-models.mjs"
+    ],
+    "before": "PASS",
+    "suite": "requires-media"
+  },
+  {
+    "test": "scripts/audit-expansion.cjs",
+    "command": [
+      "node",
+      "scripts/audit-expansion.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-fair-pressure.cjs",
+    "command": [
+      "node",
+      "scripts/audit-fair-pressure.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-fighter-asset-package.mjs",
+    "command": [
+      "node",
+      "scripts/audit-fighter-asset-package.mjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-fighter-media.mjs",
+    "command": [
+      "node",
+      "--import",
+      "tsx",
+      "scripts/audit-fighter-media.mjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-fighter-names.cjs",
+    "command": [
+      "node",
+      "scripts/audit-fighter-names.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-fighter-packages.mjs",
+    "command": [
+      "node",
+      "--loader",
+      "./scripts/krov-three-loader.mjs",
+      "scripts/audit-fighter-packages.mjs"
+    ],
+    "before": "NIEWYKONANE",
+    "suite": "requires-media"
+  },
+  {
+    "test": "scripts/audit-fighter-polish.cjs",
+    "command": [
+      "node",
+      "scripts/audit-fighter-polish.cjs"
+    ],
+    "before": "FAIL",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-fighter-refinement.cjs",
+    "command": [
+      "node",
+      "scripts/audit-fighter-refinement.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-fullscreen.cjs",
+    "command": [
+      "node",
+      "scripts/audit-fullscreen.cjs"
+    ],
+    "before": "FAIL",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-game.cjs",
+    "command": [
+      "node",
+      "scripts/audit-game.cjs"
+    ],
+    "before": "NIEWYKONANE",
+    "suite": "requires-media"
+  },
+  {
+    "test": "scripts/audit-guest-input-lane.cjs",
+    "command": [
+      "node",
+      "scripts/audit-guest-input-lane.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-hit-energy.cjs",
+    "command": [
+      "node",
+      "scripts/audit-hit-energy.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-impact-frequency.cjs",
+    "command": [
+      "node",
+      "scripts/audit-impact-frequency.cjs"
+    ],
+    "before": "FAIL",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-ko-flow.cjs",
+    "command": [
+      "node",
+      "scripts/audit-ko-flow.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-ko-replay.cjs",
+    "command": [
+      "node",
+      "scripts/audit-ko-replay.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-krov-combo.cjs",
+    "command": [
+      "node",
+      "scripts/audit-krov-combo.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-krov-model.mjs",
+    "command": [
+      "node",
+      "--loader",
+      "./scripts/krov-three-loader.mjs",
+      "scripts/audit-krov-model.mjs"
+    ],
+    "before": "NIEWYKONANE",
+    "suite": "requires-media"
+  },
+  {
+    "test": "scripts/audit-krov-motion.mjs",
+    "command": [
+      "node",
+      "--loader",
+      "./scripts/krov-three-loader.mjs",
+      "scripts/audit-krov-motion.mjs"
+    ],
+    "before": "NIEWYKONANE",
+    "suite": "requires-media"
+  },
+  {
+    "test": "scripts/audit-krov-new.cjs",
+    "command": [
+      "node",
+      "scripts/audit-krov-new.cjs"
+    ],
+    "before": "FAIL",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-krov.cjs",
+    "command": [
+      "node",
+      "scripts/audit-krov.cjs"
+    ],
+    "before": "NIEWYKONANE",
+    "suite": "requires-media"
+  },
+  {
+    "test": "scripts/audit-lazy-metadata.cjs",
+    "command": [
+      "node",
+      "scripts/audit-lazy-metadata.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-mixamo-showcase.mjs",
+    "command": [
+      "node",
+      "--loader",
+      "./scripts/krov-three-loader.mjs",
+      "scripts/audit-mixamo-showcase.mjs"
+    ],
+    "before": "FAIL",
+    "suite": "requires-media"
+  },
+  {
+    "test": "scripts/audit-mobile-regressions.cjs",
+    "command": [
+      "node",
+      "scripts/audit-mobile-regressions.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-mode-destinations.cjs",
+    "command": [
+      "node",
+      "scripts/audit-mode-destinations.cjs"
+    ],
+    "before": "FAIL",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-mode-first-films.cjs",
+    "command": [
+      "node",
+      "scripts/audit-mode-first-films.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-mode-screen.cjs",
+    "command": [
+      "node",
+      "scripts/audit-mode-screen.cjs"
+    ],
+    "before": "NIEWYKONANE",
+    "suite": "requires-media"
+  },
+  {
+    "test": "scripts/audit-modes.cjs",
+    "command": [
+      "node",
+      "scripts/audit-modes.cjs"
+    ],
+    "before": "NIEWYKONANE",
+    "suite": "requires-media"
+  },
+  {
+    "test": "scripts/audit-motion-polish.mjs",
+    "command": [
+      "node",
+      "--loader",
+      "./scripts/krov-three-loader.mjs",
+      "scripts/audit-motion-polish.mjs"
+    ],
+    "before": "FAIL",
+    "suite": "requires-media"
+  },
+  {
+    "test": "scripts/audit-moving-gait.mjs",
+    "command": [
+      "node",
+      "--loader",
+      "./scripts/krov-three-loader.mjs",
+      "scripts/audit-moving-gait.mjs"
+    ],
+    "before": "PASS",
+    "suite": "requires-media"
+  },
+  {
+    "test": "scripts/audit-moving-strike.cjs",
+    "command": [
+      "node",
+      "scripts/audit-moving-strike.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-multiplayer-carousel.cjs",
+    "command": [
+      "node",
+      "scripts/audit-multiplayer-carousel.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-mutual-contract.cjs",
+    "command": [
+      "node",
+      "scripts/audit-mutual-contract.cjs"
+    ],
+    "before": "FAIL",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-mutual-fall.mjs",
+    "command": [
+      "node",
+      "--loader",
+      "./scripts/krov-three-loader.mjs",
+      "scripts/audit-mutual-fall.mjs"
+    ],
+    "before": "FAIL",
+    "suite": "requires-media"
+  },
+  {
+    "test": "scripts/audit-natural-contact.cjs",
+    "command": [
+      "node",
+      "scripts/audit-natural-contact.cjs"
+    ],
+    "before": "FAIL",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-network-conflicts.cjs",
+    "command": [
+      "node",
+      "scripts/audit-network-conflicts.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-network-render.cjs",
+    "command": [
+      "node",
+      "scripts/audit-network-render.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-new-fighters.cjs",
+    "command": [
+      "node",
+      "scripts/audit-new-fighters.cjs"
+    ],
+    "before": "FAIL",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-new-model.mjs",
+    "command": [
+      "node",
+      "--loader",
+      "./scripts/krov-three-loader.mjs",
+      "scripts/audit-new-model.mjs"
+    ],
+    "before": "PASS",
+    "suite": "requires-media"
+  },
+  {
+    "test": "scripts/audit-new-strikes.cjs",
+    "command": [
+      "node",
+      "scripts/audit-new-strikes.cjs"
+    ],
+    "before": "FAIL",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-night-market.cjs",
+    "command": [
+      "node",
+      "scripts/audit-night-market.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-nina-bounds.cjs",
+    "command": [
+      "node",
+      "scripts/audit-nina-bounds.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-nina-controls.cjs",
+    "command": [
+      "node",
+      "scripts/audit-nina-controls.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-nina-eight.cjs",
+    "command": [
+      "node",
+      "scripts/audit-nina-eight.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-nina-strikes.cjs",
+    "command": [
+      "node",
+      "scripts/audit-nina-strikes.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-online-client-147.cjs",
+    "command": [
+      "node",
+      "scripts/audit-online-client-147.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-online.mjs",
+    "command": [
+      "node",
+      "--import",
+      "tsx",
+      "scripts/audit-online.mjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-overlay-recovery.cjs",
+    "command": [
+      "node",
+      "scripts/audit-overlay-recovery.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-paired-clinch.cjs",
+    "command": [
+      "node",
+      "scripts/audit-paired-clinch.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-paired-models.mjs",
+    "command": [
+      "node",
+      "--loader",
+      "./scripts/krov-three-loader.mjs",
+      "scripts/audit-paired-models.mjs"
+    ],
+    "before": "PASS",
+    "suite": "requires-media"
+  },
+  {
+    "test": "scripts/audit-passive-contact.cjs",
+    "command": [
+      "node",
+      "scripts/audit-passive-contact.cjs"
+    ],
+    "before": "FAIL",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-peer-link.cjs",
+    "command": [
+      "node",
+      "scripts/audit-peer-link.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-peer-wire.cjs",
+    "command": [
+      "node",
+      "scripts/audit-peer-wire.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-phone-controls.cjs",
+    "command": [
+      "node",
+      "scripts/audit-phone-controls.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-phone-viewport.cjs",
+    "command": [
+      "node",
+      "scripts/audit-phone-viewport.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-pressure-trigger.cjs",
+    "command": [
+      "node",
+      "scripts/audit-pressure-trigger.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-ranking-api.mjs",
+    "command": [
+      "node",
+      "--import",
+      "tsx",
+      "scripts/audit-ranking-api.mjs"
+    ],
+    "before": "FAIL",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-ranking-atomic-147.mjs",
+    "command": [
+      "node",
+      "--import",
+      "tsx",
+      "scripts/audit-ranking-atomic-147.mjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-ranking-derivation.cjs",
+    "command": [
+      "node",
+      "scripts/audit-ranking-derivation.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-ranking-time-policy.mjs",
+    "command": [
+      "node",
+      "--import",
+      "tsx",
+      "scripts/audit-ranking-time-policy.mjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-rankings.cjs",
+    "command": [
+      "node",
+      "scripts/audit-rankings.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-renderer-lifecycle.cjs",
+    "command": [
+      "node",
+      "scripts/audit-renderer-lifecycle.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-replay-events.cjs",
+    "command": [
+      "node",
+      "scripts/audit-replay-events.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-roster-eight.cjs",
+    "command": [
+      "node",
+      "scripts/audit-roster-eight.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-roster.cjs",
+    "command": [
+      "node",
+      "scripts/audit-roster.cjs"
+    ],
+    "before": "NIEWYKONANE",
+    "suite": "requires-media"
+  },
+  {
+    "test": "scripts/audit-round-closeup.cjs",
+    "command": [
+      "node",
+      "scripts/audit-round-closeup.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-screen-flow.cjs",
+    "command": [
+      "node",
+      "scripts/audit-screen-flow.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-short-step.mjs",
+    "command": [
+      "node",
+      "--loader",
+      "./scripts/krov-three-loader.mjs",
+      "scripts/audit-short-step.mjs"
+    ],
+    "before": "FAIL",
+    "suite": "requires-media"
+  },
+  {
+    "test": "scripts/audit-shoulder-contact.mjs",
+    "command": [
+      "node",
+      "--loader",
+      "./scripts/krov-three-loader.mjs",
+      "scripts/audit-shoulder-contact.mjs"
+    ],
+    "before": "FAIL",
+    "suite": "requires-media"
+  },
+  {
+    "test": "scripts/audit-six-attacks.cjs",
+    "command": [
+      "node",
+      "scripts/audit-six-attacks.cjs"
+    ],
+    "before": "FAIL",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-six-input.cjs",
+    "command": [
+      "node",
+      "scripts/audit-six-input.cjs"
+    ],
+    "before": "FAIL",
+    "suite": "requires-media"
+  },
+  {
+    "test": "scripts/audit-source-alignment.mjs",
+    "command": [
+      "node",
+      "--loader",
+      "./scripts/krov-three-loader.mjs",
+      "scripts/audit-source-alignment.mjs"
+    ],
+    "before": "PASS",
+    "suite": "requires-media"
+  },
+  {
+    "test": "scripts/audit-source-motion.mjs",
+    "command": [
+      "node",
+      "--loader",
+      "./scripts/krov-three-loader.mjs",
+      "scripts/audit-source-motion.mjs"
+    ],
+    "before": "FAIL",
+    "suite": "requires-media"
+  },
+  {
+    "test": "scripts/audit-sprint-backflip.cjs",
+    "command": [
+      "node",
+      "scripts/audit-sprint-backflip.cjs"
+    ],
+    "before": "FAIL",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-sustained-contact.cjs",
+    "command": [
+      "node",
+      "scripts/audit-sustained-contact.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-tournaments.mjs",
+    "command": [
+      "node",
+      "--import",
+      "tsx",
+      "scripts/audit-tournaments.mjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-training-contact.cjs",
+    "command": [
+      "node",
+      "scripts/audit-training-contact.cjs"
+    ],
+    "before": "FAIL",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-transitions.cjs",
+    "command": [
+      "node",
+      "scripts/audit-transitions.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-two-launches.cjs",
+    "command": [
+      "node",
+      "scripts/audit-two-launches.cjs"
+    ],
+    "before": "FAIL",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-v108-fixes.cjs",
+    "command": [
+      "node",
+      "scripts/audit-v108-fixes.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-vexa.cjs",
+    "command": [
+      "node",
+      "scripts/audit-vexa.cjs"
+    ],
+    "before": "FAIL",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-victory.cjs",
+    "command": [
+      "node",
+      "scripts/audit-victory.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-visual-update.cjs",
+    "command": [
+      "node",
+      "scripts/audit-visual-update.cjs"
+    ],
+    "before": "FAIL",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/audit-voice.cjs",
+    "command": [
+      "node",
+      "scripts/audit-voice.cjs"
+    ],
+    "before": "PASS",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/review/audit-blood-events.cjs",
+    "command": [
+      "node",
+      "scripts/review/audit-blood-events.cjs"
+    ],
+    "before": "NIEWYKONANE",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/review/audit-module-url.cjs",
+    "command": [
+      "node",
+      "scripts/review/audit-module-url.cjs"
+    ],
+    "before": "NIEWYKONANE",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/review/audit-pressure.cjs",
+    "command": [
+      "node",
+      "scripts/review/audit-pressure.cjs"
+    ],
+    "before": "NIEWYKONANE",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/review/audit-variant-contract.cjs",
+    "command": [
+      "node",
+      "scripts/review/audit-variant-contract.cjs"
+    ],
+    "before": "NIEWYKONANE",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/review/audit-ranking-review.mjs",
+    "command": [
+      "node",
+      "--import",
+      "tsx",
+      "scripts/review/audit-ranking-review.mjs"
+    ],
+    "before": "NIEWYKONANE",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/review/network-size.cjs",
+    "command": [
+      "node",
+      "scripts/review/network-size.cjs"
+    ],
+    "before": "NIEWYKONANE",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/review/media-integrity.py",
+    "command": [
+      "python3",
+      "scripts/review/media-integrity.py"
+    ],
+    "before": "NIEWYKONANE",
+    "suite": "main"
+  },
+  {
+    "test": "scripts/review/policy-equivalence.cjs",
+    "command": [
+      "node",
+      "scripts/review/policy-equivalence.cjs"
+    ],
+    "before": "NIEWYKONANE",
+    "suite": "main"
+  }
+]

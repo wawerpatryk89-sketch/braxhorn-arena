@@ -19,6 +19,7 @@ export async function handleArena(request:Request,db:any,ownerEmail=''){
    if(Number(request.headers.get('content-length')||0)>8192)throw fail('Zbyt duże żądanie.',413);
   }
   const player=await playerIdentity(request,db,headers,ownerEmail),owner=player.id,auth=player.authenticated;
+  if(request.method==='GET'&&action==='reviewResults'){if(!player.isOwner)throw fail('Tylko właściciel może oceniać wyniki.',403);const rows=await db.prepare('SELECT matches.*,runs.fighter,runs.difficulty,runs.mode,runs.owner FROM matches JOIN runs ON runs.id=matches.run_id WHERE matches.review_status=1 ORDER BY matches.started ASC LIMIT 100').all();return reply({rows:rows.results});}
   if(request.method==='GET'&&action==='me'){
    const won=await db.prepare('SELECT fighter,COUNT(*) AS wins FROM matches JOIN runs ON matches.run_id=runs.id WHERE runs.owner=? AND matches.finished=1 AND matches.wins>matches.losses GROUP BY fighter').bind(owner).all();
    const best=await db.prepare("SELECT fighter,MAX(score) AS best FROM results WHERE owner=? AND mode='survival' GROUP BY fighter").bind(owner).all();
@@ -28,13 +29,14 @@ export async function handleArena(request:Request,db:any,ownerEmail=''){
   if(request.method==='GET'&&action==='board'){
    const mode=url.searchParams.get('mode')||'survival',difficulty=url.searchParams.get('difficulty')||'normal';
    if(!levels.includes(difficulty)||!([...modes,...challenges.map(c=>'challenge:'+c.id)].includes(mode)))throw fail('Nieznana kategoria.');
-   const cte=`WITH best AS (SELECT results.*,(SELECT target FROM runs WHERE runs.id=results.id) AS targetWins,players.name,ROW_NUMBER() OVER(PARTITION BY results.owner ORDER BY results.completed DESC,results.score DESC,results.elapsed ASC,results.created ASC,results.id ASC) AS personal FROM results JOIN players ON players.id=results.owner WHERE mode=? AND difficulty=?), ranked AS (SELECT *,ROW_NUMBER() OVER(ORDER BY completed DESC,score DESC,elapsed ASC,created ASC,id ASC) AS rank FROM best WHERE personal=1) SELECT rank,name,fighter,score,elapsed,completed,targetWins,owner,owner=? AS own FROM ranked`;
+   const cte=`WITH best AS (SELECT results.*,(SELECT target FROM runs WHERE runs.id=results.id) AS targetWins,players.name,ROW_NUMBER() OVER(PARTITION BY results.owner ORDER BY results.completed DESC,results.score DESC,results.elapsed ASC,results.created ASC,results.id ASC) AS personal FROM results JOIN players ON players.id=results.owner WHERE mode=? AND difficulty=? AND NOT EXISTS(SELECT 1 FROM matches WHERE (matches.run_id=results.id OR results.id LIKE matches.run_id||'-%') AND matches.review_status IN (1,3))), ranked AS (SELECT *,ROW_NUMBER() OVER(ORDER BY completed DESC,score DESC,elapsed ASC,created ASC,id ASC) AS rank FROM best WHERE personal=1) SELECT rank,name,fighter,score,elapsed,completed,targetWins,owner,owner=? AS own FROM ranked`;
    const rows=await db.prepare(cte+' WHERE rank<=100 OR owner=? ORDER BY rank').bind(mode,difficulty,owner,owner).all();
    const safe=rows.results.map(({owner:id,...r}:any)=>({...r,name:publicPlayerName(r.name,id,player.ownerId)}));
    return reply({rows:safe.filter((r:any)=>r.rank<=100),own:safe.find((r:any)=>r.own)||null});
   }
   if(request.method!=='POST')throw fail('Nieznane działanie.',404);
   const raw=await request.text();if(raw.length>8192)throw fail('Zbyt duże żądanie.',413);let body;try{body=JSON.parse(raw);if(!body||typeof body!=='object'||Array.isArray(body))throw Error();}catch{throw fail('Nieprawidłowe dane żądania.');}
+  if(action==='reviewResult'){if(!player.isOwner)throw fail('Tylko właściciel może oceniać wyniki.',403);if(typeof body.match!=='string'||!['approve','reject'].includes(body.decision))throw fail('Nieprawidłowa decyzja.');const reviewed=await db.prepare('UPDATE matches SET review_status=?,reviewed_by=?,reviewed_at=? WHERE id=? AND review_status=1').bind(body.decision==='approve'?2:3,owner,now,body.match).run();if(!reviewed.meta.changes)throw fail('Wynik nie oczekuje na ocenę.',409);return reply({saved:true,decision:body.decision});}
   if(action==='name'){
    const requested=cleanName(body.name);if(reservedName(requested)&&!player.isOwner)throw fail('Pseudonim Wawer jest zarezerwowany dla właściciela. Zaloguj się na konto właściciela lub wybierz inną nazwę.',403);const name=player.isOwner?'WAWER':requested;if(name.length<2)throw fail('Wpisz pseudonim od 2 do 20 znaków.');await db.prepare('UPDATE players SET name=? WHERE id=?').bind(name,owner).run();return reply({name});
   }
@@ -62,17 +64,17 @@ export async function handleArena(request:Request,db:any,ownerEmail=''){
    const {rounds,elapsed,hp,specials}=body;const roundsPlayed=body.roundsPlayed??(match.mode==='survival'?1:Math.max(2,(rounds?.[0]||0)+(rounds?.[1]||0)));
    if(!Array.isArray(rounds)||rounds.length!==2||!rounds.every(n=>integer(n,0,2))||!integer(elapsed,0,240000)||elapsed>now-match.started+3000||!integer(hp,0,100)||!integer(specials,0,30))throw fail('Wynik nie przeszedł sprawdzenia czasu lub parametrów.');
    if(match.mode==='training'||!integer(roundsPlayed,1,3)||rounds[0]+rounds[1]>roundsPlayed||(match.mode==='survival'?roundsPlayed!==1||Math.max(...rounds)>1:Math.max(...rounds)<2&&roundsPlayed!==3))throw fail('Nieprawidłowy wynik rund.');
-   const minimum=minimumMatchTime(match.mode,match.fighter,rounds,roundsPlayed);if(elapsed<minimum){console.warn('ranking_time_rejected',JSON.stringify({match:match.id,mode:match.mode,fighter:match.fighter,elapsed,minimum,rounds,roundsPlayed}));throw fail('Wynik jest krótszy niż minimalny czas walki.');}
+   const minimum=minimumMatchTime(match.mode,match.fighter,rounds,roundsPlayed,match.difficulty);if(elapsed<minimum){console.warn('ranking_time_rejected',JSON.stringify({match:match.id,mode:match.mode,fighter:match.fighter,elapsed,minimum,rounds,roundsPlayed}));throw fail('Wynik jest krótszy niż minimalny czas walki.');}
    const won=Number(rounds[0]>rounds[1]),lost=Number(rounds[0]<rounds[1]),settlement=crypto.randomUUID();
    // One transactional claim; subsequent writes are guarded by this request's nonce.
    const completed="(mode='fight' OR (mode IN ('arcade','tournament') AND score>=target))";
-   const writes=[db.prepare('UPDATE matches SET finished=1,elapsed=?,wins=?,losses=?,hp=?,specials=?,settlement_key=? WHERE id=? AND finished=0 AND EXISTS(SELECT 1 FROM runs WHERE runs.id=matches.run_id AND closed=0)').bind(elapsed,rounds[0],rounds[1],hp,specials,settlement,match.id),
+   const writes=[db.prepare('UPDATE matches SET finished=1,elapsed=?,wins=?,losses=?,hp=?,specials=?,settlement_key=?,review_status=?,review_minimum=? WHERE id=? AND finished=0 AND EXISTS(SELECT 1 FROM runs WHERE runs.id=matches.run_id AND closed=0)').bind(elapsed,rounds[0],rounds[1],hp,specials,settlement,Number(elapsed<minimum*1.5),minimum,match.id),
     db.prepare("UPDATE runs SET score=score+?,elapsed=elapsed+?,matches=matches+1,closed=(mode='fight' OR ?=1 OR (mode IN ('arcade','tournament') AND score+?>=target)),updated=? WHERE id=? AND EXISTS(SELECT 1 FROM matches WHERE id=? AND settlement_key=?)").bind(won,elapsed,lost,won,now,match.run_id,match.id,settlement)];
    if(won)writes.push(db.prepare(`INSERT INTO results(id,owner,mode,difficulty,fighter,score,elapsed,completed,created) SELECT id,owner,mode,difficulty,fighter,CASE WHEN mode='fight' THEN ? ELSE score END,elapsed,${completed},? FROM runs WHERE id=? AND EXISTS(SELECT 1 FROM matches WHERE id=? AND settlement_key=?) ON CONFLICT(id) DO UPDATE SET score=excluded.score,elapsed=excluded.elapsed,completed=excluded.completed`).bind(rounds[0]-rounds[1],now,match.run_id,match.id,settlement));
    const saved=await db.batch(writes);
    if(!saved[0].meta.changes){const prior=await db.prepare('SELECT finished FROM matches WHERE id=?').bind(match.id).first();if(prior?.finished)return reply({saved:true,duplicate:true});throw fail('Seria jest już zakończona.',409);}
    const result=await db.prepare('SELECT score FROM runs WHERE id=?').bind(match.run_id).first();
-   return reply({saved:true,score:result.score});
+   return reply({saved:true,score:result.score,pendingReview:elapsed<minimum*1.5});
   }
   if(action==='challenge'){
    if(match.challenge_done)return reply({saved:true,duplicate:true});

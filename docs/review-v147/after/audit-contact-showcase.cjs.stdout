@@ -1,0 +1,1 @@
+{"pass":true,"contacts":256,"celebrations":64,"checks":["both roles","both sides","walls","no damage","no crossing","no stuck lock","player and CPU wins","timeout and KO","round and match","result after motion"]}

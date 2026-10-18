@@ -1,0 +1,11 @@
+AssertionError [ERR_ASSERTION]: distance must trigger immediately, despite cooldown/stun/latch
+    at /workspace/scratch/de5ed6fc2c9c/braxhorn-review/scripts/audit-passive-contact.cjs:16:94
+    at Object.step (/workspace/scratch/de5ed6fc2c9c/braxhorn-review/scripts/audit-new-fighters.cjs:71:311)
+    at /workspace/scratch/de5ed6fc2c9c/braxhorn-review/scripts/audit-passive-contact.cjs:14:6 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}

@@ -1,0 +1,55 @@
+(node:215) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/krov-three-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+fatal: path 'game/assets/brax-new/config.json' exists on disk, but not in '19ecd7223c80201e2457230beb35d213eb64212a'
+node:internal/errors:985
+  const err = new Error(message);
+              ^
+
+Error: Command failed: git show 19ecd7223c80201e2457230beb35d213eb64212a:game/assets/brax-new/config.json
+fatal: path 'game/assets/brax-new/config.json' exists on disk, but not in '19ecd7223c80201e2457230beb35d213eb64212a'
+
+    at genericNodeError (node:internal/errors:985:15)
+    at wrappedFn (node:internal/errors:539:14)
+    at checkExecSyncError (node:child_process:942:11)
+    at execFileSync (node:child_process:978:15)
+    at file:///workspace/scratch/de5ed6fc2c9c/braxhorn-review/scripts/audit-motion-polish.mjs:5:23
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  status: 128,
+  signal: null,
+  output: [
+    null,
+    Buffer(0) [Uint8Array] [],
+    Buffer(117) [Uint8Array] [
+      102,  97, 116,  97, 108,  58,  32, 112,  97, 116, 104,  32,
+       39, 103,  97, 109, 101,  47,  97, 115, 115, 101, 116, 115,
+       47,  98, 114,  97, 120,  45, 110, 101, 119,  47,  99, 111,
+      110, 102, 105, 103,  46, 106, 115, 111, 110,  39,  32, 101,
+      120, 105, 115, 116, 115,  32, 111, 110,  32, 100, 105, 115,
+      107,  44,  32,  98, 117, 116,  32, 110, 111, 116,  32, 105,
+      110,  32,  39,  49,  57, 101,  99, 100,  55,  50,  50,  51,
+       99,  56,  48,  50,  48,  49, 101,  50,  52,  53,  55,  50,
+       51,  48,  98, 101,
+      ... 17 more items
+    ]
+  ],
+  pid: 251,
+  stdout: Buffer(0) [Uint8Array] [],
+  stderr: Buffer(117) [Uint8Array] [
+    102,  97, 116,  97, 108,  58,  32, 112,  97, 116, 104,  32,
+     39, 103,  97, 109, 101,  47,  97, 115, 115, 101, 116, 115,
+     47,  98, 114,  97, 120,  45, 110, 101, 119,  47,  99, 111,
+    110, 102, 105, 103,  46, 106, 115, 111, 110,  39,  32, 101,
+    120, 105, 115, 116, 115,  32, 111, 110,  32, 100, 105, 115,
+    107,  44,  32,  98, 117, 116,  32, 110, 111, 116,  32, 105,
+    110,  32,  39,  49,  57, 101,  99, 100,  55,  50,  50,  51,
+     99,  56,  48,  50,  48,  49, 101,  50,  52,  53,  55,  50,
+     51,  48,  98, 101,
+    ... 17 more items
+  ]
+}
+
+Node.js v24.19.0

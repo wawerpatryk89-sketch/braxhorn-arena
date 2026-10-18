@@ -1,0 +1,12 @@
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+'NINA' !== 'BEAR'
+
+    at /workspace/scratch/de5ed6fc2c9c/braxhorn-review/scripts/audit-bear.cjs:6:9 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 'NINA',
+  expected: 'BEAR',
+  operator: 'strictEqual',
+  diff: 'simple'
+}

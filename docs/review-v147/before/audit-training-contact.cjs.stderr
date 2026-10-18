@@ -1,0 +1,9 @@
+AssertionError [ERR_ASSERTION]: 0/BRAX/idle/1 no automatic training contact without arrows
+    at /workspace/scratch/de5ed6fc2c9c/braxhorn-review/scripts/audit-training-contact.cjs:4:222 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}

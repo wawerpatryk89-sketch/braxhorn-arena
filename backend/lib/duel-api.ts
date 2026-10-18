@@ -1,4 +1,6 @@
-import limits from './ranking-times.json';
+import compatibility from './build-compatibility.json';
+// PvP has no difficulty: retain the config-derived physical minimum.
+import limits from './duel-times.json';
 import arenaNames from './arena-list.json';
 import {playerIdentity} from './player-identity';
 import {publicPlayerName} from './owner-policy';
@@ -21,6 +23,7 @@ export async function handleDuel(request:Request,db:any,ownerEmail=''){
   const raw=await request.text();if(raw.length>40000)throw fail('Za duże dane.',413);
   let b;try{b=JSON.parse(raw);}catch{throw fail('Nieprawidłowe dane.');}if(!b||typeof b!=='object')throw fail('Nieprawidłowe dane.');
   const now=Date.now(),action=b.action;
+  if(['create','join','sync'].includes(action)&&(!b.compat||b.compat.protocol!==compatibility.protocol||b.compat.build!==compatibility.build||b.compat.configs!==compatibility.configs))throw fail('Odśwież grę — inna wersja u przeciwnika',409);
   const player=['create','join'].includes(action)?await playerIdentity(request,db,headers,ownerEmail):null;
   if(action==='create'){
    if(!roster.includes(b.fighter))throw fail('Wybierz zawodnika.');
@@ -60,7 +63,7 @@ export async function handleDuel(request:Request,db:any,ownerEmail=''){
    const terminal=r.snapshot?JSON.parse(r.snapshot):null;
    if(!r.started_at||!validSnapshot(terminal)||terminal.state.matchOver!==true||terminal.state.ended!==true||terminal.state.round<2||(terminal.state.round<3&&Math.max(...terminal.state.wins)<2))throw fail('Walka jeszcze się nie zakończyła.',409);
    const wins=terminal.state.wins,minimum=wins[0]*limits.fighters[r.host_fighter as keyof typeof limits.fighters].roundMinimumMs+wins[1]*limits.fighters[r.guest_fighter as keyof typeof limits.fighters].roundMinimumMs+(terminal.state.round-wins[0]-wins[1])*60000;
-   if(now-r.started_at<minimum){console.warn('duel_time_rejected',JSON.stringify({code,elapsed:now-r.started_at,minimum}));throw fail('Wynik jest krótszy niż minimalny czas walki.',409);}
+   if(!Number.isFinite(minimum)||now-r.started_at<minimum){console.warn('duel_time_rejected',JSON.stringify({code,elapsed:now-r.started_at,minimum}));throw fail('Wynik jest krótszy niż minimalny czas walki.',409);}
    const report=JSON.stringify(score),field=host?'host_report':'guest_report';
    await db.prepare(`UPDATE duel_rooms SET ${field}=COALESCE(${field},?),result_status=CASE WHEN result_status='' THEN 'pending' ELSE result_status END WHERE code=?`).bind(report,code).run();
    r=await db.prepare('SELECT * FROM duel_rooms WHERE code=?').bind(code).first();

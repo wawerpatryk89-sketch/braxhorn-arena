@@ -1,9 +1,11 @@
 import limits from './ranking-times.json';
-export function minimumMatchTime(mode:string,fighter:string,rounds:number[],roundsPlayed:number){
- const policy=limits.modes[mode as keyof typeof limits.modes];if(!policy)return Infinity;
- const own=limits.fighters[fighter as keyof typeof limits.fighters]?.roundMinimumMs??policy.roundMinimumMs;
- // Survival carries player health: a defeat may occur immediately, but a win
- // must still remove the fresh opponent's 100 HP. Drawn rounds last 60 seconds.
- const defeated=mode==='survival'?0:policy.roundMinimumMs;
- return rounds[0]*own+rounds[1]*defeated+Math.max(0,roundsPlayed-rounds[0]-rounds[1])*60000;
+export function minimumMatchTime(mode:string,fighter:string,rounds:number[],roundsPlayed:number,difficulty:string='normal'){
+ if(!limits.modes.includes(mode))return Infinity;
+ const fighterPolicy=limits.fighters[fighter as keyof typeof limits.fighters];
+ const p=fighterPolicy?.levels[difficulty as keyof typeof fighterPolicy.levels];
+ if(!p)return Infinity;
+ // A survival defeat can happen immediately because health carries across opponents.
+ if(mode==='survival')return rounds[0]>0?p.roundMinimumMs:0;
+ const draws=Math.max(0,roundsPlayed-rounds[0]-rounds[1]);
+ return Math.max(p.matchMinimumMs,draws*60000);
 }

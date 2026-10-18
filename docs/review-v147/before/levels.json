@@ -1,0 +1,398 @@
+[
+  {
+    "who": "BRAX",
+    "level": "easy",
+    "attacks": 13,
+    "first": 2352,
+    "damage": 152,
+    "moves": [
+      "LIGHT_KICK",
+      "DOUBLE_PUNCH",
+      "LIGHT_PUNCH",
+      "HEAVY_PUNCH",
+      "UPPERCUT"
+    ],
+    "variety": 5,
+    "passiveKoMs": 18784
+  },
+  {
+    "who": "BRAX",
+    "level": "normal",
+    "attacks": 15,
+    "first": 1904,
+    "damage": 201,
+    "moves": [
+      "LIGHT_KICK",
+      "HEAVY_PUNCH",
+      "LIGHT_PUNCH",
+      "HEAVY_KICK",
+      "DOUBLE_PUNCH",
+      "COMBO"
+    ],
+    "variety": 6,
+    "passiveKoMs": 13648
+  },
+  {
+    "who": "BRAX",
+    "level": "hard",
+    "attacks": 17,
+    "first": 1808,
+    "damage": 210,
+    "moves": [
+      "LIGHT_KICK",
+      "HEAVY_PUNCH",
+      "COMBO",
+      "HEAVY_KICK"
+    ],
+    "variety": 4,
+    "passiveKoMs": 15328
+  },
+  {
+    "who": "NYXA",
+    "level": "easy",
+    "attacks": 13,
+    "first": 2608,
+    "damage": 121,
+    "moves": [
+      "LIGHT_KICK",
+      "CLINCH_KNEE",
+      "ELBOW",
+      "HEAVY_PUNCH",
+      "HEAVY_KICK"
+    ],
+    "variety": 5,
+    "passiveKoMs": 24416
+  },
+  {
+    "who": "NYXA",
+    "level": "normal",
+    "attacks": 14,
+    "first": 2256,
+    "damage": 166,
+    "moves": [
+      "LIGHT_KICK",
+      "HEAVY_KICK",
+      "CLINCH_KNEE",
+      "HEAVY_PUNCH",
+      "ELBOW",
+      "COMBO"
+    ],
+    "variety": 6,
+    "passiveKoMs": 16256
+  },
+  {
+    "who": "NYXA",
+    "level": "hard",
+    "attacks": 15,
+    "first": 2048,
+    "damage": 201,
+    "moves": [
+      "LIGHT_KICK",
+      "HEAVY_KICK",
+      "HEAVY_PUNCH",
+      "COMBO",
+      "ELBOW"
+    ],
+    "variety": 5,
+    "passiveKoMs": 14784
+  },
+  {
+    "who": "VEXA",
+    "level": "easy",
+    "attacks": 14,
+    "first": 2640,
+    "damage": 177,
+    "moves": [
+      "HEAVY_KICK",
+      "FLYING_KICK",
+      "SPIN_KICK",
+      "LIGHT_PUNCH",
+      "LIGHT_KICK"
+    ],
+    "variety": 5,
+    "passiveKoMs": 16976
+  },
+  {
+    "who": "VEXA",
+    "level": "normal",
+    "attacks": 13,
+    "first": 2288,
+    "damage": 196,
+    "moves": [
+      "HEAVY_KICK",
+      "FLYING_KICK",
+      "LIGHT_PUNCH",
+      "SPIN_KICK",
+      "COMBO",
+      "LIGHT_KICK"
+    ],
+    "variety": 6,
+    "passiveKoMs": 16672
+  },
+  {
+    "who": "VEXA",
+    "level": "hard",
+    "attacks": 13,
+    "first": 2064,
+    "damage": 201,
+    "moves": [
+      "HEAVY_KICK",
+      "COMBO",
+      "SPIN_KICK"
+    ],
+    "variety": 3,
+    "passiveKoMs": 16432
+  },
+  {
+    "who": "KROV",
+    "level": "easy",
+    "attacks": 10,
+    "first": 3072,
+    "damage": 107,
+    "moves": [
+      "LIGHT_KICK",
+      "ELBOW",
+      "LIGHT_PUNCH",
+      "HEAVY_KICK",
+      "HEAVY_PUNCH",
+      "UPPERCUT"
+    ],
+    "variety": 6,
+    "passiveKoMs": 29968
+  },
+  {
+    "who": "KROV",
+    "level": "normal",
+    "attacks": 10,
+    "first": 2656,
+    "damage": 172,
+    "moves": [
+      "LIGHT_KICK",
+      "UPPERCUT",
+      "LIGHT_PUNCH",
+      "HEAVY_PUNCH",
+      "ELBOW",
+      "COMBO",
+      "HEAVY_KICK"
+    ],
+    "variety": 7,
+    "passiveKoMs": 16912
+  },
+  {
+    "who": "KROV",
+    "level": "hard",
+    "attacks": 12,
+    "first": 2384,
+    "damage": 168,
+    "moves": [
+      "LIGHT_KICK",
+      "LIGHT_PUNCH",
+      "HEAVY_KICK",
+      "COMBO",
+      "ELBOW",
+      "UPPERCUT",
+      "HEAVY_PUNCH"
+    ],
+    "variety": 7,
+    "passiveKoMs": 16304
+  },
+  {
+    "who": "NINA",
+    "level": "easy",
+    "attacks": 15,
+    "first": 2992,
+    "damage": 190,
+    "moves": [
+      "MEIA_LUA",
+      "CRESCENT_KICK",
+      "GROUND_KICK",
+      "SPIN_KICK",
+      "LIGHT_PUNCH",
+      "LIGHT_KICK"
+    ],
+    "variety": 6,
+    "passiveKoMs": 17824
+  },
+  {
+    "who": "NINA",
+    "level": "normal",
+    "attacks": 18,
+    "first": 2592,
+    "damage": 248,
+    "moves": [
+      "LIGHT_KICK",
+      "SPIN_KICK",
+      "MEIA_LUA",
+      "GROUND_KICK",
+      "LIGHT_PUNCH",
+      "COMBO",
+      "CRESCENT_KICK"
+    ],
+    "variety": 7,
+    "passiveKoMs": 11408
+  },
+  {
+    "who": "NINA",
+    "level": "hard",
+    "attacks": 20,
+    "first": 2320,
+    "damage": 270,
+    "moves": [
+      "LIGHT_KICK",
+      "MEIA_LUA",
+      "COMBO",
+      "SPIN_KICK"
+    ],
+    "variety": 4,
+    "passiveKoMs": 12224
+  },
+  {
+    "who": "DANNY",
+    "level": "easy",
+    "attacks": 14,
+    "first": 2848,
+    "damage": 147,
+    "moves": [
+      "LIGHT_KICK",
+      "HEAVY_PUNCH",
+      "HEAVY_KICK",
+      "SIDE_KICK",
+      "LIGHT_PUNCH"
+    ],
+    "variety": 5,
+    "passiveKoMs": 20768
+  },
+  {
+    "who": "DANNY",
+    "level": "normal",
+    "attacks": 14,
+    "first": 2464,
+    "damage": 182,
+    "moves": [
+      "LIGHT_KICK",
+      "HEAVY_PUNCH",
+      "SIDE_KICK",
+      "HEAVY_KICK",
+      "LIGHT_PUNCH",
+      "COMBO"
+    ],
+    "variety": 6,
+    "passiveKoMs": 17024
+  },
+  {
+    "who": "DANNY",
+    "level": "hard",
+    "attacks": 14,
+    "first": 2224,
+    "damage": 194,
+    "moves": [
+      "LIGHT_KICK",
+      "HEAVY_KICK",
+      "SIDE_KICK",
+      "COMBO",
+      "HEAVY_PUNCH",
+      "LIGHT_PUNCH"
+    ],
+    "variety": 6,
+    "passiveKoMs": 15584
+  },
+  {
+    "who": "BEAR",
+    "level": "easy",
+    "attacks": 15,
+    "first": 3744,
+    "damage": 195,
+    "moves": [
+      "SHOULDER",
+      "UPPERCUT",
+      "LIGHT_PUNCH",
+      "HEAVY_PUNCH",
+      "LIGHT_KICK",
+      "HEAVY_KICK"
+    ],
+    "variety": 6,
+    "passiveKoMs": 15616
+  },
+  {
+    "who": "BEAR",
+    "level": "normal",
+    "attacks": 16,
+    "first": 3248,
+    "damage": 265,
+    "moves": [
+      "SHOULDER",
+      "UPPERCUT",
+      "LIGHT_PUNCH",
+      "COMBO",
+      "HEAVY_PUNCH",
+      "LIGHT_KICK"
+    ],
+    "variety": 6,
+    "passiveKoMs": 10816
+  },
+  {
+    "who": "BEAR",
+    "level": "hard",
+    "attacks": 18,
+    "first": 2928,
+    "damage": 305,
+    "moves": [
+      "SHOULDER",
+      "UPPERCUT",
+      "LIGHT_PUNCH",
+      "COMBO",
+      "HEAVY_PUNCH",
+      "LIGHT_KICK"
+    ],
+    "variety": 6,
+    "passiveKoMs": 10432
+  },
+  {
+    "who": "DEMON",
+    "level": "easy",
+    "attacks": 15,
+    "first": 3024,
+    "damage": 114,
+    "moves": [
+      "LIGHT_KICK",
+      "UPPERCUT",
+      "HEAVY_KICK",
+      "LIGHT_PUNCH"
+    ],
+    "variety": 4,
+    "passiveKoMs": 23104
+  },
+  {
+    "who": "DEMON",
+    "level": "normal",
+    "attacks": 16,
+    "first": 2624,
+    "damage": 229,
+    "moves": [
+      "LIGHT_KICK",
+      "UPPERCUT",
+      "LIGHT_PUNCH",
+      "HEAVY_KICK",
+      "COMBO"
+    ],
+    "variety": 5,
+    "passiveKoMs": 13120
+  },
+  {
+    "who": "DEMON",
+    "level": "hard",
+    "attacks": 20,
+    "first": 2368,
+    "damage": 281,
+    "moves": [
+      "LIGHT_KICK",
+      "HEAVY_KICK",
+      "LIGHT_PUNCH",
+      "COMBO",
+      "UPPERCUT",
+      "SHOULDER"
+    ],
+    "variety": 6,
+    "passiveKoMs": 10704
+  }
+]

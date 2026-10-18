@@ -1,0 +1,12 @@
+AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+
+  assert(B.jumpTime!==null)
+
+    at /workspace/scratch/de5ed6fc2c9c/braxhorn-review/scripts/audit-krov-new.cjs:20:27 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}

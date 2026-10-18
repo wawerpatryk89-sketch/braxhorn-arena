@@ -43,7 +43,7 @@ function preserveWeights(material,groups){
  };
  material.customProgramCacheKey=()=> 'original-influences-'+groups*4;
 }
-export function prepareMetadata(who){if(!metadata.has(who))metadata.set(who,json('/assets/'+who.toLowerCase()+'-new/config.json?v=azrak-146').then(config=>{const frames={};for(const c of Object.values(config))frames[c.asset]={w:WIDTH,h:SIZE,frames:c.durations.map(duration=>({duration}))};return{config,frames,ready:false,render(){}};}).catch(e=>{metadata.delete(who);throw e;}));return metadata.get(who);}
+export function prepareMetadata(who){if(!metadata.has(who))metadata.set(who,json('/assets/'+who.toLowerCase()+'-new/config.json?v='+(window.BRAX_COMPAT?.configs||'azrak-146')).then(config=>{const frames={};for(const c of Object.values(config))frames[c.asset]={w:WIDTH,h:SIZE,frames:c.durations.map(duration=>({duration}))};return{config,frames,ready:false,render(){}};}).catch(e=>{metadata.delete(who);throw e;}));return metadata.get(who);}
 export function preparePair(names){const request=[...names];const task=pairQueue.then(()=>loadPair(request));pairQueue=task.catch(()=>{});return task;}
 async function loadPair(names){
  const needed=new Set(names.filter(Boolean));

@@ -1,0 +1,9 @@
+AssertionError [ERR_ASSERTION]: missing authored contact
+    at /workspace/scratch/de5ed6fc2c9c/braxhorn-review/scripts/audit-contact-showcase.cjs:12:4 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}

@@ -1,0 +1,451 @@
+[
+  {
+    "test": "scripts/audit-access-rtc.mjs",
+    "command": [
+      "node",
+      "--import",
+      "tsx",
+      "scripts/audit-access-rtc.mjs"
+    ],
+    "exit": 0,
+    "seconds": 0.246,
+    "status": "PASS",
+    "stderr": ""
+  },
+  {
+    "test": "scripts/audit-auto-clinch.cjs",
+    "command": [
+      "node",
+      "scripts/audit-auto-clinch.cjs"
+    ],
+    "exit": 0,
+    "seconds": 4.447,
+    "status": "PASS",
+    "stderr": ""
+  },
+  {
+    "test": "scripts/audit-bear.cjs",
+    "command": [
+      "node",
+      "scripts/audit-bear.cjs"
+    ],
+    "exit": 0,
+    "seconds": 1.545,
+    "status": "PASS",
+    "stderr": ""
+  },
+  {
+    "test": "scripts/audit-brax-recovery.cjs",
+    "command": [
+      "node",
+      "scripts/audit-brax-recovery.cjs"
+    ],
+    "exit": 0,
+    "seconds": 0.711,
+    "status": "PASS",
+    "stderr": ""
+  },
+  {
+    "test": "scripts/audit-clean-kicks.cjs",
+    "command": [
+      "node",
+      "scripts/audit-clean-kicks.cjs"
+    ],
+    "exit": 0,
+    "seconds": 0.774,
+    "status": "PASS",
+    "stderr": ""
+  },
+  {
+    "test": "scripts/audit-clinch-controls.cjs",
+    "command": [
+      "node",
+      "scripts/audit-clinch-controls.cjs"
+    ],
+    "exit": 0,
+    "seconds": 18.166,
+    "status": "PASS",
+    "stderr": ""
+  },
+  {
+    "test": "scripts/audit-combo-finisher.cjs",
+    "command": [
+      "node",
+      "scripts/audit-combo-finisher.cjs"
+    ],
+    "exit": 0,
+    "seconds": 4.94,
+    "status": "PASS",
+    "stderr": ""
+  },
+  {
+    "test": "scripts/audit-compact-gait.mjs",
+    "command": [
+      "node",
+      "--loader",
+      "./scripts/krov-three-loader.mjs",
+      "scripts/audit-compact-gait.mjs"
+    ],
+    "exit": 1,
+    "seconds": 0.776,
+    "status": "FAIL",
+    "stderr": "(node:73) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:\n--import 'data:text/javascript,import { register } from \"node:module\"; import { pathToFileURL } from \"node:url\"; register(\"./scripts/krov-three-loader.mjs\", pathToFileURL(\"./\"));'\n(Use `node --trace-warnings ...` to show where the warning was created)\nnode:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: step actually becomes shorter\n    at file:///workspace/scratch/de5ed6fc2c9c/braxhorn-review/scripts/audit-compact-gait.mjs:3:790\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v24.19.0\n"
+  },
+  {
+    "test": "scripts/audit-contact-break.cjs",
+    "command": [
+      "node",
+      "scripts/audit-contact-break.cjs"
+    ],
+    "exit": 0,
+    "seconds": 4.184,
+    "status": "PASS",
+    "stderr": ""
+  },
+  {
+    "test": "scripts/audit-contact-deadline.cjs",
+    "command": [
+      "node",
+      "scripts/audit-contact-deadline.cjs"
+    ],
+    "exit": 0,
+    "seconds": 3.792,
+    "status": "PASS",
+    "stderr": ""
+  },
+  {
+    "test": "scripts/audit-contact-showcase.cjs",
+    "command": [
+      "node",
+      "scripts/audit-contact-showcase.cjs"
+    ],
+    "exit": 0,
+    "seconds": 9.918,
+    "status": "PASS",
+    "stderr": ""
+  },
+  {
+    "test": "scripts/audit-contact-stagger.mjs",
+    "command": [
+      "node",
+      "--loader",
+      "./scripts/krov-three-loader.mjs",
+      "scripts/audit-contact-stagger.mjs"
+    ],
+    "exit": 1,
+    "seconds": 0.6,
+    "status": "FAIL",
+    "stderr": "(node:143) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:\n--import 'data:text/javascript,import { register } from \"node:module\"; import { pathToFileURL } from \"node:url\"; register(\"./scripts/krov-three-loader.mjs\", pathToFileURL(\"./\"));'\n(Use `node --trace-warnings ...` to show where the warning was created)\nnode:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: support foot slips more than 12 mm\n    at file:///workspace/scratch/de5ed6fc2c9c/braxhorn-review/scripts/audit-contact-stagger.mjs:9:2\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v24.19.0\n"
+  },
+  {
+    "test": "scripts/audit-corner-entry.cjs",
+    "command": [
+      "node",
+      "scripts/audit-corner-entry.cjs"
+    ],
+    "exit": 1,
+    "seconds": 0.547,
+    "status": "FAIL",
+    "stderr": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n1 !== 2\n\n    at /workspace/scratch/de5ed6fc2c9c/braxhorn-review/scripts/audit-corner-entry.cjs:13:123 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: 1,\n  expected: 2,\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n"
+  },
+  {
+    "test": "scripts/audit-cpu-levels.cjs",
+    "command": [
+      "node",
+      "scripts/audit-cpu-levels.cjs"
+    ],
+    "exit": 0,
+    "seconds": 14.484,
+    "status": "PASS",
+    "stderr": ""
+  },
+  {
+    "test": "scripts/audit-danny-strikes.cjs",
+    "command": [
+      "node",
+      "scripts/audit-danny-strikes.cjs"
+    ],
+    "exit": 0,
+    "seconds": 2.808,
+    "status": "PASS",
+    "stderr": ""
+  },
+  {
+    "test": "scripts/audit-fighter-polish.cjs",
+    "command": [
+      "node",
+      "scripts/audit-fighter-polish.cjs"
+    ],
+    "exit": 0,
+    "seconds": 1.265,
+    "status": "PASS",
+    "stderr": ""
+  },
+  {
+    "test": "scripts/audit-fullscreen.cjs",
+    "command": [
+      "node",
+      "scripts/audit-fullscreen.cjs"
+    ],
+    "exit": 0,
+    "seconds": 0.081,
+    "status": "PASS",
+    "stderr": ""
+  },
+  {
+    "test": "scripts/audit-impact-frequency.cjs",
+    "command": [
+      "node",
+      "scripts/audit-impact-frequency.cjs"
+    ],
+    "exit": 0,
+    "seconds": 1.303,
+    "status": "PASS",
+    "stderr": ""
+  },
+  {
+    "test": "scripts/audit-krov-new.cjs",
+    "command": [
+      "node",
+      "scripts/audit-krov-new.cjs"
+    ],
+    "exit": 1,
+    "seconds": 1.268,
+    "status": "FAIL",
+    "stderr": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert(B.jumpTime!==null)\n\n    at /workspace/scratch/de5ed6fc2c9c/braxhorn-review/scripts/audit-krov-new.cjs:20:27 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n"
+  },
+  {
+    "test": "scripts/audit-mixamo-showcase.mjs",
+    "command": [
+      "node",
+      "--loader",
+      "./scripts/krov-three-loader.mjs",
+      "scripts/audit-mixamo-showcase.mjs"
+    ],
+    "exit": 1,
+    "seconds": 0.425,
+    "status": "FAIL",
+    "stderr": "(node:253) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:\n--import 'data:text/javascript,import { register } from \"node:module\"; import { pathToFileURL } from \"node:url\"; register(\"./scripts/krov-three-loader.mjs\", pathToFileURL(\"./\"));'\n(Use `node --trace-warnings ...` to show where the warning was created)\nfatal: path 'game/assets/brax-new/clips.json.gz' exists on disk, but not in '5560fb173594c6949f7d4579986d9c5a65466c80'\nnode:internal/errors:985\n  const err = new Error(message);\n              ^\n\nError: Command failed: git show 5560fb173594c6949f7d4579986d9c5a65466c80:game/assets/brax-new/clips.json.gz\nfatal: path 'game/assets/brax-new/clips.json.gz' exists on disk, but not in '5560fb173594c6949f7d4579986d9c5a65466c80'\n\n    at genericNodeError (node:internal/errors:985:15)\n    at wrappedFn (node:internal/errors:539:14)\n    at checkExecSyncError (node:child_process:942:11)\n    at execFileSync (node:child_process:978:15)\n    at file:///workspace/scratch/de5ed6fc2c9c/braxhorn-review/scripts/audit-mixamo-showcase.mjs:4:44\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  status: 128,\n  signal: null,\n  output: [\n    null,\n    Buffer(0) [Uint8Array] [],\n    Buffer(119) [Uint8Array] [\n      102,  97, 116,  97, 108,  58,  32, 112,  97, 116, 104,  32,\n       39, 103,  97, 109, 101,  47,  97, 115, 115, 101, 116, 115,\n       47,  98, 114,  97, 120,  45, 110, 101, 119,  47,  99, 108,\n      105, 112, 115,  46, 106, 115, 111, 110,  46, 103, 122,  39,\n       32, 101, 120, 105, 115, 116, 115,  32, 111, 110,  32, 100,\n      105, 115, 107,  44,  32,  98, 117, 116,  32, 110, 111, 116,\n       32, 105, 110,  32,  39,  53,  53,  54,  48, 102,  98,  49,\n       55,  51,  53,  57,  52,  99,  54,  57,  52,  57, 102,  55,\n      100,  52,  53,  55,\n      ... 19 more items\n    ]\n  ],\n  pid: 264,\n  stdout: Buffer(0) [Uint8Array] [],\n  stderr: Buffer(119) [Uint8Array] [\n    102,  97, 116,  97, 108,  58,  32, 112,  97, 116, 104,  32,\n     39, 103,  97, 109, 101,  47,  97, 115, 115, 101, 116, 115,\n     47,  98, 114,  97, 120,  45, 110, 101, 119,  47,  99, 108,\n    105, 112, 115,  46, 106, 115, 111, 110,  46, 103, 122,  39,\n     32, 101, 120, 105, 115, 116, 115,  32, 111, 110,  32, 100,\n    105, 115, 107,  44,  32,  98, 117, 116,  32, 110, 111, 116,\n     32, 105, 110,  32,  39,  53,  53,  54,  48, 102,  98,  49,\n     55,  51,  53,  57,  52,  99,  54,  57,  52,  57, 102,  55,\n    100,  52,  53,  55,\n    ... 19 more items\n  ]\n}\n\nNode.js v24.19.0\n"
+  },
+  {
+    "test": "scripts/audit-mode-destinations.cjs",
+    "command": [
+      "node",
+      "scripts/audit-mode-destinations.cjs"
+    ],
+    "exit": 1,
+    "seconds": 0.583,
+    "status": "FAIL",
+    "stderr": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert(g.elements.get('challengeProgress').textContent.includes('/ 5'))\n\n    at /workspace/scratch/de5ed6fc2c9c/braxhorn-review/scripts/audit-mode-destinations.cjs:3:910 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n"
+  },
+  {
+    "test": "scripts/audit-motion-polish.mjs",
+    "command": [
+      "node",
+      "--loader",
+      "./scripts/krov-three-loader.mjs",
+      "scripts/audit-motion-polish.mjs"
+    ],
+    "exit": 1,
+    "seconds": 0.484,
+    "status": "FAIL",
+    "stderr": "(node:275) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:\n--import 'data:text/javascript,import { register } from \"node:module\"; import { pathToFileURL } from \"node:url\"; register(\"./scripts/krov-three-loader.mjs\", pathToFileURL(\"./\"));'\n(Use `node --trace-warnings ...` to show where the warning was created)\nfatal: path 'game/assets/brax-new/config.json' exists on disk, but not in '19ecd7223c80201e2457230beb35d213eb64212a'\nnode:internal/errors:985\n  const err = new Error(message);\n              ^\n\nError: Command failed: git show 19ecd7223c80201e2457230beb35d213eb64212a:game/assets/brax-new/config.json\nfatal: path 'game/assets/brax-new/config.json' exists on disk, but not in '19ecd7223c80201e2457230beb35d213eb64212a'\n\n    at genericNodeError (node:internal/errors:985:15)\n    at wrappedFn (node:internal/errors:539:14)\n    at checkExecSyncError (node:child_process:942:11)\n    at execFileSync (node:child_process:978:15)\n    at file:///workspace/scratch/de5ed6fc2c9c/braxhorn-review/scripts/audit-motion-polish.mjs:5:23\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  status: 128,\n  signal: null,\n  output: [\n    null,\n    Buffer(0) [Uint8Array] [],\n    Buffer(117) [Uint8Array] [\n      102,  97, 116,  97, 108,  58,  32, 112,  97, 116, 104,  32,\n       39, 103,  97, 109, 101,  47,  97, 115, 115, 101, 116, 115,\n       47,  98, 114,  97, 120,  45, 110, 101, 119,  47,  99, 111,\n      110, 102, 105, 103,  46, 106, 115, 111, 110,  39,  32, 101,\n      120, 105, 115, 116, 115,  32, 111, 110,  32, 100, 105, 115,\n      107,  44,  32,  98, 117, 116,  32, 110, 111, 116,  32, 105,\n      110,  32,  39,  49,  57, 101,  99, 100,  55,  50,  50,  51,\n       99,  56,  48,  50,  48,  49, 101,  50,  52,  53,  55,  50,\n       51,  48,  98, 101,\n      ... 17 more items\n    ]\n  ],\n  pid: 300,\n  stdout: Buffer(0) [Uint8Array] [],\n  stderr: Buffer(117) [Uint8Array] [\n    102,  97, 116,  97, 108,  58,  32, 112,  97, 116, 104,  32,\n     39, 103,  97, 109, 101,  47,  97, 115, 115, 101, 116, 115,\n     47,  98, 114,  97, 120,  45, 110, 101, 119,  47,  99, 111,\n    110, 102, 105, 103,  46, 106, 115, 111, 110,  39,  32, 101,\n    120, 105, 115, 116, 115,  32, 111, 110,  32, 100, 105, 115,\n    107,  44,  32,  98, 117, 116,  32, 110, 111, 116,  32, 105,\n    110,  32,  39,  49,  57, 101,  99, 100,  55,  50,  50,  51,\n     99,  56,  48,  50,  48,  49, 101,  50,  52,  53,  55,  50,\n     51,  48,  98, 101,\n    ... 17 more items\n  ]\n}\n\nNode.js v24.19.0\n"
+  },
+  {
+    "test": "scripts/audit-mutual-contract.cjs",
+    "command": [
+      "node",
+      "scripts/audit-mutual-contract.cjs"
+    ],
+    "exit": 0,
+    "seconds": 0.335,
+    "status": "PASS",
+    "stderr": ""
+  },
+  {
+    "test": "scripts/audit-mutual-fall.mjs",
+    "command": [
+      "node",
+      "--loader",
+      "./scripts/krov-three-loader.mjs",
+      "scripts/audit-mutual-fall.mjs"
+    ],
+    "exit": 1,
+    "seconds": 0.592,
+    "status": "FAIL",
+    "stderr": "(node:294) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:\n--import 'data:text/javascript,import { register } from \"node:module\"; import { pathToFileURL } from \"node:url\"; register(\"./scripts/krov-three-loader.mjs\", pathToFileURL(\"./\"));'\n(Use `node --trace-warnings ...` to show where the warning was created)\nnode:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: BRAX does not fall\n    at file:///workspace/scratch/de5ed6fc2c9c/braxhorn-review/scripts/audit-mutual-fall.mjs:2:681\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v24.19.0\n"
+  },
+  {
+    "test": "scripts/audit-natural-contact.cjs",
+    "command": [
+      "node",
+      "scripts/audit-natural-contact.cjs"
+    ],
+    "exit": 0,
+    "seconds": 12.678,
+    "status": "PASS",
+    "stderr": ""
+  },
+  {
+    "test": "scripts/audit-new-fighters.cjs",
+    "command": [
+      "node",
+      "scripts/audit-new-fighters.cjs"
+    ],
+    "exit": 0,
+    "seconds": 5.408,
+    "status": "PASS",
+    "stderr": ""
+  },
+  {
+    "test": "scripts/audit-new-strikes.cjs",
+    "command": [
+      "node",
+      "scripts/audit-new-strikes.cjs"
+    ],
+    "exit": 0,
+    "seconds": 13.13,
+    "status": "PASS",
+    "stderr": ""
+  },
+  {
+    "test": "scripts/audit-passive-contact.cjs",
+    "command": [
+      "node",
+      "scripts/audit-passive-contact.cjs"
+    ],
+    "exit": 0,
+    "seconds": 3.475,
+    "status": "PASS",
+    "stderr": ""
+  },
+  {
+    "test": "scripts/audit-ranking-api.mjs",
+    "command": [
+      "node",
+      "--import",
+      "tsx",
+      "scripts/audit-ranking-api.mjs"
+    ],
+    "exit": 0,
+    "seconds": 0.194,
+    "status": "PASS",
+    "stderr": "ranking_time_rejected {\"match\":\"e0534e18-7402-4a98-ab81-bf130d320029\",\"mode\":\"fight\",\"fighter\":\"BRAX\",\"elapsed\":9403,\"minimum\":9404,\"rounds\":[2,0],\"roundsPlayed\":2}\nranking_time_rejected {\"match\":\"e0534e18-7402-4a98-ab81-bf130d320029\",\"mode\":\"fight\",\"fighter\":\"BRAX\",\"elapsed\":1500,\"minimum\":9404,\"rounds\":[2,0],\"roundsPlayed\":2}\nranking_time_rejected {\"match\":\"1d41e4b7-7c51-4fe3-9f3e-2c9d9fdc9513\",\"mode\":\"arcade\",\"fighter\":\"BRAX\",\"elapsed\":9403,\"minimum\":9404,\"rounds\":[2,0],\"roundsPlayed\":2}\nranking_time_rejected {\"match\":\"1d41e4b7-7c51-4fe3-9f3e-2c9d9fdc9513\",\"mode\":\"arcade\",\"fighter\":\"BRAX\",\"elapsed\":1500,\"minimum\":9404,\"rounds\":[2,0],\"roundsPlayed\":2}\nranking_time_rejected {\"match\":\"2608a3e0-ed2b-431b-8184-a9e4afe8cb77\",\"mode\":\"survival\",\"fighter\":\"BRAX\",\"elapsed\":4701,\"minimum\":4702,\"rounds\":[1,0],\"roundsPlayed\":1}\nranking_time_rejected {\"match\":\"2608a3e0-ed2b-431b-8184-a9e4afe8cb77\",\"mode\":\"survival\",\"fighter\":\"BRAX\",\"elapsed\":1500,\"minimum\":4702,\"rounds\":[1,0],\"roundsPlayed\":1}\nranking_time_rejected {\"match\":\"4781fe82-55ae-4c65-af4c-26ab2564746b\",\"mode\":\"tournament\",\"fighter\":\"BRAX\",\"elapsed\":9403,\"minimum\":9404,\"rounds\":[2,0],\"roundsPlayed\":2}\nranking_time_rejected {\"match\":\"4781fe82-55ae-4c65-af4c-26ab2564746b\",\"mode\":\"tournament\",\"fighter\":\"BRAX\",\"elapsed\":1500,\"minimum\":9404,\"rounds\":[2,0],\"roundsPlayed\":2}\n"
+  },
+  {
+    "test": "scripts/audit-short-step.mjs",
+    "command": [
+      "node",
+      "--loader",
+      "./scripts/krov-three-loader.mjs",
+      "scripts/audit-short-step.mjs"
+    ],
+    "exit": 1,
+    "seconds": 0.596,
+    "status": "FAIL",
+    "stderr": "(node:363) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:\n--import 'data:text/javascript,import { register } from \"node:module\"; import { pathToFileURL } from \"node:url\"; register(\"./scripts/krov-three-loader.mjs\", pathToFileURL(\"./\"));'\n(Use `node --trace-warnings ...` to show where the warning was created)\nfile:///workspace/scratch/de5ed6fc2c9c/braxhorn-review/scripts/audit-short-step.mjs:2\nfor(const clip of ['Long Step Forward','Medium Step Forward Retargeted']){const samples=[];for(let t=0;t<r.clips.get(clip).duration;t+=1/60){r.pose({clip,locomotion:true,plantFeet:clip.includes('Retargeted')},t);samples.push(Object.fromEntries(['Head','LeftHand','RightHand','LeftFoot','RightFoot'].map(n=>[n,r.point(n)])));}const span=b=>Math.max(...samples.map(s=>s[b][0]))-Math.min(...samples.map(s=>s[b][0]));console.log(clip,{footSpan:[span('LeftFoot'),span('RightFoot')],floor:[Math.min(...samples.map(s=>Math.max(s.LeftFoot[1],s.RightFoot[1]))),Math.max(...samples.map(s=>Math.max(s.LeftFoot[1],s.RightFoot[1])))],headY:[Math.min(...samples.map(s=>s.Head[1])),Math.max(...samples.map(s=>s.Head[1]))]});if(clip.includes('Retargeted')){assert(samples.every(s=>Object.values(s).flat().every(Number.isFinite)));assert(samples.every(s=>Math.max(s.LeftFoot[1],s.RightFoot[1])>510&&Math.max(s.LeftFoot[1],s.RightFoot[1])<545),'feet remain near the floor');assert(span('LeftFoot')<200&&span('RightFoot')<200,'shorter step');}}\n                                                                                                                          ^\n\nTypeError: Cannot read properties of undefined (reading 'duration')\n    at file:///workspace/scratch/de5ed6fc2c9c/braxhorn-review/scripts/audit-short-step.mjs:2:123\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\n\nNode.js v24.19.0\n"
+  },
+  {
+    "test": "scripts/audit-shoulder-contact.mjs",
+    "command": [
+      "node",
+      "--loader",
+      "./scripts/krov-three-loader.mjs",
+      "scripts/audit-shoulder-contact.mjs"
+    ],
+    "exit": 1,
+    "seconds": 2.228,
+    "status": "FAIL",
+    "stderr": "(node:373) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:\n--import 'data:text/javascript,import { register } from \"node:module\"; import { pathToFileURL } from \"node:url\"; register(\"./scripts/krov-three-loader.mjs\", pathToFileURL(\"./\"));'\n(Use `node --trace-warnings ...` to show where the warning was created)\nnode:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: {\"a\":\"BRAX\",\"b\":\"BRAX\",\"side\":\"Left\",\"time\":0.1,\"err\":null}\n    at file:///workspace/scratch/de5ed6fc2c9c/braxhorn-review/scripts/audit-shoulder-contact.mjs:3:711\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v24.19.0\n"
+  },
+  {
+    "test": "scripts/audit-six-attacks.cjs",
+    "command": [
+      "node",
+      "scripts/audit-six-attacks.cjs"
+    ],
+    "exit": 0,
+    "seconds": 0.939,
+    "status": "PASS",
+    "stderr": ""
+  },
+  {
+    "test": "scripts/audit-six-input.cjs",
+    "command": [
+      "node",
+      "scripts/audit-six-input.cjs"
+    ],
+    "exit": 0,
+    "seconds": 19.059,
+    "status": "PASS",
+    "stderr": ""
+  },
+  {
+    "test": "scripts/audit-source-motion.mjs",
+    "command": [
+      "node",
+      "--loader",
+      "./scripts/krov-three-loader.mjs",
+      "scripts/audit-source-motion.mjs"
+    ],
+    "exit": 1,
+    "seconds": 0.709,
+    "status": "FAIL",
+    "stderr": "(node:412) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:\n--import 'data:text/javascript,import { register } from \"node:module\"; import { pathToFileURL } from \"node:url\"; register(\"./scripts/krov-three-loader.mjs\", pathToFileURL(\"./\"));'\n(Use `node --trace-warnings ...` to show where the warning was created)\nnode:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: settled guard does not step or slide\n    at file:///workspace/scratch/de5ed6fc2c9c/braxhorn-review/scripts/audit-source-motion.mjs:6:208\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v24.19.0\n"
+  },
+  {
+    "test": "scripts/audit-sprint-backflip.cjs",
+    "command": [
+      "node",
+      "scripts/audit-sprint-backflip.cjs"
+    ],
+    "exit": 0,
+    "seconds": 4.044,
+    "status": "PASS",
+    "stderr": ""
+  },
+  {
+    "test": "scripts/audit-training-contact.cjs",
+    "command": [
+      "node",
+      "scripts/audit-training-contact.cjs"
+    ],
+    "exit": 0,
+    "seconds": 3.915,
+    "status": "PASS",
+    "stderr": ""
+  },
+  {
+    "test": "scripts/audit-two-launches.cjs",
+    "command": [
+      "node",
+      "scripts/audit-two-launches.cjs"
+    ],
+    "exit": 0,
+    "seconds": 4.861,
+    "status": "PASS",
+    "stderr": ""
+  },
+  {
+    "test": "scripts/audit-vexa.cjs",
+    "command": [
+      "node",
+      "scripts/audit-vexa.cjs"
+    ],
+    "exit": 1,
+    "seconds": 1.319,
+    "status": "FAIL",
+    "stderr": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert(B.jumpTime!==null)\n\n    at /workspace/scratch/de5ed6fc2c9c/braxhorn-review/scripts/audit-vexa.cjs:20:27 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n"
+  },
+  {
+    "test": "scripts/audit-visual-update.cjs",
+    "command": [
+      "node",
+      "scripts/audit-visual-update.cjs"
+    ],
+    "exit": 0,
+    "seconds": 0.286,
+    "status": "PASS",
+    "stderr": ""
+  }
+]

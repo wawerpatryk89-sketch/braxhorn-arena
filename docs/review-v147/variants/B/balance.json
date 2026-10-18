@@ -1,0 +1,570 @@
+{
+  "rows": [
+    {
+      "who": "BRAX",
+      "initialHP": 100,
+      "meanDps": 11.587697768995772,
+      "meanRecovery": 589.0146259472309,
+      "best10s": 98,
+      "bestAction": "HEAVY_KICK"
+    },
+    {
+      "who": "NYXA",
+      "initialHP": 100,
+      "meanDps": 10.155540047332138,
+      "meanRecovery": 611.8555210120836,
+      "best10s": 72,
+      "bestAction": "HEAVY_PUNCH"
+    },
+    {
+      "who": "VEXA",
+      "initialHP": 100,
+      "meanDps": 11.550708144274244,
+      "meanRecovery": 590.5614686511362,
+      "best10s": 91,
+      "bestAction": "FLYING_KICK"
+    },
+    {
+      "who": "KROV",
+      "initialHP": 100,
+      "meanDps": 11.157404902853317,
+      "meanRecovery": 633.1324312129681,
+      "best10s": 91,
+      "bestAction": "UPPERCUT"
+    },
+    {
+      "who": "NINA",
+      "initialHP": 100,
+      "meanDps": 15.376384364714008,
+      "meanRecovery": 435.6026901559973,
+      "best10s": 112,
+      "bestAction": "HEAVY_PUNCH"
+    },
+    {
+      "who": "DANNY",
+      "initialHP": 100,
+      "meanDps": 10.617341391088535,
+      "meanRecovery": 542.5485761116593,
+      "best10s": 88,
+      "bestAction": "HEAVY_PUNCH"
+    },
+    {
+      "who": "BEAR",
+      "initialHP": 100,
+      "meanDps": 9.831062678757382,
+      "meanRecovery": 1001.19177295624,
+      "best10s": 80,
+      "bestAction": "SHOULDER"
+    },
+    {
+      "who": "DEMON",
+      "initialHP": 100,
+      "meanDps": 11.013738450908804,
+      "meanRecovery": 768.3469201545676,
+      "best10s": 80,
+      "bestAction": "UPPERCUT"
+    }
+  ],
+  "actions": [
+    {
+      "who": "BRAX",
+      "action": "LIGHT_PUNCH",
+      "damage": 9,
+      "duration": 1020.7337055480086,
+      "recovery": 656.7511438797264,
+      "dps": 8.817187040147857,
+      "damage10s": 49,
+      "landed": 11
+    },
+    {
+      "who": "BRAX",
+      "action": "HEAVY_PUNCH",
+      "damage": 13,
+      "duration": 1212.121260286583,
+      "recovery": 693.8349283019737,
+      "dps": 10.724999573826794,
+      "damage10s": 78,
+      "landed": 6
+    },
+    {
+      "who": "BRAX",
+      "action": "LIGHT_KICK",
+      "damage": 10,
+      "duration": 909.0909090909071,
+      "recovery": 525.2525252525253,
+      "dps": 11.000000000000025,
+      "damage10s": 10,
+      "landed": 1
+    },
+    {
+      "who": "BRAX",
+      "action": "HEAVY_KICK",
+      "damage": 14,
+      "duration": 1136.3636363636388,
+      "recovery": 681.818181818183,
+      "dps": 12.319999999999974,
+      "damage10s": 98,
+      "landed": 7
+    },
+    {
+      "who": "BRAX",
+      "action": "DOUBLE_PUNCH",
+      "damage": 12,
+      "duration": 1010.1010101010113,
+      "recovery": 749.15824915825,
+      "dps": 11.879999999999987,
+      "damage10s": 72,
+      "landed": 6
+    },
+    {
+      "who": "BRAX",
+      "action": "UPPERCUT",
+      "damage": 12,
+      "duration": 811.6883116883117,
+      "recovery": 227.27272727272728,
+      "dps": 14.783999999999999,
+      "damage10s": 96,
+      "landed": 8
+    },
+    {
+      "who": "NYXA",
+      "action": "LIGHT_PUNCH",
+      "damage": 7,
+      "duration": 522.9466147365063,
+      "recovery": 205.32873216648107,
+      "dps": 13.385687568753161,
+      "damage10s": 70,
+      "landed": 10
+    },
+    {
+      "who": "NYXA",
+      "action": "HEAVY_PUNCH",
+      "damage": 12,
+      "duration": 1283.4225108916721,
+      "recovery": 725.7975578835666,
+      "dps": 9.349999628464415,
+      "damage10s": 72,
+      "landed": 6
+    },
+    {
+      "who": "NYXA",
+      "action": "LIGHT_KICK",
+      "damage": 11,
+      "duration": 1038.9610544427637,
+      "recovery": 578.390690102158,
+      "dps": 10.58749984223397,
+      "damage10s": 0,
+      "landed": 0
+    },
+    {
+      "who": "NYXA",
+      "action": "HEAVY_KICK",
+      "damage": 11,
+      "duration": 1212.1212121212106,
+      "recovery": 747.4747474747463,
+      "dps": 9.075000000000012,
+      "damage10s": 0,
+      "landed": 0
+    },
+    {
+      "who": "NYXA",
+      "action": "ELBOW",
+      "damage": 10,
+      "duration": 1120.2938300518917,
+      "recovery": 670.3397507687561,
+      "dps": 8.926229647749468,
+      "damage10s": 60,
+      "landed": 6
+    },
+    {
+      "who": "NYXA",
+      "action": "CLINCH_KNEE",
+      "damage": 12,
+      "duration": 1248.8521491857293,
+      "recovery": 743.8016476767938,
+      "dps": 9.608823596791808,
+      "damage10s": 72,
+      "landed": 6
+    },
+    {
+      "who": "VEXA",
+      "action": "LIGHT_PUNCH",
+      "damage": 10,
+      "duration": 1282.8282153967675,
+      "recovery": 868.6868230245825,
+      "dps": 7.795276000307717,
+      "damage10s": 60,
+      "landed": 6
+    },
+    {
+      "who": "VEXA",
+      "action": "HEAVY_PUNCH",
+      "damage": 12,
+      "duration": 1183.712076057087,
+      "recovery": 795.4545151103629,
+      "dps": 10.137600386718768,
+      "damage10s": 53,
+      "landed": 9
+    },
+    {
+      "who": "VEXA",
+      "action": "LIGHT_KICK",
+      "damage": 10,
+      "duration": 876.6233921051042,
+      "recovery": 513.1454002566453,
+      "dps": 11.407407205945324,
+      "damage10s": 80,
+      "landed": 8
+    },
+    {
+      "who": "VEXA",
+      "action": "HEAVY_KICK",
+      "damage": 13,
+      "duration": 1175.390327600735,
+      "recovery": 610.4740461182121,
+      "dps": 11.060155673167946,
+      "damage10s": 39,
+      "landed": 3
+    },
+    {
+      "who": "VEXA",
+      "action": "SPIN_KICK",
+      "damage": 14,
+      "duration": 899.9081682567739,
+      "recovery": 192.83746462645195,
+      "dps": 15.557142932839044,
+      "damage10s": 84,
+      "landed": 6
+    },
+    {
+      "who": "VEXA",
+      "action": "FLYING_KICK",
+      "damage": 13,
+      "duration": 974.025974025974,
+      "recovery": 562.7705627705628,
+      "dps": 13.346666666666666,
+      "damage10s": 91,
+      "landed": 7
+    },
+    {
+      "who": "KROV",
+      "action": "LIGHT_PUNCH",
+      "damage": 11,
+      "duration": 1241.446660061385,
+      "recovery": 811.3391557881507,
+      "dps": 8.860630387016458,
+      "damage10s": 56,
+      "landed": 10
+    },
+    {
+      "who": "KROV",
+      "action": "HEAVY_PUNCH",
+      "damage": 14,
+      "duration": 1358.4117530655315,
+      "recovery": 622.1733220147484,
+      "dps": 10.306153468126407,
+      "damage10s": 70,
+      "landed": 5
+    },
+    {
+      "who": "KROV",
+      "action": "LIGHT_KICK",
+      "damage": 11,
+      "duration": 959.5959836786468,
+      "recovery": 529.776949322585,
+      "dps": 11.463157607049471,
+      "damage10s": 11,
+      "landed": 1
+    },
+    {
+      "who": "KROV",
+      "action": "HEAVY_KICK",
+      "damage": 15,
+      "duration": 1564.0274170906278,
+      "recovery": 689.7263764809613,
+      "dps": 9.590624714177132,
+      "damage10s": 60,
+      "landed": 4
+    },
+    {
+      "who": "KROV",
+      "action": "ELBOW",
+      "damage": 13,
+      "duration": 1222.2222125891483,
+      "recovery": 686.8686814550582,
+      "dps": 10.636363720195265,
+      "damage10s": 65,
+      "landed": 5
+    },
+    {
+      "who": "KROV",
+      "action": "UPPERCUT",
+      "damage": 13,
+      "duration": 808.0808321634918,
+      "recovery": 458.91010221630427,
+      "dps": 16.087499520555173,
+      "damage10s": 91,
+      "landed": 7
+    },
+    {
+      "who": "NINA",
+      "action": "LIGHT_PUNCH",
+      "damage": 13,
+      "duration": 1161.2229076077795,
+      "recovery": 391.006842619746,
+      "dps": 11.195094339622644,
+      "damage10s": 78,
+      "landed": 6
+    },
+    {
+      "who": "NINA",
+      "action": "HEAVY_PUNCH",
+      "damage": 14,
+      "duration": 849.9999999999989,
+      "recovery": 493.26243709547606,
+      "dps": 16.47058823529414,
+      "damage10s": 112,
+      "landed": 8
+    },
+    {
+      "who": "NINA",
+      "action": "LIGHT_KICK",
+      "damage": 12,
+      "duration": 747.7444073662081,
+      "recovery": 391.006842619746,
+      "dps": 16.048264462809946,
+      "damage10s": 84,
+      "landed": 7
+    },
+    {
+      "who": "NINA",
+      "action": "HEAVY_KICK",
+      "damage": 15,
+      "duration": 899.9999999999972,
+      "recovery": 543.2624352535368,
+      "dps": 16.666666666666718,
+      "damage10s": 105,
+      "landed": 7
+    },
+    {
+      "who": "NINA",
+      "action": "CRESCENT_KICK",
+      "damage": 10,
+      "duration": 747.7444073662066,
+      "recovery": 391.006842619746,
+      "dps": 13.373553719008314,
+      "damage10s": 80,
+      "landed": 8
+    },
+    {
+      "who": "NINA",
+      "action": "SPIN_KICK",
+      "damage": 14,
+      "duration": 849.9999999999993,
+      "recovery": 493.2624358002367,
+      "dps": 16.47058823529413,
+      "damage10s": 112,
+      "landed": 8
+    },
+    {
+      "who": "NINA",
+      "action": "MEIA_LUA",
+      "damage": 13,
+      "duration": 735.8253206499955,
+      "recovery": 391.00684261974527,
+      "dps": 17.667236550811236,
+      "damage10s": 104,
+      "landed": 8
+    },
+    {
+      "who": "NINA",
+      "action": "GROUND_KICK",
+      "damage": 15,
+      "duration": 992.123681674133,
+      "recovery": 391.006842619746,
+      "dps": 15.119082708204933,
+      "damage10s": 105,
+      "landed": 7
+    },
+    {
+      "who": "DANNY",
+      "action": "LIGHT_PUNCH",
+      "damage": 7,
+      "duration": 646.4848484848474,
+      "recovery": 318.2694638694637,
+      "dps": 10.827786631667779,
+      "damage10s": 70,
+      "landed": 10
+    },
+    {
+      "who": "DANNY",
+      "action": "HEAVY_PUNCH",
+      "damage": 11,
+      "duration": 849.9999999999995,
+      "recovery": 536.5310026034751,
+      "dps": 12.941176470588243,
+      "damage10s": 88,
+      "landed": 8
+    },
+    {
+      "who": "DANNY",
+      "action": "LIGHT_KICK",
+      "damage": 10,
+      "duration": 1010.1010101010124,
+      "recovery": 538.7205387205388,
+      "dps": 9.899999999999977,
+      "damage10s": 50,
+      "landed": 5
+    },
+    {
+      "who": "DANNY",
+      "action": "HEAVY_KICK",
+      "damage": 14,
+      "duration": 1471.8831168831205,
+      "recovery": 547.9272916864155,
+      "dps": 9.511624829046609,
+      "damage10s": 70,
+      "landed": 5
+    },
+    {
+      "who": "DANNY",
+      "action": "HOOK",
+      "damage": 12,
+      "duration": 1141.3939393939372,
+      "recovery": 545.4448913917934,
+      "dps": 10.513460415228607,
+      "damage10s": 72,
+      "landed": 6
+    },
+    {
+      "who": "DANNY",
+      "action": "SIDE_KICK",
+      "damage": 13,
+      "duration": 1298.7012987012988,
+      "recovery": 768.3982683982684,
+      "dps": 10.01,
+      "damage10s": 78,
+      "landed": 6
+    },
+    {
+      "who": "BEAR",
+      "action": "LIGHT_PUNCH",
+      "damage": 9,
+      "duration": 1494.211803643574,
+      "recovery": 1101.3947441598468,
+      "dps": 6.023242473425702,
+      "damage10s": 36,
+      "landed": 8
+    },
+    {
+      "who": "BEAR",
+      "action": "HEAVY_PUNCH",
+      "damage": 15,
+      "duration": 1538.165283678584,
+      "recovery": 776.9980558446895,
+      "dps": 9.751877876301368,
+      "damage10s": 60,
+      "landed": 8
+    },
+    {
+      "who": "BEAR",
+      "action": "LIGHT_KICK",
+      "damage": 12,
+      "duration": 1417.9448607099653,
+      "recovery": 1101.3947441598475,
+      "dps": 8.462952497314738,
+      "damage10s": 60,
+      "landed": 5
+    },
+    {
+      "who": "BEAR",
+      "action": "HEAVY_KICK",
+      "damage": 14,
+      "duration": 1424.8515342833032,
+      "recovery": 1101.3947441598475,
+      "dps": 9.82558509651461,
+      "damage10s": 56,
+      "landed": 4
+    },
+    {
+      "who": "BEAR",
+      "action": "SHOULDER",
+      "damage": 16,
+      "duration": 1192.0991278590984,
+      "recovery": 824.5736052533618,
+      "dps": 13.42170263032953,
+      "damage10s": 80,
+      "landed": 5
+    },
+    {
+      "who": "BEAR",
+      "action": "UPPERCUT",
+      "damage": 16,
+      "duration": 1391.1815006132701,
+      "recovery": 1101.3947441598466,
+      "dps": 11.501015498658349,
+      "damage10s": 64,
+      "landed": 4
+    },
+    {
+      "who": "DEMON",
+      "action": "LIGHT_PUNCH",
+      "damage": 7,
+      "duration": 873.7279744221319,
+      "recovery": 587.1395547951313,
+      "dps": 8.011646879716396,
+      "damage10s": 42,
+      "landed": 6
+    },
+    {
+      "who": "DEMON",
+      "action": "HEAVY_PUNCH",
+      "damage": 12,
+      "duration": 1139.2600867993467,
+      "recovery": 804.5883932264545,
+      "dps": 10.533152296867495,
+      "damage10s": 72,
+      "landed": 6
+    },
+    {
+      "who": "DEMON",
+      "action": "LIGHT_KICK",
+      "damage": 10,
+      "duration": 1142.9254704619889,
+      "recovery": 804.588393226455,
+      "dps": 8.749476898049913,
+      "damage10s": 70,
+      "landed": 7
+    },
+    {
+      "who": "DEMON",
+      "action": "HEAVY_KICK",
+      "damage": 15,
+      "duration": 1143.2245451641968,
+      "recovery": 804.5883932264559,
+      "dps": 13.120781970129595,
+      "damage10s": 45,
+      "landed": 3
+    },
+    {
+      "who": "DEMON",
+      "action": "SHOULDER",
+      "damage": 13,
+      "duration": 1140.0862238094546,
+      "recovery": 804.5883932264537,
+      "dps": 11.40264633368004,
+      "damage10s": 78,
+      "landed": 6
+    },
+    {
+      "who": "DEMON",
+      "action": "UPPERCUT",
+      "damage": 16,
+      "duration": 1121.6478769526047,
+      "recovery": 804.5883932264545,
+      "dps": 14.264726327009381,
+      "damage10s": 80,
+      "landed": 5
+    }
+  ]
+}

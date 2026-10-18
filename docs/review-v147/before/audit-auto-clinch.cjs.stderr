@@ -1,0 +1,11 @@
+AssertionError [ERR_ASSERTION]: walking must not start a grab
+    at /workspace/scratch/de5ed6fc2c9c/braxhorn-review/scripts/audit-auto-clinch.cjs:6:19
+    at Object.step (/workspace/scratch/de5ed6fc2c9c/braxhorn-review/scripts/audit-new-fighters.cjs:71:311)
+    at /workspace/scratch/de5ed6fc2c9c/braxhorn-review/scripts/audit-auto-clinch.cjs:6:4 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}

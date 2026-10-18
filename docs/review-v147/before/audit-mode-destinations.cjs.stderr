@@ -1,0 +1,8 @@
+TypeError: window.BRAX_ONLINE?.best is not a function
+    at refreshSurvival (evalmachine.<anonymous>:20:264)
+    at Object.openSurvival (evalmachine.<anonymous>:21:178)
+    at selectGameMode (evalmachine.<anonymous>:790:475)
+    at evalmachine.<anonymous>:767:49
+    at Element.dispatch (/workspace/scratch/de5ed6fc2c9c/braxhorn-review/scripts/audit-new-fighters.cjs:15:151)
+    at click (/workspace/scratch/de5ed6fc2c9c/braxhorn-review/scripts/audit-mode-destinations.cjs:3:428)
+    at /workspace/scratch/de5ed6fc2c9c/braxhorn-review/scripts/audit-mode-destinations.cjs:3:516

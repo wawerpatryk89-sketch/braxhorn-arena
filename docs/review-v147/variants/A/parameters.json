@@ -1,0 +1,839 @@
+{
+  "status": "PROPOZYCJA — NIE ZASTOSOWANO",
+  "parameters": {
+    "BEAR": {
+      "variant": "A",
+      "factor": 0.475254883668793,
+      "reference": 11.013738450908802
+    },
+    "DEMON": {
+      "variant": "A",
+      "factor": 0.6143127568883768,
+      "reference": 11.013738450908802
+    }
+  },
+  "patches": {
+    "BEAR": {
+      "file": "game/assets/bear-new/config.json",
+      "sourceSHA256": "8378177fe4a08393a9c2eec602e006b3c277752e0d177305daa94381da69afcf",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/LIGHT_PUNCH/hits/11/damage",
+          "before": 4,
+          "value": 2
+        },
+        {
+          "op": "replace",
+          "path": "/LIGHT_PUNCH/hits/12/damage",
+          "before": 4,
+          "value": 2
+        },
+        {
+          "op": "replace",
+          "path": "/LIGHT_PUNCH/hits/13/damage",
+          "before": 4,
+          "value": 2
+        },
+        {
+          "op": "replace",
+          "path": "/LIGHT_PUNCH/hits/14/damage",
+          "before": 4,
+          "value": 2
+        },
+        {
+          "op": "replace",
+          "path": "/LIGHT_PUNCH/hits/15/damage",
+          "before": 4,
+          "value": 2
+        },
+        {
+          "op": "replace",
+          "path": "/LIGHT_PUNCH/hits/16/damage",
+          "before": 4,
+          "value": 2
+        },
+        {
+          "op": "replace",
+          "path": "/LIGHT_PUNCH/hits/17/damage",
+          "before": 4,
+          "value": 2
+        },
+        {
+          "op": "replace",
+          "path": "/LIGHT_PUNCH/hits/18/damage",
+          "before": 4,
+          "value": 2
+        },
+        {
+          "op": "replace",
+          "path": "/LIGHT_PUNCH/hits/27/damage",
+          "before": 5,
+          "value": 2
+        },
+        {
+          "op": "replace",
+          "path": "/LIGHT_PUNCH/hits/28/damage",
+          "before": 5,
+          "value": 2
+        },
+        {
+          "op": "replace",
+          "path": "/LIGHT_PUNCH/hits/29/damage",
+          "before": 5,
+          "value": 2
+        },
+        {
+          "op": "replace",
+          "path": "/LIGHT_PUNCH/hits/30/damage",
+          "before": 5,
+          "value": 2
+        },
+        {
+          "op": "replace",
+          "path": "/LIGHT_PUNCH/hits/31/damage",
+          "before": 5,
+          "value": 2
+        },
+        {
+          "op": "replace",
+          "path": "/LIGHT_PUNCH/hits/32/damage",
+          "before": 5,
+          "value": 2
+        },
+        {
+          "op": "replace",
+          "path": "/LIGHT_PUNCH/hits/33/damage",
+          "before": 5,
+          "value": 2
+        },
+        {
+          "op": "replace",
+          "path": "/LIGHT_PUNCH/hits/34/damage",
+          "before": 5,
+          "value": 2
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_PUNCH/hits/18/damage",
+          "before": 8,
+          "value": 4
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_PUNCH/hits/19/damage",
+          "before": 8,
+          "value": 4
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_PUNCH/hits/20/damage",
+          "before": 8,
+          "value": 4
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_PUNCH/hits/21/damage",
+          "before": 8,
+          "value": 4
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_PUNCH/hits/22/damage",
+          "before": 8,
+          "value": 4
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_PUNCH/hits/23/damage",
+          "before": 8,
+          "value": 4
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_PUNCH/hits/24/damage",
+          "before": 8,
+          "value": 4
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_PUNCH/hits/25/damage",
+          "before": 8,
+          "value": 4
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_PUNCH/hits/26/damage",
+          "before": 8,
+          "value": 4
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_PUNCH/hits/60/damage",
+          "before": 7,
+          "value": 3
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_PUNCH/hits/61/damage",
+          "before": 7,
+          "value": 3
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_PUNCH/hits/62/damage",
+          "before": 7,
+          "value": 3
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_PUNCH/hits/63/damage",
+          "before": 7,
+          "value": 3
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_PUNCH/hits/64/damage",
+          "before": 7,
+          "value": 3
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_PUNCH/hits/65/damage",
+          "before": 7,
+          "value": 3
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_PUNCH/hits/66/damage",
+          "before": 7,
+          "value": 3
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_PUNCH/hits/67/damage",
+          "before": 7,
+          "value": 3
+        },
+        {
+          "op": "replace",
+          "path": "/LIGHT_KICK/hits/29/damage",
+          "before": 12,
+          "value": 6
+        },
+        {
+          "op": "replace",
+          "path": "/LIGHT_KICK/hits/30/damage",
+          "before": 12,
+          "value": 6
+        },
+        {
+          "op": "replace",
+          "path": "/LIGHT_KICK/hits/31/damage",
+          "before": 12,
+          "value": 6
+        },
+        {
+          "op": "replace",
+          "path": "/LIGHT_KICK/hits/32/damage",
+          "before": 12,
+          "value": 6
+        },
+        {
+          "op": "replace",
+          "path": "/LIGHT_KICK/hits/33/damage",
+          "before": 12,
+          "value": 6
+        },
+        {
+          "op": "replace",
+          "path": "/LIGHT_KICK/hits/34/damage",
+          "before": 12,
+          "value": 6
+        },
+        {
+          "op": "replace",
+          "path": "/LIGHT_KICK/hits/35/damage",
+          "before": 12,
+          "value": 6
+        },
+        {
+          "op": "replace",
+          "path": "/LIGHT_KICK/hits/36/damage",
+          "before": 12,
+          "value": 6
+        },
+        {
+          "op": "replace",
+          "path": "/LIGHT_KICK/hits/37/damage",
+          "before": 12,
+          "value": 6
+        },
+        {
+          "op": "replace",
+          "path": "/LIGHT_KICK/hits/38/damage",
+          "before": 12,
+          "value": 6
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_KICK/hits/44/damage",
+          "before": 14,
+          "value": 7
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_KICK/hits/45/damage",
+          "before": 14,
+          "value": 7
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_KICK/hits/46/damage",
+          "before": 14,
+          "value": 7
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_KICK/hits/47/damage",
+          "before": 14,
+          "value": 7
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_KICK/hits/48/damage",
+          "before": 14,
+          "value": 7
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_KICK/hits/49/damage",
+          "before": 14,
+          "value": 7
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_KICK/hits/50/damage",
+          "before": 14,
+          "value": 7
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_KICK/hits/51/damage",
+          "before": 14,
+          "value": 7
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_KICK/hits/52/damage",
+          "before": 14,
+          "value": 7
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_KICK/hits/53/damage",
+          "before": 14,
+          "value": 7
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_KICK/hits/54/damage",
+          "before": 14,
+          "value": 7
+        },
+        {
+          "op": "replace",
+          "path": "/SHOULDER/hits/11/damage",
+          "before": 16,
+          "value": 8
+        },
+        {
+          "op": "replace",
+          "path": "/SHOULDER/hits/12/damage",
+          "before": 16,
+          "value": 8
+        },
+        {
+          "op": "replace",
+          "path": "/SHOULDER/hits/13/damage",
+          "before": 16,
+          "value": 8
+        },
+        {
+          "op": "replace",
+          "path": "/SHOULDER/hits/14/damage",
+          "before": 16,
+          "value": 8
+        },
+        {
+          "op": "replace",
+          "path": "/SHOULDER/hits/15/damage",
+          "before": 16,
+          "value": 8
+        },
+        {
+          "op": "replace",
+          "path": "/SHOULDER/hits/16/damage",
+          "before": 16,
+          "value": 8
+        },
+        {
+          "op": "replace",
+          "path": "/SHOULDER/hits/17/damage",
+          "before": 16,
+          "value": 8
+        },
+        {
+          "op": "replace",
+          "path": "/SHOULDER/hits/18/damage",
+          "before": 16,
+          "value": 8
+        },
+        {
+          "op": "replace",
+          "path": "/SHOULDER/hits/19/damage",
+          "before": 16,
+          "value": 8
+        },
+        {
+          "op": "replace",
+          "path": "/SHOULDER/hits/20/damage",
+          "before": 16,
+          "value": 8
+        },
+        {
+          "op": "replace",
+          "path": "/SHOULDER/hits/21/damage",
+          "before": 16,
+          "value": 8
+        },
+        {
+          "op": "replace",
+          "path": "/SHOULDER/hits/22/damage",
+          "before": 16,
+          "value": 8
+        },
+        {
+          "op": "replace",
+          "path": "/SHOULDER/hits/23/damage",
+          "before": 16,
+          "value": 8
+        },
+        {
+          "op": "replace",
+          "path": "/SHOULDER/hits/24/damage",
+          "before": 16,
+          "value": 8
+        },
+        {
+          "op": "replace",
+          "path": "/SHOULDER/hits/25/damage",
+          "before": 16,
+          "value": 8
+        },
+        {
+          "op": "replace",
+          "path": "/SHOULDER/hits/26/damage",
+          "before": 16,
+          "value": 8
+        },
+        {
+          "op": "replace",
+          "path": "/UPPERCUT/hits/21/damage",
+          "before": 16,
+          "value": 8
+        },
+        {
+          "op": "replace",
+          "path": "/UPPERCUT/hits/22/damage",
+          "before": 16,
+          "value": 8
+        },
+        {
+          "op": "replace",
+          "path": "/UPPERCUT/hits/23/damage",
+          "before": 16,
+          "value": 8
+        },
+        {
+          "op": "replace",
+          "path": "/UPPERCUT/hits/24/damage",
+          "before": 16,
+          "value": 8
+        },
+        {
+          "op": "replace",
+          "path": "/UPPERCUT/hits/25/damage",
+          "before": 16,
+          "value": 8
+        },
+        {
+          "op": "replace",
+          "path": "/UPPERCUT/hits/26/damage",
+          "before": 16,
+          "value": 8
+        },
+        {
+          "op": "replace",
+          "path": "/UPPERCUT/hits/27/damage",
+          "before": 16,
+          "value": 8
+        },
+        {
+          "op": "replace",
+          "path": "/UPPERCUT/hits/28/damage",
+          "before": 16,
+          "value": 8
+        }
+      ]
+    },
+    "DEMON": {
+      "file": "game/assets/demon-new/config.json",
+      "sourceSHA256": "43e16c0823547880c151ea5dc7ea72d75f53f4ef69159982845df5d00b8fb0ac",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/LIGHT_PUNCH/hits/18/damage",
+          "before": 7,
+          "value": 4
+        },
+        {
+          "op": "replace",
+          "path": "/LIGHT_PUNCH/hits/19/damage",
+          "before": 7,
+          "value": 4
+        },
+        {
+          "op": "replace",
+          "path": "/LIGHT_PUNCH/hits/20/damage",
+          "before": 7,
+          "value": 4
+        },
+        {
+          "op": "replace",
+          "path": "/LIGHT_PUNCH/hits/21/damage",
+          "before": 7,
+          "value": 4
+        },
+        {
+          "op": "replace",
+          "path": "/LIGHT_PUNCH/hits/22/damage",
+          "before": 7,
+          "value": 4
+        },
+        {
+          "op": "replace",
+          "path": "/LIGHT_PUNCH/hits/23/damage",
+          "before": 7,
+          "value": 4
+        },
+        {
+          "op": "replace",
+          "path": "/LIGHT_PUNCH/hits/24/damage",
+          "before": 7,
+          "value": 4
+        },
+        {
+          "op": "replace",
+          "path": "/LIGHT_PUNCH/hits/25/damage",
+          "before": 7,
+          "value": 4
+        },
+        {
+          "op": "replace",
+          "path": "/LIGHT_PUNCH/hits/26/damage",
+          "before": 7,
+          "value": 4
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_PUNCH/hits/64/damage",
+          "before": 12,
+          "value": 7
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_PUNCH/hits/65/damage",
+          "before": 12,
+          "value": 7
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_PUNCH/hits/66/damage",
+          "before": 12,
+          "value": 7
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_PUNCH/hits/67/damage",
+          "before": 12,
+          "value": 7
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_PUNCH/hits/68/damage",
+          "before": 12,
+          "value": 7
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_PUNCH/hits/69/damage",
+          "before": 12,
+          "value": 7
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_PUNCH/hits/70/damage",
+          "before": 12,
+          "value": 7
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_PUNCH/hits/71/damage",
+          "before": 12,
+          "value": 7
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_PUNCH/hits/72/damage",
+          "before": 12,
+          "value": 7
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_PUNCH/hits/73/damage",
+          "before": 12,
+          "value": 7
+        },
+        {
+          "op": "replace",
+          "path": "/LIGHT_KICK/hits/37/damage",
+          "before": 10,
+          "value": 6
+        },
+        {
+          "op": "replace",
+          "path": "/LIGHT_KICK/hits/38/damage",
+          "before": 10,
+          "value": 6
+        },
+        {
+          "op": "replace",
+          "path": "/LIGHT_KICK/hits/39/damage",
+          "before": 10,
+          "value": 6
+        },
+        {
+          "op": "replace",
+          "path": "/LIGHT_KICK/hits/40/damage",
+          "before": 10,
+          "value": 6
+        },
+        {
+          "op": "replace",
+          "path": "/LIGHT_KICK/hits/41/damage",
+          "before": 10,
+          "value": 6
+        },
+        {
+          "op": "replace",
+          "path": "/LIGHT_KICK/hits/42/damage",
+          "before": 10,
+          "value": 6
+        },
+        {
+          "op": "replace",
+          "path": "/LIGHT_KICK/hits/43/damage",
+          "before": 10,
+          "value": 6
+        },
+        {
+          "op": "replace",
+          "path": "/LIGHT_KICK/hits/44/damage",
+          "before": 10,
+          "value": 6
+        },
+        {
+          "op": "replace",
+          "path": "/LIGHT_KICK/hits/45/damage",
+          "before": 10,
+          "value": 6
+        },
+        {
+          "op": "replace",
+          "path": "/LIGHT_KICK/hits/46/damage",
+          "before": 10,
+          "value": 6
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_KICK/hits/59/damage",
+          "before": 15,
+          "value": 9
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_KICK/hits/60/damage",
+          "before": 15,
+          "value": 9
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_KICK/hits/61/damage",
+          "before": 15,
+          "value": 9
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_KICK/hits/62/damage",
+          "before": 15,
+          "value": 9
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_KICK/hits/63/damage",
+          "before": 15,
+          "value": 9
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_KICK/hits/64/damage",
+          "before": 15,
+          "value": 9
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_KICK/hits/65/damage",
+          "before": 15,
+          "value": 9
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_KICK/hits/66/damage",
+          "before": 15,
+          "value": 9
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_KICK/hits/67/damage",
+          "before": 15,
+          "value": 9
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_KICK/hits/68/damage",
+          "before": 15,
+          "value": 9
+        },
+        {
+          "op": "replace",
+          "path": "/SHOULDER/hits/41/damage",
+          "before": 13,
+          "value": 8
+        },
+        {
+          "op": "replace",
+          "path": "/SHOULDER/hits/42/damage",
+          "before": 13,
+          "value": 8
+        },
+        {
+          "op": "replace",
+          "path": "/SHOULDER/hits/43/damage",
+          "before": 13,
+          "value": 8
+        },
+        {
+          "op": "replace",
+          "path": "/SHOULDER/hits/44/damage",
+          "before": 13,
+          "value": 8
+        },
+        {
+          "op": "replace",
+          "path": "/SHOULDER/hits/45/damage",
+          "before": 13,
+          "value": 8
+        },
+        {
+          "op": "replace",
+          "path": "/SHOULDER/hits/46/damage",
+          "before": 13,
+          "value": 8
+        },
+        {
+          "op": "replace",
+          "path": "/SHOULDER/hits/47/damage",
+          "before": 13,
+          "value": 8
+        },
+        {
+          "op": "replace",
+          "path": "/SHOULDER/hits/48/damage",
+          "before": 13,
+          "value": 8
+        },
+        {
+          "op": "replace",
+          "path": "/SHOULDER/hits/49/damage",
+          "before": 13,
+          "value": 8
+        },
+        {
+          "op": "replace",
+          "path": "/SHOULDER/hits/50/damage",
+          "before": 13,
+          "value": 8
+        },
+        {
+          "op": "replace",
+          "path": "/UPPERCUT/hits/23/damage",
+          "before": 16,
+          "value": 10
+        },
+        {
+          "op": "replace",
+          "path": "/UPPERCUT/hits/24/damage",
+          "before": 16,
+          "value": 10
+        },
+        {
+          "op": "replace",
+          "path": "/UPPERCUT/hits/25/damage",
+          "before": 16,
+          "value": 10
+        },
+        {
+          "op": "replace",
+          "path": "/UPPERCUT/hits/26/damage",
+          "before": 16,
+          "value": 10
+        },
+        {
+          "op": "replace",
+          "path": "/UPPERCUT/hits/27/damage",
+          "before": 16,
+          "value": 10
+        },
+        {
+          "op": "replace",
+          "path": "/UPPERCUT/hits/28/damage",
+          "before": 16,
+          "value": 10
+        },
+        {
+          "op": "replace",
+          "path": "/UPPERCUT/hits/29/damage",
+          "before": 16,
+          "value": 10
+        },
+        {
+          "op": "replace",
+          "path": "/UPPERCUT/hits/30/damage",
+          "before": 16,
+          "value": 10
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,221 @@
+{
+  "status": "PROPOZYCJA — NIE ZASTOSOWANO",
+  "parameters": {
+    "BEAR": {
+      "variant": "B",
+      "factor": 4.326907923485114,
+      "reference": 11.013738450908802
+    },
+    "DEMON": {
+      "variant": "B",
+      "factor": 2.212618081372751,
+      "reference": 11.013738450908802
+    }
+  },
+  "patches": {
+    "BEAR": {
+      "file": "game/assets/bear-new/config.json",
+      "sourceSHA256": "8378177fe4a08393a9c2eec602e006b3c277752e0d177305daa94381da69afcf",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/LIGHT_PUNCH/phaseTempo",
+          "before": {
+            "first": 11,
+            "last": 34,
+            "startup": 1,
+            "recovery": 1.4991181657848323
+          },
+          "value": {
+            "first": 11,
+            "last": 34,
+            "startup": 1,
+            "recovery": 0.3464640783428933
+          }
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_PUNCH/phaseTempo",
+          "before": {
+            "first": 18,
+            "last": 67,
+            "startup": 1.01010101010101,
+            "recovery": 1
+          },
+          "value": {
+            "first": 18,
+            "last": 67,
+            "startup": 1.01010101010101,
+            "recovery": 0.23111192049461235
+          }
+        },
+        {
+          "op": "replace",
+          "path": "/LIGHT_KICK/phaseTempo",
+          "before": {
+            "first": 29,
+            "last": 38,
+            "startup": 1.68997668997669,
+            "recovery": 1.5109890109890107
+          },
+          "value": {
+            "first": 29,
+            "last": 38,
+            "startup": 1.68997668997669,
+            "recovery": 0.3492075721759252
+          }
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_KICK/phaseTempo",
+          "before": {
+            "first": 44,
+            "last": 54,
+            "startup": 2.4691358024691357,
+            "recovery": 1.1463844797178129
+          },
+          "value": {
+            "first": 44,
+            "last": 54,
+            "startup": 2.4691358024691357,
+            "recovery": 0.26494311873280074
+          }
+        },
+        {
+          "op": "replace",
+          "path": "/SHOULDER/phaseTempo",
+          "before": {
+            "first": 11,
+            "last": 26,
+            "startup": 1,
+            "recovery": 1
+          },
+          "value": {
+            "first": 11,
+            "last": 26,
+            "startup": 1,
+            "recovery": 0.11555596024730617
+          }
+        },
+        {
+          "op": "replace",
+          "path": "/UPPERCUT/phaseTempo",
+          "before": {
+            "first": 21,
+            "last": 28,
+            "startup": 1.1784511784511784,
+            "recovery": 1.6313932980599646
+          },
+          "value": {
+            "first": 21,
+            "last": 28,
+            "startup": 1.1784511784511784,
+            "recovery": 0.377034438196678
+          }
+        }
+      ]
+    },
+    "DEMON": {
+      "file": "game/assets/demon-new/config.json",
+      "sourceSHA256": "43e16c0823547880c151ea5dc7ea72d75f53f4ef69159982845df5d00b8fb0ac",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/LIGHT_PUNCH/phaseTempo",
+          "before": {
+            "first": 18,
+            "last": 26,
+            "startup": 1,
+            "recovery": 1
+          },
+          "value": {
+            "first": 18,
+            "last": 26,
+            "startup": 1,
+            "recovery": 0.45195328033276333
+          }
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_PUNCH/phaseTempo",
+          "before": {
+            "first": 64,
+            "last": 73,
+            "startup": 3.0243548910126434,
+            "recovery": 1.6834787967550848
+          },
+          "value": {
+            "first": 64,
+            "last": 73,
+            "startup": 3.0243548910126434,
+            "recovery": 0.760853764564114
+          }
+        },
+        {
+          "op": "replace",
+          "path": "/LIGHT_KICK/phaseTempo",
+          "before": {
+            "first": 37,
+            "last": 46,
+            "startup": 1.8081276173944825,
+            "recovery": 1.4965921157488116
+          },
+          "value": {
+            "first": 37,
+            "last": 46,
+            "startup": 1.8081276173944825,
+            "recovery": 0.676389716032826
+          }
+        },
+        {
+          "op": "replace",
+          "path": "/HEAVY_KICK/phaseTempo",
+          "before": {
+            "first": 59,
+            "last": 68,
+            "startup": 2.8909945043037584,
+            "recovery": 1.8374965069727274
+          },
+          "value": {
+            "first": 59,
+            "last": 68,
+            "startup": 2.8909945043037584,
+            "recovery": 0.8304625739263185
+          }
+        },
+        {
+          "op": "replace",
+          "path": "/SHOULDER/phaseTempo",
+          "before": {
+            "first": 41,
+            "last": 50,
+            "startup": 1.9523808637173539,
+            "recovery": 2.232142755774414
+          },
+          "value": {
+            "first": 41,
+            "last": 50,
+            "startup": 1.9523808637173539,
+            "recovery": 1.0088242406432606
+          }
+        },
+        {
+          "op": "replace",
+          "path": "/UPPERCUT/phaseTempo",
+          "before": {
+            "first": 23,
+            "last": 30,
+            "startup": 1.1358024691358024,
+            "recovery": 1.0802469135802468
+          },
+          "value": {
+            "first": 23,
+            "last": 30,
+            "startup": 1.1358024691358024,
+            "recovery": 0.4882211361619357
+          }
+        }
+      ]
+    }
+  }
+}

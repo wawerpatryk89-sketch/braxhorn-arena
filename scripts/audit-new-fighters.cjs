@@ -77,11 +77,10 @@ async function createGame(width, height, withAudio=false, visualViewport=null, o
 
 module.exports={createGame};
 if(require.main===module)(async()=>{const results=[];for(const slot of [0,1]){
- const g=await createGame(844,390,true);g.elements.get('go').dispatch('click');if(slot)g.elements.get('nextFighter').dispatch('click');await g.flush();
- g.elements.get('chooseFighter').dispatch('click');g.elements.get('arena-rooftop').dispatch('click');g.elements.get('fighterFilm').dispatch('ended');g.step(320);assert.equal(g.test.B.a,'INTRO','greeting is played after the film');assert(g.test.B.frame>0&&!g.test.CFG().INTRO.freeze,'greeting advances instead of freezing');g.step(14000);
+ const g=await createGame(844,390,true);await g.start();g.test.selectSlot(slot,true);await g.flush();await g.test.begin();g.elements.get('fighterFilm').dispatch('ended');g.step(320);assert.equal(g.test.B.a,'INTRO','greeting is played after the film');assert(g.test.B.frame>0&&!g.test.CFG().INTRO.freeze,'greeting advances instead of freezing');g.step(14000);
  assert(g.state().running&&!g.state().preFight,'intro and countdown finish');
  const{B,O,S}=g.test;S.training=true;S.trainingBehavior='idle';g.proof.reset();
- assert.equal(g.test.actionTempo(slot?'NYXA':'BRAX',g.test.CFG().LIGHT_PUNCH),g.test.CFG().LIGHT_PUNCH.playbackRate,'configured tempo');if(!g.test.CFG().JUMP)assert.equal(g.test.jump(),false,'missing jump safe');else{g.test.jump();assert.equal(B.a,'JUMP');g.step(2000);assert.equal(B.jumpTime,null);}
+ assert.equal(g.test.actionTempo(slot?'NYXA':'BRAX',g.test.CFG().LIGHT_PUNCH),g.test.CFG().LIGHT_PUNCH.playbackRate*1.1,'configured tempo with common action multiplier');if(!g.test.CFG().JUMP)assert.equal(g.test.jump(),false,'missing jump safe');else{g.test.jump();assert.equal(B.a,'JUMP');g.step(2000);assert.equal(B.jumpTime,null);}
  for(const direction of [-1,0,1])for(const kind of ['punch','heavy','kick','kick2']){g.proof.reset();g.test.K.left=direction===-1;g.test.K.right=direction===1;assert(g.test.playerButtonAttack(kind),kind+' mapping');g.test.K.left=g.test.K.right=false;g.step(19000);assert(!B.lock,'action returns');}
  const cfg=g.test.CFG(),unique=[...new Set(Object.values(cfg).filter(c=>c.attack))];
  for(const c of unique)for(const face of [1,-1]){

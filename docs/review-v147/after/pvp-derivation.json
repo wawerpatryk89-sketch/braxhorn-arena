@@ -1,0 +1,522 @@
+{
+  "method": "Same arithmetic as v143 generator; witness attacks with unlimited energy/no distance/no hitstop; 20% margin. Not server replay.",
+  "rows": [
+    {
+      "fighter": "BRAX",
+      "optimisticKoMs": 5878.2467125764415,
+      "roundMinimumMs": 4702,
+      "witness": [
+        {
+          "action": "CAPOEIRA",
+          "damage": 14,
+          "timeMs": 1030.3030230782276,
+          "terminal": false
+        },
+        {
+          "action": "UPPERCUT",
+          "damage": 12,
+          "timeMs": 811.6883116883117,
+          "terminal": false
+        },
+        {
+          "action": "CAPOEIRA",
+          "damage": 14,
+          "timeMs": 1030.3030230782276,
+          "terminal": false
+        },
+        {
+          "action": "UPPERCUT",
+          "damage": 12,
+          "timeMs": 811.6883116883117,
+          "terminal": false
+        },
+        {
+          "action": "UPPERCUT",
+          "damage": 12,
+          "timeMs": 811.6883116883117,
+          "terminal": false
+        },
+        {
+          "action": "COMBO",
+          "damage": 36,
+          "timeMs": 1382.5757313550514,
+          "terminal": true,
+          "lastFrame": 146
+        }
+      ],
+      "pvp": {
+        "roundWinMs": 4702,
+        "twoRoundWinMs": 9404
+      }
+    },
+    {
+      "fighter": "NYXA",
+      "optimisticKoMs": 6865.829777253359,
+      "roundMinimumMs": 5492,
+      "witness": [
+        {
+          "action": "LIGHT_PUNCH",
+          "damage": 7,
+          "timeMs": 522.9466147365063,
+          "terminal": false
+        },
+        {
+          "action": "LIGHT_PUNCH",
+          "damage": 7,
+          "timeMs": 522.9466147365063,
+          "terminal": false
+        },
+        {
+          "action": "LIGHT_PUNCH",
+          "damage": 7,
+          "timeMs": 522.9466147365063,
+          "terminal": false
+        },
+        {
+          "action": "LIGHT_PUNCH",
+          "damage": 7,
+          "timeMs": 522.9466147365063,
+          "terminal": false
+        },
+        {
+          "action": "LIGHT_PUNCH",
+          "damage": 7,
+          "timeMs": 522.9466147365063,
+          "terminal": false
+        },
+        {
+          "action": "LIGHT_PUNCH",
+          "damage": 7,
+          "timeMs": 522.9466147365063,
+          "terminal": false
+        },
+        {
+          "action": "LIGHT_PUNCH",
+          "damage": 7,
+          "timeMs": 522.9466147365063,
+          "terminal": false
+        },
+        {
+          "action": "LIGHT_PUNCH",
+          "damage": 7,
+          "timeMs": 522.9466147365063,
+          "terminal": false
+        },
+        {
+          "action": "LIGHT_PUNCH",
+          "damage": 7,
+          "timeMs": 522.9466147365063,
+          "terminal": false
+        },
+        {
+          "action": "LIGHT_PUNCH",
+          "damage": 7,
+          "timeMs": 522.9466147365063,
+          "terminal": false
+        },
+        {
+          "action": "COMBO",
+          "damage": 32,
+          "timeMs": 1636.3636298882948,
+          "terminal": true,
+          "lastFrame": 216
+        }
+      ],
+      "pvp": {
+        "roundWinMs": 5492,
+        "twoRoundWinMs": 10984
+      }
+    },
+    {
+      "fighter": "VEXA",
+      "optimisticKoMs": 6517.1601997919215,
+      "roundMinimumMs": 5213,
+      "witness": [
+        {
+          "action": "SPIN_KICK",
+          "damage": 14,
+          "timeMs": 899.9081682567739,
+          "terminal": false
+        },
+        {
+          "action": "SPIN_KICK",
+          "damage": 14,
+          "timeMs": 899.9081682567739,
+          "terminal": false
+        },
+        {
+          "action": "SPIN_KICK",
+          "damage": 14,
+          "timeMs": 899.9081682567739,
+          "terminal": false
+        },
+        {
+          "action": "SPIN_KICK",
+          "damage": 14,
+          "timeMs": 899.9081682567739,
+          "terminal": false
+        },
+        {
+          "action": "SPIN_KICK",
+          "damage": 14,
+          "timeMs": 899.9081682567739,
+          "terminal": false
+        },
+        {
+          "action": "SPIN_KICK",
+          "damage": 14,
+          "timeMs": 899.9081682567739,
+          "terminal": false
+        },
+        {
+          "action": "SPIN_KICK",
+          "damage": 14,
+          "timeMs": 899.9081682567739,
+          "terminal": false
+        },
+        {
+          "action": "HEAVY_PUNCH",
+          "damage": 5,
+          "timeMs": 217.8030219945041,
+          "terminal": true,
+          "lastFrame": 23
+        }
+      ],
+      "pvp": {
+        "roundWinMs": 5213,
+        "twoRoundWinMs": 10426
+      }
+    },
+    {
+      "fighter": "KROV",
+      "optimisticKoMs": 5915.949795962353,
+      "roundMinimumMs": 4732,
+      "witness": [
+        {
+          "action": "UPPERCUT",
+          "damage": 13,
+          "timeMs": 808.0808321634918,
+          "terminal": false
+        },
+        {
+          "action": "UPPERCUT",
+          "damage": 13,
+          "timeMs": 808.0808321634918,
+          "terminal": false
+        },
+        {
+          "action": "UPPERCUT",
+          "damage": 13,
+          "timeMs": 808.0808321634918,
+          "terminal": false
+        },
+        {
+          "action": "UPPERCUT",
+          "damage": 13,
+          "timeMs": 808.0808321634918,
+          "terminal": false
+        },
+        {
+          "action": "UPPERCUT",
+          "damage": 13,
+          "timeMs": 808.0808321634918,
+          "terminal": false
+        },
+        {
+          "action": "UPPERCUT",
+          "damage": 13,
+          "timeMs": 808.0808321634918,
+          "terminal": false
+        },
+        {
+          "action": "UPPERCUT",
+          "damage": 13,
+          "timeMs": 808.0808321634918,
+          "terminal": false
+        },
+        {
+          "action": "UPPERCUT",
+          "damage": 13,
+          "timeMs": 259.3839708179114,
+          "terminal": true,
+          "lastFrame": 26
+        }
+      ],
+      "pvp": {
+        "roundWinMs": 4732,
+        "twoRoundWinMs": 9464
+      }
+    },
+    {
+      "fighter": "NINA",
+      "optimisticKoMs": 5139.938695748699,
+      "roundMinimumMs": 4111,
+      "witness": [
+        {
+          "action": "MEIA_LUA",
+          "damage": 13,
+          "timeMs": 735.8253206499954,
+          "terminal": false
+        },
+        {
+          "action": "MEIA_LUA",
+          "damage": 13,
+          "timeMs": 735.8253206499954,
+          "terminal": false
+        },
+        {
+          "action": "MEIA_LUA",
+          "damage": 13,
+          "timeMs": 735.8253206499954,
+          "terminal": false
+        },
+        {
+          "action": "MEIA_LUA",
+          "damage": 13,
+          "timeMs": 735.8253206499954,
+          "terminal": false
+        },
+        {
+          "action": "MEIA_LUA",
+          "damage": 13,
+          "timeMs": 735.8253206499954,
+          "terminal": false
+        },
+        {
+          "action": "MEIA_LUA",
+          "damage": 13,
+          "timeMs": 735.8253206499954,
+          "terminal": false
+        },
+        {
+          "action": "COMBO",
+          "damage": 23,
+          "timeMs": 724.9867718487262,
+          "terminal": true,
+          "lastFrame": 67
+        }
+      ],
+      "pvp": {
+        "roundWinMs": 4111,
+        "twoRoundWinMs": 8222
+      }
+    },
+    {
+      "fighter": "DANNY",
+      "optimisticKoMs": 7155.276902841457,
+      "roundMinimumMs": 5724,
+      "witness": [
+        {
+          "action": "HEAVY_PUNCH",
+          "damage": 11,
+          "timeMs": 850.0000000000016,
+          "terminal": false
+        },
+        {
+          "action": "HEAVY_PUNCH",
+          "damage": 11,
+          "timeMs": 850.0000000000016,
+          "terminal": false
+        },
+        {
+          "action": "HEAVY_PUNCH",
+          "damage": 11,
+          "timeMs": 850.0000000000016,
+          "terminal": false
+        },
+        {
+          "action": "HEAVY_PUNCH",
+          "damage": 11,
+          "timeMs": 850.0000000000016,
+          "terminal": false
+        },
+        {
+          "action": "HEAVY_PUNCH",
+          "damage": 11,
+          "timeMs": 850.0000000000016,
+          "terminal": false
+        },
+        {
+          "action": "HEAVY_PUNCH",
+          "damage": 11,
+          "timeMs": 850.0000000000016,
+          "terminal": false
+        },
+        {
+          "action": "HEAVY_PUNCH",
+          "damage": 11,
+          "timeMs": 850.0000000000016,
+          "terminal": false
+        },
+        {
+          "action": "HEAVY_PUNCH",
+          "damage": 11,
+          "timeMs": 850.0000000000016,
+          "terminal": false
+        },
+        {
+          "action": "COMBO",
+          "damage": 12,
+          "timeMs": 355.2769028414431,
+          "terminal": true,
+          "lastFrame": 34
+        }
+      ],
+      "pvp": {
+        "roundWinMs": 5724,
+        "twoRoundWinMs": 11448
+      }
+    },
+    {
+      "fighter": "BEAR",
+      "optimisticKoMs": 2900.05638522385,
+      "roundMinimumMs": 2320,
+      "witness": [
+        {
+          "action": "SHOULDER",
+          "damage": 16,
+          "timeMs": 462.8099173553721,
+          "terminal": false
+        },
+        {
+          "action": "SHOULDER",
+          "damage": 16,
+          "timeMs": 462.8099173553721,
+          "terminal": false
+        },
+        {
+          "action": "SHOULDER",
+          "damage": 16,
+          "timeMs": 462.8099173553721,
+          "terminal": false
+        },
+        {
+          "action": "SHOULDER",
+          "damage": 16,
+          "timeMs": 462.8099173553721,
+          "terminal": false
+        },
+        {
+          "action": "SHOULDER",
+          "damage": 16,
+          "timeMs": 462.8099173553721,
+          "terminal": false
+        },
+        {
+          "action": "SHOULDER",
+          "damage": 16,
+          "timeMs": 462.8099173553721,
+          "terminal": false
+        },
+        {
+          "action": "COMBO",
+          "damage": 8,
+          "timeMs": 123.19688109161794,
+          "terminal": true,
+          "lastFrame": 11
+        }
+      ],
+      "pvp": {
+        "roundWinMs": 2320,
+        "twoRoundWinMs": 4640
+      }
+    },
+    {
+      "fighter": "DEMON",
+      "optimisticKoMs": 4182.700031515075,
+      "roundMinimumMs": 3346,
+      "witness": [
+        {
+          "action": "UPPERCUT",
+          "damage": 16,
+          "timeMs": 680.6958473625142,
+          "terminal": false
+        },
+        {
+          "action": "LIGHT_PUNCH",
+          "damage": 7,
+          "timeMs": 551.9480674297779,
+          "terminal": false
+        },
+        {
+          "action": "UPPERCUT",
+          "damage": 16,
+          "timeMs": 680.6958473625142,
+          "terminal": false
+        },
+        {
+          "action": "UPPERCUT",
+          "damage": 16,
+          "timeMs": 680.6958473625142,
+          "terminal": false
+        },
+        {
+          "action": "UPPERCUT",
+          "damage": 16,
+          "timeMs": 680.6958473625142,
+          "terminal": false
+        },
+        {
+          "action": "UPPERCUT",
+          "damage": 16,
+          "timeMs": 680.6958473625142,
+          "terminal": false
+        },
+        {
+          "action": "HEAVY_KICK",
+          "damage": 15,
+          "timeMs": 227.27272727272745,
+          "terminal": true,
+          "lastFrame": 59
+        }
+      ],
+      "pvp": {
+        "roundWinMs": 3346,
+        "twoRoundWinMs": 6692
+      }
+    }
+  ],
+  "pressure": {
+    "strictEdgeGapSourceHeights": 0.35,
+    "continuousAwaySimulationMs": 600,
+    "continuousPressureMs": 3500,
+    "examples": [
+      {
+        "width": 844,
+        "height": 390,
+        "sourceHeightPx": 217.60000000000002,
+        "bodyRadiiPx": [
+          27.3,
+          27.3
+        ],
+        "requiredEdgeGapPx": 76.16,
+        "requiredCenterGapPx": 130.76,
+        "requiredEdgeGapArenaPercent": 9.023696682464454
+      },
+      {
+        "width": 932,
+        "height": 430,
+        "sourceHeightPx": 239.95888696707632,
+        "bodyRadiiPx": [
+          30.105136094674556,
+          30.105136094674556
+        ],
+        "requiredEdgeGapPx": 83.98561043847671,
+        "requiredCenterGapPx": 144.19588262782582,
+        "requiredEdgeGapArenaPercent": 9.011331592111235
+      },
+      {
+        "width": 390,
+        "height": 844,
+        "sourceHeightPx": 140.25000000000003,
+        "bodyRadiiPx": [
+          17.595703125000004,
+          17.595703125000004
+        ],
+        "requiredEdgeGapPx": 49.087500000000006,
+        "requiredCenterGapPx": 84.27890625,
+        "requiredEdgeGapArenaPercent": 12.586538461538463
+      }
+    ]
+  }
+}

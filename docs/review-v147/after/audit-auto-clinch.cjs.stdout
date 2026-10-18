@@ -1,0 +1,1 @@
+{"status":"PASS","mode":"automatic","cases":256,"roster":8,"checks":["all 64 pairs","both facings","arena edges","no unsolicited throw/damage/launch","idle and protected states","320 ms approach gate","bounded recovery","retreat resets timer"]}

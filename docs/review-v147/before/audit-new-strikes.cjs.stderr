@@ -1,0 +1,9 @@
+AssertionError [ERR_ASSERTION]: VEXA/player LIGHT_PUNCH vs BRAX face1
+    at /workspace/scratch/de5ed6fc2c9c/braxhorn-review/scripts/audit-new-strikes.cjs:4:841 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}

@@ -1,0 +1,9 @@
+AssertionError [ERR_ASSERTION]: BRAX three spaced hits should launch
+    at /workspace/scratch/de5ed6fc2c9c/braxhorn-review/scripts/audit-impact-frequency.cjs:5:1 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}

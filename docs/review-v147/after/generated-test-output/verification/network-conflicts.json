@@ -1,0 +1,326 @@
+[
+  {
+    "scenario": "attack-hit",
+    "hz": 30,
+    "delayMs": 0,
+    "maxJumpArenaPercent": 0.382000000000005,
+    "rewoundAttackFrames": 0,
+    "stalePredictedAttackFrames": 0,
+    "firstCorrection": 0
+  },
+  {
+    "scenario": "walk-push",
+    "hz": 30,
+    "delayMs": 0,
+    "maxJumpArenaPercent": 1.1909573459715688,
+    "rewoundAttackFrames": 0,
+    "stalePredictedAttackFrames": 0,
+    "firstCorrection": 0.43300000000000693
+  },
+  {
+    "scenario": "walk-grab",
+    "hz": 30,
+    "delayMs": 0,
+    "maxJumpArenaPercent": 0.48400000000000176,
+    "rewoundAttackFrames": 0,
+    "stalePredictedAttackFrames": 0,
+    "firstCorrection": -0.04299999999999926
+  },
+  {
+    "scenario": "attack-confirm",
+    "hz": 30,
+    "delayMs": 0,
+    "maxJumpArenaPercent": 0,
+    "rewoundAttackFrames": 0,
+    "stalePredictedAttackFrames": 0,
+    "firstCorrection": 0
+  },
+  {
+    "scenario": "attack-hit",
+    "hz": 30,
+    "delayMs": 48,
+    "maxJumpArenaPercent": 0.382000000000005,
+    "rewoundAttackFrames": 0,
+    "stalePredictedAttackFrames": 0,
+    "firstCorrection": 0
+  },
+  {
+    "scenario": "walk-push",
+    "hz": 30,
+    "delayMs": 48,
+    "maxJumpArenaPercent": 1.8149146919431374,
+    "rewoundAttackFrames": 0,
+    "stalePredictedAttackFrames": 0,
+    "firstCorrection": 1.8149146919431374
+  },
+  {
+    "scenario": "walk-grab",
+    "hz": 30,
+    "delayMs": 48,
+    "maxJumpArenaPercent": 1.338914691943124,
+    "rewoundAttackFrames": 0,
+    "stalePredictedAttackFrames": 0,
+    "firstCorrection": 1.338914691943124
+  },
+  {
+    "scenario": "attack-confirm",
+    "hz": 30,
+    "delayMs": 48,
+    "maxJumpArenaPercent": 0,
+    "rewoundAttackFrames": 0,
+    "stalePredictedAttackFrames": 0,
+    "firstCorrection": 0
+  },
+  {
+    "scenario": "attack-hit",
+    "hz": 30,
+    "delayMs": 96,
+    "maxJumpArenaPercent": 0.382000000000005,
+    "rewoundAttackFrames": 0,
+    "stalePredictedAttackFrames": 0,
+    "firstCorrection": 0
+  },
+  {
+    "scenario": "walk-push",
+    "hz": 30,
+    "delayMs": 96,
+    "maxJumpArenaPercent": 2,
+    "rewoundAttackFrames": 0,
+    "stalePredictedAttackFrames": 0,
+    "firstCorrection": 2
+  },
+  {
+    "scenario": "walk-grab",
+    "hz": 30,
+    "delayMs": 96,
+    "maxJumpArenaPercent": 2,
+    "rewoundAttackFrames": 0,
+    "stalePredictedAttackFrames": 0,
+    "firstCorrection": 2
+  },
+  {
+    "scenario": "attack-confirm",
+    "hz": 30,
+    "delayMs": 96,
+    "maxJumpArenaPercent": 0,
+    "rewoundAttackFrames": 0,
+    "stalePredictedAttackFrames": 0,
+    "firstCorrection": 0
+  },
+  {
+    "scenario": "attack-hit",
+    "hz": 60,
+    "delayMs": 0,
+    "maxJumpArenaPercent": 0.1910000000000025,
+    "rewoundAttackFrames": 0,
+    "stalePredictedAttackFrames": 0,
+    "firstCorrection": 0
+  },
+  {
+    "scenario": "walk-push",
+    "hz": 60,
+    "delayMs": 0,
+    "maxJumpArenaPercent": 0.5954786729857773,
+    "rewoundAttackFrames": 0,
+    "stalePredictedAttackFrames": 0,
+    "firstCorrection": 0.43300000000000693
+  },
+  {
+    "scenario": "walk-grab",
+    "hz": 60,
+    "delayMs": 0,
+    "maxJumpArenaPercent": 0.2469999999999999,
+    "rewoundAttackFrames": 0,
+    "stalePredictedAttackFrames": 0,
+    "firstCorrection": -0.04299999999999926
+  },
+  {
+    "scenario": "attack-confirm",
+    "hz": 60,
+    "delayMs": 0,
+    "maxJumpArenaPercent": 0,
+    "rewoundAttackFrames": 0,
+    "stalePredictedAttackFrames": 0,
+    "firstCorrection": 0
+  },
+  {
+    "scenario": "attack-hit",
+    "hz": 60,
+    "delayMs": 48,
+    "maxJumpArenaPercent": 0.1910000000000025,
+    "rewoundAttackFrames": 0,
+    "stalePredictedAttackFrames": 0,
+    "firstCorrection": 0
+  },
+  {
+    "scenario": "walk-push",
+    "hz": 60,
+    "delayMs": 48,
+    "maxJumpArenaPercent": 1.000000000000007,
+    "rewoundAttackFrames": 0,
+    "stalePredictedAttackFrames": 0,
+    "firstCorrection": 1.000000000000007
+  },
+  {
+    "scenario": "walk-grab",
+    "hz": 60,
+    "delayMs": 48,
+    "maxJumpArenaPercent": 0.9934360189573539,
+    "rewoundAttackFrames": 0,
+    "stalePredictedAttackFrames": 0,
+    "firstCorrection": 0.9934360189573539
+  },
+  {
+    "scenario": "attack-confirm",
+    "hz": 60,
+    "delayMs": 48,
+    "maxJumpArenaPercent": 0,
+    "rewoundAttackFrames": 0,
+    "stalePredictedAttackFrames": 0,
+    "firstCorrection": 0
+  },
+  {
+    "scenario": "attack-hit",
+    "hz": 60,
+    "delayMs": 96,
+    "maxJumpArenaPercent": 0.1910000000000025,
+    "rewoundAttackFrames": 0,
+    "stalePredictedAttackFrames": 0,
+    "firstCorrection": 0
+  },
+  {
+    "scenario": "walk-push",
+    "hz": 60,
+    "delayMs": 96,
+    "maxJumpArenaPercent": 1,
+    "rewoundAttackFrames": 0,
+    "stalePredictedAttackFrames": 0,
+    "firstCorrection": 1
+  },
+  {
+    "scenario": "walk-grab",
+    "hz": 60,
+    "delayMs": 96,
+    "maxJumpArenaPercent": 1,
+    "rewoundAttackFrames": 0,
+    "stalePredictedAttackFrames": 0,
+    "firstCorrection": 1
+  },
+  {
+    "scenario": "attack-confirm",
+    "hz": 60,
+    "delayMs": 96,
+    "maxJumpArenaPercent": 0,
+    "rewoundAttackFrames": 0,
+    "stalePredictedAttackFrames": 0,
+    "firstCorrection": 0
+  },
+  {
+    "scenario": "attack-hit",
+    "hz": 120,
+    "delayMs": 0,
+    "maxJumpArenaPercent": 0.1910000000000025,
+    "rewoundAttackFrames": 0,
+    "stalePredictedAttackFrames": 0,
+    "firstCorrection": 0
+  },
+  {
+    "scenario": "walk-push",
+    "hz": 120,
+    "delayMs": 0,
+    "maxJumpArenaPercent": 0.4339999999999975,
+    "rewoundAttackFrames": 0,
+    "stalePredictedAttackFrames": 0,
+    "firstCorrection": 0.43300000000000693
+  },
+  {
+    "scenario": "walk-grab",
+    "hz": 120,
+    "delayMs": 0,
+    "maxJumpArenaPercent": 0.2469999999999999,
+    "rewoundAttackFrames": 0,
+    "stalePredictedAttackFrames": 0,
+    "firstCorrection": -0.04299999999999926
+  },
+  {
+    "scenario": "attack-confirm",
+    "hz": 120,
+    "delayMs": 0,
+    "maxJumpArenaPercent": 0,
+    "rewoundAttackFrames": 0,
+    "stalePredictedAttackFrames": 0,
+    "firstCorrection": 0
+  },
+  {
+    "scenario": "attack-hit",
+    "hz": 120,
+    "delayMs": 48,
+    "maxJumpArenaPercent": 0.1910000000000025,
+    "rewoundAttackFrames": 0,
+    "stalePredictedAttackFrames": 0,
+    "firstCorrection": 0
+  },
+  {
+    "scenario": "walk-push",
+    "hz": 120,
+    "delayMs": 48,
+    "maxJumpArenaPercent": 0.5,
+    "rewoundAttackFrames": 0,
+    "stalePredictedAttackFrames": 0,
+    "firstCorrection": 0.4999999999999929
+  },
+  {
+    "scenario": "walk-grab",
+    "hz": 120,
+    "delayMs": 48,
+    "maxJumpArenaPercent": 0.5,
+    "rewoundAttackFrames": 0,
+    "stalePredictedAttackFrames": 0,
+    "firstCorrection": 0.5
+  },
+  {
+    "scenario": "attack-confirm",
+    "hz": 120,
+    "delayMs": 48,
+    "maxJumpArenaPercent": 0,
+    "rewoundAttackFrames": 0,
+    "stalePredictedAttackFrames": 0,
+    "firstCorrection": 0
+  },
+  {
+    "scenario": "attack-hit",
+    "hz": 120,
+    "delayMs": 96,
+    "maxJumpArenaPercent": 0.1910000000000025,
+    "rewoundAttackFrames": 0,
+    "stalePredictedAttackFrames": 0,
+    "firstCorrection": 0
+  },
+  {
+    "scenario": "walk-push",
+    "hz": 120,
+    "delayMs": 96,
+    "maxJumpArenaPercent": 0.5,
+    "rewoundAttackFrames": 0,
+    "stalePredictedAttackFrames": 0,
+    "firstCorrection": 0.5
+  },
+  {
+    "scenario": "walk-grab",
+    "hz": 120,
+    "delayMs": 96,
+    "maxJumpArenaPercent": 0.5,
+    "rewoundAttackFrames": 0,
+    "stalePredictedAttackFrames": 0,
+    "firstCorrection": 0.5
+  },
+  {
+    "scenario": "attack-confirm",
+    "hz": 120,
+    "delayMs": 96,
+    "maxJumpArenaPercent": 0,
+    "rewoundAttackFrames": 0,
+    "stalePredictedAttackFrames": 0,
+    "firstCorrection": 0
+  }
+]

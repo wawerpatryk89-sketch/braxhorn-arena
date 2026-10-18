@@ -1,0 +1,9 @@
+AssertionError [ERR_ASSERTION]: VEXA hard not more active than easy
+    at /workspace/scratch/de5ed6fc2c9c/braxhorn-review/scripts/audit-cpu-levels.cjs:11:27 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}

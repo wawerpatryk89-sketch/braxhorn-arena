@@ -1,0 +1,12 @@
+AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+
+  assert(S.clinch)
+
+    at /workspace/scratch/de5ed6fc2c9c/braxhorn-review/scripts/audit-brax-recovery.cjs:6:114 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: null,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}

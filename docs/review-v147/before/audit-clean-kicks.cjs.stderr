@@ -1,0 +1,12 @@
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+undefined !== 'FLY'
+
+    at /workspace/scratch/de5ed6fc2c9c/braxhorn-review/scripts/audit-clean-kicks.cjs:10:150 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: undefined,
+  expected: 'FLY',
+  operator: 'strictEqual',
+  diff: 'simple'
+}

@@ -1,0 +1,12 @@
+AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+
+  assert(!S.preFight&&!S.cinematic)
+
+    at /workspace/scratch/de5ed6fc2c9c/braxhorn-review/scripts/audit-vexa.cjs:6:43 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}

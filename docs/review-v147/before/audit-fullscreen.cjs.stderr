@@ -1,0 +1,12 @@
+AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+
+  assert(!status.hidden)
+
+    at /workspace/scratch/de5ed6fc2c9c/braxhorn-review/scripts/audit-fullscreen.cjs:2:1205 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}

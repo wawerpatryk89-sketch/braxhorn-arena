@@ -1,0 +1,4 @@
+const {ready,reset,names,csv}=require('./runtime.cjs'),fs=require('node:fs');
+(async()=>{const rows=[];for(const who of names){const g=await ready(who),t=g.test,{B,O,S,K}=t;reset(g);let hits=0,resets=0,firstLaunch=null,oldSeries=null;const action=who==='NINA'?'SPIN_KICK':'HEAVY_PUNCH';
+for(let ms=0;ms<20000;ms+=16){K.right=B.face>0;K.left=B.face<0;if(!B.lock&&!B.stun)t.beginAction(action);const hp=O.hp;g.step(16);if(O.hp<hp)hits++;if(oldSeries&&!O.hitSeries&&!O.downState)resets++;if(O.airLaunches&&!firstLaunch)firstLaunch={at:ms,hits};oldSeries=O.hitSeries;O.hp=100;}
+rows.push({who,action,hits,launches:O.airLaunches,resets,firstLaunch});console.log(rows.at(-1));}fs.writeFileSync('docs/review-v147/'+(process.argv[2]||'before')+'/pressure.json',JSON.stringify(rows,null,2));csv('docs/review-v147/'+(process.argv[2]||'before')+'/pressure.csv',rows);})();

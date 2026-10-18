@@ -1,0 +1,75 @@
+PASS 24 isolated finishers, recovery cooldown, flight-to-ground, blocked finishers
+[
+  {
+    "who": "BRAX",
+    "action": "HEAVY_PUNCH",
+    "hits": 3,
+    "heavyActions": 3,
+    "launchAt": 3056,
+    "retreatReset": "PASS",
+    "status": "PASS"
+  },
+  {
+    "who": "NYXA",
+    "action": "HEAVY_PUNCH",
+    "hits": 3,
+    "heavyActions": 3,
+    "launchAt": 3216,
+    "retreatReset": "PASS",
+    "status": "PASS"
+  },
+  {
+    "who": "VEXA",
+    "action": "HEAVY_PUNCH",
+    "hits": 4,
+    "heavyActions": 3,
+    "launchAt": 2720,
+    "retreatReset": "PASS",
+    "status": "PASS"
+  },
+  {
+    "who": "KROV",
+    "action": "HEAVY_PUNCH",
+    "hits": 3,
+    "heavyActions": 3,
+    "launchAt": 3520,
+    "retreatReset": "PASS",
+    "status": "PASS"
+  },
+  {
+    "who": "NINA",
+    "action": "HEAVY_PUNCH",
+    "hits": 3,
+    "heavyActions": 3,
+    "launchAt": 2080,
+    "retreatReset": "PASS",
+    "status": "PASS"
+  },
+  {
+    "who": "DANNY",
+    "action": "HEAVY_PUNCH",
+    "hits": 3,
+    "heavyActions": 3,
+    "launchAt": 2880,
+    "retreatReset": "PASS",
+    "status": "PASS"
+  },
+  {
+    "who": "BEAR",
+    "action": "HEAVY_PUNCH",
+    "hits": 4,
+    "heavyActions": 3,
+    "launchAt": 2240,
+    "retreatReset": "PASS",
+    "status": "PASS"
+  },
+  {
+    "who": "DEMON",
+    "action": "HEAVY_PUNCH",
+    "hits": 3,
+    "heavyActions": 3,
+    "launchAt": 2448,
+    "retreatReset": "PASS",
+    "status": "PASS"
+  }
+]

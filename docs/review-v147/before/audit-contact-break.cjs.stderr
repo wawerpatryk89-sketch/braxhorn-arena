@@ -1,0 +1,9 @@
+AssertionError [ERR_ASSERTION]: contact too long
+    at /workspace/scratch/de5ed6fc2c9c/braxhorn-review/scripts/audit-contact-break.cjs:3:488 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}

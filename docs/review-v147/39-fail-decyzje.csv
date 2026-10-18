@@ -1,0 +1,40 @@
+test,decyzja,wyjasnienie,wynik,zestaw
+audit-access-rtc.mjs,a,"Mock wysyłał nieprawidłowy stan actors={}; poprawiono pełny stan i handshake, zachowano monotoniczność sekwencji.",PASS,main
+audit-auto-clinch.cjs,a,"Bieżący kontakt po 320 ms naporu używa PUSH/RECEIVE; zachowano brak obrażeń, wyrzutu, krzyżowania oraz proporcję drobnej korekty 85/15.",PASS,main
+audit-bear.cjs,a,"BEAR jest w slocie 6; poprawiono intro, gardę bez chip damage i KO zależne od HP, bez usuwania testów trafień.",PASS,main
+audit-brax-recovery.cjs,a,Bezpośrednio wymuszony rzut CPU wymaga wyzerowania grabCooldown w przygotowaniu scenariusza.,PASS,main
+audit-clean-kicks.cjs,a,"Dwa kopnięcia nie oznaczają już automatycznego wyrzutu. Sprawdzono trzy mocne akcje, presję lekkich, blok, cooldown i zakaz naliczania wielokrotnego kontaktu jednej akcji.",PASS,main
+audit-clinch-controls.cjs,a,Krok RAF 16 ms nie gwarantuje kroku symulacji 16 ms; test przekracza rzeczywisty termin 2000 ms.,PASS,main
+audit-combo-finisher.cjs,c,Naprawiono kasowanie serii przez własne odepchnięcie. Test naturalnego naporu wszystkich 8 postaci plus dotychczasowe warunki finishera.,PASS,main
+audit-compact-gait.mjs,b,Test odczytuje klipy i dawny gaitBlend. Zachowana niespełniona asercja; bez zmian animacji.,FAIL,requires-media
+audit-contact-break.cjs,a,"Bieżący kontakt to osobne PUSH/RECEIVE z ograniczonym czasem i zwolnieniem obu postaci; 64 pary, dwa kierunki, środek i krawędź.",PASS,main
+audit-contact-deadline.cjs,a,"Aktualny próg kontaktu to 320 ms, odejście zeruje licznik; test obu stron i ścian.",PASS,main
+audit-contact-showcase.cjs,a,"Scena demonstracyjna uruchamiana jawną funkcją, odrębne długości klipów PUSH/RECEIVE i aktualny czas celebracji; wszystkie 8 postaci.",PASS,main
+audit-contact-stagger.mjs,b,"Pomiar stopy podporowej wymaga klipów i oceny dawnego kontraktu ruchu; zachowany FAIL, nie zmieniono animacji.",FAIL,requires-media
+audit-corner-entry.cjs,a,Po zakończeniu filmu wejściowego odczekano faktyczne wejście; uwzględniono pełną celebrację rundy.,PASS,main
+audit-cpu-levels.cjs,c,"Zmieniono parametry easy/hard oraz wybór ataków. Pomiar 8×3, aktywność, co najmniej 5 ciosów hard i czas KO biernego gracza.",PASS,main
+audit-danny-strikes.cjs,a,Przygotowanie kończy film dla każdego slotu i zeruje preFight; asercje rzeczywistych trafień zachowane.,PASS,main
+audit-fighter-polish.cjs,a,Czas recovery i COMBO wyliczany z konfiguracji faz zamiast nieaktualnych stałych limitów.,PASS,main
+audit-fullscreen.cjs,a,"Nieobsługiwana ikona fullscreen jest celowo ukryta; zachowano kliknięcie, swipe i wielodotyk.",PASS,main
+audit-impact-frequency.cjs,c,"Nowa reguła serii z zachowaniem naporu i identyfikatorem mocnej akcji; 8 postaci, blok i jedna akcja nie produkują fałszywych wyrzutów.",PASS,main
+audit-krov-new.cjs,a,"Aktualne intro, brak skoku swobodnego, zero chip damage, czas COMBO i KO z HP; zachowane trafienia i finisher.",PASS,main
+audit-mixamo-showcase.mjs,b,Wymaga brakującego historycznego obiektu git 5560fb… i mediów.,NIEWYKONANE,requires-media
+audit-mode-destinations.cjs,a,"Mock ma asynchroniczny best(), jawne otwarcie wyboru wyzwania i czeka na zapis tożsamości oraz przejście ekranu.",PASS,main
+audit-motion-polish.mjs,b,Wymaga historycznej konfiguracji z 19ecd… i klipów.,NIEWYKONANE,requires-media
+audit-mutual-contract.cjs,a,Aktualne PUSH i RECEIVE są oddzielnymi klipami; dawny contactMotion nie istnieje. Zachowane kontrole akcji i ograniczenia NINY.,PASS,main
+audit-mutual-fall.mjs,b,Stary test klipu zakłada upadek CONTACT_PUSH; zachowany wynik i kod do osobnego przeglądu animacji.,FAIL,requires-media
+audit-natural-contact.cjs,a,"Aktywny CPU może odpowiedzieć ciosem zamiast wejść w kontakt. Nadal sprawdzane przejście kontaktu, brak samowolnego rzutu i obrażeń.",PASS,main
+audit-new-fighters.cjs,a,Poprawiona kolejność asynchronicznego startu/wyboru/filmu; test rzeczywistego INTRO i skonfigurowanego tempa.,PASS,main
+audit-new-strikes.cjs,a,"Pełne zakończenie intro wszystkich slotów, aktualna nazwa UPPERCUT i prawidłowe przygotowanie zasięgu; trafienia nadal wymagane.",PASS,main
+audit-passive-contact.cjs,a,"Sama bliskość nie uruchamia kontaktu; sprawdzono stan bierny, blok i ochronę stun/push/grabProtection dla 64 par.",PASS,main
+audit-ranking-api.mjs,a,Mock D1 musi zwracać meta.changes dla atomowego zajęcia wyniku; zachowano walidacje i granice czasu.,PASS,main
+audit-short-step.mjs,b,Test wymaga nieobecnego starego klipu Retargeted; brak odtwarzania lub podmiany mediów.,FAIL,requires-media
+audit-shoulder-contact.mjs,b,Historyczny kontrakt IK ramion odczytuje brakujące metadane; zachowana asercja i FAIL do przeglądu mediów.,FAIL,requires-media
+audit-six-attacks.cjs,a,Zastąpiono dawną nazwę TEEP rzeczywistą akcją UPPERCUT.,PASS,main
+audit-six-input.cjs,b,"Wymaga mediów i porównania historycznego; zaktualizowano wejścia wszystkich 8 postaci, 8 akcji NINY, aktualne kontrolki i osiągalny dystans SHOULDER; kontrole hashy zachowane.",PASS,requires-media
+audit-source-motion.mjs,b,Test klipów zgłasza zakres ruchu stopy w gardzie; bez zmian mediów. Czy to błąd obrazu czy nieaktualny próg: nie wiem.,FAIL,requires-media
+audit-sprint-backflip.cjs,a,"Asercja ruchu jest wykonywana, gdy symulacja faktycznie wykonała krok; nie na pustym kroku RAF.",PASS,main
+audit-training-contact.cjs,a,Stan bierny treningu nie inicjuje samowolnego kontaktu; kontrola wszystkich 64 par i stanów ochronnych.,PASS,main
+audit-two-launches.cjs,c,"Naprawiona seria mocnych trafień. Dwa nieśmiertelne wyrzuty nie kończą walki; pełny FLY/LAND/DOWN/GETUP, KO po HP=0, 8 postaci i obie role.",PASS,main
+audit-vexa.cjs,a,"Aktualne intro, APPROACH, brak swobodnego skoku, garda bez chip damage, czas COMBO i KO z HP.",PASS,main
+audit-visual-update.cjs,a,Porównanie aktualnych pięciu statystyk UI z niezależnym przeliczeniem z konfiguracji i aktualna liczba wyzwań.,PASS,main

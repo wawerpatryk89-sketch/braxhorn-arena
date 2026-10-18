@@ -1,0 +1,9 @@
+AssertionError [ERR_ASSERTION]: basic button returns control promptly HEAVY_PUNCH
+    at /workspace/scratch/de5ed6fc2c9c/braxhorn-review/scripts/audit-fighter-polish.cjs:3:231 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}

@@ -1,0 +1,187 @@
+{
+  "results": [
+    {
+      "cpu": "BRAX",
+      "level": "easy",
+      "dealt": 144,
+      "taken": 148,
+      "blocks": 0
+    },
+    {
+      "cpu": "BRAX",
+      "level": "normal",
+      "dealt": 67,
+      "taken": 256,
+      "blocks": 11
+    },
+    {
+      "cpu": "BRAX",
+      "level": "hard",
+      "dealt": 54,
+      "taken": 248,
+      "blocks": 12
+    },
+    {
+      "cpu": "NYXA",
+      "level": "easy",
+      "dealt": 75,
+      "taken": 44,
+      "blocks": 0
+    },
+    {
+      "cpu": "NYXA",
+      "level": "normal",
+      "dealt": 68,
+      "taken": 170,
+      "blocks": 4
+    },
+    {
+      "cpu": "NYXA",
+      "level": "hard",
+      "dealt": 104,
+      "taken": 174,
+      "blocks": 9
+    },
+    {
+      "cpu": "VEXA",
+      "level": "easy",
+      "dealt": 187,
+      "taken": 68,
+      "blocks": 0
+    },
+    {
+      "cpu": "VEXA",
+      "level": "normal",
+      "dealt": 63,
+      "taken": 247,
+      "blocks": 12
+    },
+    {
+      "cpu": "VEXA",
+      "level": "hard",
+      "dealt": 59,
+      "taken": 257,
+      "blocks": 14
+    },
+    {
+      "cpu": "KROV",
+      "level": "easy",
+      "dealt": 144,
+      "taken": 76,
+      "blocks": 0
+    },
+    {
+      "cpu": "KROV",
+      "level": "normal",
+      "dealt": 55,
+      "taken": 235,
+      "blocks": 13
+    },
+    {
+      "cpu": "KROV",
+      "level": "hard",
+      "dealt": 14,
+      "taken": 252,
+      "blocks": 18
+    },
+    {
+      "cpu": "NINA",
+      "level": "easy",
+      "dealt": 154,
+      "taken": 193,
+      "blocks": 0
+    },
+    {
+      "cpu": "NINA",
+      "level": "normal",
+      "dealt": 152,
+      "taken": 267,
+      "blocks": 0
+    },
+    {
+      "cpu": "NINA",
+      "level": "hard",
+      "dealt": 159,
+      "taken": 160,
+      "blocks": 0
+    },
+    {
+      "cpu": "DANNY",
+      "level": "easy",
+      "dealt": 164,
+      "taken": 63,
+      "blocks": 0
+    },
+    {
+      "cpu": "DANNY",
+      "level": "normal",
+      "dealt": 82,
+      "taken": 200,
+      "blocks": 12
+    },
+    {
+      "cpu": "DANNY",
+      "level": "hard",
+      "dealt": 58,
+      "taken": 237,
+      "blocks": 15
+    },
+    {
+      "cpu": "BEAR",
+      "level": "easy",
+      "dealt": 185,
+      "taken": 72,
+      "blocks": 0
+    },
+    {
+      "cpu": "BEAR",
+      "level": "normal",
+      "dealt": 63,
+      "taken": 301,
+      "blocks": 12
+    },
+    {
+      "cpu": "BEAR",
+      "level": "hard",
+      "dealt": 18,
+      "taken": 417,
+      "blocks": 16
+    },
+    {
+      "cpu": "DEMON",
+      "level": "easy",
+      "dealt": 151,
+      "taken": 119,
+      "blocks": 0
+    },
+    {
+      "cpu": "DEMON",
+      "level": "normal",
+      "dealt": 36,
+      "taken": 272,
+      "blocks": 16
+    },
+    {
+      "cpu": "DEMON",
+      "level": "hard",
+      "dealt": 18,
+      "taken": 310,
+      "blocks": 16
+    }
+  ],
+  "easy": {
+    "dealt": 1204,
+    "taken": 783,
+    "blocks": 0
+  },
+  "normal": {
+    "dealt": 586,
+    "taken": 1948,
+    "blocks": 80
+  },
+  "hard": {
+    "dealt": 484,
+    "taken": 2055,
+    "blocks": 100
+  }
+}

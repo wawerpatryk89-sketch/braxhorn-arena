@@ -11,7 +11,7 @@ for(let slot=0;slot<6;slot++){
   const active=t.CFG()[B.a],leg=Object.values(active.hits).some(h=>/Foot|Leg|Toe/.test(h.bone||''));
   let previous=B.x;for(let i=0;i<9;i++){g.step(16);assert((B.x-previous)*face>0,'unexpected stop before contact');previous=B.x;}
   assert(Math.abs(B.x-x)>.5);if(!leg)assert(B.strikeMotion.weight>.5,'no running legs');
-  let fullFrames=0;while(B.anim&&fullFrames++<180){const before=B.x;g.step(16);assert((B.x-before)*face>0,'stopped mid-strike');}assert(fullFrames<180,'strike did not finish');assert.equal(B.a,'RUN','did not flow back to sprint');
+  let fullFrames=0;while(B.anim&&fullFrames++<180){const before=B.x,sim=S.simTime;g.step(16);assert(S.simTime===sim||(B.x-before)*face>0,'stopped mid-strike '+JSON.stringify({slot,face,kind,a:B.a,b:B.x,o:O.x,hitstop:S.hitstop,stun:B.stun,push:B.pushTime,down:B.downState,lock:B.lock,frame:B.frame,m:B.strikeMotion,K,ended:S.ended,paused:S.paused,hitstop:S.hitstop,ms:S.simTime}));}assert(fullFrames<180,'strike did not finish');assert.equal(B.a,'RUN','did not flow back to sprint');
   g.key(key,false);const released=B.x;g.step(80);assert(Math.abs(B.x-released)<.01,'moves after release');strikes++;
  }
  if(slot!==0)continue;

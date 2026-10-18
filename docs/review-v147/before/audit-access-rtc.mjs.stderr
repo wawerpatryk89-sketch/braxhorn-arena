@@ -1,0 +1,8 @@
+/workspace/scratch/de5ed6fc2c9c/braxhorn-review/scripts/audit-access-rtc.mjs:71
+assert.equal((await call(handleDuel,'/api/duel',{...joined,action:'sync'},owner)).body.snapshot.state.t,42,'older state cannot overwrite newest packet');
+                                                                                                ^
+
+TypeError: Cannot read properties of null (reading 'state')
+    at <anonymous> (/workspace/scratch/de5ed6fc2c9c/braxhorn-review/scripts/audit-access-rtc.mjs:71:97)
+
+Node.js v24.19.0

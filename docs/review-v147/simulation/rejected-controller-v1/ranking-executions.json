@@ -1,0 +1,146 @@
+[
+  {
+    "level": "normal",
+    "slot": 0,
+    "exitCode": 0,
+    "seconds": 62.01890420913696
+  },
+  {
+    "level": "normal",
+    "slot": 1,
+    "exitCode": 0,
+    "seconds": 64.65104007720947
+  },
+  {
+    "level": "normal",
+    "slot": 2,
+    "exitCode": 0,
+    "seconds": 63.860901832580566
+  },
+  {
+    "level": "normal",
+    "slot": 3,
+    "exitCode": 0,
+    "seconds": 66.5519187450409
+  },
+  {
+    "level": "normal",
+    "slot": 4,
+    "exitCode": 0,
+    "seconds": 67.52161693572998
+  },
+  {
+    "level": "normal",
+    "slot": 5,
+    "exitCode": 0,
+    "seconds": 66.08631134033203
+  },
+  {
+    "level": "normal",
+    "slot": 6,
+    "exitCode": 0,
+    "seconds": 48.63627648353577
+  },
+  {
+    "level": "normal",
+    "slot": 7,
+    "exitCode": 0,
+    "seconds": 57.2637665271759
+  },
+  {
+    "level": "hard",
+    "slot": 0,
+    "exitCode": 0,
+    "seconds": 62.45079255104065
+  },
+  {
+    "level": "hard",
+    "slot": 1,
+    "exitCode": 0,
+    "seconds": 79.86854267120361
+  },
+  {
+    "level": "hard",
+    "slot": 2,
+    "exitCode": 0,
+    "seconds": 73.69316506385803
+  },
+  {
+    "level": "hard",
+    "slot": 3,
+    "exitCode": 0,
+    "seconds": 68.25962924957275
+  },
+  {
+    "level": "hard",
+    "slot": 4,
+    "exitCode": 0,
+    "seconds": 55.13479518890381
+  },
+  {
+    "level": "hard",
+    "slot": 5,
+    "exitCode": 0,
+    "seconds": 59.2610387802124
+  },
+  {
+    "level": "hard",
+    "slot": 6,
+    "exitCode": 0,
+    "seconds": 48.2960364818573
+  },
+  {
+    "level": "hard",
+    "slot": 7,
+    "exitCode": 0,
+    "seconds": 50.2363486289978
+  },
+  {
+    "level": "easy",
+    "slot": 0,
+    "exitCode": 0,
+    "seconds": 286.73874592781067
+  },
+  {
+    "level": "easy",
+    "slot": 1,
+    "exitCode": 0,
+    "seconds": 263.6142258644104
+  },
+  {
+    "level": "easy",
+    "slot": 2,
+    "exitCode": 0,
+    "seconds": 256.5108149051666
+  },
+  {
+    "level": "easy",
+    "slot": 3,
+    "exitCode": 0,
+    "seconds": 267.9212272167206
+  },
+  {
+    "level": "easy",
+    "slot": 4,
+    "exitCode": 0,
+    "seconds": 315.31520891189575
+  },
+  {
+    "level": "easy",
+    "slot": 5,
+    "exitCode": 0,
+    "seconds": 265.61457681655884
+  },
+  {
+    "level": "easy",
+    "slot": 6,
+    "exitCode": 0,
+    "seconds": 257.73015570640564
+  },
+  {
+    "level": "easy",
+    "slot": 7,
+    "exitCode": 0,
+    "seconds": 237.21852707862854
+  }
+]

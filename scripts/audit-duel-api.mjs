@@ -1,7 +1,9 @@
+import compatibility from '../backend/lib/build-compatibility.json' with {type:'json'};
 import {DatabaseSync} from 'node:sqlite';import fs from 'node:fs';import assert from 'node:assert/strict';import {handleDuel} from '../backend/lib/duel-api.ts';
 const sqlite=new DatabaseSync(':memory:');for(const f of fs.readdirSync('backend/drizzle').filter(f=>f.endsWith('.sql')).sort())sqlite.exec(fs.readFileSync('backend/drizzle/'+f,'utf8'));
 const db={prepare(q){const make=(args=[])=>({async first(){return sqlite.prepare(q).get(...args)||null},async all(){return{results:sqlite.prepare(q).all(...args)}},async run(){const s=sqlite.prepare(q);return /^SELECT/i.test(q)?{results:s.all(...args)}:{results:[],meta:{changes:Number(s.run(...args).changes)}}}});return{...make(),bind(...args){return make(args)}}},async batch(writes){sqlite.exec('BEGIN');try{const r=[];for(const w of writes)r.push(await w.run());sqlite.exec('COMMIT');return r}catch(e){sqlite.exec('ROLLBACK');throw e}}};
-const call=async b=>{const r=await handleDuel(new Request('https://game.test/api/duel',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(b)}),db);return{status:r.status,body:await r.json()};};
+const call=async b=>{const r=await handleDuel(new Request('https://game.test/api/duel',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({compat:compatibility,...b})}),db);return{status:r.status,body:await r.json()};};
+for(const compat of [undefined,{...compatibility,protocol:1},{...compatibility,build:'old'},{...compatibility,configs:'other'}]){const r=await call({action:'create',fighter:'BRAX',compat});assert.equal(r.status,409);assert.equal(r.body.error,'Odśwież grę — inna wersja u przeciwnika');}
 const h=await call({action:'create',fighter:'BRAX'});assert.equal(h.status,200);const host=h.body;
 const g=await call({action:'join',code:host.code,fighter:'NYXA'});assert.equal(g.status,200);const guest=g.body;
 assert.equal((await call({action:'join',code:host.code,fighter:'DANNY'})).status,409);
@@ -27,7 +29,7 @@ const terminal={...snap,snapshotId:2,state:{t:50,round:2,wins:[2,0],matchOver:tr
 assert.equal((await call({...h2,action:'sync',seq:2,snapshot:terminal})).status,200);
 sqlite.prepare('UPDATE duel_rooms SET started_at=? WHERE code=?').run(Date.now()-1600,h2.code);
 assert.equal((await call({...h2,action:'result',score:[2,0]})).status,409);
-const limits=JSON.parse(fs.readFileSync('backend/lib/ranking-times.json'));const minimum=2*limits.fighters.BEAR.roundMinimumMs;
+const limits=JSON.parse(fs.readFileSync('backend/lib/duel-times.json'));const minimum=2*limits.fighters.BEAR.roundMinimumMs;
 sqlite.prepare('UPDATE duel_rooms SET started_at=? WHERE code=?').run(Date.now()-minimum-10,h2.code);
 assert.equal((await call({...h2,action:'result',score:[2,0]})).body.resultStatus,'pending');assert.equal((await call({...g2,action:'result',score:[2,0]})).body.resultStatus,'confirmed');
 console.log('PASS malformed actors rejected, 2:0 at 1600 ms rejected, valid two-party result accepted at derived minimum '+minimum+' ms');

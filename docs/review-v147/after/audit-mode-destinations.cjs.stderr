@@ -1,0 +1,12 @@
+AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+
+  assert(g.elements.get('challengeProgress').textContent.includes('/ 5'))
+
+    at /workspace/scratch/de5ed6fc2c9c/braxhorn-review/scripts/audit-mode-destinations.cjs:3:910 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}

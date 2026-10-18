@@ -1,0 +1,90 @@
+[
+  {
+    "who": "BRAX",
+    "action": "HEAVY_PUNCH",
+    "hits": 10,
+    "launches": 0,
+    "resets": 1,
+    "firstLaunch": {
+      "at": 3056,
+      "hits": 3
+    }
+  },
+  {
+    "who": "NYXA",
+    "action": "HEAVY_PUNCH",
+    "hits": 13,
+    "launches": 1,
+    "resets": 4,
+    "firstLaunch": {
+      "at": 3216,
+      "hits": 3
+    }
+  },
+  {
+    "who": "VEXA",
+    "action": "HEAVY_PUNCH",
+    "hits": 26,
+    "launches": 1,
+    "resets": 4,
+    "firstLaunch": {
+      "at": 4016,
+      "hits": 6
+    }
+  },
+  {
+    "who": "KROV",
+    "action": "HEAVY_PUNCH",
+    "hits": 12,
+    "launches": 1,
+    "resets": 4,
+    "firstLaunch": {
+      "at": 3520,
+      "hits": 3
+    }
+  },
+  {
+    "who": "NINA",
+    "action": "SPIN_KICK",
+    "hits": 19,
+    "launches": 1,
+    "resets": 7,
+    "firstLaunch": {
+      "at": 2080,
+      "hits": 3
+    }
+  },
+  {
+    "who": "DANNY",
+    "action": "HEAVY_PUNCH",
+    "hits": 16,
+    "launches": 1,
+    "resets": 2,
+    "firstLaunch": {
+      "at": 3776,
+      "hits": 4
+    }
+  },
+  {
+    "who": "BEAR",
+    "action": "HEAVY_PUNCH",
+    "hits": 26,
+    "launches": 1,
+    "resets": 6,
+    "firstLaunch": {
+      "at": 3296,
+      "hits": 6
+    }
+  },
+  {
+    "who": "DEMON",
+    "action": "HEAVY_PUNCH",
+    "hits": 15,
+    "launches": 1,
+    "resets": 0,
+    "firstLaunch": {
+      "at": 2448,
+      "hits": 3
+    }
+  }
+]

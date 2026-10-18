@@ -19,7 +19,10 @@
     "test:online": "node --import tsx scripts/audit-online.mjs",
     "test:viewport": "node scripts/audit-phone-viewport.cjs",
     "test:147": "node scripts/audit-arena-picker.cjs && node scripts/audit-online-client-147.cjs && node --import tsx scripts/audit-ranking-atomic-147.mjs && node scripts/audit-network-conflicts.cjs && node scripts/audit-network-render.cjs && node scripts/audit-screen-flow.cjs",
-    "test:ui": "node scripts/audit-ui-premium.mjs"
+    "test:ui": "node scripts/audit-ui-premium.mjs",
+    "test:review-main": "python3 scripts/review/run-tests.py main",
+    "test:requires-media": "python3 scripts/review/run-tests.py requires-media",
+    "test:review": "npm run test:review-main && npm run test:requires-media"
   },
   "devDependencies": {
     "happy-dom": "^21.0.3",

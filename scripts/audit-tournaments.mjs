@@ -1,3 +1,4 @@
+import compatibility from '../backend/lib/build-compatibility.json' with {type:'json'};
 import arenaNames from '../backend/lib/arena-list.json' with {type:'json'};
 import {DatabaseSync} from 'node:sqlite';
 import fs from 'node:fs';
@@ -12,7 +13,7 @@ const db={prepare(query){return{bind(...args){return statement(query,args);},...
 function statement(query,args){return{async first(){return sql.prepare(query).get(...args)||null;},async all(){return{results:sql.prepare(query).all(...args)};},async run(){if(/^SELECT/i.test(query))return{results:sql.prepare(query).all(...args)};const r=sql.prepare(query).run(...args);return{meta:{changes:Number(r.changes)}};}};}
 let clock=Date.now();const actualNow=Date.now;Date.now=()=>clock;
 const cookies=new Map(),names=['WAWER','Żaneta','Player 03','Same','Same','Rafał','Łukasz','Nina Test','Dziewiąty','Dziesiąty','Obcy'];
-async function request(fn,user,body,url='https://game.test/api/tournaments',headers={}){const req=new Request(url,{method:'POST',headers:{'content-type':'application/json',cookie:cookies.get(user)||'',...(user===0?{'oai-authenticated-user-id':'owner-subject','oai-authenticated-user-email':'owner@test.invalid'}:{}),...headers},body:JSON.stringify(body)});const res=await fn(req,db,'owner@test.invalid');if(res.headers.get('set-cookie'))cookies.set(user,res.headers.get('set-cookie').split(';')[0]);return{status:res.status,body:await res.json()};}
+async function request(fn,user,body,url='https://game.test/api/tournaments',headers={}){const req=new Request(url,{method:'POST',headers:{'content-type':'application/json',cookie:cookies.get(user)||'',...(user===0?{'oai-authenticated-user-id':'owner-subject','oai-authenticated-user-email':'owner@test.invalid'}:{}),...headers},body:JSON.stringify({compat:compatibility,...body})});const res=await fn(req,db,'owner@test.invalid');if(res.headers.get('set-cookie'))cookies.set(user,res.headers.get('set-cookie').split(';')[0]);return{status:res.status,body:await res.json()};}
 const t=(u,action,b={})=>request(handleTournaments,u,{action,...b});const duel=(u,b)=>request(handleDuel,u,b,'https://game.test/api/duel');
 const ok=(r)=>{assert.equal(r.status,200,JSON.stringify(r));return r.body;};
 for(let i=0;i<names.length;i++){const id=crypto.randomUUID();cookies.set(i,'brax_player='+id);sql.prepare('INSERT INTO players(id,name,created) VALUES(?,?,?)').run('g:'+id,names[i],clock);}

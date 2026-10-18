@@ -1,0 +1,12 @@
+AssertionError [ERR_ASSERTION]: [{"slot":0,"who":"BRAX","mode":"spar","timerMax":0,"ratioMin":0.9999999999999992,"rootMin":4.3126247534341005},{"slot":0,"who":"NYXA","mode":"spar","timerMax":0,"ratioMin":0.24232480670010992,"rootMin":1.530321350369178},{"slot":0,"who":"KROV","mode":"spar","timerMax":0,"ratioMin":0.8757336725572631,"rootMin":2.9704561562418803},{"slot":0,"who":"NINA","mode":"spar","timerMax":0,"ratioMin":0.9999999999999992,"rootMin":6.315165876777236},{"slot":0,"who":"DANNY","mode":"spar","timerMax":0,"ratioMin":0.9999999999999992,"rootMin":6.315165876777236},{"slot":1,"who":"NYXA","mode":"spar","timerMax":0,"ratioMin":0.9999999999999978,"rootMin":6.698799320224964},{"slot":1,"who":"DANNY","mode":"spar","timerMax":0,"ratioMin":0.9999999999999963,"rootMin":6.7495606794824},{"slot":2,"who":"NYXA","mode":"spar","timerMax":0,"ratioMin":0.9999999999999963,"rootMin":6.530060303237889},{"slot":2,"who":"VEXA","mode":"spar","timerMax":0,"ratioMin":0.999999999999997,"rootMin":6.749560679482386},{"slot":2,"who":"KROV","mode":"spar","timerMax":0,"ratioMin":0.8516047779785808,"rootMin":5.747958123903572},{"slot":2,"who":"NINA","mode":"spar","timerMax":0,"ratioMin":0.999999999999997,"rootMin":6.749560679482386},{"slot":2,"who":"DANNY","mode":"spar","timerMax":0,"ratioMin":0.999999999999997,"rootMin":6.749560679482386},{"slot":3,"who":"NINA","mode":"spar","timerMax":0,"ratioMin":0.999999999999999,"rootMin":6.749560679482393},{"slot":3,"who":"DANNY","mode":"spar","timerMax":0,"ratioMin":0.9832961544321127,"rootMin":6.636817060241256},{"slot":4,"who":"BRAX","mode":"spar","timerMax":0,"ratioMin":0.9999999999999971,"rootMin":6.1611374407582815},{"slot":4,"who":"NYXA","mode":"spar","timerMax":0,"ratioMin":0.9999999999999963,"rootMin":6.530060303237903},{"slot":4,"who":"KROV","mode":"spar","timerMax":0,"ratioMin":0.999999999999997,"rootMin":4.447150420561314},{"slot":4,"who":"NINA","mode":"spar","timerMax":0,"ratioMin":0.9680954916634726,"rootMin":2.78244130183036},{"slot":4,"who":"DANNY","mode":"spar","timerMax":0,"ratioMin":0.999999999999997,"rootMin":6.749560679482386},{"slot":5,"who":"NINA","mode":"spar","timerMax":0,"ratioMin":0.5812684770085601,"rootMin":3.656265296631858},{"slot":5,"who":"DANNY","mode":"spar","timerMax":0,"ratioMin":0.999999999999999,"rootMin":6.749560679482386}]
+
+21 !== 0
+
+    at /workspace/scratch/de5ed6fc2c9c/braxhorn-review/scripts/audit-natural-contact.cjs:9:9 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 21,
+  expected: 0,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
