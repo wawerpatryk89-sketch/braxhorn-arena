@@ -22,7 +22,8 @@
     "test:ui": "node scripts/audit-ui-premium.mjs",
     "test:review-main": "python3 scripts/review/run-tests.py main",
     "test:requires-media": "python3 scripts/review/run-tests.py requires-media",
-    "test:review": "npm run test:review-main && npm run test:requires-media"
+    "test:review": "npm run test:review-main && npm run test:requires-media",
+    "test:online-guest": "node scripts/audit-guest-sprint.cjs && node scripts/audit-guest-arena-video.cjs"
   },
   "devDependencies": {
     "happy-dom": "^21.0.3",
