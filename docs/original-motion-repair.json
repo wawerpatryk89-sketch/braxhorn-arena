@@ -1,0 +1,143 @@
+[
+  {
+    "who": "BRAX",
+    "changed": [
+      "IDLE: Boxing (2)",
+      "WALK_FORWARD: Long Step Forward",
+      "LIGHT_PUNCH: uniform playback",
+      "HEAVY_PUNCH: uniform playback",
+      "DOUBLE_PUNCH: uniform playback",
+      "LIGHT_KICK: uniform playback",
+      "HEAVY_KICK: uniform playback",
+      "TEEP: uniform playback",
+      "COMBO: Uppercut Jab",
+      "HOOK: uniform playback",
+      "UPPERCUT: uniform playback",
+      "ELBOW: uniform playback",
+      "COUNTER: uniform playback",
+      "CHAIN_STRIKES: uniform playback",
+      "KNEE_CHAIN: uniform playback",
+      "CLINCH_KNEE: uniform playback",
+      "CAPOEIRA: uniform playback",
+      "MUAY_THAI_ROUNDHOUSE: uniform playback",
+      "CROUCH_KICK: uniform playback",
+      "CROUCH_PUNCH: uniform playback",
+      "HEAVY_STOMP: uniform playback",
+      "APPROACH: Long Step Forward"
+    ]
+  },
+  {
+    "who": "NYXA",
+    "changed": [
+      "LIGHT_PUNCH: uniform playback",
+      "HEAVY_PUNCH: uniform playback",
+      "ELBOW: uniform playback",
+      "CLINCH_KNEE: uniform playback",
+      "LIGHT_KICK: uniform playback",
+      "HEAVY_KICK: uniform playback",
+      "CROUCH_KICK: uniform playback",
+      "COMBO: Punch To Elbow Combo",
+      "HOOK: uniform playback",
+      "UPPERCUT: uniform playback",
+      "LUNGE_PUNCH: uniform playback",
+      "PUNCH_CHAIN: uniform playback",
+      "COUNTER: uniform playback",
+      "SPIN_KICK: uniform playback",
+      "TEEP: uniform playback",
+      "CROUCH_PUNCH: uniform playback",
+      "HEAVY_STOMP: uniform playback",
+      "APPROACH: Medium Step Forward (1)"
+    ]
+  },
+  {
+    "who": "VEXA",
+    "changed": [
+      "WALK_FORWARD: Medium Step Forward",
+      "WALK_BACK: Shared Step Backward",
+      "LIGHT_PUNCH: uniform playback",
+      "LIGHT_PUNCH: Boxing",
+      "HEAVY_PUNCH: uniform playback",
+      "HEAVY_PUNCH: Boxing (2)",
+      "LIGHT_KICK: uniform playback",
+      "LIGHT_KICK: Pontera",
+      "HEAVY_KICK: uniform playback",
+      "HEAVY_KICK: Roundhouse Kick (1)",
+      "SPIN_KICK: uniform playback",
+      "SPIN_KICK: Armada",
+      "FLYING_KICK: uniform playback",
+      "FLYING_KICK: Flying Kick",
+      "COMBO: Boxing (2)",
+      "APPROACH: Medium Step Forward"
+    ]
+  },
+  {
+    "who": "KROV",
+    "changed": [
+      "WALK_FORWARD: Short Step Forward",
+      "WALK_BACK: Step Backward",
+      "LIGHT_PUNCH: uniform playback",
+      "LIGHT_PUNCH: Jab Cross",
+      "HEAVY_PUNCH: uniform playback",
+      "HEAVY_PUNCH: Hook Punch",
+      "LIGHT_KICK: uniform playback",
+      "LIGHT_KICK: Mma Kick",
+      "HEAVY_KICK: uniform playback",
+      "HEAVY_KICK: Kicking",
+      "ELBOW: uniform playback",
+      "ELBOW: Illegal Elbow Punch",
+      "UPPERCUT: uniform playback",
+      "UPPERCUT: Uppercut",
+      "COMBO: Jab Cross",
+      "APPROACH: Walking"
+    ]
+  },
+  {
+    "who": "BEAR",
+    "changed": [
+      "WALK_FORWARD: Short Step Forward",
+      "WALK_BACK: Shared Step Backward",
+      "LIGHT_PUNCH: uniform playback",
+      "LIGHT_PUNCH: Jab Cross",
+      "HEAVY_PUNCH: uniform playback",
+      "HEAVY_PUNCH: Smash",
+      "LIGHT_KICK: uniform playback",
+      "LIGHT_KICK: Bencao",
+      "HEAVY_KICK: uniform playback",
+      "HEAVY_KICK: Knee Jab",
+      "SHOULDER: uniform playback",
+      "SHOULDER: Rifle Punch",
+      "UPPERCUT: uniform playback",
+      "UPPERCUT: Surprise Uppercut",
+      "COMBO: Rifle Punch",
+      "APPROACH: Short Step Forward"
+    ]
+  },
+  {
+    "who": "NINA",
+    "changed": [
+      "LIGHT_PUNCH: uniform playback",
+      "LIGHT_PUNCH: Chapa 2",
+      "HEAVY_PUNCH: uniform playback",
+      "HEAVY_PUNCH: Meia Lua De Frente",
+      "LIGHT_KICK: uniform playback",
+      "LIGHT_KICK: Martelo 2",
+      "HEAVY_KICK: uniform playback",
+      "CRESCENT_KICK: uniform playback",
+      "SPIN_KICK: uniform playback",
+      "SPIN_KICK: Armada",
+      "COMBO: Capoeira (1)"
+    ]
+  },
+  {
+    "who": "DANNY",
+    "changed": [
+      "LIGHT_PUNCH: uniform playback",
+      "HEAVY_PUNCH: uniform playback",
+      "LIGHT_KICK: uniform playback",
+      "HEAVY_KICK: uniform playback",
+      "HOOK: uniform playback",
+      "SIDE_KICK: uniform playback",
+      "COMBO: Boxing"
+    ]
+  }
+]

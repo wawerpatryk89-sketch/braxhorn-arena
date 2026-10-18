@@ -1,0 +1,4 @@
+import assert from 'node:assert/strict';import fs from 'node:fs';import {createHash} from 'node:crypto';import {minimumMatchTime} from '../backend/lib/ranking-time-policy.ts';
+const limits=JSON.parse(fs.readFileSync('backend/lib/ranking-times.json'));
+for(const [who,f] of Object.entries(limits.fighters)){assert.equal(createHash('sha256').update(fs.readFileSync('game/assets/'+who.toLowerCase()+'-new/config.json')).digest('hex'),f.configSha256);for(const mode of ['fight','arcade','tournament']){const min=minimumMatchTime(mode,who,[2,0],2);assert.equal(min,f.roundMinimumMs*2);assert(min>1500);assert.equal(minimumMatchTime(mode,who,[1,0],3),f.roundMinimumMs+120000);}assert.equal(minimumMatchTime('survival',who,[1,0],1),f.roundMinimumMs);assert.equal(minimumMatchTime('survival',who,[0,1],1),0);}
+console.log('PASS 6 config hashes, all four modes, full-health wins, survival carry-health losses and timeout rounds');

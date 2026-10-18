@@ -1,0 +1,190 @@
+{
+  "model": "tripo_convert_93d9cd2e-244a-4ff2-b21b-946455646158.fbx",
+  "preservedTextures": {
+    "color": "tripo_node_eddfc9e1_BaseColor.png",
+    "normal": "tripo_node_eddfc9e1_Normal_Bake.png",
+    "roughness": "tiger_humanoid_3d_model_roughness.PNG",
+    "metalness": "tiger_humanoid_3d_model_metallic.PNG"
+  },
+  "clips": [
+    {
+      "file": "Action Idle To Fight Idle.fbx",
+      "duration": 1,
+      "duplicateOf": null
+    },
+    {
+      "file": "Armada.fbx",
+      "duration": 1.6333333253860474,
+      "duplicateOf": null
+    },
+    {
+      "file": "Boxing (1).fbx",
+      "duration": 2.200000047683716,
+      "duplicateOf": null
+    },
+    {
+      "file": "Boxing (2).fbx",
+      "duration": 2.0833332538604736,
+      "duplicateOf": null
+    },
+    {
+      "file": "Boxing.fbx",
+      "duration": 2.116666555404663,
+      "duplicateOf": null
+    },
+    {
+      "file": "Breakdance Ending 1.fbx",
+      "duration": 6.483333110809326,
+      "duplicateOf": null
+    },
+    {
+      "file": "Ducking.fbx",
+      "duration": 1.5333333015441895,
+      "duplicateOf": null
+    },
+    {
+      "file": "Falling Back Death.fbx",
+      "duration": 2.183333396911621,
+      "duplicateOf": null
+    },
+    {
+      "file": "Fist Fight A.fbx",
+      "duration": 4.666666507720947,
+      "duplicateOf": null
+    },
+    {
+      "file": "Flying Back Death.fbx",
+      "duration": 3.0166666507720947,
+      "duplicateOf": null
+    },
+    {
+      "file": "Flying Kick.fbx",
+      "duration": 1.5,
+      "duplicateOf": null
+    },
+    {
+      "file": "Getting Up.fbx",
+      "duration": 8.583333015441895,
+      "duplicateOf": null
+    },
+    {
+      "file": "Hit Reaction.fbx",
+      "duration": 1.5833333730697632,
+      "duplicateOf": null
+    },
+    {
+      "file": "Medium Step Forward.fbx",
+      "duration": 0.9166666865348816,
+      "duplicateOf": null
+    },
+    {
+      "file": "Pontera.fbx",
+      "duration": 1.350000023841858,
+      "duplicateOf": null
+    },
+    {
+      "file": "Queshada 2.fbx",
+      "duration": 2,
+      "duplicateOf": null
+    },
+    {
+      "file": "Receive Uppercut To The Face.fbx",
+      "duration": 1.2333333492279053,
+      "duplicateOf": null
+    },
+    {
+      "file": "Receiving An Uppercut.fbx",
+      "duration": 1.6666666269302368,
+      "duplicateOf": null
+    },
+    {
+      "file": "Right Block.fbx",
+      "duration": 1.4333332777023315,
+      "duplicateOf": null
+    },
+    {
+      "file": "Rockin' Shackle A.fbx",
+      "duration": 5,
+      "duplicateOf": null
+    },
+    {
+      "file": "Rockin' Shackle B (1).fbx",
+      "duration": 5,
+      "duplicateOf": null
+    },
+    {
+      "file": "Rockin' Shackle B.fbx",
+      "duration": 5,
+      "duplicateOf": "Rockin' Shackle B (1).fbx"
+    },
+    {
+      "file": "Roundhouse Kick (1).fbx",
+      "duration": 2.133333444595337,
+      "duplicateOf": null
+    },
+    {
+      "file": "Roundhouse Kick.fbx",
+      "duration": 2.5,
+      "duplicateOf": null
+    },
+    {
+      "file": "Running.fbx",
+      "duration": 2.5333333015441895,
+      "duplicateOf": null
+    },
+    {
+      "file": "Shoulder Throw, Aggressor (1).fbx",
+      "duration": 6.666666507720947,
+      "duplicateOf": null
+    },
+    {
+      "file": "Shoulder Throw, Aggressor.fbx",
+      "duration": 6.666666507720947,
+      "duplicateOf": "Shoulder Throw, Aggressor (1).fbx"
+    },
+    {
+      "file": "Sprint.fbx",
+      "duration": 0.5333333611488342,
+      "duplicateOf": null
+    },
+    {
+      "file": "Victory.fbx",
+      "duration": 4.5,
+      "duplicateOf": null
+    },
+    {
+      "file": "Walk Backward Arc Left.fbx",
+      "duration": 0.9833333492279053,
+      "duplicateOf": null
+    },
+    {
+      "file": "Wiping Sweat.fbx",
+      "duration": 2.633333444595337,
+      "duplicateOf": null
+    },
+    {
+      "file": "brax/Jump.fbx",
+      "retargetedAs": "Shared Jump",
+      "legRatio": 0.9521306639601802,
+      "duration": 2.1666667461395264
+    },
+    {
+      "file": "brax/Kip Up.fbx",
+      "retargetedAs": "Shared Kip Up",
+      "legRatio": 0.9521306639601802,
+      "duration": 2.0166666507720947
+    },
+    {
+      "file": "nyxa/Shoulder Throw, Victim.fbx",
+      "retargetedAs": "Shared Shoulder Throw, Victim",
+      "legRatio": 1.0178059188960342,
+      "duration": 6.666666507720947
+    },
+    {
+      "file": "nyxa/Step Backward.fbx",
+      "retargetedAs": "Shared Step Backward",
+      "legRatio": 1.0178059188960342,
+      "duration": 0.8333333134651184
+    }
+  ]
+}

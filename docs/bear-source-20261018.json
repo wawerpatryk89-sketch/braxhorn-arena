@@ -1,0 +1,534 @@
+{
+  "model": "tripo_convert_171406aa-1d25-420d-92f1-ec2084b4bd54.fbx",
+  "modelSHA256": "df20486dcf05655417e1ef0ea33e8a1cdec459efae2d012c1213e71da3ea18cf",
+  "meshInfo": [
+    {
+      "vertices": 55551,
+      "attributes": [
+        "position",
+        "skinIndex",
+        "skinWeight",
+        "skinIndex2",
+        "skinWeight2",
+        "normal",
+        "uv"
+      ]
+    }
+  ],
+  "textures": {
+    "color": {
+      "file": "tripo_node_cd87740e_BaseColor.png",
+      "sha256": "b314c8cbde8990eddc0de152334c379c205d113700c0897c03667421caf4ae59"
+    },
+    "normal": {
+      "file": "tripo_node_cd87740e_Normal_Bake.png",
+      "sha256": "d1b35f636b64c836882f9e71422b0ff4e8f6dd1c1a089f4efb4999cce2278c3a"
+    },
+    "metalness": {
+      "file": "anthropomorphic_bear_gi_3d_model_metallic.PNG",
+      "sha256": "4977a48563ab66e09c69df5bbe69d4cfc3aade6098dc11e47481d926d4180369"
+    },
+    "roughness": {
+      "file": "anthropomorphic_bear_gi_3d_model_roughness.PNG",
+      "sha256": "ebf6fa4f2a4b8df4233e6324cb90883e29c77119e60738c6a0cb24b874c8339e"
+    }
+  },
+  "clips": [
+    {
+      "file": "source-assets/new-fighters-input/xd/Bencao.fbx",
+      "sha256": "4ce360729cbcf6280caa7a891e8d0baecd8e52c32f4cc82e886362f496c61d53",
+      "name": "Bencao",
+      "duration": 1.3666666746139526,
+      "legRatio": 1,
+      "maxRestAngle": 4.2146848510894035e-8
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd/Blocking.fbx",
+      "sha256": "77af05d3b0b3081e67186892de3796dc0c6813e34c3b1d679f1a2d5e5a83ef35",
+      "name": "Blocking",
+      "duration": 1.1833332777023315,
+      "legRatio": 1,
+      "maxRestAngle": 4.2146848510894035e-8
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd/Boxing (1).fbx",
+      "sha256": "7901ae566bc66ab107eb83d2c3325f2df6482209f7c8f187761dc15036a2398a",
+      "name": "Boxing (1)",
+      "duration": 2.4666666984558105,
+      "legRatio": 1,
+      "maxRestAngle": 4.2146848510894035e-8
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd/Boxing (2).fbx",
+      "sha256": "6bc96d4e5f55c81be43090af208b62c3d0b67a66265adff5fafba32eed796689",
+      "name": "Boxing (2)",
+      "duration": 2.200000047683716,
+      "legRatio": 1,
+      "maxRestAngle": 4.2146848510894035e-8
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd/Boxing.fbx",
+      "sha256": "061f67e01ba2fcbc53f9941e4512966084f9948ae3722dbb4eade1844ae107dd",
+      "name": "Boxing",
+      "duration": 2.0833332538604736,
+      "legRatio": 1,
+      "maxRestAngle": 4.2146848510894035e-8
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd/Center Block.fbx",
+      "sha256": "27fea453fb558da99e5540b6c0050c561d14d33536d4234f49c9cb1c08e9850e",
+      "name": "Center Block",
+      "duration": 1.7666666507720947,
+      "legRatio": 1,
+      "maxRestAngle": 4.2146848510894035e-8
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd/Cheering.fbx",
+      "sha256": "d7d34838ac7668957b843e00a3a9b0f255e09e14cb4f4c4cbd7e4ba4b9b28acc",
+      "name": "Cheering",
+      "duration": 2.9000000953674316,
+      "legRatio": 1,
+      "maxRestAngle": 4.2146848510894035e-8
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd/Defender.fbx",
+      "sha256": "e607afc118161615ceb9b2aca5592ce6477774bbacc7386baaef93c875cf2f5f",
+      "name": "Defender",
+      "duration": 3.5833332538604736,
+      "legRatio": 1,
+      "maxRestAngle": 4.2146848510894035e-8
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd/Entry (1).fbx",
+      "sha256": "ee97b55a88ca2a54377450af4389c822d23517eb104be11638dd3e19c99c82dc",
+      "name": "Entry (1)",
+      "duration": 10.350000381469727,
+      "legRatio": 1,
+      "maxRestAngle": 4.2146848510894035e-8
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd/Entry.fbx",
+      "sha256": "9819f9cc37c7570ea04472535789017474c79b8fddb34fc82b7658b7af873eeb",
+      "name": "Entry",
+      "duration": 3.3333332538604736,
+      "legRatio": 1,
+      "maxRestAngle": 4.2146848510894035e-8
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd/Fighting Idle.fbx",
+      "sha256": "c55c4f372737a4bda8bef3165129f1374fd6f9cf979a94a99933ebb440b7b8cc",
+      "name": "Fighting Idle",
+      "duration": 3.299999952316284,
+      "legRatio": 1,
+      "maxRestAngle": 4.2146848510894035e-8
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd/Hell Slammer A.fbx",
+      "sha256": "d3160a27feeab042120a7ef2c72f191287a5777080e6da49204095f424959626",
+      "name": "Hell Slammer A",
+      "duration": 7.550000190734863,
+      "legRatio": 1,
+      "maxRestAngle": 4.2146848510894035e-8
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd/Hip Hop Dancing.fbx",
+      "sha256": "1da62a01900d29d4da3604c5584dca1bd728279b6295d78a4b88a7d0dff805ac",
+      "name": "Hip Hop Dancing",
+      "duration": 6.083333492279053,
+      "legRatio": 1,
+      "maxRestAngle": 4.2146848510894035e-8
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd/Hit To Body.fbx",
+      "sha256": "62563ad0f3904f834d710ef21015cf12e3da7170cef331e8da7012ae4dfa7102",
+      "name": "Hit To Body",
+      "duration": 1.3166667222976685,
+      "legRatio": 1,
+      "maxRestAngle": 4.2146848510894035e-8
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd/Jab Cross.fbx",
+      "sha256": "1b9a85dde34820b7ccb084b33a7727966caeb992735410bf59c556cf17158a4b",
+      "name": "Jab Cross",
+      "duration": 2.116666555404663,
+      "legRatio": 1,
+      "maxRestAngle": 4.2146848510894035e-8
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd/Kicking.fbx",
+      "sha256": "2c172a0c3eb69ab51eddd67dbe56080c7f7345da81c2fd8c31b64355e599799d",
+      "name": "Kicking",
+      "duration": 2.2666666507720947,
+      "legRatio": 1,
+      "maxRestAngle": 4.2146848510894035e-8
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd/Kidney Hit.fbx",
+      "sha256": "67154d80ff9a4d0dcc4f1fc48aa3740280b55d0f0baafcf943acd11d4b51b880",
+      "name": "Kidney Hit",
+      "duration": 1.1166666746139526,
+      "legRatio": 1,
+      "maxRestAngle": 4.2146848510894035e-8
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd/Knee Jab.fbx",
+      "sha256": "6cadec6c428d413de65535932e3d34f1180120d677e42232f29a18a2d8eea78e",
+      "name": "Knee Jab",
+      "duration": 5.983333110809326,
+      "legRatio": 1,
+      "maxRestAngle": 4.2146848510894035e-8
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd/Knocked Out.fbx",
+      "sha256": "d1836e9c908788fd41c4d0c52e57522a8d19ffd842b077d04d534b036f9252d6",
+      "name": "Knocked Out",
+      "duration": 5.583333492279053,
+      "legRatio": 1,
+      "maxRestAngle": 4.2146848510894035e-8
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd/Medium Hit To Head.fbx",
+      "sha256": "e02a145a63280c04b707e736c6c2251143384ad81df2b0831987d7c6c6d7fbe5",
+      "name": "Medium Hit To Head",
+      "duration": 0.9833333492279053,
+      "legRatio": 1,
+      "maxRestAngle": 4.2146848510894035e-8
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd/Rallying.fbx",
+      "sha256": "d043393a200e95c4fcff3486fcfd4305adea39b263e67ae5a0a711de9bb3678a",
+      "name": "Rallying",
+      "duration": 6.183333396911621,
+      "legRatio": 1,
+      "maxRestAngle": 4.2146848510894035e-8
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd/Receiving An Uppercut.fbx",
+      "sha256": "fe300455c6468e486dd89ac8fd189ac5e241b40bcf9afeca906bbf225c1e0b17",
+      "name": "Receiving An Uppercut",
+      "duration": 1.6666666269302368,
+      "legRatio": 1,
+      "maxRestAngle": 4.2146848510894035e-8
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd/Rifle Punch.fbx",
+      "sha256": "e76718e4617a9b9eee99ed0d0169f33a85c1cd1a3c1259d656d253f992a02be2",
+      "name": "Rifle Punch",
+      "duration": 2.75,
+      "legRatio": 1,
+      "maxRestAngle": 4.2146848510894035e-8
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd/Rockin' Shackle A.fbx",
+      "sha256": "1e15e97f169d708d3c2062b6b3874b883899b703c81c070263b9ea283bcd8f52",
+      "name": "Rockin' Shackle A",
+      "duration": 5,
+      "legRatio": 1,
+      "maxRestAngle": 4.2146848510894035e-8
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd/Rockin' Shackle B.fbx",
+      "sha256": "9c399fb7d479f2f8d73bc6b22a95bb8406173bd16817f56241773ee1b05c773b",
+      "name": "Rockin' Shackle B",
+      "duration": 5,
+      "legRatio": 1,
+      "maxRestAngle": 4.2146848510894035e-8
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd/Roundhouse Kick.fbx",
+      "sha256": "1cf661bdabf306f913701a687ebdfbf5489729278f9c7215a4d120c5be396199",
+      "name": "Roundhouse Kick",
+      "duration": 2.133333444595337,
+      "legRatio": 1,
+      "maxRestAngle": 4.2146848510894035e-8
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd/Short Step Forward.fbx",
+      "sha256": "b31adece35f7044ce140404a03bd7e62fbf12dbfcef0fe486030bf3b7674b649",
+      "name": "Short Step Forward",
+      "duration": 1,
+      "legRatio": 1,
+      "maxRestAngle": 4.2146848510894035e-8
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd/Shoulder Throw, Aggressor.fbx",
+      "sha256": "d8d420f73344be59c719d5f5105b27269880fcd74540a608e5de82165a412abc",
+      "name": "Shoulder Throw, Aggressor",
+      "duration": 6.666666507720947,
+      "legRatio": 1,
+      "maxRestAngle": 4.2146848510894035e-8
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd/Shoulder Throw, Victim.fbx",
+      "sha256": "1f996a42271c5d635566ce6e8d5d3fd3831d8ec6cc68805d05d29d7828c350fe",
+      "name": "Shoulder Throw, Victim",
+      "duration": 6.666666507720947,
+      "legRatio": 1,
+      "maxRestAngle": 4.2146848510894035e-8
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd/Smash.fbx",
+      "sha256": "d1357583162786e8dcc2233d7b152cd0ed5f60ca8d6c66b392338cb1b8676e4e",
+      "name": "Smash",
+      "duration": 3,
+      "legRatio": 1,
+      "maxRestAngle": 4.2146848510894035e-8
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd/Standing Block End.fbx",
+      "sha256": "ee87d75f1d8bca92ae444b5ee0bc8736f8221781473472f3e5058a7b44ef69af",
+      "name": "Standing Block End",
+      "duration": 1.2833333015441895,
+      "legRatio": 1,
+      "maxRestAngle": 4.2146848510894035e-8
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd/Standing React Death Forward.fbx",
+      "sha256": "8dd986be584024970e774c437c3377870b243516bbd30d24ef45406e0f4398e0",
+      "name": "Standing React Death Forward",
+      "duration": 3.6666667461395264,
+      "legRatio": 1,
+      "maxRestAngle": 4.2146848510894035e-8
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd/Standing Sprint Forward.fbx",
+      "sha256": "58ea5f734a87f90b6fda72c7f583a02e098c037582839908e3b3e09635841ca8",
+      "name": "Standing Sprint Forward",
+      "duration": 0.5666666626930237,
+      "legRatio": 1,
+      "maxRestAngle": 4.2146848510894035e-8
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd/Stumble Backwards.fbx",
+      "sha256": "c1072955e3426e46ae17249872ce84edc4e00cbf1ad2d2a3e27c1bf2de983834",
+      "name": "Stumble Backwards",
+      "duration": 3.3333332538604736,
+      "legRatio": 1,
+      "maxRestAngle": 4.2146848510894035e-8
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd/Surprise Uppercut (1).fbx",
+      "sha256": "c3c73d529e7de9b93c1cc634731dd06e63e5e2bf8d769e660cb186ccecac43e6",
+      "name": "Surprise Uppercut (1)",
+      "duration": 3.4833333492279053,
+      "legRatio": 1,
+      "maxRestAngle": 4.2146848510894035e-8
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd/Surprise Uppercut.fbx",
+      "sha256": "671a9f9ecc38b83f4bf7d4874f9f8602a133098b2f7bae18f871b25c93674f74",
+      "name": "Surprise Uppercut",
+      "duration": 3.4833333492279053,
+      "legRatio": 1,
+      "maxRestAngle": 4.2146848510894035e-8
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd/Sweep Fall.fbx",
+      "sha256": "9dc8d2066a45cd621497e17b6ff68c3367a98751fc61b24e51af558af6d12f1f",
+      "name": "Sweep Fall",
+      "duration": 2.5,
+      "legRatio": 1,
+      "maxRestAngle": 4.2146848510894035e-8
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd/Uppercut Jab.fbx",
+      "sha256": "de1c373201191d70ead95dd85068ab63abd689c87d5daa289f6ed4521b436ff9",
+      "name": "Uppercut Jab",
+      "duration": 3.5999999046325684,
+      "legRatio": 1,
+      "maxRestAngle": 4.2146848510894035e-8
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd/Wide Arm Spell Casting.fbx",
+      "sha256": "aa4284d3d4d8887635cb9a11210178d768111aaa0a98d130513a952d79d97bcc",
+      "name": "Wide Arm Spell Casting",
+      "duration": 3.5333333015441895,
+      "legRatio": 1,
+      "maxRestAngle": 4.2146848510894035e-8
+    },
+    {
+      "file": "source-assets/new-fighters-input/xg/Flying Back Death.fbx",
+      "sha256": "05159ee376b92c4a37739506bdffab93431632adcc2c196ccc0a0a087a20d064",
+      "name": "Flying Back Death",
+      "duration": 3.0166666507720947,
+      "legRatio": 1.044825374800019,
+      "maxRestAngle": 1.9679194226591523
+    },
+    {
+      "file": "source-assets/new-fighters-input/xg/Getting Up.fbx",
+      "sha256": "2126ef0d2746e5a873cb6ce0430df48245ef108bf4de0cfa2a96dcc7959940e5",
+      "name": "Getting Up",
+      "duration": 2.700000047683716,
+      "legRatio": 1.044825374800019,
+      "maxRestAngle": 1.9679194226591523
+    },
+    {
+      "file": "source-assets/new-fighters-input/xg/Rockin' Shackle A.fbx",
+      "sha256": "a4f7ab31f47bf5f3ee56a824fff0893320e813e3a2f019f2e5500e5cfcfb37f1",
+      "name": "Shared Rockin' Shackle A",
+      "duration": 5,
+      "legRatio": 1.044825374800019,
+      "maxRestAngle": 1.9679194226591523
+    },
+    {
+      "file": "source-assets/new-fighters-input/xg/Rockin' Shackle B.fbx",
+      "sha256": "e2fe236e5cfca448bc60a218ee2cda4ee57ed78b4bb2cfa7b0f164fcf323b044",
+      "name": "Shared Rockin' Shackle B",
+      "duration": 5,
+      "legRatio": 1.044825374800019,
+      "maxRestAngle": 1.9679194226591523
+    },
+    {
+      "file": "source-assets/new-fighters-input/xg/Short Step Forward.fbx",
+      "sha256": "19fa9ce117aa75bfaf03c735d97ecb4f4b382db5e43d137f6a5d93c7e5f07e43",
+      "name": "Shared Short Step Forward",
+      "duration": 1,
+      "legRatio": 1.044825374800019,
+      "maxRestAngle": 1.9679194226591523
+    },
+    {
+      "file": "source-assets/new-fighters-input/xg/Shoulder Throw, Aggressor.fbx",
+      "sha256": "dfc35c9f13910f74821ef3a557a3e853bef3c1b1e86a7b7db2da678f58b7ce21",
+      "name": "Shared Shoulder Throw, Aggressor",
+      "duration": 6.666666507720947,
+      "legRatio": 1.044825374800019,
+      "maxRestAngle": 1.9679194226591523
+    },
+    {
+      "file": "source-assets/new-fighters-input/xg/Shoulder Throw, Victim.fbx",
+      "sha256": "1f0d133dc607ae3e43cf9ecc0a107dcae3d34deca0db84ee35f266d80636f1af",
+      "name": "Shared Shoulder Throw, Victim",
+      "duration": 6.666666507720947,
+      "legRatio": 1.044825374800019,
+      "maxRestAngle": 1.9679194226591523
+    },
+    {
+      "file": "source-assets/new-fighters-input/xg/Step Backward.fbx",
+      "sha256": "ca90c45a9465aa614cebfe9c5a56b7e0f5fcbde4ac495bfe232fcd695eb3696f",
+      "name": "Step Backward",
+      "duration": 0.800000011920929,
+      "legRatio": 1.044825374800019,
+      "maxRestAngle": 1.9679194226591523
+    },
+    {
+      "file": "source-assets/new-fighters-input/xg/Walking.fbx",
+      "sha256": "1b7dad50da8e4d81a7b391672f25bf896b64e1d876fe78034addb3d19a183059",
+      "name": "Walking",
+      "duration": 1.3833333253860474,
+      "legRatio": 1.044825374800019,
+      "maxRestAngle": 1.9679194226591523
+    },
+    {
+      "file": "source-assets/new-fighters-input/xg/Yelling Out.fbx",
+      "sha256": "29fdb1b56a8894293cba8f6a76aa85a21c34d5a67f96c36cb9791b257cbf1848",
+      "name": "Yelling Out",
+      "duration": 4.2833333015441895,
+      "legRatio": 1.044825374800019,
+      "maxRestAngle": 1.9679194226591523
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd1/Boxing.fbx",
+      "sha256": "5823c9954b45bf89eefe9ecba164b9c8f0a465d849df3d924aa95e3d2c96f65d",
+      "name": "Bear Boxing",
+      "duration": 2.200000047683716,
+      "legRatio": 0.9894679055331856,
+      "maxRestAngle": 1.7677883937914924
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd1/Getting Up.fbx",
+      "sha256": "05461c3b50c578b6457fd3f1ee9b1967d60e3818833949602c4d7519a8f5b60c",
+      "name": "Bear Getting Up",
+      "duration": 8.333333015441895,
+      "legRatio": 0.9894679055331856,
+      "maxRestAngle": 1.7677883937914924
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd1/Headbutt.fbx",
+      "sha256": "aa07cf5c6d9788f1e3a997117a91cf4df689079c10fbb373f5fb64a91b10fd73",
+      "name": "Headbutt",
+      "duration": 2.0999999046325684,
+      "legRatio": 0.9894679055331856,
+      "maxRestAngle": 1.7677883937914924
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd1/Hook Punch.fbx",
+      "sha256": "2ec722cdbc54da7ebdb364e53f81da14ef683bd71042ea8796c3e28a6fa1317b",
+      "name": "Hook Punch",
+      "duration": 2.1666667461395264,
+      "legRatio": 0.9894679055331856,
+      "maxRestAngle": 1.7677883937914924
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd1/Hurricane Kick.fbx",
+      "sha256": "f9f51fe358085456f6ae2fecf6ecc1af4aa987f97ffb63f82fc3b7887b28e929",
+      "name": "Hurricane Kick",
+      "duration": 1.8333333730697632,
+      "legRatio": 0.9894679055331856,
+      "maxRestAngle": 1.7677883937914924
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd1/Macaco Side.fbx",
+      "sha256": "75443277e080addf7c2977e0bfe7944139c4de672ddf789b4d732ae4da8fa3aa",
+      "name": "Macaco Side",
+      "duration": 3.2833333015441895,
+      "legRatio": 0.9894679055331856,
+      "maxRestAngle": 1.7677883937914924
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd1/Mma Kick.fbx",
+      "sha256": "2d79559fee01758af1969ca34bf78cedd79dad8590844aebe57d0ffe3609349e",
+      "name": "Mma Kick",
+      "duration": 1.5833333730697632,
+      "legRatio": 0.9894679055331856,
+      "maxRestAngle": 1.7677883937914924
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd1/Punching Bag.fbx",
+      "sha256": "2e8154f3c9e8e68c54c99018d360f8db8789e58b8416a41f84d2f4a8e3937715",
+      "name": "Punching Bag",
+      "duration": 3.2166666984558105,
+      "legRatio": 0.9894679055331856,
+      "maxRestAngle": 1.7677883937914924
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd1/Punching.fbx",
+      "sha256": "5c522611142f77f332d28f94377c66edf75029cf2d5b2dd79c50c73ff8cec083",
+      "name": "Punching",
+      "duration": 0.8500000238418579,
+      "legRatio": 0.9894679055331856,
+      "maxRestAngle": 1.7677883937914924
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd1/Reaction.fbx",
+      "sha256": "b2f5236fe3952387f2c6de68ef81ca38457e88cbb946db2ac1efc1c92b38d111",
+      "name": "Reaction",
+      "duration": 1.8166667222976685,
+      "legRatio": 0.9894679055331856,
+      "maxRestAngle": 1.7677883937914924
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd1/Shooting Gun.fbx",
+      "sha256": "b3c677d7345f9061dd0bfb12dfa13cc0ba45903e1657f2a33939c5787c4db9a1",
+      "name": "Shooting Gun",
+      "duration": 5.300000190734863,
+      "legRatio": 0.9894679055331856,
+      "maxRestAngle": 1.7677883937914924
+    },
+    {
+      "file": "source-assets/new-fighters-input/xd1/Strangling.fbx",
+      "sha256": "21755069190fa0bd52c3a458893c6113370799d51253968f0d93f57ad4865a61",
+      "name": "Strangling",
+      "duration": 17.566667556762695,
+      "legRatio": 0.9894679055331856,
+      "maxRestAngle": 1.7677883937914924
+    },
+    {
+      "file": "source-assets/brax-contact-20261013/Dodging Back.fbx",
+      "sha256": "592066e44985eeb491d7de9adc4028ff2ceae10669bfabe7b6d37e595d951318",
+      "name": "Shared Dodging",
+      "duration": 2.6666667461395264,
+      "legRatio": 0.9757765259296679,
+      "maxRestAngle": 1.7519968268423702
+    }
+  ]
+}

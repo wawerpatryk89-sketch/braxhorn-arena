@@ -1,0 +1,194 @@
+{
+  "nyxaCombo": {
+    "skeletonMaxError": 5.16191365590357e-8,
+    "clips": [
+      "Punch To Elbow Combo",
+      "Martelo Do Chau"
+    ],
+    "contacts": 7,
+    "rate": 2,
+    "masterBlackThunder": false
+  },
+  "timings": [
+    {
+      "who": "BRAX",
+      "asset": "BRAX_SOURCE_LIGHT_PUNCH",
+      "startup": 0.2,
+      "recovery": 0.28
+    },
+    {
+      "who": "BRAX",
+      "asset": "BRAX_SOURCE_HEAVY_PUNCH",
+      "startup": 0.26,
+      "recovery": 0.28
+    },
+    {
+      "who": "BRAX",
+      "asset": "BRAX_SOURCE_DOUBLE_PUNCH",
+      "startup": 0.2,
+      "recovery": 0.28
+    },
+    {
+      "who": "BRAX",
+      "asset": "BRAX_SOURCE_ELBOW",
+      "startup": 0.26,
+      "recovery": 0.28
+    },
+    {
+      "who": "BRAX",
+      "asset": "BRAX_SOURCE_LIGHT_KICK",
+      "startup": 0.32,
+      "recovery": 0.36
+    },
+    {
+      "who": "BRAX",
+      "asset": "BRAX_SOURCE_HEAVY_KICK",
+      "startup": 0.32,
+      "recovery": 0.36
+    },
+    {
+      "who": "BRAX",
+      "asset": "BRAX_SOURCE_TEEP",
+      "startup": 0.32,
+      "recovery": 0.36
+    },
+    {
+      "who": "BRAX",
+      "asset": "BRAX_SOURCE_HEAVY_PUNCH",
+      "startup": 0.26,
+      "recovery": 0.28
+    },
+    {
+      "who": "BRAX",
+      "asset": "BRAX_SOURCE_DOUBLE_PUNCH",
+      "startup": 0.2,
+      "recovery": 0.28
+    },
+    {
+      "who": "BRAX",
+      "asset": "BRAX_SOURCE_ELBOW",
+      "startup": 0.26,
+      "recovery": 0.28
+    },
+    {
+      "who": "BRAX",
+      "asset": "BRAX_SOURCE_HEAVY_KICK",
+      "startup": 0.32,
+      "recovery": 0.36
+    },
+    {
+      "who": "BRAX",
+      "asset": "BRAX_SOURCE_LIGHT_KICK",
+      "startup": 0.32,
+      "recovery": 0.36
+    },
+    {
+      "who": "BRAX",
+      "asset": "BRAX_SOURCE_LIGHT_PUNCH",
+      "startup": 0.2,
+      "recovery": 0.28
+    },
+    {
+      "who": "BRAX",
+      "asset": "BRAX_SOURCE_TEEP",
+      "startup": 0.32,
+      "recovery": 0.36
+    },
+    {
+      "who": "NYXA",
+      "asset": "NYXA_SOURCE_LIGHT_PUNCH",
+      "startup": 0.17,
+      "recovery": 0.25
+    },
+    {
+      "who": "NYXA",
+      "asset": "NYXA_SOURCE_HEAVY_PUNCH",
+      "startup": 0.23,
+      "recovery": 0.25
+    },
+    {
+      "who": "NYXA",
+      "asset": "NYXA_SOURCE_ELBOW",
+      "startup": 0.23,
+      "recovery": 0.25
+    },
+    {
+      "who": "NYXA",
+      "asset": "NYXA_SOURCE_CLINCH_KNEE",
+      "startup": 0.17,
+      "recovery": 0.25
+    },
+    {
+      "who": "NYXA",
+      "asset": "NYXA_SOURCE_LIGHT_KICK",
+      "startup": 0.26,
+      "recovery": 0.32
+    },
+    {
+      "who": "NYXA",
+      "asset": "NYXA_SOURCE_HEAVY_KICK",
+      "startup": 0.26,
+      "recovery": 0.32
+    },
+    {
+      "who": "NYXA",
+      "asset": "NYXA_SOURCE_CROUCH_KICK",
+      "startup": 0.26,
+      "recovery": 0.32
+    },
+    {
+      "who": "NYXA",
+      "asset": "NYXA_SOURCE_HEAVY_PUNCH",
+      "startup": 0.23,
+      "recovery": 0.25
+    },
+    {
+      "who": "NYXA",
+      "asset": "NYXA_SOURCE_ELBOW",
+      "startup": 0.23,
+      "recovery": 0.25
+    },
+    {
+      "who": "NYXA",
+      "asset": "NYXA_SOURCE_LIGHT_PUNCH",
+      "startup": 0.17,
+      "recovery": 0.25
+    },
+    {
+      "who": "NYXA",
+      "asset": "NYXA_SOURCE_LIGHT_PUNCH",
+      "startup": 0.17,
+      "recovery": 0.25
+    },
+    {
+      "who": "NYXA",
+      "asset": "NYXA_SOURCE_ELBOW",
+      "startup": 0.23,
+      "recovery": 0.25
+    },
+    {
+      "who": "NYXA",
+      "asset": "NYXA_SOURCE_CROUCH_KICK",
+      "startup": 0.26,
+      "recovery": 0.32
+    },
+    {
+      "who": "NYXA",
+      "asset": "NYXA_SOURCE_LIGHT_KICK",
+      "startup": 0.26,
+      "recovery": 0.32
+    },
+    {
+      "who": "NYXA",
+      "asset": "NYXA_SOURCE_LIGHT_PUNCH",
+      "startup": 0.17,
+      "recovery": 0.25
+    },
+    {
+      "who": "NYXA",
+      "asset": "NYXA_SOURCE_CROUCH_KICK",
+      "startup": 0.26,
+      "recovery": 0.32
+    }
+  ]
+}

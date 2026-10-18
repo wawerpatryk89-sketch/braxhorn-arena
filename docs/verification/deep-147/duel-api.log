@@ -1,0 +1,6 @@
+PASS: two clients, atomic room seat, private tokens, ready barrier, input relay, shared world, stale packets, guest cannot author world, close
+PASS Miś/Azrak room roster and host-selected arena shared with guest
+duel_time_rejected {"code":"E82AAF28","elapsed":1600,"minimum":4640}
+PASS malformed actors rejected, 2:0 at 1600 ms rejected, valid two-party result accepted at derived minimum 4640 ms
+duel_time_rejected {"code":"3C328640","elapsed":122220,"minimum":122320}
+PASS legitimate 1:0 after three rounds and two 60-second draws

@@ -1,0 +1,71 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> test
+> npm run test:balance && npm run test:expansion && npm run test:regressions
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> test:balance
+> node scripts/audit-combo-confirm.cjs && node scripts/audit-fair-pressure.cjs && node scripts/audit-combat-integrity.cjs && node scripts/audit-hit-energy.cjs && node scripts/audit-paired-clinch.cjs && node scripts/audit-sustained-contact.cjs && node scripts/audit-cpu-matchups.cjs && node scripts/audit-cpu-combos.cjs
+
+{"pass":true,"checks":2688,"roster":8,"roles":["player","cpu","remote-guest host-side actor"],"guards":["high","low"],"rule":"two distinct clean hits confirm only the current combo","limitations":"shared authoritative damage path tested; two physical phones not tested"}
+{"pass":true,"cases":5120,"checks":["all 64 matchups","both target roles, facings, walls","damage-weighted series","multi-hit cap","defence and expiry","connected combo only","anti-juggle","idle proximity","lean hit regions"]}
+audited BRAX
+audited NYXA
+audited VEXA
+audited KROV
+audited NINA
+audited DANNY
+{"contacts":912,"misses":38,"recoveries":12,"blockAndKO":true}
+{"pass":true,"cases":144,"checks":["no energy from blocks","one gain per multi-hit action","same player/CPU rule"]}
+{"pass":true,"cases":576,"checks":["36 pairs","both roles, directions and walls","normal and fall choreography","pusher unlocked during fall","no push damage","recovery completes"]}
+{"pass":true,"cases":360}
+PASS CPU opponents versus BRAX
+PASS CPU opponents versus NYXA
+PASS CPU opponents versus VEXA
+PASS CPU opponents versus KROV
+PASS CPU opponents versus NINA
+PASS CPU opponents versus DANNY
+PASS 108 matchups and difficulties with actual CPU damage
+PASS CPU combo approach and flight vs BRAX
+PASS CPU combo approach and flight vs NYXA
+PASS CPU combo approach and flight vs VEXA
+PASS CPU combo approach and flight vs KROV
+PASS CPU combo approach and flight vs NINA
+PASS CPU combo approach and flight vs DANNY
+PASS 72 CPU combo matchups/directions
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> test:expansion
+> node scripts/audit-expansion.cjs && node scripts/audit-rankings.cjs && node scripts/audit-drills.cjs && node scripts/audit-mode-first-films.cjs && node --loader ./scripts/krov-three-loader.mjs scripts/audit-expansion-models.mjs
+
+{"pass":true,"cases":130,"checks":["six individual instructions pause combat","38 actual input mappings","high/low guard","tier upgrades and recovery","survival health and one-round flow","idempotent results","all challenges and per-character persistence","storage failure"]}
+{"pass":true,"cases":90,"checks":["top five per mode and difficulty","sorting and ties","duplicate protection","reload","named progress isolation","invalid names and prototype safety","entry name prompt","cold boot access"]}
+{"pass":true,"cases":24,"checks":["real repeated attack and approach","live training selection pauses safely","real throw break advances challenge"]}
+PASS: four mode-first flows and reverse navigation; six fighter films finish and skip into combat
+(node:222) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/krov-three-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+BRAX max joint step 0.0695
+NYXA max joint step 0.0382
+VEXA max joint step 0.0919
+KROV max joint step 0.0665
+NINA max joint step 0.0618
+DANNY max joint step 0.0594
+{"pass":true,"cases":82}
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> test:regressions
+> node scripts/audit-v108-fixes.cjs && node scripts/audit-combo-approach.cjs && node scripts/audit-nina-eight.cjs && node scripts/audit-phone-controls.cjs && node scripts/audit-campaigns.cjs && node scripts/audit-transitions.cjs && node scripts/audit-victory.cjs && node scripts/audit-ko-replay.cjs && node scripts/audit-ko-flow.cjs && node scripts/audit-blood-effects.cjs && node scripts/audit-round-closeup.cjs
+
+{"pass":true,"cases":92,"checks":["symmetric passive energy and cap","regional guard both roles","U keyboard alias","real 1:0 ending and persisted score","legacy records retained without invented score"]}
+{"pass":true,"scenarios":144,"realApproach":true,"allContactGroups":true,"bothFacings":true,"edgeCombos":true}
+{"pass":true,"rolls":8,"combos":[{"who":"BRAX","face":1,"groups":["damage-0","damage-1","damage-2","damage-3"],"damage":39,"contact":false},{"who":"BRAX","face":-1,"groups":["damage-0","damage-1","damage-2","damage-3"],"damage":39,"contact":false},{"who":"NYXA","face":1,"groups":["damage-0","damage-1","damage-2","damage-3"],"damage":39,"contact":false},{"who":"NYXA","face":-1,"groups":["damage-0","damage-1","damage-2","damage-3"],"damage":39,"contact":false},{"who":"VEXA","face":1,"groups":["damage-0","damage-1","damage-2","damage-3"],"damage":39,"contact":false},{"who":"VEXA","face":-1,"groups":["damage-0","damage-1","damage-2","damage-3"],"damage":39,"contact":false},{"who":"KROV","face":1,"groups":["damage-0","damage-1","damage-2","damage-3"],"damage":39,"contact":false},{"who":"KROV","face":-1,"groups":["damage-0","damage-1","damage-2","damage-3"],"damage":39,"contact":false},{"who":"NINA","face":1,"groups":["damage-0","damage-1","damage-2","damage-3"],"damage":39,"contact":false},{"who":"NINA","face":-1,"groups":["damage-0","damage-1","damage-2","damage-3"],"damage":39,"contact":false},{"who":"DANNY","face":1,"groups":["damage-0","damage-1","damage-2","damage-3"],"damage":39,"contact":false},{"who":"DANNY","face":-1,"groups":["damage-0","damage-1","damage-2","damage-3"],"damage":39,"contact":false}]}
+PASS 48 touch cases: all six fighters, release/cancel/lost capture, multitouch direction, blur and repeat attacks
+PASS: six fighters; Arcade direct start, seven distinct rivals and changing arenas; training selected arena; tournament bracket, completion and results with actual portraits.
+PASS: startup, fast skip, four-second notice, hidden-tab pause, single completion, stalled-video fallback
+PASS: 12 winning campaigns; intermediate bouts and losses excluded; no preload; correct fighter; once per run; mute; autoplay retry; skip; ended; error cleanup.
+PASS replay: bounded pose buffer, KO freeze, slow playback, one completion, skip, cancel, reduced motion
+PASS final KO replay: simulation frozen, input blocked, finish and skip, result once, rematch resets records
+PASS blood: real damage only, block excludes, both roles, persistent across rounds, fresh match, bounded particles and wounds
+PASS no round closeups: direct transition, next round once, wounds persist

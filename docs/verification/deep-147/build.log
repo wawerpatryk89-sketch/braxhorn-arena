@@ -1,0 +1,58 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> build
+> node scripts/build-server.mjs
+
+(node:24) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/krov-three-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+Premium stats generated from the current combat configuration for all fighters.
+{"fighterPackageFiles":48,"fighterPackageBytes":255247104,"preservation":"SHA-256 exact source bytes","metadata":"local gzip; selected pair payloads only"}
+{'losslessPngBytesSaved': 1693310}
+{"losslessWebpBytesSaved":5837674,"files":9}
+{"output":"build","animationSamples":"source bytes unchanged in fighter-package","totalBytes":117188037}
+{"missingLiteralAssets": [], "buildBytes": 117188037, "removedDuplicateEncodings": []}
+
+  vinext build  (Vite 8.0.13)
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mProxy environment variables detected. We'll use your proxy for fetch requests.[0m
+
+
+[1/5] analyze client references...
+[2Ktransforming...✓ 246 modules transformed.
+rendering chunks...
+✓ built in 798ms
+[2/5] analyze server references...
+[2Ktransforming...✓ 78 modules transformed.
+rendering chunks...
+✓ built in 128ms
+[3/5] build rsc environment...
+[2Ktransforming...✓ 243 modules transformed.
+rendering chunks...
+computing gzip size...
+✓ built in 673ms
+[4/5] build client environment...
+[2Ktransforming...✓ 124 modules transformed.
+rendering chunks...
+computing gzip size...
+✓ built in 585ms
+[5/5] build ssr environment...
+[2Ktransforming...✓ 84 modules transformed.
+rendering chunks...
+computing gzip size...
+✓ built in 412ms
+[0m
+  Route (app)
+  ┌ λ /                       
+  ├ λ /api/arena              
+  ├ λ /api/arena-media/:file  
+  ├ λ /api/duel               
+  ├ λ /api/fighter-media/:file
+  ├ λ /api/rtc                
+  └ λ /api/tournaments        
+
+  λ API
+
+  Build complete. Run `vinext start` to start the production server.
+
+PASS deployment layers: fighter and moved arena payloads excluded

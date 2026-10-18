@@ -1,0 +1,9 @@
+AssertionError [ERR_ASSERTION]: fulfilled textures disposed on sibling failure
+    at /workspace/scratch/df35398b886f/brax-baseline/scripts/audit-renderer-lifecycle.cjs:16:102 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}

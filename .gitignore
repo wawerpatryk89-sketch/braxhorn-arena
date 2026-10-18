@@ -1,0 +1,22 @@
+node_modules
+.sites-runtime/
+/out/
+/build/
+/dist/
+/backend/dist/
+/backend/public/
+.wrangler/
+.env*
+!.env.example
+
+/fighter-package/
+
+__pycache__/
+*.pyc
+
+# Original attachments remain in the supplied ZIPs; extract locally for reproduction.
+/source-assets/new-fighters-input/
+
+# Export: environment files and local credentials
+.dev.vars*
+!.dev.vars.example

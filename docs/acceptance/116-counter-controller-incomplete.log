@@ -1,0 +1,86 @@
+{
+  "rendering": "engine and actual actions only",
+  "rows": [
+    {
+      "slot": 0,
+      "challenge": "counter3",
+      "completed": false,
+      "count": 1,
+      "elapsed": 180000,
+      "hp": 87,
+      "positions": [
+        11.938914615561405,
+        31.27922400772879
+      ]
+    },
+    {
+      "slot": 1,
+      "challenge": "counter3",
+      "completed": false,
+      "count": 1,
+      "elapsed": 180000,
+      "hp": 48,
+      "positions": [
+        13.851963542250013,
+        27.491227367125052
+      ]
+    },
+    {
+      "slot": 2,
+      "challenge": "counter3",
+      "completed": true,
+      "count": 3,
+      "elapsed": 9824,
+      "hp": 100,
+      "positions": [
+        15.961516394225688,
+        34.283664489316294
+      ]
+    },
+    {
+      "slot": 3,
+      "challenge": "counter3",
+      "completed": false,
+      "count": 0,
+      "elapsed": 180000,
+      "hp": 74,
+      "positions": [
+        9.859300806222777,
+        27.358536253164644
+      ]
+    },
+    {
+      "slot": 4,
+      "challenge": "counter3",
+      "completed": true,
+      "count": 3,
+      "elapsed": 11312,
+      "hp": 61,
+      "positions": [
+        15.750591974673538,
+        27.974702118676454
+      ]
+    },
+    {
+      "slot": 5,
+      "challenge": "counter3",
+      "completed": false,
+      "count": 1,
+      "elapsed": 180000,
+      "hp": 74,
+      "positions": [
+        9.897056497059925,
+        29.370973203165722
+      ]
+    }
+  ]
+}
+AssertionError [ERR_ASSERTION]: every challenge must be completable through actual actions
+    at /workspace/scratch/df35398b886f/game-audit/scripts/audit-counter-actions.cjs:14:87 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}

@@ -1,0 +1,3 @@
+CLOCK_REWIND {"before":22,"after":21.38666,"deltaArenaPercent":-0.6133400000000009,"note":"host authoritative x monotonically increasing"}
+SLOWMO_JITTER {"p50":25,"p95":25.000000000000114}
+BLOCK_LATENCY {"action":"IDLE","inputs":{"p50":31.999999999999886,"p95":31.999999999999886}}

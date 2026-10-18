@@ -1,0 +1,74 @@
+[
+  {
+    "file": "1.mp3",
+    "mean_dbfs": -16.0,
+    "peak_dbfs": -4.3,
+    "sha256": "4b68f7b2b970e2ded09da63dc8c52f50041bea03ee2355526ec805c3bc57c3e3"
+  },
+  {
+    "file": "2.mp3",
+    "mean_dbfs": -15.4,
+    "peak_dbfs": -3.3,
+    "sha256": "e0a972dc691b17ecbd69d581f469baf83ff47894e8971f450507c3d09b993464"
+  },
+  {
+    "file": "3.mp3",
+    "mean_dbfs": -16.2,
+    "peak_dbfs": -2.7,
+    "sha256": "acba09a56704aceb28c562d3e71d57a16d024234748052877e595a6ce73bc08d"
+  },
+  {
+    "file": "crowd.mp3",
+    "mean_dbfs": -25.7,
+    "peak_dbfs": -6.6,
+    "sha256": "c2f7fff0fa303c71ce19afea627bc41e936b076cf9b7bd064e36fc8ea37fd18c"
+  },
+  {
+    "file": "fight.mp3",
+    "mean_dbfs": -17.7,
+    "peak_dbfs": -3.8,
+    "sha256": "35b8a34bc3ea24409af64847e8143deab79b8d5e1dfe2e8af66f62a5aeed2118"
+  },
+  {
+    "file": "heavy.mp3",
+    "mean_dbfs": -29.7,
+    "peak_dbfs": -3.4,
+    "sha256": "9d3757bfe79f9f0d7a12d41cb901344decfec8ec828e4ca6a3185cc2d1501ae0"
+  },
+  {
+    "file": "impact.mp3",
+    "mean_dbfs": -21.7,
+    "peak_dbfs": -3.7,
+    "sha256": "b388052d954a7553f5315aa399d5e502a6c317c1b43146358f120e57803f7a24"
+  },
+  {
+    "file": "kick-swish.mp3",
+    "mean_dbfs": -24.7,
+    "peak_dbfs": -4.5,
+    "sha256": "09904bb8a461fd95bdc558e44f49adec138c9d486a72377f775b888f572618bb"
+  },
+  {
+    "file": "land.mp3",
+    "mean_dbfs": -27.4,
+    "peak_dbfs": -3.4,
+    "sha256": "4465580fc57da01cb83ccc2f72e4b4d9571e5dc0a42067491b897e6cf4640592"
+  },
+  {
+    "file": "step.mp3",
+    "mean_dbfs": -21.7,
+    "peak_dbfs": -3.6,
+    "sha256": "cbb23e5465307ac0aca351bf516338cca4e0b8278955dba5c5e933b6413b120a"
+  },
+  {
+    "file": "swish.mp3",
+    "mean_dbfs": -25.5,
+    "peak_dbfs": -5.1,
+    "sha256": "5c1dfb95cfcabdd43977dd4d5a696c14e002fae67f94e1d580741078faf2d7b9"
+  },
+  {
+    "file": "title.mp3",
+    "mean_dbfs": -20.3,
+    "peak_dbfs": -4.7,
+    "sha256": "9d0244bcd7490dfd903c4613374b09e627d5f847d9c3741f58379d921aaff6ee"
+  }
+]

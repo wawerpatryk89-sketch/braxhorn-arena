@@ -1,0 +1,11 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+const env={window:{}};vm.runInNewContext(fs.readFileSync('game/assets/blood-effects.js','utf8'),env);
+let time=0;const ctx=new Proxy({},{get:()=>()=>{}}),canvas=()=>({width:844,height:390,getContext:()=>ctx});
+const actor={width:100,config:{w:100},x:.5,face:1,pivot:0,floor:330,anchor:200,head:{x:0,y:0,r:12},capsules:[{region:'body',a:[0,40],b:[0,100],radius:12}]};
+const fx=env.window.BRAX_BLOOD.create({canvas:canvas(),floorCanvas:canvas(),view:()=>({width:844,height:390}),now:()=>time,random:()=>.5,reduced:()=>false});
+const step=n=>{for(let i=0;i<n;i++){time+=20;fx.draw([actor,actor]);}};step(1);
+fx.hit(0,12,'head',{x:422,y:130},1);assert(fx.count>=8);assert.equal(fx.level(0),0);fx.hit(0,12,'head',{x:422,y:130},1);assert.equal(fx.level(0),1);
+step(150);assert.equal(fx.count,0);assert(fx.floorSnapshot().length>0,'droplets land and leave stains');const stains=JSON.stringify(fx.floorSnapshot());step(1000);assert.equal(JSON.stringify(fx.floorSnapshot()),stains,'floor blood persists');
+fx.hit(0,12,'body',{x:422,y:190},1);fx.hit(0,12,'body',{x:422,y:190},1);assert.equal(fx.injuries(0).length,1);assert.equal(fx.injuries(1).length,0);fx.clear(true);assert.equal(JSON.stringify(fx.floorSnapshot()),stains);assert.equal(fx.level(0),1);assert.equal(fx.injuries(0).length,1,'round transition keeps injuries');
+for(let j=0;j<30;j++){fx.hit(0,14,'head',{x:422,y:130},1);step(80);}assert(fx.floorSnapshot().length<=100);assert(fx.count<=96);assert.equal(fx.level(0),6);const snap=fx.floorSnapshot();snap[0].x=-1;assert(fx.floorSnapshot()[0].x>=0,'replay snapshot isolated');fx.clear();assert.equal(fx.floorSnapshot().length,0);assert.equal(fx.level(0),0);assert.equal(fx.injuries(0).length,0);
+console.log('PASS blood: visible spray, landing, persistent floor, progressive injuries, round persistence, match reset, bounded memory and replay snapshot');

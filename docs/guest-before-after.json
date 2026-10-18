@@ -1,0 +1,117 @@
+[
+  {
+    "label": "before",
+    "scenario": "deterministic VM, 48ms each direction + 16ms/32ms packet jitter, 60Hz render",
+    "inputToVisibleMs": 112,
+    "packetJitterP95Ms": 46.66666666666424,
+    "diagnostics": {
+      "device": null,
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "samples": 58,
+      "frameMs": {
+        "p50": 16,
+        "p95": 16,
+        "p99": 16
+      },
+      "cpuFrameMs": {
+        "p95": 0
+      },
+      "jsHeapBytes": null,
+      "heapNote": "JS heap only when supported; not GPU or total device memory",
+      "resources": [],
+      "lostContexts": []
+    },
+    "arrivals": [
+      48,
+      96,
+      96,
+      176,
+      176,
+      224,
+      224,
+      304,
+      304,
+      352,
+      352,
+      432,
+      432,
+      480,
+      480,
+      560,
+      560,
+      608,
+      608,
+      688,
+      688,
+      736,
+      736
+    ]
+  },
+  {
+    "label": "after",
+    "scenario": "deterministic VM, 48ms each direction + 16ms/32ms packet jitter, 60Hz render",
+    "inputToVisibleMs": 16,
+    "packetJitterP95Ms": 46.66666666666424,
+    "diagnostics": {
+      "device": null,
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "samples": 58,
+      "frameMs": {
+        "p50": 16,
+        "p95": 16,
+        "p99": 16
+      },
+      "cpuFrameMs": {
+        "p95": 0
+      },
+      "network": {
+        "interpolationMs": 80,
+        "extrapolationLimitMs": 100,
+        "inputSamples": 1,
+        "inputToVisibleMs": {
+          "p50": 16,
+          "p95": 16
+        },
+        "packetJitterMs": {
+          "p50": 33.33333333333576,
+          "p95": 63.33333333333212
+        }
+      },
+      "jsHeapBytes": null,
+      "heapNote": "JS heap only when supported; not GPU or total device memory",
+      "resources": [],
+      "lostContexts": []
+    },
+    "arrivals": [
+      48,
+      96,
+      96,
+      176,
+      176,
+      224,
+      224,
+      304,
+      304,
+      352,
+      352,
+      432,
+      432,
+      480,
+      480,
+      560,
+      560,
+      608,
+      608,
+      688,
+      688,
+      736,
+      736
+    ]
+  }
+]

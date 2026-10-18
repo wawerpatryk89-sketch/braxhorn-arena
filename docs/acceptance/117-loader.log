@@ -1,0 +1,4 @@
+PASS gzip-file
+PASS http-decoded
+PASS plain-json
+PASS HTTP error preserves resource and status

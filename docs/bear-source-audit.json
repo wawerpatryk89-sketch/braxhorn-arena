@@ -1,0 +1,242 @@
+{
+  "model": "tripo_convert_171406aa-1d25-420d-92f1-ec2084b4bd54.fbx",
+  "preservedTextures": {
+    "color": "tripo_node_cd87740e_BaseColor.png",
+    "normal": "tripo_node_cd87740e_Normal_Bake.png",
+    "roughness": "anthropomorphic_bear_gi_3d_model_roughness.PNG",
+    "metalness": "anthropomorphic_bear_gi_3d_model_metallic.PNG"
+  },
+  "clips": [
+    {
+      "file": "Bencao.fbx",
+      "duration": 1.3666666746139526,
+      "duplicateOf": null
+    },
+    {
+      "file": "Blocking.fbx",
+      "duration": 1.1833332777023315,
+      "duplicateOf": null
+    },
+    {
+      "file": "Boxing (1).fbx",
+      "duration": 2.4666666984558105,
+      "duplicateOf": null
+    },
+    {
+      "file": "Boxing (2).fbx",
+      "duration": 2.200000047683716,
+      "duplicateOf": null
+    },
+    {
+      "file": "Boxing.fbx",
+      "duration": 2.0833332538604736,
+      "duplicateOf": null
+    },
+    {
+      "file": "Center Block.fbx",
+      "duration": 1.7666666507720947,
+      "duplicateOf": null
+    },
+    {
+      "file": "Cheering.fbx",
+      "duration": 2.9000000953674316,
+      "duplicateOf": null
+    },
+    {
+      "file": "Defender.fbx",
+      "duration": 3.5833332538604736,
+      "duplicateOf": null
+    },
+    {
+      "file": "Entry (1).fbx",
+      "duration": 10.350000381469727,
+      "duplicateOf": null
+    },
+    {
+      "file": "Entry.fbx",
+      "duration": 3.3333332538604736,
+      "duplicateOf": null
+    },
+    {
+      "file": "Fighting Idle.fbx",
+      "duration": 3.299999952316284,
+      "duplicateOf": null
+    },
+    {
+      "file": "Hell Slammer A.fbx",
+      "duration": 7.550000190734863,
+      "duplicateOf": null
+    },
+    {
+      "file": "Hip Hop Dancing.fbx",
+      "duration": 6.083333492279053,
+      "duplicateOf": null
+    },
+    {
+      "file": "Hit To Body.fbx",
+      "duration": 1.3166667222976685,
+      "duplicateOf": null
+    },
+    {
+      "file": "Jab Cross.fbx",
+      "duration": 2.116666555404663,
+      "duplicateOf": null
+    },
+    {
+      "file": "Kicking.fbx",
+      "duration": 2.2666666507720947,
+      "duplicateOf": null
+    },
+    {
+      "file": "Kidney Hit.fbx",
+      "duration": 1.1166666746139526,
+      "duplicateOf": null
+    },
+    {
+      "file": "Knee Jab.fbx",
+      "duration": 5.983333110809326,
+      "duplicateOf": null
+    },
+    {
+      "file": "Knocked Out.fbx",
+      "duration": 5.583333492279053,
+      "duplicateOf": null
+    },
+    {
+      "file": "Medium Hit To Head.fbx",
+      "duration": 0.9833333492279053,
+      "duplicateOf": null
+    },
+    {
+      "file": "Rallying.fbx",
+      "duration": 6.183333396911621,
+      "duplicateOf": null
+    },
+    {
+      "file": "Receiving An Uppercut.fbx",
+      "duration": 1.6666666269302368,
+      "duplicateOf": null
+    },
+    {
+      "file": "Rifle Punch.fbx",
+      "duration": 2.75,
+      "duplicateOf": null
+    },
+    {
+      "file": "Rockin' Shackle A.fbx",
+      "duration": 5,
+      "duplicateOf": null
+    },
+    {
+      "file": "Rockin' Shackle B.fbx",
+      "duration": 5,
+      "duplicateOf": null
+    },
+    {
+      "file": "Roundhouse Kick.fbx",
+      "duration": 2.133333444595337,
+      "duplicateOf": null
+    },
+    {
+      "file": "Short Step Forward.fbx",
+      "duration": 1,
+      "duplicateOf": null
+    },
+    {
+      "file": "Shoulder Throw, Aggressor.fbx",
+      "duration": 6.666666507720947,
+      "duplicateOf": null
+    },
+    {
+      "file": "Shoulder Throw, Victim.fbx",
+      "duration": 6.666666507720947,
+      "duplicateOf": null
+    },
+    {
+      "file": "Smash.fbx",
+      "duration": 3,
+      "duplicateOf": null
+    },
+    {
+      "file": "Standing Block End.fbx",
+      "duration": 1.2833333015441895,
+      "duplicateOf": null
+    },
+    {
+      "file": "Standing React Death Forward.fbx",
+      "duration": 3.6666667461395264,
+      "duplicateOf": null
+    },
+    {
+      "file": "Standing Sprint Forward.fbx",
+      "duration": 0.5666666626930237,
+      "duplicateOf": null
+    },
+    {
+      "file": "Stumble Backwards.fbx",
+      "duration": 3.3333332538604736,
+      "duplicateOf": null
+    },
+    {
+      "file": "Surprise Uppercut (1).fbx",
+      "duration": 3.4833333492279053,
+      "duplicateOf": null
+    },
+    {
+      "file": "Surprise Uppercut.fbx",
+      "duration": 3.4833333492279053,
+      "duplicateOf": "Surprise Uppercut (1).fbx"
+    },
+    {
+      "file": "Sweep Fall.fbx",
+      "duration": 2.5,
+      "duplicateOf": null
+    },
+    {
+      "file": "Uppercut Jab.fbx",
+      "duration": 3.5999999046325684,
+      "duplicateOf": null
+    },
+    {
+      "file": "Wide Arm Spell Casting.fbx",
+      "duration": 3.5333333015441895,
+      "duplicateOf": null
+    },
+    {
+      "file": "brax/Jump.fbx",
+      "retargetedAs": "Shared Jump",
+      "legRatio": 0.9757765259296677,
+      "duration": 2.1666667461395264
+    },
+    {
+      "file": "krov-new/Getting Up.fbx",
+      "retargetedAs": "Shared Getting Up",
+      "legRatio": 1.0448253748000191,
+      "duration": 2.700000047683716
+    },
+    {
+      "file": "nyxa/Step Backward.fbx",
+      "retargetedAs": "Shared Step Backward",
+      "legRatio": 1.0430828049169527,
+      "duration": 0.8333333134651184
+    },
+    {
+      "file": "vexa/Falling Back Death.fbx",
+      "retargetedAs": "Shared Falling Back Death",
+      "legRatio": 1.0248346816928862,
+      "duration": 2.183333396911621
+    },
+    {
+      "file": "brax/Dodging.fbx",
+      "retargetedAs": "Shared Dodging",
+      "legRatio": 0.9757765259296677,
+      "duration": 2.3333332538604736
+    },
+    {
+      "file": "krov-new/Flying Back Death.fbx",
+      "retargetedAs": "Shared Flying Back Death",
+      "legRatio": 1.0448253748000191,
+      "duration": 3.0166666507720947
+    }
+  ]
+}

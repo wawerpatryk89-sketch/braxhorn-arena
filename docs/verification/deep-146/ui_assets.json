@@ -1,0 +1,98 @@
+[
+  {
+    "test": "audit-screen-flow.cjs",
+    "command": [
+      "node",
+      "scripts/audit-screen-flow.cjs"
+    ],
+    "exitCode": 1,
+    "seconds": 0.47
+  },
+  {
+    "test": "audit-cold-boot-destinations.cjs",
+    "command": [
+      "node",
+      "scripts/audit-cold-boot-destinations.cjs"
+    ],
+    "exitCode": 0,
+    "seconds": 2.19
+  },
+  {
+    "test": "audit-phone-viewport.cjs",
+    "command": [
+      "node",
+      "scripts/audit-phone-viewport.cjs"
+    ],
+    "exitCode": 0,
+    "seconds": 0.57
+  },
+  {
+    "test": "audit-arena-audio.cjs",
+    "command": [
+      "node",
+      "scripts/audit-arena-audio.cjs"
+    ],
+    "exitCode": 0,
+    "seconds": 6.64
+  },
+  {
+    "test": "audit-arena-selection.cjs",
+    "command": [
+      "node",
+      "scripts/audit-arena-selection.cjs"
+    ],
+    "exitCode": 0,
+    "seconds": 4.71
+  },
+  {
+    "test": "audit-arena-launch.cjs",
+    "command": [
+      "node",
+      "scripts/audit-arena-launch.cjs"
+    ],
+    "exitCode": 1,
+    "seconds": 1.13
+  },
+  {
+    "test": "audit-arena-video-loader.mjs",
+    "command": [
+      "node",
+      "--import",
+      "tsx",
+      "scripts/audit-arena-video-loader.mjs"
+    ],
+    "exitCode": 0,
+    "seconds": 0.11
+  },
+  {
+    "test": "audit-arena-media.mjs",
+    "command": [
+      "node",
+      "--import",
+      "tsx",
+      "scripts/audit-arena-media.mjs"
+    ],
+    "exitCode": 0,
+    "seconds": 0.26
+  },
+  {
+    "test": "audit-fighter-asset-package.mjs",
+    "command": [
+      "node",
+      "--import",
+      "tsx",
+      "scripts/audit-fighter-asset-package.mjs"
+    ],
+    "exitCode": 0,
+    "seconds": 1.08
+  },
+  {
+    "test": "audit-deleted-arena-paths.cjs",
+    "command": [
+      "node",
+      "scripts/audit-deleted-arena-paths.cjs"
+    ],
+    "exitCode": 0,
+    "seconds": 5.84
+  }
+]

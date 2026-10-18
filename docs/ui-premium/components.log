@@ -1,0 +1,42 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> test:ui
+> node scripts/audit-ui-premium.mjs
+
+
+Warning! Happy DOM has JavaScript evaluation enabled and is running in an insecure environment.
+
+A VM Context is not an isolated environment, and if you run untrusted code you are at risk of RCE (Remote Code Execution) attacks. The attacker can escape the VM and run code at process level.
+
+It is recommended to disable code generation and freeze all builtins at process level by running node with the flags "--disallow-code-generation-from-strings" and "--frozen-intrinsics". You can suppress this warning by setting "suppressInsecureJavaScriptEnvironmentWarning" to "true" at your own risk.
+
+For more information, see https://github.com/capricorn86/happy-dom/wiki/JavaScript-Evaluation-Warning
+
+
+PASS load fighter-names.js
+PASS load arena-features.js
+PASS load code-pad.js
+PASS load arena-catalog.js
+PASS load roster.js
+PASS load online.js
+PASS load multiplayer.js
+PASS load tournaments.js
+PASS load arena-interface.js
+PASS load premium-hub.js
+PASS load ui-system.js
+PASS eight screen headers
+PASS tournament profile anchor retained
+PASS code paste normalization
+PASS complete code enables join
+PASS short code disables join
+PASS Nina actual available challenges
+PASS tournament list after header conversion
+PASS one code form visible
+PASS registration bracket preview
+PASS one primary tournament action
+PASS draw disabled before four entries
+PASS dynamic fighter selector enhanced
+PASS form value preserved by segmented control
+PASS Polish singular
+PASS Polish teens
+PASS Polish compound

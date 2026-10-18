@@ -1,0 +1,74 @@
+[
+  {
+    "who": "BRAX",
+    "other": "DANNY",
+    "state": "LIGHT_PUNCH",
+    "range": 210
+  },
+  {
+    "who": "BRAX",
+    "other": "DANNY",
+    "state": "HEAVY_PUNCH",
+    "range": 245
+  },
+  {
+    "who": "BRAX",
+    "other": "DANNY",
+    "state": "LIGHT_KICK",
+    "range": 280
+  },
+  {
+    "who": "BRAX",
+    "other": "DANNY",
+    "state": "HEAVY_KICK",
+    "range": 250
+  },
+  {
+    "who": "BRAX",
+    "other": "DANNY",
+    "state": "DOUBLE_PUNCH",
+    "range": 190
+  },
+  {
+    "who": "BRAX",
+    "other": "DANNY",
+    "state": "TEEP",
+    "range": 240
+  },
+  {
+    "who": "NYXA",
+    "other": "DANNY",
+    "state": "LIGHT_PUNCH",
+    "range": 220
+  },
+  {
+    "who": "NYXA",
+    "other": "DANNY",
+    "state": "HEAVY_PUNCH",
+    "range": 280
+  },
+  {
+    "who": "NYXA",
+    "other": "DANNY",
+    "state": "LIGHT_KICK",
+    "range": 280
+  },
+  {
+    "who": "NYXA",
+    "other": "DANNY",
+    "state": "HEAVY_KICK",
+    "range": 280
+  },
+  {
+    "who": "NYXA",
+    "other": "DANNY",
+    "state": "ELBOW",
+    "range": 205
+  },
+  {
+    "who": "NYXA",
+    "other": "DANNY",
+    "state": "CLINCH_KNEE",
+    "range": 210
+  }
+]

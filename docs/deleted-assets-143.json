@@ -1,0 +1,287 @@
+[
+  {
+    "path": "game/assets/arena-beach.jpeg",
+    "sha256_141": "5bb3acee63b711e5434ac2beb4246c474f84014f3e077d69a88dd7e0f063dbef",
+    "classification": "Zast\u0105piony nowym posterem beach; nie duplikat bitowy.",
+    "scans": {
+      "game": {
+        "status": "PASS",
+        "matches": []
+      },
+      "build": {
+        "status": "PASS",
+        "matches": []
+      },
+      "dist": {
+        "status": "PASS",
+        "matches": []
+      }
+    }
+  },
+  {
+    "path": "game/assets/arena-beach.mp4",
+    "sha256_141": "45b08c3dcd7fe690d4ac2097bca4b45c7e911917dcc9af45cefab4b79eacb1a0",
+    "classification": "Zast\u0105piony nowym filmem beach; nie duplikat bitowy.",
+    "scans": {
+      "game": {
+        "status": "PASS",
+        "matches": []
+      },
+      "build": {
+        "status": "PASS",
+        "matches": []
+      },
+      "dist": {
+        "status": "PASS",
+        "matches": []
+      }
+    }
+  },
+  {
+    "path": "game/assets/arena-snow.mp4",
+    "sha256_141": "1dbb2e6d48ae638df8cd2365d8e8dffd058be5d0c4462b693817c1740bfef654",
+    "classification": "Przeniesiony bez zmiany bajt\u00f3w: snow.1dbb2e6d48ae.mp4",
+    "scans": {
+      "game": {
+        "status": "PASS",
+        "matches": []
+      },
+      "build": {
+        "status": "PASS",
+        "matches": []
+      },
+      "dist": {
+        "status": "PASS",
+        "matches": []
+      }
+    }
+  },
+  {
+    "path": "game/assets/arena-underground.mp4",
+    "sha256_141": "971834e4cd67919de6a17b4d36761bc55e2ccc75a4352d47f27a9ce57f2bb9b6",
+    "classification": "Przeniesiony bez zmiany bajt\u00f3w: underground.971834e4cd67.mp4",
+    "scans": {
+      "game": {
+        "status": "PASS",
+        "matches": []
+      },
+      "build": {
+        "status": "PASS",
+        "matches": []
+      },
+      "dist": {
+        "status": "PASS",
+        "matches": []
+      }
+    }
+  },
+  {
+    "path": "game/assets/audio/arena-harbor.mp3",
+    "sha256_141": "27e013706a8fa33b19cf09885ac0abcecffa9e08ee6991fb788369cd793f2690",
+    "classification": "Przeniesiony bez zmiany bajt\u00f3w: harbor-audio.27e013706a8f.mp3",
+    "scans": {
+      "game": {
+        "status": "PASS",
+        "matches": []
+      },
+      "build": {
+        "status": "PASS",
+        "matches": []
+      },
+      "dist": {
+        "status": "PASS",
+        "matches": []
+      }
+    }
+  },
+  {
+    "path": "game/assets/audio/arena-jungle.mp3",
+    "sha256_141": "a458c7592e4b9926c33ddb4394bb4632c9b19c87f804f0ba259bd93746c09139",
+    "classification": "Zast\u0105piony \u015bcie\u017ck\u0105 d\u017awi\u0119kow\u0105 wewn\u0105trz MP4.",
+    "scans": {
+      "game": {
+        "status": "PASS",
+        "matches": []
+      },
+      "build": {
+        "status": "PASS",
+        "matches": []
+      },
+      "dist": {
+        "status": "PASS",
+        "matches": []
+      }
+    }
+  },
+  {
+    "path": "game/assets/audio/arena-metro.mp3",
+    "sha256_141": "1b15d86dfad57081c962e17a872a71047d6fbab8b9adad01d2664dd74663aeb6",
+    "classification": "Przeniesiony bez zmiany bajt\u00f3w: metro-audio.1b15d86dfad5.mp3",
+    "scans": {
+      "game": {
+        "status": "PASS",
+        "matches": []
+      },
+      "build": {
+        "status": "PASS",
+        "matches": []
+      },
+      "dist": {
+        "status": "PASS",
+        "matches": []
+      }
+    }
+  },
+  {
+    "path": "game/assets/audio/arena-nocny-targ.mp3",
+    "sha256_141": "289063ea7ff3aa6bcb024df95e5850c788cd809dfb0f9d6ea7d9b7d85c769fbc",
+    "classification": "Przeniesiony bez zmiany bajt\u00f3w: market-audio.289063ea7ff3.mp3",
+    "scans": {
+      "game": {
+        "status": "PASS",
+        "matches": []
+      },
+      "build": {
+        "status": "PASS",
+        "matches": []
+      },
+      "dist": {
+        "status": "PASS",
+        "matches": []
+      }
+    }
+  },
+  {
+    "path": "game/assets/audio/arena-rooftop.mp3",
+    "sha256_141": "28d9f17f4a515a94e2e1cde6de579a7df7aacdc62e23e8a0df468042e0c9946d",
+    "classification": "Zast\u0105piony \u015bcie\u017ck\u0105 d\u017awi\u0119kow\u0105 wewn\u0105trz MP4.",
+    "scans": {
+      "game": {
+        "status": "PASS",
+        "matches": []
+      },
+      "build": {
+        "status": "PASS",
+        "matches": []
+      },
+      "dist": {
+        "status": "PASS",
+        "matches": []
+      }
+    }
+  },
+  {
+    "path": "game/assets/audio/arena-volcano.mp3",
+    "sha256_141": "8530d0cdcb47d9bc3fb5e8f9c6d0720ef17711761f408615f052241b0ec992e1",
+    "classification": "Zast\u0105piony \u015bcie\u017ck\u0105 d\u017awi\u0119kow\u0105 wewn\u0105trz MP4.",
+    "scans": {
+      "game": {
+        "status": "PASS",
+        "matches": []
+      },
+      "build": {
+        "status": "PASS",
+        "matches": []
+      },
+      "dist": {
+        "status": "PASS",
+        "matches": []
+      }
+    }
+  },
+  {
+    "path": "game/assets/harbor.gif",
+    "sha256_141": "d2da7fb260028abcaa8e80228f3daa8d0151f9f15680c7b8dbe6c4f707e1ba3b",
+    "classification": "Przeniesiony bez zmiany bajt\u00f3w: harbor.d2da7fb26002.gif",
+    "scans": {
+      "game": {
+        "status": "PASS",
+        "matches": []
+      },
+      "build": {
+        "status": "PASS",
+        "matches": []
+      },
+      "dist": {
+        "status": "PASS",
+        "matches": []
+      }
+    }
+  },
+  {
+    "path": "game/assets/jungle.gif",
+    "sha256_141": "a1773968c50b6257a8802405672d5323ede6abc9f2cab67fc0d42babb113adc0",
+    "classification": "Zast\u0105piony filmem jungle; nie duplikat bitowy.",
+    "scans": {
+      "game": {
+        "status": "PASS",
+        "matches": []
+      },
+      "build": {
+        "status": "PASS",
+        "matches": []
+      },
+      "dist": {
+        "status": "PASS",
+        "matches": []
+      }
+    }
+  },
+  {
+    "path": "game/assets/metro.gif",
+    "sha256_141": "ab100a72e1ad2fd31394c679213a0d4dcbb24f046740586c14908e40f1f3af58",
+    "classification": "Przeniesiony bez zmiany bajt\u00f3w: metro.ab100a72e1ad.gif",
+    "scans": {
+      "game": {
+        "status": "PASS",
+        "matches": []
+      },
+      "build": {
+        "status": "PASS",
+        "matches": []
+      },
+      "dist": {
+        "status": "PASS",
+        "matches": []
+      }
+    }
+  },
+  {
+    "path": "game/assets/rooftop.gif",
+    "sha256_141": "3ee06fe6e5e7f58835d85274eada63f8a63105a57c6de0338a22e66d70c222c4",
+    "classification": "Zast\u0105piony filmem rooftop; nie duplikat bitowy.",
+    "scans": {
+      "game": {
+        "status": "PASS",
+        "matches": []
+      },
+      "build": {
+        "status": "PASS",
+        "matches": []
+      },
+      "dist": {
+        "status": "PASS",
+        "matches": []
+      }
+    }
+  },
+  {
+    "path": "game/assets/volcano.gif",
+    "sha256_141": "195a312c22fc655f2f24d92268ae8ab97d05798614d61a3958ca2ba6ccc2ba23",
+    "classification": "Zast\u0105piony filmem volcano; nie duplikat bitowy.",
+    "scans": {
+      "game": {
+        "status": "PASS",
+        "matches": []
+      },
+      "build": {
+        "status": "PASS",
+        "matches": []
+      },
+      "dist": {
+        "status": "PASS",
+        "matches": []
+      }
+    }
+  }
+]

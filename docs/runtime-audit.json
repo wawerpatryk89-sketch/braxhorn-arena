@@ -1,0 +1,50 @@
+{
+  "assetIntegrity": "17/17 SHA-256 match",
+  "decodedFramesComparedWithPillow": 86,
+  "results": [
+    {
+      "viewport": "844x390",
+      "actionRuns": 22,
+      "intro": [
+        "INTRO",
+        "IDLE"
+      ],
+      "walkUsesIdleFrame": false,
+      "inputsAndPause": "pass",
+      "noOpponentOrTimedVictory": "pass"
+    },
+    {
+      "viewport": "568x320",
+      "actionRuns": 22,
+      "intro": [
+        "INTRO",
+        "IDLE"
+      ],
+      "walkUsesIdleFrame": false,
+      "inputsAndPause": "pass",
+      "noOpponentOrTimedVictory": "pass"
+    },
+    {
+      "viewport": "640x360",
+      "actionRuns": 22,
+      "intro": [
+        "INTRO",
+        "IDLE"
+      ],
+      "walkUsesIdleFrame": false,
+      "inputsAndPause": "pass",
+      "noOpponentOrTimedVictory": "pass"
+    },
+    {
+      "viewport": "1363x936",
+      "actionRuns": 22,
+      "intro": [
+        "INTRO",
+        "IDLE"
+      ],
+      "walkUsesIdleFrame": false,
+      "inputsAndPause": "pass",
+      "noOpponentOrTimedVictory": "pass"
+    }
+  ]
+}

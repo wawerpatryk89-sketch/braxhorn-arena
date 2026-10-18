@@ -1,0 +1,348 @@
+{
+  "pass": true,
+  "rows": [
+    {
+      "case": "mutual",
+      "who": "BRAX",
+      "face": -1,
+      "lethal": false,
+      "hp": [
+        96,
+        96
+      ]
+    },
+    {
+      "case": "mutual",
+      "who": "BRAX",
+      "face": -1,
+      "lethal": true,
+      "hp": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "mutual",
+      "who": "BRAX",
+      "face": 1,
+      "lethal": false,
+      "hp": [
+        96,
+        96
+      ]
+    },
+    {
+      "case": "mutual",
+      "who": "BRAX",
+      "face": 1,
+      "lethal": true,
+      "hp": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "mutual",
+      "who": "NYXA",
+      "face": -1,
+      "lethal": false,
+      "hp": [
+        93,
+        93
+      ]
+    },
+    {
+      "case": "mutual",
+      "who": "NYXA",
+      "face": -1,
+      "lethal": true,
+      "hp": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "mutual",
+      "who": "NYXA",
+      "face": 1,
+      "lethal": false,
+      "hp": [
+        93,
+        93
+      ]
+    },
+    {
+      "case": "mutual",
+      "who": "NYXA",
+      "face": 1,
+      "lethal": true,
+      "hp": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "mutual",
+      "who": "VEXA",
+      "face": -1,
+      "lethal": false,
+      "hp": [
+        90,
+        90
+      ]
+    },
+    {
+      "case": "mutual",
+      "who": "VEXA",
+      "face": -1,
+      "lethal": true,
+      "hp": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "mutual",
+      "who": "VEXA",
+      "face": 1,
+      "lethal": false,
+      "hp": [
+        90,
+        90
+      ]
+    },
+    {
+      "case": "mutual",
+      "who": "VEXA",
+      "face": 1,
+      "lethal": true,
+      "hp": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "mutual",
+      "who": "KROV",
+      "face": -1,
+      "lethal": false,
+      "hp": [
+        95,
+        95
+      ]
+    },
+    {
+      "case": "mutual",
+      "who": "KROV",
+      "face": -1,
+      "lethal": true,
+      "hp": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "mutual",
+      "who": "KROV",
+      "face": 1,
+      "lethal": false,
+      "hp": [
+        95,
+        95
+      ]
+    },
+    {
+      "case": "mutual",
+      "who": "KROV",
+      "face": 1,
+      "lethal": true,
+      "hp": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "mutual",
+      "who": "NINA",
+      "face": -1,
+      "lethal": false,
+      "hp": [
+        87,
+        87
+      ]
+    },
+    {
+      "case": "mutual",
+      "who": "NINA",
+      "face": -1,
+      "lethal": true,
+      "hp": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "mutual",
+      "who": "NINA",
+      "face": 1,
+      "lethal": false,
+      "hp": [
+        87,
+        87
+      ]
+    },
+    {
+      "case": "mutual",
+      "who": "NINA",
+      "face": 1,
+      "lethal": true,
+      "hp": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "mutual",
+      "who": "DANNY",
+      "face": -1,
+      "lethal": false,
+      "hp": [
+        93,
+        93
+      ]
+    },
+    {
+      "case": "mutual",
+      "who": "DANNY",
+      "face": -1,
+      "lethal": true,
+      "hp": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "mutual",
+      "who": "DANNY",
+      "face": 1,
+      "lethal": false,
+      "hp": [
+        93,
+        93
+      ]
+    },
+    {
+      "case": "mutual",
+      "who": "DANNY",
+      "face": 1,
+      "lethal": true,
+      "hp": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "refresh",
+      "hz": 30,
+      "hp": [
+        76,
+        100
+      ],
+      "frames": [
+        28,
+        13
+      ],
+      "actions": [
+        "WALK_FORWARD",
+        "HEAVY_PUNCH"
+      ],
+      "positions": [
+        78.70216263432779,
+        89.687181042654
+      ],
+      "clock": 54.00000000000034,
+      "elapsed": 13249.999999999876
+    },
+    {
+      "case": "refresh",
+      "hz": 60,
+      "hp": [
+        76,
+        100
+      ],
+      "frames": [
+        28,
+        13
+      ],
+      "actions": [
+        "WALK_FORWARD",
+        "HEAVY_PUNCH"
+      ],
+      "positions": [
+        78.70216263432779,
+        89.687181042654
+      ],
+      "clock": 54.00000000000034,
+      "elapsed": 13249.999999999876
+    },
+    {
+      "case": "refresh",
+      "hz": 120,
+      "hp": [
+        76,
+        100
+      ],
+      "frames": [
+        28,
+        13
+      ],
+      "actions": [
+        "WALK_FORWARD",
+        "HEAVY_PUNCH"
+      ],
+      "positions": [
+        78.70216263432779,
+        89.687181042654
+      ],
+      "clock": 54.00000000000034,
+      "elapsed": 13249.999999999876
+    },
+    {
+      "case": "refresh",
+      "hz": 144,
+      "hp": [
+        76,
+        100
+      ],
+      "frames": [
+        28,
+        13
+      ],
+      "actions": [
+        "WALK_FORWARD",
+        "HEAVY_PUNCH"
+      ],
+      "positions": [
+        78.70216263432779,
+        89.687181042654
+      ],
+      "clock": 54.00000000000034,
+      "elapsed": 13249.999999999876
+    },
+    {
+      "case": "contactClockAndInput",
+      "remaining": 58.40000000000009,
+      "held": true
+    },
+    {
+      "case": "clinchTimeout",
+      "ended": true
+    },
+    {
+      "case": "contextLifecycle",
+      "pause": true,
+      "explicitResume": true,
+      "disposeReleases": true
+    }
+  ]
+}

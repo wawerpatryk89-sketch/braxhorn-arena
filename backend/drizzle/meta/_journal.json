@@ -1,0 +1,55 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1792057052430,
+      "tag": "0000_amused_earthquake",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1792058782587,
+      "tag": "0001_clean_odin",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1792067866363,
+      "tag": "0002_last_pestilence",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1792079406138,
+      "tag": "0003_sharp_franklin_richards",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1792079643777,
+      "tag": "0004_tidy_magdalene",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1792086831175,
+      "tag": "0005_overconfident_patch",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "6",
+      "when": 1792319122661,
+      "tag": "0006_naive_guardsmen",
+      "breakpoints": true
+    }
+  ]
+}

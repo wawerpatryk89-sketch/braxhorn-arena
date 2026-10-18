@@ -1,0 +1,278 @@
+{
+  "cases": 20,
+  "seeds": [
+    175,
+    7919,
+    71,
+    123,
+    991,
+    2026,
+    31415,
+    65537,
+    99991,
+    412341
+  ],
+  "note": "Scripted strategies, not human playtesting or a statistical balance rating",
+  "rows": [
+    {
+      "player": "BRAX",
+      "cpu": "VEXA",
+      "level": "hard",
+      "strategy": "forwardP1",
+      "seed": 175,
+      "hp": [
+        19,
+        0
+      ],
+      "winner": "player",
+      "wallMs": 22480
+    },
+    {
+      "player": "BRAX",
+      "cpu": "VEXA",
+      "level": "hard",
+      "strategy": "forwardP1",
+      "seed": 7919,
+      "hp": [
+        5,
+        0
+      ],
+      "winner": "player",
+      "wallMs": 26736
+    },
+    {
+      "player": "BRAX",
+      "cpu": "VEXA",
+      "level": "hard",
+      "strategy": "forwardP1",
+      "seed": 71,
+      "hp": [
+        55,
+        0
+      ],
+      "winner": "player",
+      "wallMs": 15184
+    },
+    {
+      "player": "BRAX",
+      "cpu": "VEXA",
+      "level": "hard",
+      "strategy": "forwardP1",
+      "seed": 123,
+      "hp": [
+        12,
+        0
+      ],
+      "winner": "player",
+      "wallMs": 26256
+    },
+    {
+      "player": "BRAX",
+      "cpu": "VEXA",
+      "level": "hard",
+      "strategy": "forwardP1",
+      "seed": 991,
+      "hp": [
+        2,
+        0
+      ],
+      "winner": "player",
+      "wallMs": 24576
+    },
+    {
+      "player": "BRAX",
+      "cpu": "VEXA",
+      "level": "hard",
+      "strategy": "forwardP1",
+      "seed": 2026,
+      "hp": [
+        0,
+        16
+      ],
+      "winner": "cpu",
+      "wallMs": 27472
+    },
+    {
+      "player": "BRAX",
+      "cpu": "VEXA",
+      "level": "hard",
+      "strategy": "forwardP1",
+      "seed": 31415,
+      "hp": [
+        8,
+        0
+      ],
+      "winner": "player",
+      "wallMs": 20752
+    },
+    {
+      "player": "BRAX",
+      "cpu": "VEXA",
+      "level": "hard",
+      "strategy": "forwardP1",
+      "seed": 65537,
+      "hp": [
+        0,
+        4
+      ],
+      "winner": "cpu",
+      "wallMs": 23664
+    },
+    {
+      "player": "BRAX",
+      "cpu": "VEXA",
+      "level": "hard",
+      "strategy": "forwardP1",
+      "seed": 99991,
+      "hp": [
+        0,
+        4
+      ],
+      "winner": "cpu",
+      "wallMs": 22336
+    },
+    {
+      "player": "BRAX",
+      "cpu": "VEXA",
+      "level": "hard",
+      "strategy": "forwardP1",
+      "seed": 412341,
+      "hp": [
+        0,
+        4
+      ],
+      "winner": "cpu",
+      "wallMs": 22224
+    },
+    {
+      "player": "BRAX",
+      "cpu": "KROV",
+      "level": "hard",
+      "strategy": "forwardP1",
+      "seed": 175,
+      "hp": [
+        53,
+        0
+      ],
+      "winner": "player",
+      "wallMs": 21968
+    },
+    {
+      "player": "BRAX",
+      "cpu": "KROV",
+      "level": "hard",
+      "strategy": "forwardP1",
+      "seed": 7919,
+      "hp": [
+        53,
+        0
+      ],
+      "winner": "player",
+      "wallMs": 20848
+    },
+    {
+      "player": "BRAX",
+      "cpu": "KROV",
+      "level": "hard",
+      "strategy": "forwardP1",
+      "seed": 71,
+      "hp": [
+        49,
+        0
+      ],
+      "winner": "player",
+      "wallMs": 20608
+    },
+    {
+      "player": "BRAX",
+      "cpu": "KROV",
+      "level": "hard",
+      "strategy": "forwardP1",
+      "seed": 123,
+      "hp": [
+        44,
+        0
+      ],
+      "winner": "player",
+      "wallMs": 21696
+    },
+    {
+      "player": "BRAX",
+      "cpu": "KROV",
+      "level": "hard",
+      "strategy": "forwardP1",
+      "seed": 991,
+      "hp": [
+        23,
+        0
+      ],
+      "winner": "player",
+      "wallMs": 27344
+    },
+    {
+      "player": "BRAX",
+      "cpu": "KROV",
+      "level": "hard",
+      "strategy": "forwardP1",
+      "seed": 2026,
+      "hp": [
+        9,
+        0
+      ],
+      "winner": "player",
+      "wallMs": 30320
+    },
+    {
+      "player": "BRAX",
+      "cpu": "KROV",
+      "level": "hard",
+      "strategy": "forwardP1",
+      "seed": 31415,
+      "hp": [
+        78,
+        0
+      ],
+      "winner": "player",
+      "wallMs": 18688
+    },
+    {
+      "player": "BRAX",
+      "cpu": "KROV",
+      "level": "hard",
+      "strategy": "forwardP1",
+      "seed": 65537,
+      "hp": [
+        36,
+        0
+      ],
+      "winner": "player",
+      "wallMs": 25040
+    },
+    {
+      "player": "BRAX",
+      "cpu": "KROV",
+      "level": "hard",
+      "strategy": "forwardP1",
+      "seed": 99991,
+      "hp": [
+        15,
+        0
+      ],
+      "winner": "player",
+      "wallMs": 29280
+    },
+    {
+      "player": "BRAX",
+      "cpu": "KROV",
+      "level": "hard",
+      "strategy": "forwardP1",
+      "seed": 412341,
+      "hp": [
+        40,
+        0
+      ],
+      "winner": "player",
+      "wallMs": 20512
+    }
+  ]
+}

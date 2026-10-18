@@ -1,0 +1,322 @@
+[
+  {
+    "file": "game/assets/brax-new/clips.json.gz",
+    "v145": "5205ba1ee77a995492dc22420828edf024466c4e61977b45fa4f71c090f4a809",
+    "v146": "5205ba1ee77a995492dc22420828edf024466c4e61977b45fa4f71c090f4a809"
+  },
+  {
+    "file": "game/assets/brax-new/color.webp",
+    "v145": "d738408f64d1419108c0d0c6f93611ab37572e59de47438df99f5fbe54a24f72",
+    "v146": "d738408f64d1419108c0d0c6f93611ab37572e59de47438df99f5fbe54a24f72"
+  },
+  {
+    "file": "game/assets/brax-new/config.json",
+    "v145": "160339cf9c083b4c520e948e3bd3ff351ef204fac4b234c64b2df08da50739ba",
+    "v146": "160339cf9c083b4c520e948e3bd3ff351ef204fac4b234c64b2df08da50739ba"
+  },
+  {
+    "file": "game/assets/brax-new/manifest.json",
+    "v145": "4b52bc7fbbad0c7dd7b9bc3e377b9a342bb1b532f1edad86553d9c208114dd72",
+    "v146": "4b52bc7fbbad0c7dd7b9bc3e377b9a342bb1b532f1edad86553d9c208114dd72"
+  },
+  {
+    "file": "game/assets/brax-new/metalness.webp",
+    "v145": "cbbd3272f70d7aab01eed3d521205942745846860f95a85569fe04ac323c8aec",
+    "v146": "cbbd3272f70d7aab01eed3d521205942745846860f95a85569fe04ac323c8aec"
+  },
+  {
+    "file": "game/assets/brax-new/model.json.gz",
+    "v145": "3832d0239aa02944d8be6adf73aeca8e0bc74d56d4d6371a20fd9401cee4670f",
+    "v146": "3832d0239aa02944d8be6adf73aeca8e0bc74d56d4d6371a20fd9401cee4670f"
+  },
+  {
+    "file": "game/assets/brax-new/normal.webp",
+    "v145": "485bdedd9c68eddc3b56292605fad3377276a084143986630050069d6813c9be",
+    "v146": "485bdedd9c68eddc3b56292605fad3377276a084143986630050069d6813c9be"
+  },
+  {
+    "file": "game/assets/brax-new/roughness.webp",
+    "v145": "08f8b85fded8c613fcaec30ca62c6187bb5516dc6d1c245bcfc8c1942d248698",
+    "v146": "08f8b85fded8c613fcaec30ca62c6187bb5516dc6d1c245bcfc8c1942d248698"
+  },
+  {
+    "file": "game/assets/nyxa-new/clips.json.gz",
+    "v145": "8a704d18afb9b1315e81a83e8a5ec953cb1f1b2cea5e1e201b7e8323bb8df1e3",
+    "v146": "8a704d18afb9b1315e81a83e8a5ec953cb1f1b2cea5e1e201b7e8323bb8df1e3"
+  },
+  {
+    "file": "game/assets/nyxa-new/color.webp",
+    "v145": "8e8410f6c125ef537f52e2904399f3aec56d3237139b61459a0e6909c5d11318",
+    "v146": "8e8410f6c125ef537f52e2904399f3aec56d3237139b61459a0e6909c5d11318"
+  },
+  {
+    "file": "game/assets/nyxa-new/config.json",
+    "v145": "5f7774f91b07252212c723a10c17f0b262cfcf83370bd245ca1edf0ce35b1a3a",
+    "v146": "5f7774f91b07252212c723a10c17f0b262cfcf83370bd245ca1edf0ce35b1a3a"
+  },
+  {
+    "file": "game/assets/nyxa-new/manifest.json",
+    "v145": "86ccdc4019898806633c038155ac6a90b6d18b453ab197d4ace0e11a04118005",
+    "v146": "86ccdc4019898806633c038155ac6a90b6d18b453ab197d4ace0e11a04118005"
+  },
+  {
+    "file": "game/assets/nyxa-new/metalness.webp",
+    "v145": "6bb7fc8c851fc9b58585b02003b0174df925d269780f2957bded1a5471f4b033",
+    "v146": "6bb7fc8c851fc9b58585b02003b0174df925d269780f2957bded1a5471f4b033"
+  },
+  {
+    "file": "game/assets/nyxa-new/model.json.gz",
+    "v145": "2fceadf28742d7990f64d01b81d4495755863fcc396b1e637305d2d4f2b9cd3e",
+    "v146": "2fceadf28742d7990f64d01b81d4495755863fcc396b1e637305d2d4f2b9cd3e"
+  },
+  {
+    "file": "game/assets/nyxa-new/normal.webp",
+    "v145": "b6bc7ff7b0b51aca0599ed01d562771682f220fe371c9f7bd50eba854cdcbd2a",
+    "v146": "b6bc7ff7b0b51aca0599ed01d562771682f220fe371c9f7bd50eba854cdcbd2a"
+  },
+  {
+    "file": "game/assets/nyxa-new/roughness.webp",
+    "v145": "89e79eb53d25528c7fbe07d9a43ffd00f11aedcb18522bf8828f22622d71673d",
+    "v146": "89e79eb53d25528c7fbe07d9a43ffd00f11aedcb18522bf8828f22622d71673d"
+  },
+  {
+    "file": "game/assets/vexa-new/clips.json.gz",
+    "v145": "3393fd64597973f17b9246edb0d8fefc4b92f9976eb00fd9df115e26c87fd547",
+    "v146": "3393fd64597973f17b9246edb0d8fefc4b92f9976eb00fd9df115e26c87fd547"
+  },
+  {
+    "file": "game/assets/vexa-new/color.webp",
+    "v145": "acab17e0318bc3bae21d0a69e83d9486db81148164c859bc6968c46379071335",
+    "v146": "acab17e0318bc3bae21d0a69e83d9486db81148164c859bc6968c46379071335"
+  },
+  {
+    "file": "game/assets/vexa-new/config.json",
+    "v145": "cd29eadd8dda7e5bde64edd315a9a2465a98b23223665872a4c29f03042e7372",
+    "v146": "cd29eadd8dda7e5bde64edd315a9a2465a98b23223665872a4c29f03042e7372"
+  },
+  {
+    "file": "game/assets/vexa-new/manifest.json",
+    "v145": "7b8b8f20eedc0399f811f282dfb6487aba8143f8221fe4dc4f06a7f09e2477ec",
+    "v146": "7b8b8f20eedc0399f811f282dfb6487aba8143f8221fe4dc4f06a7f09e2477ec"
+  },
+  {
+    "file": "game/assets/vexa-new/metalness.webp",
+    "v145": "94b8a7acc841576f584430e35e41368446e5082b45ecef81e293f938fdb698b7",
+    "v146": "94b8a7acc841576f584430e35e41368446e5082b45ecef81e293f938fdb698b7"
+  },
+  {
+    "file": "game/assets/vexa-new/model.json.gz",
+    "v145": "a0f069adb892db54bb94e3ef4a77ae4a73f8af23a144ed71afd506fb0363d186",
+    "v146": "a0f069adb892db54bb94e3ef4a77ae4a73f8af23a144ed71afd506fb0363d186"
+  },
+  {
+    "file": "game/assets/vexa-new/normal.webp",
+    "v145": "ba9b97cca4faac3afb538f949339fddf05b3868111695beebbfac36eeff4d07c",
+    "v146": "ba9b97cca4faac3afb538f949339fddf05b3868111695beebbfac36eeff4d07c"
+  },
+  {
+    "file": "game/assets/vexa-new/roughness.webp",
+    "v145": "9f0292e78ca3e61177b295133cf79d9026cdaf521f46e477c02ab624b0dd4c4f",
+    "v146": "9f0292e78ca3e61177b295133cf79d9026cdaf521f46e477c02ab624b0dd4c4f"
+  },
+  {
+    "file": "game/assets/krov-new/clips.json.gz",
+    "v145": "6f1d5afe663ddc7150ce70923706074a335ee5e199b5646813b1cf5ffb777760",
+    "v146": "6f1d5afe663ddc7150ce70923706074a335ee5e199b5646813b1cf5ffb777760"
+  },
+  {
+    "file": "game/assets/krov-new/color.webp",
+    "v145": "298dc6b18e76ab931245f401398e2a3cdba17dddedf99553b5d52b20a8abd9ff",
+    "v146": "298dc6b18e76ab931245f401398e2a3cdba17dddedf99553b5d52b20a8abd9ff"
+  },
+  {
+    "file": "game/assets/krov-new/config.json",
+    "v145": "93e215b9826f9970c0042d8e66055abe9422309cf2a133a2d6454480bde42486",
+    "v146": "93e215b9826f9970c0042d8e66055abe9422309cf2a133a2d6454480bde42486"
+  },
+  {
+    "file": "game/assets/krov-new/manifest.json",
+    "v145": "844b585f500317c78e9cd06c011c02bf77c1e89ebd8165f9815eaef3bce1b30f",
+    "v146": "844b585f500317c78e9cd06c011c02bf77c1e89ebd8165f9815eaef3bce1b30f"
+  },
+  {
+    "file": "game/assets/krov-new/metalness.webp",
+    "v145": "9e87c6f2107cff62e5ba0c2581d6892a65417d50132398649948f4ddff4bba65",
+    "v146": "9e87c6f2107cff62e5ba0c2581d6892a65417d50132398649948f4ddff4bba65"
+  },
+  {
+    "file": "game/assets/krov-new/model.json.gz",
+    "v145": "71c38c4d96f01c14f5a36fee14104d1be5ab26b3732b41e00606d2b96abb07c9",
+    "v146": "71c38c4d96f01c14f5a36fee14104d1be5ab26b3732b41e00606d2b96abb07c9"
+  },
+  {
+    "file": "game/assets/krov-new/normal.webp",
+    "v145": "6c4c02c9f3d25cb482f72f65a852b572cbfd38f228a442a8c2a30a1485c85d86",
+    "v146": "6c4c02c9f3d25cb482f72f65a852b572cbfd38f228a442a8c2a30a1485c85d86"
+  },
+  {
+    "file": "game/assets/krov-new/roughness.webp",
+    "v145": "8d3b7347038a80175ddeac4dbbbdb2e9216175d251ef801682ba02e85ac1543c",
+    "v146": "8d3b7347038a80175ddeac4dbbbdb2e9216175d251ef801682ba02e85ac1543c"
+  },
+  {
+    "file": "game/assets/nina-new/clips.json.gz",
+    "v145": "e0333850f0633ed3c53d7408ccdfec49f2ef8b39a8aa863b606772c0d34e39dc",
+    "v146": "e0333850f0633ed3c53d7408ccdfec49f2ef8b39a8aa863b606772c0d34e39dc"
+  },
+  {
+    "file": "game/assets/nina-new/color.webp",
+    "v145": "729193c6deb4624158042d80bbb14b36116a7e28e3df79c1b8c8299c13b35b55",
+    "v146": "729193c6deb4624158042d80bbb14b36116a7e28e3df79c1b8c8299c13b35b55"
+  },
+  {
+    "file": "game/assets/nina-new/config.json",
+    "v145": "faf6daf8e719cde653072365c7e06d3834cf9de8d0fce5c9722720a950f09896",
+    "v146": "faf6daf8e719cde653072365c7e06d3834cf9de8d0fce5c9722720a950f09896"
+  },
+  {
+    "file": "game/assets/nina-new/manifest.json",
+    "v145": "9f141e4f7f467663474f8a07ad95a4ec3904a0bf06aceff2434c319e222563c1",
+    "v146": "9f141e4f7f467663474f8a07ad95a4ec3904a0bf06aceff2434c319e222563c1"
+  },
+  {
+    "file": "game/assets/nina-new/metalness.webp",
+    "v145": "f9a69d43bc86d5ac531d09e3bf394354e964055cb0ece76a9088e47d9f1b5092",
+    "v146": "f9a69d43bc86d5ac531d09e3bf394354e964055cb0ece76a9088e47d9f1b5092"
+  },
+  {
+    "file": "game/assets/nina-new/model.json.gz",
+    "v145": "b22f21826c2143c56f2b68c6f137da148f3d3d76274ba76f7e534da30451bf19",
+    "v146": "b22f21826c2143c56f2b68c6f137da148f3d3d76274ba76f7e534da30451bf19"
+  },
+  {
+    "file": "game/assets/nina-new/normal.webp",
+    "v145": "ad69ec845beae188d972430bd4521b4c3a47490cee077154fd0ab04c843fa044",
+    "v146": "ad69ec845beae188d972430bd4521b4c3a47490cee077154fd0ab04c843fa044"
+  },
+  {
+    "file": "game/assets/nina-new/roughness.webp",
+    "v145": "ecba5bc730161be85559157e3a592c2f8227e3cd00212740571652d22db23da3",
+    "v146": "ecba5bc730161be85559157e3a592c2f8227e3cd00212740571652d22db23da3"
+  },
+  {
+    "file": "game/assets/danny-new/clips.json.gz",
+    "v145": "9ad6d91d896f7467f2c63b173c05d90aa41d193f171d755ac4eddbf8134d9b66",
+    "v146": "9ad6d91d896f7467f2c63b173c05d90aa41d193f171d755ac4eddbf8134d9b66"
+  },
+  {
+    "file": "game/assets/danny-new/color.webp",
+    "v145": "0d5cdfdd68007c98bafa373dd58cf2db48045bf9c8e2ee159bf490a28feb9729",
+    "v146": "0d5cdfdd68007c98bafa373dd58cf2db48045bf9c8e2ee159bf490a28feb9729"
+  },
+  {
+    "file": "game/assets/danny-new/config.json",
+    "v145": "2603c9652e384d37665be0a29ca08fe3d85ecf0f972f2dd8cd1129e110e7f33e",
+    "v146": "2603c9652e384d37665be0a29ca08fe3d85ecf0f972f2dd8cd1129e110e7f33e"
+  },
+  {
+    "file": "game/assets/danny-new/manifest.json",
+    "v145": "839bf5490fffa89e82f0e97f15267744ba965ded5cd5184fc1953f0549fbfa64",
+    "v146": "839bf5490fffa89e82f0e97f15267744ba965ded5cd5184fc1953f0549fbfa64"
+  },
+  {
+    "file": "game/assets/danny-new/metalness.webp",
+    "v145": "44c42ffbce1f74342b9956f964febd1019b9530bc69bcfa88eca3af142d19853",
+    "v146": "44c42ffbce1f74342b9956f964febd1019b9530bc69bcfa88eca3af142d19853"
+  },
+  {
+    "file": "game/assets/danny-new/model.json.gz",
+    "v145": "08f628343e4851e543f15cb65ab2bf366987b1459ed92515f41187ea8ac949c3",
+    "v146": "08f628343e4851e543f15cb65ab2bf366987b1459ed92515f41187ea8ac949c3"
+  },
+  {
+    "file": "game/assets/danny-new/normal.webp",
+    "v145": "e57dd0be248953d5508a1898ad9d8ffbb860fddd1d1812b70da4650c83cd1263",
+    "v146": "e57dd0be248953d5508a1898ad9d8ffbb860fddd1d1812b70da4650c83cd1263"
+  },
+  {
+    "file": "game/assets/danny-new/roughness.webp",
+    "v145": "af8cf6f75008c0a270cb7d316e77786ba1d09b0cde5e3078b4f22a893a5f1c63",
+    "v146": "af8cf6f75008c0a270cb7d316e77786ba1d09b0cde5e3078b4f22a893a5f1c63"
+  },
+  {
+    "file": "game/assets/bear-new/clips.json.gz",
+    "v145": "a0adf525ebc6f4a9b8a0dca25954463a616924540fbbe69f3c109f1e22ddf758",
+    "v146": "a0adf525ebc6f4a9b8a0dca25954463a616924540fbbe69f3c109f1e22ddf758"
+  },
+  {
+    "file": "game/assets/bear-new/color.webp",
+    "v145": "db2a9ef0ebbc75f9e4bbf185fef7382618d6fec5f445c311854c6800b9aba5e4",
+    "v146": "db2a9ef0ebbc75f9e4bbf185fef7382618d6fec5f445c311854c6800b9aba5e4"
+  },
+  {
+    "file": "game/assets/bear-new/config.json",
+    "v145": "8378177fe4a08393a9c2eec602e006b3c277752e0d177305daa94381da69afcf",
+    "v146": "8378177fe4a08393a9c2eec602e006b3c277752e0d177305daa94381da69afcf"
+  },
+  {
+    "file": "game/assets/bear-new/manifest.json",
+    "v145": "619450dec870da9ab099a362aa53f3a655743378911101b137ff1085a4cdce1b",
+    "v146": "619450dec870da9ab099a362aa53f3a655743378911101b137ff1085a4cdce1b"
+  },
+  {
+    "file": "game/assets/bear-new/metalness.webp",
+    "v145": "7d70b12750c5b12e83b1808c97086d01e872d7874143a9562222e218ae62ec04",
+    "v146": "7d70b12750c5b12e83b1808c97086d01e872d7874143a9562222e218ae62ec04"
+  },
+  {
+    "file": "game/assets/bear-new/model.json.gz",
+    "v145": "7dec5a9e8784d2c2628f9cf36c3a723c19c9577a558aada90aa85f3e7b2119c3",
+    "v146": "7dec5a9e8784d2c2628f9cf36c3a723c19c9577a558aada90aa85f3e7b2119c3"
+  },
+  {
+    "file": "game/assets/bear-new/normal.webp",
+    "v145": "6cd823e9a3671b62ed0cf4fb47f99a7348aabf48a34585978cdf02586390b1ab",
+    "v146": "6cd823e9a3671b62ed0cf4fb47f99a7348aabf48a34585978cdf02586390b1ab"
+  },
+  {
+    "file": "game/assets/bear-new/roughness.webp",
+    "v145": "2db1f2524d8b136bd90763691d07fb4239b9838ccea5595fb459a5f4870c973c",
+    "v146": "2db1f2524d8b136bd90763691d07fb4239b9838ccea5595fb459a5f4870c973c"
+  },
+  {
+    "file": "game/assets/demon-new/clips.json.gz",
+    "v145": "b733d56b471e00d771ef449a1b460958836cde89f66a0cb0496ac1c8ec9fe67c",
+    "v146": "b733d56b471e00d771ef449a1b460958836cde89f66a0cb0496ac1c8ec9fe67c"
+  },
+  {
+    "file": "game/assets/demon-new/color.webp",
+    "v145": "594d07e6b1ff9e5fd5a91186baa3431f4ac553d76a380d19a7c385f31dcefa68",
+    "v146": "594d07e6b1ff9e5fd5a91186baa3431f4ac553d76a380d19a7c385f31dcefa68"
+  },
+  {
+    "file": "game/assets/demon-new/config.json",
+    "v145": "f14b150478cda704ebd5b19df5013d819fcad7209519ee5169924c9ed1a0e06c",
+    "v146": "43e16c0823547880c151ea5dc7ea72d75f53f4ef69159982845df5d00b8fb0ac"
+  },
+  {
+    "file": "game/assets/demon-new/manifest.json",
+    "v145": "261a12b7c99e6c2cd1f906261a5cc19e4fd153e8fd01c1842bd8ff6507c954aa",
+    "v146": "261a12b7c99e6c2cd1f906261a5cc19e4fd153e8fd01c1842bd8ff6507c954aa"
+  },
+  {
+    "file": "game/assets/demon-new/metalness.webp",
+    "v145": "0f5fed78553c7920e160bb37186236357747fcc8dd498edef68a9e1c83ecde20",
+    "v146": "0f5fed78553c7920e160bb37186236357747fcc8dd498edef68a9e1c83ecde20"
+  },
+  {
+    "file": "game/assets/demon-new/model.json.gz",
+    "v145": "c9943430e9dd5cfbe7129f31b9df5ac238f1d87f2041cbcef81916ba57dd82d2",
+    "v146": "c9943430e9dd5cfbe7129f31b9df5ac238f1d87f2041cbcef81916ba57dd82d2"
+  },
+  {
+    "file": "game/assets/demon-new/normal.webp",
+    "v145": "1d64f335c0c6c8edf3dfdaab1c055ae8edd5cf51480c0acf43fb2470ec959d26",
+    "v146": "1d64f335c0c6c8edf3dfdaab1c055ae8edd5cf51480c0acf43fb2470ec959d26"
+  },
+  {
+    "file": "game/assets/demon-new/roughness.webp",
+    "v145": "935cd1f60f50cf201af87e790738d878888295ec432a74dbcbc05ba8f7f14bcc",
+    "v146": "935cd1f60f50cf201af87e790738d878888295ec432a74dbcbc05ba8f7f14bcc"
+  }
+]

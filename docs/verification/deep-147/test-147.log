@@ -1,0 +1,22 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> test:147
+> node scripts/audit-arena-picker.cjs && node scripts/audit-online-client-147.cjs && node --import tsx scripts/audit-ranking-atomic-147.mjs && node scripts/audit-network-conflicts.cjs && node scripts/audit-network-render.cjs && node scripts/audit-screen-flow.cjs
+
+PASS arena picker: 19 preserved arenas, preview/confirm event capture, all categories, search, empty state, random selection, full-resolution hero, single selected card. DOM event model; visual phone layout unverified.
+{"pass":true,"checks":38,"monotonicPosition":true,"slowMotionPacketJitterMs":5.684341886080802e-14,"scope":"controlled simulation clock, not real RAF or phone measurement"}
+unfinished matches [
+  [Object: null prototype] {
+    id: '83d4d384-9699-4d4b-a206-5dd3fe7da277',
+    run_id: 'run-race',
+    finished: 0
+  }
+]
+match authoritative [ [Object: null prototype] { finished: 1, wins: 2, losses: 0 } ]
+run overwritten [ [Object: null prototype] { score: 1, matches: 1, closed: 1 } ]
+leaderboard [ [Object: null prototype] { score: 2, completed: 1 } ]
+PASS atomic starts, conflicting finishes, seven Arcade wins, closed series rejects eighth match
+PASS concurrent creation creates exactly one run and one match
+{"cases":36,"maxJump":2,"rewoundFrames":0,"stalePredictionFrames":0}
+PASS buffered interpolation, next-frame own movement/attack, host-only damage, same-action confirmation, hidden gate and diagnostics
+PASS: seven viewport sizes, four mode highlights, difficulty, training >60s, hide/pause, return screens, duplicate arena tap, HTML assets and ids

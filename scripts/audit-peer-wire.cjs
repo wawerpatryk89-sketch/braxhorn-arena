@@ -1,0 +1,26 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+const source=fs.readFileSync('game/assets/peer-link.js','utf8'),context={TextEncoder,TextDecoder,ArrayBuffer,DataView,Uint8Array};
+vm.runInNewContext(source.slice(source.indexOf('const effectFields'),source.indexOf('function create(')),context);
+const b={size:{width:844,height:390},marks:[2,3],damageMarks:[[],[]],stains:Array.from({length:100},(_,i)=>({x:i/101,y:.82,r:1/(i+100)})),particles:Array.from({length:96},(_,i)=>({x:i*1.381,y:183.231,px:i*.341,py:199.713,vx:i-52.147,vy:-82.531,life:1800-i*3.751,total:2000.184,floor:329.882,r:1.934,color:i%4?'#a91d27':'#d54845',gravity:700}))};
+const p={type:'state',seq:15,data:{snapshotId:8,ack:3,actors:[{x:3.141592653589793}],blood:b,state:{t:52.184}}};
+const original=JSON.stringify(p),packed=context.encodePacket(p),decoded=context.decodePacket(packed);
+assert.deepEqual(JSON.parse(JSON.stringify(decoded)),p,'all numeric values, particles and stains survive exactly');
+assert(packed.byteLength<Buffer.byteLength(original)*.6,'large effect payload is materially smaller');
+assert.deepEqual(JSON.parse(JSON.stringify(context.decodePacket(original))),p,'old JSON clients remain readable');
+assert.throws(()=>context.decodePacket(packed.slice(0,-1)),'truncated buffer rejected');
+const input={type:'input',seq:2,data:{held:{left:true},events:[]}};assert.equal(context.encodePacket(input),JSON.stringify(input));
+const changed=structuredClone(p);changed.data.blood.particles[0].futureField=2;assert.equal(typeof context.encodePacket(changed),'string','unknown fields never lost');
+const start=performance.now();for(let i=0;i<500;i++)context.decodePacket(context.encodePacket(p));
+console.log(JSON.stringify({pass:true,jsonBytes:Buffer.byteLength(original),binaryBytes:packed.byteLength,reductionPercent:Math.round(100*(1-packed.byteLength/Buffer.byteLength(original))),encodeDecodeMs:(performance.now()-start)/500}));
+const pcs=[],received=[],inputs=[];let tick=0;
+class RTC{constructor(){pcs.push(this);}createDataChannel(){return this.channel={readyState:'open',bufferedAmount:0,close(){}};}createOffer(){return Promise.resolve({});}close(){}}
+context.window={RTCPeerConnection:RTC,BRAX_RTC:{fallback:{iceServers:[]},signaling(){return{publish(){},close(){}}}}};context.RTCPeerConnection=RTC;context.performance={now:()=>tick};context.setTimeout=setTimeout;context.clearTimeout=clearTimeout;
+vm.runInNewContext(source,context);
+const host=context.window.BRAX_PEER.create({host:true,onInput:i=>inputs.push(i)}),guest=context.window.BRAX_PEER.create({host:false,onState:s=>received.push(s)});
+const outgoing=[],hc=pcs[0].channel,gc={readyState:'open',bufferedAmount:0,close(){}};
+pcs[1].ondatachannel({channel:gc});hc.send=raw=>{outgoing.push(raw);gc.onmessage({data:raw});};gc.send=raw=>hc.onmessage({data:raw});
+host.send('state',p.data);assert.equal(typeof outgoing[0],'string','starts in backward compatible JSON mode');
+tick=20;host.send('state',p.data);assert(outgoing.at(-1) instanceof ArrayBuffer,'switches only after capability exchange');
+assert.deepEqual(JSON.parse(JSON.stringify(received.at(-1))),p.data);guest.send('input',input.data);assert.deepEqual(JSON.parse(JSON.stringify(inputs[0])),input.data);
+assert.equal(hc.binaryType,'arraybuffer');assert.equal(gc.binaryType,'arraybuffer');
+host.close();guest.close();console.log('PASS two endpoint negotiation, binary state delivery and guest input.');

@@ -1,0 +1,59 @@
+{
+  "sourceFiles": {
+    "brax-source/02_ANIMACJE/Punching.fbx": "7879f92a35de95b21afd001c140aac83f54a3c797080cbb6f0bb1008c612ee8f",
+    "brax-source/02_ANIMACJE/Knee Jabs To Uppercut(1).fbx": "0675d0383181bd379cca8999df743e0f1382525b05cb98ca7e4fa621c97c5501",
+    "brax-source/02_ANIMACJE/Jab Cross - Copy(1).fbx": "ae3caddfbb8b402da85e2ba716b7fdbf92d1acf5626808c0646179ed4629cb9c",
+    "brax-source/02_ANIMACJE/Knee Jabs To Uppercut (2).fbx": "6ef7a65b74b8b9701ce6b0ea7dcbc288c667b826d1d1f8e7c40e5f581f9a265f",
+    "brax-source/02_ANIMACJE/Capoeira(1).fbx": "eec7ac0d1ae0dbde1bf9b5d5918978317744f9a170a1268220b2cda9f1d723f8",
+    "brax-source/02_ANIMACJE/Kicking(1).fbx": "3619ade55042fe9881942cb836e4e99b906101e67e99b7bc5b970cc2f7a3d0b8",
+    "brax-source/02_ANIMACJE/Center Block (2)(1).fbx": "0c46267ca8fb8de881dc3c76fe188f158addb933a3928ec734ebd8471391d557",
+    "brax-source/02_ANIMACJE/Roundhouse Kick(1).fbx": "f310994421978e3d54cfba6a59cd8bc7dee06756572f7eede433c3681624c0b3",
+    "brax-source/02_ANIMACJE/Step Backward(1).fbx": "17c80cc09cd4b1e4389dd26d227e202c6c7a00c0f14a305c6cb462601c351075",
+    "brax-source/02_ANIMACJE/Illegal Elbow Punch(1).fbx": "77e4277431b76c3b38fa0198d07ffeb2dd9fa846513226f9f7dd4f9ad9d24ce7",
+    "brax-source/02_ANIMACJE/Center Block(1).fbx": "2b3a22e17eae94d60ac8d73a976a4720bdc4ca0c555742ce64835940b2ea2a1b",
+    "brax-source/02_ANIMACJE/Boxing.fbx": "28f5a79accb59a5990acdf5934923c4422ce71ff5d24f3a0f9129efe94195cd8",
+    "brax-source/02_ANIMACJE/Kicking (2).fbx": "e9395f9be8ed0d0f20a40f06dd162155899cda8ece5a61233cd70b2cbc6f8e26",
+    "brax-source/model/tripo_convert_2880a41f-155c-4938-808c-dcd3895053af.fbx": "a0d5fe447911eb7b4327761e0d709167dbc385e8e6f7347f878f7daa47c1ef9a",
+    "brax-source/model/tripo_convert_2880a41f-155c-4938-808c-dcd3895053af.fbm/tripo_node_995c9bbc-6a86-428b-bf0c-1e026f53a02d_Normal_Bake.png": "5b94864d66f78258e1bd3584e3493dc372076a252087fe8dccc33ebcc5b2d1b9",
+    "brax-source/model/tripo_convert_2880a41f-155c-4938-808c-dcd3895053af.fbm/muscular_bull_3d_model_metallic.PNG": "37533351276af72966d84e219010786d84ea7e156aa4ab32552b2feff0552612",
+    "brax-source/model/tripo_convert_2880a41f-155c-4938-808c-dcd3895053af.fbm/muscular_bull_3d_model_roughness.PNG": "a68f72fe66a48b7baeffb70079b9e019a9dd4a44e718bf40f4a406e7ab4f63bb",
+    "brax-source/model/tripo_convert_2880a41f-155c-4938-808c-dcd3895053af.fbm/tripo_node_995c9bbc-6a86-428b-bf0c-1e026f53a02d_BaseColor.png": "2a293bfc613d8e321f4dfa1fed1dfba127fc9ef8a27953edc6478c5900ed7482",
+    "nyxa-source/Body Jab Cross.fbx": "e2cea67a4ec248f119fb1f4a5db8481939f8f9545056b078ce02ba4df8e3928d",
+    "nyxa-source/Dodging.fbx": "83760e34d0f5d2de7c5a2dee75380db7e543e14d3d4eea80d746de084d22133d",
+    "nyxa-source/Hook.fbx": "49dd39a2a7afbc0b401df82af39f1a0ca905267f3e3f36a5bb183f46897cb911",
+    "nyxa-source/Illegal Elbow Punch.fbx": "56676b2ab6f8f17bff7f3b31ca0e0ac65afa2b258a75fb8d1c6fca2d4a0b292f",
+    "nyxa-source/Head Hit.fbx": "d20433bec300584d94fa318e1c517ef78c17a129b45c9e4ced3cddb73d655c0f",
+    "nyxa-source/Walking.fbx": "17cfc4d55efd5f247b8ac9576e7db7798cc9f87b3e796885faf06f9ec0437b3a",
+    "nyxa-source/Mma Kick (1).fbx": "23ef76b8ffcaa12a71c68f0914e812d77fa5aa5d945c253f48e9784dd95ae23d",
+    "nyxa-source/Head Hit (2).fbx": "cca9f568365c8c6795f22d0136fe2d68adf85912c4b420899e2395a7c0ced2c0",
+    "nyxa-source/Zombie Reaction Hit.fbx": "daf850e7fa9b9df2838d15fe244b1ba98c5c9b5228e842b81550edef2efbf1bf",
+    "nyxa-source/Step Backward.fbx": "b2fd99c28171dfc79c36756dfe05763bcbdb3b217cca366813129b2be30a12b8",
+    "nyxa-source/Breakdance Freezes.fbx": "786d0366b35a1ec83ac0af6a665fc747458c52185284554ccf7f05b3eabffdf1",
+    "nyxa-source/Martelo Do Chau.fbx": "f013dc919e31d90c86f269dda65b446460542dd9bfc3ace5ead0c499d7fcccb8",
+    "nyxa-source/Ducking.fbx": "97bf23a9cd630b13f9effed05ea24206f37a4b1cfecb6d6764dcc6bff98cab56",
+    "nyxa-source/Illegal Knee.fbx": "20d6bc1528c77b23043eda595eb5d4086f54101b6cabeddc0fc7e96387ca9ab7",
+    "nyxa-source/Mma Kick (1) (2).fbx": "4ba016efd4199b845ccba6f1157c2d66a173fcb534a7f02036f226269b9fa067",
+    "nyxa-source/model/tripo_convert_cfe66e28-4410-4ae3-baa6-dc0ee2c9d705.fbx": "beaaf8ee2602b4186c01925eefeea1130c0510a286bbc0001631f05950672a4d",
+    "nyxa-source/model/tripo_convert_cfe66e28-4410-4ae3-baa6-dc0ee2c9d705.fbm/minotaur_3d_model_roughness.PNG": "9c664dc4ade343192abe3ff9ee03273b45820a52aa8e277281890807da814372",
+    "nyxa-source/model/tripo_convert_cfe66e28-4410-4ae3-baa6-dc0ee2c9d705.fbm/Color.png": "f2e7fd827e2c0beecfe7f3ea78ae41e1ebc9350539e7568d1fef75fcfa80d5c2",
+    "nyxa-source/model/tripo_convert_cfe66e28-4410-4ae3-baa6-dc0ee2c9d705.fbm/Normal.png": "3fd2db7253bb178786da0e9c4457dba9a026073c1129137c706ff54ebbf54608",
+    "nyxa-source/model/tripo_convert_cfe66e28-4410-4ae3-baa6-dc0ee2c9d705.fbm/minotaur_3d_model_metallic.PNG": "eaaa443d070408e63fa7e93edd60630bdacfa5f74b0bac4e9c32a328c6dcdd6d"
+  },
+  "preserved": "65 bones, original mesh and all up to 7 skin weights, original four texture files per model",
+  "clips": {
+    "BRAX": 13,
+    "NYXA": 15
+  },
+  "playback": {
+    "attacks": 1,
+    "nyxaMovement": 1.08,
+    "braxMovement": 1
+  },
+  "limitations": [
+    "Browser/WebGL and iPhone not exercised in this environment",
+    "No supplied jumps, falls, paired clinch, Brax forward step or Brax greeting",
+    "Nyxa introduction: Breakdance Freezes",
+    "Available source attacks do not equal the complete master move set"
+  ],
+  "baseline": "0e5eddc44b1c076ad1bf2288bd2e3f1ae19c9b17"
+}

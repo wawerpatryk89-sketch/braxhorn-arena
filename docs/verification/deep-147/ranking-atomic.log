@@ -1,0 +1,12 @@
+unfinished matches [
+  [Object: null prototype] {
+    id: '09c627bd-264c-47d3-9d8a-59303da2857b',
+    run_id: 'run-race',
+    finished: 0
+  }
+]
+match authoritative [ [Object: null prototype] { finished: 1, wins: 2, losses: 0 } ]
+run overwritten [ [Object: null prototype] { score: 1, matches: 1, closed: 1 } ]
+leaderboard [ [Object: null prototype] { score: 2, completed: 1 } ]
+PASS atomic starts, conflicting finishes, seven Arcade wins, closed series rejects eighth match
+PASS concurrent creation creates exactly one run and one match

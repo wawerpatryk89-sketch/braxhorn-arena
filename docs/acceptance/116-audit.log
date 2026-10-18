@@ -1,0 +1,9 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> test:audit
+> node scripts/audit-engine-acceptance.cjs && node scripts/audit-renderer-lifecycle.cjs && node scripts/audit-lazy-metadata.cjs && node scripts/audit-replay-events.cjs
+
+PASS engine acceptance: 24 mutual/side/KO scenarios, 4 refresh rates, held direction and contact timeout
+PASS resource lifecycle: partial failure cleanup, retry, context events, idempotent disposal, overlapping pair requests
+PASS lazy metadata: all six player choices and deferred opponents start without preloading four unused configs
+PASS replay effects: recorded particles, throttled event retention, exactly-once sound, no simulation dependency

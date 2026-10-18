@@ -1,0 +1,12 @@
+AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+
+  assert(O.a==='FLY')
+
+    at /workspace/scratch/cfff0f58a005/braxhorn/scripts/audit-arena-launch.cjs:7:143 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}

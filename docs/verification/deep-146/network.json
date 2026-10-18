@@ -1,0 +1,92 @@
+[
+  {
+    "test": "audit-duel-engine.cjs",
+    "command": [
+      "node",
+      "scripts/audit-duel-engine.cjs"
+    ],
+    "exitCode": 0,
+    "seconds": 0.92
+  },
+  {
+    "test": "audit-duel-controls.cjs",
+    "command": [
+      "node",
+      "scripts/audit-duel-controls.cjs"
+    ],
+    "exitCode": 0,
+    "seconds": 3.42
+  },
+  {
+    "test": "audit-guest-input-lane.cjs",
+    "command": [
+      "node",
+      "scripts/audit-guest-input-lane.cjs"
+    ],
+    "exitCode": 0,
+    "seconds": 0.12
+  },
+  {
+    "test": "audit-network-render.cjs",
+    "command": [
+      "node",
+      "scripts/audit-network-render.cjs"
+    ],
+    "exitCode": 0,
+    "seconds": 0.48
+  },
+  {
+    "test": "audit-network-conflicts.cjs",
+    "command": [
+      "node",
+      "scripts/audit-network-conflicts.cjs"
+    ],
+    "exitCode": 0,
+    "seconds": 22.49
+  },
+  {
+    "test": "audit-peer-link.cjs",
+    "command": [
+      "node",
+      "scripts/audit-peer-link.cjs"
+    ],
+    "exitCode": 0,
+    "seconds": 0.11
+  },
+  {
+    "test": "audit-peer-wire.cjs",
+    "command": [
+      "node",
+      "scripts/audit-peer-wire.cjs"
+    ],
+    "exitCode": 0,
+    "seconds": 0.37
+  },
+  {
+    "test": "audit-voice.cjs",
+    "command": [
+      "node",
+      "scripts/audit-voice.cjs"
+    ],
+    "exitCode": 0,
+    "seconds": 0.06
+  },
+  {
+    "test": "audit-diagnostics.cjs",
+    "command": [
+      "node",
+      "scripts/audit-diagnostics.cjs"
+    ],
+    "exitCode": 0,
+    "seconds": 0.06
+  },
+  {
+    "test": "audit-multiplayer-carousel.cjs",
+    "command": [
+      "node",
+      "scripts/audit-multiplayer-carousel.cjs"
+    ],
+    "exitCode": 0,
+    "seconds": 0.11
+  }
+]

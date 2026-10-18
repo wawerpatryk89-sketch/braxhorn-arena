@@ -1,0 +1,5 @@
+{
+  "status": "retired",
+  "reason": "Replaced by the supplied 2026-10-07 Brax pack. Legacy malformed attacks and the synthesized combo were removed from the deployed data.",
+  "current_review": "brax-pack-review.json"
+}

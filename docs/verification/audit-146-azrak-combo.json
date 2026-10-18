@@ -1,0 +1,43 @@
+{
+  "pass": true,
+  "sourceClipsUnchanged": true,
+  "comboSourceSeconds": 2.4833333333,
+  "comboConfiguredPlaybackSeconds": 1.8395061728148148,
+  "comboEngineSecondsWithoutHitstop": 1.6722783389225642,
+  "airborneSourceSeconds": 1.4666666666666663,
+  "seams": [
+    {
+      "time": 0.3,
+      "maxBoneDiscontinuityPx": 0.0017780004901561295
+    },
+    {
+      "time": 1.8333333333,
+      "maxBoneDiscontinuityPx": 0.0014604658879324335
+    }
+  ],
+  "maxBoneStepAt60HzSourcePx": 69.02675970124905,
+  "maxContactErrorPx": 3.4576501834057003e-13,
+  "gameplay": [
+    {
+      "move": "HEAVY_KICK",
+      "face": 1,
+      "damage": 15
+    },
+    {
+      "move": "HEAVY_KICK",
+      "face": -1,
+      "damage": 15
+    },
+    {
+      "move": "COMBO",
+      "face": 1,
+      "damage": 34
+    },
+    {
+      "move": "COMBO",
+      "face": -1,
+      "damage": 34
+    }
+  ],
+  "limitations": "Numerical rig and mocked combat clock only. Full rendered motion, real RAF, phone performance and visual appeal are not verified."
+}

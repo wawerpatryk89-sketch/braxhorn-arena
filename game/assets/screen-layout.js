@@ -1,0 +1,10 @@
+/* Image and interactive rectangles share the same proportional contain mapping. */
+(()=>{'use strict';
+const roster={'card-vexa':[81,132,344,630],'card-brax':[439,156,315,604],'card-krov':[772,156,327,604],'card-nyxa':[1114,156,335,604]};
+const modes={'fightMode':[178,323,289,363],'arcadeMode':[488,326,270,360],'mode-training':[780,326,274,360],'tournamentMode':[1076,326,277,360],'setupBack':[478,736,276,62],'openModeSettings':[782,736,276,62]};
+function map(w,h,rect){const scale=Math.min(w/1536,h/864),dx=(w-1536*scale)/2,dy=(h-864*scale)/2;return {left:dx+rect[0]*scale,top:dy+rect[1]*scale,width:rect[2]*scale,height:rect[3]*scale};}
+function layout(){window.BRAX_VIEWPORT.fit();if(document.querySelector('.mode-card-row'))return;const r=document.querySelector('#game').getBoundingClientRect();for(const [id,rect]of Object.entries(modes)){const p=map(r.width,r.height,rect),el=document.getElementById(id);if(!el)continue;for(const key of ['left','top','width','height'])el.style[key]=p[key]+'px';}}
+window.BRAX_SCREEN_LAYOUT={map,layout};addEventListener('pageshow',layout);addEventListener('resize',()=>requestAnimationFrame(layout));addEventListener('orientationchange',()=>requestAnimationFrame(layout));window.visualViewport?.addEventListener('resize',()=>requestAnimationFrame(layout));window.visualViewport?.addEventListener('scroll',()=>requestAnimationFrame(layout));requestAnimationFrame(layout);
+// Request fullscreen synchronously within a deliberate tap when the browser supports it.
+let pending=false;document.querySelector('#game').addEventListener('pointerup',e=>{if(e.target.closest?.('input,textarea,select,[contenteditable=true]')||document.activeElement?.matches?.('input,textarea,select,[contenteditable=true]'))return;if(pending||document.fullscreenElement||document.webkitFullscreenElement||navigator.standalone)return;const el=document.documentElement,enter=el.requestFullscreen||el.webkitRequestFullscreen;if(!enter)return;pending=true;try{Promise.resolve(enter.call(el,{navigationUI:'hide'})).catch(()=>{}).finally(()=>{pending=false;layout()})}catch{pending=false}},true);
+})();

@@ -1,0 +1,75 @@
+BRAXHORN — przegląd gry i poprawki po wersji 109
+Data: 14.10.2026
+
+STATUS
+Wersja z naprawami funkcjonalnymi i przebudową interfejsu. To nie jest potwierdzenie końcowego odbioru jakości na iPhonie. Dostępne testy wykonują prawdziwą logikę z zastępczym DOM i rendererem. Nie mierzą FPS, czytelności w Safari ani rzeczywistego wielodotyku. Brak dostępnej przeglądarki QA w tej sesji.
+
+PODSTAWA
+Zasady.txt oraz BRAXHORN_MASTER_PRODUKCYJNY_V2_3(1).pdf; kod i konfiguracje obecnej wersji z sześcioma zawodnikami. Nie przywracano historycznej obsady czterech postaci ani starych ruchów kosztem aktualnie przypisanych klipów. Nie zmieniano modeli, klipów, skal ani kontaktów ruchów.
+
+PRZEGLĄD EKRANÓW
+1. Tytuł/start: pozostawiona istniejąca grafika; przepływ startu i pomijania filmu objęty testami.
+2. Pseudonim: własna klawiatura ekranowa, polskie litery, cyfry, kasowanie, spacja, limit 20 znaków, klawiatura fizyczna. Pole readonly/inputmode=none. Brak automatycznego focusu na edytowalnym polu. Wymaga sprawdzenia na fizycznym iPhonie.
+3. Film startowy/prawa autorskie: istniejące materiały; sprawdzone jednorazowe przejścia, pominięcie, ukryta karta i awaria filmu.
+4. Wybór trybu: pozostawione istniejące karty graficzne; sprawdzona logika walki, treningu, Arcade, turnieju i Survival.
+5. Ustawienia trudności/treningu: wspólne zachowanie fokusu, style pól i aktywnych przycisków; zachowane wartości i tryby.
+6. Wybór zawodnika i rywala: zachowane zatwierdzone portrety i karty; instrukcja korzysta teraz z tych samych polskich nazw ruchów.
+7. Wybór areny: zachowane grafiki i automatyczne areny trybów kampanii; przepływy objęte testami.
+8. Instrukcja przed walką: nowa wygenerowana plansza z układem dotykowym. Osobny wariant Niny (bez gardy i rzutu), Danny’ego (bez rzutu) i wspólny pozostałych. Zakładki DOTYK / CIOSY / KLAWIATURA. Portret i rzeczywiste przypisania ciosów w szczegółach. Przycisk startu poza przewijaną treścią.
+9. Intro zawodnika: zachowane filmy, odtwarzanie, ponowienie i pomijanie; testy przejść.
+10. HUD i dotyk: geometria sterowania zachowana; nowa spójna kolorystyka, aktywne i nieaktywne stany. Przechwytywanie wskaźników i touch-action:none zachowane.
+11. Pauza: opisane przyciski wznowienia, dźwięku, pełnego ekranu i wyboru postaci zamiast samego rzędu ikon. Istniejąca logika pauzy i dźwięku.
+12. Trening podczas walki: polskie nazwy ataków, spójne pola ćwiczeń; testy ćwiczeń i resetu.
+13. Wyzwania: spójne karty, czytelniejsza typografia, zachowana logika i nagrody.
+14. Rankingi/postępy: spójne wiersze, wyróżnienie pierwszej pozycji, lokalny zapis bez zmiany schematu i utraty rekordów.
+15. Plansze kampanii/turnieju: pozostawione portrety i drabinka; testy przebiegu, wyników i zmiany aren.
+16. Koniec rundy: zachowane oba zbliżenia i trwałe obrażenia; sprawdzone 1,5 s, pomijanie i jedno przejście do kolejnej rundy.
+17. KO/powtórka: interpolacja klatek pomiędzy próbkami, bez interpolowania przez zmianę klipu lub kierunku; ograniczony bufor, brak ponownego naliczania obrażeń.
+18. Wynik/rewanż/film zwycięzcy: istniejąca oprawa; testy jednorazowego zapisu, pomijania, rewanżu i powrotu.
+19. Obrót telefonu/obszary bezpieczne: zachowana grafika obrotu, nowe okna korzystają z insetów bezpiecznych i ograniczeń wysokości. Odbiór wizualny pozostaje otwarty.
+
+NAPRAWY LOGIKI
+- Nina: D i gest w dół nie zwalniają już dowolnego chwytu po upływie 200 ms. Wspólna kontrola czasu dla U, D i gestu.
+- CPU: jedna losowana decyzja o zerwaniu rzutu, z reakcją mieszczącą się w oknie 200 ms. Różne szanse dla trudności, bez gwarantowanego zerwania. Pasywne ćwiczenia treningowe nie uciekają.
+- Combo: zablokowany kontakt lub zakończone bez trafienia okno przerywa dalsze segmenty. 400 ms ograniczenia ponownej akcji, bez zwrotu kosztu aktywacji. Trening zachowuje swój istniejący nieograniczony pasek.
+- Reset czyści poprzedni stan zablokowanego trafienia.
+- Powtórka interpoluje położenie i czas istniejącej animacji, zamiast powtarzać poprzednią próbkę przez całą przerwę między próbkami.
+
+WERYFIKACJA
+npm test — pełny istniejący zestaw zakończony powodzeniem po głównych naprawach.
+Ponowione test:regressions po integracji UI i zmianie wersji zasobów.
+Dodane test:repairs: 26 ukierunkowanych przypadków walki/powtórek oraz test klawiatury i zakładek.
+Istniejące zestawy obejmują m.in. 2880 przypadków nacisku/obrażeń, 912 kontaktów, 576 przypadków par, 108 zestawień CPU/trudności, 72 przypadki combo CPU, 144 podejścia do combo i 48 przypadków sterowania dotykowego.
+Sprawdzona składnia JS i obecność statycznych zasobów HTML.
+Usunięto z paczki i preloadera nieużywane animowane portrety starego, ukrytego selektora. Widoczne karty i animacje walki pozostają bez zmian.
+Paczka obejmuje bezstratne kodowanie PNG interfejsu do WebP; sprawdzana jest zgodność każdego piksela RGBA, bez zmiany wyglądu.
+Weryfikacja builda porównuje zapakowane próbki animacji Float32 z oryginałem bit po bicie.
+
+NIEZAMKNIĘTE ELEMENTY ODBIORU
+- Rzeczywista czytelność, wysokość klawiatury, bezpieczne marginesy, otwieranie i zamykanie każdego okna w Safari na iPhonie.
+- Płynność animacji, stabilność FPS, temperatura i pamięć w dłuższej sesji na urządzeniu.
+- Odsłuch miksu i potwierdzenie wszystkich nagrań. Nadal brak oddzielnych zestawów głosów Vexy, Krova, Niny i Danny’ego.
+- Master opisuje autorskie przejścia COMBO_ABORT zależne od fazy. Naprawa blokuje dalsze obrażenia i zapewnia 400 ms powrotu na istniejącym systemie przejść do gardy; nie tworzy brakujących autorskich klipów tych przejść.
+- Zgodność obecnych późniejszych klipów ze wszystkimi historycznymi budżetami obrażeń i timingami z mastera nie jest automatycznie dowiedziona przez testy aktualnego zestawu. Nie zmieniano ich bez podstawy z późniejszych ustaleń.
+
+GRAFIKI
+Wbudowane narzędzie generowania obrazów. Pliki: dist/assets/controls-guide.png, controls-guide-nina.png, controls-guide-danny.png.
+Brief: gotowa szeroka plansza instrukcji BRAXHORN, ciemna zieleń, obsydian, stare złoto, czytelne polskie opisy, rzeczywisty układ dotykowy; bez nowych postaci, mechanik i przycisku skoku. Wariant Niny usuwa gardę i chwyt, Danny’ego usuwa chwyt, oba wskazują U do zerwania. Teksty i układy sprawdzone na wygenerowanych obrazach.
+
+
+DODATKOWY PRZEGLĄD — OKNA I ODTWARZANIE PO BŁĘDZIE (kolejna publikacja)
+- Widoczny ekran błędu pobierania zawodnika: ponowienie zachowuje wybraną parę, wyjście wraca do wyboru postaci. Wcześniej komunikat trafiał do ukrytego elementu.
+- Sterowanie dostępne z pauzy; powrót zachowuje pauzę, zdrowie, wynik i stan walki, nie powtarza wejścia zawodników.
+- Anulowanie pseudonimu bez zapisywania zmiany; obsługa zarówno menu początkowego, jak i ponownego powrotu po walce.
+- Aktualizacja podpisu dźwięku przy otwarciu pauzy; przewijana karta pauzy i przyklejona stopka pseudonimu na niskich ekranach.
+- Testy: test:regressions, test:repairs oraz nowy audit-overlay-recovery (awarie, retry, cancel, trzykrotne otwarcie instrukcji i powrót ataków).
+- Browser QA niedostępne w tym środowisku: nie sprawdzono fizycznego iPhone’a, FPS ani finalnego renderowania CSS. To nadal otwarte ograniczenie, nie deklaracja kompletnej jakości premium.
+
+
+WIDOCZNOŚĆ KRWI I OBRAŻEŃ — aktualizacja po wersji 111
+- Rozprysk 8–16 większych kropli dla trafień od 4 HP, kierunek zgodny z uderzeniem, smugi, czas 430–680 ms, limit 96 cząstek.
+- Sześć stopni obrażeń głowy: zasinienia, otarcia i krótkie ślady krwi. Pozycje przypięte do kapsuły głowy, także podczas powtórki i zbliżenia.
+- Obrażenia kosmetyczne zachowane między rundami, resetowane przed nowym meczem. Blok bez krwi. Ograniczenie ruchu wyłącza cząstki, pozostawia ślady.
+- Testy: audit-blood-effects, audit-blood-visibility, audit-round-closeup, audit-ko-flow.
+- Porównano istniejące portrety modeli Braxa i Nyxy z referencjami. Nie zmieniono geometrii, tekstur, szkieletów ani animacji: brak zweryfikowanej rekonstrukcji 3D z referencji. Bardziej wierny model pozostaje niezrealizowany.
+- Brak browser QA i testu fizycznego iPhone’a; widoczność w finalnym renderze i FPS niepotwierdzone.

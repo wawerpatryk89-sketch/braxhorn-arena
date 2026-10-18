@@ -1,0 +1,82 @@
+[
+  {
+    "who": "bear",
+    "kind": "color",
+    "size": [
+      4096,
+      4096
+    ],
+    "pixelSHA256": "a5429a6dbbcfc3be369210635ac306dc77bd279a6f8fd1a4fac84c2b7c9d780d",
+    "identicalPixels": true
+  },
+  {
+    "who": "bear",
+    "kind": "normal",
+    "size": [
+      2048,
+      2048
+    ],
+    "pixelSHA256": "4910a2b76194ef983bd899f5662bd585a9283f7434d492dcf37024d6f25eeb6f",
+    "identicalPixels": true
+  },
+  {
+    "who": "bear",
+    "kind": "metalness",
+    "size": [
+      2048,
+      2048
+    ],
+    "pixelSHA256": "630de7d14faaee79fd75f6ab72747ad5c0f08f289f34f4e1217dc6077e21e5ba",
+    "identicalPixels": true
+  },
+  {
+    "who": "bear",
+    "kind": "roughness",
+    "size": [
+      2048,
+      2048
+    ],
+    "pixelSHA256": "329ddc598d86599e98969cb385331a70557385567ecea5b97d73a991e786925b",
+    "identicalPixels": true
+  },
+  {
+    "who": "demon",
+    "kind": "color",
+    "size": [
+      4096,
+      4096
+    ],
+    "pixelSHA256": "2d5cc2c57695af0855fa1116d329d03b072e12c34efe51b246010aa3d6b950ee",
+    "identicalPixels": true
+  },
+  {
+    "who": "demon",
+    "kind": "normal",
+    "size": [
+      2048,
+      2048
+    ],
+    "pixelSHA256": "ea2564a6b164e4f898019e32969008ea665444c7c01e131ab23ebb891cb350d2",
+    "identicalPixels": true
+  },
+  {
+    "who": "demon",
+    "kind": "metalness",
+    "size": [
+      2048,
+      2048
+    ],
+    "pixelSHA256": "2a8a2f7027372aaf6b5c756d1019dad99b473d5b0b3f0df673ea3dd2bd154a47",
+    "identicalPixels": true
+  },
+  {
+    "who": "demon",
+    "kind": "roughness",
+    "size": [
+      2048,
+      2048
+    ],
+    "pixelSHA256": "86dbe4e885dd10d760061eb731f00902fbefa73ac76ed2824b453055e2eb6fec",
+    "identicalPixels": true
+  }
+]

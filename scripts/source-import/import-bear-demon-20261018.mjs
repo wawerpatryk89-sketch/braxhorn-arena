@@ -1,0 +1,19 @@
+import fs from 'node:fs';import path from 'node:path';import zlib from 'node:zlib';import crypto from 'node:crypto';import {execFileSync}from'node:child_process';import * as T from 'three';import{FBXLoader}from'./FBXLoaderEight.mjs';
+globalThis.window={URL:{createObjectURL:()=>''}};globalThis.document={createElementNS:()=>({addEventListener(){},removeEventListener(){},set src(v){}})};
+const input='source-assets/new-fighters-input',load=p=>{let b=fs.readFileSync(p);return new FBXLoader().parse(b.buffer.slice(b.byteOffset,b.byteOffset+b.byteLength),'');},bones=m=>{let b={};m.traverse(o=>{if(o.isBone)b[o.name]=o});return b},sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+for(const who of (process.argv.length>2?process.argv.slice(2):['bear','demon'])){
+ const out='game/assets/'+who+'-new/';fs.mkdirSync(out,{recursive:true});const file=fs.readdirSync(input+'/'+who).find(f=>f.endsWith('.fbx')),model=load(input+'/'+who+'/'+file),target=bones(load(input+'/'+(who==='bear'?'xd/Fighting Idle.fbx':'xd1/Hook Punch.fbx'))),raw={},audit=[];
+ model.animations=[];let meshInfo=[];model.traverse(o=>{if(o.isMesh){o.material=new T.MeshStandardMaterial();meshInfo.push({vertices:o.geometry.attributes.position.count,attributes:Object.keys(o.geometry.attributes)});}});fs.writeFileSync(out+'model.json.gz',zlib.gzipSync(JSON.stringify(model.toJSON())));
+ for(const dir of who==='bear'?['xd','xg','xd1']:['xd1','xd','xg'])for(const f of fs.readdirSync(input+'/'+dir).filter(f=>f.endsWith('.fbx'))){
+  let name=f.slice(0,-4);if(raw[name])name=(dir==='xg'?'Shared ':'Bear ')+name;add(input+'/'+dir+'/'+f,name);
+ }
+ add('source-assets/brax-contact-20261013/Dodging Back.fbx','Shared Dodging');
+ function add(p,name){let src=load(p),sb=bones(src),clip=src.animations[0].clone(),leg=b=>b.mixamorigLeftLeg.position.length()+b.mixamorigLeftFoot.position.length(),ratio=leg(target)/leg(sb),maxRestAngle=0;
+  for(let track of clip.tracks){let[n,prop]=track.name.split('.');if(!sb[n]||!target[n])throw Error('Missing bone '+n);if(prop==='quaternion'){let delta=target[n].quaternion.clone().multiply(sb[n].quaternion.clone().invert());maxRestAngle=Math.max(maxRestAngle,delta.angleTo(new T.Quaternion()));if(delta.angleTo(new T.Quaternion())>1e-7)for(let i=0;i<track.values.length;i+=4)new T.Quaternion().fromArray(track.values,i).premultiply(delta).normalize().toArray(track.values,i);}else if(prop==='position'){if(n!=='mixamorigHips')throw Error('Unexpected translation');if(Math.abs(ratio-1)>1e-8||sb[n].position.distanceTo(target[n].position)>1e-8)for(let i=0;i<track.values.length;i+=3)new T.Vector3().fromArray(track.values,i).sub(sb[n].position).multiplyScalar(ratio).add(target[n].position).toArray(track.values,i);}}
+  clip.name=name;raw[name]=T.AnimationClip.toJSON(clip);audit.push({file:p,sha256:sha(fs.readFileSync(p)),name,duration:clip.duration,legRatio:ratio,maxRestAngle});
+ }
+ if(who==='bear'){raw['Shared Step Backward']=raw['Step Backward'];raw['Shared Getting Up']=raw['Getting Up'];raw['Shared Falling Back Death']=raw['Flying Back Death'];raw['Shared Flying Back Death']=raw['Flying Back Death'];}
+ fs.writeFileSync(out+'clips.json.gz',zlib.gzipSync(JSON.stringify(raw)));
+ const texdir=input+'/'+who+'/'+file.replace('.fbx','.fbm'),files=fs.readdirSync(texdir).filter(f=>!f.startsWith('.')),textures={};for(let [kind,regex]of Object.entries({color:/BaseColor/,normal:/Normal/,metalness:/metallic/,roughness:/roughness/})){let f=files.find(f=>regex.test(f));textures[kind]={file:f,sha256:sha(fs.readFileSync(texdir+'/'+f))};execFileSync('python',['-c',"from PIL import Image; import sys; Image.open(sys.argv[1]).save(sys.argv[2],lossless=True,method=6)",texdir+'/'+f,out+kind+'.webp']);}
+ fs.writeFileSync('docs/'+who+'-source-20261018.json',JSON.stringify({model:file,modelSHA256:sha(fs.readFileSync(input+'/'+who+'/'+file)),meshInfo,textures,clips:audit},null,2));console.log(who,Object.keys(raw).length,'clips',meshInfo);
+}

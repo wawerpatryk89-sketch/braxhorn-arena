@@ -1,0 +1,7 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> test:duel-api
+> node --import tsx scripts/audit-duel-api.mjs
+
+PASS: two clients, atomic room seat, private tokens, ready barrier, input relay, shared world, stale packets, guest cannot author world, close
+PASS Miś/Azrak room roster and host-selected arena shared with guest

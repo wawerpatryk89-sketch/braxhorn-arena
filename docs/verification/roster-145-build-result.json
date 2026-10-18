@@ -1,0 +1,7 @@
+{
+  "npmBuildExitCode": 0,
+  "catalogBeforeMultiplayer": true,
+  "hostArenaSelectorInBuild": true,
+  "arenaValidationInServer": true,
+  "modePolicyInBuild": true
+}

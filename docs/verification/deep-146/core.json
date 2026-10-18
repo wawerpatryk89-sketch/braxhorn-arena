@@ -1,0 +1,41 @@
+[
+  {
+    "test": "npm:test",
+    "command": [
+      "npm",
+      "run",
+      "test"
+    ],
+    "exitCode": 0,
+    "seconds": 104.95
+  },
+  {
+    "test": "npm:test:repairs",
+    "command": [
+      "npm",
+      "run",
+      "test:repairs"
+    ],
+    "exitCode": 0,
+    "seconds": 4.48
+  },
+  {
+    "test": "npm:test:audit",
+    "command": [
+      "npm",
+      "run",
+      "test:audit"
+    ],
+    "exitCode": 0,
+    "seconds": 19.25
+  },
+  {
+    "test": "audit-eight-fighter-reach.cjs",
+    "command": [
+      "node",
+      "scripts/audit-eight-fighter-reach.cjs"
+    ],
+    "exitCode": 1,
+    "seconds": 22.49
+  }
+]

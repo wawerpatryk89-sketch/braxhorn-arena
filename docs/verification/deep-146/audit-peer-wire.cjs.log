@@ -1,0 +1,2 @@
+{"pass":true,"jsonBytes":23006,"binaryBytes":11312,"reductionPercent":51,"encodeDecodeMs":0.563286112}
+PASS two endpoint negotiation, binary state delivery and guest input.

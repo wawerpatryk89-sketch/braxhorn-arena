@@ -1,0 +1,104 @@
+import fs from 'node:fs';
+import zlib from 'node:zlib';
+import assert from 'node:assert/strict';
+import * as T from 'three';
+import {rig,VIEW,SIZE} from '../game/assets/fighter-source-core.js';
+
+// Retarget the user-supplied Brax FBX pack to six rigs, bake short paired
+// contact and victory clips, and preserve meshes and all existing attacks.
+const read=(dir,n)=>JSON.parse(zlib.gunzipSync(fs.readFileSync(dir+n)));
+const dirFor=who=>'game/assets/'+who.toLowerCase()+'-new/';
+const smooth=x=>{x=Math.max(0,Math.min(1,x));return x*x*(3-2*x);};
+const axis=new T.Quaternion().setFromAxisAngle(new T.Vector3(1,0,0),Math.PI/2);
+const inverseAxis=axis.clone().invert();
+const vec=(x,y,z)=>new T.Vector3(x,y,z);
+const boneMap=model=>{const b={};model.traverse(o=>{if(o.isBone)b[o.name.replace(/^mixamorig/,'')]=o;});return b;};
+const world=b=>b.getWorldPosition(new T.Vector3());
+function rotateWorld(b,delta){
+ const q=b.getWorldQuaternion(new T.Quaternion()).premultiply(delta);
+ b.quaternion.copy(b.parent.getWorldQuaternion(new T.Quaternion()).invert().multiply(q));
+ b.updateWorldMatrix(false,true);
+}
+function aim(b,end,target){
+ const p=world(b),old=world(end).sub(p).normalize(),next=target.clone().sub(p).normalize();
+ rotateWorld(b,new T.Quaternion().setFromUnitVectors(old,next));
+}
+function armIK(r,side,target,weight){
+ const upper=r.bones[side+'Arm'],lower=r.bones[side+'ForeArm'],hand=r.bones[side+'Hand'];
+ const saved=[upper,lower,hand].map(b=>b.quaternion.clone());
+ const a=world(upper),b=world(lower),c=world(hand),handQ=hand.getWorldQuaternion(new T.Quaternion());
+ const goal=target.clone(),l1=a.distanceTo(b),l2=b.distanceTo(c),d=Math.min(l1+l2-.006,Math.max(Math.abs(l1-l2)+.006,a.distanceTo(goal)));
+ const direction=goal.clone().sub(a).normalize(),x=(l1*l1-l2*l2+d*d)/(2*d),y=Math.sqrt(Math.max(0,l1*l1-x*x));
+ const pole=vec(-.06,-1,side==='Left'?-.45:.45);pole.addScaledVector(direction,-pole.dot(direction)).normalize();
+ const elbow=a.clone().addScaledVector(direction,x).addScaledVector(pole,y);
+ aim(upper,lower,elbow);aim(lower,hand,a.clone().addScaledVector(direction,d));
+ hand.quaternion.copy(hand.parent.getWorldQuaternion(new T.Quaternion()).invert().multiply(handQ));[upper,lower,hand].forEach((b,i)=>b.quaternion.slerp(saved[i],1-weight));r.stage.updateMatrixWorld(true);
+}
+function legIK(r,side,target,footQ){
+ const upper=r.bones[side+'UpLeg'],lower=r.bones[side+'Leg'],foot=r.bones[side+'Foot'];
+ const a=world(upper),b=world(lower),c=world(foot),l1=a.distanceTo(b),l2=b.distanceTo(c);
+ const d=Math.min(l1+l2-.004,Math.max(Math.abs(l1-l2)+.004,a.distanceTo(target)));
+ const direction=target.clone().sub(a).normalize(),x=(l1*l1-l2*l2+d*d)/(2*d),y=Math.sqrt(Math.max(0,l1*l1-x*x));
+ const pole=vec(1,0,side==='Left'?-.10:.10);pole.addScaledVector(direction,-pole.dot(direction)).normalize();
+ aim(upper,lower,a.clone().addScaledVector(direction,x).addScaledVector(pole,y));
+ aim(lower,foot,a.clone().addScaledVector(direction,d));
+ foot.quaternion.copy(foot.parent.getWorldQuaternion(new T.Quaternion()).invert().multiply(footQ));r.stage.updateMatrixWorld(true);
+}
+function snapshot(r){return Object.fromEntries(Object.entries(r.bones).map(([n,b])=>[n,{p:b.position.clone(),q:b.quaternion.clone()}]));}
+function blend(r,from,w){for(const[n,b]of Object.entries(r.bones)){b.position.lerp(from[n].p,1-w);b.quaternion.slerp(from[n].q,1-w);}r.stage.updateMatrixWorld(true);}
+function bake(r,name,duration,pose){
+ const frames=Math.round(duration*30),times=Array.from({length:frames+1},(_,i)=>duration*i/frames),tracks=[];
+ const values=Object.fromEntries(Object.keys(r.bones).map(n=>[n,[]])),hips=[];
+ for(const time of times){pose(time);r.stage.updateMatrixWorld(true);const floor=Math.min(...['LeftToeBase','RightToeBase'].map(n=>world(r.bones[n]).y));if(floor<.02){const hp=world(r.bones.Hips);hp.y+=.02-floor;r.bones.Hips.position.copy(r.bones.Hips.parent.worldToLocal(hp));}for(const[n,b]of Object.entries(r.bones)){const q=b.quaternion.clone();if(n==='Hips')q.premultiply(inverseAxis);q.normalize().toArray(values[n],values[n].length);}r.bones.Hips.position.clone().applyQuaternion(inverseAxis).toArray(hips,hips.length);}
+ tracks.push(new T.VectorKeyframeTrack('mixamorigHips.position',times,hips));
+ for(const[n,v]of Object.entries(values))tracks.push(new T.QuaternionKeyframeTrack('mixamorig'+n+'.quaternion',times,v));
+ return T.AnimationClip.toJSON(new T.AnimationClip(name,duration,tracks).optimize());
+}
+function measure(r,c){
+ const frames=Math.ceil(c.duration*60),dt=c.duration/frames;
+ c.durations=Array(frames).fill(dt*1000);c.boxes=[];c.hurtCapsules=[];c.pushCenters=[];c.footY=[];
+ for(let i=0;i<frames;i++){r.pose(c,i*dt);const p=Object.keys(r.bones).map(n=>r.point(n));c.boxes.push([Math.min(...p.map(x=>x[0]))-25,Math.min(...p.map(x=>x[1]))-45,Math.max(...p.map(x=>x[0]))+25,Math.max(...p.map(x=>x[1]))+20]);c.pushCenters.push([r.point('Hips')[0],40]);c.footY.push(c.anchorY);
+  c.hurtCapsules.push([['head','Neck','Head',26],['body','Spine2','Hips',32],['leg','Hips','LeftLeg',21],['leg','LeftLeg','LeftFoot',17],['leg','Hips','RightLeg',21],['leg','RightLeg','RightFoot',17]].map(([region,a,b,radius])=>({region,a:r.point(a),b:r.point(b),radius})));
+ }
+ c.union=[Math.min(...c.boxes.map(b=>b[0])),Math.min(...c.boxes.map(b=>b[1])),Math.max(...c.boxes.map(b=>b[2])),Math.max(...c.boxes.map(b=>b[3]))];return c;
+}
+
+
+for(const who of ['BRAX','NYXA','VEXA','KROV','NINA','DANNY']){
+ const dir=dirFor(who),raw=read(dir,'clips.json.gz'),cfg=JSON.parse(fs.readFileSync(dir+'config.json')),model=read(dir,'model.json.gz');
+ const r=rig(new T.ObjectLoader().parse(model),raw,who),original={...cfg.CONTACT_PUSH,contactOpponent:null,lockPlanarRoot:true},idle={...cfg.IDLE,lockPlanarRoot:true};
+ const driveStyle={BRAX:1.08,NYXA:.94,VEXA:.86,KROV:1.10,NINA:.84,DANNY:.96}[who];
+ const oldCurve=original.contactMotion||cfg.CONTACT_FALL.contactRecoveryMotion.map(([t,x])=>[t+.5,x]);original.clip='Mixamo Contact PUSH';
+ for(const role of ['PUSH','RECEIVE']){
+  const name='Paired Clinch '+role;
+  raw[name]=bake(r,name,1.2,t=>{
+   r.pose(idle,0);const guard=snapshot(r);
+   if(role==='PUSH'){
+    const load=smooth(t/.18)*(1-smooth((t-.42)/.2)),drive=smooth((t-.42)/.18)*(1-smooth((t-.68)/.24));
+    rotateWorld(r.bones.Spine,new T.Quaternion().setFromAxisAngle(vec(0,0,1),driveStyle*(.045*load-.085*drive)));
+    rotateWorld(r.bones.Spine2,new T.Quaternion().setFromAxisAngle(vec(0,0,1),driveStyle*(.035*load-.075*drive)));
+   }else{
+    if(t>.62){r.pose({...cfg.WALK_BACK,lockPlanarRoot:true},(t-.62)*1.6);blend(r,guard,smooth((t-.62)/.12)*(1-smooth((t-1.04)/.16)));}
+    rotateWorld(r.bones.Spine2,new T.Quaternion().setFromAxisAngle(vec(0,0,1),.10*smooth((t-.48)/.14)*(1-smooth((t-.85)/.25))));
+   }
+   // Same forearm hold on every anatomy; live IK adapts hands to the other rig.
+   const weight=smooth(t/.15)*(1-smooth((t-.49)/.16));
+   for(const side of ['Left','Right']){
+    const arm=world(r.bones[side+'Arm']);armIK(r,side,vec(.45+(role==='PUSH'?.13*smooth((t-.42)/.18):0),arm.y-.09,side==='Left'?-.17:.17),weight);
+   }
+  });
+ }
+ const finalRig=rig(new T.ObjectLoader().parse(model),raw,who);
+ function state(key,clip,duration,extra={}){
+  cfg[key]=measure(finalRig,{asset:who+'_PAIRED_'+key,character:who,label:key,sourceVersion:'paired-clinch-20261014',clip,attack:false,gain:0,cost:0,w:1024,h:640,scale:cfg.IDLE.scale,pivotX:512,anchorY:550,mode:'ground',model3d:true,playbackRate:1,duration,transitionMs:90,lockPlanarRoot:true,hits:{},contactRecovery:true,...extra});
+ }
+ state('CONTACT_PUSH','Paired Clinch PUSH',1.2,{mutualContact:true,contactRole:'push'});
+ state('CONTACT_RECEIVE','Paired Clinch RECEIVE',1.2,{mutualContact:true,contactRole:'receive'});
+ state('CONTACT_FALL',original.clip,3.9,{start:.5,label:'Utrata równowagi, upadek i wstawanie',contactRecoveryMotion:oldCurve.filter(([t])=>t>=.5).map(([t,x])=>[t-.5,x])});
+ for(const key of ['CONTACT_PUSH','CONTACT_RECEIVE']){
+  const c=cfg[key];c.contactShoulders=[];
+  for(let i=0;i<=36;i++){finalRig.pose(c,i/30);c.contactShoulders.push(['LeftArm','RightArm'].map(n=>world(finalRig.bones[n]).toArray()));}
+ }
+ fs.writeFileSync(dir+'clips.json.gz',zlib.gzipSync(JSON.stringify(raw),{level:9}));fs.writeFileSync(dir+'config.json',JSON.stringify(cfg));
+ console.log(who+': paired hold/push, distinct receiver, supplied fall and get-up preserved');
+}

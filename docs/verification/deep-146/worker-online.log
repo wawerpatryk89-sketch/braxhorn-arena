@@ -1,0 +1,6 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> test:online
+> node --import tsx scripts/audit-online.mjs
+
+{"pass":true,"checks":20,"evidence":["real Worker and local D1","world board visible in separate session","duplicate result does not inflate score","foreign match rejected","invalid time and fighter rejected","cross-origin write rejected","stable authenticated identity restores records and challenge","failed leaderboard write rolls back match and retry restores result"]}

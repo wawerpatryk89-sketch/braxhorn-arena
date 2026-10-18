@@ -1,0 +1,362 @@
+[
+  {
+    "path": "source-assets/new-fighters-input/xg/Walking.fbx",
+    "bytes": 565536,
+    "sha256": "1b7dad50da8e4d81a7b391672f25bf896b64e1d876fe78034addb3d19a183059"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xg/Yelling Out.fbx",
+    "bytes": 964256,
+    "sha256": "29fdb1b56a8894293cba8f6a76aa85a21c34d5a67f96c36cb9791b257cbf1848"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xg/Getting Up.fbx",
+    "bytes": 688288,
+    "sha256": "2126ef0d2746e5a873cb6ce0430df48245ef108bf4de0cfa2a96dcc7959940e5"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xg/Shoulder Throw, Aggressor.fbx",
+    "bytes": 1250784,
+    "sha256": "dfc35c9f13910f74821ef3a557a3e853bef3c1b1e86a7b7db2da678f58b7ce21"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xg/Step Backward.fbx",
+    "bytes": 384384,
+    "sha256": "ca90c45a9465aa614cebfe9c5a56b7e0f5fcbde4ac495bfe232fcd695eb3696f"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xg/Rockin' Shackle A.fbx",
+    "bytes": 1086304,
+    "sha256": "a4f7ab31f47bf5f3ee56a824fff0893320e813e3a2f019f2e5500e5cfcfb37f1"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xg/Flying Back Death.fbx",
+    "bytes": 702320,
+    "sha256": "05159ee376b92c4a37739506bdffab93431632adcc2c196ccc0a0a087a20d064"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xg/Shoulder Throw, Victim.fbx",
+    "bytes": 1257184,
+    "sha256": "1f0d133dc607ae3e43cf9ecc0a107dcae3d34deca0db84ee35f266d80636f1af"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xg/Short Step Forward.fbx",
+    "bytes": 416784,
+    "sha256": "19fa9ce117aa75bfaf03c735d97ecb4f4b382db5e43d137f6a5d93c7e5f07e43"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xg/Rockin' Shackle B.fbx",
+    "bytes": 1006064,
+    "sha256": "e2fe236e5cfca448bc60a218ee2cda4ee57ed78b4bb2cfa7b0f164fcf323b044"
+  },
+  {
+    "path": "source-assets/new-fighters-input/demon/tripo_convert_b795b757-d01a-4a11-a8a2-4fb7d7121c36.fbx",
+    "bytes": 43139888,
+    "sha256": "7aadf998f75e33d41bcdac51353a377e0b29bf615b1bdc0ad3c56682d38bd2c7"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd/Defender.fbx",
+    "bytes": 882432,
+    "sha256": "e607afc118161615ceb9b2aca5592ce6477774bbacc7386baaef93c875cf2f5f"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd/Hit To Body.fbx",
+    "bytes": 467776,
+    "sha256": "62563ad0f3904f834d710ef21015cf12e3da7170cef331e8da7012ae4dfa7102"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd/Entry (1).fbx",
+    "bytes": 1902672,
+    "sha256": "ee97b55a88ca2a54377450af4389c822d23517eb104be11638dd3e19c99c82dc"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd/Medium Hit To Head.fbx",
+    "bytes": 409536,
+    "sha256": "e02a145a63280c04b707e736c6c2251143384ad81df2b0831987d7c6c6d7fbe5"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd/Blocking.fbx",
+    "bytes": 446176,
+    "sha256": "77af05d3b0b3081e67186892de3796dc0c6813e34c3b1d679f1a2d5e5a83ef35"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd/Entry.fbx",
+    "bytes": 839152,
+    "sha256": "9819f9cc37c7570ea04472535789017474c79b8fddb34fc82b7658b7af873eeb"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd/Fighting Idle.fbx",
+    "bytes": 668480,
+    "sha256": "c55c4f372737a4bda8bef3165129f1374fd6f9cf979a94a99933ebb440b7b8cc"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd/Shoulder Throw, Aggressor.fbx",
+    "bytes": 1253856,
+    "sha256": "d8d420f73344be59c719d5f5105b27269880fcd74540a608e5de82165a412abc"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd/Receiving An Uppercut.fbx",
+    "bytes": 524480,
+    "sha256": "fe300455c6468e486dd89ac8fd189ac5e241b40bcf9afeca906bbf225c1e0b17"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd/Bencao.fbx",
+    "bytes": 565648,
+    "sha256": "4ce360729cbcf6280caa7a891e8d0baecd8e52c32f4cc82e886362f496c61d53"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd/Hip Hop Dancing.fbx",
+    "bytes": 1189024,
+    "sha256": "1da62a01900d29d4da3604c5584dca1bd728279b6295d78a4b88a7d0dff805ac"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd/Knee Jab.fbx",
+    "bytes": 1137008,
+    "sha256": "6cadec6c428d413de65535932e3d34f1180120d677e42232f29a18a2d8eea78e"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd/Rifle Punch.fbx",
+    "bytes": 603120,
+    "sha256": "e76718e4617a9b9eee99ed0d0169f33a85c1cd1a3c1259d656d253f992a02be2"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd/Cheering.fbx",
+    "bytes": 612288,
+    "sha256": "d7d34838ac7668957b843e00a3a9b0f255e09e14cb4f4c4cbd7e4ba4b9b28acc"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd/Rockin' Shackle A.fbx",
+    "bytes": 1088256,
+    "sha256": "1e15e97f169d708d3c2062b6b3874b883899b703c81c070263b9ea283bcd8f52"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd/Boxing (2).fbx",
+    "bytes": 533936,
+    "sha256": "6bc96d4e5f55c81be43090af208b62c3d0b67a66265adff5fafba32eed796689"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd/Surprise Uppercut (1).fbx",
+    "bytes": 779920,
+    "sha256": "c3c73d529e7de9b93c1cc634731dd06e63e5e2bf8d769e660cb186ccecac43e6"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd/Roundhouse Kick.fbx",
+    "bytes": 525824,
+    "sha256": "1cf661bdabf306f913701a687ebdfbf5489729278f9c7215a4d120c5be396199"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd/Shoulder Throw, Victim.fbx",
+    "bytes": 1256544,
+    "sha256": "1f996a42271c5d635566ce6e8d5d3fd3831d8ec6cc68805d05d29d7828c350fe"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd/Stumble Backwards.fbx",
+    "bytes": 785088,
+    "sha256": "c1072955e3426e46ae17249872ce84edc4e00cbf1ad2d2a3e27c1bf2de983834"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd/Rallying.fbx",
+    "bytes": 1220976,
+    "sha256": "d043393a200e95c4fcff3486fcfd4305adea39b263e67ae5a0a711de9bb3678a"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd/Short Step Forward.fbx",
+    "bytes": 416480,
+    "sha256": "b31adece35f7044ce140404a03bd7e62fbf12dbfcef0fe486030bf3b7674b649"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd/Center Block.fbx",
+    "bytes": 655168,
+    "sha256": "27fea453fb558da99e5540b6c0050c561d14d33536d4234f49c9cb1c08e9850e"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd/Jab Cross.fbx",
+    "bytes": 524032,
+    "sha256": "1b9a85dde34820b7ccb084b33a7727966caeb992735410bf59c556cf17158a4b"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd/Smash.fbx",
+    "bytes": 654752,
+    "sha256": "d1357583162786e8dcc2233d7b152cd0ed5f60ca8d6c66b392338cb1b8676e4e"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd/Standing Block End.fbx",
+    "bytes": 546048,
+    "sha256": "ee87d75f1d8bca92ae444b5ee0bc8736f8221781473472f3e5058a7b44ef69af"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd/Surprise Uppercut.fbx",
+    "bytes": 779920,
+    "sha256": "671a9f9ecc38b83f4bf7d4874f9f8602a133098b2f7bae18f871b25c93674f74"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd/Standing React Death Forward.fbx",
+    "bytes": 896656,
+    "sha256": "8dd986be584024970e774c437c3377870b243516bbd30d24ef45406e0f4398e0"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd/Boxing.fbx",
+    "bytes": 591984,
+    "sha256": "061f67e01ba2fcbc53f9941e4512966084f9948ae3722dbb4eade1844ae107dd"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd/Knocked Out.fbx",
+    "bytes": 1133984,
+    "sha256": "d1836e9c908788fd41c4d0c52e57522a8d19ffd842b077d04d534b036f9252d6"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd/Kicking.fbx",
+    "bytes": 635568,
+    "sha256": "2c172a0c3eb69ab51eddd67dbe56080c7f7345da81c2fd8c31b64355e599799d"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd/Boxing (1).fbx",
+    "bytes": 566560,
+    "sha256": "7901ae566bc66ab107eb83d2c3325f2df6482209f7c8f187761dc15036a2398a"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd/Standing Sprint Forward.fbx",
+    "bytes": 379904,
+    "sha256": "58ea5f734a87f90b6fda72c7f583a02e098c037582839908e3b3e09635841ca8"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd/Kidney Hit.fbx",
+    "bytes": 435376,
+    "sha256": "67154d80ff9a4d0dcc4f1fc48aa3740280b55d0f0baafcf943acd11d4b51b880"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd/Rockin' Shackle B.fbx",
+    "bytes": 1009584,
+    "sha256": "9c399fb7d479f2f8d73bc6b22a95bb8406173bd16817f56241773ee1b05c773b"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd/Wide Arm Spell Casting.fbx",
+    "bytes": 874224,
+    "sha256": "aa4284d3d4d8887635cb9a11210178d768111aaa0a98d130513a952d79d97bcc"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd/Sweep Fall.fbx",
+    "bytes": 697952,
+    "sha256": "9dc8d2066a45cd621497e17b6ff68c3367a98751fc61b24e51af558af6d12f1f"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd/Uppercut Jab.fbx",
+    "bytes": 789280,
+    "sha256": "de1c373201191d70ead95dd85068ab63abd689c87d5daa289f6ed4521b436ff9"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd/Hell Slammer A.fbx",
+    "bytes": 1358656,
+    "sha256": "d3160a27feeab042120a7ef2c72f191287a5777080e6da49204095f424959626"
+  },
+  {
+    "path": "source-assets/new-fighters-input/bear/tripo_convert_171406aa-1d25-420d-92f1-ec2084b4bd54.fbx",
+    "bytes": 35479392,
+    "sha256": "df20486dcf05655417e1ef0ea33e8a1cdec459efae2d012c1213e71da3ea18cf"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd1/Mma Kick.fbx",
+    "bytes": 613280,
+    "sha256": "2d79559fee01758af1969ca34bf78cedd79dad8590844aebe57d0ffe3609349e"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd1/Headbutt.fbx",
+    "bytes": 594384,
+    "sha256": "aa07cf5c6d9788f1e3a997117a91cf4df689079c10fbb373f5fb64a91b10fd73"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd1/Punching Bag.fbx",
+    "bytes": 658160,
+    "sha256": "2e8154f3c9e8e68c54c99018d360f8db8789e58b8416a41f84d2f4a8e3937715"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd1/Getting Up.fbx",
+    "bytes": 1457456,
+    "sha256": "05461c3b50c578b6457fd3f1ee9b1967d60e3818833949602c4d7519a8f5b60c"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd1/Hook Punch.fbx",
+    "bytes": 530768,
+    "sha256": "2ec722cdbc54da7ebdb364e53f81da14ef683bd71042ea8796c3e28a6fa1317b"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd1/Strangling.fbx",
+    "bytes": 2781152,
+    "sha256": "21755069190fa0bd52c3a458893c6113370799d51253968f0d93f57ad4865a61"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd1/Hurricane Kick.fbx",
+    "bytes": 468032,
+    "sha256": "f9f51fe358085456f6ae2fecf6ecc1af4aa987f97ffb63f82fc3b7887b28e929"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd1/Reaction.fbx",
+    "bytes": 544560,
+    "sha256": "b2f5236fe3952387f2c6de68ef81ca38457e88cbb946db2ac1efc1c92b38d111"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd1/Punching.fbx",
+    "bytes": 390048,
+    "sha256": "5c522611142f77f332d28f94377c66edf75029cf2d5b2dd79c50c73ff8cec083"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd1/Boxing.fbx",
+    "bytes": 533632,
+    "sha256": "5823c9954b45bf89eefe9ecba164b9c8f0a465d849df3d924aa95e3d2c96f65d"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd1/Macaco Side.fbx",
+    "bytes": 831216,
+    "sha256": "75443277e080addf7c2977e0bfe7944139c4de672ddf789b4d732ae4da8fa3aa"
+  },
+  {
+    "path": "source-assets/new-fighters-input/xd1/Shooting Gun.fbx",
+    "bytes": 1096448,
+    "sha256": "b3c677d7345f9061dd0bfb12dfa13cc0ba45903e1657f2a33939c5787c4db9a1"
+  },
+  {
+    "path": "source-assets/new-fighters-input/demon/tripo_convert_b795b757-d01a-4a11-a8a2-4fb7d7121c36.fbm/demon_creature_3d_model_metallic.PNG",
+    "bytes": 3748155,
+    "sha256": "f25e718c774383b509ecb9fa1adab9ee5ba06241b4b6ff2c81e3da7e01dedc34"
+  },
+  {
+    "path": "source-assets/new-fighters-input/demon/tripo_convert_b795b757-d01a-4a11-a8a2-4fb7d7121c36.fbm/tripo_node_24a13e6e-a1f6-43cf-ae63-05a30023cc90_Normal_Bake.png",
+    "bytes": 8541603,
+    "sha256": "18d0902d1705c148d9007a7df37b32013d7188f1d81b44ed79ec35c17ccd5f5d"
+  },
+  {
+    "path": "source-assets/new-fighters-input/demon/tripo_convert_b795b757-d01a-4a11-a8a2-4fb7d7121c36.fbm/demon_creature_3d_model_roughness.PNG",
+    "bytes": 3502243,
+    "sha256": "a89217d51af1d2e86b3bdfae0fa8891f1f05eb4e3153d18cbdf8807b5aeca420"
+  },
+  {
+    "path": "source-assets/new-fighters-input/demon/tripo_convert_b795b757-d01a-4a11-a8a2-4fb7d7121c36.fbm/.tripo_node_24a13e6e-a1f6-43cf-ae63-05a30023cc90_BaseColor.png.5vVSNN",
+    "bytes": 4980736,
+    "sha256": "d13aba476238516dcc1fed1df1d604338472524a473ba0be8a2c172626ba003c"
+  },
+  {
+    "path": "source-assets/new-fighters-input/demon/tripo_convert_b795b757-d01a-4a11-a8a2-4fb7d7121c36.fbm/tripo_node_24a13e6e-a1f6-43cf-ae63-05a30023cc90_BaseColor.png",
+    "bytes": 26178767,
+    "sha256": "de2a011a93609410bb6bf049bd462d2cb5856d50168a18ce93e11072fc505b6b"
+  },
+  {
+    "path": "source-assets/new-fighters-input/bear/tripo_convert_171406aa-1d25-420d-92f1-ec2084b4bd54.fbm/tripo_node_cd87740e_BaseColor.png",
+    "bytes": 22237308,
+    "sha256": "b314c8cbde8990eddc0de152334c379c205d113700c0897c03667421caf4ae59"
+  },
+  {
+    "path": "source-assets/new-fighters-input/bear/tripo_convert_171406aa-1d25-420d-92f1-ec2084b4bd54.fbm/anthropomorphic_bear_gi_3d_model_roughness.PNG",
+    "bytes": 2342484,
+    "sha256": "ebf6fa4f2a4b8df4233e6324cb90883e29c77119e60738c6a0cb24b874c8339e"
+  },
+  {
+    "path": "source-assets/new-fighters-input/bear/tripo_convert_171406aa-1d25-420d-92f1-ec2084b4bd54.fbm/anthropomorphic_bear_gi_3d_model_metallic.PNG",
+    "bytes": 3240839,
+    "sha256": "4977a48563ab66e09c69df5bbe69d4cfc3aade6098dc11e47481d926d4180369"
+  },
+  {
+    "path": "source-assets/new-fighters-input/bear/tripo_convert_171406aa-1d25-420d-92f1-ec2084b4bd54.fbm/tripo_node_cd87740e_Normal_Bake.png",
+    "bytes": 6585663,
+    "sha256": "d1b35f636b64c836882f9e71422b0ff4e8f6dd1c1a089f4efb4999cce2278c3a"
+  }
+]

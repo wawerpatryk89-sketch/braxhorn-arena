@@ -1,0 +1,10 @@
+{
+  "version": 132,
+  "consentText": "Czy zezwalasz na rozmowę głosową podczas walki?",
+  "modes": ["multiplayer", "online_tournament"],
+  "automated": "PASS: bilateral consent, refusal, permission denial, late permission cleanup, exit cleanup, microphone/output mute, hidden page mute, audio duck/restoration, negotiation, failure cleanup",
+  "browserUi": "PASS: actual multiplayer room consent shown before battle; refusal returns to waiting room",
+  "browserAudio": "UNVERIFIED: controlled browser gathered zero ICE candidates; fallback displayed network-unavailable; no audio packets received",
+  "transport": "WebRTC direct audio; STUN only; TURN service not configured",
+  "deviceVerification": "Real iPhone microphone, speaker routing and cross-network voice not verified"
+}

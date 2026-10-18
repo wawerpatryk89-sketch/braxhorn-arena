@@ -1,0 +1,10 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> test:repairs
+> node scripts/audit-arena-repair.cjs && node scripts/audit-arena-interface.cjs && node scripts/audit-overlay-recovery.cjs && node scripts/audit-blood-visibility.cjs
+
+{"pass":true,"cases":26,"checks":["Nina early/late escape all paths","all six combo aborts and charge preservation","CPU break success/failure on all levels","training dummy consistency","replay subframe interpolation and action boundaries"]}
+PASS interface: unique IDs, readonly native-keyboard suppression, physical and game keys, Polish letters, limit, delete, submit once, hidden-input isolation, three tabs, pause delegation, artwork assets. Layout and physical iPhone rendering are not simulated.
+PASS recovery: repeated network failure, successful retry, cancel to selection, cancelled identity is not saved, help reopened three times preserves health/score/pause and restores attacks.
+PASS stronger blood: 16 varied directional droplets, longer visibility, 96-particle cap, six persistent wound stages, reset and reduced-motion support.
+PASS body injuries: capsule anchoring, independent fighters, immutable replay data and reset.

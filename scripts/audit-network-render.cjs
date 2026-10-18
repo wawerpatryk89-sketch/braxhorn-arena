@@ -1,0 +1,10 @@
+const {createGame}=require('./audit-new-fighters.cjs'),assert=require('node:assert/strict');
+(async()=>{const g=await createGame(844,390,true),E=g.context.BRAX_MULTIPLAYER_ENGINE;await E.start('guest',{hostFighter:'BRAX',guestFighter:'NYXA',arena:'snow'});E.go();let id=0;const base={x:35,y:0,face:1,hp:100,en:0,a:'IDLE',frame:0,locked:false,comboUses:0,actionId:0};const packet=(simTime,x=35,a='IDLE',frame=0,actionId=0)=>({snapshotId:++id,ack:0,freeze:false,actors:[{...base,x,a,frame,actionId,locked:a==='LIGHT_PUNCH'},{...base,x:65,face:-1}],state:{simTime,preFight:false,paused:false,ended:false,matchOver:false,t:60,wins:[0,0]}});
+E.receive(packet(0));g.tick(16);E.receive(packet(100,40));g.tick(16);assert(g.test.B.x>35&&g.test.B.x<40,'interpolates past snapshots');
+const x=g.test.O.x;E.localInput({held:{left:true},events:[{id:1,kind:'left'}]});g.tick(16);assert(g.test.O.x<x,'own movement predicted next frame');assert.equal(g.test.O.hp,100);
+E.localInput({held:{},events:[{id:2,kind:'punch'}]});g.tick(16);assert.equal(g.test.O.a,'LIGHT_PUNCH','own attack begins without host roundtrip');
+const hp=g.test.B.hp;g.tick(100);assert.equal(g.test.B.hp,hp,'prediction cannot deal damage');
+const before=g.test.O.frame;const p=packet(200);p.ack=2;p.actors[1]={...p.actors[1],a:'LIGHT_PUNCH',locked:true,frame:0,actionId:1};E.receive(p);g.tick(16);assert(g.test.O.frame>=before,'confirmation does not rewind same predicted attack');
+const pos=g.test.O.x;g.document.hidden=true;g.tick(100);assert.equal(g.test.O.x,pos,'hidden guest does not draw');g.document.hidden=false;
+E.receive({...packet(250),snapshotId:1});assert.equal(g.context.__BRAX_DIAGNOSTICS__.report().network.interpolationMs,80);assert(g.context.__BRAX_DIAGNOSTICS__.report().network.inputSamples>=1);
+console.log('PASS buffered interpolation, next-frame own movement/attack, host-only damage, same-action confirmation, hidden gate and diagnostics');})().catch(e=>{console.error(e);process.exitCode=1});

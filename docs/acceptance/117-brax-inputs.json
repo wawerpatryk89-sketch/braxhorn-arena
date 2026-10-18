@@ -1,0 +1,171 @@
+{
+  "pass": true,
+  "rendering": "mocked: engine/input evidence only",
+  "cases": 28,
+  "rows": [
+    {
+      "rival": "BRAX",
+      "face": 1,
+      "input": "touch",
+      "damage": 12
+    },
+    {
+      "rival": "BRAX",
+      "face": 1,
+      "input": "keyboard",
+      "damage": 12
+    },
+    {
+      "rival": "BRAX",
+      "face": -1,
+      "input": "touch",
+      "damage": 12
+    },
+    {
+      "rival": "BRAX",
+      "face": -1,
+      "input": "keyboard",
+      "damage": 12
+    },
+    {
+      "rival": "NYXA",
+      "face": 1,
+      "input": "touch",
+      "damage": 12
+    },
+    {
+      "rival": "NYXA",
+      "face": 1,
+      "input": "keyboard",
+      "damage": 12
+    },
+    {
+      "rival": "NYXA",
+      "face": -1,
+      "input": "touch",
+      "damage": 12
+    },
+    {
+      "rival": "NYXA",
+      "face": -1,
+      "input": "keyboard",
+      "damage": 12
+    },
+    {
+      "rival": "VEXA",
+      "face": 1,
+      "input": "touch",
+      "damage": 12
+    },
+    {
+      "rival": "VEXA",
+      "face": 1,
+      "input": "keyboard",
+      "damage": 12
+    },
+    {
+      "rival": "VEXA",
+      "face": -1,
+      "input": "touch",
+      "damage": 12
+    },
+    {
+      "rival": "VEXA",
+      "face": -1,
+      "input": "keyboard",
+      "damage": 12
+    },
+    {
+      "rival": "KROV",
+      "face": 1,
+      "input": "touch",
+      "damage": 12
+    },
+    {
+      "rival": "KROV",
+      "face": 1,
+      "input": "keyboard",
+      "damage": 12
+    },
+    {
+      "rival": "KROV",
+      "face": -1,
+      "input": "touch",
+      "damage": 12
+    },
+    {
+      "rival": "KROV",
+      "face": -1,
+      "input": "keyboard",
+      "damage": 12
+    },
+    {
+      "rival": "NINA",
+      "face": 1,
+      "input": "touch",
+      "damage": 12
+    },
+    {
+      "rival": "NINA",
+      "face": 1,
+      "input": "keyboard",
+      "damage": 12
+    },
+    {
+      "rival": "NINA",
+      "face": -1,
+      "input": "touch",
+      "damage": 12
+    },
+    {
+      "rival": "NINA",
+      "face": -1,
+      "input": "keyboard",
+      "damage": 12
+    },
+    {
+      "rival": "DANNY",
+      "face": 1,
+      "input": "touch",
+      "damage": 12
+    },
+    {
+      "rival": "DANNY",
+      "face": 1,
+      "input": "keyboard",
+      "damage": 12
+    },
+    {
+      "rival": "DANNY",
+      "face": -1,
+      "input": "touch",
+      "damage": 12
+    },
+    {
+      "rival": "DANNY",
+      "face": -1,
+      "input": "keyboard",
+      "damage": 12
+    },
+    {
+      "case": "incoming-punch-interrupts",
+      "face": 1,
+      "hp": 91,
+      "action": "IDLE"
+    },
+    {
+      "case": "incoming-punch-interrupts",
+      "face": -1,
+      "hp": 91,
+      "action": "IDLE"
+    },
+    {
+      "case": "unsupported-grab-keeps-contact",
+      "slot": 4
+    },
+    {
+      "case": "unsupported-grab-keeps-contact",
+      "slot": 5
+    }
+  ]
+}

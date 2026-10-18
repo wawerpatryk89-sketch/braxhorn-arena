@@ -1,0 +1,50 @@
+{
+  "scope": "cold-menu handoff to real engine, visibility state; no rendered browser",
+  "rows": [
+    {
+      "mode": "fight",
+      "survivalOverlayVisible": false,
+      "gameMode": "fight",
+      "activeChallenge": null,
+      "running": false
+    },
+    {
+      "mode": "training",
+      "survivalOverlayVisible": false,
+      "gameMode": "training",
+      "activeChallenge": null,
+      "running": false
+    },
+    {
+      "mode": "arcade",
+      "survivalOverlayVisible": false,
+      "gameMode": "arcade",
+      "activeChallenge": null,
+      "running": true
+    },
+    {
+      "mode": "tournament",
+      "survivalOverlayVisible": false,
+      "gameMode": "tournament",
+      "activeChallenge": null,
+      "running": false
+    },
+    {
+      "mode": "survival",
+      "difficulty": "hard",
+      "survivalOverlayVisible": false,
+      "gameMode": "survival",
+      "activeChallenge": null,
+      "running": true
+    },
+    {
+      "mode": "training",
+      "challenge": "evade5",
+      "behavior": "repeat",
+      "survivalOverlayVisible": false,
+      "gameMode": "training",
+      "activeChallenge": "evade5",
+      "running": false
+    }
+  ]
+}

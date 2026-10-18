@@ -1,0 +1,1 @@
+PASS fighter media: upload auth, hash rejection, immutability, exact gzip bytes, HEAD, ranges, invalid ranges, conditional cache

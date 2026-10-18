@@ -1,0 +1,1 @@
+ALTER TABLE `online_tournaments` ADD `draw_key` text;

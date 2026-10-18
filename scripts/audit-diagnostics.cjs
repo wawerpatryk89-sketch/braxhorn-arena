@@ -1,0 +1,9 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+let time=0,raf=null,cancelled=0,listener,body;
+class El{constructor(){this.children=[];this.style={};}setAttribute(){}appendChild(x){this.children.push(x);}addEventListener(k,f){this[k]=f;}remove(){body.children=body.children.filter(x=>x!==this);}click(){this.click?.call&&null;}}
+body=new El();const w={document:{body,createElement:()=>new El(),addEventListener:(k,f)=>{listener=f;}},performance:{now:()=>time},navigator:{userAgent:'unit-test'},requestAnimationFrame:f=>{raf=f;return 1;},cancelAnimationFrame:()=>{cancelled++;},Date,Blob,URL,setTimeout};w.window=w;vm.runInNewContext(fs.readFileSync('game/assets/diagnostics.js','utf8'),w);
+const state=(x,frame=0)=>({role:'guest',active:true,actors:[{x:35,frame:0},{x,frame,action:'PUNCH',actionId:7,attack:true}]});
+const meter=w.BRAX_DIAGNOSTIC_COLLECTOR.create();meter.sample(0,state(50));meter.sample(10,state(51,1));meter.sample(35,state(53,2));meter.sample(51,state(54,1));let r=meter.report();assert.equal(r.frameMs.max,25);assert.equal(r.fps,3000/51);assert.equal(r.actors[1].stepXArenaPercent.max,2);assert.equal(r.actors[1].rewoundAttackFrames,1);
+meter.sample(100,{active:false});meter.sample(9000,state(80));assert.equal(meter.report().frameMs.samples,3,'hidden gap excluded');meter.reset();assert.equal(meter.report().fps,null);
+const tap=()=>listener({target:{closest:s=>s.startsWith('#start')?{}:null}});for(let i=0;i<4;i++){time+=100;tap();}assert.equal(body.children.length,0);time+=100;tap();assert.equal(body.children.length,1);assert(raf);w.BRAX_DIAGNOSTIC_OVERLAY.toggle();assert.equal(body.children.length,0);assert.equal(cancelled,1);time+=3000;tap();assert.equal(body.children.length,0);
+console.log('PASS diagnostics: five taps, timeout, close/cancel RAF, irregular timestamp statistics, hidden gaps excluded, frame-rewind detection and reset. Unit test, NOT real RAF measurement.');

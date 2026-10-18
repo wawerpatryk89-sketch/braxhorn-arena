@@ -1,0 +1,32 @@
+{
+  "status": "pass",
+  "modes": [
+    "easy",
+    "normal",
+    "hard",
+    "training"
+  ],
+  "opponentPairs": [
+    "BRAX/BRAX",
+    "BRAX/NYXA",
+    "NYXA/BRAX",
+    "NYXA/NYXA"
+  ],
+  "trainingBehaviors": [
+    "idle",
+    "block",
+    "spar"
+  ],
+  "checks": [
+    "65-second training does not end",
+    "player and target recover health",
+    "training reset restores health, meter and positions",
+    "each AI difficulty attacks in all pairings",
+    "Nyxa counters repeated punches",
+    "close knee reaches in both directions",
+    "48 direction/button mappings",
+    "9 viewport dimensions and orientation pause",
+    "Brax guard and animation recovery"
+  ],
+  "verificationLimit": "Simulation and source checks only; no browser or physical-device visual QA available."
+}

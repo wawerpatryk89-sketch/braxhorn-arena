@@ -1,0 +1,68 @@
+{
+  "clips": [
+    {
+      "name": "Fighting Idle",
+      "duration": 3.299999952316284,
+      "bones": 65,
+      "restPoseMaxError": 5.16191365590357e-8,
+      "sha256": "78839c58cdfa34b13d98a32c2ce04cf503f47d1c2cf8a18ef836a4732036ac80"
+    },
+    {
+      "name": "Fighting Idle (1)",
+      "duration": 3.299999952316284,
+      "bones": 65,
+      "restPoseMaxError": 5.16191365590357e-8,
+      "sha256": "abfc6cc8e7372b48fe39d76dac4396f7d268c44b901c77b0b4a3f00724f423e8"
+    },
+    {
+      "name": "Sweep Fall",
+      "duration": 2.5,
+      "bones": 65,
+      "restPoseMaxError": 5.16191365590357e-8,
+      "sha256": "a43c8c3b1ca507dd824db5b8bcd17fb1d59b984abcff6989f2924596d31d3824"
+    },
+    {
+      "name": "Kip Up (1)",
+      "duration": 2.0333333015441895,
+      "bones": 65,
+      "restPoseMaxError": 5.16191365590357e-8,
+      "sha256": "74be224502666c3e0ca496d5e1ecdd6ad1d0c0ef5a635ee944c311ff8c64b718"
+    },
+    {
+      "name": "Shoulder Throw, Aggressor",
+      "duration": 6.666666507720947,
+      "bones": 65,
+      "restPoseMaxError": 5.16191365590357e-8,
+      "sha256": "4714af4197f24848b95b82c89f9591406988e82998e1a322e8312140145aeb00"
+    },
+    {
+      "name": "Shoulder Throw, Victim",
+      "duration": 6.666666507720947,
+      "bones": 65,
+      "restPoseMaxError": 5.16191365590357e-8,
+      "sha256": "8e3df18f7f8e6666398b18da0e8234b00f0c5dab0ce05c705e7fa2eec3923930"
+    },
+    {
+      "name": "Rockin' Shackle B",
+      "duration": 5,
+      "bones": 65,
+      "restPoseMaxError": 5.16191365590357e-8,
+      "sha256": "23822fca29022b9eb5ebc4007c69d3e8a1d54088e6ab11a0761e60aba9677ea9"
+    }
+  ],
+  "identicalIdleClips": false,
+  "pair": {
+    "start": 2.3,
+    "end": 3.8,
+    "impact": 3.5,
+    "rate": 1.8,
+    "roles": [
+      "THROW_ATTACKER",
+      "THROW_VICTIM"
+    ]
+  },
+  "unused": [
+    "Rockin' Shackle B: missing partner A"
+  ],
+  "scope": "BRAX source skeleton"
+}

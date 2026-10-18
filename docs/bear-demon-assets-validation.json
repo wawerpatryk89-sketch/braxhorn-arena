@@ -1,0 +1,27 @@
+{
+  "pass": true,
+  "result": [
+    {
+      "who": "BEAR",
+      "states": 44,
+      "poseSamples": 3617,
+      "contactFrames": 143,
+      "maxContactErrorPx": 1.0231815394945443e-12,
+      "idleSeamRadians": 0.0004782199908528088,
+      "skinWeightGroups": 2,
+      "minWeight": 0.9999999590218067,
+      "maxWeight": 1.000000037602149
+    },
+    {
+      "who": "DEMON",
+      "states": 44,
+      "poseSamples": 4343,
+      "contactFrames": 77,
+      "maxContactErrorPx": 4.547473508864641e-13,
+      "idleSeamRadians": 0.0005023714602908538,
+      "skinWeightGroups": 2,
+      "minWeight": 0.9999999590218067,
+      "maxWeight": 1.000000039464794
+    }
+  ]
+}

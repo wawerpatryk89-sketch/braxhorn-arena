@@ -1,0 +1,16 @@
+import fs from 'node:fs';import zlib from 'node:zlib';import * as T from 'three';import {rig} from '../game/assets/fighter-source-core.js';
+const read=p=>JSON.parse(zlib.gunzipSync(fs.readFileSync(p))),axis=new T.Quaternion().setFromAxisAngle(new T.Vector3(1,0,0),Math.PI/2),inverse=axis.clone().invert();
+const bones=m=>{const b={};m.traverse(o=>{if(o.isBone)b[o.name.replace(/^mixamorig/,'')]=o;});return b;};
+const donor=bones(new T.ObjectLoader().parse(read('game/assets/vexa-new/model.json.gz'))),source=read('game/assets/vexa-new/clips.json.gz').Sprint;
+for(const who of ['NYXA','NINA','DANNY']){
+ const dir='game/assets/'+who.toLowerCase()+'-new/',cfg=JSON.parse(fs.readFileSync(dir+'config.json')),raw=read(dir+'clips.json.gz'),data=read(dir+'model.json.gz'),target=bones(new T.ObjectLoader().parse(data));
+ const clip=T.AnimationClip.parse(source),leg=b=>b.LeftLeg.position.length()+b.LeftFoot.position.length(),ratio=leg(target)/leg(donor);
+ for(const tr of clip.tracks){const [name,kind]=tr.name.split('.'),key=name.replace(/^mixamorig/,'');if(!target[key]||!donor[key])throw Error('Missing '+key);if(kind==='quaternion'){const delta=target[key].quaternion.clone().multiply(donor[key].quaternion.clone().invert());if(key==='Hips')delta.premultiply(inverse).multiply(axis);for(let i=0;i<tr.values.length;i+=4)new T.Quaternion().fromArray(tr.values,i).premultiply(delta).normalize().toArray(tr.values,i);}if(kind==='position'){if(key!=='Hips')throw Error('Unexpected translation');const from=donor.Hips.position.clone().applyQuaternion(inverse),to=target.Hips.position.clone().applyQuaternion(inverse);for(let i=0;i<tr.values.length;i+=3)new T.Vector3().fromArray(tr.values,i).sub(from).multiplyScalar(ratio).add(to).toArray(tr.values,i);}}
+ clip.name='Shared Sprint';raw[clip.name]=T.AnimationClip.toJSON(clip);
+ const frames=Math.ceil(clip.duration*60),dt=clip.duration/frames;
+ const c={asset:who+'_SPRINT_20261013',character:who,label:'Bieg',sourceVersion:'sprint-20261013',clip:clip.name,animationSource:'Existing supplied Vexa Sprint, retargeted',duration:clip.duration,durations:Array(frames).fill(dt*1000),attack:false,gain:0,cost:0,w:1024,h:640,scale:cfg.IDLE.scale,pivotX:512,anchorY:550,mode:'ground',model3d:true,playbackRate:1,locomotion:true,gaitRate:({NYXA:.89,NINA:.93,DANNY:.88})[who],hits:{},boxes:[],hurtCapsules:[],pushCenters:[],footY:[]};
+ const r=rig(new T.ObjectLoader().parse(data),raw,who);
+ for(let i=0;i<frames;i++){r.pose(c,i*dt);const p=Object.keys(r.bones).map(n=>r.point(n));c.boxes.push([Math.min(...p.map(x=>x[0]))-25,Math.min(...p.map(x=>x[1]))-45,Math.max(...p.map(x=>x[0]))+25,Math.max(...p.map(x=>x[1]))+20]);c.pushCenters.push([r.point('Hips')[0],40]);c.footY.push(c.anchorY);c.hurtCapsules.push([['head','Neck','Head',26],['body','Spine2','Hips',32],['leg','Hips','LeftLeg',21],['leg','LeftLeg','LeftFoot',17],['leg','Hips','RightLeg',21],['leg','RightLeg','RightFoot',17]].map(([region,a,b,radius])=>({region,a:r.point(a),b:r.point(b),radius})));}
+ c.union=[Math.min(...c.boxes.map(b=>b[0])),Math.min(...c.boxes.map(b=>b[1])),Math.max(...c.boxes.map(b=>b[2])),Math.max(...c.boxes.map(b=>b[3]))];cfg.RUN=c;
+ fs.writeFileSync(dir+'config.json',JSON.stringify(cfg));fs.writeFileSync(dir+'clips.json.gz',zlib.gzipSync(JSON.stringify(raw),{level:9}));console.log(who,'RUN',clip.duration);
+}

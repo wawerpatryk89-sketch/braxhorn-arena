@@ -1,0 +1,1 @@
+{"status":"PASS","simulatedSeconds":150,"switches":21,"blankFrames":0,"silentFrames":0,"checks":["mute","pause/resume","play rejection native-loop fallback","release both decoders"],"limitation":"Mock media clock: does not measure real Safari decode or audio output"}

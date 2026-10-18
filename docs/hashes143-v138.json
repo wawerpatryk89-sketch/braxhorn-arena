@@ -1,0 +1,595 @@
+{
+  "version138": "0de66717a64064f303f36e5b67b0259cd372c73f",
+  "version143": "90f65b34d3b0a01566d24b51c6de32accd227d10",
+  "scope": "All tracked non-arena source-assets plus all game/assets/*-new files (including configs/manifests).",
+  "files": [
+    {
+      "path": "game/assets/brax-new/clips.json.gz",
+      "sha256_138": "5205ba1ee77a995492dc22420828edf024466c4e61977b45fa4f71c090f4a809",
+      "sha256_143": "5205ba1ee77a995492dc22420828edf024466c4e61977b45fa4f71c090f4a809",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/brax-new/color.webp",
+      "sha256_138": "d738408f64d1419108c0d0c6f93611ab37572e59de47438df99f5fbe54a24f72",
+      "sha256_143": "d738408f64d1419108c0d0c6f93611ab37572e59de47438df99f5fbe54a24f72",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/brax-new/config.json",
+      "sha256_138": "160339cf9c083b4c520e948e3bd3ff351ef204fac4b234c64b2df08da50739ba",
+      "sha256_143": "160339cf9c083b4c520e948e3bd3ff351ef204fac4b234c64b2df08da50739ba",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/brax-new/manifest.json",
+      "sha256_138": "4b52bc7fbbad0c7dd7b9bc3e377b9a342bb1b532f1edad86553d9c208114dd72",
+      "sha256_143": "4b52bc7fbbad0c7dd7b9bc3e377b9a342bb1b532f1edad86553d9c208114dd72",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/brax-new/metalness.webp",
+      "sha256_138": "cbbd3272f70d7aab01eed3d521205942745846860f95a85569fe04ac323c8aec",
+      "sha256_143": "cbbd3272f70d7aab01eed3d521205942745846860f95a85569fe04ac323c8aec",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/brax-new/model.json.gz",
+      "sha256_138": "3832d0239aa02944d8be6adf73aeca8e0bc74d56d4d6371a20fd9401cee4670f",
+      "sha256_143": "3832d0239aa02944d8be6adf73aeca8e0bc74d56d4d6371a20fd9401cee4670f",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/brax-new/normal.webp",
+      "sha256_138": "485bdedd9c68eddc3b56292605fad3377276a084143986630050069d6813c9be",
+      "sha256_143": "485bdedd9c68eddc3b56292605fad3377276a084143986630050069d6813c9be",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/brax-new/roughness.webp",
+      "sha256_138": "08f8b85fded8c613fcaec30ca62c6187bb5516dc6d1c245bcfc8c1942d248698",
+      "sha256_143": "08f8b85fded8c613fcaec30ca62c6187bb5516dc6d1c245bcfc8c1942d248698",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/danny-new/clips.json.gz",
+      "sha256_138": "9ad6d91d896f7467f2c63b173c05d90aa41d193f171d755ac4eddbf8134d9b66",
+      "sha256_143": "9ad6d91d896f7467f2c63b173c05d90aa41d193f171d755ac4eddbf8134d9b66",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/danny-new/color.webp",
+      "sha256_138": "0d5cdfdd68007c98bafa373dd58cf2db48045bf9c8e2ee159bf490a28feb9729",
+      "sha256_143": "0d5cdfdd68007c98bafa373dd58cf2db48045bf9c8e2ee159bf490a28feb9729",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/danny-new/config.json",
+      "sha256_138": "2603c9652e384d37665be0a29ca08fe3d85ecf0f972f2dd8cd1129e110e7f33e",
+      "sha256_143": "2603c9652e384d37665be0a29ca08fe3d85ecf0f972f2dd8cd1129e110e7f33e",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/danny-new/manifest.json",
+      "sha256_138": "839bf5490fffa89e82f0e97f15267744ba965ded5cd5184fc1953f0549fbfa64",
+      "sha256_143": "839bf5490fffa89e82f0e97f15267744ba965ded5cd5184fc1953f0549fbfa64",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/danny-new/metalness.webp",
+      "sha256_138": "44c42ffbce1f74342b9956f964febd1019b9530bc69bcfa88eca3af142d19853",
+      "sha256_143": "44c42ffbce1f74342b9956f964febd1019b9530bc69bcfa88eca3af142d19853",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/danny-new/model.json.gz",
+      "sha256_138": "08f628343e4851e543f15cb65ab2bf366987b1459ed92515f41187ea8ac949c3",
+      "sha256_143": "08f628343e4851e543f15cb65ab2bf366987b1459ed92515f41187ea8ac949c3",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/danny-new/normal.webp",
+      "sha256_138": "e57dd0be248953d5508a1898ad9d8ffbb860fddd1d1812b70da4650c83cd1263",
+      "sha256_143": "e57dd0be248953d5508a1898ad9d8ffbb860fddd1d1812b70da4650c83cd1263",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/danny-new/roughness.webp",
+      "sha256_138": "af8cf6f75008c0a270cb7d316e77786ba1d09b0cde5e3078b4f22a893a5f1c63",
+      "sha256_143": "af8cf6f75008c0a270cb7d316e77786ba1d09b0cde5e3078b4f22a893a5f1c63",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/krov-new/clips.json.gz",
+      "sha256_138": "6f1d5afe663ddc7150ce70923706074a335ee5e199b5646813b1cf5ffb777760",
+      "sha256_143": "6f1d5afe663ddc7150ce70923706074a335ee5e199b5646813b1cf5ffb777760",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/krov-new/color.webp",
+      "sha256_138": "298dc6b18e76ab931245f401398e2a3cdba17dddedf99553b5d52b20a8abd9ff",
+      "sha256_143": "298dc6b18e76ab931245f401398e2a3cdba17dddedf99553b5d52b20a8abd9ff",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/krov-new/config.json",
+      "sha256_138": "93e215b9826f9970c0042d8e66055abe9422309cf2a133a2d6454480bde42486",
+      "sha256_143": "93e215b9826f9970c0042d8e66055abe9422309cf2a133a2d6454480bde42486",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/krov-new/manifest.json",
+      "sha256_138": "844b585f500317c78e9cd06c011c02bf77c1e89ebd8165f9815eaef3bce1b30f",
+      "sha256_143": "844b585f500317c78e9cd06c011c02bf77c1e89ebd8165f9815eaef3bce1b30f",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/krov-new/metalness.webp",
+      "sha256_138": "9e87c6f2107cff62e5ba0c2581d6892a65417d50132398649948f4ddff4bba65",
+      "sha256_143": "9e87c6f2107cff62e5ba0c2581d6892a65417d50132398649948f4ddff4bba65",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/krov-new/model.json.gz",
+      "sha256_138": "71c38c4d96f01c14f5a36fee14104d1be5ab26b3732b41e00606d2b96abb07c9",
+      "sha256_143": "71c38c4d96f01c14f5a36fee14104d1be5ab26b3732b41e00606d2b96abb07c9",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/krov-new/normal.webp",
+      "sha256_138": "6c4c02c9f3d25cb482f72f65a852b572cbfd38f228a442a8c2a30a1485c85d86",
+      "sha256_143": "6c4c02c9f3d25cb482f72f65a852b572cbfd38f228a442a8c2a30a1485c85d86",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/krov-new/roughness.webp",
+      "sha256_138": "8d3b7347038a80175ddeac4dbbbdb2e9216175d251ef801682ba02e85ac1543c",
+      "sha256_143": "8d3b7347038a80175ddeac4dbbbdb2e9216175d251ef801682ba02e85ac1543c",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/nina-new/clips.json.gz",
+      "sha256_138": "e0333850f0633ed3c53d7408ccdfec49f2ef8b39a8aa863b606772c0d34e39dc",
+      "sha256_143": "e0333850f0633ed3c53d7408ccdfec49f2ef8b39a8aa863b606772c0d34e39dc",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/nina-new/color.webp",
+      "sha256_138": "729193c6deb4624158042d80bbb14b36116a7e28e3df79c1b8c8299c13b35b55",
+      "sha256_143": "729193c6deb4624158042d80bbb14b36116a7e28e3df79c1b8c8299c13b35b55",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/nina-new/config.json",
+      "sha256_138": "faf6daf8e719cde653072365c7e06d3834cf9de8d0fce5c9722720a950f09896",
+      "sha256_143": "faf6daf8e719cde653072365c7e06d3834cf9de8d0fce5c9722720a950f09896",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/nina-new/manifest.json",
+      "sha256_138": "9f141e4f7f467663474f8a07ad95a4ec3904a0bf06aceff2434c319e222563c1",
+      "sha256_143": "9f141e4f7f467663474f8a07ad95a4ec3904a0bf06aceff2434c319e222563c1",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/nina-new/metalness.webp",
+      "sha256_138": "f9a69d43bc86d5ac531d09e3bf394354e964055cb0ece76a9088e47d9f1b5092",
+      "sha256_143": "f9a69d43bc86d5ac531d09e3bf394354e964055cb0ece76a9088e47d9f1b5092",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/nina-new/model.json.gz",
+      "sha256_138": "b22f21826c2143c56f2b68c6f137da148f3d3d76274ba76f7e534da30451bf19",
+      "sha256_143": "b22f21826c2143c56f2b68c6f137da148f3d3d76274ba76f7e534da30451bf19",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/nina-new/normal.webp",
+      "sha256_138": "ad69ec845beae188d972430bd4521b4c3a47490cee077154fd0ab04c843fa044",
+      "sha256_143": "ad69ec845beae188d972430bd4521b4c3a47490cee077154fd0ab04c843fa044",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/nina-new/roughness.webp",
+      "sha256_138": "ecba5bc730161be85559157e3a592c2f8227e3cd00212740571652d22db23da3",
+      "sha256_143": "ecba5bc730161be85559157e3a592c2f8227e3cd00212740571652d22db23da3",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/nyxa-new/clips.json.gz",
+      "sha256_138": "8a704d18afb9b1315e81a83e8a5ec953cb1f1b2cea5e1e201b7e8323bb8df1e3",
+      "sha256_143": "8a704d18afb9b1315e81a83e8a5ec953cb1f1b2cea5e1e201b7e8323bb8df1e3",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/nyxa-new/color.webp",
+      "sha256_138": "8e8410f6c125ef537f52e2904399f3aec56d3237139b61459a0e6909c5d11318",
+      "sha256_143": "8e8410f6c125ef537f52e2904399f3aec56d3237139b61459a0e6909c5d11318",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/nyxa-new/config.json",
+      "sha256_138": "5f7774f91b07252212c723a10c17f0b262cfcf83370bd245ca1edf0ce35b1a3a",
+      "sha256_143": "5f7774f91b07252212c723a10c17f0b262cfcf83370bd245ca1edf0ce35b1a3a",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/nyxa-new/manifest.json",
+      "sha256_138": "86ccdc4019898806633c038155ac6a90b6d18b453ab197d4ace0e11a04118005",
+      "sha256_143": "86ccdc4019898806633c038155ac6a90b6d18b453ab197d4ace0e11a04118005",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/nyxa-new/metalness.webp",
+      "sha256_138": "6bb7fc8c851fc9b58585b02003b0174df925d269780f2957bded1a5471f4b033",
+      "sha256_143": "6bb7fc8c851fc9b58585b02003b0174df925d269780f2957bded1a5471f4b033",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/nyxa-new/model.json.gz",
+      "sha256_138": "2fceadf28742d7990f64d01b81d4495755863fcc396b1e637305d2d4f2b9cd3e",
+      "sha256_143": "2fceadf28742d7990f64d01b81d4495755863fcc396b1e637305d2d4f2b9cd3e",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/nyxa-new/normal.webp",
+      "sha256_138": "b6bc7ff7b0b51aca0599ed01d562771682f220fe371c9f7bd50eba854cdcbd2a",
+      "sha256_143": "b6bc7ff7b0b51aca0599ed01d562771682f220fe371c9f7bd50eba854cdcbd2a",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/nyxa-new/roughness.webp",
+      "sha256_138": "89e79eb53d25528c7fbe07d9a43ffd00f11aedcb18522bf8828f22622d71673d",
+      "sha256_143": "89e79eb53d25528c7fbe07d9a43ffd00f11aedcb18522bf8828f22622d71673d",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/vexa-new/clips.json.gz",
+      "sha256_138": "3393fd64597973f17b9246edb0d8fefc4b92f9976eb00fd9df115e26c87fd547",
+      "sha256_143": "3393fd64597973f17b9246edb0d8fefc4b92f9976eb00fd9df115e26c87fd547",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/vexa-new/color.webp",
+      "sha256_138": "acab17e0318bc3bae21d0a69e83d9486db81148164c859bc6968c46379071335",
+      "sha256_143": "acab17e0318bc3bae21d0a69e83d9486db81148164c859bc6968c46379071335",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/vexa-new/config.json",
+      "sha256_138": "cd29eadd8dda7e5bde64edd315a9a2465a98b23223665872a4c29f03042e7372",
+      "sha256_143": "cd29eadd8dda7e5bde64edd315a9a2465a98b23223665872a4c29f03042e7372",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/vexa-new/manifest.json",
+      "sha256_138": "7b8b8f20eedc0399f811f282dfb6487aba8143f8221fe4dc4f06a7f09e2477ec",
+      "sha256_143": "7b8b8f20eedc0399f811f282dfb6487aba8143f8221fe4dc4f06a7f09e2477ec",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/vexa-new/metalness.webp",
+      "sha256_138": "94b8a7acc841576f584430e35e41368446e5082b45ecef81e293f938fdb698b7",
+      "sha256_143": "94b8a7acc841576f584430e35e41368446e5082b45ecef81e293f938fdb698b7",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/vexa-new/model.json.gz",
+      "sha256_138": "a0f069adb892db54bb94e3ef4a77ae4a73f8af23a144ed71afd506fb0363d186",
+      "sha256_143": "a0f069adb892db54bb94e3ef4a77ae4a73f8af23a144ed71afd506fb0363d186",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/vexa-new/normal.webp",
+      "sha256_138": "ba9b97cca4faac3afb538f949339fddf05b3868111695beebbfac36eeff4d07c",
+      "sha256_143": "ba9b97cca4faac3afb538f949339fddf05b3868111695beebbfac36eeff4d07c",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "game/assets/vexa-new/roughness.webp",
+      "sha256_138": "9f0292e78ca3e61177b295133cf79d9026cdaf521f46e477c02ab624b0dd4c4f",
+      "sha256_143": "9f0292e78ca3e61177b295133cf79d9026cdaf521f46e477c02ab624b0dd4c4f",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/approach-20261011/Happy Walk.fbx",
+      "sha256_138": "700bdc79ae147522ee4532aab222fea7a469dc33654a49f67c7491673edcdbc5",
+      "sha256_143": "700bdc79ae147522ee4532aab222fea7a469dc33654a49f67c7491673edcdbc5",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/approach-20261011/Taunt.fbx",
+      "sha256_138": "bddcfec0b52853be016cdca9cbb9fea4fa3504a9cdce5633d329e0579620db6d",
+      "sha256_143": "bddcfec0b52853be016cdca9cbb9fea4fa3504a9cdce5633d329e0579620db6d",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/approach-20261011/Walking.fbx",
+      "sha256_138": "e752503263e75b554ad9abc7eee597fcda80ed13e307dde27b27f618a2b955db",
+      "sha256_143": "e752503263e75b554ad9abc7eee597fcda80ed13e307dde27b27f618a2b955db",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/bear-new/textures/color.png",
+      "sha256_138": "b314c8cbde8990eddc0de152334c379c205d113700c0897c03667421caf4ae59",
+      "sha256_143": "b314c8cbde8990eddc0de152334c379c205d113700c0897c03667421caf4ae59",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/bear-new/textures/metalness.png",
+      "sha256_138": "4977a48563ab66e09c69df5bbe69d4cfc3aade6098dc11e47481d926d4180369",
+      "sha256_143": "4977a48563ab66e09c69df5bbe69d4cfc3aade6098dc11e47481d926d4180369",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/bear-new/textures/normal.png",
+      "sha256_138": "d1b35f636b64c836882f9e71422b0ff4e8f6dd1c1a089f4efb4999cce2278c3a",
+      "sha256_143": "d1b35f636b64c836882f9e71422b0ff4e8f6dd1c1a089f4efb4999cce2278c3a",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/bear-new/textures/roughness.png",
+      "sha256_138": "ebf6fa4f2a4b8df4233e6324cb90883e29c77119e60738c6a0cb24b874c8339e",
+      "sha256_143": "ebf6fa4f2a4b8df4233e6324cb90883e29c77119e60738c6a0cb24b874c8339e",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/bear/clips-all.json.gz",
+      "sha256_138": "893e42864c92ada907fb28db1b5083071a21901b92583d755fa929037631ad78",
+      "sha256_143": "893e42864c92ada907fb28db1b5083071a21901b92583d755fa929037631ad78",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/brax-contact-20261013/Dodging Back.fbx",
+      "sha256_138": "592066e44985eeb491d7de9adc4028ff2ceae10669bfabe7b6d37e595d951318",
+      "sha256_143": "592066e44985eeb491d7de9adc4028ff2ceae10669bfabe7b6d37e595d951318",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/brax-contact-20261013/Push.fbx",
+      "sha256_138": "a54a83308032fc8bc6fdd506f96f7020d7adaa4d6a9e0a207740e4e3797aaee9",
+      "sha256_143": "a54a83308032fc8bc6fdd506f96f7020d7adaa4d6a9e0a207740e4e3797aaee9",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/brax-contact-20261013/Pushing.fbx",
+      "sha256_138": "8ed0c7e51632a1fb054b629505839350603d076799c304ef6c985b669b8043f8",
+      "sha256_143": "8ed0c7e51632a1fb054b629505839350603d076799c304ef6c985b669b8043f8",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/brax-contact-20261013/Stumble Backwards.fbx",
+      "sha256_138": "55b0a23916860f13fd0a92d9d0fdccd378fc3803087046300afe25114108d4bb",
+      "sha256_143": "55b0a23916860f13fd0a92d9d0fdccd378fc3803087046300afe25114108d4bb",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/brax-new/textures/color.png",
+      "sha256_138": "27af96629c978975831ae5536de4dae4060bc3cdb8826d15f1b5bc4853fa33ae",
+      "sha256_143": "27af96629c978975831ae5536de4dae4060bc3cdb8826d15f1b5bc4853fa33ae",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/brax-new/textures/metalness.png",
+      "sha256_138": "759a54079e06744bdea3ba2e44158db981e5392a8a118a2b276cc86e4b706493",
+      "sha256_143": "759a54079e06744bdea3ba2e44158db981e5392a8a118a2b276cc86e4b706493",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/brax-new/textures/normal.png",
+      "sha256_138": "a531d8115a2ca532ed5aecb1d95d054bc1279cd45bfb158324c5cce2128347a6",
+      "sha256_143": "a531d8115a2ca532ed5aecb1d95d054bc1279cd45bfb158324c5cce2128347a6",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/brax-new/textures/roughness.png",
+      "sha256_138": "0374a5a104655b640aad8eef4234ebb52f267affc4dd62ff691df4e87321a57b",
+      "sha256_143": "0374a5a104655b640aad8eef4234ebb52f267affc4dd62ff691df4e87321a57b",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/brax/clips-all.json.gz",
+      "sha256_138": "edc61506add443f505fd9f82a55f8009ac5427294c493bbcf8b10203ad85298b",
+      "sha256_143": "edc61506add443f505fd9f82a55f8009ac5427294c493bbcf8b10203ad85298b",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/danny-new/textures/color.png",
+      "sha256_138": "09e6cd33fd068492d9a9b9f6173cbb3dde6206194f4a932cf01f78ba2e1b8a3f",
+      "sha256_143": "09e6cd33fd068492d9a9b9f6173cbb3dde6206194f4a932cf01f78ba2e1b8a3f",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/danny-new/textures/metalness.png",
+      "sha256_138": "f6c17d0bb420fc557139d9d17d9fc9a1c161d113e0c8c2d2bd33b3062e93c45b",
+      "sha256_143": "f6c17d0bb420fc557139d9d17d9fc9a1c161d113e0c8c2d2bd33b3062e93c45b",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/danny-new/textures/normal.png",
+      "sha256_138": "37193e61c6d107d5ce44eafee9092bb622c3903a6004c26317a91d4d8d7d3f7c",
+      "sha256_143": "37193e61c6d107d5ce44eafee9092bb622c3903a6004c26317a91d4d8d7d3f7c",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/danny-new/textures/roughness.png",
+      "sha256_138": "4182cc3490a11b67c542bf06dd1eb6d0fb2f69d51ef717fa53400b6beb7ec4ed",
+      "sha256_143": "4182cc3490a11b67c542bf06dd1eb6d0fb2f69d51ef717fa53400b6beb7ec4ed",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/danny/clips-all.json.gz",
+      "sha256_138": "9806481e1eaf9b28971e1bd533680eba623750f71c9698e2cec4856958107d8e",
+      "sha256_143": "9806481e1eaf9b28971e1bd533680eba623750f71c9698e2cec4856958107d8e",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/krov-new/textures/color.png",
+      "sha256_138": "ea8459d75109db80bdfa8cc84f2a32f469c8c211278a18782aad58daedbedf15",
+      "sha256_143": "ea8459d75109db80bdfa8cc84f2a32f469c8c211278a18782aad58daedbedf15",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/krov-new/textures/metalness.png",
+      "sha256_138": "3d588e6109441574fdc0d2e3d6621e9d8c7a0f8d61cb0b24f78a8ff477278c14",
+      "sha256_143": "3d588e6109441574fdc0d2e3d6621e9d8c7a0f8d61cb0b24f78a8ff477278c14",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/krov-new/textures/normal.png",
+      "sha256_138": "d517c5a279072e659783cf36744fe356f8e83ecb009e8ba14abd8e6f27a5124a",
+      "sha256_143": "d517c5a279072e659783cf36744fe356f8e83ecb009e8ba14abd8e6f27a5124a",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/krov-new/textures/roughness.png",
+      "sha256_138": "e239d2e95c82a5e00f2291777372a2bb0faa6a6f89e3b1d18fe9af4b203b71e0",
+      "sha256_143": "e239d2e95c82a5e00f2291777372a2bb0faa6a6f89e3b1d18fe9af4b203b71e0",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/krov/clips-all.json.gz",
+      "sha256_138": "4b8cdcb07b3ee01e0e979ce8b67bf9583f75e47afa15340f22659eff9256cd85",
+      "sha256_143": "4b8cdcb07b3ee01e0e979ce8b67bf9583f75e47afa15340f22659eff9256cd85",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/nina-extra-20261013/Armada To Esquiva.fbx",
+      "sha256_138": "ee8f5a619ab86137ae408211fb5f5dd81192930e0790af08f08d60715366351a",
+      "sha256_143": "ee8f5a619ab86137ae408211fb5f5dd81192930e0790af08f08d60715366351a",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/nina-extra-20261013/Armada.fbx",
+      "sha256_138": "12940312b208b4faee200f920d8aeb64a03c099df5b5a30771cddddb722f9064",
+      "sha256_143": "12940312b208b4faee200f920d8aeb64a03c099df5b5a30771cddddb722f9064",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/nina-extra-20261013/Chapa 2.fbx",
+      "sha256_138": "1ef7a69b9eec471310cd4df7388a43abc68f712c24080e0eef8786831609829c",
+      "sha256_143": "1ef7a69b9eec471310cd4df7388a43abc68f712c24080e0eef8786831609829c",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/nina-extra-20261013/Chapaeu De Couro.fbx",
+      "sha256_138": "cf3ff9dbb1547eb719c88e098576ba101b1dd216aec65615e8d4cd022575caa5",
+      "sha256_143": "cf3ff9dbb1547eb719c88e098576ba101b1dd216aec65615e8d4cd022575caa5",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/nina-extra-20261013/Esquiva 1.fbx",
+      "sha256_138": "7bd3cee4b9873dbfb4e9f085a532333f97bcd1848db9312af9fd253d3275ec5f",
+      "sha256_143": "7bd3cee4b9873dbfb4e9f085a532333f97bcd1848db9312af9fd253d3275ec5f",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/nina-extra-20261013/Fist Fight B.fbx",
+      "sha256_138": "bb035530bcda1719d678f8c1e1512ed656ce3b0922cfd8c1160f11ecfdc9a02f",
+      "sha256_143": "bb035530bcda1719d678f8c1e1512ed656ce3b0922cfd8c1160f11ecfdc9a02f",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/nina-extra-20261013/Rasteira 2.fbx",
+      "sha256_138": "27dfa204a9c30fd711ccf300950db2982166c43912004028009ac37774c58ed2",
+      "sha256_143": "27dfa204a9c30fd711ccf300950db2982166c43912004028009ac37774c58ed2",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/nina-extra-20261013/Spell Casting.fbx",
+      "sha256_138": "4f4868f55d0fa0e13bcc1e0420d54a1d02fd4d10749b84aa4656bada2d2a01b2",
+      "sha256_143": "4f4868f55d0fa0e13bcc1e0420d54a1d02fd4d10749b84aa4656bada2d2a01b2",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/nina-new/textures/color.png",
+      "sha256_138": "5cd171fbbb7dbc2a47fef616aa28a38ecee6e9a0a6989d5d74bb46558c4dd9f5",
+      "sha256_143": "5cd171fbbb7dbc2a47fef616aa28a38ecee6e9a0a6989d5d74bb46558c4dd9f5",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/nina-new/textures/metalness.png",
+      "sha256_138": "59c8ece124b46b533ebd386c5cc9a4515fd712425b685934eb8e245e6cbab4c2",
+      "sha256_143": "59c8ece124b46b533ebd386c5cc9a4515fd712425b685934eb8e245e6cbab4c2",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/nina-new/textures/normal.png",
+      "sha256_138": "8fece8fb605ac6b40fefdfd09592d56705ecacdaea20fba053d694e703ecad9a",
+      "sha256_143": "8fece8fb605ac6b40fefdfd09592d56705ecacdaea20fba053d694e703ecad9a",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/nina-new/textures/roughness.png",
+      "sha256_138": "65c6ab735c3b9eefdcd0420afcc17843242c4721a970fceef791287c5e1f62f4",
+      "sha256_143": "65c6ab735c3b9eefdcd0420afcc17843242c4721a970fceef791287c5e1f62f4",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/nina/clips-all.json.gz",
+      "sha256_138": "21e79152c8f659157b11c2d3cf67913761c7651f433444faf80b2a6364ef2305",
+      "sha256_143": "21e79152c8f659157b11c2d3cf67913761c7651f433444faf80b2a6364ef2305",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/nyxa-new/textures/color.png",
+      "sha256_138": "f2e7fd827e2c0beecfe7f3ea78ae41e1ebc9350539e7568d1fef75fcfa80d5c2",
+      "sha256_143": "f2e7fd827e2c0beecfe7f3ea78ae41e1ebc9350539e7568d1fef75fcfa80d5c2",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/nyxa-new/textures/metalness.png",
+      "sha256_138": "eaaa443d070408e63fa7e93edd60630bdacfa5f74b0bac4e9c32a328c6dcdd6d",
+      "sha256_143": "eaaa443d070408e63fa7e93edd60630bdacfa5f74b0bac4e9c32a328c6dcdd6d",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/nyxa-new/textures/normal.png",
+      "sha256_138": "3fd2db7253bb178786da0e9c4457dba9a026073c1129137c706ff54ebbf54608",
+      "sha256_143": "3fd2db7253bb178786da0e9c4457dba9a026073c1129137c706ff54ebbf54608",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/nyxa-new/textures/roughness.png",
+      "sha256_138": "9c664dc4ade343192abe3ff9ee03273b45820a52aa8e277281890807da814372",
+      "sha256_143": "9c664dc4ade343192abe3ff9ee03273b45820a52aa8e277281890807da814372",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/nyxa/clips-all.json.gz",
+      "sha256_138": "afa3293e574096c59eb09dff8cd5e172ee942c306d3afba17a4051f7224dad7f",
+      "sha256_143": "afa3293e574096c59eb09dff8cd5e172ee942c306d3afba17a4051f7224dad7f",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/vexa-new/textures/color.png",
+      "sha256_138": "cad18d9f4ef6eb0a4ed4927eab7afff2a9b27f388ec156cd5dbf5d1a29c9fa1b",
+      "sha256_143": "cad18d9f4ef6eb0a4ed4927eab7afff2a9b27f388ec156cd5dbf5d1a29c9fa1b",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/vexa-new/textures/metalness.png",
+      "sha256_138": "45b3c924ba6c153d0b57e9b019ec5426cb53e570cf5dda853a5871b646656df2",
+      "sha256_143": "45b3c924ba6c153d0b57e9b019ec5426cb53e570cf5dda853a5871b646656df2",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/vexa-new/textures/normal.png",
+      "sha256_138": "62fa663d908ff74ddc90102c0141268d4f9d3716df729a7440452ebc80879446",
+      "sha256_143": "62fa663d908ff74ddc90102c0141268d4f9d3716df729a7440452ebc80879446",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/vexa-new/textures/roughness.png",
+      "sha256_138": "35fc97ae5e7fc3998899b216963199a164ac2e1ed6c3aa0307b8d361be481d60",
+      "sha256_143": "35fc97ae5e7fc3998899b216963199a164ac2e1ed6c3aa0307b8d361be481d60",
+      "status": "IDENTICAL"
+    },
+    {
+      "path": "source-assets/vexa/clips-all.json.gz",
+      "sha256_138": "206d07f321befaf66b5137ac3e08182a19a1ada01e86b3932dccd0dd45de2d37",
+      "sha256_143": "206d07f321befaf66b5137ac3e08182a19a1ada01e86b3932dccd0dd45de2d37",
+      "status": "IDENTICAL"
+    }
+  ]
+}

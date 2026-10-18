@@ -1,0 +1,1 @@
+PASS voice: explicit permission only, bilateral consent, deny, microphone error, late permission after exit, mute, speaker mute, hidden-page mute, connected audio duck, restoration, negotiation and failure cleanup.

@@ -1,0 +1,9 @@
+AssertionError [ERR_ASSERTION]: BRAX both legal contacts
+    at /workspace/scratch/df35398b886f/brax-baseline/scripts/audit-engine-acceptance.cjs:9:78 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}

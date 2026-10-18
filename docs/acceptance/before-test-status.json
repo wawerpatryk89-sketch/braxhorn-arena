@@ -1,0 +1,17 @@
+[
+  {
+    "test": "audit-engine-acceptance.cjs",
+    "baselineExitCode": 1,
+    "expectedFailure": true
+  },
+  {
+    "test": "audit-renderer-lifecycle.cjs",
+    "baselineExitCode": 1,
+    "expectedFailure": true
+  },
+  {
+    "test": "audit-replay-events.cjs",
+    "baselineExitCode": 1,
+    "expectedFailure": true
+  }
+]

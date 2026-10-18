@@ -1,0 +1,158 @@
+[
+  {
+    "who": "NYXA",
+    "other": "NYXA",
+    "state": "LIGHT_PUNCH",
+    "range": 210
+  },
+  {
+    "who": "NYXA",
+    "other": "NYXA",
+    "state": "HEAVY_PUNCH",
+    "range": 280
+  },
+  {
+    "who": "NYXA",
+    "other": "NYXA",
+    "state": "LIGHT_KICK",
+    "range": 280
+  },
+  {
+    "who": "NYXA",
+    "other": "NYXA",
+    "state": "HEAVY_KICK",
+    "range": 280
+  },
+  {
+    "who": "NYXA",
+    "other": "NYXA",
+    "state": "ELBOW",
+    "range": 205
+  },
+  {
+    "who": "NYXA",
+    "other": "NYXA",
+    "state": "CLINCH_KNEE",
+    "range": 210
+  },
+  {
+    "who": "NYXA",
+    "other": "VEXA",
+    "state": "LIGHT_PUNCH",
+    "range": 225
+  },
+  {
+    "who": "NYXA",
+    "other": "VEXA",
+    "state": "HEAVY_PUNCH",
+    "range": 280
+  },
+  {
+    "who": "NYXA",
+    "other": "VEXA",
+    "state": "LIGHT_KICK",
+    "range": 280
+  },
+  {
+    "who": "NYXA",
+    "other": "VEXA",
+    "state": "HEAVY_KICK",
+    "range": 280
+  },
+  {
+    "who": "NYXA",
+    "other": "VEXA",
+    "state": "ELBOW",
+    "range": 185
+  },
+  {
+    "who": "NYXA",
+    "other": "VEXA",
+    "state": "CLINCH_KNEE",
+    "range": 205
+  },
+  {
+    "who": "NYXA",
+    "other": "KROV",
+    "state": "LIGHT_PUNCH",
+    "range": 215
+  },
+  {
+    "who": "NYXA",
+    "other": "KROV",
+    "state": "HEAVY_PUNCH",
+    "range": 280
+  },
+  {
+    "who": "NYXA",
+    "other": "KROV",
+    "state": "LIGHT_KICK",
+    "range": 280
+  },
+  {
+    "who": "NYXA",
+    "other": "KROV",
+    "state": "HEAVY_KICK",
+    "range": 280
+  },
+  {
+    "who": "NYXA",
+    "other": "KROV",
+    "state": "ELBOW",
+    "range": 185
+  },
+  {
+    "who": "NYXA",
+    "other": "KROV",
+    "state": "CLINCH_KNEE",
+    "range": 205
+  },
+  {
+    "who": "NYXA",
+    "other": "BEAR",
+    "state": "LIGHT_PUNCH",
+    "range": 225
+  },
+  {
+    "who": "NYXA",
+    "other": "BEAR",
+    "state": "HEAVY_PUNCH",
+    "range": 280
+  },
+  {
+    "who": "NYXA",
+    "other": "BEAR",
+    "state": "LIGHT_KICK",
+    "range": 280
+  },
+  {
+    "who": "NYXA",
+    "other": "BEAR",
+    "state": "HEAVY_KICK",
+    "range": 280
+  },
+  {
+    "who": "NYXA",
+    "other": "BEAR",
+    "state": "ELBOW",
+    "range": 185
+  },
+  {
+    "who": "NYXA",
+    "other": "BEAR",
+    "state": "CLINCH_KNEE",
+    "range": 205
+  },
+  {
+    "who": "NYXA",
+    "other": "DANNY",
+    "state": "ELBOW",
+    "range": 200
+  },
+  {
+    "who": "NYXA",
+    "other": "DANNY",
+    "state": "CLINCH_KNEE",
+    "range": 205
+  }
+]

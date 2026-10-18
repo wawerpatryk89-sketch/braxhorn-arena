@@ -1,0 +1,468 @@
+{
+  "status": "PASS",
+  "scope": "Mock DOM; all arena selection/start paths; catalog URLs and observed media src/poster",
+  "arenas": 19,
+  "deleted": [
+    "/assets/arena-beach.jpeg",
+    "/assets/arena-beach.mp4",
+    "/assets/arena-snow.mp4",
+    "/assets/arena-underground.mp4",
+    "/assets/audio/arena-harbor.mp3",
+    "/assets/audio/arena-jungle.mp3",
+    "/assets/audio/arena-metro.mp3",
+    "/assets/audio/arena-nocny-targ.mp3",
+    "/assets/audio/arena-rooftop.mp3",
+    "/assets/audio/arena-volcano.mp3",
+    "/assets/harbor.gif",
+    "/assets/jungle.gif",
+    "/assets/metro.gif",
+    "/assets/rooftop.gif",
+    "/assets/volcano.gif"
+  ],
+  "observed": [
+    {
+      "where": "rooftop.catalog.src",
+      "url": "/assets/arena-rooftop-20261018.webp"
+    },
+    {
+      "where": "rooftop.catalog.video",
+      "url": "/api/arena-media/rooftop.4e4fa9e322fb.mp4"
+    },
+    {
+      "where": "rooftop.prepare",
+      "url": "/api/arena-media/rooftop.4e4fa9e322fb.mp4"
+    },
+    {
+      "where": "rooftop.arena.src",
+      "url": "/assets/arena-rooftop-20261018.webp"
+    },
+    {
+      "where": "rooftop.arenaMotion.src",
+      "url": "/api/arena-media/rooftop.4e4fa9e322fb.mp4"
+    },
+    {
+      "where": "rooftop.arenaMotion.poster",
+      "url": "/assets/arena-rooftop-20261018.webp"
+    },
+    {
+      "where": "rooftop-city.catalog.src",
+      "url": "/assets/arena-rooftop-city-20261018.webp"
+    },
+    {
+      "where": "rooftop-city.catalog.video",
+      "url": "/api/arena-media/rooftop-city.0fa1a9a4c445.mp4"
+    },
+    {
+      "where": "rooftop-city.prepare",
+      "url": "/api/arena-media/rooftop-city.0fa1a9a4c445.mp4"
+    },
+    {
+      "where": "rooftop-city.arena.src",
+      "url": "/assets/arena-rooftop-city-20261018.webp"
+    },
+    {
+      "where": "rooftop-city.arenaMotion.src",
+      "url": "/api/arena-media/rooftop-city.0fa1a9a4c445.mp4"
+    },
+    {
+      "where": "rooftop-city.arenaMotion.poster",
+      "url": "/assets/arena-rooftop-city-20261018.webp"
+    },
+    {
+      "where": "jungle.catalog.src",
+      "url": "/assets/arena-jungle-20261018.webp"
+    },
+    {
+      "where": "jungle.catalog.video",
+      "url": "/api/arena-media/jungle.5da36c4fba53.mp4"
+    },
+    {
+      "where": "jungle.prepare",
+      "url": "/api/arena-media/jungle.5da36c4fba53.mp4"
+    },
+    {
+      "where": "jungle.arena.src",
+      "url": "/assets/arena-jungle-20261018.webp"
+    },
+    {
+      "where": "jungle.arenaMotion.src",
+      "url": "/api/arena-media/jungle.5da36c4fba53.mp4"
+    },
+    {
+      "where": "jungle.arenaMotion.poster",
+      "url": "/assets/arena-jungle-20261018.webp"
+    },
+    {
+      "where": "volcano.catalog.src",
+      "url": "/assets/arena-volcano-20261018.webp"
+    },
+    {
+      "where": "volcano.catalog.video",
+      "url": "/api/arena-media/volcano.216629861b12.mp4"
+    },
+    {
+      "where": "volcano.prepare",
+      "url": "/api/arena-media/volcano.216629861b12.mp4"
+    },
+    {
+      "where": "volcano.arena.src",
+      "url": "/assets/arena-volcano-20261018.webp"
+    },
+    {
+      "where": "volcano.arenaMotion.src",
+      "url": "/api/arena-media/volcano.216629861b12.mp4"
+    },
+    {
+      "where": "volcano.arenaMotion.poster",
+      "url": "/assets/arena-volcano-20261018.webp"
+    },
+    {
+      "where": "temple.catalog.src",
+      "url": "/assets/arena-temple-20261018.webp"
+    },
+    {
+      "where": "temple.catalog.video",
+      "url": "/api/arena-media/temple.cad5d0b82369.mp4"
+    },
+    {
+      "where": "temple.prepare",
+      "url": "/api/arena-media/temple.cad5d0b82369.mp4"
+    },
+    {
+      "where": "temple.arena.src",
+      "url": "/assets/arena-temple-20261018.webp"
+    },
+    {
+      "where": "temple.arenaMotion.src",
+      "url": "/api/arena-media/temple.cad5d0b82369.mp4"
+    },
+    {
+      "where": "temple.arenaMotion.poster",
+      "url": "/assets/arena-temple-20261018.webp"
+    },
+    {
+      "where": "himalaya.catalog.src",
+      "url": "/assets/arena-himalaya-20261018.webp"
+    },
+    {
+      "where": "himalaya.catalog.video",
+      "url": "/api/arena-media/himalaya.90b8580a32ae.mp4"
+    },
+    {
+      "where": "himalaya.prepare",
+      "url": "/api/arena-media/himalaya.90b8580a32ae.mp4"
+    },
+    {
+      "where": "himalaya.arena.src",
+      "url": "/assets/arena-himalaya-20261018.webp"
+    },
+    {
+      "where": "himalaya.arenaMotion.src",
+      "url": "/api/arena-media/himalaya.90b8580a32ae.mp4"
+    },
+    {
+      "where": "himalaya.arenaMotion.poster",
+      "url": "/assets/arena-himalaya-20261018.webp"
+    },
+    {
+      "where": "beach.catalog.src",
+      "url": "/assets/arena-beach-20261018.webp"
+    },
+    {
+      "where": "beach.catalog.video",
+      "url": "/api/arena-media/beach.8e9ab7847d09.mp4"
+    },
+    {
+      "where": "beach.prepare",
+      "url": "/api/arena-media/beach.8e9ab7847d09.mp4"
+    },
+    {
+      "where": "beach.arena.src",
+      "url": "/assets/arena-beach-20261018.webp"
+    },
+    {
+      "where": "beach.arenaMotion.src",
+      "url": "/api/arena-media/beach.8e9ab7847d09.mp4"
+    },
+    {
+      "where": "beach.arenaMotion.poster",
+      "url": "/assets/arena-beach-20261018.webp"
+    },
+    {
+      "where": "carrier.catalog.src",
+      "url": "/assets/arena-carrier-20261018.webp"
+    },
+    {
+      "where": "carrier.catalog.video",
+      "url": "/api/arena-media/carrier.d55dcea46803.mp4"
+    },
+    {
+      "where": "carrier.prepare",
+      "url": "/api/arena-media/carrier.d55dcea46803.mp4"
+    },
+    {
+      "where": "carrier.arena.src",
+      "url": "/assets/arena-carrier-20261018.webp"
+    },
+    {
+      "where": "carrier.arenaMotion.src",
+      "url": "/api/arena-media/carrier.d55dcea46803.mp4"
+    },
+    {
+      "where": "carrier.arenaMotion.poster",
+      "url": "/assets/arena-carrier-20261018.webp"
+    },
+    {
+      "where": "canyon.catalog.src",
+      "url": "/assets/arena-canyon-20261018.webp"
+    },
+    {
+      "where": "canyon.catalog.video",
+      "url": "/api/arena-media/canyon.0888cd693ac4.mp4"
+    },
+    {
+      "where": "canyon.prepare",
+      "url": "/api/arena-media/canyon.0888cd693ac4.mp4"
+    },
+    {
+      "where": "canyon.arena.src",
+      "url": "/assets/arena-canyon-20261018.webp"
+    },
+    {
+      "where": "canyon.arenaMotion.src",
+      "url": "/api/arena-media/canyon.0888cd693ac4.mp4"
+    },
+    {
+      "where": "canyon.arenaMotion.poster",
+      "url": "/assets/arena-canyon-20261018.webp"
+    },
+    {
+      "where": "reactor.catalog.src",
+      "url": "/assets/arena-reactor-20261018.webp"
+    },
+    {
+      "where": "reactor.catalog.video",
+      "url": "/api/arena-media/reactor.6956a48b6ccc.mp4"
+    },
+    {
+      "where": "reactor.prepare",
+      "url": "/api/arena-media/reactor.6956a48b6ccc.mp4"
+    },
+    {
+      "where": "reactor.arena.src",
+      "url": "/assets/arena-reactor-20261018.webp"
+    },
+    {
+      "where": "reactor.arenaMotion.src",
+      "url": "/api/arena-media/reactor.6956a48b6ccc.mp4"
+    },
+    {
+      "where": "reactor.arenaMotion.poster",
+      "url": "/assets/arena-reactor-20261018.webp"
+    },
+    {
+      "where": "savanna.catalog.src",
+      "url": "/assets/arena-savanna-20261018.webp"
+    },
+    {
+      "where": "savanna.catalog.video",
+      "url": "/api/arena-media/savanna.a1e74fcbcc2d.mp4"
+    },
+    {
+      "where": "savanna.prepare",
+      "url": "/api/arena-media/savanna.a1e74fcbcc2d.mp4"
+    },
+    {
+      "where": "savanna.arena.src",
+      "url": "/assets/arena-savanna-20261018.webp"
+    },
+    {
+      "where": "savanna.arenaMotion.src",
+      "url": "/api/arena-media/savanna.a1e74fcbcc2d.mp4"
+    },
+    {
+      "where": "savanna.arenaMotion.poster",
+      "url": "/assets/arena-savanna-20261018.webp"
+    },
+    {
+      "where": "brooklyn.catalog.src",
+      "url": "/assets/arena-brooklyn-20261018.webp"
+    },
+    {
+      "where": "brooklyn.catalog.video",
+      "url": "/api/arena-media/brooklyn.6d9545bcc543.mp4"
+    },
+    {
+      "where": "brooklyn.prepare",
+      "url": "/api/arena-media/brooklyn.6d9545bcc543.mp4"
+    },
+    {
+      "where": "brooklyn.arena.src",
+      "url": "/assets/arena-brooklyn-20261018.webp"
+    },
+    {
+      "where": "brooklyn.arenaMotion.src",
+      "url": "/api/arena-media/brooklyn.6d9545bcc543.mp4"
+    },
+    {
+      "where": "brooklyn.arenaMotion.poster",
+      "url": "/assets/arena-brooklyn-20261018.webp"
+    },
+    {
+      "where": "dragon.catalog.src",
+      "url": "/assets/arena-dragon-20261018.webp"
+    },
+    {
+      "where": "dragon.catalog.video",
+      "url": "/api/arena-media/dragon.f666fd6d5e72.mp4"
+    },
+    {
+      "where": "dragon.prepare",
+      "url": "/api/arena-media/dragon.f666fd6d5e72.mp4"
+    },
+    {
+      "where": "dragon.arena.src",
+      "url": "/assets/arena-dragon-20261018.webp"
+    },
+    {
+      "where": "dragon.arenaMotion.src",
+      "url": "/api/arena-media/dragon.f666fd6d5e72.mp4"
+    },
+    {
+      "where": "dragon.arenaMotion.poster",
+      "url": "/assets/arena-dragon-20261018.webp"
+    },
+    {
+      "where": "aquarium.catalog.src",
+      "url": "/assets/arena-aquarium-20261018.webp"
+    },
+    {
+      "where": "aquarium.catalog.video",
+      "url": "/api/arena-media/aquarium.2c8649a07a44.mp4"
+    },
+    {
+      "where": "aquarium.prepare",
+      "url": "/api/arena-media/aquarium.2c8649a07a44.mp4"
+    },
+    {
+      "where": "aquarium.arena.src",
+      "url": "/assets/arena-aquarium-20261018.webp"
+    },
+    {
+      "where": "aquarium.arenaMotion.src",
+      "url": "/api/arena-media/aquarium.2c8649a07a44.mp4"
+    },
+    {
+      "where": "aquarium.arenaMotion.poster",
+      "url": "/assets/arena-aquarium-20261018.webp"
+    },
+    {
+      "where": "snow.catalog.src",
+      "url": "/assets/arena-snow.jpeg"
+    },
+    {
+      "where": "snow.catalog.video",
+      "url": "/api/arena-media/snow.1dbb2e6d48ae.mp4"
+    },
+    {
+      "where": "snow.prepare",
+      "url": "/api/arena-media/snow.1dbb2e6d48ae.mp4"
+    },
+    {
+      "where": "snow.arena.src",
+      "url": "/assets/arena-snow.jpeg"
+    },
+    {
+      "where": "snow.arenaMotion.src",
+      "url": "/api/arena-media/snow.1dbb2e6d48ae.mp4"
+    },
+    {
+      "where": "snow.arenaMotion.poster",
+      "url": "/assets/arena-snow.jpeg"
+    },
+    {
+      "where": "underground.catalog.src",
+      "url": "/assets/arena-underground.jpeg"
+    },
+    {
+      "where": "underground.catalog.video",
+      "url": "/api/arena-media/underground.971834e4cd67.mp4"
+    },
+    {
+      "where": "underground.prepare",
+      "url": "/api/arena-media/underground.971834e4cd67.mp4"
+    },
+    {
+      "where": "underground.arena.src",
+      "url": "/assets/arena-underground.jpeg"
+    },
+    {
+      "where": "underground.arenaMotion.src",
+      "url": "/api/arena-media/underground.971834e4cd67.mp4"
+    },
+    {
+      "where": "underground.arenaMotion.poster",
+      "url": "/assets/arena-underground.jpeg"
+    },
+    {
+      "where": "metro.catalog.src",
+      "url": "/api/arena-media/metro.ab100a72e1ad.gif"
+    },
+    {
+      "where": "metro.catalog.audio",
+      "url": "/api/arena-media/metro-audio.1b15d86dfad5.mp3"
+    },
+    {
+      "where": "metro.arena.src",
+      "url": "/api/arena-media/metro.ab100a72e1ad.gif"
+    },
+    {
+      "where": "metro.arenaMotion.poster",
+      "url": "/assets/arena-snow.jpeg"
+    },
+    {
+      "where": "metro.arenaAudio.src",
+      "url": "/api/arena-media/metro-audio.1b15d86dfad5.mp3"
+    },
+    {
+      "where": "harbor.catalog.src",
+      "url": "/api/arena-media/harbor.d2da7fb26002.gif"
+    },
+    {
+      "where": "harbor.catalog.audio",
+      "url": "/api/arena-media/harbor-audio.27e013706a8f.mp3"
+    },
+    {
+      "where": "harbor.arena.src",
+      "url": "/api/arena-media/harbor.d2da7fb26002.gif"
+    },
+    {
+      "where": "harbor.arenaMotion.poster",
+      "url": "/assets/arena-snow.jpeg"
+    },
+    {
+      "where": "harbor.arenaAudio.src",
+      "url": "/api/arena-media/harbor-audio.27e013706a8f.mp3"
+    },
+    {
+      "where": "nocny-targ.catalog.src",
+      "url": "/assets/arena-nocny-targ.jpg"
+    },
+    {
+      "where": "nocny-targ.catalog.audio",
+      "url": "/api/arena-media/market-audio.289063ea7ff3.mp3"
+    },
+    {
+      "where": "nocny-targ.arena.src",
+      "url": "/assets/arena-nocny-targ.jpg"
+    },
+    {
+      "where": "nocny-targ.arenaMotion.poster",
+      "url": "/assets/arena-snow.jpeg"
+    },
+    {
+      "where": "nocny-targ.arenaAudio.src",
+      "url": "/api/arena-media/market-audio.289063ea7ff3.mp3"
+    }
+  ]
+}

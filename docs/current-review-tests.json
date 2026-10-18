@@ -1,0 +1,51 @@
+{
+  "status": "pass",
+  "results": [
+    {
+      "viewport": "844x390",
+      "player": "BRAX",
+      "actions": 11,
+      "facing": "both sides",
+      "movement": "pass",
+      "hits": "pass"
+    },
+    {
+      "viewport": "844x390",
+      "player": "NYXA",
+      "actions": 10,
+      "facing": "both sides",
+      "movement": "pass",
+      "hits": "pass"
+    },
+    {
+      "viewport": "568x320",
+      "player": "BRAX",
+      "actions": 11,
+      "facing": "both sides",
+      "movement": "pass",
+      "hits": "pass"
+    },
+    {
+      "viewport": "568x320",
+      "player": "NYXA",
+      "actions": 10,
+      "facing": "both sides",
+      "movement": "pass",
+      "hits": "pass"
+    }
+  ],
+  "regressions": [
+    "contact both directions",
+    "no ranged phantom hits",
+    "single damage per group",
+    "Nyxa movement and attack tempo",
+    "menu wraps two fighters",
+    "original animation pixel hashes",
+    "recorded 3 2 1 FIGHT in order and gong",
+    "independent movement and attack touches with cancellation",
+    "pause resumes without gong",
+    "AI close combat without missing-move errors",
+    "both fighters jab reaches at natural stopping distance in both directions",
+    "visible standing fighter height at least 60 percent of phone screen"
+  ]
+}

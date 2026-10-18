@@ -1,0 +1,67 @@
+/* Multiplayer belongs to the same arena menu and uses the original roster artwork. */
+#matchSetup .mode-card-row{grid-template-columns:repeat(6,minmax(0,1fr));gap:clamp(6px,1.2cqw,18px)}
+#multiplayerMode{position:relative;overflow:hidden;cursor:pointer}
+#multiplayerMode .mp-mode-art{position:absolute;inset:0;display:flex;background:#0a160d}
+#multiplayerMode .mp-mode-art img{width:50%;height:65%;object-fit:cover;object-position:center top;filter:brightness(.85)}
+#multiplayerMode .mp-mode-art i{position:absolute;top:24%;left:50%;transform:translateX(-50%);font-size:clamp(18px,4cqh,32px);font-weight:950;color:#eaffce;text-shadow:0 2px 8px #000;font-style:italic}
+#matchSetup #multiplayerMode .premium-mode-copy{padding:3cqh 3%;background:linear-gradient(transparent 22%,#06100b99 43%,#040b08 76%)}
+#multiplayerMode .premium-mode-copy strong{font-size:clamp(10px,1.5cqw,22px)}
+#multiplayerMode .premium-mode-copy small{font-size:clamp(6px,1.35cqh,10px)}
+#mpPanel{position:absolute;inset:0;z-index:220;display:flex;flex-direction:column;gap:2cqh;padding:4cqh max(4cqw,var(--safeR)) 2cqh max(4cqw,var(--safeL));color:#f1f5eb;background:linear-gradient(110deg,#020806eb,#06100dc9),url('/assets/shared-menu-background.jpeg') center/cover;overflow:hidden}
+#mpPanel.off,#mpBadge.off{display:none}
+.mp-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-shrink:0;border-bottom:1px solid #b5c78540;padding-bottom:2cqh}
+.mp-heading small{font-size:clamp(8px,1.7cqh,12px);letter-spacing:.18em;color:#b2cb9c}
+.mp-heading h1{font-size:clamp(22px,5.8cqh,42px);font-style:italic;line-height:1.05;margin:1cqh 0 0;font-weight:950}
+#mpPanel button{cursor:pointer}#mpPanel button:focus-visible{outline:2px solid #d5ff9d;outline-offset:3px}#mpPanel button:disabled{opacity:.5;cursor:wait}
+#mpSelection{flex:1;min-height:0;display:flex;flex-direction:column;gap:2cqh}
+.mp-roster{flex:1;min-height:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:1.4cqw;align-items:stretch;padding:4px}
+.mp-fighter{position:relative;min-width:0;min-height:0;overflow:hidden;padding:0;border:1px solid #7d936a;border-radius:5px;background:#0b150e;box-shadow:0 8px 20px #0008;transition:border-color .15s,box-shadow .15s}
+.mp-fighter[aria-pressed=true]{border:2px solid #d3ffa1;box-shadow:0 0 18px #9cc95766,inset 0 0 0 2px #b4ef70}
+.mp-fighter-art{position:absolute;inset:0;overflow:hidden}
+.mp-fighter-art>svg,.mp-fighter-art>img{width:100%;height:100%;display:block;object-fit:cover;object-position:50% 0}
+.mp-fighter .mp-fighter-art{bottom:0}
+.mp-fighter .mp-fighter-art svg{height:100%;width:100%}
+.mp-fighter-art>img{height:166.67%;object-fit:cover;object-position:50% 0}
+.mp-fighter-label{position:absolute;inset:auto 0 0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:1cqh;padding:5cqh 3% 2cqh;background:linear-gradient(transparent,#061009 40%);text-align:center}
+.mp-fighter-label strong{font-size:clamp(17px,4cqh,32px);font-weight:950;font-style:italic;letter-spacing:.04em;color:#eef9e3}
+.mp-fighter-label small{font-size:clamp(7px,1.6cqh,12px);line-height:1.3;color:#c2d4b3}
+.mp-selected{position:absolute;top:0;left:0;right:0;padding:1cqh 0;background:#c6ee99;color:#14200d;font-weight:900;font-size:clamp(7px,1.7cqh,11px);letter-spacing:.04em;visibility:hidden}
+.mp-fighter[aria-pressed=true] .mp-selected{visibility:visible}
+.mp-selection-footer{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-shrink:0}
+#mpChosen{color:#c5d6b6;font-size:clamp(10px,2.1cqh,15px);letter-spacing:.07em}
+.mp-selection-footer .destination-primary{width:32%;min-height:38px;padding:9px}
+#mpStatus{flex-shrink:0;min-height:1.4em;font-size:clamp(10px,2cqh,14px);line-height:1.4;margin:0;color:#d2deb9}
+#mpLobby{flex:1;min-height:0;display:grid;grid-template-columns:23% 1fr;gap:3cqw}
+.mp-identity{position:relative;border:1px solid #849c6c;overflow:hidden;border-radius:4px;background:#08120c}
+.mp-identity .mp-fighter-art{bottom:40px}
+.mp-identity .mp-fighter-label{bottom:40px}
+#mpChange{position:absolute;bottom:0;left:0;width:100%;height:40px;border:0;border-top:1px solid #8ba172;background:#152719;color:#d6edbd;font-size:clamp(9px,2cqh,13px);font-weight:800}
+#mpEntry{display:grid;grid-template-columns:1fr 1fr;gap:2cqw;min-height:0}
+.mp-room-option{display:flex;flex-direction:column;justify-content:center;gap:2cqh;min-width:0;padding:3cqh 2cqw;border:1px solid #758b5d;background:linear-gradient(130deg,#20341edf,#08110ee8);border-radius:5px;overflow:auto;touch-action:pan-y}
+.mp-room-option>small{font-size:clamp(8px,1.8cqh,12px);letter-spacing:.12em;color:#bee392}
+.mp-room-option h2{margin:0;font-size:clamp(18px,4.3cqh,32px);line-height:1.1;font-style:italic}
+.mp-room-option p{margin:0;font-size:clamp(11px,2.3cqh,16px);line-height:1.5;color:#ced9c3}
+.mp-room-option label{font-size:clamp(8px,1.8cqh,12px);color:#b5c7a2;letter-spacing:.06em}
+#mpCode{width:100%;min-width:0;border:1px solid #829b69;border-radius:3px;background:#07100b;color:#f0ffe0;font:700 clamp(16px,4cqh,28px) monospace;letter-spacing:.12em;padding:1.8cqh 12px;text-transform:uppercase;user-select:text}
+.mp-room-option .destination-primary{margin-top:auto;min-height:40px}
+#mpRoom{flex:1;min-height:0;display:flex;flex-direction:column;gap:2cqh}
+.mp-versus{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3cqw;flex:1;min-height:0;padding:0 12%}
+.mp-contender{position:relative;min-height:0;border:1px solid #8caa6b;background:radial-gradient(ellipse,#2a4025,#08100c);border-radius:4px;overflow:hidden}
+.mp-contender>strong{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,#040b08 40%);padding:5cqh 3% 2cqh;text-align:center;font-size:clamp(12px,3.5cqh,27px);font-style:italic;color:#efffe0}
+.mp-versus-center{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2cqh;text-align:center}
+.mp-versus-center small{font-size:clamp(8px,1.6cqh,11px);color:#b5c8a5;letter-spacing:.1em}
+.mp-versus-center b{font-size:clamp(40px,12cqh,90px);font-weight:950;font-style:italic;color:#cdeca5;text-shadow:0 2px 22px #98c04e44}
+.mp-versus-center span{font-size:clamp(9px,2cqh,14px);color:#c6d5b8;line-height:1.4}
+.mp-waiting{display:grid;place-items:center;width:100%;height:100%;font-size:20cqh;font-weight:900;color:#7d96685e}
+.mp-room-footer{display:flex;align-items:center;justify-content:center;gap:4cqw;border-top:1px solid #81966266;padding-top:2cqh;flex-shrink:0}
+.mp-room-footer small{display:block;font-size:clamp(8px,1.6cqh,11px);letter-spacing:.08em;color:#b4c89e}
+#mpRoomCode{display:block;font:800 clamp(22px,5.5cqh,42px) monospace;letter-spacing:.2em;color:#ecffcf;user-select:all}
+#mpCopy{padding:12px 18px;border:1px solid #accf84;border-radius:4px;background:#263e23;color:#e8ffd1;font-size:clamp(10px,2cqh,14px);font-weight:800}
+#mpBadge{position:absolute;z-index:190;top:3px;left:50%;transform:translateX(-50%);display:flex;gap:10px;align-items:center;background:#07120fe8;padding:4px 8px;border:1px solid #8b9d73;color:#fff;font:11px Arial;white-space:nowrap}
+#mpBadge button{padding:5px 9px;color:#fff;background:#432522;border:1px solid #92645a}
+#game.multiplayer #pause,#game.multiplayer #fightMenu,#game.multiplayer #openFighterHelp{display:none!important}
+@media(max-height:440px){#mpPanel{padding-top:3cqh;gap:1.5cqh}.mp-heading{padding-bottom:1.5cqh}.mp-room-option{gap:1.5cqh;padding:2cqh 2cqw}.mp-room-option .destination-primary{padding:8px}.mp-fighter-label{gap:.5cqh}.mp-versus{padding:0 15%}.mp-room-footer{padding-top:1cqh}}
+@media(orientation:portrait){.mp-roster{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr))}.mp-fighter-label strong{font-size:20px}.mp-fighter-label small{font-size:8px}#mpLobby{grid-template-columns:30% 1fr}#mpEntry{grid-template-columns:1fr}.mp-room-option h2{font-size:20px}.mp-room-option p{font-size:12px}.mp-versus{padding:0;gap:8px;grid-template-columns:1fr .65fr 1fr}.mp-versus-center b{font-size:40px}.mp-contender>strong{font-size:14px}.mp-selection-footer{gap:8px}.mp-selection-footer .destination-primary{width:38%}}
+@media(prefers-reduced-motion:reduce){.mp-fighter{transition:none}}
+
+#mpArena{width:100%;min-height:36px;padding:6px;background:#0a1710;color:#edf5e5;border:1px solid #92a75c;font:inherit}

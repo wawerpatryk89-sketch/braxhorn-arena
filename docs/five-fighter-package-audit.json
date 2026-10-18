@@ -1,0 +1,1310 @@
+{
+  "files": 161,
+  "fighters": [
+    {
+      "who": "BRAX",
+      "style": "Boxing pressure, heavy hands and finishing kick",
+      "sourceClips": [
+        {
+          "file": "Big Hit To Head.fbx",
+          "duration": 1.5666667222976685,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Boxing (2).fbx",
+          "duration": 2.4666666984558105,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Boxing.fbx",
+          "duration": 2,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Center Block.fbx",
+          "duration": 1.5833333730697632,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Dodging.fbx",
+          "duration": 2.3333332538604736,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Flying Back Death.fbx",
+          "duration": 3.0166666507720947,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Head Hit (2).fbx",
+          "duration": 1.5333333015441895,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Head Hit.fbx",
+          "duration": 0.9333333373069763,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Hit To Body.fbx",
+          "duration": 1.5,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Hook.fbx",
+          "duration": 2.4000000953674316,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Idle.fbx",
+          "duration": 3.633333444595337,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Jab Cross (1).fbx",
+          "duration": 2.133333444595337,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Jump.fbx",
+          "duration": 2.1666667461395264,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Kicking (2).fbx",
+          "duration": 3.4000000953674316,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Kicking.fbx",
+          "duration": 2.2666666507720947,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Kip Up (1).fbx",
+          "duration": 2.0333333015441895,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Kip Up.fbx",
+          "duration": 2.0166666507720947,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Long Step Forward.fbx",
+          "duration": 1,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Medium Step Forward (1).fbx",
+          "duration": 0.9333333373069763,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Mma Kick (1).fbx",
+          "duration": 1.5,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Rockin' Shackle A.fbx",
+          "duration": 5,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Rockin' Shackle B.fbx",
+          "duration": 5,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Running.fbx",
+          "duration": 0.699999988079071,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Shoulder Throw, Aggressor.fbx",
+          "duration": 6.666666507720947,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Shoulder Throw, Victim.fbx",
+          "duration": 6.666666507720947,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Step Backward.fbx",
+          "duration": 0.800000011920929,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Taunt.fbx",
+          "duration": 1.6333333253860474,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Warming Up.fbx",
+          "duration": 6.300000190734863,
+          "tracks": 53,
+          "duplicateOf": null
+        }
+      ],
+      "basics": [
+        {
+          "action": "LIGHT_PUNCH",
+          "clip": "Jab Cross (1)",
+          "damage": 13,
+          "rate": 1.9
+        },
+        {
+          "action": "HEAVY_PUNCH",
+          "clip": "Hook",
+          "damage": 13,
+          "rate": 1.8
+        },
+        {
+          "action": "LIGHT_KICK",
+          "clip": "Mma Kick (1)",
+          "damage": 10,
+          "rate": 1.5
+        },
+        {
+          "action": "HEAVY_KICK",
+          "clip": "Kicking",
+          "damage": 14,
+          "rate": 2
+        },
+        {
+          "action": "DOUBLE_PUNCH",
+          "clip": "Boxing",
+          "damage": 12,
+          "rate": 1.8
+        },
+        {
+          "action": "TEEP",
+          "clip": "Kicking (2)",
+          "damage": 12,
+          "rate": 2.2
+        }
+      ],
+      "combo": [
+        {
+          "clip": "Uppercut Jab",
+          "duration": 3.5999999046325684
+        },
+        {
+          "clip": "Kicking",
+          "duration": 2.2666666507720947,
+          "blend": 0.12
+        }
+      ],
+      "comboContacts": 7,
+      "missingCoreActions": [],
+      "sharedClinch": true,
+      "freeJumpEnabled": false
+    },
+    {
+      "who": "NYXA",
+      "style": "Body strikes, hook, elbows and knees; sustained combo with spinning kick",
+      "sourceClips": [
+        {
+          "file": "Body Jab Cross.fbx",
+          "duration": 1.3666666746139526,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Breakdance Freezes.fbx",
+          "duration": 6.699999809265137,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Dodging.fbx",
+          "duration": 2.2333333492279053,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Ducking.fbx",
+          "duration": 1.5333333015441895,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Dying.fbx",
+          "duration": 5.75,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Flying Back Death.fbx",
+          "duration": 3.0166666507720947,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Getting Up.fbx",
+          "duration": 8.333333015441895,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Head Hit (2).fbx",
+          "duration": 1.5333333015441895,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Head Hit.fbx",
+          "duration": 0.9333333373069763,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Hook.fbx",
+          "duration": 2.4000000953674316,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Illegal Elbow Punch.fbx",
+          "duration": 2.0333333015441895,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Illegal Knee.fbx",
+          "duration": 2.2666666507720947,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Martelo Do Chau.fbx",
+          "duration": 3.0333333015441895,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Mma Kick (1) (2).fbx",
+          "duration": 2,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Mma Kick (1).fbx",
+          "duration": 1.600000023841858,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Punch To Elbow Combo.fbx",
+          "duration": 5,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Right Block.fbx",
+          "duration": 1.7000000476837158,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Shoulder Throw, Aggressor.fbx",
+          "duration": 6.666666507720947,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Shoulder Throw, Victim (1).fbx",
+          "duration": 6.666666507720947,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Shoulder Throw, Victim.fbx",
+          "duration": 6.666666507720947,
+          "tracks": 53,
+          "duplicateOf": "Shoulder Throw, Victim (1).fbx"
+        },
+        {
+          "file": "Stable Sword Inward Slash.fbx",
+          "duration": 2.200000047683716,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Step Backward.fbx",
+          "duration": 0.8333333134651184,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Walking.fbx",
+          "duration": 1.0333333015441895,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Zombie Reaction Hit.fbx",
+          "duration": 2,
+          "tracks": 53,
+          "duplicateOf": null
+        }
+      ],
+      "basics": [
+        {
+          "action": "LIGHT_PUNCH",
+          "clip": "Body Jab Cross",
+          "damage": 16,
+          "rate": 1.5
+        },
+        {
+          "action": "HEAVY_PUNCH",
+          "clip": "Hook",
+          "damage": 8,
+          "rate": 1.7
+        },
+        {
+          "action": "LIGHT_KICK",
+          "clip": "Mma Kick (1)",
+          "damage": 11,
+          "rate": 1.4
+        },
+        {
+          "action": "HEAVY_KICK",
+          "clip": "Mma Kick (1) (2)",
+          "damage": 11,
+          "rate": 1.5
+        },
+        {
+          "action": "ELBOW",
+          "clip": "Illegal Elbow Punch",
+          "damage": 8,
+          "rate": 1.65
+        },
+        {
+          "action": "CLINCH_KNEE",
+          "clip": "Illegal Knee",
+          "damage": 8,
+          "rate": 1.65
+        }
+      ],
+      "combo": [
+        {
+          "clip": "Punch To Elbow Combo",
+          "duration": 5
+        },
+        {
+          "clip": "Martelo Do Chau",
+          "duration": 3.0333333015441895,
+          "blend": 0.12
+        }
+      ],
+      "comboContacts": 7,
+      "missingCoreActions": [],
+      "sharedClinch": true,
+      "freeJumpEnabled": false
+    },
+    {
+      "who": "VEXA",
+      "style": "Long kicks, Armada rotation and flying kick",
+      "sourceClips": [
+        {
+          "file": "Action Idle To Fight Idle.fbx",
+          "duration": 1,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Armada.fbx",
+          "duration": 1.6333333253860474,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Boxing (1).fbx",
+          "duration": 2.200000047683716,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Boxing (2).fbx",
+          "duration": 2.0833332538604736,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Boxing.fbx",
+          "duration": 2.116666555404663,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Breakdance Ending 1.fbx",
+          "duration": 6.483333110809326,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Ducking.fbx",
+          "duration": 1.5333333015441895,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Falling Back Death.fbx",
+          "duration": 2.183333396911621,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Fist Fight A.fbx",
+          "duration": 4.666666507720947,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Flying Back Death.fbx",
+          "duration": 3.0166666507720947,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Flying Kick.fbx",
+          "duration": 1.5,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Getting Up.fbx",
+          "duration": 8.583333015441895,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Hit Reaction.fbx",
+          "duration": 1.5833333730697632,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Medium Step Forward.fbx",
+          "duration": 0.9166666865348816,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Pontera.fbx",
+          "duration": 1.350000023841858,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Queshada 2.fbx",
+          "duration": 2,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Receive Uppercut To The Face.fbx",
+          "duration": 1.2333333492279053,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Receiving An Uppercut.fbx",
+          "duration": 1.6666666269302368,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Right Block.fbx",
+          "duration": 1.4333332777023315,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Rockin' Shackle A.fbx",
+          "duration": 5,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Rockin' Shackle B (1).fbx",
+          "duration": 5,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Rockin' Shackle B.fbx",
+          "duration": 5,
+          "tracks": 53,
+          "duplicateOf": "Rockin' Shackle B (1).fbx"
+        },
+        {
+          "file": "Roundhouse Kick (1).fbx",
+          "duration": 2.133333444595337,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Roundhouse Kick.fbx",
+          "duration": 2.5,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Running.fbx",
+          "duration": 2.5333333015441895,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Shoulder Throw, Aggressor (1).fbx",
+          "duration": 6.666666507720947,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Shoulder Throw, Aggressor.fbx",
+          "duration": 6.666666507720947,
+          "tracks": 53,
+          "duplicateOf": "Shoulder Throw, Aggressor (1).fbx"
+        },
+        {
+          "file": "Sprint.fbx",
+          "duration": 0.5333333611488342,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Victory.fbx",
+          "duration": 4.5,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Walk Backward Arc Left.fbx",
+          "duration": 0.9833333492279053,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Wiping Sweat.fbx",
+          "duration": 2.633333444595337,
+          "tracks": 53,
+          "duplicateOf": null
+        }
+      ],
+      "basics": [
+        {
+          "action": "LIGHT_PUNCH",
+          "clip": "Boxing",
+          "damage": 10,
+          "rate": 1.5
+        },
+        {
+          "action": "HEAVY_PUNCH",
+          "clip": "Boxing (2)",
+          "damage": 12,
+          "rate": 1.6
+        },
+        {
+          "action": "LIGHT_KICK",
+          "clip": "Pontera",
+          "damage": 10,
+          "rate": 1.4
+        },
+        {
+          "action": "HEAVY_KICK",
+          "clip": "Roundhouse Kick (1)",
+          "damage": 13,
+          "rate": 1.65
+        },
+        {
+          "action": "SPIN_KICK",
+          "clip": "Armada",
+          "damage": 14,
+          "rate": 1.65
+        },
+        {
+          "action": "FLYING_KICK",
+          "clip": "Flying Kick",
+          "damage": 13,
+          "rate": 1.4
+        }
+      ],
+      "combo": [
+        {
+          "clip": "Boxing (2)",
+          "start": 0.17,
+          "duration": 1.05
+        },
+        {
+          "clip": "Roundhouse Kick (1)",
+          "start": 0.35,
+          "duration": 1.12,
+          "blend": 0.12
+        },
+        {
+          "clip": "Armada",
+          "start": 0.4,
+          "duration": 1.18,
+          "blend": 0.12
+        },
+        {
+          "clip": "Flying Kick",
+          "start": 0.08,
+          "duration": 1.25,
+          "blend": 0.12
+        }
+      ],
+      "comboContacts": 5,
+      "missingCoreActions": [],
+      "sharedClinch": true,
+      "freeJumpEnabled": false
+    },
+    {
+      "who": "KROV",
+      "style": "Close-range elbows and uppercut; combo leads into paired throw",
+      "sourceClips": [
+        {
+          "file": "Backflip.fbx",
+          "duration": 2.1500000953674316,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Big Kidney Hit.fbx",
+          "duration": 1.5833333730697632,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Boxing.fbx",
+          "duration": 4.233333110809326,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Center Block.fbx",
+          "duration": 1.5833333730697632,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Crouched To Sprinting.fbx",
+          "duration": 0.5,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Elbow Punching.fbx",
+          "duration": 1.6666666269302368,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Elbow Uppercut Combo.fbx",
+          "duration": 2.4166667461395264,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Fighting Idle.fbx",
+          "duration": 3.299999952316284,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Flying Back Death.fbx",
+          "duration": 3.0166666507720947,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Getting Up.fbx",
+          "duration": 2.700000047683716,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Hook Punch.fbx",
+          "duration": 2.1666667461395264,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Hook.fbx",
+          "duration": 2.9166667461395264,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Illegal Elbow Punch.fbx",
+          "duration": 2.0166666507720947,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Illegal Headbutt.fbx",
+          "duration": 2.2333333492279053,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Jab Cross.fbx",
+          "duration": 2.116666555404663,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Jumping.fbx",
+          "duration": 3.2166666984558105,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Kick To The Groin.fbx",
+          "duration": 4.133333206176758,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Kicking.fbx",
+          "duration": 2.6666667461395264,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Kneeling Pointing.fbx",
+          "duration": 3.9000000953674316,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Medium Hit To Head.fbx",
+          "duration": 0.9166666865348816,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Mma Kick.fbx",
+          "duration": 1.5833333730697632,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Pivot.fbx",
+          "duration": 4.5,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Punch To Elbow Combo.fbx",
+          "duration": 4.983333110809326,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Punching Bag.fbx",
+          "duration": 3.2166666984558105,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Rifle Punch.fbx",
+          "duration": 2.75,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Rockin' Shackle A (alternate).fbx",
+          "duration": 5,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Rockin' Shackle A.fbx",
+          "duration": 5,
+          "tracks": 53,
+          "duplicateOf": "Rockin' Shackle A (alternate).fbx"
+        },
+        {
+          "file": "Rockin' Shackle B.fbx",
+          "duration": 5,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Run With Sword.fbx",
+          "duration": 0.800000011920929,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Salsa Dancing.fbx",
+          "duration": 21.566667556762695,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Short Step Forward.fbx",
+          "duration": 1,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Shoulder Throw, Aggressor.fbx",
+          "duration": 6.666666507720947,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Shoulder Throw, Victim.fbx",
+          "duration": 6.666666507720947,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Sitting Dazed.fbx",
+          "duration": 8.333333015441895,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Step Backward.fbx",
+          "duration": 0.800000011920929,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Uppercut.fbx",
+          "duration": 1.3333333730697632,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Walking.fbx",
+          "duration": 1.3833333253860474,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Wheelbarrow Dump.fbx",
+          "duration": 6.233333110809326,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Yelling Out.fbx",
+          "duration": 4.2833333015441895,
+          "tracks": 53,
+          "duplicateOf": null
+        }
+      ],
+      "basics": [
+        {
+          "action": "LIGHT_PUNCH",
+          "clip": "Jab Cross",
+          "damage": 11,
+          "rate": 1.55
+        },
+        {
+          "action": "HEAVY_PUNCH",
+          "clip": "Hook Punch",
+          "damage": 14,
+          "rate": 1.45
+        },
+        {
+          "action": "LIGHT_KICK",
+          "clip": "Mma Kick",
+          "damage": 11,
+          "rate": 1.5
+        },
+        {
+          "action": "HEAVY_KICK",
+          "clip": "Kicking",
+          "damage": 15,
+          "rate": 1.55
+        },
+        {
+          "action": "ELBOW",
+          "clip": "Illegal Elbow Punch",
+          "damage": 13,
+          "rate": 1.5
+        },
+        {
+          "action": "UPPERCUT",
+          "clip": "Uppercut",
+          "damage": 13,
+          "rate": 1.5
+        }
+      ],
+      "combo": [
+        {
+          "clip": "Jab Cross",
+          "start": 0.2,
+          "duration": 0.9
+        },
+        {
+          "clip": "Elbow Uppercut Combo",
+          "start": 0.2,
+          "duration": 0.7,
+          "blend": 0.1
+        },
+        {
+          "clip": "Illegal Elbow Punch",
+          "start": 0.35,
+          "duration": 0.75,
+          "blend": 0.1
+        },
+        {
+          "clip": "Elbow Punching",
+          "start": 0.3,
+          "duration": 0.9,
+          "blend": 0.1
+        }
+      ],
+      "comboContacts": 5,
+      "missingCoreActions": [],
+      "sharedClinch": true,
+      "freeJumpEnabled": false
+    },
+    {
+      "who": "BEAR",
+      "style": "Shoulder advance, overhead Smash, knee and uppercut launch",
+      "sourceClips": [
+        {
+          "file": "Bencao.fbx",
+          "duration": 1.3666666746139526,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Blocking.fbx",
+          "duration": 1.1833332777023315,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Boxing (1).fbx",
+          "duration": 2.4666666984558105,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Boxing (2).fbx",
+          "duration": 2.200000047683716,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Boxing.fbx",
+          "duration": 2.0833332538604736,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Center Block.fbx",
+          "duration": 1.7666666507720947,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Cheering.fbx",
+          "duration": 2.9000000953674316,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Defender.fbx",
+          "duration": 3.5833332538604736,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Entry (1).fbx",
+          "duration": 10.350000381469727,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Entry.fbx",
+          "duration": 3.3333332538604736,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Fighting Idle.fbx",
+          "duration": 3.299999952316284,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Hell Slammer A.fbx",
+          "duration": 7.550000190734863,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Hip Hop Dancing.fbx",
+          "duration": 6.083333492279053,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Hit To Body.fbx",
+          "duration": 1.3166667222976685,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Jab Cross.fbx",
+          "duration": 2.116666555404663,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Kicking.fbx",
+          "duration": 2.2666666507720947,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Kidney Hit.fbx",
+          "duration": 1.1166666746139526,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Knee Jab.fbx",
+          "duration": 5.983333110809326,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Knocked Out.fbx",
+          "duration": 5.583333492279053,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Medium Hit To Head.fbx",
+          "duration": 0.9833333492279053,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Rallying.fbx",
+          "duration": 6.183333396911621,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Receiving An Uppercut.fbx",
+          "duration": 1.6666666269302368,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Rifle Punch.fbx",
+          "duration": 2.75,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Rockin' Shackle A.fbx",
+          "duration": 5,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Rockin' Shackle B.fbx",
+          "duration": 5,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Roundhouse Kick.fbx",
+          "duration": 2.133333444595337,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Short Step Forward.fbx",
+          "duration": 1,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Shoulder Throw, Aggressor.fbx",
+          "duration": 6.666666507720947,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Shoulder Throw, Victim.fbx",
+          "duration": 6.666666507720947,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Smash.fbx",
+          "duration": 3,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Standing Block End.fbx",
+          "duration": 1.2833333015441895,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Standing React Death Forward.fbx",
+          "duration": 3.6666667461395264,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Standing Sprint Forward.fbx",
+          "duration": 0.5666666626930237,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Stumble Backwards.fbx",
+          "duration": 3.3333332538604736,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Surprise Uppercut (1).fbx",
+          "duration": 3.4833333492279053,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Surprise Uppercut.fbx",
+          "duration": 3.4833333492279053,
+          "tracks": 53,
+          "duplicateOf": "Surprise Uppercut (1).fbx"
+        },
+        {
+          "file": "Sweep Fall.fbx",
+          "duration": 2.5,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Uppercut Jab.fbx",
+          "duration": 3.5999999046325684,
+          "tracks": 53,
+          "duplicateOf": null
+        },
+        {
+          "file": "Wide Arm Spell Casting.fbx",
+          "duration": 3.5333333015441895,
+          "tracks": 53,
+          "duplicateOf": null
+        }
+      ],
+      "basics": [
+        {
+          "action": "LIGHT_PUNCH",
+          "clip": "Jab Cross",
+          "damage": 9,
+          "rate": 1.35
+        },
+        {
+          "action": "HEAVY_PUNCH",
+          "clip": "Smash",
+          "damage": 15,
+          "rate": 1.35
+        },
+        {
+          "action": "LIGHT_KICK",
+          "clip": "Bencao",
+          "damage": 12,
+          "rate": 1.3
+        },
+        {
+          "action": "HEAVY_KICK",
+          "clip": "Knee Jab",
+          "damage": 14,
+          "rate": 1.35
+        },
+        {
+          "action": "SHOULDER",
+          "clip": "Standing Sprint Forward",
+          "damage": 16,
+          "rate": 1.1
+        },
+        {
+          "action": "UPPERCUT",
+          "clip": "Surprise Uppercut",
+          "damage": 16,
+          "rate": 1.35
+        }
+      ],
+      "combo": [
+        {
+          "clip": "Standing Sprint Forward",
+          "start": 0,
+          "duration": 0.56
+        },
+        {
+          "clip": "Smash",
+          "start": 0.72,
+          "duration": 1.25,
+          "blend": 0.12
+        },
+        {
+          "clip": "Surprise Uppercut",
+          "start": 0.16,
+          "duration": 1.35,
+          "blend": 0.12
+        }
+      ],
+      "comboContacts": 5,
+      "missingCoreActions": [],
+      "sharedClinch": true,
+      "freeJumpEnabled": false
+    }
+  ],
+  "comparison": [],
+  "notes": [
+    "Mixamo clip labels alone do not guarantee stylistic identity: selection also uses contact timing, movement speed and combo structure.",
+    "One common Walking clip is retargeted to five preserved skeletons only for long-range approach.",
+    "Free jump removed from input by user request; jumping attack and presentation choreography retained.",
+    "All source candidates are retained outside the deployed assets.",
+    "3D GPU rendering is unverified in the cloud browser (WebGL disabled)."
+  ]
+}

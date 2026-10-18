@@ -1,0 +1,145 @@
+{
+  "results": [
+    {
+      "cpu": "BRAX",
+      "level": "easy",
+      "dealt": 291,
+      "taken": 12,
+      "blocks": 0
+    },
+    {
+      "cpu": "BRAX",
+      "level": "normal",
+      "dealt": 327,
+      "taken": 77,
+      "blocks": 11
+    },
+    {
+      "cpu": "BRAX",
+      "level": "hard",
+      "dealt": 333,
+      "taken": 154,
+      "blocks": 29
+    },
+    {
+      "cpu": "NYXA",
+      "level": "easy",
+      "dealt": 319,
+      "taken": 11,
+      "blocks": 0
+    },
+    {
+      "cpu": "NYXA",
+      "level": "normal",
+      "dealt": 390,
+      "taken": 51,
+      "blocks": 5
+    },
+    {
+      "cpu": "NYXA",
+      "level": "hard",
+      "dealt": 402,
+      "taken": 56,
+      "blocks": 6
+    },
+    {
+      "cpu": "VEXA",
+      "level": "easy",
+      "dealt": 513,
+      "taken": 0,
+      "blocks": 0
+    },
+    {
+      "cpu": "VEXA",
+      "level": "normal",
+      "dealt": 288,
+      "taken": 117,
+      "blocks": 11
+    },
+    {
+      "cpu": "VEXA",
+      "level": "hard",
+      "dealt": 196,
+      "taken": 186,
+      "blocks": 17
+    },
+    {
+      "cpu": "KROV",
+      "level": "easy",
+      "dealt": 514,
+      "taken": 0,
+      "blocks": 3
+    },
+    {
+      "cpu": "KROV",
+      "level": "normal",
+      "dealt": 403,
+      "taken": 66,
+      "blocks": 8
+    },
+    {
+      "cpu": "KROV",
+      "level": "hard",
+      "dealt": 198,
+      "taken": 66,
+      "blocks": 7
+    },
+    {
+      "cpu": "NINA",
+      "level": "easy",
+      "dealt": 72,
+      "taken": 149,
+      "blocks": 0
+    },
+    {
+      "cpu": "NINA",
+      "level": "normal",
+      "dealt": 133,
+      "taken": 116,
+      "blocks": 0
+    },
+    {
+      "cpu": "NINA",
+      "level": "hard",
+      "dealt": 117,
+      "taken": 166,
+      "blocks": 0
+    },
+    {
+      "cpu": "DANNY",
+      "level": "easy",
+      "dealt": 520,
+      "taken": 0,
+      "blocks": 1
+    },
+    {
+      "cpu": "DANNY",
+      "level": "normal",
+      "dealt": 412,
+      "taken": 33,
+      "blocks": 14
+    },
+    {
+      "cpu": "DANNY",
+      "level": "hard",
+      "dealt": 429,
+      "taken": 55,
+      "blocks": 5
+    }
+  ],
+  "easy": {
+    "dealt": 2229,
+    "taken": 172,
+    "blocks": 4
+  },
+  "normal": {
+    "dealt": 1953,
+    "taken": 460,
+    "blocks": 49
+  },
+  "hard": {
+    "dealt": 1675,
+    "taken": 683,
+    "blocks": 64
+  }
+}

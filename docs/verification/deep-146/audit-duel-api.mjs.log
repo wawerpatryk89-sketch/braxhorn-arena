@@ -1,0 +1,2 @@
+PASS: two clients, atomic room seat, private tokens, ready barrier, input relay, shared world, stale packets, guest cannot author world, close
+PASS Miś/Azrak room roster and host-selected arena shared with guest

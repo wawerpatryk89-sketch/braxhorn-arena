@@ -1,0 +1,280 @@
+[
+  {
+    "cpu": "BRAX",
+    "level": "easy",
+    "attacks": 10,
+    "first": 2368,
+    "damage": 110,
+    "moves": [
+      "LIGHT_KICK",
+      "HEAVY_PUNCH",
+      "DOUBLE_PUNCH",
+      "HEAVY_KICK",
+      "TEEP"
+    ],
+    "maxIdle": 3456
+  },
+  {
+    "cpu": "BRAX",
+    "level": "normal",
+    "attacks": 14,
+    "first": 1840,
+    "damage": 103,
+    "moves": [
+      "LIGHT_KICK",
+      "HEAVY_PUNCH",
+      "DOUBLE_PUNCH",
+      "HEAVY_KICK",
+      "TEEP"
+    ],
+    "maxIdle": 2048
+  },
+  {
+    "cpu": "BRAX",
+    "level": "hard",
+    "attacks": 19,
+    "first": 1696,
+    "damage": 144,
+    "moves": [
+      "LIGHT_KICK",
+      "HEAVY_PUNCH",
+      "DOUBLE_PUNCH",
+      "HEAVY_KICK",
+      "TEEP",
+      "LIGHT_PUNCH"
+    ],
+    "maxIdle": 1696
+  },
+  {
+    "cpu": "NYXA",
+    "level": "easy",
+    "attacks": 11,
+    "first": 2208,
+    "damage": 67,
+    "moves": [
+      "HEAVY_KICK",
+      "HEAVY_PUNCH",
+      "ELBOW",
+      "LIGHT_KICK"
+    ],
+    "maxIdle": 2208
+  },
+  {
+    "cpu": "NYXA",
+    "level": "normal",
+    "attacks": 14,
+    "first": 1808,
+    "damage": 70,
+    "moves": [
+      "HEAVY_KICK",
+      "HEAVY_PUNCH",
+      "ELBOW",
+      "CLINCH_KNEE",
+      "LIGHT_KICK"
+    ],
+    "maxIdle": 2048
+  },
+  {
+    "cpu": "NYXA",
+    "level": "hard",
+    "attacks": 19,
+    "first": 1584,
+    "damage": 124,
+    "moves": [
+      "HEAVY_KICK",
+      "LIGHT_PUNCH",
+      "ELBOW",
+      "HEAVY_PUNCH",
+      "LIGHT_KICK",
+      "CLINCH_KNEE"
+    ],
+    "maxIdle": 1584
+  },
+  {
+    "cpu": "VEXA",
+    "level": "easy",
+    "attacks": 10,
+    "first": 2448,
+    "damage": 116,
+    "moves": [
+      "HEAVY_KICK",
+      "HEAVY_PUNCH",
+      "SPIN_KICK",
+      "FLYING_KICK",
+      "LIGHT_KICK"
+    ],
+    "maxIdle": 3456
+  },
+  {
+    "cpu": "VEXA",
+    "level": "normal",
+    "attacks": 15,
+    "first": 2000,
+    "damage": 132,
+    "moves": [
+      "HEAVY_KICK",
+      "HEAVY_PUNCH",
+      "SPIN_KICK",
+      "FLYING_KICK",
+      "LIGHT_KICK",
+      "LIGHT_PUNCH"
+    ],
+    "maxIdle": 2048
+  },
+  {
+    "cpu": "VEXA",
+    "level": "hard",
+    "attacks": 19,
+    "first": 1760,
+    "damage": 154,
+    "moves": [
+      "HEAVY_KICK",
+      "HEAVY_PUNCH",
+      "SPIN_KICK",
+      "LIGHT_KICK",
+      "FLYING_KICK",
+      "LIGHT_PUNCH"
+    ],
+    "maxIdle": 1760
+  },
+  {
+    "cpu": "KROV",
+    "level": "easy",
+    "attacks": 10,
+    "first": 3136,
+    "damage": 122,
+    "moves": [
+      "LIGHT_KICK",
+      "HEAVY_PUNCH",
+      "ELBOW",
+      "HEAVY_KICK",
+      "UPPERCUT"
+    ],
+    "maxIdle": 3456
+  },
+  {
+    "cpu": "KROV",
+    "level": "normal",
+    "attacks": 13,
+    "first": 2576,
+    "damage": 124,
+    "moves": [
+      "LIGHT_KICK",
+      "HEAVY_PUNCH",
+      "ELBOW",
+      "HEAVY_KICK",
+      "UPPERCUT"
+    ],
+    "maxIdle": 2576
+  },
+  {
+    "cpu": "KROV",
+    "level": "hard",
+    "attacks": 17,
+    "first": 2272,
+    "damage": 176,
+    "moves": [
+      "LIGHT_KICK",
+      "HEAVY_PUNCH",
+      "ELBOW",
+      "HEAVY_KICK",
+      "UPPERCUT",
+      "LIGHT_PUNCH"
+    ],
+    "maxIdle": 2272
+  },
+  {
+    "cpu": "NINA",
+    "level": "easy",
+    "attacks": 8,
+    "first": 2624,
+    "damage": 103,
+    "moves": [
+      "HEAVY_KICK",
+      "CRESCENT_KICK",
+      "LIGHT_KICK",
+      "HEAVY_PUNCH",
+      "SPIN_KICK"
+    ],
+    "maxIdle": 2624
+  },
+  {
+    "cpu": "NINA",
+    "level": "normal",
+    "attacks": 10,
+    "first": 2160,
+    "damage": 116,
+    "moves": [
+      "HEAVY_KICK",
+      "CRESCENT_KICK",
+      "LIGHT_KICK",
+      "HEAVY_PUNCH",
+      "SPIN_KICK"
+    ],
+    "maxIdle": 2160
+  },
+  {
+    "cpu": "NINA",
+    "level": "hard",
+    "attacks": 13,
+    "first": 1888,
+    "damage": 112,
+    "moves": [
+      "HEAVY_KICK",
+      "CRESCENT_KICK",
+      "LIGHT_KICK",
+      "HEAVY_PUNCH",
+      "SPIN_KICK",
+      "LIGHT_PUNCH"
+    ],
+    "maxIdle": 1888
+  },
+  {
+    "cpu": "DANNY",
+    "level": "easy",
+    "attacks": 11,
+    "first": 2688,
+    "damage": 111,
+    "moves": [
+      "LIGHT_KICK",
+      "HOOK",
+      "HEAVY_PUNCH",
+      "HEAVY_KICK",
+      "SIDE_KICK",
+      "LIGHT_PUNCH"
+    ],
+    "maxIdle": 2688
+  },
+  {
+    "cpu": "DANNY",
+    "level": "normal",
+    "attacks": 15,
+    "first": 2192,
+    "damage": 138,
+    "moves": [
+      "LIGHT_KICK",
+      "HOOK",
+      "HEAVY_PUNCH",
+      "HEAVY_KICK",
+      "SIDE_KICK",
+      "LIGHT_PUNCH"
+    ],
+    "maxIdle": 2192
+  },
+  {
+    "cpu": "DANNY",
+    "level": "hard",
+    "attacks": 20,
+    "first": 1936,
+    "damage": 148,
+    "moves": [
+      "LIGHT_KICK",
+      "HEAVY_KICK",
+      "HEAVY_PUNCH",
+      "HOOK",
+      "SIDE_KICK",
+      "LIGHT_PUNCH"
+    ],
+    "maxIdle": 1936
+  }
+]

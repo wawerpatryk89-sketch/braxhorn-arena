@@ -1,0 +1,21 @@
+start 1 {"status":200,"body":{"match":"23c79250-65e7-483d-95e3-a470971a4106"}}
+finish 1 {"status":200,"body":{"saved":true,"score":1}}
+start 2 {"status":200,"body":{"match":"69cfeadf-c5ab-4026-bd97-bb69ce1a1760"}}
+finish 2 {"status":200,"body":{"saved":true,"score":2}}
+start 3 {"status":200,"body":{"match":"d9b1e46a-28b5-4046-8495-b9b647b6f2ae"}}
+finish 3 {"status":200,"body":{"saved":true,"score":3}}
+start 4 {"status":200,"body":{"match":"ae545be5-6e70-4aaf-bfd3-0720224cda39"}}
+finish 4 {"status":200,"body":{"saved":true,"score":4}}
+start 5 {"status":200,"body":{"match":"0330510c-fbd6-4194-91f2-d3ee8be5e29b"}}
+finish 5 {"status":200,"body":{"saved":true,"score":5}}
+start 6 {"status":409,"body":{"error":"Seria została zakończona lub zmieniono jej ustawienia."}}
+run [
+  [Object: null prototype] {
+    mode: 'arcade',
+    target: 5,
+    score: 5,
+    matches: 5,
+    closed: 1
+  }
+]
+leaderboard [ [Object: null prototype] { score: 5, completed: 1 } ]

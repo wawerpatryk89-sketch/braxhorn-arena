@@ -1,0 +1,4 @@
+MUTUAL_CONTACT {"found":true,"clinch":false,"pushPlayer":220,"pushCPU":220}
+CONTACT_TIMER {"started":true,"before":60,"after":60,"clinch":true}
+SIMULTANEOUS_CONTACT {"gap":7.699999999999988,"frame":24,"before":[100,100],"after":[96,100],"playerAction":"HIT_R1_BODY","cpuAction":"LIGHT_PUNCH"}
+KO_STATE {"slowMs":700,"ended":true,"hitstop":0}

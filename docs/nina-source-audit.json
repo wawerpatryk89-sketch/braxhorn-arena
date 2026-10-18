@@ -1,0 +1,250 @@
+{
+  "model": "tripo_convert_8102e038-e3d6-4ab1-8d4f-c3d1ffb0e237.fbx",
+  "preservedTextures": {
+    "color": "tripo_node_b14607c0_BaseColor.png",
+    "normal": "tripo_node_b14607c0_Normal_Bake.png",
+    "roughness": "martial_arts_outfit_3d_model_roughness.PNG",
+    "metalness": "martial_arts_outfit_3d_model_metallic.PNG"
+  },
+  "clips": [
+    {
+      "file": "Armada.fbx",
+      "duration": 1.6333333253860474,
+      "duplicateOf": null
+    },
+    {
+      "file": "Backflip.fbx",
+      "duration": 2.1500000953674316,
+      "duplicateOf": null
+    },
+    {
+      "file": "Backward Walking Turn.fbx",
+      "duration": 1.9666666984558105,
+      "duplicateOf": null
+    },
+    {
+      "file": "Body Block.fbx",
+      "duration": 3.433333396911621,
+      "duplicateOf": null
+    },
+    {
+      "file": "Breakdance 1990.fbx",
+      "duration": 2.4666666984558105,
+      "duplicateOf": null
+    },
+    {
+      "file": "Breakdance Ending 2 (1).fbx",
+      "duration": 8.033333778381348,
+      "duplicateOf": null
+    },
+    {
+      "file": "Breakdance Ending 2.fbx",
+      "duration": 8.033333778381348,
+      "duplicateOf": null
+    },
+    {
+      "file": "Brutal Assassination.fbx",
+      "duration": 4.916666507720947,
+      "duplicateOf": null
+    },
+    {
+      "file": "Capoeira (1).fbx",
+      "duration": 4.800000190734863,
+      "duplicateOf": null
+    },
+    {
+      "file": "Capoeira.fbx",
+      "duration": 3.4166667461395264,
+      "duplicateOf": null
+    },
+    {
+      "file": "Chapa 2.fbx",
+      "duration": 1.350000023841858,
+      "duplicateOf": null
+    },
+    {
+      "file": "Chapa-Giratoria.fbx",
+      "duration": 3,
+      "duplicateOf": null
+    },
+    {
+      "file": "Dying.fbx",
+      "duration": 5.75,
+      "duplicateOf": null
+    },
+    {
+      "file": "Esquiva 1.fbx",
+      "duration": 4.583333492279053,
+      "duplicateOf": null
+    },
+    {
+      "file": "Esquiva 3.fbx",
+      "duration": 2.1666667461395264,
+      "duplicateOf": null
+    },
+    {
+      "file": "Female Laying Pose.fbx",
+      "duration": 0.03333333507180214,
+      "duplicateOf": null
+    },
+    {
+      "file": "Fight Idle.fbx",
+      "duration": 2.366666555404663,
+      "duplicateOf": null
+    },
+    {
+      "file": "Ginga Variation 2.fbx",
+      "duration": 3.8333332538604736,
+      "duplicateOf": null
+    },
+    {
+      "file": "Ginga Variation 3.fbx",
+      "duration": 2.9000000953674316,
+      "duplicateOf": null
+    },
+    {
+      "file": "Happy Walk Backward.fbx",
+      "duration": 1.0333333015441895,
+      "duplicateOf": null
+    },
+    {
+      "file": "Illegal Elbow Punch.fbx",
+      "duration": 2.0166666507720947,
+      "duplicateOf": null
+    },
+    {
+      "file": "Knife Idle.fbx",
+      "duration": 4.449999809265137,
+      "duplicateOf": null
+    },
+    {
+      "file": "Knocked Out.fbx",
+      "duration": 4.933333396911621,
+      "duplicateOf": null
+    },
+    {
+      "file": "Leg Sweep (1).fbx",
+      "duration": 2.866666555404663,
+      "duplicateOf": null
+    },
+    {
+      "file": "Leg Sweep.fbx",
+      "duration": 2.2333333492279053,
+      "duplicateOf": null
+    },
+    {
+      "file": "Macaco Side.fbx",
+      "duration": 3.2833333015441895,
+      "duplicateOf": null
+    },
+    {
+      "file": "Martelo 2.fbx",
+      "duration": 1.2999999523162842,
+      "duplicateOf": null
+    },
+    {
+      "file": "Martelo Do Chau Sem Mao.fbx",
+      "duration": 3.066666603088379,
+      "duplicateOf": null
+    },
+    {
+      "file": "Meia Lua De Frente.fbx",
+      "duration": 2.450000047683716,
+      "duplicateOf": null
+    },
+    {
+      "file": "Rifle Punch.fbx",
+      "duration": 2.75,
+      "duplicateOf": null
+    },
+    {
+      "file": "Roll Kicking.fbx",
+      "duration": 2.25,
+      "duplicateOf": null
+    },
+    {
+      "file": "Roundhouse Kick.fbx",
+      "duration": 2.133333444595337,
+      "duplicateOf": null
+    },
+    {
+      "file": "Smash.fbx",
+      "duration": 3,
+      "duplicateOf": null
+    },
+    {
+      "file": "Standing Walk Back.fbx",
+      "duration": 1.4666666984558105,
+      "duplicateOf": null
+    },
+    {
+      "file": "Sweep Fall.fbx",
+      "duration": 2.5,
+      "duplicateOf": null
+    },
+    {
+      "file": "Two Hand Spell Casting.fbx",
+      "duration": 3.4166667461395264,
+      "duplicateOf": null
+    },
+    {
+      "file": "Zombie Stand Up.fbx",
+      "duration": 3.0833332538604736,
+      "duplicateOf": null
+    },
+    {
+      "file": "krov-new/Getting Up.fbx",
+      "retargetedAs": "Shared Getting Up",
+      "legRatio": 1.109268840419292,
+      "duration": 2.700000047683716
+    },
+    {
+      "file": "vexa/Falling Back Death.fbx",
+      "retargetedAs": "Shared Falling Back Death",
+      "legRatio": 1.0880451474491901,
+      "duration": 2.183333396911621
+    },
+    {
+      "file": "krov-new/Flying Back Death.fbx",
+      "retargetedAs": "Shared Flying Back Death",
+      "legRatio": 1.109268840419292,
+      "duration": 3.0166666507720947
+    },
+    {
+      "file": "krov-new/Medium Hit To Head.fbx",
+      "retargetedAs": "Shared Hit Head",
+      "legRatio": 1.109268840419292,
+      "duration": 0.9166666865348816
+    },
+    {
+      "file": "bear-new/Kidney Hit.fbx",
+      "retargetedAs": "Shared Hit Body",
+      "legRatio": 1.0616786949987769,
+      "duration": 1.1166666746139526
+    },
+    {
+      "file": "brax/Shoulder Throw, Victim.fbx",
+      "retargetedAs": "Shared Throw Victim",
+      "legRatio": 1.0359611486594495,
+      "duration": 6.666666507720947
+    },
+    {
+      "file": "brax/Jab Cross (1).fbx",
+      "retargetedAs": "Shared Jab Cross",
+      "legRatio": 1.0359611486594495,
+      "duration": 2.133333444595337
+    },
+    {
+      "file": "krov-new/Short Step Forward.fbx",
+      "retargetedAs": "Shared Step Forward",
+      "legRatio": 1.109268840419292,
+      "duration": 1
+    },
+    {
+      "file": "nyxa/Step Backward.fbx",
+      "retargetedAs": "Shared Step Backward",
+      "legRatio": 1.107418791099894,
+      "duration": 0.8333333134651184
+    }
+  ]
+}

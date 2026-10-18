@@ -1,0 +1,15 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> test:viewport
+> node scripts/audit-phone-viewport.cjs
+
+PASS viewport 320x568
+PASS viewport 360x800
+PASS viewport 390x844
+PASS viewport 430x932
+PASS viewport 568x320
+PASS viewport 844x390
+PASS viewport 932x430
+PASS viewport 844x300
+PASS viewport 300x844
+PASS: viewport offsets, input release, portrait pause and landscape resume

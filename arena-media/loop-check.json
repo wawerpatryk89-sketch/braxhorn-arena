@@ -1,0 +1,72 @@
+[
+  {
+    "id": "rooftop",
+    "width": 1138,
+    "height": 512,
+    "fps": "30/1",
+    "duration": "7.300000",
+    "frames": 219,
+    "seamMeanRGBDelta": 1.46,
+    "normalP95RGBDelta": 1.056
+  },
+  {
+    "id": "rooftop-city",
+    "width": 1138,
+    "height": 512,
+    "fps": "30/1",
+    "duration": "7.300000",
+    "frames": 219,
+    "seamMeanRGBDelta": 1.481,
+    "normalP95RGBDelta": 0.772
+  },
+  {
+    "id": "jungle",
+    "width": 1138,
+    "height": 512,
+    "fps": "30/1",
+    "duration": "7.300000",
+    "frames": 219,
+    "seamMeanRGBDelta": 1.488,
+    "normalP95RGBDelta": 0.946
+  },
+  {
+    "id": "volcano",
+    "width": 1138,
+    "height": 512,
+    "fps": "30/1",
+    "duration": "7.300000",
+    "frames": 219,
+    "seamMeanRGBDelta": 1.241,
+    "normalP95RGBDelta": 0.662
+  },
+  {
+    "id": "temple",
+    "width": 1138,
+    "height": 512,
+    "fps": "30/1",
+    "duration": "7.300000",
+    "frames": 219,
+    "seamMeanRGBDelta": 1.524,
+    "normalP95RGBDelta": 0.799
+  },
+  {
+    "id": "himalaya",
+    "width": 1024,
+    "height": 512,
+    "fps": "30/1",
+    "duration": "7.300000",
+    "frames": 219,
+    "seamMeanRGBDelta": 1.515,
+    "normalP95RGBDelta": 0.91
+  },
+  {
+    "id": "beach",
+    "width": 1138,
+    "height": 512,
+    "fps": "30/1",
+    "duration": "7.300000",
+    "frames": 219,
+    "seamMeanRGBDelta": 1.297,
+    "normalP95RGBDelta": 0.682
+  }
+]

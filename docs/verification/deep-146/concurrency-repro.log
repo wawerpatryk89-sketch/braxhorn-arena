@@ -1,0 +1,29 @@
+concurrent starts [
+  {
+    status: 200,
+    body: { match: '73f489ce-413b-48c5-aefb-77421a697d73' }
+  },
+  {
+    status: 200,
+    body: { match: '10d29e70-5dcd-44bb-a875-f115e9bf7f7c' }
+  }
+]
+unfinished matches [
+  [Object: null prototype] {
+    id: '73f489ce-413b-48c5-aefb-77421a697d73',
+    run_id: 'run-race',
+    finished: 0
+  },
+  [Object: null prototype] {
+    id: '10d29e70-5dcd-44bb-a875-f115e9bf7f7c',
+    run_id: 'run-race',
+    finished: 0
+  }
+]
+concurrent finish [
+  { status: 200, body: { saved: true, score: 1 } },
+  { status: 200, body: { saved: true, score: 0 } }
+]
+match authoritative [ [Object: null prototype] { finished: 1, wins: 2, losses: 0 } ]
+run overwritten [ [Object: null prototype] { score: 0, matches: 1, closed: 1 } ]
+leaderboard [ [Object: null prototype] { score: 2, completed: 1 } ]

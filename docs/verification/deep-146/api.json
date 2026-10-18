@@ -1,0 +1,77 @@
+[
+  {
+    "test": "audit-duel-api.mjs",
+    "command": [
+      "node",
+      "--import",
+      "tsx",
+      "scripts/audit-duel-api.mjs"
+    ],
+    "exitCode": 0,
+    "seconds": 0.17
+  },
+  {
+    "test": "audit-tournaments.mjs",
+    "command": [
+      "node",
+      "--import",
+      "tsx",
+      "scripts/audit-tournaments.mjs"
+    ],
+    "exitCode": 0,
+    "seconds": 0.57
+  },
+  {
+    "test": "audit-access-rtc.mjs",
+    "command": [
+      "node",
+      "--import",
+      "tsx",
+      "scripts/audit-access-rtc.mjs"
+    ],
+    "exitCode": 0,
+    "seconds": 0.42
+  },
+  {
+    "test": "audit-ranking-api.mjs",
+    "command": [
+      "node",
+      "--import",
+      "tsx",
+      "scripts/audit-ranking-api.mjs"
+    ],
+    "exitCode": 0,
+    "seconds": 0.32
+  },
+  {
+    "test": "audit-ranking-time-policy.mjs",
+    "command": [
+      "node",
+      "--import",
+      "tsx",
+      "scripts/audit-ranking-time-policy.mjs"
+    ],
+    "exitCode": 0,
+    "seconds": 0.22
+  },
+  {
+    "test": "audit-ranking-derivation.cjs",
+    "command": [
+      "node",
+      "scripts/audit-ranking-derivation.cjs"
+    ],
+    "exitCode": 0,
+    "seconds": 1.39
+  },
+  {
+    "test": "audit-fighter-media.mjs",
+    "command": [
+      "node",
+      "--import",
+      "tsx",
+      "scripts/audit-fighter-media.mjs"
+    ],
+    "exitCode": 0,
+    "seconds": 0.32
+  }
+]

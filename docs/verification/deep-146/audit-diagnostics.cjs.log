@@ -1,0 +1,1 @@
+PASS diagnostics: five taps, timeout, close/cancel RAF, irregular timestamp statistics, hidden gaps excluded, frame-rewind detection and reset. Unit test, NOT real RAF measurement.

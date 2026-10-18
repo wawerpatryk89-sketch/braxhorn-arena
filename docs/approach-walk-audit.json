@@ -1,0 +1,42 @@
+[
+  {
+    "who": "BRAX",
+    "source": "Walking",
+    "legRatio": 0.9354736952138293,
+    "period": 1.399999976158142,
+    "gaitRate": 0.7981768537183642,
+    "rootTravelMeters": 1.7890771563079841
+  },
+  {
+    "who": "NYXA",
+    "source": "Walking",
+    "legRatio": 0.9354736952138293,
+    "period": 1.399999976158142,
+    "gaitRate": 0.9153866079130428,
+    "rootTravelMeters": 1.7419961785104057
+  },
+  {
+    "who": "VEXA",
+    "source": "Walking",
+    "legRatio": 0.9521306639601802,
+    "period": 1.399999976158142,
+    "gaitRate": 0.9799132619441422,
+    "rootTravelMeters": 1.7730140389826572
+  },
+  {
+    "who": "KROV",
+    "source": "Walking",
+    "legRatio": 0.9339135031214498,
+    "period": 1.399999976158142,
+    "gaitRate": 0.7937480530455283,
+    "rootTravelMeters": 1.739090850296234
+  },
+  {
+    "who": "BEAR",
+    "source": "Walking",
+    "legRatio": 0.9757765259296677,
+    "period": 1.399999976158142,
+    "gaitRate": 0.7073017323199668,
+    "rootTravelMeters": 1.8170462751415686
+  }
+]

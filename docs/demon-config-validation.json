@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "samplingHz": 60,
+  "states": 44,
+  "frames": 4343,
+  "contactGroups": 9,
+  "notes": "All generated pose boxes, hurt capsules and attack contacts checked finite. Numerical sampling is not a phone/browser visual jitter test; contact recovery uses supplied clips without paired shoulder IK."
+}

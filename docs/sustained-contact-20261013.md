@@ -1,0 +1,7 @@
+# Sustained contact trigger correction
+
+The v104 contact timer required torso overlap after pelvis collision had already separated actors. Full RAF reproduction with Brax at close range produced no push over 10 seconds, including repeated punch inputs; the timer stayed at zero. The old mobile test called only contactClinchStep on a frozen pose and was not a valid integration check; removed that claim/test.
+
+Contact now starts from the collision envelopes, retains the timer across attack poses and small hit reactions, and cancels on actual separation. Deep overlap/forward pressure still triggers immediately. Sustained close contact triggers the existing synchronized shoulder/body push after 1800ms, below the user's maximum 3 seconds. Authored push/fall motion and facing lock are unchanged. Existing clean-kick/finisher launches remain available; downed fighters are excluded from paired pushes.
+
+Verification: audit-sustained-contact.cjs steps full RAF, physics and animations for 10 seconds per scenario (this is test duration, NOT the configured delay). 216 cases: 36 pairs, two facings, stationary contact, repeated player attacks, and attacks by both actors. All triggered within 1808ms. A retreat cancels the timer. Existing 144 contact/facing/wall cases, 72 approach cases, six passive/pressure cases and mobile regression checks passed. These are Node integration simulations, not a physical iPhone/WebGL validation.

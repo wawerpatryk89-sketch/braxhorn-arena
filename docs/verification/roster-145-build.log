@@ -1,0 +1,10 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> build
+> node scripts/build-server.mjs
+
+(node:24) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/krov-three-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+Premium stats generated from the current combat configuration for all fighters.
+{"fighterPackageFiles":48,"fighterPackageBytes":255247104,"preservation":"SHA-256 exact source bytes","metadata":"local gzip; selected pair payloads only"}

@@ -1,0 +1,37 @@
+import {DatabaseSync} from 'node:sqlite';import fs from 'node:fs';import assert from 'node:assert/strict';import {handleDuel} from '../backend/lib/duel-api.ts';
+const sqlite=new DatabaseSync(':memory:');for(const f of fs.readdirSync('backend/drizzle').filter(f=>f.endsWith('.sql')).sort())sqlite.exec(fs.readFileSync('backend/drizzle/'+f,'utf8'));
+const db={prepare(q){const make=(args=[])=>({async first(){return sqlite.prepare(q).get(...args)||null},async all(){return{results:sqlite.prepare(q).all(...args)}},async run(){const s=sqlite.prepare(q);return /^SELECT/i.test(q)?{results:s.all(...args)}:{results:[],meta:{changes:Number(s.run(...args).changes)}}}});return{...make(),bind(...args){return make(args)}}},async batch(writes){sqlite.exec('BEGIN');try{const r=[];for(const w of writes)r.push(await w.run());sqlite.exec('COMMIT');return r}catch(e){sqlite.exec('ROLLBACK');throw e}}};
+const call=async b=>{const r=await handleDuel(new Request('https://game.test/api/duel',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(b)}),db);return{status:r.status,body:await r.json()};};
+const h=await call({action:'create',fighter:'BRAX'});assert.equal(h.status,200);const host=h.body;
+const g=await call({action:'join',code:host.code,fighter:'NYXA'});assert.equal(g.status,200);const guest=g.body;
+assert.equal((await call({action:'join',code:host.code,fighter:'DANNY'})).status,409);
+assert.equal((await call({...host,token:'wrong',action:'sync'})).status,403);
+assert.equal((await call({...host,action:'sync',ready:true})).body.status,'waiting');
+assert.equal((await call({...guest,action:'sync',ready:true})).body.status,'playing');
+const snap={snapshotId:1,ack:0,actors:[90,70].map((hp,i)=>({hp,x:30+i*40,y:0,face:i?-1:1,en:0,frame:0,a:'IDLE'})),state:{t:55,round:1,wins:[0,0]}};
+await call({...host,action:'sync',seq:2,snapshot:snap});
+const input={held:{left:true},events:[{id:1,kind:'punch'}],visible:true};
+assert.deepEqual((await call({...guest,action:'sync',seq:1,input})).body.snapshot,snap);
+assert.deepEqual((await call({...host,action:'sync'})).body.input,input);
+await call({...host,action:'sync',seq:1,snapshot:{...snap,ack:9}});assert.equal((await call({...guest,action:'sync'})).body.snapshot.ack,0,'out of order cannot overwrite');
+await call({...guest,action:'sync',seq:100,snapshot:{...snap,ack:9}});assert.equal((await call({...guest,action:'sync'})).body.snapshot.ack,0,'guest cannot write world');
+assert.equal((await call({...guest,action:'sync',seq:3,input:{held:{},events:[{id:4,kind:'damage'}]}})).status,400);
+await call({...guest,action:'leave'});assert.equal((await call({...host,action:'sync'})).status,404);
+console.log('PASS: two clients, atomic room seat, private tokens, ready barrier, input relay, shared world, stale packets, guest cannot author world, close');
+
+const expansion=await call({action:"create",fighter:"BEAR",arena:"beach"});assert.equal(expansion.status,200);const demon=await call({action:"join",code:expansion.body.code,fighter:"DEMON"});assert.equal(demon.status,200);assert.equal((await call({...expansion.body,action:'sync'})).body.arena,'beach');assert.equal((await call({...demon.body,action:'sync'})).body.arena,'beach');assert.equal((await call({action:'create',fighter:'BRAX',arena:'not-an-arena'})).status,400);console.log("PASS Miś/Azrak room roster and host-selected arena shared with guest");
+
+const h2=expansion.body,g2=demon.body;await call({...h2,action:'sync',ready:true});await call({...g2,action:'sync',ready:true});
+assert.equal((await call({...h2,action:'sync',seq:1,snapshot:{...snap,actors:[null,null]}})).status,400);
+const terminal={...snap,snapshotId:2,state:{t:50,round:2,wins:[2,0],matchOver:true,ended:true}};
+assert.equal((await call({...h2,action:'sync',seq:2,snapshot:terminal})).status,200);
+sqlite.prepare('UPDATE duel_rooms SET started_at=? WHERE code=?').run(Date.now()-1600,h2.code);
+assert.equal((await call({...h2,action:'result',score:[2,0]})).status,409);
+const limits=JSON.parse(fs.readFileSync('backend/lib/ranking-times.json'));const minimum=2*limits.fighters.BEAR.roundMinimumMs;
+sqlite.prepare('UPDATE duel_rooms SET started_at=? WHERE code=?').run(Date.now()-minimum-10,h2.code);
+assert.equal((await call({...h2,action:'result',score:[2,0]})).body.resultStatus,'pending');assert.equal((await call({...g2,action:'result',score:[2,0]})).body.resultStatus,'confirmed');
+console.log('PASS malformed actors rejected, 2:0 at 1600 ms rejected, valid two-party result accepted at derived minimum '+minimum+' ms');
+const drawnHost=(await call({action:'create',fighter:'BEAR'})).body,drawnGuest=(await call({action:'join',code:drawnHost.code,fighter:'DEMON'})).body;await call({...drawnHost,action:'sync',ready:true});await call({...drawnGuest,action:'sync',ready:true});
+assert.equal((await call({...drawnHost,action:'sync',seq:1,snapshot:{...terminal,state:{...terminal.state,round:3,wins:[1,0]}}})).status,200);
+const drawMinimum=limits.fighters.BEAR.roundMinimumMs+120000;sqlite.prepare('UPDATE duel_rooms SET started_at=? WHERE code=?').run(Date.now()-drawMinimum+100,drawnHost.code);assert.equal((await call({...drawnHost,action:'result',score:[1,0]})).status,409);sqlite.prepare('UPDATE duel_rooms SET started_at=? WHERE code=?').run(Date.now()-drawMinimum-10,drawnHost.code);assert.equal((await call({...drawnGuest,action:'result',score:[1,0]})).body.resultStatus,'pending');assert.equal((await call({...drawnHost,action:'result',score:[1,0]})).body.resultStatus,'confirmed');console.log('PASS legitimate 1:0 after three rounds and two 60-second draws');
+sqlite.close();

@@ -1,0 +1,84 @@
+/* Arena menu: large central card, two previews, original artwork and palette. */
+#matchSetup .shared-menu-heading{top:4%;pointer-events:none}
+#matchSetup .shared-menu-heading h1{font-size:clamp(22px,6cqh,48px)}
+#matchSetup .mode-card-row{display:block;position:absolute;inset:20% 6% 18%;padding:0;overflow:hidden;touch-action:pan-y;perspective:1000px}
+#matchSetup .mode-card-row .mode-hit{position:absolute;top:50%;left:50%;width:min(32cqw,46cqh);height:60cqh;max-width:none;max-height:100%;aspect-ratio:auto;margin:0;border:1px solid #b5c99a77;border-radius:9px;background:#070e0a;transform:translate(calc(-50% + var(--offset)*116%),-50%) scale(.83);opacity:0;visibility:hidden;pointer-events:none;transition:transform .32s ease,opacity .32s ease,filter .32s ease;filter:brightness(.7);box-shadow:0 14px 30px #0008}
+#matchSetup .mode-card-row .mode-neighbor{opacity:.66;visibility:visible;pointer-events:auto}
+#matchSetup .mode-card-row .mode-focused{opacity:1;visibility:visible;pointer-events:auto;transform:translate(-50%,-50%) scale(1);filter:brightness(1.08);border-color:#c3ec92;box-shadow:0 0 0 1px #bbf17455,0 16px 40px #000b,0 0 28px #a7e96318;z-index:2}
+#matchSetup .mode-hit svg,#matchSetup .mode-hit>img{width:100%;height:100%;object-fit:fill}
+#matchSetup .premium-mode-card .premium-mode-copy{padding:3cqh 6%;gap:1.2cqh;background:linear-gradient(transparent 30%,#07100bba 56%,#040b08 83%)}
+#matchSetup .premium-mode-copy strong{font-size:clamp(19px,4.5cqh,36px)}
+#matchSetup .premium-mode-copy small{font-size:clamp(8px,1.7cqh,12px)}
+#matchSetup .premium-mode-card .premium-mode-copy>span{font-size:clamp(10px,2cqh,15px)}
+#matchSetup .premium-mode-copy b{display:none}
+#multiplayerMode .mp-mode-art{background:radial-gradient(ellipse at 50% 35%,#2c3d28,#060d09 75%);align-items:flex-start;justify-content:center;padding:3cqh 4%}
+#matchSetup #multiplayerMode .mp-mode-art svg{width:100%;height:68%;filter:drop-shadow(0 3px 10px #0008)}
+#matchSetup #multiplayerMode .premium-mode-copy{padding:3cqh 5%;background:linear-gradient(transparent 45%,#06100b99 62%,#040b08 80%)}
+#matchSetup .mode-footer{inset:5% 3% auto;height:auto;justify-content:space-between;pointer-events:none}
+#matchSetup .mode-footer #setupBack,#matchSetup .mode-footer #openModeSettings{width:auto;height:36px;min-height:36px;padding:0 12px;font-size:clamp(9px,1.8cqh,13px);letter-spacing:.03em;background:#07100bc9;border-color:#829b6955;pointer-events:auto}
+#matchSetup .mode-footer #openModeSettings[hidden]{display:none}
+.mode-carousel-nav{position:absolute;bottom:4%;left:8%;right:8%;display:flex;align-items:center;justify-content:space-between;pointer-events:none}
+.mode-carousel-nav button{width:44px;height:44px;border:1px solid #a7bd8955;border-radius:50%;background:#08120bcc;color:#e0efca;font-size:30px;pointer-events:auto}
+#modePosition{position:absolute;left:50%;transform:translateX(-50%);bottom:-1.5cqh;font-size:clamp(9px,1.8cqh,13px);letter-spacing:.22em;color:#bfd2ad}
+#modePlay{position:absolute;bottom:7.5%;left:50%;transform:translateX(-50%);width:min(28cqw,240px);min-height:38px;height:8cqh;padding:0 18px;border:1px solid #d7f8a7;border-radius:4px;background:linear-gradient(110deg,#d4efa9,#a1c66e);color:#10190b;font-size:clamp(13px,2.8cqh,20px);font-weight:900;letter-spacing:.12em;box-shadow:0 5px 20px #0006}
+/* Multiplayer uses the same centered carousel as the approved mode menu. */
+#matchSetup #multiplayerMode .mp-mode-art{padding:0;background:#050c08;display:block}
+#matchSetup #multiplayerMode .mp-mode-art img{width:100%;height:100%;object-fit:cover;object-position:center;filter:none}
+#mpPanel{padding:0;gap:0;background:linear-gradient(100deg,#02080688,#06100d55),url('/assets/shared-menu-background.jpeg') center/cover}
+#mpPanel .mp-heading{position:absolute;inset:4% 3% auto;display:block;text-align:center;border:0;padding:0;z-index:3;pointer-events:none}
+#mpPanel .mp-heading small{font-size:clamp(8px,1.7cqh,12px);letter-spacing:.18em}
+#mpPanel .mp-heading h1{font-size:clamp(22px,6cqh,48px);margin:1cqh 0 0}
+#mpLeave{position:absolute;left:0;top:0;min-height:36px;pointer-events:auto;background:#07100bc9;border-color:#829b6955;font-size:clamp(9px,1.8cqh,13px)}
+#mpSelection{position:absolute;inset:0;display:block}
+#mpSelection.off,#mpLobby.off,#mpRoom.off{display:none}
+#mpSelection .mp-roster{position:absolute;inset:20% 6% 18%;display:block;padding:0;overflow:hidden;touch-action:pan-y}
+#mpSelection .mp-fighter{position:absolute;top:50%;left:50%;width:min(32cqw,46cqh);height:60cqh;max-height:100%;margin:0;border:1px solid #b5c99a77;border-radius:9px;background:#070e0a;transform:translate(calc(-50% + var(--offset)*116%),-50%) scale(.83);opacity:0;visibility:hidden;pointer-events:none;transition:transform .32s ease,opacity .32s ease,filter .32s ease;filter:brightness(.7);box-shadow:0 14px 30px #0008}
+#mpSelection .mp-neighbor{opacity:.66;visibility:visible;pointer-events:auto}
+#mpSelection .mp-focused{opacity:1;visibility:visible;pointer-events:auto;transform:translate(-50%,-50%) scale(1);filter:brightness(1.08);border:1px solid #c3ec92;box-shadow:0 0 0 1px #bbf17455,0 16px 40px #000b,0 0 28px #a7e96318;z-index:2}
+#mpPanel .mp-fighter-art>svg{overflow:hidden}
+#mpSelection .mp-fighter-art{inset:0 0 21%;overflow:hidden}
+#mpSelection .mp-fighter-art>svg{height:100%;width:100%}
+#mpSelection .mp-fighter-art>img{height:auto;width:100%;object-fit:contain;display:block}
+#mpSelection .mp-card-number{position:absolute;top:3.5%;left:4%;width:24%;height:10%;display:grid;place-items:center;background:#101a13;border:1px solid #66795a;color:#d5e4c7;font-size:clamp(9px,2cqh,13px);letter-spacing:.14em;z-index:1}
+#mpSelection .mp-fighter-label{height:38%;padding:3cqh 4%;gap:1cqh;background:linear-gradient(transparent,#061009 38%,#040b08)}
+#mpSelection .mp-fighter-label strong{font-size:clamp(22px,5.7cqh,42px);line-height:1}
+#mpSelection .mp-fighter-label small{font-size:clamp(8px,1.8cqh,13px);line-height:1.2}
+#mpSelection .mp-card-eyebrow{font-size:clamp(7px,1.5cqh,11px)!important;letter-spacing:.14em;color:#b4ef70;opacity:0}
+#mpSelection .mp-focused .mp-card-eyebrow{opacity:1}
+.mp-carousel-nav{position:absolute;bottom:4%;left:8%;right:8%;display:flex;justify-content:space-between;pointer-events:none}
+.mp-carousel-nav button{width:44px;height:44px;border:1px solid #a7bd8955;border-radius:50%;background:#08120bcc;color:#e0efca;font-size:30px;pointer-events:auto}
+#mpSelection .mp-selection-footer{display:contents}
+#mpSelection #mpNext{position:absolute;bottom:7.5%;left:50%;transform:translateX(-50%);width:min(28cqw,240px);min-height:38px;height:8cqh;padding:0 18px;border:1px solid #d7f8a7;border-radius:4px;background:linear-gradient(110deg,#d4efa9,#a1c66e);color:#10190b;font-size:clamp(13px,2.8cqh,20px);font-weight:900;letter-spacing:.12em;box-shadow:0 5px 20px #0006}
+#mpPosition{position:absolute;bottom:2.5%;left:50%;transform:translateX(-50%);font-size:clamp(9px,1.8cqh,13px);letter-spacing:.22em;color:#bfd2ad}
+#mpLobby,#mpRoom{position:absolute;inset:20% 4% 10%}
+#mpStatus{position:absolute;bottom:3%;left:4%;right:4%;font-size:clamp(9px,1.8cqh,12px)}
+#mpStatus:empty{display:none}
+@media(prefers-reduced-motion:reduce){#mpSelection .mp-fighter{transition:none}}
+/* Keep the complete pause menu above the fight, with explicit exit actions. */
+#game.paused:not(.multiplayer) #pausePanel{display:flex;z-index:130;visibility:visible;pointer-events:auto}
+#game.paused:not(.multiplayer) #pause{display:none}
+#game:not(.paused) #pausePanel,#game.multiplayer #pausePanel{display:none}
+#pausePanel .pause-card{width:min(580px,88%);max-height:100%;padding:clamp(12px,3cqh,26px)}
+#pausePanel .pause-actions{grid-template-columns:1fr 1fr;gap:8px}
+#pausePanel .pause-actions #pauseHelp,#pausePanel .pause-actions #pauseSelection{grid-column:auto}
+#pausePanel .pause-actions #pauseExit{grid-column:1/-1;border-color:#b4ef7077;color:#e5f1d7;background:#182718}
+#pausePanel .pause-actions button{min-height:38px}#pausePanel .pause-card>p{margin-bottom:12px}
+#game:not(.menu-open):not(.paused):not(.multiplayer) #fightMenu:not(.off){display:block;top:calc(54px + var(--safeT));right:calc(8px + var(--safeR));left:auto;width:44px;height:40px;z-index:76}
+.film-exit{position:absolute;left:3%;top:4%;z-index:5;min-height:40px;padding:8px 14px;color:#e9f4dd;background:#07100cdd;border:1px solid #abc78a88;border-radius:4px;font-size:12px}
+@media(max-height:350px){#pausePanel .pause-card h2{font-size:23px;margin:5px}#pausePanel .pause-card>p{margin-bottom:8px}#pausePanel .pause-actions{gap:5px}#pausePanel .pause-actions button{min-height:34px}.mp-showcase{padding:0 4%}.mp-heading h1{font-size:20px}}
+@media(prefers-reduced-motion:reduce){#matchSetup .mode-card-row .mode-hit{transition:none}}
+
+/* Visible connection activity, without inventing a completion percentage. */
+.mp-connecting{width:100%;max-width:260px;margin:12px auto 0}
+.mp-loading-track{height:7px;overflow:hidden;border:1px solid #b4ce8960;border-radius:10px;background:#050b08;box-shadow:0 0 14px #b4ce8914}
+.mp-loading-track i{display:block;width:42%;height:100%;border-radius:inherit;background:linear-gradient(90deg,#718c51,#ddf5b5,#718c51);animation:mp-connection-sweep 1.5s ease-in-out infinite alternate;will-change:transform}
+#mpLoadingStage{display:block;margin-top:9px;font:600 clamp(10px,2cqh,13px)/1.4 Arial,sans-serif;color:#e1edcd;letter-spacing:0;min-height:2.8em}
+@keyframes mp-connection-sweep{from{transform:translateX(-100%)}to{transform:translateX(240%)}}
+@media(prefers-reduced-motion:reduce){.mp-loading-track i{animation:none;width:100%;opacity:.65}}
+
+/* Prevent retained native scroll layers from the lobby covering the arena. */
+#mpPanel .mp-room-option{scrollbar-width:none}
+#mpPanel .mp-room-option::-webkit-scrollbar{display:none;width:0;height:0}
+#mpPanel.off .mp-room-option{overflow:hidden}
+#mpBadge{top:auto;bottom:max(5px,var(--safeB));gap:6px;padding:3px 6px;border-radius:4px;font-size:9px;max-width:55%;white-space:normal}
+#mpBadge button{padding:4px 7px;font-size:9px}

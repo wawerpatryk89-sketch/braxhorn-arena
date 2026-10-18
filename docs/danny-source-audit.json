@@ -1,0 +1,190 @@
+{
+  "model": "tripo_convert_11e4b157-9da6-443d-b308-0d14863affc9.fbx",
+  "preservedTextures": {
+    "color": "tripo_node_41722d6a_BaseColor.png",
+    "normal": "tripo_node_41722d6a_Normal_Bake.png",
+    "roughness": "muscular_fighter_3d_model_roughness.PNG",
+    "metalness": "muscular_fighter_3d_model_metallic.PNG"
+  },
+  "clips": [
+    {
+      "file": "Back Flip To Uppercut.fbx",
+      "duration": 5.833333492279053,
+      "duplicateOf": null
+    },
+    {
+      "file": "Body Block.fbx",
+      "duration": 3.433333396911621,
+      "duplicateOf": null
+    },
+    {
+      "file": "Boxing (1).fbx",
+      "duration": 1.9833333492279053,
+      "duplicateOf": null
+    },
+    {
+      "file": "Boxing (2).fbx",
+      "duration": 2.183333396911621,
+      "duplicateOf": null
+    },
+    {
+      "file": "Boxing (3).fbx",
+      "duration": 2.4666666984558105,
+      "duplicateOf": null
+    },
+    {
+      "file": "Boxing (4).fbx",
+      "duration": 4.233333110809326,
+      "duplicateOf": null
+    },
+    {
+      "file": "Boxing.fbx",
+      "duration": 2.0833332538604736,
+      "duplicateOf": null
+    },
+    {
+      "file": "Dodging.fbx",
+      "duration": 2.2333333492279053,
+      "duplicateOf": null
+    },
+    {
+      "file": "Head Hit (1).fbx",
+      "duration": 0.9333333373069763,
+      "duplicateOf": null
+    },
+    {
+      "file": "Head Hit.fbx",
+      "duration": 0.9333333373069763,
+      "duplicateOf": "Head Hit (1).fbx"
+    },
+    {
+      "file": "Hook.fbx",
+      "duration": 1.8833333253860474,
+      "duplicateOf": null
+    },
+    {
+      "file": "Idle.fbx",
+      "duration": 3.616666555404663,
+      "duplicateOf": null
+    },
+    {
+      "file": "Illegal Knee.fbx",
+      "duration": 2.25,
+      "duplicateOf": null
+    },
+    {
+      "file": "Kicking.fbx",
+      "duration": 2.2666666507720947,
+      "duplicateOf": null
+    },
+    {
+      "file": "Knocked Out.fbx",
+      "duration": 4.933333396911621,
+      "duplicateOf": null
+    },
+    {
+      "file": "Lead Jab.fbx",
+      "duration": 1.0666667222976685,
+      "duplicateOf": null
+    },
+    {
+      "file": "Left Block.fbx",
+      "duration": 1.5333333015441895,
+      "duplicateOf": null
+    },
+    {
+      "file": "Mma Kick.fbx",
+      "duration": 1.5,
+      "duplicateOf": null
+    },
+    {
+      "file": "Punch Combo.fbx",
+      "duration": 2.183333396911621,
+      "duplicateOf": null
+    },
+    {
+      "file": "Punching.fbx",
+      "duration": 0.9833333492279053,
+      "duplicateOf": null
+    },
+    {
+      "file": "Receiving A Big Uppercut.fbx",
+      "duration": 2.433333396911621,
+      "duplicateOf": null
+    },
+    {
+      "file": "Right Block.fbx",
+      "duration": 1.7000000476837158,
+      "duplicateOf": null
+    },
+    {
+      "file": "Roll Kicking.fbx",
+      "duration": 2.25,
+      "duplicateOf": null
+    },
+    {
+      "file": "Running Backward.fbx",
+      "duration": 0.6333333253860474,
+      "duplicateOf": null
+    },
+    {
+      "file": "Short Left Side Step.fbx",
+      "duration": 0.7833333611488342,
+      "duplicateOf": null
+    },
+    {
+      "file": "Shoulder Throw, Victim.fbx",
+      "duration": 6.666666507720947,
+      "duplicateOf": null
+    },
+    {
+      "file": "Side Kick.fbx",
+      "duration": 2,
+      "duplicateOf": null
+    },
+    {
+      "file": "Smash.fbx",
+      "duration": 3,
+      "duplicateOf": null
+    },
+    {
+      "file": "Sweep Fall.fbx",
+      "duration": 2.5,
+      "duplicateOf": null
+    },
+    {
+      "file": "Taunt.fbx",
+      "duration": 2.8333332538604736,
+      "duplicateOf": null
+    },
+    {
+      "file": "Walking Backwards.fbx",
+      "duration": 0.8500000238418579,
+      "duplicateOf": null
+    },
+    {
+      "file": "krov-new/Getting Up.fbx",
+      "retargetedAs": "Shared Getting Up",
+      "legRatio": 1.02454771810748,
+      "duration": 2.700000047683716
+    },
+    {
+      "file": "vexa/Falling Back Death.fbx",
+      "retargetedAs": "Shared Falling Back Death",
+      "legRatio": 1.0049449983609193,
+      "duration": 2.183333396911621
+    },
+    {
+      "file": "krov-new/Flying Back Death.fbx",
+      "retargetedAs": "Shared Flying Back Death",
+      "legRatio": 1.02454771810748,
+      "duration": 3.0166666507720947
+    },
+    {
+      "file": "bear-new/Kidney Hit.fbx",
+      "retargetedAs": "Shared Hit Body",
+      "legRatio": 0.9805923007024784,
+      "duration": 1.1166666746139526
+    }
+  ]
+}

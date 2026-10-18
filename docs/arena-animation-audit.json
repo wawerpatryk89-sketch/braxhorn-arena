@@ -1,0 +1,42 @@
+{
+  "rooftop": {
+    "original": "Dach-deszcz-pelny-kadr-v5.gif",
+    "sha256": "3ee06fe6e5e7f58835d85274eada63f8a63105a57c6de0338a22e66d70c222c4",
+    "frames": 60,
+    "uniqueFrames": 60,
+    "loop": 0,
+    "durationMs": 5000
+  },
+  "metro": {
+    "original": "Metro-przejazd-v3.gif",
+    "sha256": "ab100a72e1ad2fd31394c679213a0d4dcbb24f046740586c14908e40f1f3af58",
+    "frames": 80,
+    "uniqueFrames": 80,
+    "loop": 0,
+    "durationMs": 5000
+  },
+  "harbor": {
+    "original": "Port-fale-v3.gif",
+    "sha256": "d2da7fb260028abcaa8e80228f3daa8d0151f9f15680c7b8dbe6c4f707e1ba3b",
+    "frames": 64,
+    "uniqueFrames": 64,
+    "loop": 0,
+    "durationMs": 4000
+  },
+  "volcano": {
+    "original": "Lawa-ruch-v3.gif",
+    "sha256": "195a312c22fc655f2f24d92268ae8ab97d05798614d61a3958ca2ba6ccc2ba23",
+    "frames": 64,
+    "uniqueFrames": 64,
+    "loop": 0,
+    "durationMs": 4000
+  },
+  "jungle": {
+    "original": "Dzungla-weze-i-sokol.gif",
+    "sha256": "a1773968c50b6257a8802405672d5323ede6abc9f2cab67fc0d42babb113adc0",
+    "frames": 192,
+    "uniqueFrames": 192,
+    "loop": 0,
+    "durationMs": 12000
+  }
+}

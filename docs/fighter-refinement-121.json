@@ -1,0 +1,72 @@
+{
+  "fighters": [
+    {
+      "fighter": "BRAX",
+      "changed": [],
+      "retreat": "Salto w tył",
+      "combo": "Seria pięści zakończona kopnięciem",
+      "throw": true,
+      "preserved": "All other authored actions, meshes and textures"
+    },
+    {
+      "fighter": "NYXA",
+      "changed": [
+        "Lewy prosty w głowę",
+        "Szybki krok w tył"
+      ],
+      "retreat": "Szybki krok w tył",
+      "combo": "Pięści, łokcie i martelo z ziemi",
+      "throw": true,
+      "preserved": "All other authored actions, meshes and textures"
+    },
+    {
+      "fighter": "VEXA",
+      "changed": [
+        "Szybkie wycofanie"
+      ],
+      "retreat": "Szybkie wycofanie",
+      "combo": "Pięści, kopnięcie okrężne, obrót i kopnięcie z wyskoku",
+      "throw": true,
+      "preserved": "All other authored actions, meshes and textures"
+    },
+    {
+      "fighter": "KROV",
+      "changed": [
+        "Krótki odskok w gardzie"
+      ],
+      "retreat": "Krótki odskok w gardzie",
+      "combo": "Proste, łokcie i podbródkowy",
+      "throw": true,
+      "preserved": "All other authored actions, meshes and textures"
+    },
+    {
+      "fighter": "NINA",
+      "changed": [],
+      "retreat": "Obrót w tył",
+      "combo": "Dwa proste, chapa i armada",
+      "throw": false,
+      "preserved": "All other authored actions, meshes and textures"
+    },
+    {
+      "fighter": "DANNY",
+      "changed": [
+        "Szybki krok w tył",
+        "Salto z podbródkowym"
+      ],
+      "retreat": "Szybki krok w tył",
+      "combo": "Boks, sierp, low kick i kopnięcie boczne",
+      "throw": false,
+      "preserved": "All other authored actions, meshes and textures"
+    }
+  ],
+  "verification": {
+    "basicContacts": 912,
+    "distantMisses": 38,
+    "comboScenarios": 144,
+    "pairedClinchScenarios": 576,
+    "dedicatedRefinementChecks": 38,
+    "phoneInputCases": 48,
+    "rendering": "Nyxa high jab inspected in software-rendered mesh pose; mobile WebGL and live camera not visually verified."
+  },
+  "scope": "Existing valid move sets retained. No master document used as acceptance criteria. Free jump remains disabled; supplied aerial attacks are used instead."
+}

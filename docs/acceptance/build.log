@@ -1,0 +1,12 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> build
+> node --loader ./scripts/krov-three-loader.mjs scripts/build-runtime.mjs
+
+(node:27) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/krov-three-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+Cards: six actual attacks (eight for Nina), defense, throw capability and full combo sequence for all six fighters.
+{'losslessPngBytesSaved': 1380333}
+{"losslessWebpBytesSaved":4305584,"files":8}
+{"output":"build","animationSamples":"bit-exact Float32","animationBytesSaved":17733628,"totalBytes":264555324}

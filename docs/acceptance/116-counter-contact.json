@@ -1,0 +1,36 @@
+{
+  "pass": true,
+  "scope": "collision fixtures in recovery; does not prove a human can reliably reach this timing",
+  "rows": [
+    {
+      "slot": 0,
+      "count": 3,
+      "done": true
+    },
+    {
+      "slot": 1,
+      "count": 3,
+      "done": true
+    },
+    {
+      "slot": 2,
+      "count": 3,
+      "done": true
+    },
+    {
+      "slot": 3,
+      "count": 3,
+      "done": true
+    },
+    {
+      "slot": 4,
+      "count": 3,
+      "done": true
+    },
+    {
+      "slot": 5,
+      "count": 3,
+      "done": true
+    }
+  ]
+}

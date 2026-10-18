@@ -1,0 +1,178 @@
+[
+  {
+    "id": "rooftop",
+    "status": "PASS",
+    "width": 1138,
+    "height": 512,
+    "fps": "30/1",
+    "audioRms": 0.07726,
+    "seamLumaDifference": 0.889,
+    "adjacentFrameP95": 0.899,
+    "bytes": 7408189
+  },
+  {
+    "id": "rooftop-city",
+    "status": "PASS",
+    "width": 1138,
+    "height": 512,
+    "fps": "30/1",
+    "audioRms": 0.02387,
+    "seamLumaDifference": 0.971,
+    "adjacentFrameP95": 0.552,
+    "bytes": 7283288
+  },
+  {
+    "id": "jungle",
+    "status": "PASS",
+    "width": 1138,
+    "height": 512,
+    "fps": "30/1",
+    "audioRms": 0.02681,
+    "seamLumaDifference": 0.945,
+    "adjacentFrameP95": 0.769,
+    "bytes": 9003141
+  },
+  {
+    "id": "volcano",
+    "status": "PASS",
+    "width": 1138,
+    "height": 512,
+    "fps": "30/1",
+    "audioRms": 0.10379,
+    "seamLumaDifference": 0.692,
+    "adjacentFrameP95": 0.545,
+    "bytes": 5560621
+  },
+  {
+    "id": "temple",
+    "status": "PASS",
+    "width": 1138,
+    "height": 512,
+    "fps": "30/1",
+    "audioRms": 0.02411,
+    "seamLumaDifference": 0.978,
+    "adjacentFrameP95": 0.604,
+    "bytes": 7769214
+  },
+  {
+    "id": "himalaya",
+    "status": "PASS",
+    "width": 1024,
+    "height": 512,
+    "fps": "30/1",
+    "audioRms": 0.04192,
+    "seamLumaDifference": 0.91,
+    "adjacentFrameP95": 0.666,
+    "bytes": 6153995
+  },
+  {
+    "id": "beach",
+    "status": "PASS",
+    "width": 1138,
+    "height": 512,
+    "fps": "30/1",
+    "audioRms": 0.01354,
+    "seamLumaDifference": 0.746,
+    "adjacentFrameP95": 0.567,
+    "bytes": 6656396
+  },
+  {
+    "id": "carrier",
+    "status": "PASS",
+    "width": 898,
+    "height": 512,
+    "fps": "30/1",
+    "audioRms": 0.27878,
+    "seamLumaDifference": 1.0,
+    "adjacentFrameP95": 3.065,
+    "bytes": 7554292
+  },
+  {
+    "id": "canyon",
+    "status": "PASS",
+    "width": 898,
+    "height": 512,
+    "fps": "30/1",
+    "audioRms": 0.08335,
+    "seamLumaDifference": 1.362,
+    "adjacentFrameP95": 1.902,
+    "bytes": 8706366
+  },
+  {
+    "id": "reactor",
+    "status": "PASS",
+    "width": 898,
+    "height": 512,
+    "fps": "30/1",
+    "audioRms": 0.0682,
+    "seamLumaDifference": 1.204,
+    "adjacentFrameP95": 0.941,
+    "bytes": 9381554
+  },
+  {
+    "id": "savanna",
+    "status": "PASS",
+    "width": 898,
+    "height": 512,
+    "fps": "30/1",
+    "audioRms": 0.06145,
+    "seamLumaDifference": 0.673,
+    "adjacentFrameP95": 1.271,
+    "bytes": 5517194
+  },
+  {
+    "id": "brooklyn",
+    "status": "PASS",
+    "width": 898,
+    "height": 512,
+    "fps": "30/1",
+    "audioRms": 0.06491,
+    "seamLumaDifference": 0.963,
+    "adjacentFrameP95": 0.821,
+    "bytes": 8363285
+  },
+  {
+    "id": "dragon",
+    "status": "PASS",
+    "width": 898,
+    "height": 512,
+    "fps": "30/1",
+    "audioRms": 0.23309,
+    "seamLumaDifference": 0.992,
+    "adjacentFrameP95": 1.81,
+    "bytes": 8612567
+  },
+  {
+    "id": "aquarium",
+    "status": "PASS",
+    "width": 1138,
+    "height": 512,
+    "fps": "30/1",
+    "audioRms": 0.03929,
+    "seamLumaDifference": 0.919,
+    "adjacentFrameP95": 1.408,
+    "bytes": 10161284
+  },
+  {
+    "id": "snow",
+    "status": "PASS",
+    "width": 1560,
+    "height": 720,
+    "fps": "50/1",
+    "audioRms": 0.1555,
+    "seamLumaDifference": 2.045,
+    "adjacentFrameP95": 1.709,
+    "bytes": 5124625
+  },
+  {
+    "id": "underground",
+    "status": "PASS",
+    "width": 1560,
+    "height": 720,
+    "fps": "50/1",
+    "audioRms": 0.08885,
+    "seamLumaDifference": 0.435,
+    "adjacentFrameP95": 0.716,
+    "bytes": 974536
+  }
+]

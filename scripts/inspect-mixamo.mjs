@@ -1,0 +1,5 @@
+import fs from'node:fs';import zlib from'node:zlib';import * as T from'three';import{FBXLoader}from'./source-import/FBXLoaderEight.mjs';import{rig}from'../game/assets/fighter-source-core.js';
+globalThis.window={URL:{createObjectURL:()=>''}};
+const model=JSON.parse(zlib.gunzipSync(fs.readFileSync('game/assets/brax-new/model.json.gz'))),out=[];
+for(const name of ['Pushing','Stumble Backwards','Dodging Back','Victory','Rallying','Breakdance Footwork To Freeze','Silly Dancing','House Dancing','Hip Hop Dancing','Dancing']){const b=fs.readFileSync('../mixamo-brax/'+name+'.fbx'),m=new FBXLoader().parse(b.buffer.slice(b.byteOffset,b.byteOffset+b.byteLength),''),clip=m.animations[0],raw={[name]:T.AnimationClip.toJSON(clip)},r=rig(new T.ObjectLoader().parse(model),raw,'BRAX');const length=Math.min(6,clip.duration);for(let i=0;i<9;i++){const t=length*i/8;r.pose({clip:name,stageYaw:Math.PI/2},t);out.push({name,t,bones:Object.fromEntries(Object.entries(r.bones).filter(([n])=>!n.includes('Hand')||n==='LeftHand'||n==='RightHand').map(([n,b])=>[n,b.getWorldPosition(new T.Vector3()).toArray()]))});}}
+fs.writeFileSync('/tmp/mixamo-poses.json',JSON.stringify(out));

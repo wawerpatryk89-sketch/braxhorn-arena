@@ -1,0 +1,18 @@
+[
+  {
+    "state": "IDLE",
+    "file": "Idle.fbx",
+    "clip": "Idle",
+    "duration": 3.633333444595337,
+    "bones": 65,
+    "skeletonError": 5.16191365590357e-8
+  },
+  {
+    "state": "WALK_FORWARD",
+    "file": "Medium Step Forward (1).fbx",
+    "clip": "Medium Step Forward",
+    "duration": 0.9333333373069763,
+    "bones": 65,
+    "skeletonError": 5.16191365590357e-8
+  }
+]

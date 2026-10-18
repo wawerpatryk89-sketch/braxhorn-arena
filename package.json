@@ -1,0 +1,29 @@
+{
+  "name": "braxhorn-arena",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/dev-server.mjs",
+    "test": "npm run test:balance && npm run test:expansion && npm run test:regressions",
+    "test:krov": "node scripts/audit-krov.cjs && node --loader ./scripts/krov-three-loader.mjs scripts/audit-krov-model.mjs",
+    "test:balance": "node scripts/audit-combo-confirm.cjs && node scripts/audit-fair-pressure.cjs && node scripts/audit-combat-integrity.cjs && node scripts/audit-hit-energy.cjs && node scripts/audit-paired-clinch.cjs && node scripts/audit-sustained-contact.cjs && node scripts/audit-cpu-matchups.cjs && node scripts/audit-cpu-combos.cjs",
+    "test:expansion": "node scripts/audit-expansion.cjs && node scripts/audit-rankings.cjs && node scripts/audit-drills.cjs && node scripts/audit-mode-first-films.cjs && node --loader ./scripts/krov-three-loader.mjs scripts/audit-expansion-models.mjs",
+    "test:legacy": "node scripts/audit-transitions.cjs && node scripts/audit-game.cjs",
+    "test:regressions": "node scripts/audit-v108-fixes.cjs && node scripts/audit-combo-approach.cjs && node scripts/audit-nina-eight.cjs && node scripts/audit-phone-controls.cjs && node scripts/audit-campaigns.cjs && node scripts/audit-transitions.cjs && node scripts/audit-victory.cjs && node scripts/audit-ko-replay.cjs && node scripts/audit-ko-flow.cjs && node scripts/audit-blood-effects.cjs && node scripts/audit-round-closeup.cjs",
+    "test:repairs": "node scripts/audit-arena-repair.cjs && node scripts/audit-arena-interface.cjs && node scripts/audit-overlay-recovery.cjs && node scripts/audit-blood-visibility.cjs",
+    "test:audit": "node scripts/audit-fighter-names.cjs && node scripts/audit-engine-acceptance.cjs && node scripts/audit-renderer-lifecycle.cjs && node scripts/audit-lazy-metadata.cjs && node scripts/audit-replay-events.cjs && node scripts/audit-arena-loop.mjs && node --loader ./scripts/krov-three-loader.mjs scripts/audit-bear-demon-assets.mjs && node scripts/audit-roster-eight.cjs && node --loader ./scripts/krov-three-loader.mjs scripts/audit-azrak-combo.mjs",
+    "test:ai-matrix": "node scripts/audit-adversarial-ai.cjs && node scripts/audit-adversarial-ai.cjs --critical",
+    "build": "node scripts/build-server.mjs",
+    "build:game": "node --loader ./scripts/krov-three-loader.mjs scripts/build-runtime.mjs && python3 scripts/finalize-runtime.py",
+    "test:duel-api": "node --import tsx scripts/audit-duel-api.mjs",
+    "test:online": "node --import tsx scripts/audit-online.mjs",
+    "test:viewport": "node scripts/audit-phone-viewport.cjs",
+    "test:147": "node scripts/audit-arena-picker.cjs && node scripts/audit-online-client-147.cjs && node --import tsx scripts/audit-ranking-atomic-147.mjs && node scripts/audit-network-conflicts.cjs && node scripts/audit-network-render.cjs && node scripts/audit-screen-flow.cjs",
+    "test:ui": "node scripts/audit-ui-premium.mjs"
+  },
+  "devDependencies": {
+    "happy-dom": "^21.0.3",
+    "tsx": "^4.23.15",
+    "vite": "8.0.13"
+  }
+}

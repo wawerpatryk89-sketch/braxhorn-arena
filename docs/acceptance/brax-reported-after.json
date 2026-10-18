@@ -1,0 +1,78 @@
+{
+  "rendering": "logic trace only; no WebGL or device capture",
+  "results": [
+    {
+      "case": "combo-idle",
+      "began": true,
+      "kick": true,
+      "maxFrame": 351,
+      "hp": 52,
+      "states": [
+        {
+          "part": "WALK_FORWARD",
+          "frame": 0,
+          "aborted": false,
+          "hp": 100
+        },
+        {
+          "part": "UPPERCUT_JAB",
+          "frame": 0,
+          "aborted": false,
+          "hp": 100
+        },
+        {
+          "part": "KICKING",
+          "frame": 216,
+          "aborted": false,
+          "hp": 64
+        },
+        {
+          "part": "IDLE",
+          "frame": 1,
+          "aborted": false,
+          "hp": 52
+        }
+      ]
+    },
+    {
+      "case": "combo-block",
+      "began": true,
+      "kick": true,
+      "maxFrame": 350,
+      "hp": 100,
+      "states": [
+        {
+          "part": "WALK_FORWARD",
+          "frame": 0,
+          "aborted": false,
+          "hp": 100
+        },
+        {
+          "part": "UPPERCUT_JAB",
+          "frame": 0,
+          "aborted": false,
+          "hp": 100
+        },
+        {
+          "part": "KICKING",
+          "frame": 216,
+          "aborted": false,
+          "hp": 100
+        },
+        {
+          "part": "IDLE",
+          "frame": 1,
+          "aborted": false,
+          "hp": 100
+        }
+      ]
+    },
+    {
+      "case": "manual-grab-during-contact",
+      "grabbed": true,
+      "during": true,
+      "hp": 88,
+      "final": "GETUP"
+    }
+  ]
+}

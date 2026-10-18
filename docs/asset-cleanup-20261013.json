@@ -1,0 +1,34 @@
+{
+  "liveBaseline": "6a1771dc62835ea586c90a8ff0d071633da659d6",
+  "unpublishedFastDraft": "85eeba565d0fd88dc82cd2d919a258da4141a0b6",
+  "removed": [
+    {
+      "path": "dist/assets/audio/brax-taunt2.mp3",
+      "bytes": 28047,
+      "sha256": "7a988d82f88d7394ebcaf204639246c352802ad7c06d395d2e40989b0d12d589"
+    },
+    {
+      "path": "dist/icon-180.png",
+      "bytes": 17070,
+      "sha256": "7575768d3aa625ae131f798b09160d6b3757f2f72c741619371abd56cd1809a8"
+    },
+    {
+      "path": "dist/icon-192.png",
+      "bytes": 18990,
+      "sha256": "6a509ea0670644d4167a5c6151b010c7ee6eecab9595a4981a98dfc491e2c0e9"
+    },
+    {
+      "path": "dist/icon-512.png",
+      "bytes": 66484,
+      "sha256": "e431612435e68c19385c7cf06ffcf14b98c723a6b1ae8fe1f516238d9d4df9a1"
+    },
+    {
+      "path": "dist/assets/arena-picker.gif",
+      "bytes": 12482267,
+      "sha256": "d8070709b822c6603850c633bd99a3e8483b01988570281cd2730c48a06150ce"
+    }
+  ],
+  "sourceBytesRemoved": 12612858,
+  "runtimeBytesRemoved": 130591,
+  "note": "Duplicate audio event keeps the same bytes via brax-ready.mp3. Three unreferenced old icons removed; active branded icons retained. Arena picker GIF was already excluded from runtime. No exact duplicate clips found across all six source packs. No media recompression or external hosting migration."
+}

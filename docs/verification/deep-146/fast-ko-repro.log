@@ -1,0 +1,23 @@
+malformed world {
+  status: 200,
+  body: {
+    code: 'E0E319BF',
+    status: 'playing',
+    hostFighter: 'BRAX',
+    guestFighter: 'NYXA',
+    hostName: 'GRACZ',
+    guestName: 'GRACZ',
+    scheduledAt: 0,
+    resultStatus: '',
+    arena: 'snow',
+    peerSeen: 1792318327383,
+    now: 1792318327384,
+    peerReady: true,
+    snapshot: null,
+    input: null,
+    seq: 0
+  }
+}
+host report 2:0 { status: 200, body: { resultStatus: 'pending', score: [ 2, 0 ] } }
+guest report 2:0 { status: 200, body: { resultStatus: 'confirmed', score: [ 2, 0 ] } }
+persisted [ [Object: null prototype] { score: '[2,0]' } ]

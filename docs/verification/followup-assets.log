@@ -1,0 +1,4 @@
+{"hashes": {"IDENTICAL": 98}, "deletedFiles": 15, "scans": {"game": {"PASS": 15}, "build": {"PASS": 15}, "dist": {"PASS": 15}}}
+PASS: 19 arena start paths; 111 catalog/media URL observations; no deleted path, every package URL in manifest.
+{"fighterPackageFiles":36,"fighterPackageBytes":165561371,"preservation":"SHA-256 exact source bytes","metadata":"local gzip; selected pair payloads only"}
+PASS fighter package: 36 byte-identical payloads, SHA-256 names, no payload in main build, original loader except URLs

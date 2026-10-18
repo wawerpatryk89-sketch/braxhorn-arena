@@ -1,0 +1,162 @@
+{
+  "scale": "10 = najwyższa wartość w aktualnym składzie; zaokrąglenie do pełnego segmentu. Nie zmienia parametrów walki.",
+  "labels": [
+    "SIŁA CIOSÓW",
+    "SZYBKOŚĆ",
+    "ZASIĘG",
+    "MOBILNOŚĆ",
+    "KLINCZ / RZUTY"
+  ],
+  "descriptions": [
+    "Najmocniejszy podstawowy atak",
+    "Średni czas do pierwszego trafienia",
+    "Najdalszy aktywny zasięg podstawowego ataku",
+    "Prędkość poruszania się do przodu",
+    "Obrażenia skutecznego rzutu"
+  ],
+  "maxima": [
+    16,
+    5.082556165259971,
+    293.56868815516555,
+    0.73,
+    15
+  ],
+  "data": {
+    "BRAX": {
+      "style": "BOKS · KICKBOXING",
+      "raw": [
+        14,
+        2.674371975911496,
+        203.75970015689757,
+        0.6,
+        12
+      ],
+      "values": [
+        9,
+        5,
+        7,
+        8,
+        8
+      ]
+    },
+    "NYXA": {
+      "style": "TECHNICZNE MUAY THAI",
+      "raw": [
+        12,
+        2.202320249188558,
+        293.56868815516555,
+        0.67,
+        11
+      ],
+      "values": [
+        8,
+        4,
+        10,
+        9,
+        7
+      ]
+    },
+    "VEXA": {
+      "style": "TAEKWONDO · KICKBOXING",
+      "raw": [
+        14,
+        2.290258389978943,
+        204.22088492353498,
+        0.73,
+        9
+      ],
+      "values": [
+        9,
+        5,
+        7,
+        10,
+        6
+      ]
+    },
+    "KROV": {
+      "style": "MUAY THAI",
+      "raw": [
+        15,
+        1.9831005331553393,
+        201.70520559973227,
+        0.58,
+        14
+      ],
+      "values": [
+        9,
+        4,
+        7,
+        8,
+        9
+      ]
+    },
+    "NINA": {
+      "style": "CAPOEIRA",
+      "raw": [
+        15,
+        2.807547169811319,
+        197.21283949335952,
+        0.651,
+        0
+      ],
+      "values": [
+        9,
+        6,
+        7,
+        9,
+        0
+      ]
+    },
+    "DANNY": {
+      "style": "KICKBOXING",
+      "raw": [
+        14,
+        2.183468502187929,
+        193.90839516101164,
+        0.66,
+        0
+      ],
+      "values": [
+        9,
+        4,
+        7,
+        9,
+        0
+      ]
+    },
+    "BEAR": {
+      "style": "SIŁA · WALKA W ZWARCIU",
+      "raw": [
+        16,
+        5.082556165259971,
+        186.88955409845255,
+        0.54,
+        15
+      ],
+      "values": [
+        10,
+        10,
+        6,
+        7,
+        10
+      ]
+    },
+    "DEMON": {
+      "style": "AKROBATYKA · KOPNIĘCIA",
+      "raw": [
+        16,
+        4.109125101002399,
+        204.54444280929067,
+        0.6,
+        12
+      ],
+      "values": [
+        10,
+        8,
+        7,
+        8,
+        8
+      ]
+    }
+  }
+}

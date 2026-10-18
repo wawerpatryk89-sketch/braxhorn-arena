@@ -1,0 +1,356 @@
+{
+  "pass": true,
+  "cases": 5120,
+  "balance": [
+    {
+      "fighter": "BRAX",
+      "attacks": [
+        {
+          "name": "LIGHT_PUNCH",
+          "damage": 9,
+          "seconds": 1.021
+        },
+        {
+          "name": "HEAVY_PUNCH",
+          "damage": 13,
+          "seconds": 1.212
+        },
+        {
+          "name": "DOUBLE_PUNCH",
+          "damage": 12,
+          "seconds": 1.01
+        },
+        {
+          "name": "LIGHT_KICK",
+          "damage": 10,
+          "seconds": 0.909
+        },
+        {
+          "name": "HEAVY_KICK",
+          "damage": 14,
+          "seconds": 1.136
+        },
+        {
+          "name": "COMBO",
+          "damage": 48,
+          "seconds": 3.333
+        },
+        {
+          "name": "HOOK",
+          "damage": 13,
+          "seconds": 1.212
+        },
+        {
+          "name": "UPPERCUT",
+          "damage": 12,
+          "seconds": 0.812
+        },
+        {
+          "name": "ELBOW",
+          "damage": 13,
+          "seconds": 1.212
+        },
+        {
+          "name": "CLINCH_KNEE",
+          "damage": 12,
+          "seconds": 1.405
+        }
+      ]
+    },
+    {
+      "fighter": "NYXA",
+      "attacks": [
+        {
+          "name": "LIGHT_PUNCH",
+          "damage": 7,
+          "seconds": 0.523
+        },
+        {
+          "name": "HEAVY_PUNCH",
+          "damage": 12,
+          "seconds": 1.283
+        },
+        {
+          "name": "ELBOW",
+          "damage": 10,
+          "seconds": 1.12
+        },
+        {
+          "name": "CLINCH_KNEE",
+          "damage": 12,
+          "seconds": 1.249
+        },
+        {
+          "name": "LIGHT_KICK",
+          "damage": 11,
+          "seconds": 1.039
+        },
+        {
+          "name": "HEAVY_KICK",
+          "damage": 11,
+          "seconds": 1.212
+        },
+        {
+          "name": "COMBO",
+          "damage": 44,
+          "seconds": 3.652
+        },
+        {
+          "name": "HOOK",
+          "damage": 12,
+          "seconds": 1.283
+        },
+        {
+          "name": "UPPERCUT",
+          "damage": 10,
+          "seconds": 1.12
+        },
+        {
+          "name": "SPIN_KICK",
+          "damage": 11,
+          "seconds": 1.723
+        }
+      ]
+    },
+    {
+      "fighter": "VEXA",
+      "attacks": [
+        {
+          "name": "LIGHT_PUNCH",
+          "damage": 10,
+          "seconds": 1.283
+        },
+        {
+          "name": "HEAVY_PUNCH",
+          "damage": 12,
+          "seconds": 1.184
+        },
+        {
+          "name": "LIGHT_KICK",
+          "damage": 10,
+          "seconds": 0.877
+        },
+        {
+          "name": "HEAVY_KICK",
+          "damage": 13,
+          "seconds": 1.175
+        },
+        {
+          "name": "SPIN_KICK",
+          "damage": 14,
+          "seconds": 0.9
+        },
+        {
+          "name": "FLYING_KICK",
+          "damage": 13,
+          "seconds": 0.974
+        },
+        {
+          "name": "COMBO",
+          "damage": 44,
+          "seconds": 4.608
+        }
+      ]
+    },
+    {
+      "fighter": "KROV",
+      "attacks": [
+        {
+          "name": "LIGHT_PUNCH",
+          "damage": 11,
+          "seconds": 1.241
+        },
+        {
+          "name": "HEAVY_PUNCH",
+          "damage": 14,
+          "seconds": 1.358
+        },
+        {
+          "name": "LIGHT_KICK",
+          "damage": 11,
+          "seconds": 0.96
+        },
+        {
+          "name": "HEAVY_KICK",
+          "damage": 15,
+          "seconds": 1.564
+        },
+        {
+          "name": "ELBOW",
+          "damage": 13,
+          "seconds": 1.222
+        },
+        {
+          "name": "UPPERCUT",
+          "damage": 13,
+          "seconds": 0.808
+        },
+        {
+          "name": "COMBO",
+          "damage": 44,
+          "seconds": 5.335
+        }
+      ]
+    },
+    {
+      "fighter": "NINA",
+      "attacks": [
+        {
+          "name": "LIGHT_PUNCH",
+          "damage": 13,
+          "seconds": 1.161
+        },
+        {
+          "name": "HEAVY_PUNCH",
+          "damage": 14,
+          "seconds": 0.85
+        },
+        {
+          "name": "LIGHT_KICK",
+          "damage": 12,
+          "seconds": 0.748
+        },
+        {
+          "name": "HEAVY_KICK",
+          "damage": 15,
+          "seconds": 0.9
+        },
+        {
+          "name": "CRESCENT_KICK",
+          "damage": 10,
+          "seconds": 0.748
+        },
+        {
+          "name": "SPIN_KICK",
+          "damage": 14,
+          "seconds": 0.85
+        },
+        {
+          "name": "COMBO",
+          "damage": 39,
+          "seconds": 2.316
+        },
+        {
+          "name": "MEIA_LUA",
+          "damage": 13,
+          "seconds": 0.736
+        },
+        {
+          "name": "GROUND_KICK",
+          "damage": 15,
+          "seconds": 0.992
+        }
+      ]
+    },
+    {
+      "fighter": "DANNY",
+      "attacks": [
+        {
+          "name": "LIGHT_PUNCH",
+          "damage": 7,
+          "seconds": 0.646
+        },
+        {
+          "name": "HEAVY_PUNCH",
+          "damage": 11,
+          "seconds": 0.85
+        },
+        {
+          "name": "LIGHT_KICK",
+          "damage": 10,
+          "seconds": 1.01
+        },
+        {
+          "name": "HEAVY_KICK",
+          "damage": 14,
+          "seconds": 1.472
+        },
+        {
+          "name": "HOOK",
+          "damage": 12,
+          "seconds": 1.141
+        },
+        {
+          "name": "SIDE_KICK",
+          "damage": 13,
+          "seconds": 1.299
+        },
+        {
+          "name": "COMBO",
+          "damage": 45,
+          "seconds": 4.681
+        }
+      ]
+    },
+    {
+      "fighter": "BEAR",
+      "attacks": [
+        {
+          "name": "LIGHT_PUNCH",
+          "damage": 9,
+          "seconds": 0.647
+        },
+        {
+          "name": "HEAVY_PUNCH",
+          "damage": 15,
+          "seconds": 0.941
+        },
+        {
+          "name": "LIGHT_KICK",
+          "damage": 12,
+          "seconds": 0.571
+        },
+        {
+          "name": "HEAVY_KICK",
+          "damage": 14,
+          "seconds": 0.578
+        },
+        {
+          "name": "UPPERCUT",
+          "damage": 16,
+          "seconds": 0.544
+        },
+        {
+          "name": "COMBO",
+          "damage": 41,
+          "seconds": 2.128
+        }
+      ]
+    },
+    {
+      "fighter": "DEMON",
+      "attacks": [
+        {
+          "name": "LIGHT_PUNCH",
+          "damage": 7,
+          "seconds": 0.552
+        },
+        {
+          "name": "HEAVY_PUNCH",
+          "damage": 12,
+          "seconds": 0.698
+        },
+        {
+          "name": "LIGHT_KICK",
+          "damage": 10,
+          "seconds": 0.702
+        },
+        {
+          "name": "HEAVY_KICK",
+          "damage": 15,
+          "seconds": 0.702
+        },
+        {
+          "name": "UPPERCUT",
+          "damage": 16,
+          "seconds": 0.681
+        },
+        {
+          "name": "COMBO",
+          "damage": 34,
+          "seconds": 1.672
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "BRAX": {
+    "DEMON": {
+      "LIGHT_PUNCH": 210,
+      "HEAVY_PUNCH": 260,
+      "LIGHT_KICK": 280,
+      "DOUBLE_PUNCH": 180
+    }
+  },
+  "NYXA": {
+    "DEMON": {
+      "HEAVY_PUNCH": 280,
+      "LIGHT_KICK": 280,
+      "HEAVY_KICK": 280,
+      "ELBOW": 195,
+      "CLINCH_KNEE": 230
+    }
+  },
+  "NINA": {
+    "BEAR": {
+      "CRESCENT_KICK": 265
+    }
+  }
+}

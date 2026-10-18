@@ -1,0 +1,2743 @@
+[
+  {
+    "name": "01_Garda.gif",
+    "sha256": "d267093e8f0b85fbf81b4179d6728d6cfdc38da8fb951f4f7bd7f07c055bd22d",
+    "frames": [
+      {
+        "i": 0,
+        "bbox": [
+          290,
+          186,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 120,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 1,
+        "bbox": [
+          292,
+          185,
+          662,
+          690
+        ],
+        "foot": 690,
+        "duration": 120,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 2,
+        "bbox": [
+          289,
+          186,
+          662,
+          691
+        ],
+        "foot": 691,
+        "duration": 120,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 3,
+        "bbox": [
+          288,
+          189,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 120,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 4,
+        "bbox": [
+          288,
+          188,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 120,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 5,
+        "bbox": [
+          283,
+          188,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 120,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 6,
+        "bbox": [
+          288,
+          188,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 120,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 7,
+        "bbox": [
+          288,
+          189,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 120,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 8,
+        "bbox": [
+          289,
+          186,
+          662,
+          691
+        ],
+        "foot": 691,
+        "duration": 120,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 9,
+        "bbox": [
+          292,
+          185,
+          662,
+          690
+        ],
+        "foot": 690,
+        "duration": 120,
+        "transparent": true,
+        "edge": false
+      }
+    ]
+  },
+  {
+    "name": "02_Lewy_prosty.gif",
+    "sha256": "d24b223330ca7903d186788a3942827a41632395c47d10a0ac403ecc7a27f163",
+    "frames": [
+      {
+        "i": 0,
+        "bbox": [
+          290,
+          186,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 160,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 1,
+        "bbox": [
+          269,
+          187,
+          670,
+          692
+        ],
+        "foot": 692,
+        "duration": 70,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 2,
+        "bbox": [
+          268,
+          186,
+          680,
+          692
+        ],
+        "foot": 692,
+        "duration": 60,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 3,
+        "bbox": [
+          248,
+          191,
+          716,
+          691
+        ],
+        "foot": 691,
+        "duration": 90,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 4,
+        "bbox": [
+          261,
+          192,
+          664,
+          691
+        ],
+        "foot": 691,
+        "duration": 90,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 5,
+        "bbox": [
+          290,
+          186,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 180,
+        "transparent": true,
+        "edge": false
+      }
+    ]
+  },
+  {
+    "name": "03_Prawy_prosty.gif",
+    "sha256": "db6d11a1f971318d712bbdc1a7f765b18eeecb3e3c16403c5a8948279c91cb45",
+    "frames": [
+      {
+        "i": 0,
+        "bbox": [
+          290,
+          186,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 160,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 1,
+        "bbox": [
+          277,
+          185,
+          667,
+          688
+        ],
+        "foot": 688,
+        "duration": 90,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 2,
+        "bbox": [
+          285,
+          181,
+          668,
+          686
+        ],
+        "foot": 686,
+        "duration": 70,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 3,
+        "bbox": [
+          276,
+          206,
+          738,
+          687
+        ],
+        "foot": 687,
+        "duration": 110,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 4,
+        "bbox": [
+          289,
+          205,
+          666,
+          686
+        ],
+        "foot": 686,
+        "duration": 110,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 5,
+        "bbox": [
+          290,
+          186,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 180,
+        "transparent": true,
+        "edge": false
+      }
+    ]
+  },
+  {
+    "name": "04_Teep.gif",
+    "sha256": "88c9ae7762552f1ae1c5c53d088a2a249f605261b808ea071b1c13e56a91df2c",
+    "frames": [
+      {
+        "i": 0,
+        "bbox": [
+          290,
+          186,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 200,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 1,
+        "bbox": [
+          213,
+          181,
+          505,
+          691
+        ],
+        "foot": 691,
+        "duration": 100,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 2,
+        "bbox": [
+          182,
+          181,
+          602,
+          690
+        ],
+        "foot": 690,
+        "duration": 60,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 3,
+        "bbox": [
+          170,
+          179,
+          619,
+          691
+        ],
+        "foot": 691,
+        "duration": 100,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 4,
+        "bbox": [
+          201,
+          183,
+          453,
+          690
+        ],
+        "foot": 690,
+        "duration": 100,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 5,
+        "bbox": [
+          290,
+          186,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 220,
+        "transparent": true,
+        "edge": false
+      }
+    ]
+  },
+  {
+    "name": "05_Kopniecie_na_tulow.gif",
+    "sha256": "404cf2957a7d27917e6a48913ed08dbbbc7f1d5824438e6aa6f9626072651eda",
+    "frames": [
+      {
+        "i": 0,
+        "bbox": [
+          290,
+          186,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 180,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 1,
+        "bbox": [
+          277,
+          183,
+          607,
+          690
+        ],
+        "foot": 690,
+        "duration": 80,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 2,
+        "bbox": [
+          270,
+          185,
+          595,
+          690
+        ],
+        "foot": 690,
+        "duration": 70,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 3,
+        "bbox": [
+          268,
+          188,
+          876,
+          690
+        ],
+        "foot": 690,
+        "duration": 110,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 4,
+        "bbox": [
+          286,
+          187,
+          585,
+          691
+        ],
+        "foot": 691,
+        "duration": 100,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 5,
+        "bbox": [
+          290,
+          186,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 220,
+        "transparent": true,
+        "edge": false
+      }
+    ]
+  },
+  {
+    "name": "06_Wysokie_kopniecie.gif",
+    "sha256": "c955a921c682c29bb85ac7111b4c5e280f8e0bd863a84d4c02f81c86eac9c323",
+    "frames": [
+      {
+        "i": 0,
+        "bbox": [
+          290,
+          186,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 200,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 1,
+        "bbox": [
+          200,
+          185,
+          485,
+          690
+        ],
+        "foot": 690,
+        "duration": 110,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 2,
+        "bbox": [
+          183,
+          190,
+          596,
+          690
+        ],
+        "foot": 690,
+        "duration": 70,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 3,
+        "bbox": [
+          168,
+          213,
+          682,
+          690
+        ],
+        "foot": 690,
+        "duration": 100,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 4,
+        "bbox": [
+          180,
+          211,
+          489,
+          690
+        ],
+        "foot": 690,
+        "duration": 110,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 5,
+        "bbox": [
+          290,
+          186,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 220,
+        "transparent": true,
+        "edge": false
+      }
+    ]
+  },
+  {
+    "name": "07_Kolano_stojac.gif",
+    "sha256": "7201a42ba30fa77cb03b35b385788ed90c0c09068dea4a7db335c25f3013f893",
+    "frames": [
+      {
+        "i": 0,
+        "bbox": [
+          290,
+          186,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 200,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 1,
+        "bbox": [
+          223,
+          183,
+          525,
+          690
+        ],
+        "foot": 690,
+        "duration": 70,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 2,
+        "bbox": [
+          137,
+          190,
+          447,
+          691
+        ],
+        "foot": 691,
+        "duration": 80,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 3,
+        "bbox": [
+          180,
+          182,
+          530,
+          691
+        ],
+        "foot": 691,
+        "duration": 100,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 4,
+        "bbox": [
+          230,
+          186,
+          552,
+          690
+        ],
+        "foot": 690,
+        "duration": 110,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 5,
+        "bbox": [
+          290,
+          186,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 220,
+        "transparent": true,
+        "edge": false
+      }
+    ]
+  },
+  {
+    "name": "08_Kolano_w_wyskoku.gif",
+    "sha256": "cadd2c2b9ed99968a364943634c8a940eaaeed429c928818d3f02871c809f977",
+    "frames": [
+      {
+        "i": 0,
+        "bbox": [
+          290,
+          186,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 240,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 1,
+        "bbox": [
+          205,
+          299,
+          603,
+          690
+        ],
+        "foot": 690,
+        "duration": 120,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 2,
+        "bbox": [
+          282,
+          146,
+          630,
+          677
+        ],
+        "foot": 677,
+        "duration": 80,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 3,
+        "bbox": [
+          241,
+          195,
+          658,
+          591
+        ],
+        "foot": 576,
+        "duration": 120,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 4,
+        "bbox": [
+          230,
+          330,
+          588,
+          690
+        ],
+        "foot": 690,
+        "duration": 140,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 5,
+        "bbox": [
+          290,
+          186,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 240,
+        "transparent": true,
+        "edge": false
+      }
+    ]
+  },
+  {
+    "name": "09_Prosty_z_wypadem.gif",
+    "sha256": "47b044aaa5e0fd35a0072246ac927e1306633c4594582fcc0faf34519a9723cc",
+    "frames": [
+      {
+        "i": 0,
+        "bbox": [
+          290,
+          186,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 180,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 1,
+        "bbox": [
+          230,
+          223,
+          620,
+          691
+        ],
+        "foot": 691,
+        "duration": 80,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 2,
+        "bbox": [
+          228,
+          201,
+          676,
+          691
+        ],
+        "foot": 691,
+        "duration": 70,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 3,
+        "bbox": [
+          168,
+          223,
+          722,
+          691
+        ],
+        "foot": 691,
+        "duration": 110,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 4,
+        "bbox": [
+          225,
+          214,
+          652,
+          691
+        ],
+        "foot": 691,
+        "duration": 100,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 5,
+        "bbox": [
+          290,
+          186,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 220,
+        "transparent": true,
+        "edge": false
+      }
+    ]
+  },
+  {
+    "name": "10_Niskie_kopniecie.gif",
+    "sha256": "51931fdd86681ff6d12e8e9f65bcca73cd87d11871c811b0641cb12c23849e86",
+    "frames": [
+      {
+        "i": 0,
+        "bbox": [
+          257,
+          186,
+          658,
+          690
+        ],
+        "foot": 690,
+        "duration": 360,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 1,
+        "bbox": [
+          286,
+          185,
+          668,
+          684
+        ],
+        "foot": 684,
+        "duration": 100,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 2,
+        "bbox": [
+          272,
+          188,
+          642,
+          683
+        ],
+        "foot": 683,
+        "duration": 80,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 3,
+        "bbox": [
+          275,
+          178,
+          796,
+          661
+        ],
+        "foot": 661,
+        "duration": 130,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 4,
+        "bbox": [
+          330,
+          177,
+          647,
+          665
+        ],
+        "foot": 665,
+        "duration": 110,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 5,
+        "bbox": [
+          258,
+          183,
+          659,
+          672
+        ],
+        "foot": 672,
+        "duration": 300,
+        "transparent": true,
+        "edge": false
+      }
+    ]
+  },
+  {
+    "name": "11_Sierp.gif",
+    "sha256": "ef47930014ff7e5489663a8dcaf8e9bfa8cdaea3b6c857f1f57e286e011aa028",
+    "frames": [
+      {
+        "i": 0,
+        "bbox": [
+          262,
+          185,
+          648,
+          690
+        ],
+        "foot": 690,
+        "duration": 360,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 1,
+        "bbox": [
+          268,
+          191,
+          650,
+          689
+        ],
+        "foot": 689,
+        "duration": 100,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 2,
+        "bbox": [
+          262,
+          189,
+          651,
+          690
+        ],
+        "foot": 690,
+        "duration": 90,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 3,
+        "bbox": [
+          272,
+          185,
+          651,
+          680
+        ],
+        "foot": 680,
+        "duration": 110,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 4,
+        "bbox": [
+          258,
+          184,
+          651,
+          678
+        ],
+        "foot": 678,
+        "duration": 100,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 5,
+        "bbox": [
+          243,
+          180,
+          631,
+          677
+        ],
+        "foot": 677,
+        "duration": 300,
+        "transparent": true,
+        "edge": false
+      }
+    ]
+  },
+  {
+    "name": "12_Combo_dwa_obroty.gif",
+    "sha256": "bae2be834e73497b81503438b3aadf5a9dd13e934081055cdd63808447986fa3",
+    "frames": [
+      {
+        "i": 0,
+        "bbox": [
+          277,
+          186,
+          649,
+          691
+        ],
+        "foot": 691,
+        "duration": 300,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 1,
+        "bbox": [
+          300,
+          192,
+          694,
+          691
+        ],
+        "foot": 691,
+        "duration": 50,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 2,
+        "bbox": [
+          297,
+          193,
+          670,
+          690
+        ],
+        "foot": 690,
+        "duration": 50,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 3,
+        "bbox": [
+          300,
+          198,
+          695,
+          690
+        ],
+        "foot": 690,
+        "duration": 50,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 4,
+        "bbox": [
+          276,
+          210,
+          633,
+          691
+        ],
+        "foot": 691,
+        "duration": 50,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 5,
+        "bbox": [
+          300,
+          192,
+          694,
+          691
+        ],
+        "foot": 691,
+        "duration": 50,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 6,
+        "bbox": [
+          297,
+          193,
+          670,
+          690
+        ],
+        "foot": 690,
+        "duration": 50,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 7,
+        "bbox": [
+          300,
+          198,
+          695,
+          690
+        ],
+        "foot": 690,
+        "duration": 50,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 8,
+        "bbox": [
+          276,
+          210,
+          633,
+          691
+        ],
+        "foot": 691,
+        "duration": 50,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 9,
+        "bbox": [
+          176,
+          219,
+          829,
+          691
+        ],
+        "foot": 691,
+        "duration": 90,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 10,
+        "bbox": [
+          343,
+          215,
+          714,
+          691
+        ],
+        "foot": 691,
+        "duration": 90,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 11,
+        "bbox": [
+          318,
+          209,
+          679,
+          691
+        ],
+        "foot": 691,
+        "duration": 320,
+        "transparent": true,
+        "edge": false
+      }
+    ]
+  },
+  {
+    "name": "13_Chod_bojowy_przod.gif",
+    "sha256": "0c2aafdb7e1b1d9a7172cd175468550d4ea509e3074beef58d36db6f98f1ea09",
+    "frames": [
+      {
+        "i": 0,
+        "bbox": [
+          290,
+          186,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 100,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 1,
+        "bbox": [
+          260,
+          193,
+          688,
+          690
+        ],
+        "foot": 690,
+        "duration": 110,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 2,
+        "bbox": [
+          262,
+          191,
+          689,
+          691
+        ],
+        "foot": 691,
+        "duration": 100,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 3,
+        "bbox": [
+          246,
+          217,
+          621,
+          690
+        ],
+        "foot": 690,
+        "duration": 100,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 4,
+        "bbox": [
+          276,
+          216,
+          600,
+          690
+        ],
+        "foot": 690,
+        "duration": 110,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 5,
+        "bbox": [
+          290,
+          186,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 80,
+        "transparent": true,
+        "edge": false
+      }
+    ]
+  },
+  {
+    "name": "14_Chod_bojowy_tyl.gif",
+    "sha256": "44281da038d7dca40d96246334217e6b6003336dc8f617e9338791099b57c830",
+    "frames": [
+      {
+        "i": 0,
+        "bbox": [
+          290,
+          186,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 100,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 1,
+        "bbox": [
+          270,
+          195,
+          656,
+          690
+        ],
+        "foot": 690,
+        "duration": 110,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 2,
+        "bbox": [
+          228,
+          190,
+          655,
+          691
+        ],
+        "foot": 691,
+        "duration": 100,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 3,
+        "bbox": [
+          269,
+          194,
+          631,
+          691
+        ],
+        "foot": 691,
+        "duration": 100,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 4,
+        "bbox": [
+          286,
+          202,
+          591,
+          690
+        ],
+        "foot": 690,
+        "duration": 110,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 5,
+        "bbox": [
+          290,
+          186,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 80,
+        "transparent": true,
+        "edge": false
+      }
+    ]
+  },
+  {
+    "name": "15_Doskok.gif",
+    "sha256": "1ccdbc51a2ba596c2a9ccdaab38e44d8e29ad9b71f1f97f3f93023f5e4a8dd0a",
+    "frames": [
+      {
+        "i": 0,
+        "bbox": [
+          290,
+          186,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 150,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 1,
+        "bbox": [
+          230,
+          234,
+          622,
+          691
+        ],
+        "foot": 691,
+        "duration": 60,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 2,
+        "bbox": [
+          171,
+          203,
+          691,
+          677
+        ],
+        "foot": 677,
+        "duration": 60,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 3,
+        "bbox": [
+          182,
+          230,
+          644,
+          649
+        ],
+        "foot": 649,
+        "duration": 70,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 4,
+        "bbox": [
+          220,
+          255,
+          621,
+          691
+        ],
+        "foot": 691,
+        "duration": 90,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 5,
+        "bbox": [
+          290,
+          186,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 200,
+        "transparent": true,
+        "edge": false
+      }
+    ]
+  },
+  {
+    "name": "16_Odskok.gif",
+    "sha256": "cd8c825033470abeca3a6468c5ba6a609df6d6d7fb1083a19f1aa739eb6abeff",
+    "frames": [
+      {
+        "i": 0,
+        "bbox": [
+          290,
+          186,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 150,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 1,
+        "bbox": [
+          273,
+          230,
+          597,
+          690
+        ],
+        "foot": 690,
+        "duration": 60,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 2,
+        "bbox": [
+          224,
+          204,
+          647,
+          677
+        ],
+        "foot": 677,
+        "duration": 60,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 3,
+        "bbox": [
+          277,
+          191,
+          585,
+          648
+        ],
+        "foot": 648,
+        "duration": 70,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 4,
+        "bbox": [
+          269,
+          235,
+          673,
+          691
+        ],
+        "foot": 691,
+        "duration": 90,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 5,
+        "bbox": [
+          290,
+          186,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 200,
+        "transparent": true,
+        "edge": false
+      }
+    ]
+  },
+  {
+    "name": "17_Skok_pionowy.gif",
+    "sha256": "8ae12b250b81c5ee3ba771e146830e49700469275af5ef1b8e51fcfc76048b06",
+    "frames": [
+      {
+        "i": 0,
+        "bbox": [
+          290,
+          186,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 180,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 1,
+        "bbox": [
+          264,
+          296,
+          593,
+          691
+        ],
+        "foot": 691,
+        "duration": 100,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 2,
+        "bbox": [
+          291,
+          115,
+          592,
+          625
+        ],
+        "foot": 625,
+        "duration": 100,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 3,
+        "bbox": [
+          295,
+          125,
+          592,
+          541
+        ],
+        "foot": 541,
+        "duration": 150,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 4,
+        "bbox": [
+          261,
+          276,
+          597,
+          691
+        ],
+        "foot": 691,
+        "duration": 120,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 5,
+        "bbox": [
+          290,
+          186,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 220,
+        "transparent": true,
+        "edge": false
+      }
+    ]
+  },
+  {
+    "name": "18_Blok_wysoki.gif",
+    "sha256": "b812db4017d6b5785272697e5b621fbe894acc7d1f55aeba36e0b390f2732251",
+    "frames": [
+      {
+        "i": 0,
+        "bbox": [
+          290,
+          186,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 180,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 1,
+        "bbox": [
+          260,
+          181,
+          665,
+          687
+        ],
+        "foot": 687,
+        "duration": 70,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 2,
+        "bbox": [
+          266,
+          179,
+          666,
+          689
+        ],
+        "foot": 689,
+        "duration": 90,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 3,
+        "bbox": [
+          297,
+          204,
+          668,
+          691
+        ],
+        "foot": 691,
+        "duration": 170,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 4,
+        "bbox": [
+          267,
+          193,
+          666,
+          687
+        ],
+        "foot": 687,
+        "duration": 90,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 5,
+        "bbox": [
+          290,
+          186,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 200,
+        "transparent": true,
+        "edge": false
+      }
+    ]
+  },
+  {
+    "name": "19_Blok_niski.gif",
+    "sha256": "d92c42943a7c78439e9d8281020e9b598330ef5736e98e8d4eb34e93328ebfbd",
+    "frames": [
+      {
+        "i": 0,
+        "bbox": [
+          290,
+          186,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 180,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 1,
+        "bbox": [
+          301,
+          223,
+          665,
+          687
+        ],
+        "foot": 687,
+        "duration": 70,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 2,
+        "bbox": [
+          239,
+          293,
+          664,
+          687
+        ],
+        "foot": 687,
+        "duration": 90,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 3,
+        "bbox": [
+          246,
+          304,
+          664,
+          690
+        ],
+        "foot": 690,
+        "duration": 170,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 4,
+        "bbox": [
+          295,
+          235,
+          662,
+          693
+        ],
+        "foot": 693,
+        "duration": 90,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 5,
+        "bbox": [
+          290,
+          186,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 200,
+        "transparent": true,
+        "edge": false
+      }
+    ]
+  },
+  {
+    "name": "20_Zejscie_pod_ciosem.gif",
+    "sha256": "4399ddd2d282313aa83b58552b79c943d471ef8b4dc8ef642265eec79d039810",
+    "frames": [
+      {
+        "i": 0,
+        "bbox": [
+          290,
+          186,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 180,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 1,
+        "bbox": [
+          297,
+          226,
+          665,
+          690
+        ],
+        "foot": 690,
+        "duration": 70,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 2,
+        "bbox": [
+          287,
+          315,
+          667,
+          696
+        ],
+        "foot": 696,
+        "duration": 90,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 3,
+        "bbox": [
+          322,
+          346,
+          679,
+          686
+        ],
+        "foot": 686,
+        "duration": 170,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 4,
+        "bbox": [
+          313,
+          265,
+          667,
+          694
+        ],
+        "foot": 694,
+        "duration": 90,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 5,
+        "bbox": [
+          290,
+          186,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 200,
+        "transparent": true,
+        "edge": false
+      }
+    ]
+  },
+  {
+    "name": "21_Odchylenie.gif",
+    "sha256": "ebdfd68d4e37c55e4266f7df1bc297cab4dd4fa93cf9820942854dbf4e5130b7",
+    "frames": [
+      {
+        "i": 0,
+        "bbox": [
+          290,
+          186,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 180,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 1,
+        "bbox": [
+          277,
+          187,
+          666,
+          691
+        ],
+        "foot": 691,
+        "duration": 70,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 2,
+        "bbox": [
+          249,
+          204,
+          666,
+          691
+        ],
+        "foot": 691,
+        "duration": 90,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 3,
+        "bbox": [
+          202,
+          207,
+          666,
+          694
+        ],
+        "foot": 694,
+        "duration": 170,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 4,
+        "bbox": [
+          278,
+          194,
+          666,
+          692
+        ],
+        "foot": 692,
+        "duration": 90,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 5,
+        "bbox": [
+          290,
+          186,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 200,
+        "transparent": true,
+        "edge": false
+      }
+    ]
+  },
+  {
+    "name": "22_Trafienie_glowa.gif",
+    "sha256": "f089e1d70e80012fe9e549f24c179547ed285714d0e6c52ea92280cc2fa196e2",
+    "frames": [
+      {
+        "i": 0,
+        "bbox": [
+          290,
+          186,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 160,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 1,
+        "bbox": [
+          289,
+          187,
+          671,
+          689
+        ],
+        "foot": 689,
+        "duration": 50,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 2,
+        "bbox": [
+          252,
+          184,
+          665,
+          686
+        ],
+        "foot": 686,
+        "duration": 90,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 3,
+        "bbox": [
+          274,
+          202,
+          663,
+          695
+        ],
+        "foot": 695,
+        "duration": 100,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 4,
+        "bbox": [
+          267,
+          194,
+          666,
+          688
+        ],
+        "foot": 688,
+        "duration": 110,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 5,
+        "bbox": [
+          290,
+          186,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 200,
+        "transparent": true,
+        "edge": false
+      }
+    ]
+  },
+  {
+    "name": "23_Trafienie_tulow.gif",
+    "sha256": "3d9e7f9e65949a0f99c509e34b8d8be4fd90f7f755ea8900838bd0889dff5bf0",
+    "frames": [
+      {
+        "i": 0,
+        "bbox": [
+          290,
+          186,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 160,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 1,
+        "bbox": [
+          336,
+          200,
+          667,
+          684
+        ],
+        "foot": 684,
+        "duration": 50,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 2,
+        "bbox": [
+          337,
+          244,
+          666,
+          687
+        ],
+        "foot": 687,
+        "duration": 90,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 3,
+        "bbox": [
+          356,
+          279,
+          692,
+          695
+        ],
+        "foot": 695,
+        "duration": 100,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 4,
+        "bbox": [
+          321,
+          212,
+          667,
+          689
+        ],
+        "foot": 689,
+        "duration": 110,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 5,
+        "bbox": [
+          290,
+          186,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 200,
+        "transparent": true,
+        "edge": false
+      }
+    ]
+  },
+  {
+    "name": "24_Upadek.gif",
+    "sha256": "0c101a225bc735d2cb81a588598828d0a0c740c2334f4c72a23fd8e7d80be6eb",
+    "frames": [
+      {
+        "i": 0,
+        "bbox": [
+          290,
+          186,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 200,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 1,
+        "bbox": [
+          250,
+          248,
+          714,
+          690
+        ],
+        "foot": 690,
+        "duration": 80,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 2,
+        "bbox": [
+          219,
+          290,
+          745,
+          662
+        ],
+        "foot": 662,
+        "duration": 90,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 3,
+        "bbox": [
+          242,
+          380,
+          721,
+          690
+        ],
+        "foot": 690,
+        "duration": 120,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 4,
+        "bbox": [
+          244,
+          540,
+          717,
+          690
+        ],
+        "foot": 687,
+        "duration": 140,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 5,
+        "bbox": [
+          249,
+          562,
+          712,
+          689
+        ],
+        "foot": 680,
+        "duration": 700,
+        "transparent": true,
+        "edge": false
+      }
+    ]
+  },
+  {
+    "name": "25_KO.gif",
+    "sha256": "1ac5724c00194b0cca84e54a03b0a861b44988b8e41630b90fbeec6e5436a118",
+    "frames": [
+      {
+        "i": 0,
+        "bbox": [
+          249,
+          562,
+          712,
+          689
+        ],
+        "foot": 683,
+        "duration": 1000,
+        "transparent": true,
+        "edge": false
+      }
+    ]
+  },
+  {
+    "name": "26_Wstawanie.gif",
+    "sha256": "723b1f3956db40e4b971b2ac9b6a29641cbcd56b4e6f338ce9105d9786bdd96c",
+    "frames": [
+      {
+        "i": 0,
+        "bbox": [
+          249,
+          562,
+          712,
+          689
+        ],
+        "foot": 680,
+        "duration": 250,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 1,
+        "bbox": [
+          266,
+          420,
+          694,
+          691
+        ],
+        "foot": 674,
+        "duration": 140,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 2,
+        "bbox": [
+          272,
+          375,
+          691,
+          691
+        ],
+        "foot": 682,
+        "duration": 160,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 3,
+        "bbox": [
+          271,
+          277,
+          691,
+          691
+        ],
+        "foot": 691,
+        "duration": 150,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 4,
+        "bbox": [
+          275,
+          260,
+          688,
+          689
+        ],
+        "foot": 689,
+        "duration": 140,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 5,
+        "bbox": [
+          290,
+          186,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 240,
+        "transparent": true,
+        "edge": false
+      }
+    ]
+  },
+  {
+    "name": "27_Poprawienie_rekawicy.gif",
+    "sha256": "a177166e4cbc2c75d68ee46235a6a8fb1439b89c1acb34449597f9c543c1a02c",
+    "frames": [
+      {
+        "i": 0,
+        "bbox": [
+          290,
+          186,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 240,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 1,
+        "bbox": [
+          284,
+          189,
+          662,
+          690
+        ],
+        "foot": 690,
+        "duration": 160,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 2,
+        "bbox": [
+          291,
+          187,
+          662,
+          690
+        ],
+        "foot": 690,
+        "duration": 180,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 3,
+        "bbox": [
+          289,
+          193,
+          665,
+          689
+        ],
+        "foot": 689,
+        "duration": 320,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 4,
+        "bbox": [
+          289,
+          192,
+          665,
+          689
+        ],
+        "foot": 689,
+        "duration": 160,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 5,
+        "bbox": [
+          290,
+          186,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 240,
+        "transparent": true,
+        "edge": false
+      }
+    ]
+  },
+  {
+    "name": "28_Zwyciestwo.gif",
+    "sha256": "c9b0b4afbd4d5af34e60781b1d3adbd52a3a5c3ce666388089839cef3208c9ce",
+    "frames": [
+      {
+        "i": 0,
+        "bbox": [
+          290,
+          186,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 240,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 1,
+        "bbox": [
+          370,
+          170,
+          665,
+          688
+        ],
+        "foot": 688,
+        "duration": 170,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 2,
+        "bbox": [
+          338,
+          176,
+          664,
+          688
+        ],
+        "foot": 688,
+        "duration": 180,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 3,
+        "bbox": [
+          342,
+          103,
+          666,
+          688
+        ],
+        "foot": 688,
+        "duration": 700,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 4,
+        "bbox": [
+          342,
+          179,
+          666,
+          690
+        ],
+        "foot": 690,
+        "duration": 180,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 5,
+        "bbox": [
+          290,
+          186,
+          661,
+          691
+        ],
+        "foot": 691,
+        "duration": 240,
+        "transparent": true,
+        "edge": false
+      }
+    ]
+  },
+  {
+    "name": "NYXA_INTRO_TYLKO_PRZODEM.gif",
+    "sha256": "912d5f8b11ca9c4aa605368ae513c810256ede6758efa21254d4d3cb5d619921",
+    "frames": [
+      {
+        "i": 0,
+        "bbox": [
+          346,
+          88,
+          666,
+          691
+        ],
+        "foot": 691,
+        "duration": 240,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 1,
+        "bbox": [
+          341,
+          87,
+          663,
+          691
+        ],
+        "foot": 691,
+        "duration": 160,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 2,
+        "bbox": [
+          334,
+          88,
+          660,
+          691
+        ],
+        "foot": 691,
+        "duration": 400,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 3,
+        "bbox": [
+          334,
+          84,
+          672,
+          692
+        ],
+        "foot": 692,
+        "duration": 180,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 4,
+        "bbox": [
+          338,
+          81,
+          678,
+          690
+        ],
+        "foot": 690,
+        "duration": 300,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 5,
+        "bbox": [
+          334,
+          82,
+          663,
+          690
+        ],
+        "foot": 690,
+        "duration": 180,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 6,
+        "bbox": [
+          325,
+          120,
+          664,
+          690
+        ],
+        "foot": 690,
+        "duration": 180,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 7,
+        "bbox": [
+          330,
+          120,
+          668,
+          691
+        ],
+        "foot": 691,
+        "duration": 180,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 8,
+        "bbox": [
+          325,
+          120,
+          664,
+          690
+        ],
+        "foot": 690,
+        "duration": 140,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 9,
+        "bbox": [
+          330,
+          120,
+          668,
+          691
+        ],
+        "foot": 691,
+        "duration": 220,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 10,
+        "bbox": [
+          324,
+          120,
+          686,
+          690
+        ],
+        "foot": 690,
+        "duration": 1000,
+        "transparent": true,
+        "edge": false
+      }
+    ]
+  },
+  {
+    "name": "NYXA_WYBOR_ZAWODNIKA.gif",
+    "sha256": "d63b7b38eb8eb703625586e0e20c395f465f908270418dd2eb2b562fc6b03fbb",
+    "frames": [
+      {
+        "i": 0,
+        "bbox": [
+          349,
+          132,
+          632,
+          691
+        ],
+        "foot": 691,
+        "duration": 700,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 1,
+        "bbox": [
+          335,
+          133,
+          641,
+          690
+        ],
+        "foot": 690,
+        "duration": 160,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 2,
+        "bbox": [
+          344,
+          132,
+          637,
+          691
+        ],
+        "foot": 691,
+        "duration": 190,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 3,
+        "bbox": [
+          327,
+          130,
+          650,
+          689
+        ],
+        "foot": 689,
+        "duration": 160,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 4,
+        "bbox": [
+          316,
+          131,
+          650,
+          690
+        ],
+        "foot": 690,
+        "duration": 180,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 5,
+        "bbox": [
+          304,
+          130,
+          658,
+          690
+        ],
+        "foot": 690,
+        "duration": 350,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 6,
+        "bbox": [
+          306,
+          134,
+          681,
+          690
+        ],
+        "foot": 690,
+        "duration": 400,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 7,
+        "bbox": [
+          304,
+          130,
+          658,
+          690
+        ],
+        "foot": 690,
+        "duration": 200,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 8,
+        "bbox": [
+          335,
+          133,
+          641,
+          690
+        ],
+        "foot": 690,
+        "duration": 190,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 9,
+        "bbox": [
+          343,
+          134,
+          640,
+          690
+        ],
+        "foot": 690,
+        "duration": 180,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 10,
+        "bbox": [
+          338,
+          139,
+          645,
+          691
+        ],
+        "foot": 691,
+        "duration": 900,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 11,
+        "bbox": [
+          343,
+          139,
+          640,
+          691
+        ],
+        "foot": 691,
+        "duration": 180,
+        "transparent": true,
+        "edge": false
+      },
+      {
+        "i": 12,
+        "bbox": [
+          349,
+          132,
+          632,
+          691
+        ],
+        "foot": 691,
+        "duration": 450,
+        "transparent": true,
+        "edge": false
+      }
+    ]
+  }
+]

@@ -1,0 +1,150 @@
+{
+  "baseline": true,
+  "rendering": "engine and actual actions only; the scripted controller is not human playtesting",
+  "rows": [
+    {
+      "slot": 0,
+      "challenge": "evade5",
+      "completed": true,
+      "count": 5,
+      "elapsed": 23664,
+      "hp": 47,
+      "positions": [
+        15.92439690731583,
+        29.85821078837138
+      ]
+    },
+    {
+      "slot": 0,
+      "challenge": "push3",
+      "completed": true,
+      "count": 3,
+      "elapsed": 10592,
+      "hp": 100,
+      "positions": [
+        74.09968963946159,
+        82.58924720178118
+      ]
+    },
+    {
+      "slot": 1,
+      "challenge": "evade5",
+      "completed": true,
+      "count": 5,
+      "elapsed": 38448,
+      "hp": 73,
+      "positions": [
+        15.904279099814703,
+        32.15694896271576
+      ]
+    },
+    {
+      "slot": 1,
+      "challenge": "push3",
+      "completed": true,
+      "count": 3,
+      "elapsed": 6224,
+      "hp": 100,
+      "positions": [
+        71.89380313461305,
+        84.07560309268418
+      ]
+    },
+    {
+      "slot": 2,
+      "challenge": "evade5",
+      "completed": false,
+      "count": 0,
+      "elapsed": 180000,
+      "hp": 7,
+      "positions": [
+        11.2193087361705,
+        25.432008700837834
+      ]
+    },
+    {
+      "slot": 2,
+      "challenge": "push3",
+      "completed": true,
+      "count": 3,
+      "elapsed": 9968,
+      "hp": 100,
+      "positions": [
+        74.25128888164582,
+        82.74084644396541
+      ]
+    },
+    {
+      "slot": 3,
+      "challenge": "evade5",
+      "completed": true,
+      "count": 5,
+      "elapsed": 28608,
+      "hp": 28,
+      "positions": [
+        9.387040515054784,
+        23.408813915528718
+      ]
+    },
+    {
+      "slot": 3,
+      "challenge": "push3",
+      "completed": true,
+      "count": 3,
+      "elapsed": 11744,
+      "hp": 100,
+      "positions": [
+        74.17548926055366,
+        82.66504682287325
+      ]
+    },
+    {
+      "slot": 4,
+      "challenge": "evade5",
+      "completed": false,
+      "count": 0,
+      "elapsed": 180000,
+      "hp": 19,
+      "positions": [
+        13.663456065810248,
+        25.895913186194417
+      ]
+    },
+    {
+      "slot": 4,
+      "challenge": "push3",
+      "completed": true,
+      "count": 3,
+      "elapsed": 10304,
+      "hp": 100,
+      "positions": [
+        73.9519918483629,
+        82.43764795959684
+      ]
+    },
+    {
+      "slot": 5,
+      "challenge": "evade5",
+      "completed": false,
+      "count": 0,
+      "elapsed": 180000,
+      "hp": 43,
+      "positions": [
+        10.899845952608755,
+        26.025116012341442
+      ]
+    },
+    {
+      "slot": 5,
+      "challenge": "push3",
+      "completed": true,
+      "count": 3,
+      "elapsed": 11040,
+      "hp": 100,
+      "positions": [
+        74.09968963946159,
+        82.58924720178118
+      ]
+    }
+  ]
+}

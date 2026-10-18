@@ -1,0 +1,14 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> test:ai-matrix
+> node scripts/audit-adversarial-ai.cjs && node scripts/audit-adversarial-ai.cjs --critical
+
+tested BRAX 180
+tested NYXA 360
+tested VEXA 540
+tested KROV 720
+tested NINA 900
+tested DANNY 1080
+PASS AI matrix 1080
+tested BRAX 20
+PASS AI matrix 20

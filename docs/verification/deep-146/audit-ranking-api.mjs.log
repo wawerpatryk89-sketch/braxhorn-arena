@@ -1,0 +1,9 @@
+ranking_time_rejected {"match":"345c5b13-75d1-4637-8b92-eb8d690acf4e","mode":"fight","fighter":"BRAX","elapsed":9403,"minimum":9404,"rounds":[2,0],"roundsPlayed":2}
+ranking_time_rejected {"match":"345c5b13-75d1-4637-8b92-eb8d690acf4e","mode":"fight","fighter":"BRAX","elapsed":1500,"minimum":9404,"rounds":[2,0],"roundsPlayed":2}
+ranking_time_rejected {"match":"5a184c60-5f5a-4403-9dee-833524f87a9c","mode":"arcade","fighter":"BRAX","elapsed":9403,"minimum":9404,"rounds":[2,0],"roundsPlayed":2}
+ranking_time_rejected {"match":"5a184c60-5f5a-4403-9dee-833524f87a9c","mode":"arcade","fighter":"BRAX","elapsed":1500,"minimum":9404,"rounds":[2,0],"roundsPlayed":2}
+ranking_time_rejected {"match":"eda65407-5cab-4c3d-b693-c639d75af19b","mode":"survival","fighter":"BRAX","elapsed":4701,"minimum":4702,"rounds":[1,0],"roundsPlayed":1}
+ranking_time_rejected {"match":"eda65407-5cab-4c3d-b693-c639d75af19b","mode":"survival","fighter":"BRAX","elapsed":1500,"minimum":4702,"rounds":[1,0],"roundsPlayed":1}
+ranking_time_rejected {"match":"816d6e3f-6e56-4fa0-b6b7-920e98683350","mode":"tournament","fighter":"BRAX","elapsed":9403,"minimum":9404,"rounds":[2,0],"roundsPlayed":2}
+ranking_time_rejected {"match":"816d6e3f-6e56-4fa0-b6b7-920e98683350","mode":"tournament","fighter":"BRAX","elapsed":1500,"minimum":9404,"rounds":[2,0],"roundsPlayed":2}
+PASS real SQLite API: threshold-1 rejected, 1500ms rejected, exact threshold accepted and duplicate protected for all modes

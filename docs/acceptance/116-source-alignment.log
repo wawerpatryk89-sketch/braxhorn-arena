@@ -1,0 +1,69 @@
+(node:6) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/krov-three-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+{
+  "pass": true,
+  "scope": "numeric source rig and hitbox centres; not rendered skin/contact or device QA",
+  "results": [
+    {
+      "who": "BRAX",
+      "contacts": 132,
+      "maxCentreError": 1.0859919924850373e-12,
+      "idleFootTravelPx": [
+        111.25347291807782,
+        230.63299710033408
+      ],
+      "idleClip": "Boxing (2)"
+    },
+    {
+      "who": "NYXA",
+      "contacts": 60,
+      "maxCentreError": 9.663381206337363e-13,
+      "idleFootTravelPx": [
+        0.5894041630484708,
+        2.605506747786251
+      ],
+      "idleClip": "Idle"
+    },
+    {
+      "who": "VEXA",
+      "contacts": 66,
+      "maxCentreError": 1.2862197421537486e-12,
+      "idleFootTravelPx": [
+        25.236713434127296,
+        26.52549195500461
+      ],
+      "idleClip": "Boxing (1)"
+    },
+    {
+      "who": "KROV",
+      "contacts": 88,
+      "maxCentreError": 4.823324033076558e-13,
+      "idleFootTravelPx": [
+        31.41114816652714,
+        13.40466029716282
+      ],
+      "idleClip": "Fighting Idle"
+    },
+    {
+      "who": "NINA",
+      "contacts": 115,
+      "maxCentreError": 1.091926419138562e-12,
+      "idleFootTravelPx": [
+        215.07166340342678,
+        210.76023152193335
+      ],
+      "idleClip": "Ginga Variation 3"
+    },
+    {
+      "who": "DANNY",
+      "contacts": 120,
+      "maxCentreError": 0.00007747064849403903,
+      "idleFootTravelPx": [
+        14.724003582014006,
+        12.820691826858877
+      ],
+      "idleClip": "Idle"
+    }
+  ]
+}

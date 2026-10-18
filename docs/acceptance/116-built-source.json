@@ -1,0 +1,32 @@
+[
+  {
+    "file": "combat.js",
+    "sameAfterImageExtensionRewrites": true,
+    "sha256": "da91e7112f1e25199abfb7657cd29a81cd9a4103b8adc64fc126b9e096e709bc"
+  },
+  {
+    "file": "menu.js",
+    "sameAfterImageExtensionRewrites": true,
+    "sha256": "7d8985ddaafa64d92b11eabdfdbf5f412cbeb1b5fbfad664809ca3656ddd9198"
+  },
+  {
+    "file": "arena-interface.js",
+    "sameAfterImageExtensionRewrites": true,
+    "sha256": "61f09bc57b7edc5d18b069b28773abc83b8d3e4101a160d7649697a5afdc5124"
+  },
+  {
+    "file": "arena-interface.css",
+    "sameAfterImageExtensionRewrites": true,
+    "sha256": "18130622f6ae7138841e879b044c1ba79e17c7f580b353aa231764b762e2e1f4"
+  },
+  {
+    "file": "blood-effects.js",
+    "sameAfterImageExtensionRewrites": true,
+    "sha256": "7a6f7dd4713d1ee79cc0584445d08ddfa70717157645ba5f64b452d20b447b33"
+  },
+  {
+    "file": "ko-replay.js",
+    "sameAfterImageExtensionRewrites": true,
+    "sha256": "166994ae86a2f8e6b34b522af23b9c020a5ec4d365c50aaeaffb2c00cac6002f"
+  }
+]

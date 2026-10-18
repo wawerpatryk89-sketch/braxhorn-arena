@@ -1,0 +1,16 @@
+import fs from 'node:fs';import vm from 'node:vm';import assert from 'node:assert/strict';
+let scheduled,clock=0;const videos=[];
+function makeVideo(){const events=new Map();const v={style:{},volume:.16,muted:false,currentTime:0,duration:7.3,readyState:4,paused:true,ended:false,src:'',loop:true,addEventListener(k,f){events.set(k,f)},removeEventListener(k){events.delete(k)},setAttribute(){},removeAttribute(){},load(){queueMicrotask(()=>events.get('loadeddata')?.())},play(){if(this.reject)return Promise.reject(Error('NotAllowed'));this.paused=false;return Promise.resolve()},pause(){this.paused=true},remove(){this.removed=true}};videos.push(v);return v;}
+const first=makeVideo();first.parentNode={insertBefore(){}};
+const events={};const root={addEventListener(k,fn){events[k]=fn},requestAnimationFrame(fn){scheduled=fn;return 1},cancelAnimationFrame(){scheduled=null}};
+const context={window:root,document:{getElementById:()=>null,createElement:makeVideo},AbortController,DOMException,Blob,setTimeout,clearTimeout,URL:{createObjectURL:()=> 'blob:one',revokeObjectURL(){}},fetch:async()=>new Response(new Uint8Array([1,2,3]))};
+vm.runInNewContext(fs.readFileSync('game/assets/arena-media.js','utf8'),context);const api=root.BRAX_ARENA_MEDIA;
+await api.prepare('/api/arena-media/test.0123456789ab.mp4',first);await api.resume();
+let silentFrames=0,blankFrames=0;
+async function step(){clock+=1/60;for(const v of videos)if(!v.paused){v.currentTime+=1/60;if(v.currentTime>=v.duration)v.currentTime%=v.duration;}const fn=scheduled;scheduled=null;fn?.(clock*1000);await Promise.resolve();await Promise.resolve();if(!videos.some(v=>!v.paused&&v.volume>0&&!v.muted))silentFrames++;if(!videos.some(v=>!v.paused&&v.style.opacity!=='0'))blankFrames++;}
+for(let i=0;i<60*150;i++)await step();assert(api.report().loop.switches>=20);assert.equal(blankFrames,0);assert.equal(silentFrames,0);
+api.sound(.05,true);assert(videos.every(v=>v.muted));api.sound(.05,false);api.pause();assert(videos.every(v=>v.paused));assert.equal(scheduled,null);await api.resume();await step();assert(!api.current().paused);
+for(let i=0;i<60;i++)await step();const successful=api.report().loop.switches;const standby=videos.find(v=>v!==api.current());standby.reject=true;api.current().currentTime=7.25;await step();await Promise.resolve();await Promise.resolve();assert(api.report().loop.fallbacks>0);assert.equal(api.report().loop.switches,successful);assert(api.current().loop,'native loop fallback');assert(!api.current().paused);
+events.pagehide({persisted:true});assert(videos.every(v=>v.paused));assert(api.report().active);events.pageshow({persisted:true});await Promise.resolve();assert(!api.current().paused);api.pause();events.pagehide({persisted:true});events.pageshow({persisted:true});assert(videos.every(v=>v.paused));
+api.release();assert(videos.every(v=>v.paused));assert(videos[1].removed);assert(!api.report().active);assert.equal(scheduled,null);
+console.log(JSON.stringify({status:'PASS',simulatedSeconds:150,switches:successful,blankFrames,silentFrames,checks:['mute','pause/resume','play rejection native-loop fallback','release both decoders'],limitation:'Mock media clock: does not measure real Safari decode or audio output'}));

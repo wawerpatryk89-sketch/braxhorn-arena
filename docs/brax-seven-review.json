@@ -1,0 +1,83 @@
+{
+  "animations": [
+    {
+      "action": "LIGHT_PUNCH",
+      "source": "BRAX_GARDA_WYJSCIE_CIOS.gif",
+      "frames": 15,
+      "startFrame": 8,
+      "durationMs": 480,
+      "contactFrames": [
+        10
+      ],
+      "sha256": "a41c68e668364c95a3d777670f91eb467fb5478bde7ef2a69197709ade15728d"
+    },
+    {
+      "action": "LEAN",
+      "source": "BRAX_GARDA_MOCNY_UNIK_POWROT_12_KLATEK.gif",
+      "frames": 12,
+      "startFrame": 0,
+      "durationMs": 710,
+      "contactFrames": [],
+      "sha256": "a3e1af656acb6befd97b6540aa4f2e3ba9e24cc6ebbbc59eea35632ccc668389"
+    },
+    {
+      "action": "HEAVY_PUNCH",
+      "source": "BRAX_GARDA_UNIK_KONTRA_POWROT_14_KLATEK.gif",
+      "frames": 14,
+      "startFrame": 0,
+      "durationMs": 810,
+      "contactFrames": [
+        9
+      ],
+      "sha256": "14a2e787125c1458a1f925d516dce253dc0c7e3def92d4e1ffd33aa5db627fb4"
+    },
+    {
+      "action": "UPPERCUT",
+      "source": "BRAX_GARDA_NISKI_UNIK_UPPERCUT_12_KLATEK.gif",
+      "frames": 12,
+      "startFrame": 0,
+      "durationMs": 755,
+      "contactFrames": [
+        6
+      ],
+      "sha256": "dfd0a9a1e2a56313460f6e28c6536c488d893cc76dd8c06025e4a08e12a0bc6d"
+    },
+    {
+      "action": "HEAVY_KICK",
+      "source": "BRAX_GARDA_UNIK_MOCNE_KOPNIECIE_12_KLATEK.gif",
+      "frames": 12,
+      "startFrame": 0,
+      "durationMs": 770,
+      "contactFrames": [
+        6
+      ],
+      "sha256": "f59d740d1bbd5e95b8e1eea6f894d2081fbf461923fd00576541b4867bce5097"
+    },
+    {
+      "action": "MUAY_THAI_ROUNDHOUSE",
+      "source": "BRAX_GARDA_UNIK_OKREZNE_15_KLATEK.gif",
+      "frames": 15,
+      "startFrame": 0,
+      "durationMs": 855,
+      "contactFrames": [
+        9,
+        10
+      ],
+      "sha256": "0309e802a82e1d0d780caa7511b902ae9e438345124c67baf7aec7a6082c9879"
+    },
+    {
+      "action": "CHARACTER_SELECTION",
+      "source": "BRAX_CIESZYNKA_53_KLATKI_BEZ_TLA.gif",
+      "frames": 53,
+      "sha256": "c0f70ce5344fb55b3228f1d188e6ce183ddc312b7687e1db6506597cf8e815ee"
+    }
+  ],
+  "removedUnusedAssets": [
+    "BRAX_PACK_LIGHT_PUNCH",
+    "BRAX_PACK_HEAVY_PUNCH",
+    "BRAX_PACK_HEAVY_KICK",
+    "BRAX_PACK_MUAY_THAI_ROUNDHOUSE",
+    "BRAX_PACK_UPPERCUT",
+    "BRAX_PACK_BLOCK"
+  ]
+}

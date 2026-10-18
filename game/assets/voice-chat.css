@@ -1,0 +1,26 @@
+#voiceConsent{position:absolute;inset:0;z-index:270;display:grid;place-items:center;padding:18px;background:#020806e8;backdrop-filter:blur(8px);color:#eff4e9;touch-action:manipulation}
+#voiceConsent.off,#voiceControls.off{display:none}
+.voice-card{width:min(580px,90%);padding:clamp(18px,4cqh,34px);border:1px solid #a0b48560;border-radius:12px;background:linear-gradient(135deg,#1b2a1f,#08100d);box-shadow:0 20px 70px #0008;text-align:center}
+.voice-emblem{display:grid;place-items:center;margin:0 auto 12px;width:48px;height:48px;border:1px solid #bfd0a14a;border-radius:50%;color:#d5eeb4}
+.voice-emblem svg,#voiceControls svg{width:22px;height:24px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.voice-card>small{font:700 10px/1.4 Arial,sans-serif;letter-spacing:.16em;color:#aebf99}
+.voice-card h2{font-size:clamp(21px,5.5cqh,32px);line-height:1.15;font-style:italic;margin:12px 0;letter-spacing:-.02em}
+.voice-card p{font:12px/1.55 Arial,sans-serif;color:#b6c2ae;min-height:36px;margin:0 0 18px}
+.voice-decisions{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.voice-decisions button{min-height:46px;border:1px solid #9bb37c65;border-radius:6px;padding:12px;color:#dce9cf;background:#17241a;font:800 11px Arial,sans-serif;letter-spacing:.08em;cursor:pointer}
+#voiceAllow{background:#cee8a8;color:#162010;border-color:#cee8a8}
+.voice-decisions button:disabled{opacity:.45;cursor:wait}.voice-decisions button:focus-visible,#voiceControls button:focus-visible{outline:2px solid #e5ffb9;outline-offset:3px}
+#voiceControls{position:absolute;z-index:235;right:max(12px,var(--safeR));top:13cqh;display:flex;align-items:center;gap:6px;max-width:calc(100% - 24px);padding:5px;border:1px solid #7b916452;border-radius:7px;background:#06100deb;color:#e5efd9;font:9px Arial,sans-serif;box-shadow:0 3px 20px #0007;touch-action:manipulation}
+#voiceStatus{padding:0 5px;max-width:155px;line-height:1.4}
+#voiceControls button{display:grid;place-items:center;min-width:38px;min-height:38px;padding:6px;border:1px solid #79965d60;border-radius:5px;background:#1a291d;color:#d9edc0;cursor:pointer}
+#voiceControls button[aria-pressed=true]{background:#3c2522;border-color:#986854;color:#efc4ad}#voiceControls button:disabled{opacity:.35}
+#voiceControls #voiceDisconnect{min-width:28px;font-size:22px;color:#c4cdbc;background:transparent;border-color:transparent}
+#voiceControls.speaking{border-color:#cee8a8}#voiceControls.speaking #voiceStatus{color:#e4ffb9}
+@media(max-height:370px){.voice-card{padding:16px 22px}.voice-emblem{width:34px;height:34px;margin-bottom:8px}.voice-card h2{margin:8px 0;font-size:21px}.voice-card p{margin-bottom:12px;font-size:11px}.voice-decisions button{min-height:42px;padding:10px}#voiceStatus{max-width:115px;font-size:8px}#voiceControls{top:15cqh}}
+
+/* Compact in-fight controls; status remains available to assistive technology. */
+#voiceControls{top:14cqh;right:max(8px,var(--safeR));gap:3px;padding:3px;border-radius:5px;box-shadow:none}
+#voiceControls #voiceStatus{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+#voiceControls button,#voiceControls #voiceDisconnect{width:30px;height:30px;min-width:30px;min-height:30px;padding:5px;font-size:19px}
+#voiceControls svg{width:17px;height:19px}
+#voiceControls:has(button:disabled){opacity:.7}

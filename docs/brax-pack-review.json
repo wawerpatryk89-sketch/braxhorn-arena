@@ -1,0 +1,130 @@
+{
+  "integrated": [
+    {
+      "action": "LIGHT_PUNCH",
+      "file": "BRAX_LIGHT_PUNCH_PODGLAD_01.gif",
+      "frames": 6,
+      "sha256": "dfeb674d6e370ed669150b3b41cb72fe699233f40d2d27cc7f5fdf51a0407eb1"
+    },
+    {
+      "action": "HEAVY_PUNCH",
+      "file": "BRAX_HEAVY_PUNCH_PODGLAD_01.gif",
+      "frames": 6,
+      "sha256": "97e22459a3ad4574b231a01d5a7fdd33d370a13bd04c0d4306fab7b27a3dd7d6"
+    },
+    {
+      "action": "CROUCH_PUNCH",
+      "file": "BRAX_CROUCH_PUNCH_PODGLAD_01.gif",
+      "frames": 6,
+      "sha256": "938fbec4a968770657092d288c76f0f93c9e3c82b3c6f3f8d48ce4bdf507d784"
+    },
+    {
+      "action": "LIGHT_KICK",
+      "file": "BRAX_LIGHT_KICK_PODGLAD_01.gif",
+      "frames": 6,
+      "sha256": "f71e4efdb1286962d040a3c79c94ec5c74a43389ad7b7ab329f890e9b84c8dcc"
+    },
+    {
+      "action": "HEAVY_KICK",
+      "file": "BRAX_HEAVY_KICK_PODGLAD_01.gif",
+      "frames": 8,
+      "sha256": "e46fa1d1975d2821c79b26562838eeb37f945871a5036e59df72d57766d385c0"
+    },
+    {
+      "action": "CROUCH_KICK",
+      "file": "BRAX_CROUCH_KICK_PODGLAD_01.gif",
+      "frames": 6,
+      "sha256": "1253665639d95b4f2ee55780a85a58b1e83377be553c9ba6969761df27f34d0f"
+    },
+    {
+      "action": "JUMP_PUNCH",
+      "file": "BRAX_JUMP_PUNCH_PODGLAD_01.gif",
+      "frames": 6,
+      "sha256": "67c15cededadffd5842d79a026a0792d94e809e62034d92d7db541e00721f746"
+    },
+    {
+      "action": "MUAY_THAI_ROUNDHOUSE",
+      "file": "BRAX_ROUNDHOUSE_PODGLAD_01.gif",
+      "frames": 8,
+      "sha256": "7a752f19b2d6eff88006a1473055964297b87090ac044f2b108875b10450b67e"
+    },
+    {
+      "action": "UPPERCUT",
+      "file": "BRAX_UPPERCUT_PODGLAD_01.gif",
+      "frames": 8,
+      "sha256": "2f604a7041bbaa91391beb74a9ff8551be3286a7e60ab8f57590d30d14e72d30"
+    },
+    {
+      "action": "DOUBLE_PUNCH",
+      "file": "BRAX_LEWY_PRAWY_PODGLAD_01.gif",
+      "frames": 10,
+      "sha256": "01592af875bc19bc2356445fcdf842715396d27219c64f5c90f276d274e1e8e5"
+    },
+    {
+      "action": "CHAIN_STRIKES",
+      "file": "BRAX_COMBO_LEWY_PRAWY_KOPNIECIE_01.gif",
+      "frames": 16,
+      "sha256": "3242cbbae5bc703417a90ec69dac8e76e282456847ef38260b44cc0378551e06"
+    },
+    {
+      "action": "COMBO",
+      "file": "BRAX_COMBO_BYK_KURZ_POLACZONE_01.gif",
+      "frames": 15,
+      "sha256": "ce14663f3468c900524abee42036909f46e96cbf46265577b00c4b3756401938"
+    },
+    {
+      "action": "BLOCK",
+      "file": "BRAX_GUARD_PODGLAD_01.gif",
+      "frames": 6,
+      "sha256": "bd13d326b92a5bf2d6e51066cc8f9eb30016f93b5149ef7598c9871e49c33925"
+    }
+  ],
+  "excluded": [
+    {
+      "file": "BRAX_SPINNING_HEEL_KICK_PODGLAD_01.gif",
+      "reason": "Frame 1 has opaque pixels touching x=0; tail clipped at left edge."
+    },
+    {
+      "file": "BRAX_BYK_PRZYGOTOWANIE_KURZ_01.gif",
+      "reason": "Already present in the full charge."
+    },
+    {
+      "file": "BRAX_BYK_SZARZA_KURZ_01.gif",
+      "reason": "Already present in the full charge."
+    }
+  ],
+  "missing": [
+    "dedicated idle loop",
+    "hit reactions",
+    "knockdown and get up",
+    "victory and defeat",
+    "corrected spinning heel kick"
+  ],
+  "removed_legacy_assets": [
+    "BRAX_LIGHT_PUNCH",
+    "BRAX_HEAVY_PUNCH",
+    "BRAX_CROUCH_PUNCH",
+    "BRAX_LIGHT_KICK",
+    "BRAX_HEAVY_KICK",
+    "BRAX_CROUCH_KICK",
+    "BRAX_JUMP_PUNCH",
+    "BRAX_MUAY_THAI_ROUNDHOUSE",
+    "BRAX_HORN_CHALLENGE",
+    "BRAX_KNUCKLE_CRACK",
+    "BRAXHORN_COMBO_FIXED"
+  ],
+  "retained_reviewed_legacy": [
+    "CLINCH_KNEE",
+    "HEAVY_STOMP"
+  ],
+  "controls": {
+    "P": "Jab, cross, left-right, uppercut, left-right-kick, cycling on successive presses",
+    "K": "Light kick, heavy kick, roundhouse",
+    "Guard + P/K": "Crouch punch/kick",
+    "Jump + P": "Jump punch",
+    "COMBO": "Full bull charge with preparation; full meter, maximum twice per round",
+    "H + P": "Existing clinch knee",
+    "H + K": "Heavy kick",
+    "Guard + H": "Existing stomp"
+  }
+}

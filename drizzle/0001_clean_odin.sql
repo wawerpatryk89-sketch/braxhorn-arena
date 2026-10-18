@@ -1,0 +1,1 @@
+ALTER TABLE `runs` ADD `target` integer DEFAULT 3 NOT NULL;

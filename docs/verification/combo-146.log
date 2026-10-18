@@ -1,0 +1,1 @@
+{"pass":true,"checks":2688,"roster":8,"roles":["player","cpu","remote-guest host-side actor"],"guards":["high","low"],"rule":"two distinct clean hits confirm only the current combo","limitations":"shared authoritative damage path tested; two physical phones not tested"}

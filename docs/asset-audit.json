@@ -1,0 +1,307 @@
+[
+  {
+    "asset": "BRAX_LIGHT_PUNCH",
+    "size": [
+      512,
+      512
+    ],
+    "frames": 6,
+    "frameMs": [
+      110
+    ],
+    "durationMs": 660,
+    "touchesImageEdge": []
+  },
+  {
+    "asset": "BRAX_HEAVY_PUNCH",
+    "size": [
+      512,
+      512
+    ],
+    "frames": 8,
+    "frameMs": [
+      120
+    ],
+    "durationMs": 960,
+    "touchesImageEdge": []
+  },
+  {
+    "asset": "BRAX_CROUCH_PUNCH",
+    "size": [
+      512,
+      512
+    ],
+    "frames": 6,
+    "frameMs": [
+      110
+    ],
+    "durationMs": 660,
+    "touchesImageEdge": []
+  },
+  {
+    "asset": "BRAX_LIGHT_KICK",
+    "size": [
+      512,
+      512
+    ],
+    "frames": 6,
+    "frameMs": [
+      110
+    ],
+    "durationMs": 660,
+    "touchesImageEdge": []
+  },
+  {
+    "asset": "BRAX_HEAVY_KICK",
+    "size": [
+      512,
+      512
+    ],
+    "frames": 8,
+    "frameMs": [
+      120
+    ],
+    "durationMs": 960,
+    "touchesImageEdge": []
+  },
+  {
+    "asset": "BRAX_CROUCH_KICK",
+    "size": [
+      512,
+      512
+    ],
+    "frames": 6,
+    "frameMs": [
+      110
+    ],
+    "durationMs": 660,
+    "touchesImageEdge": []
+  },
+  {
+    "asset": "BRAX_JUMP_PUNCH",
+    "size": [
+      512,
+      512
+    ],
+    "frames": 6,
+    "frameMs": [
+      120
+    ],
+    "durationMs": 720,
+    "touchesImageEdge": []
+  },
+  {
+    "asset": "BRAX_CLINCH_KNEE",
+    "size": [
+      512,
+      512
+    ],
+    "frames": 9,
+    "frameMs": [
+      80
+    ],
+    "durationMs": 720,
+    "touchesImageEdge": []
+  },
+  {
+    "asset": "BRAX_MUAY_THAI_ROUNDHOUSE",
+    "size": [
+      512,
+      512
+    ],
+    "frames": 8,
+    "frameMs": [
+      80
+    ],
+    "durationMs": 640,
+    "touchesImageEdge": []
+  },
+  {
+    "asset": "BRAX_HEAVY_STOMP",
+    "size": [
+      512,
+      512
+    ],
+    "frames": 7,
+    "frameMs": [
+      120
+    ],
+    "durationMs": 840,
+    "touchesImageEdge": []
+  },
+  {
+    "asset": "BRAX_HORN_CHALLENGE",
+    "size": [
+      512,
+      512
+    ],
+    "frames": 8,
+    "frameMs": [
+      120
+    ],
+    "durationMs": 960,
+    "touchesImageEdge": []
+  },
+  {
+    "asset": "BRAX_KNUCKLE_CRACK",
+    "size": [
+      512,
+      512
+    ],
+    "frames": 6,
+    "frameMs": [
+      120
+    ],
+    "durationMs": 720,
+    "touchesImageEdge": []
+  },
+  {
+    "asset": "BRAXHORN_COMBO_FIXED",
+    "size": [
+      362,
+      271
+    ],
+    "frames": 16,
+    "frameMs": [
+      130
+    ],
+    "durationMs": 2080,
+    "touchesImageEdge": [
+      {
+        "frame": 0,
+        "box": [
+          65,
+          5,
+          257,
+          271
+        ]
+      },
+      {
+        "frame": 1,
+        "box": [
+          104,
+          5,
+          264,
+          271
+        ]
+      },
+      {
+        "frame": 2,
+        "box": [
+          79,
+          13,
+          285,
+          271
+        ]
+      },
+      {
+        "frame": 3,
+        "box": [
+          70,
+          10,
+          297,
+          271
+        ]
+      },
+      {
+        "frame": 4,
+        "box": [
+          34,
+          20,
+          296,
+          271
+        ]
+      },
+      {
+        "frame": 5,
+        "box": [
+          51,
+          91,
+          276,
+          271
+        ]
+      },
+      {
+        "frame": 6,
+        "box": [
+          4,
+          108,
+          323,
+          271
+        ]
+      },
+      {
+        "frame": 7,
+        "box": [
+          0,
+          117,
+          329,
+          271
+        ]
+      },
+      {
+        "frame": 9,
+        "box": [
+          1,
+          92,
+          362,
+          257
+        ]
+      },
+      {
+        "frame": 10,
+        "box": [
+          0,
+          87,
+          355,
+          271
+        ]
+      },
+      {
+        "frame": 11,
+        "box": [
+          0,
+          93,
+          360,
+          271
+        ]
+      },
+      {
+        "frame": 12,
+        "box": [
+          0,
+          39,
+          353,
+          252
+        ]
+      },
+      {
+        "frame": 13,
+        "box": [
+          65,
+          0,
+          292,
+          260
+        ]
+      },
+      {
+        "frame": 14,
+        "box": [
+          88,
+          0,
+          289,
+          266
+        ]
+      },
+      {
+        "frame": 15,
+        "box": [
+          82,
+          0,
+          283,
+          265
+        ]
+      }
+    ]
+  }
+]

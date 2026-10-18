@@ -1,0 +1,153 @@
+{
+  "status": "PASS",
+  "checks": [
+    "audio/video ends differ less than 1 ms"
+  ],
+  "measurements": [
+    {
+      "id": "rooftop",
+      "avEndDifferenceMs": 0.0,
+      "seamLumaDifference": 0.889,
+      "adjacentFrameP95": 0.899,
+      "audioSeamSampleDelta": 0.004531,
+      "audioHead100msRms": 0.075342,
+      "audioTail100msRms": 0.083062
+    },
+    {
+      "id": "rooftop-city",
+      "avEndDifferenceMs": 0.0,
+      "seamLumaDifference": 0.971,
+      "adjacentFrameP95": 0.552,
+      "audioSeamSampleDelta": 0.008532,
+      "audioHead100msRms": 0.02126,
+      "audioTail100msRms": 0.022087
+    },
+    {
+      "id": "jungle",
+      "avEndDifferenceMs": 0.0,
+      "seamLumaDifference": 0.945,
+      "adjacentFrameP95": 0.769,
+      "audioSeamSampleDelta": 0.005555,
+      "audioHead100msRms": 0.010286,
+      "audioTail100msRms": 0.009504
+    },
+    {
+      "id": "volcano",
+      "avEndDifferenceMs": 0.0,
+      "seamLumaDifference": 0.692,
+      "adjacentFrameP95": 0.545,
+      "audioSeamSampleDelta": 0.001072,
+      "audioHead100msRms": 0.21048,
+      "audioTail100msRms": 0.155806
+    },
+    {
+      "id": "temple",
+      "avEndDifferenceMs": 0.0,
+      "seamLumaDifference": 0.978,
+      "adjacentFrameP95": 0.604,
+      "audioSeamSampleDelta": 0.01005,
+      "audioHead100msRms": 0.027828,
+      "audioTail100msRms": 0.02646
+    },
+    {
+      "id": "himalaya",
+      "avEndDifferenceMs": 0.0,
+      "seamLumaDifference": 0.91,
+      "adjacentFrameP95": 0.666,
+      "audioSeamSampleDelta": 0.005568,
+      "audioHead100msRms": 0.092248,
+      "audioTail100msRms": 0.073398
+    },
+    {
+      "id": "beach",
+      "avEndDifferenceMs": 0.0,
+      "seamLumaDifference": 0.746,
+      "adjacentFrameP95": 0.567,
+      "audioSeamSampleDelta": 0.004246,
+      "audioHead100msRms": 0.006752,
+      "audioTail100msRms": 0.006605
+    },
+    {
+      "id": "carrier",
+      "avEndDifferenceMs": 0.0,
+      "seamLumaDifference": 1.0,
+      "adjacentFrameP95": 3.065,
+      "audioSeamSampleDelta": 0.007588,
+      "audioHead100msRms": 0.304886,
+      "audioTail100msRms": 0.247597
+    },
+    {
+      "id": "canyon",
+      "avEndDifferenceMs": 0.0,
+      "seamLumaDifference": 1.362,
+      "adjacentFrameP95": 1.902,
+      "audioSeamSampleDelta": 0.001534,
+      "audioHead100msRms": 0.064142,
+      "audioTail100msRms": 0.065144
+    },
+    {
+      "id": "reactor",
+      "avEndDifferenceMs": 0.0,
+      "seamLumaDifference": 1.204,
+      "adjacentFrameP95": 0.941,
+      "audioSeamSampleDelta": 0.003252,
+      "audioHead100msRms": 0.050468,
+      "audioTail100msRms": 0.071074
+    },
+    {
+      "id": "savanna",
+      "avEndDifferenceMs": 0.0,
+      "seamLumaDifference": 0.673,
+      "adjacentFrameP95": 1.271,
+      "audioSeamSampleDelta": 4.5e-05,
+      "audioHead100msRms": 0.003991,
+      "audioTail100msRms": 0.005794
+    },
+    {
+      "id": "brooklyn",
+      "avEndDifferenceMs": 0.0,
+      "seamLumaDifference": 0.963,
+      "adjacentFrameP95": 0.821,
+      "audioSeamSampleDelta": 0.013343,
+      "audioHead100msRms": 0.050988,
+      "audioTail100msRms": 0.046381
+    },
+    {
+      "id": "dragon",
+      "avEndDifferenceMs": 0.0,
+      "seamLumaDifference": 0.992,
+      "adjacentFrameP95": 1.81,
+      "audioSeamSampleDelta": 0.018573,
+      "audioHead100msRms": 0.070707,
+      "audioTail100msRms": 0.075431
+    },
+    {
+      "id": "aquarium",
+      "avEndDifferenceMs": 0.0,
+      "seamLumaDifference": 0.919,
+      "adjacentFrameP95": 1.408,
+      "audioSeamSampleDelta": 0.004806,
+      "audioHead100msRms": 0.022683,
+      "audioTail100msRms": 0.015657
+    },
+    {
+      "id": "snow",
+      "avEndDifferenceMs": 0.0,
+      "seamLumaDifference": 2.045,
+      "adjacentFrameP95": 1.709,
+      "audioSeamSampleDelta": 0.003921,
+      "audioHead100msRms": 0.130177,
+      "audioTail100msRms": 0.126765
+    },
+    {
+      "id": "underground",
+      "avEndDifferenceMs": 0.0,
+      "seamLumaDifference": 0.435,
+      "adjacentFrameP95": 0.716,
+      "audioSeamSampleDelta": 0.000287,
+      "audioHead100msRms": 6.6e-05,
+      "audioTail100msRms": 0.027315
+    }
+  ],
+  "limitations": "Seam differences measured, not guaranteed imperceptible. Decoder seek latency, real audio output and phone Safari not measured."
+}

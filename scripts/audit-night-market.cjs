@@ -1,0 +1,11 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+const {createGame}=require('./audit-new-fighters.cjs');
+(async()=>{
+let live=0,created=0,destroyed=0,q='high';const data={otherSetting:17};
+const root={navigator:{hardwareConcurrency:8},localStorage:{getItem:()=>JSON.stringify(data),setItem:(k,v)=>Object.assign(data,JSON.parse(v))},document:{hidden:false,querySelectorAll:()=>[],createElement:()=>({setAttribute(){},remove(){live--},clientHeight:390,height:780}),addEventListener(){}},addEventListener(){},devicePixelRatio:2,ArenaEffects:{create(c,o){created++;q=o.quality;return{pause(){},resume(){},start(){},stop(){},destroy(){destroyed++},setQuality(v){q=v},getFeetY(){return 320},resize(){}}}}};
+vm.runInNewContext(fs.readFileSync('game/assets/night-market.js','utf8'),{window:root});const fx=root.BRAX_NIGHT_MARKET;
+for(let i=0;i<10;i++){fx.start({appendChild(){live++}});assert.equal(live,1);fx.destroy();assert.equal(live,0)}assert.equal(created,destroyed);
+fx.start({appendChild(){live++}},null,true);for(let t=0;t<=3100;t+=50)fx.tick(t,{running:true});assert.equal(q,'low');assert.equal(data.arenaEffects,'low');assert.equal(data.otherSetting,17);fx.setQuality('off');assert.equal(q,'off');fx.tick(3200,{running:false});assert.equal(live,0);
+for(const [w,h] of [[844,390],[932,430],[740,360],[1366,768],[1920,1080]]){const g=await createGame(w,h,true);g.context.BRAX_NIGHT_MARKET={destroy(){},start(){},resetMeasurement(){},resize(){},feet:()=>null,report:()=>({active:true}),tick(){}};await g.start();await g.flush();g.elements.get('chooseFighter').dispatch('click');g.elements.get('arena-nocny-targ').dispatch('click');await g.flush();g.elements.get('fighterFilm').dispatch('ended');g.step(15000);assert(g.state().running);assert.equal(parseFloat(g.elements.get('game').style.width),w);assert.equal(parseFloat(g.elements.get('game').style.height),h);assert(g.elements.get('arena').src.includes('arena-nocny-targ.jpg'));g.elements.get('returnSelection').dispatch('click');g.step(1000);assert(!g.state().running);}
+console.log('PASS: ten adapter lifecycle cycles, quality persistence/FPS fallback, five landscape game viewports, arena launch and exit. Mock DOM, not GPU/browser validation.');
+})().catch(e=>{console.error(e);process.exitCode=1});
