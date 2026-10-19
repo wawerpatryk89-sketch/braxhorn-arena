@@ -1,6 +1,7 @@
 /* Rules for CPU identity, progression and survival. No renderer or network state. */
 (()=>{
 'use strict';
+const t=(key,params)=>window.BRAX_I18N.t('content.'+key,params),h=(key,params)=>window.BRAX_I18N.h('content.'+key,params);
 const displayFighterName=id=>window.BRAX_FIGHTER_NAME?.(id)??String(id??'');
 const roster=['BRAX','NYXA','VEXA','KROV','NINA','DANNY','BEAR','DEMON'];
 const styles={
@@ -20,30 +21,30 @@ function chooseAttack(who,available,last,urgent,firstContact,random=Math.random)
  return choices.find((n,i)=>(pick-=weights[i])<0)||choices.at(-1);
 }
 const challenges=[
- {id:'evade5',category:'defense',title:'Czysty unik',description:'Uniknij 5 ataków w jednym ćwiczeniu.',event:'evade',goal:5,drill:'repeat'},
- {id:'block8',category:'defense',title:'Żelazna garda',description:'Zablokuj 8 trafień. Wybierz zawodnika z gardą — Nina korzysta z uników.',event:'block',goal:8,drill:'repeat',exclude:['NINA']},
- {id:'break3',category:'defense',title:'Wyrwij się',description:'Zerwij 3 chwyty przyciskiem CHWYT w początkowym oknie.',event:'break',goal:3,drill:'grab'},
- {id:'evade10',category:'defense',title:'Nieuchwytny',description:'Uniknij 10 ataków podczas swobodnego sparingu.',event:'evade',goal:10,drill:'spar'},
- {id:'block20',category:'defense',title:'Mur nie do przejścia',description:'Zablokuj 20 trafień podczas sparingu. Nina nie ma gardy.',event:'block',goal:20,drill:'spar',exclude:['NINA']},
- {id:'break6',category:'defense',title:'Poza zasięgiem chwytu',description:'Wydostań się z 6 chwytów w jednym ćwiczeniu.',event:'break',goal:6,drill:'grab'},
- {id:'counter3',category:'attack',title:'Odpowiedź w tempo',description:'Traf 3 razy podczas powrotu rywala po niecelnym ataku.',event:'counter',goal:3,drill:'counter'},
- {id:'push3',category:'attack',title:'Przerwij napór',description:'Uzyskaj 3 mocne odepchnięcia po trafionych seriach.',event:'push',goal:3,drill:'bag'},
- {id:'hits12',category:'attack',title:'Dwanaście trafień',description:'Zadaj 12 czystych trafień podczas sparingu.',event:'hit',goal:12,drill:'spar'},
- {id:'kicks6',category:'attack',title:'Długi dystans',description:'Traf rywala 6 razy kopnięciami podczas sparingu.',event:'kick',goal:6,drill:'spar'},
- {id:'combohits5',category:'attack',title:'Pełna sekwencja',description:'Zadaj 5 trafień z ataku COMBO. Poczekaj na pełne naładowanie energii.',event:'combohit',goal:5,drill:'bag'},
- {id:'counter8',category:'attack',title:'Mistrz kontry',description:'Ukarz 8 niecelnych ataków rywala podczas jego powrotu.',event:'counter',goal:8,drill:'counter'},
- {id:'cleanwin',category:'wins',title:'Bez specjalnego',description:'Wygraj walkę na średnim poziomie bez użycia COMBO.',event:'cleanwin',goal:1},
- {id:'hardwin',category:'wins',title:'Próba mistrza',description:'Wygraj walkę na trudnym poziomie.',event:'hardwin',goal:1,difficulty:'hard'},
- {id:'healthywin',category:'wins',title:'Pełna kontrola',description:'Wygraj walkę i zachowaj co najmniej 60 punktów zdrowia w ostatniej rundzie.',event:'healthywin',goal:1},
- {id:'fastwin',category:'wins',title:'Błyskawiczna wygrana',description:'Wygraj całą walkę w czasie najwyżej 90 sekund aktywnej walki.',event:'fastwin',goal:1},
- {id:'cleanwinhard',category:'wins',title:'Siła podstaw',description:'Wygraj na trudnym poziomie bez użycia COMBO.',event:'cleanwin',goal:1,difficulty:'hard'},
- {id:'healthyhard',category:'wins',title:'Zimna krew',description:'Wygraj na trudnym poziomie z co najmniej 60 punktami zdrowia w ostatniej rundzie.',event:'healthywin',goal:1,difficulty:'hard'},
- {id:'survival3',category:'survival',title:'Pierwsza seria',description:'Pokonaj 3 rywali w jednej serii Survival na średnim poziomie.',event:'survival',goal:3,mode:'survival'},
- {id:'survival5',category:'survival',title:'Piątka bez przerwy',description:'Pokonaj 5 rywali w jednej serii Survival na średnim poziomie.',event:'survival',goal:5,mode:'survival'},
- {id:'survival10',category:'survival',title:'Dziesięciu pokonanych',description:'Pokonaj 10 rywali w jednej serii Survival na średnim poziomie.',event:'survival',goal:10,mode:'survival'},
- {id:'survivalhard3',category:'survival',title:'Stalowa seria',description:'Pokonaj 3 rywali w jednej serii Survival na trudnym poziomie.',event:'survival',goal:3,mode:'survival',difficulty:'hard'},
- {id:'survivalhard5',category:'survival',title:'Ostatni na arenie',description:'Pokonaj 5 rywali w jednej serii Survival na trudnym poziomie.',event:'survival',goal:5,mode:'survival',difficulty:'hard'},
- {id:'survivalhard10',category:'survival',title:'Legenda Survival',description:'Pokonaj 10 rywali w jednej serii Survival na trudnym poziomie.',event:'survival',goal:10,mode:'survival',difficulty:'hard'}
+ {id:'evade5',category:'defense',get title(){return t('challenge.evade5.title');},get description(){return t('challenge.evade5.description');},event:'evade',goal:5,drill:'repeat'},
+ {id:'block8',category:'defense',get title(){return t('challenge.block8.title');},get description(){return t('challenge.block8.description');},event:'block',goal:8,drill:'repeat',exclude:['NINA']},
+ {id:'break3',category:'defense',get title(){return t('challenge.break3.title');},get description(){return t('challenge.break3.description');},event:'break',goal:3,drill:'grab'},
+ {id:'evade10',category:'defense',get title(){return t('challenge.evade10.title');},get description(){return t('challenge.evade10.description');},event:'evade',goal:10,drill:'spar'},
+ {id:'block20',category:'defense',get title(){return t('challenge.block20.title');},get description(){return t('challenge.block20.description');},event:'block',goal:20,drill:'spar',exclude:['NINA']},
+ {id:'break6',category:'defense',get title(){return t('challenge.break6.title');},get description(){return t('challenge.break6.description');},event:'break',goal:6,drill:'grab'},
+ {id:'counter3',category:'attack',get title(){return t('challenge.counter3.title');},get description(){return t('challenge.counter3.description');},event:'counter',goal:3,drill:'counter'},
+ {id:'push3',category:'attack',get title(){return t('challenge.push3.title');},get description(){return t('challenge.push3.description');},event:'push',goal:3,drill:'bag'},
+ {id:'hits12',category:'attack',get title(){return t('challenge.hits12.title');},get description(){return t('challenge.hits12.description');},event:'hit',goal:12,drill:'spar'},
+ {id:'kicks6',category:'attack',get title(){return t('challenge.kicks6.title');},get description(){return t('challenge.kicks6.description');},event:'kick',goal:6,drill:'spar'},
+ {id:'combohits5',category:'attack',get title(){return t('challenge.combohits5.title');},get description(){return t('challenge.combohits5.description');},event:'combohit',goal:5,drill:'bag'},
+ {id:'counter8',category:'attack',get title(){return t('challenge.counter8.title');},get description(){return t('challenge.counter8.description');},event:'counter',goal:8,drill:'counter'},
+ {id:'cleanwin',category:'wins',get title(){return t('challenge.cleanwin.title');},get description(){return t('challenge.cleanwin.description');},event:'cleanwin',goal:1},
+ {id:'hardwin',category:'wins',get title(){return t('challenge.hardwin.title');},get description(){return t('challenge.hardwin.description');},event:'hardwin',goal:1,difficulty:'hard'},
+ {id:'healthywin',category:'wins',get title(){return t('challenge.healthywin.title');},get description(){return t('challenge.healthywin.description');},event:'healthywin',goal:1},
+ {id:'fastwin',category:'wins',get title(){return t('challenge.fastwin.title');},get description(){return t('challenge.fastwin.description');},event:'fastwin',goal:1},
+ {id:'cleanwinhard',category:'wins',get title(){return t('challenge.cleanwinhard.title');},get description(){return t('challenge.cleanwinhard.description');},event:'cleanwin',goal:1,difficulty:'hard'},
+ {id:'healthyhard',category:'wins',get title(){return t('challenge.healthyhard.title');},get description(){return t('challenge.healthyhard.description');},event:'healthywin',goal:1,difficulty:'hard'},
+ {id:'survival3',category:'survival',get title(){return t('challenge.survival3.title');},get description(){return t('challenge.survival3.description');},event:'survival',goal:3,mode:'survival'},
+ {id:'survival5',category:'survival',get title(){return t('challenge.survival5.title');},get description(){return t('challenge.survival5.description');},event:'survival',goal:5,mode:'survival'},
+ {id:'survival10',category:'survival',get title(){return t('challenge.survival10.title');},get description(){return t('challenge.survival10.description');},event:'survival',goal:10,mode:'survival'},
+ {id:'survivalhard3',category:'survival',get title(){return t('challenge.survivalhard3.title');},get description(){return t('challenge.survivalhard3.description');},event:'survival',goal:3,mode:'survival',difficulty:'hard'},
+ {id:'survivalhard5',category:'survival',get title(){return t('challenge.survivalhard5.title');},get description(){return t('challenge.survivalhard5.description');},event:'survival',goal:5,mode:'survival',difficulty:'hard'},
+ {id:'survivalhard10',category:'survival',get title(){return t('challenge.survivalhard10.title');},get description(){return t('challenge.survivalhard10.description');},event:'survival',goal:10,mode:'survival',difficulty:'hard'}
 ];
 const number=n=>Number.isFinite(n)?Math.max(0,Math.min(1000000,Math.floor(n))):0;
 function createProgress(storage){
@@ -69,11 +70,11 @@ function leaderboard(document,progress){
  if(window.BRAX_ONLINE)return window.BRAX_ONLINE.leaderboard(document,progress);
  const $=id=>document.querySelector('#'+id),mode=$('recordsMode').value||'survival',difficulty=$('recordsDifficulty').value||'normal',rows=progress.top(mode,difficulty),escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const time=ms=>Math.floor(ms/60000)+':'+String(Math.floor(ms/1000)%60).padStart(2,'0');
- const result=r=>mode==='survival'?r.score+' zwycięstw':mode==='arcade'?(r.completed?'Ukończone · ':'')+r.score+'/'+(r.targetWins||5):mode==='tournament'?(r.completed?'Mistrz':'Zakończone')+' · '+r.score+' wygr.':mode.startsWith('challenge:')?'Ukończone':r.rounds?r.rounds.join(' : '):'Wygrana · przewaga '+r.score+' rund';
- $('leaderboard').innerHTML=rows.length?'<table><thead><tr><th>#</th><th>Imię / pseudonim</th><th>Postać</th><th>Wynik</th><th>Czas</th></tr></thead><tbody>'+rows.map((r,i)=>'<tr><td>'+(i+1)+'</td><td>'+escape(r.name)+'</td><td>'+escape(displayFighterName(r.fighter))+'</td><td>'+result(r)+'</td><td>'+time(r.elapsed)+'</td></tr>').join('')+'</tbody></table>':'<p>Brak zapisanych wyników w tej kategorii. Rozegraj pierwszą serię.</p>';
- $('rankingNote').textContent='TOP 5 na tym urządzeniu · '+(progress.name||'GRACZ')+'. '+(mode==='tournament'?'Najpierw tytuł, potem wygrane i średni czas walki.':mode.startsWith('challenge:')?'Wygrywa krótszy czas ukończenia.':'Najpierw wynik, przy remisie krótszy czas.');
+ const result=r=>mode==='survival'?h('ranking.survivalWins',{count:r.score}):mode==='arcade'?(r.completed?h('ranking.completed')+' · ':'')+r.score+'/'+(r.targetWins||5):mode==='tournament'?h('ranking.tournamentWins',{status:t(r.completed?'ranking.champion':'ranking.finished'),count:r.score}):mode.startsWith('challenge:')?h('ranking.completed'):r.rounds?r.rounds.join(' : '):h('ranking.roundAdvantage',{count:r.score});
+ $('leaderboard').innerHTML=rows.length?'<table><thead><tr><th>#</th><th>'+h('ranking.name')+'</th><th>'+h('ranking.fighter')+'</th><th>'+h('ranking.result')+'</th><th>'+h('ranking.time')+'</th></tr></thead><tbody>'+rows.map((r,i)=>'<tr><td>'+(i+1)+'</td><td>'+escape(r.name)+'</td><td>'+escape(displayFighterName(r.fighter))+'</td><td>'+result(r)+'</td><td>'+time(r.elapsed)+'</td></tr>').join('')+'</tbody></table>':'<p>'+h('ranking.empty')+'</p>';
+ $('rankingNote').textContent=t('ranking.localNote',{name:progress.name||t('ranking.player'),sort:t(mode==='tournament'?'ranking.tournamentSort':mode.startsWith('challenge:')?'ranking.challengeSort':'ranking.scoreSort')});
 }
-function challengeCard(c,done=false,index=0){return '<span class="challenge-top"><b>'+String(index+1).padStart(2,'0')+'</b><small>'+(done?'UKOŃCZONE ✓':c.drill?'TRENING TECHNIKI':'PRÓBA WALKI')+'</small></span><strong>'+c.title+'</strong><span class="challenge-description">'+c.description+'</span><span class="challenge-bottom"><span>CEL · '+c.goal+'</span><b>'+(done?'POWTÓRZ':'ROZPOCZNIJ')+' →</b></span>';}
-function records(progress){return roster.map(who=>{const f=progress.fighter(who),available=challenges.filter(c=>!(c.exclude||[]).includes(who)),done=available.filter(c=>f.challenges.includes(c.id)).length;return '<article class="progress-card"><img src="/assets/campaign-portraits/'+who.toLowerCase()+'.webp" alt="'+displayFighterName(who)+'"><header><b>'+displayFighterName(who)+'</b><small>'+done+'/'+available.length+' WYZWAŃ</small></header><div class="ui-progress" role="progressbar" aria-label="Wyzwania" aria-valuenow="'+done+'" aria-valuemax="'+available.length+'"><i style="width:'+done/available.length*100+'%"></i></div><div class="progress-numbers"><span><strong>'+f.wins+'</strong>'+((window.BRAX_UI?.plural(f.wins,'zwycięstwo','zwycięstwa','zwycięstw'))||'WYGRANE')+'</span><span><strong>'+f.bestSurvival+'</strong>REKORD SURVIVAL</span></div><div class="progress-medals">'+available.map(c=>'<span class="'+(f.challenges.includes(c.id)?'earned':'')+'" title="'+c.title+'" aria-label="'+c.title+': '+(f.challenges.includes(c.id)?'ukończone':'nieukończone')+'">'+(f.challenges.includes(c.id)?'✓':'·')+'</span>').join('')+'</div></article>';}).join('');}
+function challengeCard(c,done=false,index=0){return '<span class="challenge-top"><b>'+String(index+1).padStart(2,'0')+'</b><small>'+h(done?'challenge.completedTitle':c.drill?'challenge.technique':'challenge.fightTrial')+'</small></span><strong>'+window.BRAX_I18N.escape(c.title)+'</strong><span class="challenge-description">'+window.BRAX_I18N.escape(c.description)+'</span><span class="challenge-bottom"><span>'+h('challenge.goal',{goal:c.goal})+'</span><b>'+h(done?'challenge.repeat':'challenge.start')+' →</b></span>';}
+function records(progress){return roster.map(who=>{const f=progress.fighter(who),available=challenges.filter(c=>!(c.exclude||[]).includes(who)),done=available.filter(c=>f.challenges.includes(c.id)).length;return '<article class="progress-card"><img src="/assets/campaign-portraits/'+who.toLowerCase()+'.webp" alt="'+displayFighterName(who)+'"><header><b>'+displayFighterName(who)+'</b><small>'+h('progress.challengeCount',{done,total:available.length})+'</small></header><div class="ui-progress" role="progressbar" aria-label="'+h('progress.challenges')+'" aria-valuenow="'+done+'" aria-valuemax="'+available.length+'"><i style="width:'+done/available.length*100+'%"></i></div><div class="progress-numbers"><span><strong>'+f.wins+'</strong>'+h('progress.wins',{count:f.wins})+'</span><span><strong>'+f.bestSurvival+'</strong>'+h('progress.survivalRecord')+'</span></div><div class="progress-medals">'+available.map(c=>'<span class="'+(f.challenges.includes(c.id)?'earned':'')+'" title="'+window.BRAX_I18N.escape(c.title)+'" aria-label="'+window.BRAX_I18N.escape(c.title)+': '+h(f.challenges.includes(c.id)?'progress.done':'progress.notDone')+'">'+(f.challenges.includes(c.id)?'✓':'·')+'</span>').join('')+'</div></article>';}).join('');}
 window.BRAX_FEATURES={challengeCard,records,roster,styles,chooseAttack,challenges,createProgress,createSurvival,leaderboard};
 })();

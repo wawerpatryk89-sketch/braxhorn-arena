@@ -1,14 +1,15 @@
 /* Fighter selection on phones: all eight portraits in one row; one tap selects for the active role
    (YOU / OPPONENT). The big card always shows the fighter chosen for that role. */
 (()=>{'use strict';
+const t=(key,params)=>window.BRAX_I18N.t('content.'+key,params),h=(key,params)=>window.BRAX_I18N.h('content.'+key,params);
 const $=id=>document.getElementById(id);
 const board=$('rosterBoard'),slot=$('rosterInstruction');if(!board||!slot)return;
 const names=['BRAX','NYXA','VEXA','KROV','NINA','DANNY','BEAR','DEMON'];
 const label=n=>window.BRAX_FIGHTER_NAME?.(n)||n;
-const strip=document.createElement('div');strip.id='rosterStrip';strip.setAttribute('role','group');strip.setAttribute('aria-label','Zawodnicy');
+const strip=document.createElement('div');strip.id='rosterStrip';strip.setAttribute('role','group');strip.setAttribute('aria-label',t('roster.fighters'));
 strip.innerHTML=names.map((n,i)=>`<button type="button" data-index="${i}" aria-label="${label(n)}"><img src="/assets/portraits/${n.toLowerCase()}.webp" alt="" draggable="false"><span>${label(n)}</span></button>`).join('');
 slot.after(strip);slot.classList.add('roster-instruction-sr');
-function paint(){const s=window.BRAX_ROSTER?.state?.();if(!s)return;const auto=['arcade','tournament','survival'].includes(s.mode);
+function paint(){strip.setAttribute('aria-label',t('roster.fighters'));const s=window.BRAX_ROSTER?.state?.();if(!s)return;const auto=['arcade','tournament','survival'].includes(s.mode);
  strip.querySelectorAll('button').forEach((b,i)=>{b.classList.toggle('is-player',s.player===i);b.classList.toggle('is-opponent',!auto&&s.opponent===i);b.setAttribute('aria-pressed',String(s[s.role]===i));});
  strip.dataset.role=s.role;}
 strip.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const card=$('card-'+names[+b.dataset.index].toLowerCase());card?.click();requestAnimationFrame(paint);});
@@ -29,5 +30,5 @@ const css=document.createElement('style');css.textContent=`
 #rosterStrip[data-role=opponent] button[aria-pressed=true]{transform:translateY(-2px)}
 #rosterStrip[data-role=player] button[aria-pressed=true]{transform:translateY(-2px)}`;
 document.head.appendChild(css);
-paint();window.BRAX_ROSTER_STRIP={paint};
+window.addEventListener('brax:language',paint);paint();window.BRAX_ROSTER_STRIP={paint};
 })();

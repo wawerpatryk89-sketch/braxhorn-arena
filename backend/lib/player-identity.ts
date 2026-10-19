@@ -1,5 +1,5 @@
 import {ownerIdentity,publicPlayerName} from './owner-policy';
-import {addCookie,cookie,cookieValue,DEFAULT_AVATAR,ENTRY_COOKIE,sessionPlayer} from './account-session';
+import {addCookie,cookie,cookieValue,DEFAULT_AVATAR,ENTRY_COOKIE,playerLanguage,sessionPlayer} from './account-session';
 /** One identity for legacy ChatGPT accounts, password sessions and anonymous play. */
 export async function playerIdentity(request:Request,db:any,headers:Record<string,string>,ownerEmail=''){
  const existing=await sessionPlayer(request,db),entry=cookieValue(request,ENTRY_COOKIE);
@@ -17,9 +17,9 @@ export async function playerIdentity(request:Request,db:any,headers:Record<strin
  db.prepare('UPDATE results SET owner=? WHERE owner=?').bind(id,'g:'+guest),
  db.prepare('UPDATE tournament_entries SET player_id=? WHERE player_id=? AND NOT EXISTS (SELECT 1 FROM tournament_entries other WHERE other.tournament_id=tournament_entries.tournament_id AND other.player_id=?)').bind(id,'g:'+guest,id)
  ]);}
- const p=await db.prepare('SELECT name,avatar FROM players WHERE id=?').bind(id).first();
+ const p=await db.prepare('SELECT name,avatar,language FROM players WHERE id=?').bind(id).first();
  let name=authenticated?publicPlayerName(p.name,id,access.ownerId):guestName;
  if(name!==p.name)await db.prepare('UPDATE players SET name=? WHERE id=?').bind(name,id).run();
  const credential=authenticated?await db.prepare('SELECT player_id FROM account_credentials WHERE player_id=?').bind(id).first():null;
- return{id,name,avatar:p.avatar||DEFAULT_AVATAR,authenticated,hasPassword:!!credential,...access};
+ return{id,name,avatar:p.avatar||DEFAULT_AVATAR,language:authenticated?playerLanguage(p.language):'pl',authenticated,hasPassword:!!credential,...access};
 }

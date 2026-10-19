@@ -1,6 +1,6 @@
 import {playerIdentity} from './player-identity';
 import {reservedName} from './owner-policy';
-import {addCookie,cookie,createPassword,DEFAULT_AVATAR,ENTRY_COOKIE,issueSession,nickKey,nickName,responseHeaders,revokeSession,SESSION_COOKIE,tokenHash,validNick,validPassword,verifyPassword,randomToken} from './account-session';
+import {addCookie,cookie,createPassword,DEFAULT_AVATAR,ENTRY_COOKIE,issueSession,nickKey,nickName,playerLanguage,responseHeaders,revokeSession,SESSION_COOKIE,tokenHash,validLanguage,validNick,validPassword,verifyPassword,randomToken} from './account-session';
 const MAX_IMAGE=512*1024;
 const fail=(message:string,status=400,code='')=>Object.assign(new Error(message),{status,code});
 const preset=(value:unknown)=>value==='female'?'/assets/avatar-female.jpg':value==='male'?DEFAULT_AVATAR:null;
@@ -75,18 +75,19 @@ export async function handleAccount(request:Request,db:any,bucket:any,ownerEmail
   const body=await jsonBody(request);
   if(action==='register'){
    await rateLimit(db,request,'register','all',8);
-   const name=nickName(body.nick),key=nickKey(name),avatar=preset(body.avatar);
+   const name=nickName(body.nick),key=nickKey(name),avatar=preset(body.avatar),language=body.language===undefined?'pl':body.language;
+   if(!validLanguage(language))throw fail('Wybierz język polski lub angielski.',400,'invalid_language');
    if(!validNick(name))throw fail('Nick musi mieć od 2 do 20 znaków: litery, cyfry, spacje, kropki, podkreślenia lub myślniki.');
    if(!validPassword(body.password))throw fail('Hasło musi mieć od 8 do 128 znaków.');
    if(!avatar)throw fail('Wybierz gotowy awatar lub przygotuj własne zdjęcie.');
    if(reservedName(name)||await nickOwner(db,key))throw fail('Ten nick jest już zajęty. Wybierz inny lub zaloguj się na istniejące konto.',409,'nick_taken');
    const id='a:'+crypto.randomUUID(),password=await createPassword(body.password),now=Date.now();
    try{await db.batch([
-    db.prepare('INSERT INTO players(id,name,nick_key,avatar,created) VALUES(?,?,?,?,?)').bind(id,name,key,avatar,now),
+    db.prepare('INSERT INTO players(id,name,nick_key,avatar,language,created) VALUES(?,?,?,?,?,?)').bind(id,name,key,avatar,language,now),
     db.prepare('INSERT INTO account_credentials(player_id,password_hash,salt,iterations,created,updated) VALUES(?,?,?,?,?,?)').bind(id,password.hash,password.salt,password.iterations,now,now)
    ]);}catch(error:any){if(/unique|constraint/i.test(String(error?.message)))throw fail('Ten nick jest już zajęty. Wybierz inny.',409,'nick_taken');throw error;}
    await issueSession(request,db,headers,id);
-   return reply({player:{id,name,avatar,authenticated:true,isOwner:false,ownerId:player.ownerId,hasPassword:true},authenticated:true},201);
+   return reply({player:{id,name,avatar,language,authenticated:true,isOwner:false,ownerId:player.ownerId,hasPassword:true},authenticated:true},201);
   }
   if(action==='login'){
    const name=nickName(body.nick),key=nickKey(name);
@@ -95,7 +96,7 @@ export async function handleAccount(request:Request,db:any,bucket:any,ownerEmail
    const row=await db.prepare('SELECT players.*,account_credentials.password_hash,account_credentials.salt,account_credentials.iterations FROM players JOIN account_credentials ON account_credentials.player_id=players.id WHERE players.nick_key=?').bind(key).first();
    if(!await verifyPassword(body.password,row))throw fail('Nieprawidłowy nick lub hasło.',401,'invalid_credentials');
    await issueSession(request,db,headers,row.id);
-   return reply({player:{id:row.id,name:row.name,avatar:row.avatar||DEFAULT_AVATAR,authenticated:true,isOwner:row.id===player.ownerId,ownerId:player.ownerId,hasPassword:true},authenticated:true});
+   return reply({player:{id:row.id,name:row.name,avatar:row.avatar||DEFAULT_AVATAR,language:playerLanguage(row.language),authenticated:true,isOwner:row.id===player.ownerId,ownerId:player.ownerId,hasPassword:true},authenticated:true});
   }
   if(action==='logout'||action==='guest'){
    await revokeSession(request,db);addCookie(headers,cookie(request,SESSION_COOKIE,'',0));addCookie(headers,cookie(request,ENTRY_COOKIE,action==='guest'?'guest':'out',31536000));
@@ -109,6 +110,12 @@ export async function handleAccount(request:Request,db:any,bucket:any,ownerEmail
    await revokeSession(request,db);addCookie(headers,cookie(request,SESSION_COOKIE,'',0));addCookie(headers,cookie(request,ENTRY_COOKIE,'legacy',31536000));
    const legacyHeaders=new Headers(request.headers);legacyHeaders.set('cookie',(request.headers.get('cookie')||'').split(';').filter(v=>!v.trim().startsWith(SESSION_COOKIE+'=')&&!v.trim().startsWith(ENTRY_COOKIE+'=')).join(';')+'; '+ENTRY_COOKIE+'=legacy');
    const legacy=await playerIdentity(new Request(request.url,{headers:legacyHeaders}),db,headers,ownerEmail);return reply({player:legacy,authenticated:true});
+  }
+  if(action==='language'){
+   if(!player.authenticated)throw fail('Zaloguj się, aby zapisać język.',401,'authentication_required');
+   if(!validLanguage(body.language))throw fail('Wybierz język polski lub angielski.',400,'invalid_language');
+   await db.prepare('UPDATE players SET language=? WHERE id=?').bind(body.language,player.id).run();
+   return reply({player:{...player,language:body.language},saved:true});
   }
   if(action==='avatar'){
    if(!player.authenticated)throw fail('Zaloguj się, aby zmienić awatar.',401);

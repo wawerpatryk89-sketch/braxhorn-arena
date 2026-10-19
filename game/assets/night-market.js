@@ -1,6 +1,7 @@
 /* Game adapter. The supplied arena-effects.js is kept unchanged. */
 (function (root) {
   'use strict';
+  const t=(key,params)=>root.BRAX_I18N.t('content.'+key,params);
   const KEY = 'braxhorn.settings.v1';
   const valid = q => ['high', 'low', 'off'].includes(q);
   const nav = root.navigator || {};
@@ -18,12 +19,12 @@
   // Phones: three in-game buttons drive the (hidden) select, so no system picker opens.
   function segmented(select) {
     if (select.nextElementSibling?.classList?.contains('effects-choice')) return;
-    const group = root.document.createElement('span'); group.className = 'effects-choice'; group.setAttribute('role', 'radiogroup'); group.setAttribute('aria-label', 'Efekty areny');
-    for (const option of select.options) { const b = root.document.createElement('button'); b.type = 'button'; b.dataset.value = option.value; b.textContent = option.textContent; b.setAttribute('role', 'radio');
+    const group = root.document.createElement('span'); group.className = 'effects-choice'; group.setAttribute('role', 'radiogroup'); group.setAttribute('aria-label', t('effects.label'));
+    for (const option of select.options) { const b = root.document.createElement('button'); b.type = 'button'; b.dataset.value = option.value; b.textContent = t('effects.'+option.value); b.setAttribute('role', 'radio');
       b.addEventListener('click', () => { select.value = option.value; select.dispatchEvent(new Event('change')); }); group.appendChild(b); }
     select.hidden = true; select.after(group);
   }
-  function syncControls() { for (const el of controls()) { el.value = quality; segmented(el); for (const b of el.nextElementSibling?.querySelectorAll?.('button') || []) b.setAttribute('aria-checked', String(b.dataset.value === quality)); } }
+  function syncControls() { for (const el of controls()) { el.value = quality; segmented(el); el.nextElementSibling?.setAttribute('aria-label',t('effects.label'));for (const b of el.nextElementSibling?.querySelectorAll?.('button') || []) { b.textContent=t('effects.'+b.dataset.value);b.setAttribute('aria-checked', String(b.dataset.value === quality)); } } }
   function setQuality(q) {
     if (!valid(q)) return;
     quality = q;
@@ -48,7 +49,7 @@
   function start(stage, onThunder, newMatch = false) {
     destroy();
     if (newMatch) resetMeasurement();
-    if (!root.ArenaEffects) throw new Error('Brak biblioteki efektów areny');
+    if (!root.ArenaEffects) throw new Error('ARENA_EFFECTS_LIBRARY_MISSING');
     canvas = root.document.createElement('canvas');
     canvas.id = 'nightMarketEffects';
     canvas.setAttribute('aria-hidden', 'true');
@@ -87,6 +88,7 @@
   for (const el of controls()) el.addEventListener('change', () => { setQuality(el.value); syncControls(); });
   syncControls();
   root.addEventListener('pagehide', destroy);
+  root.addEventListener('brax:language',syncControls);
   root.document.addEventListener('visibilitychange', () => {
     previous = null;
     if (root.document.hidden && fx) { fx.pause(); paused = true; }

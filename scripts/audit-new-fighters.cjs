@@ -30,15 +30,16 @@ async function createGame(width, height, withAudio=false, visualViewport=null, o
   const buttons = [...html.matchAll(/<button[^>]*data-(hold|tap)="([^"]+)"/g)].map(m => new Element('', {[m[1]]: m[2]}));
   const document = {
     hidden: false,
-    documentElement: {},
+    readyState: 'loading',
+    documentElement: {dataset:{}},
     querySelector: selector => selector === '#fightLoadError [role=status]' ? (elements.get('fightLoadError').status ||= new Element()) : elements.get(selector.slice(1)),
-    querySelectorAll: selector => buttons.filter(x => selector.includes('data-hold') ? x.dataset.hold : selector.includes('data-tap') ? x.dataset.tap : true),
+    querySelectorAll: selector => /data-i18n|data-language-switch/.test(selector) ? [] : buttons.filter(x => selector.includes('data-hold') ? x.dataset.hold : selector.includes('data-tap') ? x.dataset.tap : true),
     createElement: () => new Element(),
     addEventListener: (key, fn) => {(events['document:' + key] ||= []).push(fn);}
   };
   const context = {
     BRAX_ACCOUNT:{profile:{id:'a:physics-audit',name:'TEST',avatar:'/assets/avatar-male.jpg',authenticated:true,isOwner:false,hasPassword:true},show(){elements.get('accountEntry').classList.remove('off');}},
-    BRAX_ONLINE: {start(){},finish(){},challenge(){},leaderboard(doc,progress){const online=context.BRAX_ONLINE;delete context.BRAX_ONLINE;try{return context.BRAX_FEATURES.leaderboard(doc,progress);}finally{context.BRAX_ONLINE=online;}},async saveName(name){await Promise.resolve();if(!/^[\p{L}\p{N} ._-]{2,20}$/u.test(name.trim()))throw Error('Nieprawidłowy pseudonim');return name.trim();}},
+    BRAX_ONLINE: {start(){},finish(){},challenge(){},avatarUrl(){return '/assets/avatar-male.jpg';},avatarMarkup(){return '';},leaderboard(doc,progress){const online=context.BRAX_ONLINE;delete context.BRAX_ONLINE;try{return context.BRAX_FEATURES.leaderboard(doc,progress);}finally{context.BRAX_ONLINE=online;}},async saveName(name){await Promise.resolve();if(!/^[\p{L}\p{N} ._-]{2,20}$/u.test(name.trim()))throw Error('Nieprawidłowy pseudonim');return name.trim();}},
     document, innerWidth: width, innerHeight: height, visualViewport,
     performance: {now: () => time}, navigator: {}, screen: {}, console,
     Uint8Array, Uint8ClampedArray, Int16Array, Map, Set, Math,
@@ -57,6 +58,8 @@ async function createGame(width, height, withAudio=false, visualViewport=null, o
     context.AudioContext=class{constructor(){this.state='suspended';this.destination={};}createGain(){return node();}createDynamicsCompressor(){return {...node(),threshold:{value:0},ratio:{value:0}};}decodeAudioData(){return {duration:.4};}resume(){this.state='running';return Promise.resolve();}suspend(){this.state='suspended';return Promise.resolve();}createBufferSource(){return {...node(),playbackRate:{value:1},start(){},stop(){this.onended?.();}};}};
   }
   context.window = context;
+  // Use the same authored PL copy as the browser; the fixed DOM fixture skips static bindings.
+  for(const file of ['i18n.js','i18n-common.js','i18n-combat.js','i18n-combat-aux.js','i18n-content.js'])vm.runInNewContext(fs.readFileSync('game/assets/'+file,'utf8'),context);
   vm.runInNewContext(fs.readFileSync('game/assets/fighter-names.js','utf8'),context);
   vm.runInNewContext(fs.readFileSync('game/assets/viewport.js','utf8'),context);
   vm.runInNewContext(fs.readFileSync('game/assets/arena-catalog.js','utf8'),context);

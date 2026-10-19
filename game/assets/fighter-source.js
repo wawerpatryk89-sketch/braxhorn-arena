@@ -10,7 +10,7 @@ async function json(url,gzip=false){
   const body=new Response(bytes);
   // HTTP servers may already decode Content-Encoding: gzip before exposing the body.
   return await (bytes[0]===31&&bytes[1]===139?new Response(body.body.pipeThrough(new DecompressionStream('gzip'))):body).json();
- }catch(error){throw Error('Odczyt '+url+': '+error.message);}
+ }catch(error){throw Error('ASSET_READ '+url+': '+error.message);}
 }
 function preserveWeights(material,groups){
  material.onBeforeCompile=shader=>{

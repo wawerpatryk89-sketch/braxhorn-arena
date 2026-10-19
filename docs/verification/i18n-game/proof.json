@@ -1,0 +1,2732 @@
+{
+  "startedAt": "2026-10-19T16:56:35.414Z",
+  "base": "http://localhost:8789",
+  "checks": [
+    {
+      "name": "844x390 login/registration preserves input nodes, drafts and selected avatar"
+    },
+    {
+      "name": "915x412 login/registration preserves input nodes, drafts and selected avatar"
+    },
+    {
+      "name": "932x430 login/registration preserves input nodes, drafts and selected avatar"
+    },
+    {
+      "name": "1366x768 login/registration preserves input nodes, drafts and selected avatar"
+    },
+    {
+      "name": "Crop canvas, zoom and selected custom image remain unchanged"
+    },
+    {
+      "name": "Guest local language and selected settings survive language changes",
+      "guestId": "g:2244fffc-b685-4ab0-835d-a8377897bf41"
+    },
+    {
+      "name": "Server language restores on refresh, relogin and independent browser; profile draft unchanged",
+      "id": "a:4d4318be-b99f-494b-93bb-c498c8a17107",
+      "avatar": "/assets/avatar-male.jpg"
+    },
+    {
+      "name": "Actual local fight starts; PL/EN preserve fighters, arena, round, score and running state",
+      "invariant": {
+        "before": {
+          "arena": "nocny-targ",
+          "character": "BRAX",
+          "opponent": "NYXA",
+          "round": 1,
+          "wins": [
+            0,
+            0
+          ],
+          "timer": 60,
+          "running": true,
+          "paused": false,
+          "callout": ""
+        },
+        "after": {
+          "arena": "nocny-targ",
+          "character": "BRAX",
+          "opponent": "NYXA",
+          "round": 1,
+          "wins": [
+            0,
+            0
+          ],
+          "timer": 60,
+          "running": true,
+          "paused": false,
+          "callout": ""
+        }
+      }
+    },
+    {
+      "name": "Local result PL/EN preserved score and player identity",
+      "explicitFixture": "Outcome forced through browser-only closure hook; not a played/ranked win"
+    },
+    {
+      "name": "Real ranking/history/tournament rows retain stable profile name, avatar and player ID",
+      "profile": {
+        "id": "a:4d4318be-b99f-494b-93bb-c498c8a17107",
+        "name": "QA BRAX",
+        "avatar": "/assets/avatar-male.jpg",
+        "language": "en",
+        "authenticated": true,
+        "hasPassword": true,
+        "ownerId": "u:fixture-owner",
+        "isOwner": false
+      }
+    },
+    {
+      "name": "Real PL host and EN peer share fight/player IDs/avatars and canonical PAUZA packet with localized PAUZA/PAUSED displays",
+      "code": "9A3098FC",
+      "host": {
+        "language": "pl",
+        "players": {
+          "host": {
+            "id": "a:4d4318be-b99f-494b-93bb-c498c8a17107",
+            "name": "QA BRAX",
+            "avatar": "/assets/avatar-male.jpg"
+          },
+          "guest": {
+            "id": "a:c8783434-be17-4c13-8b93-0b462ad5962f",
+            "name": "QA NYXA",
+            "avatar": "/assets/avatar-female.jpg"
+          }
+        },
+        "token": "PAUZA",
+        "callout": "PAUZA"
+      },
+      "peer": {
+        "language": "en",
+        "players": {
+          "host": {
+            "id": "a:4d4318be-b99f-494b-93bb-c498c8a17107",
+            "name": "QA BRAX",
+            "avatar": "/assets/avatar-male.jpg"
+          },
+          "guest": {
+            "id": "a:c8783434-be17-4c13-8b93-0b462ad5962f",
+            "name": "QA NYXA",
+            "avatar": "/assets/avatar-female.jpg"
+          }
+        },
+        "callout": "PAUSED",
+        "round": "ROUND 1/3"
+      }
+    },
+    {
+      "name": "No missing dictionary keys or browser errors in exercised clients"
+    }
+  ],
+  "problems": [],
+  "screenshots": [
+    "docs/verification/i18n-game/844x390-pl-login.png",
+    "docs/verification/i18n-game/844x390-en-login.png",
+    "docs/verification/i18n-game/844x390-pl-registration.png",
+    "docs/verification/i18n-game/844x390-en-registration.png",
+    "docs/verification/i18n-game/915x412-pl-login.png",
+    "docs/verification/i18n-game/915x412-en-login.png",
+    "docs/verification/i18n-game/915x412-pl-registration.png",
+    "docs/verification/i18n-game/915x412-en-registration.png",
+    "docs/verification/i18n-game/932x430-pl-login.png",
+    "docs/verification/i18n-game/932x430-en-login.png",
+    "docs/verification/i18n-game/932x430-pl-registration.png",
+    "docs/verification/i18n-game/932x430-en-registration.png",
+    "docs/verification/i18n-game/1366x768-pl-login.png",
+    "docs/verification/i18n-game/1366x768-en-login.png",
+    "docs/verification/i18n-game/1366x768-pl-registration.png",
+    "docs/verification/i18n-game/1366x768-en-registration.png",
+    "docs/verification/i18n-game/844x390-pl-crop-draft.png",
+    "docs/verification/i18n-game/844x390-en-crop-draft.png",
+    "docs/verification/i18n-game/844x390-pl-guest-mode-menu.png",
+    "docs/verification/i18n-game/844x390-en-guest-mode-menu.png",
+    "docs/verification/i18n-game/915x412-pl-guest-mode-menu.png",
+    "docs/verification/i18n-game/915x412-en-guest-mode-menu.png",
+    "docs/verification/i18n-game/932x430-pl-guest-mode-menu.png",
+    "docs/verification/i18n-game/932x430-en-guest-mode-menu.png",
+    "docs/verification/i18n-game/1366x768-pl-guest-mode-menu.png",
+    "docs/verification/i18n-game/1366x768-en-guest-mode-menu.png",
+    "docs/verification/i18n-game/844x390-pl-mode-settings.png",
+    "docs/verification/i18n-game/844x390-en-mode-settings.png",
+    "docs/verification/i18n-game/915x412-pl-mode-settings.png",
+    "docs/verification/i18n-game/915x412-en-mode-settings.png",
+    "docs/verification/i18n-game/932x430-pl-mode-settings.png",
+    "docs/verification/i18n-game/932x430-en-mode-settings.png",
+    "docs/verification/i18n-game/1366x768-pl-mode-settings.png",
+    "docs/verification/i18n-game/1366x768-en-mode-settings.png",
+    "docs/verification/i18n-game/844x390-pl-profile-draft.png",
+    "docs/verification/i18n-game/844x390-en-profile-draft.png",
+    "docs/verification/i18n-game/915x412-pl-profile-draft.png",
+    "docs/verification/i18n-game/915x412-en-profile-draft.png",
+    "docs/verification/i18n-game/932x430-pl-profile-draft.png",
+    "docs/verification/i18n-game/932x430-en-profile-draft.png",
+    "docs/verification/i18n-game/1366x768-pl-profile-draft.png",
+    "docs/verification/i18n-game/1366x768-en-profile-draft.png",
+    "docs/verification/i18n-game/844x390-pl-fighter-roster.png",
+    "docs/verification/i18n-game/844x390-en-fighter-roster.png",
+    "docs/verification/i18n-game/915x412-pl-fighter-roster.png",
+    "docs/verification/i18n-game/915x412-en-fighter-roster.png",
+    "docs/verification/i18n-game/932x430-pl-fighter-roster.png",
+    "docs/verification/i18n-game/932x430-en-fighter-roster.png",
+    "docs/verification/i18n-game/1366x768-pl-fighter-roster.png",
+    "docs/verification/i18n-game/1366x768-en-fighter-roster.png",
+    "docs/verification/i18n-game/844x390-pl-arena-selection.png",
+    "docs/verification/i18n-game/844x390-en-arena-selection.png",
+    "docs/verification/i18n-game/915x412-pl-arena-selection.png",
+    "docs/verification/i18n-game/915x412-en-arena-selection.png",
+    "docs/verification/i18n-game/932x430-pl-arena-selection.png",
+    "docs/verification/i18n-game/932x430-en-arena-selection.png",
+    "docs/verification/i18n-game/1366x768-pl-arena-selection.png",
+    "docs/verification/i18n-game/1366x768-en-arena-selection.png",
+    "docs/verification/i18n-game/844x390-en-versus.png",
+    "docs/verification/i18n-game/844x390-pl-fight-hud.png",
+    "docs/verification/i18n-game/844x390-en-fight-hud.png",
+    "docs/verification/i18n-game/915x412-pl-fight-hud.png",
+    "docs/verification/i18n-game/915x412-en-fight-hud.png",
+    "docs/verification/i18n-game/932x430-pl-fight-hud.png",
+    "docs/verification/i18n-game/932x430-en-fight-hud.png",
+    "docs/verification/i18n-game/1366x768-pl-fight-hud.png",
+    "docs/verification/i18n-game/1366x768-en-fight-hud.png",
+    "docs/verification/i18n-game/844x390-pl-local-result-forced-ui-fixture.png",
+    "docs/verification/i18n-game/844x390-en-local-result-forced-ui-fixture.png",
+    "docs/verification/i18n-game/915x412-pl-local-result-forced-ui-fixture.png",
+    "docs/verification/i18n-game/915x412-en-local-result-forced-ui-fixture.png",
+    "docs/verification/i18n-game/932x430-pl-local-result-forced-ui-fixture.png",
+    "docs/verification/i18n-game/932x430-en-local-result-forced-ui-fixture.png",
+    "docs/verification/i18n-game/1366x768-pl-local-result-forced-ui-fixture.png",
+    "docs/verification/i18n-game/1366x768-en-local-result-forced-ui-fixture.png",
+    "docs/verification/i18n-game/844x390-pl-ranking.png",
+    "docs/verification/i18n-game/844x390-en-ranking.png",
+    "docs/verification/i18n-game/915x412-pl-ranking.png",
+    "docs/verification/i18n-game/915x412-en-ranking.png",
+    "docs/verification/i18n-game/932x430-pl-ranking.png",
+    "docs/verification/i18n-game/932x430-en-ranking.png",
+    "docs/verification/i18n-game/1366x768-pl-ranking.png",
+    "docs/verification/i18n-game/1366x768-en-ranking.png",
+    "docs/verification/i18n-game/844x390-pl-match-history.png",
+    "docs/verification/i18n-game/844x390-en-match-history.png",
+    "docs/verification/i18n-game/915x412-pl-match-history.png",
+    "docs/verification/i18n-game/915x412-en-match-history.png",
+    "docs/verification/i18n-game/932x430-pl-match-history.png",
+    "docs/verification/i18n-game/932x430-en-match-history.png",
+    "docs/verification/i18n-game/1366x768-pl-match-history.png",
+    "docs/verification/i18n-game/1366x768-en-match-history.png",
+    "docs/verification/i18n-game/844x390-pl-tournament-bracket.png",
+    "docs/verification/i18n-game/844x390-en-tournament-bracket.png",
+    "docs/verification/i18n-game/915x412-pl-tournament-bracket.png",
+    "docs/verification/i18n-game/915x412-en-tournament-bracket.png",
+    "docs/verification/i18n-game/932x430-pl-tournament-bracket.png",
+    "docs/verification/i18n-game/932x430-en-tournament-bracket.png",
+    "docs/verification/i18n-game/1366x768-pl-tournament-bracket.png",
+    "docs/verification/i18n-game/1366x768-en-tournament-bracket.png",
+    "docs/verification/i18n-game/844x390-pl-online-host-pl-versus.png",
+    "docs/verification/i18n-game/844x390-en-online-peer-en-versus.png",
+    "docs/verification/i18n-game/844x390-pl-online-host-pl-hud.png",
+    "docs/verification/i18n-game/844x390-en-online-peer-en-hud.png"
+  ],
+  "views": [
+    {
+      "name": "login",
+      "size": "844x390",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/844x390-pl-login.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "login",
+      "size": "844x390",
+      "language": "en",
+      "file": "docs/verification/i18n-game/844x390-en-login.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "registration",
+      "size": "844x390",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/844x390-pl-registration.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "registration",
+      "size": "844x390",
+      "language": "en",
+      "file": "docs/verification/i18n-game/844x390-en-registration.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "login",
+      "size": "915x412",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/915x412-pl-login.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "login",
+      "size": "915x412",
+      "language": "en",
+      "file": "docs/verification/i18n-game/915x412-en-login.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "registration",
+      "size": "915x412",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/915x412-pl-registration.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "registration",
+      "size": "915x412",
+      "language": "en",
+      "file": "docs/verification/i18n-game/915x412-en-registration.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "login",
+      "size": "932x430",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/932x430-pl-login.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "login",
+      "size": "932x430",
+      "language": "en",
+      "file": "docs/verification/i18n-game/932x430-en-login.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "registration",
+      "size": "932x430",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/932x430-pl-registration.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "registration",
+      "size": "932x430",
+      "language": "en",
+      "file": "docs/verification/i18n-game/932x430-en-registration.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "login",
+      "size": "1366x768",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/1366x768-pl-login.png",
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "login",
+      "size": "1366x768",
+      "language": "en",
+      "file": "docs/verification/i18n-game/1366x768-en-login.png",
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "registration",
+      "size": "1366x768",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/1366x768-pl-registration.png",
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "registration",
+      "size": "1366x768",
+      "language": "en",
+      "file": "docs/verification/i18n-game/1366x768-en-registration.png",
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "crop-draft",
+      "size": "844x390",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/844x390-pl-crop-draft.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "crop-draft",
+      "size": "844x390",
+      "language": "en",
+      "file": "docs/verification/i18n-game/844x390-en-crop-draft.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "guest-mode-menu",
+      "size": "844x390",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/844x390-pl-guest-mode-menu.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "guest-mode-menu",
+      "size": "844x390",
+      "language": "en",
+      "file": "docs/verification/i18n-game/844x390-en-guest-mode-menu.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "guest-mode-menu",
+      "size": "915x412",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/915x412-pl-guest-mode-menu.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "guest-mode-menu",
+      "size": "915x412",
+      "language": "en",
+      "file": "docs/verification/i18n-game/915x412-en-guest-mode-menu.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "guest-mode-menu",
+      "size": "932x430",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/932x430-pl-guest-mode-menu.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "guest-mode-menu",
+      "size": "932x430",
+      "language": "en",
+      "file": "docs/verification/i18n-game/932x430-en-guest-mode-menu.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "guest-mode-menu",
+      "size": "1366x768",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/1366x768-pl-guest-mode-menu.png",
+      "safeArea": {
+        "top": 0,
+        "left": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "guest-mode-menu",
+      "size": "1366x768",
+      "language": "en",
+      "file": "docs/verification/i18n-game/1366x768-en-guest-mode-menu.png",
+      "safeArea": {
+        "top": 0,
+        "left": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "mode-settings",
+      "size": "844x390",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/844x390-pl-mode-settings.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "mode-settings",
+      "size": "844x390",
+      "language": "en",
+      "file": "docs/verification/i18n-game/844x390-en-mode-settings.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "mode-settings",
+      "size": "915x412",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/915x412-pl-mode-settings.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "mode-settings",
+      "size": "915x412",
+      "language": "en",
+      "file": "docs/verification/i18n-game/915x412-en-mode-settings.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "mode-settings",
+      "size": "932x430",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/932x430-pl-mode-settings.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "mode-settings",
+      "size": "932x430",
+      "language": "en",
+      "file": "docs/verification/i18n-game/932x430-en-mode-settings.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "mode-settings",
+      "size": "1366x768",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/1366x768-pl-mode-settings.png",
+      "safeArea": {
+        "top": 0,
+        "left": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "mode-settings",
+      "size": "1366x768",
+      "language": "en",
+      "file": "docs/verification/i18n-game/1366x768-en-mode-settings.png",
+      "safeArea": {
+        "top": 0,
+        "left": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "profile-draft",
+      "size": "844x390",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/844x390-pl-profile-draft.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "profile-draft",
+      "size": "844x390",
+      "language": "en",
+      "file": "docs/verification/i18n-game/844x390-en-profile-draft.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "profile-draft",
+      "size": "915x412",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/915x412-pl-profile-draft.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "profile-draft",
+      "size": "915x412",
+      "language": "en",
+      "file": "docs/verification/i18n-game/915x412-en-profile-draft.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "profile-draft",
+      "size": "932x430",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/932x430-pl-profile-draft.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "profile-draft",
+      "size": "932x430",
+      "language": "en",
+      "file": "docs/verification/i18n-game/932x430-en-profile-draft.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "profile-draft",
+      "size": "1366x768",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/1366x768-pl-profile-draft.png",
+      "safeArea": {
+        "top": 0,
+        "left": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "profile-draft",
+      "size": "1366x768",
+      "language": "en",
+      "file": "docs/verification/i18n-game/1366x768-en-profile-draft.png",
+      "safeArea": {
+        "top": 0,
+        "left": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "fighter-roster",
+      "size": "844x390",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/844x390-pl-fighter-roster.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "fighter-roster",
+      "size": "844x390",
+      "language": "en",
+      "file": "docs/verification/i18n-game/844x390-en-fighter-roster.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "fighter-roster",
+      "size": "915x412",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/915x412-pl-fighter-roster.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "fighter-roster",
+      "size": "915x412",
+      "language": "en",
+      "file": "docs/verification/i18n-game/915x412-en-fighter-roster.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "fighter-roster",
+      "size": "932x430",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/932x430-pl-fighter-roster.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "fighter-roster",
+      "size": "932x430",
+      "language": "en",
+      "file": "docs/verification/i18n-game/932x430-en-fighter-roster.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "fighter-roster",
+      "size": "1366x768",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/1366x768-pl-fighter-roster.png",
+      "safeArea": {
+        "top": 0,
+        "left": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "fighter-roster",
+      "size": "1366x768",
+      "language": "en",
+      "file": "docs/verification/i18n-game/1366x768-en-fighter-roster.png",
+      "safeArea": {
+        "top": 0,
+        "left": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "arena-selection",
+      "size": "844x390",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/844x390-pl-arena-selection.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "arena-selection",
+      "size": "844x390",
+      "language": "en",
+      "file": "docs/verification/i18n-game/844x390-en-arena-selection.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "arena-selection",
+      "size": "915x412",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/915x412-pl-arena-selection.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "arena-selection",
+      "size": "915x412",
+      "language": "en",
+      "file": "docs/verification/i18n-game/915x412-en-arena-selection.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "arena-selection",
+      "size": "932x430",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/932x430-pl-arena-selection.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "arena-selection",
+      "size": "932x430",
+      "language": "en",
+      "file": "docs/verification/i18n-game/932x430-en-arena-selection.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "arena-selection",
+      "size": "1366x768",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/1366x768-pl-arena-selection.png",
+      "safeArea": {
+        "top": 0,
+        "left": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "arena-selection",
+      "size": "1366x768",
+      "language": "en",
+      "file": "docs/verification/i18n-game/1366x768-en-arena-selection.png",
+      "safeArea": {
+        "top": 0,
+        "left": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "versus",
+      "size": "844x390",
+      "language": "en",
+      "file": "docs/verification/i18n-game/844x390-en-versus.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "fight-hud",
+      "size": "844x390",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/844x390-pl-fight-hud.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "fight-hud",
+      "size": "844x390",
+      "language": "en",
+      "file": "docs/verification/i18n-game/844x390-en-fight-hud.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "fight-hud",
+      "size": "915x412",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/915x412-pl-fight-hud.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "fight-hud",
+      "size": "915x412",
+      "language": "en",
+      "file": "docs/verification/i18n-game/915x412-en-fight-hud.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "fight-hud",
+      "size": "932x430",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/932x430-pl-fight-hud.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "fight-hud",
+      "size": "932x430",
+      "language": "en",
+      "file": "docs/verification/i18n-game/932x430-en-fight-hud.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "fight-hud",
+      "size": "1366x768",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/1366x768-pl-fight-hud.png",
+      "safeArea": {
+        "top": 0,
+        "left": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "fight-hud",
+      "size": "1366x768",
+      "language": "en",
+      "file": "docs/verification/i18n-game/1366x768-en-fight-hud.png",
+      "safeArea": {
+        "top": 0,
+        "left": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "local-result-forced-ui-fixture",
+      "size": "844x390",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/844x390-pl-local-result-forced-ui-fixture.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "local-result-forced-ui-fixture",
+      "size": "844x390",
+      "language": "en",
+      "file": "docs/verification/i18n-game/844x390-en-local-result-forced-ui-fixture.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "local-result-forced-ui-fixture",
+      "size": "915x412",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/915x412-pl-local-result-forced-ui-fixture.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "local-result-forced-ui-fixture",
+      "size": "915x412",
+      "language": "en",
+      "file": "docs/verification/i18n-game/915x412-en-local-result-forced-ui-fixture.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "local-result-forced-ui-fixture",
+      "size": "932x430",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/932x430-pl-local-result-forced-ui-fixture.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "local-result-forced-ui-fixture",
+      "size": "932x430",
+      "language": "en",
+      "file": "docs/verification/i18n-game/932x430-en-local-result-forced-ui-fixture.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "local-result-forced-ui-fixture",
+      "size": "1366x768",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/1366x768-pl-local-result-forced-ui-fixture.png",
+      "safeArea": {
+        "top": 0,
+        "left": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "local-result-forced-ui-fixture",
+      "size": "1366x768",
+      "language": "en",
+      "file": "docs/verification/i18n-game/1366x768-en-local-result-forced-ui-fixture.png",
+      "safeArea": {
+        "top": 0,
+        "left": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "ranking",
+      "size": "844x390",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/844x390-pl-ranking.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "ranking",
+      "size": "844x390",
+      "language": "en",
+      "file": "docs/verification/i18n-game/844x390-en-ranking.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "ranking",
+      "size": "915x412",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/915x412-pl-ranking.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "ranking",
+      "size": "915x412",
+      "language": "en",
+      "file": "docs/verification/i18n-game/915x412-en-ranking.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "ranking",
+      "size": "932x430",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/932x430-pl-ranking.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "ranking",
+      "size": "932x430",
+      "language": "en",
+      "file": "docs/verification/i18n-game/932x430-en-ranking.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "ranking",
+      "size": "1366x768",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/1366x768-pl-ranking.png",
+      "safeArea": {
+        "top": 0,
+        "left": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "ranking",
+      "size": "1366x768",
+      "language": "en",
+      "file": "docs/verification/i18n-game/1366x768-en-ranking.png",
+      "safeArea": {
+        "top": 0,
+        "left": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "match-history",
+      "size": "844x390",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/844x390-pl-match-history.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "match-history",
+      "size": "844x390",
+      "language": "en",
+      "file": "docs/verification/i18n-game/844x390-en-match-history.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "match-history",
+      "size": "915x412",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/915x412-pl-match-history.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "match-history",
+      "size": "915x412",
+      "language": "en",
+      "file": "docs/verification/i18n-game/915x412-en-match-history.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "match-history",
+      "size": "932x430",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/932x430-pl-match-history.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "match-history",
+      "size": "932x430",
+      "language": "en",
+      "file": "docs/verification/i18n-game/932x430-en-match-history.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "match-history",
+      "size": "1366x768",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/1366x768-pl-match-history.png",
+      "safeArea": {
+        "top": 0,
+        "left": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "match-history",
+      "size": "1366x768",
+      "language": "en",
+      "file": "docs/verification/i18n-game/1366x768-en-match-history.png",
+      "safeArea": {
+        "top": 0,
+        "left": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "tournament-bracket",
+      "size": "844x390",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/844x390-pl-tournament-bracket.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "tournament-bracket",
+      "size": "844x390",
+      "language": "en",
+      "file": "docs/verification/i18n-game/844x390-en-tournament-bracket.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "tournament-bracket",
+      "size": "915x412",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/915x412-pl-tournament-bracket.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "tournament-bracket",
+      "size": "915x412",
+      "language": "en",
+      "file": "docs/verification/i18n-game/915x412-en-tournament-bracket.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "tournament-bracket",
+      "size": "932x430",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/932x430-pl-tournament-bracket.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "tournament-bracket",
+      "size": "932x430",
+      "language": "en",
+      "file": "docs/verification/i18n-game/932x430-en-tournament-bracket.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "tournament-bracket",
+      "size": "1366x768",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/1366x768-pl-tournament-bracket.png",
+      "safeArea": {
+        "top": 0,
+        "left": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "tournament-bracket",
+      "size": "1366x768",
+      "language": "en",
+      "file": "docs/verification/i18n-game/1366x768-en-tournament-bracket.png",
+      "safeArea": {
+        "top": 0,
+        "left": 0,
+        "right": 0,
+        "bottom": 0
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "online-host-pl-versus",
+      "size": "844x390",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/844x390-pl-online-host-pl-versus.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "online-peer-en-versus",
+      "size": "844x390",
+      "language": "en",
+      "file": "docs/verification/i18n-game/844x390-en-online-peer-en-versus.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "online-host-pl-hud",
+      "size": "844x390",
+      "language": "pl",
+      "file": "docs/verification/i18n-game/844x390-pl-online-host-pl-hud.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "pl",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "online-peer-en-hud",
+      "size": "844x390",
+      "language": "en",
+      "file": "docs/verification/i18n-game/844x390-en-online-peer-en-hud.png",
+      "safeArea": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      },
+      "texts": {
+        "language": "en",
+        "missing": [],
+        "polish": [],
+        "raw": [],
+        "clipped": [],
+        "ellipsized": []
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    }
+  ],
+  "limitations": [
+    "Chromium viewport emulation; no physical iPhone/Android or Safari test",
+    "Camera hardware is not tested by this localization suite",
+    "Local result is explicitly forced through a browser-only test hook; no played or ranked win is claimed",
+    "The PAUZA online callout is triggered through a browser-only hook and then transmitted through the real duel connection"
+  ],
+  "finishedAt": "2026-10-19T16:58:38.607Z",
+  "status": "passed",
+  "clients": [
+    {
+      "index": 0,
+      "errors": [],
+      "apiErrors": []
+    },
+    {
+      "index": 1,
+      "errors": [],
+      "apiErrors": []
+    },
+    {
+      "index": 2,
+      "errors": [],
+      "apiErrors": []
+    },
+    {
+      "index": 3,
+      "errors": [],
+      "apiErrors": []
+    },
+    {
+      "index": 4,
+      "errors": [],
+      "apiErrors": []
+    },
+    {
+      "index": 5,
+      "errors": [],
+      "apiErrors": []
+    },
+    {
+      "index": 6,
+      "errors": [],
+      "apiErrors": []
+    },
+    {
+      "index": 7,
+      "errors": [],
+      "apiErrors": []
+    },
+    {
+      "index": 8,
+      "errors": [],
+      "apiErrors": []
+    }
+  ]
+}

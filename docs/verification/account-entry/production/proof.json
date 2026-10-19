@@ -1,0 +1,19 @@
+{
+  "url": "https://braxhorn-p0-preview.wawerpatryk89.chatgpt.site",
+  "checks": [
+    "Production UI registration, password confirmation, female preset and stable player ID",
+    "Production photo crop, real R2 upload and publicly served JPEG",
+    "Production session restore and independent-browser login preserve player ID/avatar",
+    "Production logout returns common entry and guest ranking mutation is denied",
+    "No uncaught production JavaScript errors"
+  ],
+  "screenshots": [
+    "/workspace/braxhorn-auth/docs/verification/account-entry/production/login.png",
+    "/workspace/braxhorn-auth/docs/verification/account-entry/production/registration.png",
+    "/workspace/braxhorn-auth/docs/verification/account-entry/production/profile-uploaded.png"
+  ],
+  "physicalDevices": false,
+  "physicalCamera": false,
+  "status": "passed",
+  "playerId": "a:906c0790-1f62-49c3-b0d3-433e5d6851b0"
+}

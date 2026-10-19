@@ -1,9 +1,10 @@
 /* Load only the selected remote arena. Original videos live in R2, not this build. */
 (function(root){
  'use strict';
- let controller=null,blobURL=null,source=null,video=null,generation=0,looper=null;
+ const t=(key,params)=>root.BRAX_I18N.t('content.'+key,params);
+ let controller=null,blobURL=null,source=null,video=null,generation=0,looper=null,visibleProgress=null;
  const panel=()=>document.getElementById('arenaLoadPanel');
- function status(value,text){const p=panel();if(!p)return;p.classList.remove('off');const bar=p.querySelector('progress');if(value===null)bar.removeAttribute('value');else bar.value=value;p.querySelector('[role=status]').textContent=text;}
+ function status(value){visibleProgress=value;const p=panel();if(!p)return;p.classList.remove('off');const bar=p.querySelector('progress');if(value===null)bar.removeAttribute('value');else bar.value=value;p.querySelector('[role=status]').textContent=t(value===null?'media.arenaLoading':'media.arenaProgress',{percent:value});}
  function hide(){panel()?.classList.add('off');}
  function release(){looper?.destroy();looper=null;generation++;controller?.abort();controller=null;if(video&&blobURL){video.pause();video.removeAttribute('src');video.load?.();}if(blobURL)URL.revokeObjectURL(blobURL);blobURL=null;source=null;video=null;hide();}
  async function prepare(url,target){
@@ -13,13 +14,13 @@
   // A stalled transfer must offer retry instead of leaving the player waiting forever.
   let watchdog=setTimeout(()=>controller?.abort(),30000);
   const touch=()=>{clearTimeout(watchdog);watchdog=setTimeout(()=>controller?.abort(),30000);};
-  status(0,'ŁADOWANIE ARENY · 0%');
+  status(0);
   try{
    const response=await fetch(url,{signal,cache:'force-cache'});
    if(!response.ok)throw Error('ARENA_MEDIA: '+response.status);
    const total=Number(response.headers.get('Content-Length'))||0;
    const chunks=[];let loaded=0;
-   if(response.body?.getReader){const reader=response.body.getReader();while(true){const {done,value}=await reader.read();if(done)break;touch();loaded+=value.byteLength;chunks.push(value);if(loaded>24*1024*1024)throw Error('ARENA_MEDIA: size');const pct=total?Math.min(99,Math.round(loaded/total*100)):null;status(pct,pct===null?'ŁADOWANIE ARENY…':'ŁADOWANIE ARENY · '+pct+'%');}}
+   if(response.body?.getReader){const reader=response.body.getReader();while(true){const {done,value}=await reader.read();if(done)break;touch();loaded+=value.byteLength;chunks.push(value);if(loaded>24*1024*1024)throw Error('ARENA_MEDIA: size');const pct=total?Math.min(99,Math.round(loaded/total*100)):null;status(pct);}}
    else chunks.push(await response.arrayBuffer());
    if(signal.aborted||current!==generation)throw new DOMException('Cancelled','AbortError');
    source=url;video=target;blobURL=URL.createObjectURL(new Blob(chunks,{type:'video/mp4'}));
@@ -62,5 +63,6 @@
  let resumeAfterPageShow=false;
  root.addEventListener('pagehide',event=>{if(!event.persisted){release();return;}resumeAfterPageShow=!!video&&!(looper?.current()||video).paused;if(looper)looper.pause();else video?.pause();});
  root.addEventListener('pageshow',event=>{if(event.persisted&&resumeAfterPageShow){resumeAfterPageShow=false;Promise.resolve(looper?looper.resume():video?.play()).catch(()=>{});}});
+ root.addEventListener('brax:language',()=>{if(panel()&&!panel().classList.contains('off'))status(visibleProgress);});
  root.BRAX_ARENA_MEDIA={prepare,release,resume:()=>looper?looper.resume():video?.play(),pause:()=>looper?.pause(),sound:(v,m)=>looper?.sound(v,m),current:()=>looper?.current()||video,report:()=>({active:!!blobURL,source,loop:looper?.report()||null})};
 })(window);

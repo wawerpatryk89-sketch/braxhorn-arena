@@ -1,6 +1,7 @@
 /* Character selection: independent player/opponent choices and a draggable roster. */
 (()=>{
 'use strict';
+const t=(key,params)=>window.BRAX_I18N.t('content.'+key,params),h=(key,params)=>window.BRAX_I18N.h('content.'+key,params);
 const displayFighterName=id=>window.BRAX_FIGHTER_NAME?.(id)??String(id??'');
 const $=s=>document.querySelector(s),state={player:0,opponent:1,role:'player',mode:'fight'};let selectPlayer=()=>{};
 const label=n=>displayFighterName(n);
@@ -85,7 +86,7 @@ function finishDrag(e){e.stopPropagation();if(!drag||drag.id!==e.pointerId)retur
 track.addEventListener('pointerup',finishDrag);track.addEventListener('pointercancel',finishDrag);track.addEventListener('lostpointercapture',finishDrag);
 function cue(confirm=false){const audio=$('#rosterCue');if(!audio||$('#titleAudio').muted)return;audio.src=confirm?'/assets/audio/roster-confirm.mp3':'/assets/audio/roster-select.mp3';audio.volume=confirm?.45:.28;audio.currentTime=0;audio.play()?.catch(()=>{});}
 const automatic=()=>['arcade','tournament','survival'].includes(state.mode);
-function paint(){for(const [index,key] of ['brax','nyxa','vexa','krov','nina','danny','bear','demon'].entries()){const el=$('#card-'+key),player=state.player===index,cpu=!automatic()&&state.opponent===index;el.setAttribute('aria-pressed',String(state[state.role]===index));el.classList.toggle('roster-player',player);el.classList.toggle('roster-cpu',cpu);$('#card-'+key+'-badge').textContent=player&&cpu?'TY + CPU':player?'TY':cpu?'CPU':String(index+1).padStart(2,'0');}$('#rosterPlayer').setAttribute('aria-pressed',String(state.role==='player'));$('#rosterOpponent').setAttribute('aria-pressed',String(state.role==='opponent'));$('#rosterPlayer').textContent='TY · '+label(names[state.player]);$('#rosterOpponent').disabled=automatic();$('#rosterOpponent').textContent=automatic()?'RYWALE · LOSOWANIE':'PRZECIWNIK · '+label(names[state.opponent]);$('#rosterInstruction').textContent=state.role==='player'?'WYBIERZ SWOJEGO ZAWODNIKA':'WYBIERZ PRZECIWNIKA';}
+function paint(){for(const id of ['rosterPlayer','rosterOpponent','rosterInstruction'])$('#'+id).removeAttribute('data-i18n');for(const [index,key] of ['brax','nyxa','vexa','krov','nina','danny','bear','demon'].entries()){const el=$('#card-'+key),player=state.player===index,cpu=!automatic()&&state.opponent===index;el.setAttribute('aria-pressed',String(state[state.role]===index));el.classList.toggle('roster-player',player);el.classList.toggle('roster-cpu',cpu);$('#card-'+key+'-badge').textContent=player&&cpu?t('roster.youCpu'):player?t('roster.you'):cpu?t('roster.cpu'):String(index+1).padStart(2,'0');}$('#rosterPlayer').setAttribute('aria-pressed',String(state.role==='player'));$('#rosterOpponent').setAttribute('aria-pressed',String(state.role==='opponent'));$('#rosterPlayer').textContent=t('roster.player',{name:label(names[state.player])});$('#rosterOpponent').disabled=automatic();$('#rosterOpponent').textContent=automatic()?t('roster.randomOpponents'):t('roster.opponent',{name:label(names[state.opponent])});$('#rosterInstruction').textContent=t(state.role==='player'?'roster.choosePlayer':'roster.chooseOpponent');}
 for(const role of ['player','opponent'])$('#roster'+(role==='player'?'Player':'Opponent')).addEventListener('click',()=>{if(automatic()&&role==='opponent')return;state.role=role;paint();cue();});
 for(const [index,key] of ['brax','nyxa','vexa','krov','nina','danny','bear','demon'].entries())$('#card-'+key).addEventListener('click',()=>{if(performance.now()<suppressClickUntil)return;state[state.role]=index;if(state.role==='player'){selectPlayer(index);state.role=automatic()?'player':'opponent';}paint();cue();});
 $('#rosterBack').addEventListener('click',()=>$('#backTitle').click());
@@ -95,5 +96,6 @@ $('#rosterNext').addEventListener('click',()=>$('#rosterTrack').scrollBy({left:$
 const notify=()=>window.dispatchEvent(new Event('brax:roster-change'));
 window.BRAX_ROSTER={portrait,frame,layoutCarousel,dragCarousel,setMode(mode){state.mode=mode;state.role='player';paint();notify();},setRole(role){if(!['player','opponent'].includes(role)||automatic()&&role==='opponent')return;state.role=role;paint();cue();notify();},choose(index){if(!Number.isInteger(index)||index<0||index>=names.length)return;state[state.role]=index;if(state.role==='player')selectPlayer(index);paint();cue();notify();},bind(fn){selectPlayer=fn;paint();notify();},sync(index){state.player=index;paint();notify();},get opponent(){return names[state.opponent];},state:()=>({...state})};
 for(const id of ['rosterPlayer','rosterOpponent'])$('#'+id).addEventListener('click',notify);
+window.addEventListener('brax:language',paint);
 paint();
 })();

@@ -2,6 +2,9 @@
 export const SESSION_COOKIE='brax_session';
 export const ENTRY_COOKIE='brax_entry';
 export const DEFAULT_AVATAR='/assets/avatar-male.jpg';
+export type PlayerLanguage='pl'|'en';
+export function validLanguage(value:unknown):value is PlayerLanguage{return value==='pl'||value==='en';}
+export function playerLanguage(value:unknown):PlayerLanguage{return value==='en'?'en':'pl';}
 export const SESSION_TTL=30*24*60*60*1000;
 const encoder=new TextEncoder();
 export function cookieValue(request:Request,name:string){return request.headers.get('cookie')?.split(';').map(v=>v.trim()).find(v=>v.startsWith(name+'='))?.slice(name.length+1)||'';}

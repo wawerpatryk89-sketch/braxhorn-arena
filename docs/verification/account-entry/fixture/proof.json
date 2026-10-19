@@ -1,0 +1,277 @@
+{
+  "startedAt": "2026-10-19T16:34:04.701Z",
+  "base": "http://localhost:8788",
+  "environment": "Chromium emulation; isolated SQLite API; no physical phone or camera",
+  "checks": [
+    {
+      "name": "844x390 menu profile chip has no collisions",
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "844x390 real ranking/history/tournament share persistent account profile",
+      "menu": {
+        "text": "QA BRAXTY",
+        "avatar": "/assets/avatar-male.jpg",
+        "loaded": true
+      },
+      "ranking": {
+        "text": "1QA BRAX · TY12 zwycięstw3:00",
+        "avatar": "/assets/avatar-male.jpg",
+        "loaded": true
+      },
+      "history": [
+        {
+          "text": "QA BRAXsurvival · 19.10.202612",
+          "avatars": [
+            {
+              "src": "/assets/avatar-male.jpg",
+              "loaded": true
+            }
+          ]
+        },
+        {
+          "text": "QA BRAXVS QA NYXA · 19.10.20262 : 1",
+          "avatars": [
+            {
+              "src": "/assets/avatar-male.jpg",
+              "loaded": true
+            },
+            {
+              "src": "/assets/avatar-female.jpg",
+              "loaded": true
+            }
+          ]
+        }
+      ],
+      "participants": [
+        {
+          "id": "a:e71182eb-9c7c-4cea-843c-d2fcc5604f85",
+          "text": "QA BRAX TYBRAX",
+          "avatar": "/assets/avatar-male.jpg",
+          "loaded": true
+        },
+        {
+          "id": "a:72b06074-d5bf-4c6f-8a04-fa08282b862f",
+          "text": "QA NYXANYXA",
+          "avatar": "/assets/avatar-female.jpg",
+          "loaded": true
+        },
+        {
+          "id": "u:fixture-owner",
+          "text": "WAWERKROV",
+          "avatar": "/assets/avatar-male.jpg",
+          "loaded": true
+        },
+        {
+          "id": "",
+          "text": "Zaproszony graczNINA",
+          "avatar": "/assets/avatar-male.jpg",
+          "loaded": true
+        }
+      ]
+    },
+    {
+      "name": "915x412 menu profile chip has no collisions",
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "915x412 real ranking/history/tournament share persistent account profile",
+      "menu": {
+        "text": "QA BRAXTY",
+        "avatar": "/assets/avatar-male.jpg",
+        "loaded": true
+      },
+      "ranking": {
+        "text": "1QA BRAX · TY12 zwycięstw3:00",
+        "avatar": "/assets/avatar-male.jpg",
+        "loaded": true
+      },
+      "history": [
+        {
+          "text": "QA BRAXsurvival · 19.10.202612",
+          "avatars": [
+            {
+              "src": "/assets/avatar-male.jpg",
+              "loaded": true
+            }
+          ]
+        },
+        {
+          "text": "QA BRAXVS QA NYXA · 19.10.20262 : 1",
+          "avatars": [
+            {
+              "src": "/assets/avatar-male.jpg",
+              "loaded": true
+            },
+            {
+              "src": "/assets/avatar-female.jpg",
+              "loaded": true
+            }
+          ]
+        }
+      ],
+      "participants": [
+        {
+          "id": "a:e71182eb-9c7c-4cea-843c-d2fcc5604f85",
+          "text": "QA BRAX TYBRAX",
+          "avatar": "/assets/avatar-male.jpg",
+          "loaded": true
+        },
+        {
+          "id": "a:72b06074-d5bf-4c6f-8a04-fa08282b862f",
+          "text": "QA NYXANYXA",
+          "avatar": "/assets/avatar-female.jpg",
+          "loaded": true
+        },
+        {
+          "id": "u:fixture-owner",
+          "text": "WAWERKROV",
+          "avatar": "/assets/avatar-male.jpg",
+          "loaded": true
+        },
+        {
+          "id": "",
+          "text": "Zaproszony graczNINA",
+          "avatar": "/assets/avatar-male.jpg",
+          "loaded": true
+        }
+      ]
+    },
+    {
+      "name": "932x430 menu profile chip has no collisions",
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "name": "932x430 real ranking/history/tournament share persistent account profile",
+      "menu": {
+        "text": "QA BRAXTY",
+        "avatar": "/assets/avatar-male.jpg",
+        "loaded": true
+      },
+      "ranking": {
+        "text": "1QA BRAX · TY12 zwycięstw3:00",
+        "avatar": "/assets/avatar-male.jpg",
+        "loaded": true
+      },
+      "history": [
+        {
+          "text": "QA BRAXsurvival · 19.10.202612",
+          "avatars": [
+            {
+              "src": "/assets/avatar-male.jpg",
+              "loaded": true
+            }
+          ]
+        },
+        {
+          "text": "QA BRAXVS QA NYXA · 19.10.20262 : 1",
+          "avatars": [
+            {
+              "src": "/assets/avatar-male.jpg",
+              "loaded": true
+            },
+            {
+              "src": "/assets/avatar-female.jpg",
+              "loaded": true
+            }
+          ]
+        }
+      ],
+      "participants": [
+        {
+          "id": "a:e71182eb-9c7c-4cea-843c-d2fcc5604f85",
+          "text": "QA BRAX TYBRAX",
+          "avatar": "/assets/avatar-male.jpg",
+          "loaded": true
+        },
+        {
+          "id": "a:72b06074-d5bf-4c6f-8a04-fa08282b862f",
+          "text": "QA NYXANYXA",
+          "avatar": "/assets/avatar-female.jpg",
+          "loaded": true
+        },
+        {
+          "id": "u:fixture-owner",
+          "text": "WAWERKROV",
+          "avatar": "/assets/avatar-male.jpg",
+          "loaded": true
+        },
+        {
+          "id": "",
+          "text": "Zaproszony graczNINA",
+          "avatar": "/assets/avatar-male.jpg",
+          "loaded": true
+        }
+      ]
+    },
+    {
+      "name": "Real online engine started with both account avatars on host",
+      "hud": {
+        "names": [
+          "QA BRAX · BRAX · TY",
+          "QA NYXA · BRAX"
+        ],
+        "avatars": [
+          "/assets/avatar-male.jpg",
+          "/assets/avatar-female.jpg"
+        ]
+      }
+    },
+    {
+      "name": "Real online engine started with both account avatars on peer",
+      "hud": {
+        "names": [
+          "QA BRAX · BRAX",
+          "QA NYXA · BRAX · TY"
+        ],
+        "avatars": [
+          "/assets/avatar-male.jpg",
+          "/assets/avatar-female.jpg"
+        ]
+      }
+    },
+    {
+      "name": "Logout after actual online engine boot returns directly to common entry"
+    },
+    {
+      "name": "No uncaught JavaScript errors in retained contexts"
+    }
+  ],
+  "problems": [],
+  "screenshots": [
+    "docs/verification/account-entry/fixture/844x390-fixture-menu-profile.png",
+    "docs/verification/account-entry/fixture/844x390-fixture-ranking-account-avatars.png",
+    "docs/verification/account-entry/fixture/844x390-fixture-history-both-avatars.png",
+    "docs/verification/account-entry/fixture/844x390-fixture-tournament-account-avatars.png",
+    "docs/verification/account-entry/fixture/915x412-fixture-menu-profile.png",
+    "docs/verification/account-entry/fixture/915x412-fixture-ranking-account-avatars.png",
+    "docs/verification/account-entry/fixture/915x412-fixture-history-both-avatars.png",
+    "docs/verification/account-entry/fixture/915x412-fixture-tournament-account-avatars.png",
+    "docs/verification/account-entry/fixture/932x430-fixture-menu-profile.png",
+    "docs/verification/account-entry/fixture/932x430-fixture-ranking-account-avatars.png",
+    "docs/verification/account-entry/fixture/932x430-fixture-history-both-avatars.png",
+    "docs/verification/account-entry/fixture/932x430-fixture-tournament-account-avatars.png",
+    "docs/verification/account-entry/fixture/844x390-fixture-online-host-versus.png",
+    "docs/verification/account-entry/fixture/844x390-fixture-online-peer-versus.png",
+    "docs/verification/account-entry/fixture/844x390-fixture-online-host-hud.png",
+    "docs/verification/account-entry/fixture/844x390-fixture-online-peer-hud.png",
+    "docs/verification/account-entry/fixture/844x390-fixture-logout-after-engine.png"
+  ],
+  "unverified": [
+    "Physical iPhone and Android hardware",
+    "A physical selfie camera",
+    "Real Internet / mobile network performance"
+  ],
+  "assets": {},
+  "finishedAt": "2026-10-19T16:34:41.189Z",
+  "status": "passed"
+}

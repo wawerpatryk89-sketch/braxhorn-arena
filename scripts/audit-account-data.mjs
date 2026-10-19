@@ -27,6 +27,9 @@ const ok=(r,status=200)=>{assert.equal(r.status,status,JSON.stringify(r));return
 const a=ok(await account('a','login',{nick:'QA BRAX',password:REVIEW_PASSWORD})).player;
 const b=ok(await account('b','login',{nick:'QA NYXA',password:REVIEW_PASSWORD})).player;
 assert.notEqual(a.id,b.id);assert.equal(a.avatar,'/assets/avatar-male.jpg');assert.equal(b.avatar,'/assets/avatar-female.jpg');
+const savedResults=sqlite.prepare('SELECT * FROM results WHERE owner=? ORDER BY id').all(a.id);
+const language=ok(await account('a','language',{language:'en',playerId:b.id})).player;assert.equal(language.id,a.id);assert.equal(language.avatar,a.avatar);assert.equal(language.language,'en');assert.equal(ok(await account('b','me')).player.language,'pl','language saves cannot target the other account');
+assert.deepEqual(sqlite.prepare('SELECT * FROM results WHERE owner=? ORDER BY id').all(a.id),savedResults,'saving language preserves ranked results and owner IDs');
 assert.equal(ok(await arena('a','me')).id,a.id);assert.equal(ok(await arena('b','profile')).avatar,b.avatar);
 const host=ok(await duel('a',{action:'create',fighter:'KROV'}));
 const guest=ok(await duel('b',{action:'join',code:host.code,fighter:'BRAX'}));
@@ -44,9 +47,10 @@ const upcoming=ok(await tournament('b','list')).upcoming.find(f=>f.opponent_id==
 assert.equal(sqlite.prepare('SELECT COUNT(*) AS n FROM results WHERE owner=?').get(a.id).n,1,'avatar change keeps score owner');
 assert.equal(sqlite.prepare('SELECT avatar FROM players WHERE id=?').get(b.id).avatar,b.avatar,'body playerId cannot mutate another account');
 ok(await account('a','logout',{}));assert.equal(ok(await account('a','me')).authenticated,false);
-ok(await account('a','login',{nick:'QA BRAX',password:REVIEW_PASSWORD}));assert.equal(ok(await arena('a','profile')).avatar,b.avatar);assert.equal(ok(await arena('a','profile')).id,a.id);
+const restored=ok(await account('a','login',{nick:'QA BRAX',password:REVIEW_PASSWORD})).player;assert.equal(restored.language,'en','saved language survives logout/login');assert.equal(ok(await arena('a','profile')).avatar,b.avatar);assert.equal(ok(await arena('a','profile')).id,a.id);
 // A second device logs into the same account, with no shared browser storage or cookie.
-ok(await account('second-device','login',{nick:'QA BRAX',password:REVIEW_PASSWORD}));assert.equal(ok(await arena('second-device','me')).id,a.id);assert.equal(ok(await arena('second-device','me')).avatar,b.avatar);
+const secondDevice=ok(await account('second-device','login',{nick:'QA BRAX',password:REVIEW_PASSWORD})).player;assert.equal(secondDevice.language,'en');assert.equal(ok(await arena('second-device','me')).id,a.id);assert.equal(ok(await arena('second-device','me')).avatar,b.avatar);
+ok(await account('second-device','language',{language:'pl'}));assert.equal(ok(await account('a','me')).player.language,'pl','second device language save appears in original session');assert.deepEqual(sqlite.prepare('SELECT * FROM results WHERE owner=? ORDER BY id').all(a.id),savedResults);
 for(const action of ['start','finish','challenge'])assert.equal((await arena('anonymous',action,{runId:'forged',match:'foreign'})).status,403,action);
 for(const action of ['create','register','claim','enter','withdraw','addParticipant','draw','resolve'])assert.equal((await tournament('anonymous',action,{code:'FACE2026',inviteCode:'0000000000002026',fighter:'BRAX'})).status,403,action);
 const anonymous=ok(await account('anonymous','me')).player;assert.match(anonymous.name,/^GOŚĆ-[A-F0-9]{4}$/);assert.equal(anonymous.authenticated,false);
@@ -61,5 +65,5 @@ const renamed=ok(await call(handleArena,'legacy','/api/arena?action=name',{name:
 assert.equal(sqlite.prepare('SELECT nick_key FROM players WHERE id=?').get('u:legacy-test').nick_key,'legacy new');
 assert.equal((await account('other','register',{nick:'Legacy New',password:REVIEW_PASSWORD,avatar:'male'})).status,409);
 const fresh=await registerTestAccount(db,'Persistent tester');sessions.set('fresh',fresh.cookie);assert.equal(ok(await arena('fresh','name',{name:'changed externally'})).name,'Persistent tester');
-console.log(JSON.stringify({pass:true,checks:['real password sessions on two devices','same player primary key across profile, board, history, lobby and tournament','live avatar joins after profile update','account avatar independent of fighter','old snapshot names superseded by current account','results retained after avatar update','guest ranking and tournament writes rejected server-side','guest ordinary multiplayer allowed','logout revokes tournament room access','legacy nickname uniqueness']},null,2));
+console.log(JSON.stringify({pass:true,checks:['real password sessions on two devices','saved language restored on login and shared across two devices','language mutation preserves account identity and ranked results','same player primary key across profile, board, history, lobby and tournament','live avatar joins after profile update','account avatar independent of fighter','old snapshot names superseded by current account','results retained after avatar update','guest ranking and tournament writes rejected server-side','guest ordinary multiplayer allowed','logout revokes tournament room access','legacy nickname uniqueness']},null,2));
 sqlite.close();

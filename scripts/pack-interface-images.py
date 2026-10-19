@@ -20,11 +20,6 @@ for p in Path('build').rglob('*'):
  if p.suffix not in ('.html','.css','.js','.json'):continue
  text=p.read_text()
  for old,new in replacements.items():text=text.replace(old,new)
- # Character-specific guide filenames are assembled at runtime.
- if p.name=='combat.js' and 'controls-guide.png' in replacements:
-  old="'-'+helpCharacter.toLowerCase():'')+'.png'"
-  assert old in text
-  text=text.replace(old,"'-'+helpCharacter.toLowerCase():'')+'.webp'")
  p.write_text(text)
 # Remove any source encoding retained by the workspace copy layer.
 for name in replacements:
