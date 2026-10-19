@@ -12,7 +12,7 @@ const displayFighterName=id=>window.BRAX_FIGHTER_NAME?.(id)??String(id??'');
  let slot=0,request=0,loading=false,muted=false,touch=null,moved=false,loadLabel=null,featureKind=null;
  const title=$('#titleAudio'),crowd=$('#crowdAudio');title.volume=.72;crowd.volume=.68;
  const play=a=>{if(!muted)a.play().catch(()=>{})};
- function sound(){if($('#selection').classList.contains('off')){crowd.pause();play(title)}else{title.pause();play(crowd)}}
+ function sound(){if(window.BRAX_START_FILM?.active){title.pause();crowd.pause();return;}if($('#selection').classList.contains('off')){crowd.pause();play(title)}else{title.pause();play(crowd)}}
  async function select(index,immediate=false){slot=(index%names.length+names.length)%names.length;window.BRAX_ROSTER?.sync(slot);const serial=++request,next=slot,art=$('#selectionFighter'),name=$('#selectionActions');$('#chooseFighter').disabled=true;art.classList.toggle('switching',!immediate);name.classList.toggle('switching',!immediate);await Promise.all([ready[next],new Promise(r=>setTimeout(r,immediate?0:145))]);if(serial!==request)return;art.classList.toggle('nyxa',next===1);$('#selectionImage').src=sources[next];$('#selectionImage').alt=displayFighterName(names[next]);$('#selectionName').textContent=displayFighterName(names[next]);$('#chooseFighter').setAttribute('aria-label',['arcade','tournament','survival'].includes(mode)?t('menu.confirmPlayer'):t('menu.confirmPair'));await $('#selectionImage').decode().catch(()=>{});if(serial!==request)return;requestAnimationFrame(()=>{art.classList.remove('switching');name.classList.remove('switching');$('#chooseFighter').disabled=loading})}
  window.BRAX_ROSTER?.bind(index=>select(index,true));
  function fitMenu(){const v=window.visualViewport,w=v?.width||innerWidth,h=v?.height||innerHeight,game=$('#game');game.style.width=w+'px';game.style.height=h+'px';game.setAttribute('data-orientation',w<h?'portrait':'landscape');game.style.left=(v?.offsetLeft||0)+'px';game.style.top=(v?.offsetTop||0)+'px';}
@@ -20,6 +20,7 @@ const displayFighterName=id=>window.BRAX_FIGHTER_NAME?.(id)??String(id??'');
  listen(window,'resize',fitMenu);listen(window,'orientationchange',()=>{requestAnimationFrame(fitMenu);setTimeout(fitMenu,200)});listen(document,'fullscreenchange',fitMenu);listen(document,'webkitfullscreenchange',fitMenu);if(window.visualViewport){listen(window.visualViewport,'resize',fitMenu);listen(window.visualViewport,'scroll',fitMenu)}fitMenu();
  function enterAccount(){const profile=window.BRAX_ACCOUNT?.profile;if(!profile)return;for(const id of ['accountEntry','selection','modeSettings','survivalScreen','challengesScreen','featurePanel'])$('#'+id)?.classList.add('off');$('#matchSetup').classList.remove('off');$('#game').classList.add('menu-open');select(0,true);sound();window.BRAX_TOURNAMENTS?.openPending();}
  listen(window,'brax:account-enter',enterAccount);
+ listen(window,'brax:start-film-ended',sound);
  listen(window,'brax:account-open',()=>{for(const id of ['selection','matchSetup','modeSettings','survivalScreen','challengesScreen','featurePanel'])$('#'+id)?.classList.add('off');title.pause();crowd.pause();});
  listen($('#backTitle'),'click',()=>{if(loading)return;window.BRAX_TRANSITION.run(()=>{$('#selection').classList.add('off');$('#matchSetup').classList.remove('off');sound()})});
 

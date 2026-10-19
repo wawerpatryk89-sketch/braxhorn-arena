@@ -1,5 +1,9 @@
 /* Authored static interface copy; IDs and user content are never translated. */
 window.BRAX_I18N.register('common',{
+ 'film.introLabel':{pl:'Film otwierający BRAXHORN',en:'BRAXHORN opening video'},
+ 'film.loading':{pl:'Wczytywanie filmu…',en:'Loading video…'},
+ 'film.retry':{pl:'Dotknij odtwarzania lub pomiń film.',en:'Tap play or skip the video.'},
+ 'film.error':{pl:'Nie udało się wczytać filmu. Spróbuj ponownie lub pomiń.',en:'The video could not be loaded. Try again or skip.'},
  "hud.roundInitial": {
   "pl": "RUNDA 1/3",
   "en": "ROUND 1/3"

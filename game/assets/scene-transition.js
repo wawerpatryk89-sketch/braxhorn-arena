@@ -1,4 +1,4 @@
-/* Shared scene fade; opening START, nickname, film and notice screens were removed. */
+/* Shared scene fade; the account entry and opening film own their separate layers. */
 (()=>{'use strict';
  const $=s=>document.querySelector(s);
  const fade=$('#sceneFade');let busy=false;const changes=[];
