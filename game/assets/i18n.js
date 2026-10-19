@@ -108,9 +108,13 @@
   if(activeSave?.identity===identity)return Promise.resolve(true);
   return setLanguage(supported.has(profile.language)?profile.language:'pl');
  }
+ function languageFlag(lang){
+  const flag=lang==='pl'?'<path fill="#fff" d="M0 0h60v20H0z"/><path fill="#dc2344" d="M0 20h60v20H0z"/>':'<path fill="#172d56" d="M0 0h60v40H0z"/><path stroke="#fff" stroke-width="8" d="m0 0 60 40M60 0 0 40"/><path fill="#ce2842" d="M0 0v3l25.5 17H30L0 0zM60 0h-4.5L30 17v3L60 0zM60 40v-3L34.5 20H30L60 40zM0 40h4.5L30 23v-3L0 40z"/><path stroke="#fff" stroke-width="13" d="M30 0v40M0 20h60"/><path stroke="#ce2842" stroke-width="7" d="M30 0v40M0 20h60"/>';
+  return '<span class="brax-language-flag" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 40" aria-hidden="true" focusable="false">'+flag+'</svg></span>';
+ }
  function makeSwitch(){
   const group=document.createElement('div');group.className='brax-language-switch';group.dataset.languageSwitch='';group.setAttribute('role','group');group.setAttribute('data-i18n-aria-label','common.language.label');
-  for(const lang of ['pl','en']){const button=document.createElement('button');button.type='button';button.dataset.language=lang;button.textContent=lang.toUpperCase();button.lang=lang;button.setAttribute('aria-label',lang==='pl'?'Polski':'English');group.append(button);}
+  for(const lang of ['pl','en']){const button=document.createElement('button');button.type='button';button.dataset.language=lang;button.lang=lang;button.setAttribute('aria-label',lang==='pl'?'Polski':'English');group.append(button);}
   return group;
  }
  function mountSwitches(){
@@ -123,7 +127,7 @@
   syncSwitches();
  }
  function syncSwitches(){
-  document.querySelectorAll('[data-language-switch]').forEach(group=>{group.setAttribute('aria-label',catalog.has('common.language.label')?t('common.language.label'):'Language');group.querySelectorAll('[data-language]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.language===language)));});
+  document.querySelectorAll('[data-language-switch]').forEach(group=>{group.setAttribute('aria-label',catalog.has('common.language.label')?t('common.language.label'):'Language');group.querySelectorAll('[data-language]').forEach(button=>{const lang=button.dataset.language;if(button.dataset.flagLanguage!==lang){button.innerHTML=languageFlag(lang);button.dataset.flagLanguage=lang;button.title=lang==='pl'?'Polski':'English';}button.setAttribute('aria-pressed',String(lang===language));});});
  }
  function showLanguageStatus(message){let status=document.getElementById('braxLanguageStatus');if(!status){status=document.createElement('p');status.id='braxLanguageStatus';status.className='brax-language-status';status.setAttribute('role','status');document.body.append(status);}status.textContent=message;status.hidden=false;clearTimeout(showLanguageStatus.timer);showLanguageStatus.timer=setTimeout(()=>status.hidden=true,7000);}
  function date(value,options={}){const parsed=value instanceof Date?value:new Date(value);return Number.isNaN(parsed.getTime())?'—':new Intl.DateTimeFormat(locale(),{day:'numeric',month:'short',year:'numeric',...options}).format(parsed);}

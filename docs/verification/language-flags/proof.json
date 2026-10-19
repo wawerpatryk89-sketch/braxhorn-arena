@@ -1,0 +1,359 @@
+{
+  "date": "2026-10-19T17:20:46.915Z",
+  "views": [
+    {
+      "size": "844x390",
+      "language": "en",
+      "name": "login",
+      "file": "844x390-en-login.png",
+      "layout": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "size": "844x390",
+      "language": "pl",
+      "name": "login",
+      "file": "844x390-pl-login.png",
+      "layout": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "size": "844x390",
+      "language": "en",
+      "name": "registration",
+      "file": "844x390-en-registration.png",
+      "layout": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "size": "844x390",
+      "language": "pl",
+      "name": "registration",
+      "file": "844x390-pl-registration.png",
+      "layout": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "size": "844x390",
+      "language": "en",
+      "name": "crop",
+      "file": "844x390-en-crop.png",
+      "layout": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "size": "844x390",
+      "language": "pl",
+      "name": "crop",
+      "file": "844x390-pl-crop.png",
+      "layout": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "size": "844x390",
+      "language": "en",
+      "name": "profile",
+      "file": "844x390-en-profile.png",
+      "layout": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "size": "844x390",
+      "language": "pl",
+      "name": "profile",
+      "file": "844x390-pl-profile.png",
+      "layout": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "size": "844x390",
+      "language": "en",
+      "name": "settings",
+      "file": "844x390-en-settings.png",
+      "layout": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "size": "844x390",
+      "language": "pl",
+      "name": "settings",
+      "file": "844x390-pl-settings.png",
+      "layout": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "size": "915x412",
+      "language": "en",
+      "name": "login",
+      "file": "915x412-en-login.png",
+      "layout": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "size": "915x412",
+      "language": "pl",
+      "name": "login",
+      "file": "915x412-pl-login.png",
+      "layout": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "size": "915x412",
+      "language": "en",
+      "name": "registration",
+      "file": "915x412-en-registration.png",
+      "layout": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "size": "915x412",
+      "language": "pl",
+      "name": "registration",
+      "file": "915x412-pl-registration.png",
+      "layout": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "size": "915x412",
+      "language": "en",
+      "name": "crop",
+      "file": "915x412-en-crop.png",
+      "layout": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "size": "915x412",
+      "language": "pl",
+      "name": "crop",
+      "file": "915x412-pl-crop.png",
+      "layout": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "size": "915x412",
+      "language": "en",
+      "name": "profile",
+      "file": "915x412-en-profile.png",
+      "layout": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "size": "915x412",
+      "language": "pl",
+      "name": "profile",
+      "file": "915x412-pl-profile.png",
+      "layout": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "size": "915x412",
+      "language": "en",
+      "name": "settings",
+      "file": "915x412-en-settings.png",
+      "layout": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "size": "915x412",
+      "language": "pl",
+      "name": "settings",
+      "file": "915x412-pl-settings.png",
+      "layout": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "size": "932x430",
+      "language": "en",
+      "name": "login",
+      "file": "932x430-en-login.png",
+      "layout": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "size": "932x430",
+      "language": "pl",
+      "name": "login",
+      "file": "932x430-pl-login.png",
+      "layout": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "size": "932x430",
+      "language": "en",
+      "name": "registration",
+      "file": "932x430-en-registration.png",
+      "layout": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "size": "932x430",
+      "language": "pl",
+      "name": "registration",
+      "file": "932x430-pl-registration.png",
+      "layout": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "size": "932x430",
+      "language": "en",
+      "name": "crop",
+      "file": "932x430-en-crop.png",
+      "layout": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "size": "932x430",
+      "language": "pl",
+      "name": "crop",
+      "file": "932x430-pl-crop.png",
+      "layout": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "size": "932x430",
+      "language": "en",
+      "name": "profile",
+      "file": "932x430-en-profile.png",
+      "layout": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "size": "932x430",
+      "language": "pl",
+      "name": "profile",
+      "file": "932x430-pl-profile.png",
+      "layout": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "size": "932x430",
+      "language": "en",
+      "name": "settings",
+      "file": "932x430-en-settings.png",
+      "layout": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "size": "932x430",
+      "language": "pl",
+      "name": "settings",
+      "file": "932x430-pl-settings.png",
+      "layout": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    }
+  ],
+  "checks": [
+    {
+      "size": "844x390",
+      "status": "passed",
+      "contexts": [
+        "login",
+        "registration",
+        "crop",
+        "profile",
+        "settings"
+      ],
+      "draftsPreserved": true,
+      "cropPixelsPreserved": true,
+      "avatarPreserved": true,
+      "difficultyPreserved": true,
+      "serverPreferencePreserved": true
+    },
+    {
+      "size": "915x412",
+      "status": "passed",
+      "contexts": [
+        "login",
+        "registration",
+        "crop",
+        "profile",
+        "settings"
+      ],
+      "draftsPreserved": true,
+      "cropPixelsPreserved": true,
+      "avatarPreserved": true,
+      "difficultyPreserved": true,
+      "serverPreferencePreserved": true
+    },
+    {
+      "size": "932x430",
+      "status": "passed",
+      "contexts": [
+        "login",
+        "registration",
+        "crop",
+        "profile",
+        "settings"
+      ],
+      "draftsPreserved": true,
+      "cropPixelsPreserved": true,
+      "avatarPreserved": true,
+      "difficultyPreserved": true,
+      "serverPreferencePreserved": true
+    }
+  ],
+  "limitations": [
+    "Chromium landscape emulation with safe-area overrides; no physical phone, Safari or camera hardware test."
+  ],
+  "status": "passed"
+}
