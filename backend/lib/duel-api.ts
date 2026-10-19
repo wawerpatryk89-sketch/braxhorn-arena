@@ -33,7 +33,7 @@ export async function handleDuel(request:Request,db:any,ownerEmail=''){
   const player=['create','join'].includes(action)?await playerIdentity(request,db,headers,ownerEmail):null;
   if(action==='create'){
    if(!roster.includes(b.fighter))throw fail('fighter_required');
-   const arena=b.arena??'snow';if(!arenaNames.includes(arena))throw fail('arena_invalid');
+   const arena=b.arena??arenaNames[0];if(!arenaNames.includes(arena))throw fail('arena_invalid');
    const creator=request.headers.get('cf-connecting-ip')||'local';
    const count=await db.prepare('SELECT COUNT(*) AS n FROM duel_rooms WHERE creator=? AND created>?').bind(creator,now-600000).first();
    if(count.n>=6)throw fail('room_create_rate',429);

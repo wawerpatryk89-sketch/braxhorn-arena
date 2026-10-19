@@ -1,0 +1,104 @@
+{
+  "id": "clocktower",
+  "entry": {
+    "label": "WIEŻA ZEGAROWA",
+    "category": "fantasy",
+    "description": "MECHANIZM · PARA",
+    "src": "/assets/arena-clocktower-20261019.webp",
+    "thumbnail": "/assets/arena-clocktower-20261019-thumb.webp",
+    "video": "/api/arena-media/clocktower.ef2d2b9abf34.mp4",
+    "preview": "/api/arena-media/clocktower-preview.b65e48a8adfa.mp4",
+    "remote": true,
+    "aspect": 1.7777777777777777,
+    "audio": null
+  },
+  "fight": {
+    "id": "clocktower",
+    "label": "WIEŻA ZEGAROWA",
+    "file": "clocktower.ef2d2b9abf34.mp4",
+    "sha256": "ef2d2b9abf34aba0da788dc0182d9d4a356a4cbf8cdd043941cdc4e6d9798cfd",
+    "bytes": 16385146,
+    "poster": "arena-clocktower-20261019.webp",
+    "duration": 7.7,
+    "fps": 30,
+    "width": 1280,
+    "height": 720,
+    "audio": true,
+    "overlapSeconds": 0.7
+  },
+  "preview": {
+    "id": "clocktower-preview",
+    "file": "clocktower-preview.b65e48a8adfa.mp4",
+    "sha256": "b65e48a8adfa304eea9527fe58d327b03853791b6efd3b9684e9eb9eca386d50",
+    "bytes": 866747,
+    "kind": "preview",
+    "arena": "clocktower"
+  },
+  "measurement": {
+    "id": "clocktower",
+    "label": "WIEŻA ZEGAROWA",
+    "status": "PASS",
+    "source": "clocktower.source.mp4",
+    "sourceSha256": "558d7288c77e086c2dd735c45cdf3928ce2d9014c73cdac46f4df65b8130ba8c",
+    "before": {
+      "seamMeanRGBDelta": 6.5612,
+      "normalP95RGBDelta": 1.0042,
+      "seamToP95": 6.5337,
+      "passes": false,
+      "frames": 301,
+      "duration": 10.0333
+    },
+    "after": {
+      "seamMeanRGBDelta": 0.2165,
+      "normalP95RGBDelta": 0.9557,
+      "seamToP95": 0.2265,
+      "passes": true,
+      "frames": 231,
+      "duration": 7.7
+    },
+    "preview": {
+      "seamMeanRGBDelta": 1.5192,
+      "normalP95RGBDelta": 2.0108,
+      "seamToP95": 0.7555,
+      "passes": true,
+      "frames": 231,
+      "duration": 7.7,
+      "bytes": 866747,
+      "width": 640,
+      "silent": true,
+      "quantizer": 28,
+      "phaseFrames": 0
+    },
+    "cut": {
+      "startFrame": 30,
+      "endFrameExclusive": 282,
+      "startSeconds": 1.0,
+      "endSeconds": 9.4,
+      "crossfadeSeconds": 0.7,
+      "overlapMeanRGBDelta": 3.1216,
+      "rotationFrames": 36
+    },
+    "visualPlayback": "pending-three-cycles"
+  },
+  "audio": {
+    "id": "clocktower",
+    "beforeFile": "clocktower.f1ffeaba69ca.mp4",
+    "afterFile": "clocktower.ef2d2b9abf34.mp4",
+    "sourceAudio": "clocktower.source.mp4",
+    "sourceAudioSha256": "558d7288c77e086c2dd735c45cdf3928ce2d9014c73cdac46f4df65b8130ba8c",
+    "videoPacketSha256Before": "f4deb38ae143be2814b500b8bd51c787ab9df1d0d05ed5f0d07a126535afae1f",
+    "videoPacketSha256After": "f4deb38ae143be2814b500b8bd51c787ab9df1d0d05ed5f0d07a126535afae1f",
+    "videoPacketsUnchanged": true,
+    "audioGain": 1.0,
+    "audioRms": 0.036570023745298386,
+    "audioPeak": 0.28832268714904785,
+    "audioSeamSampleDelta": 0.0012420437997207046,
+    "audioAdjacentSampleP95": 0.001734308898448944,
+    "audioHead100msRms": 0.05948256328701973,
+    "audioTail100msRms": 0.054141152650117874,
+    "avEndDifferenceMs": 0.0,
+    "videoDuration": 7.7,
+    "audioDuration": 7.7
+  },
+  "sourceAttachment": "3-users_54334d5d-6f18-4e14-90df-f464211fefea_generated_d89b8968-a345-4dd3-8544-e46311e5413d_generated_video.mp4"
+}

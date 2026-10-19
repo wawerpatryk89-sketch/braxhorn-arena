@@ -8,7 +8,7 @@ function fakeMedia(blockSound){const m={paused:true,muted:false,calls:0,mutedCal
  for(const blockSound of [false,true]){
   const h=await createGame(844,390,true),g=await createGame(844,390,true),H=h.context.BRAX_MULTIPLAYER_ENGINE,G=g.context.BRAX_MULTIPLAYER_ENGINE;
   const media=fakeMedia(blockSound);g.context.BRAX_ARENA_MEDIA=media.api;h.context.BRAX_ARENA_MEDIA=fakeMedia(false).api;
-  const room={hostFighter:'BRAX',guestFighter:'NYXA',arena:'rooftop'};await H.start('host',room);await G.start('guest',room);H.go();G.go();
+  const room={hostFighter:'BRAX',guestFighter:'NYXA',arena:'rooftop-city'};await H.start('host',room);await G.start('guest',room);H.go();G.go();
   const snap=()=>JSON.parse(JSON.stringify(H.snapshot()));
   // Host still in the pre-fight countdown: the guest film must stay still.
   G.receive(snap());g.tick(16);await new Promise(r=>setTimeout(r,0));

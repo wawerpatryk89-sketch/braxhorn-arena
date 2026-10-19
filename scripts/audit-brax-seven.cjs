@@ -81,7 +81,7 @@ async function createGame(width, height, withAudio=false, visualViewport=null) {
 
 
 (async()=>{
- const g=await createGame(844,390,true);g.elements.get('go').dispatch('click');await g.flush();g.elements.get('chooseFighter').dispatch('click');g.elements.get('arena-rooftop').dispatch('click');g.elements.get('fighterFilm').dispatch('ended');g.step(7500);
+ const g=await createGame(844,390,true);g.elements.get('go').dispatch('click');await g.flush();g.elements.get('chooseFighter').dispatch('click');g.elements.get('arena-rooftop-city').dispatch('click');g.elements.get('fighterFilm').dispatch('ended');g.step(7500);
  const {B,O}=g.test;g.proof.reset();O.x=90;O.stun=999999;O.cooldown=999999;
  const seen=new Set();g.step(2800,()=>{seen.add(B.frame);assert.equal(B.a,'IDLE');assert(B.frame<8,'idle must not enter punch sequence');});assert(seen.size===8,'all eight guard frames loop');
  assert(g.proof.attack('LIGHT_PUNCH'));assert.equal(B.frame,8,'jab starts at preparation, not idle pause');g.step(115);assert.equal(B.frame,10,'jab reaches contact promptly');g.step(450);assert.equal(B.a,'IDLE');assert(!B.lock);

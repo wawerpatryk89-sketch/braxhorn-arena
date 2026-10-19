@@ -1,0 +1,87 @@
+{
+  "pass": true,
+  "base": "b44f7cb",
+  "combatOriginalSha256": "0723985405d8da1358e90902591c6b2d661744aa2ad6d6018b8748345eda5f4a",
+  "combatModifiedSha256": "ecb4ac8678e11c364b8f4777786604ceff34b1d1bcd6ef7ad9970b6a44f9b1db",
+  "allowedPresentationChanges": [
+    {
+      "from": "let selectedArena='snow',activeArena=ARENAS.snow;",
+      "to": "let selectedArena=window.BRAX_ARENA_PICKER?.selection()||Object.keys(ARENAS)[0],activeArena=ARENAS[selectedArena]||Object.values(ARENAS)[0];"
+    },
+    {
+      "from": "if(selectedArena==='nocny-targ'&&S.running)window.BRAX_NIGHT_MARKET?.start(",
+      "to": "if(selectedArena==='nocny-targ'&&!activeArena.video&&S.running)window.BRAX_NIGHT_MARKET?.start("
+    },
+    {
+      "from": "if(selectedArena==='nocny-targ'&&S.running&&!S.matchOver&&!window.BRAX_NIGHT_MARKET?.report().active)",
+      "to": "if(selectedArena==='nocny-targ'&&!activeArena.video&&S.running&&!S.matchOver&&!window.BRAX_NIGHT_MARKET?.report().active)"
+    },
+    {
+      "from": "if(selectedArena==='nocny-targ')window.BRAX_NIGHT_MARKET?.tick(",
+      "to": "if(selectedArena==='nocny-targ'&&!activeArena.video)window.BRAX_NIGHT_MARKET?.tick("
+    },
+    {
+      "from": "function chooseArena(key){if(!ARENAS[key])return;",
+      "to": "function chooseArena(key){if(!ARENAS[key])key=Object.keys(ARENAS)[0];"
+    },
+    {
+      "from": "$('#arenaPrevious').addEventListener(",
+      "to": "$('#arenaPrevious')?.addEventListener("
+    },
+    {
+      "from": "$('#arenaNext').addEventListener(",
+      "to": "$('#arenaNext')?.addEventListener("
+    }
+  ],
+  "otherCombatBytesIdentical": true,
+  "fighterConfigurationAnimationModelChanges": [],
+  "tests": {
+    "combatIntegrity": {
+      "contacts": 912,
+      "misses": 38,
+      "recoveries": 12,
+      "blockAndKO": true
+    },
+    "duelApi": "PASS existing protocol and all14catalogue,removed5rejected,defaultvalid",
+    "duelEngine": "PASS sharedworld/remoteinput/readonlyguest",
+    "guestArenaMotion": "PASS normal and blocked sound autoplay fallback",
+    "arenaSelection": "PASS all14launchandexit",
+    "arenaSound": "PASS DOM mute/unmute property delegation on14arenas; this is not audible waveform validation",
+    "tournaments": "PASS4through10participants,hostguestsharedarena,allbracketsandresults",
+    "receivedArenaFallback": {
+      "pass": true,
+      "checks": 12,
+      "roles": [
+        "host",
+        "guest"
+      ],
+      "keys": [
+        "rooftop",
+        "underground",
+        "temple",
+        "snow",
+        "canyon",
+        "totally-invalid"
+      ],
+      "fallback": "nocny-targ"
+    },
+    "networkRendering": "PASS bufferedinterpolation,36same-actionconfirmations/2maxjump/zerorewind,49remotecontrols"
+  },
+  "limitations": [
+    "Combat and API tests use mock DOM and in-memory SQLite, not physical phones",
+    "Browser and production checks are owned by the root integration agent",
+    "Prepared checkpoint full MP4 audio streams decode to zero RMS (media agent report); functional media resume/mute tests do not establish audible content."
+  ],
+  "otherSourcePreservation": [
+    {
+      "file": "backend/lib/duel-api.ts",
+      "otherBytesIdentical": true,
+      "sha256": "ca52350e3a213363ff5529157a6377a9ec96aabe6737bb54e2c4dc8d4bca2fe5"
+    },
+    {
+      "file": "game/assets/multiplayer.js",
+      "otherBytesIdentical": true,
+      "sha256": "c833059e3f1af5f4783d8b4244c7b5439a5bd80d8df5378b54d0a978322c2d39"
+    }
+  ]
+}

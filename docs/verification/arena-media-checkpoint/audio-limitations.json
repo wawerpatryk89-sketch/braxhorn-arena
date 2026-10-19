@@ -1,0 +1,133 @@
+{
+  "status": "KNOWN_CHECKPOINT_FAILURES",
+  "reason": "Previously prepared full videos include silent audio; unmodified checkpoint bytes retained for owner review. Tests are not weakened.",
+  "measurements": [
+    {
+      "id": "nocny-targ",
+      "audioRms": 0.0,
+      "audioPeak": 0.0,
+      "audioNonSilent": false,
+      "avEndDifferenceMs": 0.0,
+      "avEndsWithin1Ms": true
+    },
+    {
+      "id": "rooftop-city",
+      "audioRms": 0.0,
+      "audioPeak": 0.0,
+      "audioNonSilent": false,
+      "avEndDifferenceMs": 33.334,
+      "avEndsWithin1Ms": false
+    },
+    {
+      "id": "metro",
+      "audioRms": 0.0,
+      "audioPeak": 0.0,
+      "audioNonSilent": false,
+      "avEndDifferenceMs": 33.334,
+      "avEndsWithin1Ms": false
+    },
+    {
+      "id": "brooklyn",
+      "audioRms": 0.0,
+      "audioPeak": 0.0,
+      "audioNonSilent": false,
+      "avEndDifferenceMs": 33.334,
+      "avEndsWithin1Ms": false
+    },
+    {
+      "id": "harbor",
+      "audioRms": 0.0,
+      "audioPeak": 0.0,
+      "audioNonSilent": false,
+      "avEndDifferenceMs": 33.334,
+      "avEndsWithin1Ms": false
+    },
+    {
+      "id": "carrier",
+      "audioRms": 0.0,
+      "audioPeak": 0.0,
+      "audioNonSilent": false,
+      "avEndDifferenceMs": 0.667,
+      "avEndsWithin1Ms": true
+    },
+    {
+      "id": "reactor",
+      "audioRms": 0.0,
+      "audioPeak": 0.0,
+      "audioNonSilent": false,
+      "avEndDifferenceMs": 32.667,
+      "avEndsWithin1Ms": false
+    },
+    {
+      "id": "beach",
+      "audioRms": 0.0,
+      "audioPeak": 0.0,
+      "audioNonSilent": false,
+      "avEndDifferenceMs": 33.333,
+      "avEndsWithin1Ms": false
+    },
+    {
+      "id": "himalaya",
+      "audioRms": 0.0,
+      "audioPeak": 0.0,
+      "audioNonSilent": false,
+      "avEndDifferenceMs": 33.333,
+      "avEndsWithin1Ms": false
+    },
+    {
+      "id": "jungle",
+      "audioRms": 0.0,
+      "audioPeak": 0.0,
+      "audioNonSilent": false,
+      "avEndDifferenceMs": 33.001,
+      "avEndsWithin1Ms": false
+    },
+    {
+      "id": "savanna",
+      "audioRms": 0.0,
+      "audioPeak": 0.0,
+      "audioNonSilent": false,
+      "avEndDifferenceMs": 33.334,
+      "avEndsWithin1Ms": false
+    },
+    {
+      "id": "volcano",
+      "audioRms": 0.0,
+      "audioPeak": 0.0,
+      "audioNonSilent": false,
+      "avEndDifferenceMs": 33.333,
+      "avEndsWithin1Ms": false
+    },
+    {
+      "id": "dragon",
+      "audioRms": 0.0,
+      "audioPeak": 0.0,
+      "audioNonSilent": false,
+      "avEndDifferenceMs": 0.0,
+      "avEndsWithin1Ms": true
+    },
+    {
+      "id": "aquarium",
+      "audioRms": 0.0,
+      "audioPeak": 0.0,
+      "audioNonSilent": false,
+      "avEndDifferenceMs": 33.333,
+      "avEndsWithin1Ms": false
+    }
+  ],
+  "sourceAudioSpotChecks": [
+    {
+      "file": "rooftop-city.0fa1a9a4c445.mp4",
+      "firstSecondRms": 0.01982494629919529
+    },
+    {
+      "file": "market-audio.289063ea7ff3.mp3",
+      "firstSecondRms": 0.08651546388864517
+    }
+  ],
+  "inheritedFailures": [
+    "scripts/audit-arena-pack.py",
+    "scripts/audit-arena-loop-media.py"
+  ],
+  "noTranscodePerformed": true
+}

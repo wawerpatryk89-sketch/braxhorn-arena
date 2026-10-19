@@ -1,0 +1,37 @@
+{
+  "status": "awaiting-user-attachments",
+  "references": [
+    "C.png",
+    "przyciski.jpg"
+  ],
+  "arenas": [
+    {
+      "id": "octagon",
+      "label": "OKTAGON",
+      "category": "city",
+      "description": "KLATKA · TŁUM",
+      "status": "missing-source-video"
+    },
+    {
+      "id": "steelworks",
+      "label": "HUTA",
+      "category": "industry",
+      "description": "OGIEŃ · BURZA",
+      "status": "missing-source-video"
+    },
+    {
+      "id": "canyon-train",
+      "label": "KANION — POCIĄG",
+      "category": "nature",
+      "description": "DACH POCIĄGU · KANION",
+      "status": "missing-source-video"
+    },
+    {
+      "id": "station",
+      "label": "DWORZEC",
+      "category": "city",
+      "description": "PAROWÓZ · ŚNIEG",
+      "status": "missing-source-video"
+    }
+  ]
+}

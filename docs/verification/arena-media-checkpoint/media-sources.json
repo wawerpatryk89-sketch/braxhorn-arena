@@ -1,0 +1,86 @@
+[
+  {
+    "arena": "nocny-targ",
+    "source": "nocny-targ.webm",
+    "sha256": "22661ec0f06f173cb0306acd0a427e572725b72271983f5e0a5ba7ef1c322e3e",
+    "sourceLocation": "source-assets/arena-videos/nocny-targ-captured.webm"
+  },
+  {
+    "arena": "rooftop-city",
+    "source": "rooftop-city.0fa1a9a4c445.mp4",
+    "sha256": "0fa1a9a4c4453cb1dcd70da738ae9abe0b4ca713e90dc9228bf045344e95a4a0",
+    "sourceLocation": "https://braxhorn-p0-preview.wawerpatryk89.chatgpt.site/api/arena-media/rooftop-city.0fa1a9a4c445.mp4"
+  },
+  {
+    "arena": "metro",
+    "source": "metro.ab100a72e1ad.gif",
+    "sha256": "ab100a72e1ad2fd31394c679213a0d4dcbb24f046740586c14908e40f1f3af58",
+    "sourceLocation": "https://braxhorn-p0-preview.wawerpatryk89.chatgpt.site/api/arena-media/metro.ab100a72e1ad.gif"
+  },
+  {
+    "arena": "brooklyn",
+    "source": "brooklyn.6d9545bcc543.mp4",
+    "sha256": "6d9545bcc543a507576fc110e167f31728762a968f14afab97f143dc6dc0424f",
+    "sourceLocation": "https://braxhorn-p0-preview.wawerpatryk89.chatgpt.site/api/arena-media/brooklyn.6d9545bcc543.mp4"
+  },
+  {
+    "arena": "harbor",
+    "source": "harbor.d2da7fb26002.gif",
+    "sha256": "d2da7fb260028abcaa8e80228f3daa8d0151f9f15680c7b8dbe6c4f707e1ba3b",
+    "sourceLocation": "https://braxhorn-p0-preview.wawerpatryk89.chatgpt.site/api/arena-media/harbor.d2da7fb26002.gif"
+  },
+  {
+    "arena": "carrier",
+    "source": "carrier.d55dcea46803.mp4",
+    "sha256": "d55dcea4680399e87983e0ab37034ec1cd3772ede5d0ab6eb834cb3a27bce743",
+    "sourceLocation": "https://braxhorn-p0-preview.wawerpatryk89.chatgpt.site/api/arena-media/carrier.d55dcea46803.mp4"
+  },
+  {
+    "arena": "reactor",
+    "source": "reactor.6956a48b6ccc.mp4",
+    "sha256": "6956a48b6ccc512bcdd6817dcb67a317315ef4764d15ceaa6a8a0caa7ff5b58b",
+    "sourceLocation": "https://braxhorn-p0-preview.wawerpatryk89.chatgpt.site/api/arena-media/reactor.6956a48b6ccc.mp4"
+  },
+  {
+    "arena": "beach",
+    "source": "beach.8e9ab7847d09.mp4",
+    "sha256": "8e9ab7847d092dfe6063afb15318029de5ac981e135d7fcdb520ecf219bc8747",
+    "sourceLocation": "https://braxhorn-p0-preview.wawerpatryk89.chatgpt.site/api/arena-media/beach.8e9ab7847d09.mp4"
+  },
+  {
+    "arena": "himalaya",
+    "source": "himalaya.90b8580a32ae.mp4",
+    "sha256": "90b8580a32ae337e5ce941c819825f82e6e2d6bdbf488a75611c0ba038d351fa",
+    "sourceLocation": "https://braxhorn-p0-preview.wawerpatryk89.chatgpt.site/api/arena-media/himalaya.90b8580a32ae.mp4"
+  },
+  {
+    "arena": "jungle",
+    "source": "jungle.5da36c4fba53.mp4",
+    "sha256": "5da36c4fba53a7531469e2c31a5430320294717436c6a3b7f60510a11ed53f83",
+    "sourceLocation": "https://braxhorn-p0-preview.wawerpatryk89.chatgpt.site/api/arena-media/jungle.5da36c4fba53.mp4"
+  },
+  {
+    "arena": "savanna",
+    "source": "savanna.a1e74fcbcc2d.mp4",
+    "sha256": "a1e74fcbcc2dd877a7c368ca94b0a56ab1e56d33cd2471b0eaf0d69da0ad31f3",
+    "sourceLocation": "https://braxhorn-p0-preview.wawerpatryk89.chatgpt.site/api/arena-media/savanna.a1e74fcbcc2d.mp4"
+  },
+  {
+    "arena": "volcano",
+    "source": "volcano.216629861b12.mp4",
+    "sha256": "216629861b12ac89a7b01b56cbc2a04c395c2d8154e4c8acd5859c282324d32b",
+    "sourceLocation": "https://braxhorn-p0-preview.wawerpatryk89.chatgpt.site/api/arena-media/volcano.216629861b12.mp4"
+  },
+  {
+    "arena": "dragon",
+    "source": "dragon.f666fd6d5e72.mp4",
+    "sha256": "f666fd6d5e72d10993d0a4d1b800558c5ebd59f2c5e315e58169d80b41bf9345",
+    "sourceLocation": "https://braxhorn-p0-preview.wawerpatryk89.chatgpt.site/api/arena-media/dragon.f666fd6d5e72.mp4"
+  },
+  {
+    "arena": "aquarium",
+    "source": "aquarium.2c8649a07a44.mp4",
+    "sha256": "2c8649a07a442ec7d413b6d26a5525b6a07baec7242124046454a682af7efee9",
+    "sourceLocation": "https://braxhorn-p0-preview.wawerpatryk89.chatgpt.site/api/arena-media/aquarium.2c8649a07a44.mp4"
+  }
+]

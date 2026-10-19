@@ -1,0 +1,104 @@
+{
+  "id": "mine",
+  "entry": {
+    "label": "KOPALNIA",
+    "category": "industry",
+    "description": "KOPARKA · PYŁ",
+    "src": "/assets/arena-mine-20261019.webp",
+    "thumbnail": "/assets/arena-mine-20261019-thumb.webp",
+    "video": "/api/arena-media/mine.917b822dd36e.mp4",
+    "preview": "/api/arena-media/mine-preview.79ccf8d90618.mp4",
+    "remote": true,
+    "aspect": 1.7777777777777777,
+    "audio": null
+  },
+  "fight": {
+    "id": "mine",
+    "label": "KOPALNIA",
+    "file": "mine.917b822dd36e.mp4",
+    "sha256": "917b822dd36ee22df0018433e1506882dea0bb5aebb67e48eae5a10ba35a6f1d",
+    "bytes": 10369959,
+    "poster": "arena-mine-20261019.webp",
+    "duration": 5.933333333333334,
+    "fps": 30,
+    "width": 1280,
+    "height": 720,
+    "audio": true,
+    "overlapSeconds": 0.7
+  },
+  "preview": {
+    "id": "mine-preview",
+    "file": "mine-preview.79ccf8d90618.mp4",
+    "sha256": "79ccf8d9061868a375ac64973bf9fb949d8d7167b311258cf5159e7b989741ce",
+    "bytes": 695395,
+    "kind": "preview",
+    "arena": "mine"
+  },
+  "measurement": {
+    "id": "mine",
+    "label": "KOPALNIA",
+    "status": "PASS",
+    "source": "mine.source.mp4",
+    "sourceSha256": "469d72fcc50d2b25df5106c5dd78d8374a69d03579b930ccf9def926a5c2ce6b",
+    "before": {
+      "seamMeanRGBDelta": 5.3177,
+      "normalP95RGBDelta": 1.0042,
+      "seamToP95": 5.2954,
+      "passes": false,
+      "frames": 301,
+      "duration": 10.0333
+    },
+    "after": {
+      "seamMeanRGBDelta": 0.2119,
+      "normalP95RGBDelta": 0.9827,
+      "seamToP95": 0.2156,
+      "passes": true,
+      "frames": 178,
+      "duration": 5.9333
+    },
+    "preview": {
+      "seamMeanRGBDelta": 1.1873,
+      "normalP95RGBDelta": 1.7852,
+      "seamToP95": 0.6651,
+      "passes": true,
+      "frames": 178,
+      "duration": 5.9333,
+      "bytes": 695395,
+      "width": 640,
+      "silent": true,
+      "quantizer": 25,
+      "phaseFrames": 0
+    },
+    "cut": {
+      "startFrame": 28,
+      "endFrameExclusive": 227,
+      "startSeconds": 0.9333333333333333,
+      "endSeconds": 7.566666666666666,
+      "crossfadeSeconds": 0.7,
+      "overlapMeanRGBDelta": 2.3161,
+      "rotationFrames": 153
+    },
+    "visualPlayback": "pending-three-cycles"
+  },
+  "audio": {
+    "id": "mine",
+    "beforeFile": "mine.ab291a554d7e.mp4",
+    "afterFile": "mine.917b822dd36e.mp4",
+    "sourceAudio": "mine.source.mp4",
+    "sourceAudioSha256": "469d72fcc50d2b25df5106c5dd78d8374a69d03579b930ccf9def926a5c2ce6b",
+    "videoPacketSha256Before": "a541dd621cf9a8d75e8fe84aee22128687680f126f51731a9388c23b55cfe87e",
+    "videoPacketSha256After": "a541dd621cf9a8d75e8fe84aee22128687680f126f51731a9388c23b55cfe87e",
+    "videoPacketsUnchanged": true,
+    "audioGain": 1.0,
+    "audioRms": 0.16822873055934906,
+    "audioPeak": 0.6050699949264526,
+    "audioSeamSampleDelta": 0.012207597494125366,
+    "audioAdjacentSampleP95": 0.009668804705142975,
+    "audioHead100msRms": 0.144750714302063,
+    "audioTail100msRms": 0.16336321830749512,
+    "avEndDifferenceMs": 0.0,
+    "videoDuration": 5.933333,
+    "audioDuration": 5.933333
+  },
+  "sourceAttachment": "1-users_54334d5d-6f18-4e14-90df-f464211fefea_generated_88cb0bab-7646-4ca3-a7de-fd4fe8819a92_generated_video.mp4"
+}

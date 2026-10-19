@@ -1,0 +1,45 @@
+{
+  "status": "work-in-progress-awaiting-four-source-videos",
+  "published": false,
+  "productionUnaffectedByThisBranch": true,
+  "productionVersion": 158,
+  "expectedArenaCount": 21,
+  "preparedArenaCount": 17,
+  "missingSources": [
+    "OKTAGON",
+    "HUTA",
+    "KANION — POCIĄG",
+    "DWORZEC"
+  ],
+  "sourceVideosReceived": [
+    "Kopalnia",
+    "Wesołe miasteczko",
+    "Wieża zegarowa"
+  ],
+  "proof": {
+    "layout": "current-browser/report.json",
+    "numericMedia": "media-check.json",
+    "loopTable": "loop-table.csv",
+    "threeCycles": "three-cycles/playback-report.json",
+    "realFighterStarts": "received-fights/report.json"
+  },
+  "validation": {
+    "newArenaBrowserFlows": "passed, real models and assets",
+    "allPreparedMediaRGBSeams": "34/34 passed",
+    "threeCycles": "17/17 passed",
+    "landscapePLEN": "844x390, 915x412, 932x430; no overlaps",
+    "hostGuestCatalogue": "17/17 passed",
+    "mainSuite": {
+      "PASS": 110,
+      "FAIL": 22,
+      "NIEWYKONANE": 2
+    },
+    "mainSuitePassed": false
+  },
+  "limitations": [
+    "Not all main-suite failures have been classified against the latest deployed baseline. Final acceptance is not claimed.",
+    "Full 21-arena publication is blocked by the four missing source videos.",
+    "Phone tests use Chromium emulation; no physical iPhone, Android or Safari test.",
+    "Prior checkpoint engine report covers its original 14-arena snapshot; corrected sound and current native-frame measurements are in media-check.json."
+  ]
+}

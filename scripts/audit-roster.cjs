@@ -91,7 +91,7 @@ for(const player of ['BRAX','NYXA'])for(const rival of ['BRAX','NYXA']){
  if(player===rival)assert.equal(g.elements.get('card-'+player.toLowerCase()+'-badge').textContent,'TY + CPU');
  g.elements.get('chooseFighter').dispatch('click');assert(!g.elements.get('matchSetup').classList.contains('off'));g.elements.get('fightMode').dispatch('click');assert(!g.elements.get('modeSettings').classList.contains('off'));g.elements.get('mode-hard').dispatch('click');assert.equal(g.test.S.difficulty,'hard');
  g.elements.get('setupBack').dispatch('click');g.elements.get('chooseFighter').dispatch('click');assert.equal(g.elements.get('rosterOpponent').textContent,'PRZECIWNIK · '+rival);
- g.elements.get('setupNext').dispatch('click');g.elements.get('arena-rooftop').dispatch('click');g.elements.get('fighterFilm').dispatch('ended');g.step(7500);
+ g.elements.get('setupNext').dispatch('click');g.elements.get('arena-rooftop-city').dispatch('click');g.elements.get('fighterFilm').dispatch('ended');g.step(7500);
  assert.equal(g.state().character,player);assert.equal(g.state().opponent.character,rival);assert(g.state().running&&!g.state().preFight);
  console.log('PASS card selection → setup → arena → fight: '+player+' / '+rival);
 }

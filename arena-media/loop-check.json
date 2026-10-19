@@ -1,72 +1,829 @@
-[
-  {
-    "id": "rooftop",
-    "width": 1138,
-    "height": 512,
-    "fps": "30/1",
-    "duration": "7.300000",
-    "frames": 219,
-    "seamMeanRGBDelta": 1.46,
-    "normalP95RGBDelta": 1.056
-  },
-  {
-    "id": "rooftop-city",
-    "width": 1138,
-    "height": 512,
-    "fps": "30/1",
-    "duration": "7.300000",
-    "frames": 219,
-    "seamMeanRGBDelta": 1.481,
-    "normalP95RGBDelta": 0.772
-  },
-  {
-    "id": "jungle",
-    "width": 1138,
-    "height": 512,
-    "fps": "30/1",
-    "duration": "7.300000",
-    "frames": 219,
-    "seamMeanRGBDelta": 1.488,
-    "normalP95RGBDelta": 0.946
-  },
-  {
-    "id": "volcano",
-    "width": 1138,
-    "height": 512,
-    "fps": "30/1",
-    "duration": "7.300000",
-    "frames": 219,
-    "seamMeanRGBDelta": 1.241,
-    "normalP95RGBDelta": 0.662
-  },
-  {
-    "id": "temple",
-    "width": 1138,
-    "height": 512,
-    "fps": "30/1",
-    "duration": "7.300000",
-    "frames": 219,
-    "seamMeanRGBDelta": 1.524,
-    "normalP95RGBDelta": 0.799
-  },
-  {
-    "id": "himalaya",
-    "width": 1024,
-    "height": 512,
-    "fps": "30/1",
-    "duration": "7.300000",
-    "frames": 219,
-    "seamMeanRGBDelta": 1.515,
-    "normalP95RGBDelta": 0.91
-  },
-  {
-    "id": "beach",
-    "width": 1138,
-    "height": 512,
-    "fps": "30/1",
-    "duration": "7.300000",
-    "frames": 219,
-    "seamMeanRGBDelta": 1.297,
-    "normalP95RGBDelta": 0.682
-  }
-]
+{
+  "method": "Mean absolute RGB delta of every 160x90 frame at 30fps; wrap <= normal adjacent-frame P95; encoded full and preview checked separately.",
+  "measurements": [
+    {
+      "id": "nocny-targ",
+      "label": "NOCNY TARG",
+      "status": "PASS",
+      "source": "nocny-targ.webm",
+      "sourceSha256": "22661ec0f06f173cb0306acd0a427e572725b72271983f5e0a5ba7ef1c322e3e",
+      "before": {
+        "seamMeanRGBDelta": 11.9083,
+        "normalP95RGBDelta": 1.4978,
+        "seamToP95": 7.9507,
+        "passes": false,
+        "frames": 212,
+        "duration": 7.0667
+      },
+      "after": {
+        "seamMeanRGBDelta": 1.1436,
+        "normalP95RGBDelta": 1.4493,
+        "seamToP95": 0.7891,
+        "passes": true,
+        "frames": 150,
+        "duration": 5.0
+      },
+      "preview": {
+        "seamMeanRGBDelta": 2.8935,
+        "normalP95RGBDelta": 2.897,
+        "seamToP95": 0.9988,
+        "passes": true,
+        "frames": 150,
+        "duration": 5.0,
+        "bytes": 351878,
+        "width": 640,
+        "silent": true,
+        "quantizer": 34
+      },
+      "cut": {
+        "startFrame": 30,
+        "endFrameExclusive": 201,
+        "startSeconds": 1.0,
+        "endSeconds": 6.7,
+        "crossfadeSeconds": 0.7,
+        "overlapMeanRGBDelta": 2.7088,
+        "rotationFrames": 0
+      },
+      "visualPlayback": "three-cycles-recorded-in-Chromium",
+      "playbackSwitches": 3
+    },
+    {
+      "id": "rooftop-city",
+      "label": "DACH · METROPOLIA",
+      "status": "PASS",
+      "source": "rooftop-city.0fa1a9a4c445.mp4",
+      "sourceSha256": "0fa1a9a4c4453cb1dcd70da738ae9abe0b4ca713e90dc9228bf045344e95a4a0",
+      "before": {
+        "seamMeanRGBDelta": 1.5313,
+        "normalP95RGBDelta": 0.809,
+        "seamToP95": 1.8929,
+        "passes": false,
+        "frames": 219,
+        "duration": 7.3
+      },
+      "after": {
+        "seamMeanRGBDelta": 0.7496,
+        "normalP95RGBDelta": 0.909,
+        "seamToP95": 0.8246,
+        "passes": true,
+        "frames": 198,
+        "duration": 6.6
+      },
+      "preview": {
+        "seamMeanRGBDelta": 2.0304,
+        "normalP95RGBDelta": 2.2643,
+        "seamToP95": 0.8967,
+        "passes": true,
+        "frames": 198,
+        "duration": 6.6,
+        "bytes": 736009,
+        "width": 640,
+        "silent": true,
+        "quantizer": 28
+      },
+      "cut": {
+        "startFrame": 0,
+        "endFrameExclusive": 219,
+        "startSeconds": 0.0,
+        "endSeconds": 7.3,
+        "crossfadeSeconds": 0.7,
+        "overlapMeanRGBDelta": 5.2435,
+        "rotationFrames": 109
+      },
+      "visualPlayback": "three-cycles-recorded-in-Chromium",
+      "playbackSwitches": 3
+    },
+    {
+      "id": "metro",
+      "label": "METRO",
+      "status": "PASS",
+      "source": "metro.ab100a72e1ad.gif",
+      "sourceSha256": "ab100a72e1ad2fd31394c679213a0d4dcbb24f046740586c14908e40f1f3af58",
+      "before": {
+        "seamMeanRGBDelta": 0.7464,
+        "normalP95RGBDelta": 0.8243,
+        "seamToP95": 0.9055,
+        "passes": true,
+        "frames": 150,
+        "duration": 5.0
+      },
+      "after": {
+        "seamMeanRGBDelta": 0.179,
+        "normalP95RGBDelta": 0.8573,
+        "seamToP95": 0.2088,
+        "passes": true,
+        "frames": 129,
+        "duration": 4.3
+      },
+      "preview": {
+        "seamMeanRGBDelta": 1.3432,
+        "normalP95RGBDelta": 1.409,
+        "seamToP95": 0.9533,
+        "passes": true,
+        "frames": 129,
+        "duration": 4.3,
+        "bytes": 258886,
+        "width": 640,
+        "silent": true,
+        "quantizer": 31
+      },
+      "cut": {
+        "startFrame": 0,
+        "endFrameExclusive": 150,
+        "startSeconds": 0.0,
+        "endSeconds": 5.0,
+        "crossfadeSeconds": 0.7,
+        "overlapMeanRGBDelta": 3.2528,
+        "rotationFrames": 64
+      },
+      "visualPlayback": "three-cycles-recorded-in-Chromium",
+      "playbackSwitches": 3
+    },
+    {
+      "id": "brooklyn",
+      "label": "BROOKLYN",
+      "status": "PASS",
+      "source": "brooklyn.6d9545bcc543.mp4",
+      "sourceSha256": "6d9545bcc543a507576fc110e167f31728762a968f14afab97f143dc6dc0424f",
+      "before": {
+        "seamMeanRGBDelta": 1.5381,
+        "normalP95RGBDelta": 1.0815,
+        "seamToP95": 1.4223,
+        "passes": false,
+        "frames": 279,
+        "duration": 9.3
+      },
+      "after": {
+        "seamMeanRGBDelta": 0.7606,
+        "normalP95RGBDelta": 1.0443,
+        "seamToP95": 0.7284,
+        "passes": true,
+        "frames": 90,
+        "duration": 3.0
+      },
+      "preview": {
+        "seamMeanRGBDelta": 1.5973,
+        "normalP95RGBDelta": 1.9737,
+        "seamToP95": 0.8093,
+        "passes": true,
+        "frames": 90,
+        "duration": 3.0,
+        "bytes": 701714,
+        "width": 640,
+        "silent": true,
+        "quantizer": 25
+      },
+      "cut": {
+        "startFrame": 11,
+        "endFrameExclusive": 122,
+        "startSeconds": 0.36666666666666664,
+        "endSeconds": 4.066666666666666,
+        "crossfadeSeconds": 0.7,
+        "overlapMeanRGBDelta": 5.7114,
+        "rotationFrames": 23
+      },
+      "visualPlayback": "three-cycles-recorded-in-Chromium",
+      "playbackSwitches": 3
+    },
+    {
+      "id": "harbor",
+      "label": "PORT",
+      "status": "PASS",
+      "source": "harbor.d2da7fb26002.gif",
+      "sourceSha256": "d2da7fb260028abcaa8e80228f3daa8d0151f9f15680c7b8dbe6c4f707e1ba3b",
+      "before": {
+        "seamMeanRGBDelta": 0.1273,
+        "normalP95RGBDelta": 0.129,
+        "seamToP95": 0.9867,
+        "passes": true,
+        "frames": 120,
+        "duration": 4.0
+      },
+      "after": {
+        "seamMeanRGBDelta": 0.1009,
+        "normalP95RGBDelta": 0.1496,
+        "seamToP95": 0.6743,
+        "passes": true,
+        "frames": 99,
+        "duration": 3.3
+      },
+      "preview": {
+        "seamMeanRGBDelta": 0.5864,
+        "normalP95RGBDelta": 0.8152,
+        "seamToP95": 0.7194,
+        "passes": true,
+        "frames": 99,
+        "duration": 3.3,
+        "bytes": 530054,
+        "width": 640,
+        "silent": true,
+        "quantizer": 25,
+        "phaseFrames": 97
+      },
+      "cut": {
+        "startFrame": 0,
+        "endFrameExclusive": 120,
+        "startSeconds": 0.0,
+        "endSeconds": 4.0,
+        "crossfadeSeconds": 0.7,
+        "overlapMeanRGBDelta": 0.9396,
+        "rotationFrames": 70
+      },
+      "visualPlayback": "three-cycles-recorded-in-Chromium",
+      "playbackSwitches": 3
+    },
+    {
+      "id": "carrier",
+      "label": "LOTNISKOWIEC",
+      "status": "PASS",
+      "source": "carrier.d55dcea46803.mp4",
+      "sourceSha256": "d55dcea4680399e87983e0ab37034ec1cd3772ede5d0ab6eb834cb3a27bce743",
+      "before": {
+        "seamMeanRGBDelta": 1.5294,
+        "normalP95RGBDelta": 3.1514,
+        "seamToP95": 0.4853,
+        "passes": true,
+        "frames": 279,
+        "duration": 9.3
+      },
+      "after": {
+        "seamMeanRGBDelta": 1.8522,
+        "normalP95RGBDelta": 3.4665,
+        "seamToP95": 0.5343,
+        "passes": true,
+        "frames": 173,
+        "duration": 5.7667
+      },
+      "preview": {
+        "seamMeanRGBDelta": 2.9918,
+        "normalP95RGBDelta": 3.9381,
+        "seamToP95": 0.7597,
+        "passes": true,
+        "frames": 173,
+        "duration": 5.7667,
+        "bytes": 739622,
+        "width": 640,
+        "silent": true,
+        "quantizer": 31,
+        "phaseFrames": 0
+      },
+      "cut": {
+        "startFrame": 0,
+        "endFrameExclusive": 194,
+        "startSeconds": 0.0,
+        "endSeconds": 6.466666666666667,
+        "crossfadeSeconds": 0.7,
+        "overlapMeanRGBDelta": 9.8435,
+        "rotationFrames": 0
+      },
+      "visualPlayback": "three-cycles-recorded-in-Chromium",
+      "playbackSwitches": 3
+    },
+    {
+      "id": "reactor",
+      "label": "REAKTOR",
+      "status": "PASS",
+      "source": "reactor.6956a48b6ccc.mp4",
+      "sourceSha256": "6956a48b6ccc512bcdd6817dcb67a317315ef4764d15ceaa6a8a0caa7ff5b58b",
+      "before": {
+        "seamMeanRGBDelta": 1.8305,
+        "normalP95RGBDelta": 1.2012,
+        "seamToP95": 1.5239,
+        "passes": false,
+        "frames": 279,
+        "duration": 9.3
+      },
+      "after": {
+        "seamMeanRGBDelta": 0.8678,
+        "normalP95RGBDelta": 1.3528,
+        "seamToP95": 0.6415,
+        "passes": true,
+        "frames": 254,
+        "duration": 8.4667
+      },
+      "preview": {
+        "seamMeanRGBDelta": 2.5347,
+        "normalP95RGBDelta": 2.999,
+        "seamToP95": 0.8452,
+        "passes": true,
+        "frames": 254,
+        "duration": 8.4667,
+        "bytes": 992602,
+        "width": 640,
+        "silent": true,
+        "quantizer": 31,
+        "phaseFrames": 0
+      },
+      "cut": {
+        "startFrame": 4,
+        "endFrameExclusive": 279,
+        "startSeconds": 0.13333333333333333,
+        "endSeconds": 9.3,
+        "crossfadeSeconds": 0.7,
+        "overlapMeanRGBDelta": 9.0763,
+        "rotationFrames": 80
+      },
+      "visualPlayback": "three-cycles-recorded-in-Chromium",
+      "playbackSwitches": 3
+    },
+    {
+      "id": "beach",
+      "label": "PLAŻA",
+      "status": "PASS",
+      "source": "beach.8e9ab7847d09.mp4",
+      "sourceSha256": "8e9ab7847d092dfe6063afb15318029de5ac981e135d7fcdb520ecf219bc8747",
+      "before": {
+        "seamMeanRGBDelta": 1.33,
+        "normalP95RGBDelta": 0.7339,
+        "seamToP95": 1.8121,
+        "passes": false,
+        "frames": 219,
+        "duration": 7.3
+      },
+      "after": {
+        "seamMeanRGBDelta": 0.7375,
+        "normalP95RGBDelta": 0.7552,
+        "seamToP95": 0.9766,
+        "passes": true,
+        "frames": 198,
+        "duration": 6.6
+      },
+      "preview": {
+        "seamMeanRGBDelta": 2.1115,
+        "normalP95RGBDelta": 2.3899,
+        "seamToP95": 0.8835,
+        "passes": true,
+        "frames": 198,
+        "duration": 6.6,
+        "bytes": 717956,
+        "width": 640,
+        "silent": true,
+        "quantizer": 28,
+        "phaseFrames": 0
+      },
+      "cut": {
+        "startFrame": 0,
+        "endFrameExclusive": 219,
+        "startSeconds": 0.0,
+        "endSeconds": 7.3,
+        "crossfadeSeconds": 0.7,
+        "overlapMeanRGBDelta": 4.1597,
+        "rotationFrames": 84
+      },
+      "visualPlayback": "three-cycles-recorded-in-Chromium",
+      "playbackSwitches": 3
+    },
+    {
+      "id": "himalaya",
+      "label": "HIMALAJE",
+      "status": "PASS",
+      "source": "himalaya.90b8580a32ae.mp4",
+      "sourceSha256": "90b8580a32ae337e5ce941c819825f82e6e2d6bdbf488a75611c0ba038d351fa",
+      "before": {
+        "seamMeanRGBDelta": 1.597,
+        "normalP95RGBDelta": 0.9628,
+        "seamToP95": 1.6587,
+        "passes": false,
+        "frames": 219,
+        "duration": 7.3
+      },
+      "after": {
+        "seamMeanRGBDelta": 0.8355,
+        "normalP95RGBDelta": 0.8433,
+        "seamToP95": 0.9908,
+        "passes": true,
+        "frames": 90,
+        "duration": 3.0
+      },
+      "preview": {
+        "seamMeanRGBDelta": 1.7643,
+        "normalP95RGBDelta": 1.9734,
+        "seamToP95": 0.894,
+        "passes": true,
+        "frames": 90,
+        "duration": 3.0,
+        "bytes": 702360,
+        "width": 640,
+        "silent": true,
+        "quantizer": 25,
+        "phaseFrames": 0
+      },
+      "cut": {
+        "startFrame": 30,
+        "endFrameExclusive": 141,
+        "startSeconds": 1.0,
+        "endSeconds": 4.7,
+        "crossfadeSeconds": 0.7,
+        "overlapMeanRGBDelta": 5.002,
+        "rotationFrames": 54
+      },
+      "visualPlayback": "three-cycles-recorded-in-Chromium",
+      "playbackSwitches": 3
+    },
+    {
+      "id": "jungle",
+      "label": "DŻUNGLA",
+      "status": "PASS",
+      "source": "jungle.5da36c4fba53.mp4",
+      "sourceSha256": "5da36c4fba53a7531469e2c31a5430320294717436c6a3b7f60510a11ed53f83",
+      "before": {
+        "seamMeanRGBDelta": 1.5545,
+        "normalP95RGBDelta": 1.008,
+        "seamToP95": 1.5421,
+        "passes": false,
+        "frames": 219,
+        "duration": 7.3
+      },
+      "after": {
+        "seamMeanRGBDelta": 0.8033,
+        "normalP95RGBDelta": 1.1128,
+        "seamToP95": 0.7219,
+        "passes": true,
+        "frames": 190,
+        "duration": 6.3333
+      },
+      "preview": {
+        "seamMeanRGBDelta": 2.6674,
+        "normalP95RGBDelta": 3.0423,
+        "seamToP95": 0.8768,
+        "passes": true,
+        "frames": 190,
+        "duration": 6.3333,
+        "bytes": 709109,
+        "width": 640,
+        "silent": true,
+        "quantizer": 31,
+        "phaseFrames": 0
+      },
+      "cut": {
+        "startFrame": 8,
+        "endFrameExclusive": 219,
+        "startSeconds": 0.26666666666666666,
+        "endSeconds": 7.3,
+        "crossfadeSeconds": 0.7,
+        "overlapMeanRGBDelta": 6.0319,
+        "rotationFrames": 26
+      },
+      "visualPlayback": "three-cycles-recorded-in-Chromium",
+      "playbackSwitches": 3
+    },
+    {
+      "id": "savanna",
+      "label": "SAWANNA",
+      "status": "PASS",
+      "source": "savanna.a1e74fcbcc2d.mp4",
+      "sourceSha256": "a1e74fcbcc2dd877a7c368ca94b0a56ab1e56d33cd2471b0eaf0d69da0ad31f3",
+      "before": {
+        "seamMeanRGBDelta": 1.357,
+        "normalP95RGBDelta": 1.3933,
+        "seamToP95": 0.974,
+        "passes": true,
+        "frames": 279,
+        "duration": 9.3
+      },
+      "after": {
+        "seamMeanRGBDelta": 0.9259,
+        "normalP95RGBDelta": 1.4865,
+        "seamToP95": 0.6229,
+        "passes": true,
+        "frames": 258,
+        "duration": 8.6
+      },
+      "preview": {
+        "seamMeanRGBDelta": 2.4902,
+        "normalP95RGBDelta": 2.712,
+        "seamToP95": 0.9182,
+        "passes": true,
+        "frames": 258,
+        "duration": 8.6,
+        "bytes": 725004,
+        "width": 640,
+        "silent": true,
+        "quantizer": 31,
+        "phaseFrames": 0
+      },
+      "cut": {
+        "startFrame": 0,
+        "endFrameExclusive": 279,
+        "startSeconds": 0.0,
+        "endSeconds": 9.3,
+        "crossfadeSeconds": 0.7,
+        "overlapMeanRGBDelta": 4.1185,
+        "rotationFrames": 104
+      },
+      "visualPlayback": "three-cycles-recorded-in-Chromium",
+      "playbackSwitches": 3
+    },
+    {
+      "id": "volcano",
+      "label": "KUŹNIA WULKANU",
+      "status": "PASS",
+      "source": "volcano.216629861b12.mp4",
+      "sourceSha256": "216629861b12ac89a7b01b56cbc2a04c395c2d8154e4c8acd5859c282324d32b",
+      "before": {
+        "seamMeanRGBDelta": 1.2837,
+        "normalP95RGBDelta": 0.6997,
+        "seamToP95": 1.8347,
+        "passes": false,
+        "frames": 219,
+        "duration": 7.3
+      },
+      "after": {
+        "seamMeanRGBDelta": 0.2689,
+        "normalP95RGBDelta": 0.5538,
+        "seamToP95": 0.4856,
+        "passes": true,
+        "frames": 132,
+        "duration": 4.4
+      },
+      "preview": {
+        "seamMeanRGBDelta": 1.5279,
+        "normalP95RGBDelta": 1.7954,
+        "seamToP95": 0.851,
+        "passes": true,
+        "frames": 132,
+        "duration": 4.4,
+        "bytes": 670556,
+        "width": 640,
+        "silent": true,
+        "quantizer": 25,
+        "phaseFrames": 0
+      },
+      "cut": {
+        "startFrame": 30,
+        "endFrameExclusive": 183,
+        "startSeconds": 1.0,
+        "endSeconds": 6.1,
+        "crossfadeSeconds": 0.7,
+        "overlapMeanRGBDelta": 2.5828,
+        "rotationFrames": 54
+      },
+      "visualPlayback": "three-cycles-recorded-in-Chromium",
+      "playbackSwitches": 3
+    },
+    {
+      "id": "dragon",
+      "label": "SMOCZA TWIERDZA",
+      "status": "PASS",
+      "source": "dragon.f666fd6d5e72.mp4",
+      "sourceSha256": "f666fd6d5e72d10993d0a4d1b800558c5ebd59f2c5e315e58169d80b41bf9345",
+      "before": {
+        "seamMeanRGBDelta": 1.505,
+        "normalP95RGBDelta": 2.0568,
+        "seamToP95": 0.7317,
+        "passes": true,
+        "frames": 279,
+        "duration": 9.3
+      },
+      "after": {
+        "seamMeanRGBDelta": 2.0475,
+        "normalP95RGBDelta": 2.0789,
+        "seamToP95": 0.9849,
+        "passes": true,
+        "frames": 258,
+        "duration": 8.6
+      },
+      "preview": {
+        "seamMeanRGBDelta": 1.4402,
+        "normalP95RGBDelta": 2.8732,
+        "seamToP95": 0.5012,
+        "passes": true,
+        "frames": 258,
+        "duration": 8.6,
+        "bytes": 852030,
+        "width": 640,
+        "silent": true,
+        "quantizer": 31,
+        "phaseFrames": 154
+      },
+      "cut": {
+        "startFrame": 0,
+        "endFrameExclusive": 279,
+        "startSeconds": 0.0,
+        "endSeconds": 9.3,
+        "crossfadeSeconds": 0.7,
+        "overlapMeanRGBDelta": 7.1958,
+        "rotationFrames": 0
+      },
+      "visualPlayback": "three-cycles-recorded-in-Chromium",
+      "playbackSwitches": 3
+    },
+    {
+      "id": "aquarium",
+      "label": "AKWARIUM",
+      "status": "PASS",
+      "source": "aquarium.2c8649a07a44.mp4",
+      "sourceSha256": "2c8649a07a442ec7d413b6d26a5525b6a07baec7242124046454a682af7efee9",
+      "before": {
+        "seamMeanRGBDelta": 1.5515,
+        "normalP95RGBDelta": 1.5754,
+        "seamToP95": 0.9848,
+        "passes": true,
+        "frames": 339,
+        "duration": 11.3
+      },
+      "after": {
+        "seamMeanRGBDelta": 0.3295,
+        "normalP95RGBDelta": 1.5774,
+        "seamToP95": 0.2089,
+        "passes": true,
+        "frames": 318,
+        "duration": 10.6
+      },
+      "preview": {
+        "seamMeanRGBDelta": 3.3142,
+        "normalP95RGBDelta": 4.0698,
+        "seamToP95": 0.8143,
+        "passes": true,
+        "frames": 318,
+        "duration": 10.6,
+        "bytes": 772685,
+        "width": 640,
+        "silent": true,
+        "quantizer": 34,
+        "phaseFrames": 0
+      },
+      "cut": {
+        "startFrame": 0,
+        "endFrameExclusive": 339,
+        "startSeconds": 0.0,
+        "endSeconds": 11.3,
+        "crossfadeSeconds": 0.7,
+        "overlapMeanRGBDelta": 7.5157,
+        "rotationFrames": 129
+      },
+      "visualPlayback": "three-cycles-recorded-in-Chromium",
+      "playbackSwitches": 3
+    },
+    {
+      "id": "clocktower",
+      "label": "WIEŻA ZEGAROWA",
+      "status": "PASS",
+      "source": "clocktower.source.mp4",
+      "sourceSha256": "558d7288c77e086c2dd735c45cdf3928ce2d9014c73cdac46f4df65b8130ba8c",
+      "before": {
+        "seamMeanRGBDelta": 6.5612,
+        "normalP95RGBDelta": 1.0042,
+        "seamToP95": 6.5337,
+        "passes": false,
+        "frames": 301,
+        "duration": 10.0333
+      },
+      "after": {
+        "seamMeanRGBDelta": 0.2165,
+        "normalP95RGBDelta": 0.9557,
+        "seamToP95": 0.2265,
+        "passes": true,
+        "frames": 231,
+        "duration": 7.7
+      },
+      "preview": {
+        "seamMeanRGBDelta": 1.5192,
+        "normalP95RGBDelta": 2.0108,
+        "seamToP95": 0.7555,
+        "passes": true,
+        "frames": 231,
+        "duration": 7.7,
+        "bytes": 866747,
+        "width": 640,
+        "silent": true,
+        "quantizer": 28,
+        "phaseFrames": 0
+      },
+      "cut": {
+        "startFrame": 30,
+        "endFrameExclusive": 282,
+        "startSeconds": 1.0,
+        "endSeconds": 9.4,
+        "crossfadeSeconds": 0.7,
+        "overlapMeanRGBDelta": 3.1216,
+        "rotationFrames": 36
+      },
+      "visualPlayback": "pending-three-cycles"
+    },
+    {
+      "id": "funfair",
+      "label": "WESOŁE MIASTECZKO",
+      "status": "PASS",
+      "source": "funfair.source.mp4",
+      "sourceSha256": "688a660092e925ad00bb722c0ca640da971b2694757ff1dfe8cafb2443d97528",
+      "before": {
+        "seamMeanRGBDelta": 8.4225,
+        "normalP95RGBDelta": 0.8381,
+        "seamToP95": 10.0496,
+        "passes": false,
+        "frames": 301,
+        "duration": 10.0333
+      },
+      "after": {
+        "seamMeanRGBDelta": 0.2241,
+        "normalP95RGBDelta": 0.8212,
+        "seamToP95": 0.2728,
+        "passes": true,
+        "frames": 90,
+        "duration": 3.0
+      },
+      "preview": {
+        "seamMeanRGBDelta": 1.2525,
+        "normalP95RGBDelta": 1.6956,
+        "seamToP95": 0.7387,
+        "passes": true,
+        "frames": 90,
+        "duration": 3.0,
+        "bytes": 473763,
+        "width": 640,
+        "silent": true,
+        "quantizer": 25,
+        "phaseFrames": 0
+      },
+      "cut": {
+        "startFrame": 30,
+        "endFrameExclusive": 141,
+        "startSeconds": 1.0,
+        "endSeconds": 4.7,
+        "crossfadeSeconds": 0.7,
+        "overlapMeanRGBDelta": 3.9803,
+        "rotationFrames": 16
+      },
+      "visualPlayback": "pending-three-cycles"
+    },
+    {
+      "id": "mine",
+      "label": "KOPALNIA",
+      "status": "PASS",
+      "source": "mine.source.mp4",
+      "sourceSha256": "469d72fcc50d2b25df5106c5dd78d8374a69d03579b930ccf9def926a5c2ce6b",
+      "before": {
+        "seamMeanRGBDelta": 5.3177,
+        "normalP95RGBDelta": 1.0042,
+        "seamToP95": 5.2954,
+        "passes": false,
+        "frames": 301,
+        "duration": 10.0333
+      },
+      "after": {
+        "seamMeanRGBDelta": 0.2119,
+        "normalP95RGBDelta": 0.9827,
+        "seamToP95": 0.2156,
+        "passes": true,
+        "frames": 178,
+        "duration": 5.9333
+      },
+      "preview": {
+        "seamMeanRGBDelta": 1.1873,
+        "normalP95RGBDelta": 1.7852,
+        "seamToP95": 0.6651,
+        "passes": true,
+        "frames": 178,
+        "duration": 5.9333,
+        "bytes": 695395,
+        "width": 640,
+        "silent": true,
+        "quantizer": 25,
+        "phaseFrames": 0
+      },
+      "cut": {
+        "startFrame": 28,
+        "endFrameExclusive": 227,
+        "startSeconds": 0.9333333333333333,
+        "endSeconds": 7.566666666666666,
+        "crossfadeSeconds": 0.7,
+        "overlapMeanRGBDelta": 2.3161,
+        "rotationFrames": 153
+      },
+      "visualPlayback": "pending-three-cycles"
+    }
+  ],
+  "expectedArenaCount": 21,
+  "measuredArenaCount": 17,
+  "pendingMeasurements": [
+    {
+      "id": "octagon",
+      "label": "OKTAGON",
+      "category": "city",
+      "description": "KLATKA · TŁUM",
+      "status": "missing-source-video"
+    },
+    {
+      "id": "steelworks",
+      "label": "HUTA",
+      "category": "industry",
+      "description": "OGIEŃ · BURZA",
+      "status": "missing-source-video"
+    },
+    {
+      "id": "canyon-train",
+      "label": "KANION — POCIĄG",
+      "category": "nature",
+      "description": "DACH POCIĄGU · KANION",
+      "status": "missing-source-video"
+    },
+    {
+      "id": "station",
+      "label": "DWORZEC",
+      "category": "city",
+      "description": "PAROWÓZ · ŚNIEG",
+      "status": "missing-source-video"
+    }
+  ]
+}

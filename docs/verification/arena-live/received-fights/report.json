@@ -1,0 +1,70 @@
+{
+  "published": false,
+  "modelsStubbed": false,
+  "imagesStubbed": false,
+  "limitations": [
+    "Local Chromium emulation and software WebGL; no physical phone test."
+  ],
+  "results": [
+    {
+      "key": "clocktower",
+      "status": "passed",
+      "clicks": 1,
+      "flash": false,
+      "vsSeen": true,
+      "selected": "clocktower",
+      "media": {
+        "active": true,
+        "source": "/api/arena-media/clocktower.ef2d2b9abf34.mp4",
+        "loop": {
+          "switches": 0,
+          "fallbacks": 0,
+          "overlapMs": 120,
+          "decoders": 2
+        }
+      },
+      "controls": true,
+      "errors": []
+    },
+    {
+      "key": "funfair",
+      "status": "passed",
+      "clicks": 1,
+      "flash": false,
+      "vsSeen": true,
+      "selected": "funfair",
+      "media": {
+        "active": true,
+        "source": "/api/arena-media/funfair.ad0f1557d85f.mp4",
+        "loop": {
+          "switches": 0,
+          "fallbacks": 0,
+          "overlapMs": 120,
+          "decoders": 2
+        }
+      },
+      "controls": true,
+      "errors": []
+    },
+    {
+      "key": "mine",
+      "status": "passed",
+      "clicks": 1,
+      "flash": false,
+      "vsSeen": true,
+      "selected": "mine",
+      "media": {
+        "active": true,
+        "source": "/api/arena-media/mine.917b822dd36e.mp4",
+        "loop": {
+          "switches": 0,
+          "fallbacks": 0,
+          "overlapMs": 120,
+          "decoders": 2
+        }
+      },
+      "controls": true,
+      "errors": []
+    }
+  ]
+}

@@ -751,5 +751,28 @@ window.BRAX_I18N.register('content',{
  "effects.off": {
   "pl": "Wyłączone",
   "en": "Off"
- }
+ },
+ "arena.random": {"pl": "LOSOWA ARENA", "en": "RANDOM ARENA"},
+ "arena.fight": {"pl": "WALCZ", "en": "FIGHT"},
+ "arena.hold": {"pl": "PRZYTRZYMAJ", "en": "HOLD"},
+ "arena.holdLabel": {"pl": "Przytrzymaj pół sekundy, aby rozpocząć walkę", "en": "Hold for half a second to start the fight"},
+ "arena.swipe": {"pl": "PRZESUŃ, ABY ZMIENIĆ ARENĘ", "en": "SWIPE TO CHANGE ARENA"},
+ "arena.description.metro": {"pl": "PERON · NOC", "en": "PLATFORM · NIGHT"},
+ "arena.description.harbor": {"pl": "DOKI · KONTENERY", "en": "DOCKS · CONTAINERS"},
+ "arena.description.carrier": {"pl": "SZTORM · POKŁAD", "en": "STORM · FLIGHT DECK"},
+ "arena.description.reactor": {"pl": "PLAZMA · RDZEŃ", "en": "PLASMA · CORE"},
+ "arena.description.savanna": {"pl": "ZACHÓD · STADO", "en": "SUNSET · HERD"},
+ "arena.description.brooklyn": {"pl": "ULICA · GRAFFITI", "en": "STREET · GRAFFITI"},
+ "arena.description.dragon": {"pl": "SMOK · BURZA", "en": "DRAGON · STORM"},
+ "arena.description.aquarium": {"pl": "REKINY · GŁĘBINA", "en": "SHARKS · THE DEEP"}
+,
+ "arena.name.clocktower": {"pl": "WIEŻA ZEGAROWA", "en": "CLOCK TOWER"},
+ "arena.description.clocktower": {"pl": "MECHANIZM · PARA", "en": "CLOCKWORK · STEAM"},
+ "arena.select.clocktower": {"pl": "Wybierz arenę: WIEŻA ZEGAROWA", "en": "Select arena: CLOCK TOWER"},
+ "arena.name.funfair": {"pl": "WESOŁE MIASTECZKO", "en": "FUNFAIR"},
+ "arena.description.funfair": {"pl": "KARUZELA · MGŁA", "en": "CAROUSEL · FOG"},
+ "arena.select.funfair": {"pl": "Wybierz arenę: WESOŁE MIASTECZKO", "en": "Select arena: FUNFAIR"},
+ "arena.name.mine": {"pl": "KOPALNIA", "en": "MINE"},
+ "arena.description.mine": {"pl": "KOPARKA · PYŁ", "en": "EXCAVATOR · DUST"},
+ "arena.select.mine": {"pl": "Wybierz arenę: KOPALNIA", "en": "Select arena: MINE"}
 });

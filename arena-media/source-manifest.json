@@ -1,0 +1,29 @@
+[
+  {
+    "id": "clocktower-source",
+    "arena": "clocktower",
+    "kind": "source",
+    "file": "clocktower-source.558d7288c77e.mp4",
+    "sha256": "558d7288c77e086c2dd735c45cdf3928ce2d9014c73cdac46f4df65b8130ba8c",
+    "bytes": 9885952,
+    "originalAttachment": "3-users_54334d5d-6f18-4e14-90df-f464211fefea_generated_d89b8968-a345-4dd3-8544-e46311e5413d_generated_video.mp4"
+  },
+  {
+    "id": "funfair-source",
+    "arena": "funfair",
+    "kind": "source",
+    "file": "funfair-source.688a660092e9.mp4",
+    "sha256": "688a660092e925ad00bb722c0ca640da971b2694757ff1dfe8cafb2443d97528",
+    "bytes": 10889015,
+    "originalAttachment": "2-users_54334d5d-6f18-4e14-90df-f464211fefea_generated_06209a09-45e4-4796-9584-4d50111b5710_generated_video.mp4"
+  },
+  {
+    "id": "mine-source",
+    "arena": "mine",
+    "kind": "source",
+    "file": "mine-source.469d72fcc50d.mp4",
+    "sha256": "469d72fcc50d2b25df5106c5dd78d8374a69d03579b930ccf9def926a5c2ce6b",
+    "bytes": 8783778,
+    "originalAttachment": "1-users_54334d5d-6f18-4e14-90df-f464211fefea_generated_88cb0bab-7646-4ca3-a7de-fd4fe8819a92_generated_video.mp4"
+  }
+]

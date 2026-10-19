@@ -14,6 +14,11 @@ node_modules
 __pycache__/
 *.pyc
 
+# Arena movies are immutable R2 objects; manifests retain their exact hashes.
+/arena-media/loops/
+/source-assets/arena-incoming-20261019/
+/docs/verification/arena-live/three-cycles/playback/
+
 # Original attachments remain in the supplied ZIPs; extract locally for reproduction.
 /source-assets/new-fighters-input/
 

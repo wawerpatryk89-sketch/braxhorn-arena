@@ -1,1 +1,1 @@
-window.BRAX_COMPAT=Object.freeze({"protocol":3,"build":"7132c87796d318d9b9aa55b995032ac1bdbb24395ed8f45d0ca98f188398b003","configs":"f7907f6af5f6d230962b64916d14967fb6dd9274c2ebc2c1ae25823980688182"});
+window.BRAX_COMPAT=Object.freeze({"protocol":3,"build":"040d70428b64b9cef82f45de6674f2e3f4bc2f10f5aa2501f17416d04da0d70e","configs":"f7907f6af5f6d230962b64916d14967fb6dd9274c2ebc2c1ae25823980688182"});

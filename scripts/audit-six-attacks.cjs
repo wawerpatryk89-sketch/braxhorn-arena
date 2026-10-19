@@ -7,7 +7,7 @@ const assert=require('node:assert/strict');
   if(slot)g.elements.get('nextFighter').dispatch('click');
   await g.flush();
   g.elements.get('chooseFighter').dispatch('click');
-  g.elements.get('arena-rooftop').dispatch('click');await g.flush();
+  g.elements.get('arena-rooftop-city').dispatch('click');await g.flush();
   g.elements.get('fighterFilm').dispatch('ended');g.step(17000);
   const {B,O,S,K}=g.test;S.training=true;S.trainingBehavior='idle';
   const expected=slot?['LIGHT_PUNCH','HEAVY_PUNCH','LIGHT_KICK','HEAVY_KICK','LUNGE_PUNCH','ELBOW','CLINCH_KNEE','CROUCH_KICK']:['LIGHT_PUNCH','HEAVY_PUNCH','LIGHT_KICK','HEAVY_KICK','DOUBLE_PUNCH','UPPERCUT','TEEP','CAPOEIRA'];

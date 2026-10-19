@@ -1,6 +1,6 @@
 const {createGame}=require('./audit-new-fighters.cjs');const assert=require('node:assert/strict');
 (async()=>{for(const slot of [0,1]){
- const g=await createGame(844,390,true);await g.start();if(slot)g.elements.get('nextFighter').dispatch('click');await g.flush();g.elements.get('chooseFighter').dispatch('click');g.elements.get('arena-rooftop').dispatch('click');await g.flush();g.elements.get('fighterFilm').dispatch('ended');g.step(14000);
+ const g=await createGame(844,390,true);await g.start();if(slot)g.elements.get('nextFighter').dispatch('click');await g.flush();g.elements.get('chooseFighter').dispatch('click');g.elements.get('arena-rooftop-city').dispatch('click');await g.flush();g.elements.get('fighterFilm').dispatch('ended');g.step(14000);
  const t=g.test,{B,O,S,K}=t;S.training=true;S.trainingBehavior='idle';g.proof.reset();const seenB=new Set(),seenO=new Set();g.step(4700,()=>{assert.equal(B.a,'IDLE');assert.equal(O.a,'IDLE');seenB.add(B.frame);seenO.add(O.frame);});assert(seenB.size>100&&seenO.size>100,'both guards loop without input');
  for(const face of [1,-1]){g.proof.reset();B.x=face>0?49:51;O.x=50;t.faceOpponents();t.beginAction('LIGHT_PUNCH');t.opponentPose('LIGHT_PUNCH',true);t.separateFighters();const a=t.sourcePushBody(B),b=t.sourcePushBody(O);assert((b.x-a.x)*face>=a.r+b.r-1e-6,'separate locked attackers');}
  g.proof.reset();B.x=49;O.x=50;t.faceOpponents();B.x=50.1;t.separateFighters();assert(B.x<O.x,'movement cannot switch sides by stepping through a fighter');

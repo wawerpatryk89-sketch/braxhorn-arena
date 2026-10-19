@@ -1,0 +1,212 @@
+[
+  {
+    "id": "metro",
+    "cycles": 3,
+    "active": true,
+    "source": "/api/arena-media/metro.bf4eaa710d07.mp4",
+    "loop": {
+      "switches": 3,
+      "fallbacks": 0,
+      "overlapMs": 120,
+      "decoders": 2
+    },
+    "playing": true,
+    "mean": 57.51787037037037,
+    "errors": []
+  },
+  {
+    "id": "nocny-targ",
+    "cycles": 3,
+    "active": true,
+    "source": "/api/arena-media/nocny-targ.a63eebdccb40.mp4",
+    "loop": {
+      "switches": 3,
+      "fallbacks": 0,
+      "overlapMs": 120,
+      "decoders": 2
+    },
+    "playing": true,
+    "mean": 54.611412037037034,
+    "errors": []
+  },
+  {
+    "id": "rooftop-city",
+    "cycles": 3,
+    "active": true,
+    "source": "/api/arena-media/rooftop-city.e698d50cc9ee.mp4",
+    "loop": {
+      "switches": 3,
+      "fallbacks": 0,
+      "overlapMs": 120,
+      "decoders": 2
+    },
+    "playing": true,
+    "mean": 74.39247685185185,
+    "errors": []
+  },
+  {
+    "id": "brooklyn",
+    "cycles": 3,
+    "active": true,
+    "source": "/api/arena-media/brooklyn.be00ee8aaeff.mp4",
+    "loop": {
+      "switches": 3,
+      "fallbacks": 0,
+      "overlapMs": 120,
+      "decoders": 2
+    },
+    "playing": true,
+    "mean": 59.85775462962963,
+    "errors": []
+  },
+  {
+    "id": "harbor",
+    "cycles": 3,
+    "active": true,
+    "source": "/api/arena-media/harbor.2926fec8a5e6.mp4",
+    "loop": {
+      "switches": 3,
+      "fallbacks": 0,
+      "overlapMs": 120,
+      "decoders": 2
+    },
+    "playing": true,
+    "mean": 62.32826388888889,
+    "errors": []
+  },
+  {
+    "id": "carrier",
+    "cycles": 3,
+    "active": true,
+    "source": "/api/arena-media/carrier.6434656adaf5.mp4",
+    "loop": {
+      "switches": 3,
+      "fallbacks": 0,
+      "overlapMs": 120,
+      "decoders": 2
+    },
+    "playing": true,
+    "mean": 66.97951388888889,
+    "errors": []
+  },
+  {
+    "id": "beach",
+    "cycles": 3,
+    "active": true,
+    "source": "/api/arena-media/beach.5dd99a84bae9.mp4",
+    "loop": {
+      "switches": 3,
+      "fallbacks": 0,
+      "overlapMs": 120,
+      "decoders": 2
+    },
+    "playing": true,
+    "mean": 130.87537037037038,
+    "errors": []
+  },
+  {
+    "id": "himalaya",
+    "cycles": 3,
+    "active": true,
+    "source": "/api/arena-media/himalaya.bd9cf1e50e12.mp4",
+    "loop": {
+      "switches": 3,
+      "fallbacks": 0,
+      "overlapMs": 120,
+      "decoders": 2
+    },
+    "playing": true,
+    "mean": 104.90722222222222,
+    "errors": []
+  },
+  {
+    "id": "reactor",
+    "cycles": 3,
+    "active": true,
+    "source": "/api/arena-media/reactor.b5c3ff9b01eb.mp4",
+    "loop": {
+      "switches": 3,
+      "fallbacks": 0,
+      "overlapMs": 120,
+      "decoders": 2
+    },
+    "playing": true,
+    "mean": 85.26935185185185,
+    "errors": []
+  },
+  {
+    "id": "volcano",
+    "cycles": 3,
+    "active": true,
+    "source": "/api/arena-media/volcano.0ef2b0d0ede8.mp4",
+    "loop": {
+      "switches": 3,
+      "fallbacks": 0,
+      "overlapMs": 120,
+      "decoders": 2
+    },
+    "playing": true,
+    "mean": 50.16268518518518,
+    "errors": []
+  },
+  {
+    "id": "jungle",
+    "cycles": 3,
+    "active": true,
+    "source": "/api/arena-media/jungle.915faaea31a9.mp4",
+    "loop": {
+      "switches": 3,
+      "fallbacks": 0,
+      "overlapMs": 120,
+      "decoders": 2
+    },
+    "playing": true,
+    "mean": 63.09615740740741,
+    "errors": []
+  },
+  {
+    "id": "savanna",
+    "cycles": 3,
+    "active": true,
+    "source": "/api/arena-media/savanna.cdd6d387605a.mp4",
+    "loop": {
+      "switches": 3,
+      "fallbacks": 0,
+      "overlapMs": 120,
+      "decoders": 2
+    },
+    "playing": true,
+    "mean": 76.91592592592593,
+    "errors": []
+  },
+  {
+    "id": "dragon",
+    "cycles": 3,
+    "active": true,
+    "source": "/api/arena-media/dragon.99edde92ad6a.mp4",
+    "loop": {
+      "switches": 3,
+      "fallbacks": 0,
+      "overlapMs": 120,
+      "decoders": 2
+    },
+    "playing": true,
+    "mean": 65.05090277777778,
+    "errors": []
+  },
+  {
+    "id": "aquarium",
+    "cycles": 3,
+    "active": true,
+    "source": "/api/arena-media/aquarium.92e3309627ed.mp4",
+    "loop": {
+      "switches": 3,
+      "fallbacks": 0,
+      "overlapMs": 120,
+      "decoders": 2
+    },
+    "playing": true,
+    "mean": 88.83238425925926,
+    "errors": []
+  }
+]

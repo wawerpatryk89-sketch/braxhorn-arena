@@ -1,0 +1,660 @@
+{
+  "status": "PASS",
+  "purpose": "Verify byte-exact transfer of the previously prepared arena checkpoint; no encoding or source-video mutation",
+  "fightCount": 14,
+  "previewCount": 14,
+  "posterCount": 28,
+  "missingNewSourceVideos": 7,
+  "media": [
+    {
+      "id": "nocny-targ",
+      "kind": "fight",
+      "sha256": "a63eebdccb4019ed18a959f4a10245900ab1bef84cc06d2781596663f78b5e67",
+      "bytes": 2479240,
+      "width": 1138,
+      "height": 640,
+      "audio": true,
+      "unchangedCheckpointBytes": true,
+      "remeasured": {
+        "seamMeanRGBDelta": 1.1436,
+        "normalP95RGBDelta": 1.4493,
+        "seamToP95": 0.7891,
+        "passes": true,
+        "frames": 150,
+        "duration": 5.0
+      }
+    },
+    {
+      "id": "rooftop-city",
+      "kind": "fight",
+      "sha256": "e698d50cc9eec1cc9e57cb25bcba2a20e280b08bb8fa21a875ba8fe5eb2d8253",
+      "bytes": 4943255,
+      "width": 1138,
+      "height": 512,
+      "audio": true,
+      "unchangedCheckpointBytes": true,
+      "remeasured": {
+        "seamMeanRGBDelta": 0.7496,
+        "normalP95RGBDelta": 0.909,
+        "seamToP95": 0.8246,
+        "passes": true,
+        "frames": 198,
+        "duration": 6.6
+      }
+    },
+    {
+      "id": "metro",
+      "kind": "fight",
+      "sha256": "bf4eaa710d077879f387befcf3788ad7bf913afc4004466064fd6882787e9289",
+      "bytes": 665484,
+      "width": 960,
+      "height": 540,
+      "audio": true,
+      "unchangedCheckpointBytes": true,
+      "remeasured": {
+        "seamMeanRGBDelta": 0.179,
+        "normalP95RGBDelta": 0.8573,
+        "seamToP95": 0.2088,
+        "passes": true,
+        "frames": 129,
+        "duration": 4.3
+      }
+    },
+    {
+      "id": "brooklyn",
+      "kind": "fight",
+      "sha256": "be00ee8aaeff1559c4ae939c59995cf33259389d59d204d1a2eee70c3a12a7a8",
+      "bytes": 2098807,
+      "width": 898,
+      "height": 512,
+      "audio": true,
+      "unchangedCheckpointBytes": true,
+      "remeasured": {
+        "seamMeanRGBDelta": 0.7606,
+        "normalP95RGBDelta": 1.0443,
+        "seamToP95": 0.7284,
+        "passes": true,
+        "frames": 90,
+        "duration": 3.0
+      }
+    },
+    {
+      "id": "harbor",
+      "kind": "fight",
+      "sha256": "2926fec8a5e660f3fdea2bc5fad91dec2dfd48f8ee5881c865e4fcc1910bdc85",
+      "bytes": 675506,
+      "width": 960,
+      "height": 540,
+      "audio": true,
+      "unchangedCheckpointBytes": true,
+      "remeasured": {
+        "seamMeanRGBDelta": 0.1009,
+        "normalP95RGBDelta": 0.1496,
+        "seamToP95": 0.6743,
+        "passes": true,
+        "frames": 99,
+        "duration": 3.3
+      }
+    },
+    {
+      "id": "carrier",
+      "kind": "fight",
+      "sha256": "6434656adaf5edd64e43cb33e68d82a56dc4d1ac54daca0c3aa89d071788681f",
+      "bytes": 3753248,
+      "width": 898,
+      "height": 512,
+      "audio": true,
+      "unchangedCheckpointBytes": true,
+      "remeasured": {
+        "seamMeanRGBDelta": 1.8522,
+        "normalP95RGBDelta": 3.4665,
+        "seamToP95": 0.5343,
+        "passes": true,
+        "frames": 173,
+        "duration": 5.7667
+      }
+    },
+    {
+      "id": "reactor",
+      "kind": "fight",
+      "sha256": "b5c3ff9b01ebdf29f3991e909b1c11364f83bdbc2476c6e6832cbd9b419e7299",
+      "bytes": 6487550,
+      "width": 898,
+      "height": 512,
+      "audio": true,
+      "unchangedCheckpointBytes": true,
+      "remeasured": {
+        "seamMeanRGBDelta": 0.8678,
+        "normalP95RGBDelta": 1.3528,
+        "seamToP95": 0.6415,
+        "passes": true,
+        "frames": 254,
+        "duration": 8.4667
+      }
+    },
+    {
+      "id": "beach",
+      "kind": "fight",
+      "sha256": "5dd99a84bae97178e909b43738f0ed7d9a40e20e46d7899c1f58bdd059df4259",
+      "bytes": 4451066,
+      "width": 1138,
+      "height": 512,
+      "audio": true,
+      "unchangedCheckpointBytes": true,
+      "remeasured": {
+        "seamMeanRGBDelta": 0.7375,
+        "normalP95RGBDelta": 0.7552,
+        "seamToP95": 0.9766,
+        "passes": true,
+        "frames": 198,
+        "duration": 6.6
+      }
+    },
+    {
+      "id": "himalaya",
+      "kind": "fight",
+      "sha256": "bd9cf1e50e12b4d83c9239ff59fcfe3a61c4cfeb7fdc2c58d4c9c2b1261d8216",
+      "bytes": 1873244,
+      "width": 1024,
+      "height": 512,
+      "audio": true,
+      "unchangedCheckpointBytes": true,
+      "remeasured": {
+        "seamMeanRGBDelta": 0.8355,
+        "normalP95RGBDelta": 0.8433,
+        "seamToP95": 0.9908,
+        "passes": true,
+        "frames": 90,
+        "duration": 3.0
+      }
+    },
+    {
+      "id": "jungle",
+      "kind": "fight",
+      "sha256": "915faaea31a90e3a9f0dd1edeb9dd63f13e930add11652640071ac6632271343",
+      "bytes": 6109327,
+      "width": 1138,
+      "height": 512,
+      "audio": true,
+      "unchangedCheckpointBytes": true,
+      "remeasured": {
+        "seamMeanRGBDelta": 0.8033,
+        "normalP95RGBDelta": 1.1128,
+        "seamToP95": 0.7219,
+        "passes": true,
+        "frames": 190,
+        "duration": 6.3333
+      }
+    },
+    {
+      "id": "savanna",
+      "kind": "fight",
+      "sha256": "cdd6d387605a6f09453fdb579307269eacc27ed504cc9b69e6a3b5d99a83641e",
+      "bytes": 3733855,
+      "width": 898,
+      "height": 512,
+      "audio": true,
+      "unchangedCheckpointBytes": true,
+      "remeasured": {
+        "seamMeanRGBDelta": 0.9259,
+        "normalP95RGBDelta": 1.4865,
+        "seamToP95": 0.6229,
+        "passes": true,
+        "frames": 258,
+        "duration": 8.6
+      }
+    },
+    {
+      "id": "volcano",
+      "kind": "fight",
+      "sha256": "0ef2b0d0ede842870eb97d99e588401a74ababd2f06b1af42625790f2142fa13",
+      "bytes": 4101012,
+      "width": 1138,
+      "height": 512,
+      "audio": true,
+      "unchangedCheckpointBytes": true,
+      "remeasured": {
+        "seamMeanRGBDelta": 0.2689,
+        "normalP95RGBDelta": 0.5538,
+        "seamToP95": 0.4856,
+        "passes": true,
+        "frames": 132,
+        "duration": 4.4
+      }
+    },
+    {
+      "id": "dragon",
+      "kind": "fight",
+      "sha256": "99edde92ad6a75d43f6c1fa74d01d1f2d0a75343d03aeb2e7dc0ece92c34cfab",
+      "bytes": 6210281,
+      "width": 898,
+      "height": 512,
+      "audio": true,
+      "unchangedCheckpointBytes": true,
+      "remeasured": {
+        "seamMeanRGBDelta": 2.0475,
+        "normalP95RGBDelta": 2.0789,
+        "seamToP95": 0.9849,
+        "passes": true,
+        "frames": 258,
+        "duration": 8.6
+      }
+    },
+    {
+      "id": "aquarium",
+      "kind": "fight",
+      "sha256": "92e3309627ed700761caa16457e59926bde4d4f33a1a9b123af19bc2603b626f",
+      "bytes": 12036120,
+      "width": 1138,
+      "height": 512,
+      "audio": true,
+      "unchangedCheckpointBytes": true,
+      "remeasured": {
+        "seamMeanRGBDelta": 0.3295,
+        "normalP95RGBDelta": 1.5774,
+        "seamToP95": 0.2089,
+        "passes": true,
+        "frames": 318,
+        "duration": 10.6
+      }
+    },
+    {
+      "id": "nocny-targ-preview",
+      "kind": "preview",
+      "sha256": "324b5e410de52995aae45c5b0adde439560a4b251a97463289b8c80e704c3f45",
+      "bytes": 351878,
+      "width": 640,
+      "height": 360,
+      "audio": false,
+      "unchangedCheckpointBytes": true,
+      "remeasured": {
+        "seamMeanRGBDelta": 2.8935,
+        "normalP95RGBDelta": 2.897,
+        "seamToP95": 0.9988,
+        "passes": true,
+        "frames": 150,
+        "duration": 5.0
+      }
+    },
+    {
+      "id": "rooftop-city-preview",
+      "kind": "preview",
+      "sha256": "32221efe8a83ed980b1fe4b0f2edeab2faf7aa6a9a8723880be1c6ce24f2277f",
+      "bytes": 736009,
+      "width": 640,
+      "height": 288,
+      "audio": false,
+      "unchangedCheckpointBytes": true,
+      "remeasured": {
+        "seamMeanRGBDelta": 2.0304,
+        "normalP95RGBDelta": 2.2643,
+        "seamToP95": 0.8967,
+        "passes": true,
+        "frames": 198,
+        "duration": 6.6
+      }
+    },
+    {
+      "id": "metro-preview",
+      "kind": "preview",
+      "sha256": "81097d55aa1ff4762c2921b0e65884b75393cd422c350bd9cccf2eb5a2f02af7",
+      "bytes": 258886,
+      "width": 640,
+      "height": 360,
+      "audio": false,
+      "unchangedCheckpointBytes": true,
+      "remeasured": {
+        "seamMeanRGBDelta": 1.3432,
+        "normalP95RGBDelta": 1.409,
+        "seamToP95": 0.9533,
+        "passes": true,
+        "frames": 129,
+        "duration": 4.3
+      }
+    },
+    {
+      "id": "brooklyn-preview",
+      "kind": "preview",
+      "sha256": "55e71ae05db6b68d5a74cffeb557157e7083bdccfd520dfe94eca91d4f0910c5",
+      "bytes": 701714,
+      "width": 640,
+      "height": 364,
+      "audio": false,
+      "unchangedCheckpointBytes": true,
+      "remeasured": {
+        "seamMeanRGBDelta": 1.5973,
+        "normalP95RGBDelta": 1.9737,
+        "seamToP95": 0.8093,
+        "passes": true,
+        "frames": 90,
+        "duration": 3.0
+      }
+    },
+    {
+      "id": "harbor-preview",
+      "kind": "preview",
+      "sha256": "37d4c4206a0434e661e71776a8c46620908c18dce8bd82192d74cceeb6f0aa8a",
+      "bytes": 530054,
+      "width": 640,
+      "height": 360,
+      "audio": false,
+      "unchangedCheckpointBytes": true,
+      "remeasured": {
+        "seamMeanRGBDelta": 0.5864,
+        "normalP95RGBDelta": 0.8152,
+        "seamToP95": 0.7194,
+        "passes": true,
+        "frames": 99,
+        "duration": 3.3
+      }
+    },
+    {
+      "id": "carrier-preview",
+      "kind": "preview",
+      "sha256": "3a812b90ec72453fca394ee46e348ba62c908ebc4658ff62cde0f29a7f9b5e67",
+      "bytes": 739622,
+      "width": 640,
+      "height": 364,
+      "audio": false,
+      "unchangedCheckpointBytes": true,
+      "remeasured": {
+        "seamMeanRGBDelta": 2.9918,
+        "normalP95RGBDelta": 3.9381,
+        "seamToP95": 0.7597,
+        "passes": true,
+        "frames": 173,
+        "duration": 5.7667
+      }
+    },
+    {
+      "id": "reactor-preview",
+      "kind": "preview",
+      "sha256": "233d4c163677dfb14f644f2c3b6be7d5dfad82121bf473f0e858498d9d44ae3f",
+      "bytes": 992602,
+      "width": 640,
+      "height": 364,
+      "audio": false,
+      "unchangedCheckpointBytes": true,
+      "remeasured": {
+        "seamMeanRGBDelta": 2.5347,
+        "normalP95RGBDelta": 2.999,
+        "seamToP95": 0.8452,
+        "passes": true,
+        "frames": 254,
+        "duration": 8.4667
+      }
+    },
+    {
+      "id": "beach-preview",
+      "kind": "preview",
+      "sha256": "faec036afc778ae8c5ae058c44c554e58f6ad41fbd95493ad6cc9b9a8aacf4a6",
+      "bytes": 717956,
+      "width": 640,
+      "height": 288,
+      "audio": false,
+      "unchangedCheckpointBytes": true,
+      "remeasured": {
+        "seamMeanRGBDelta": 2.1115,
+        "normalP95RGBDelta": 2.3899,
+        "seamToP95": 0.8835,
+        "passes": true,
+        "frames": 198,
+        "duration": 6.6
+      }
+    },
+    {
+      "id": "himalaya-preview",
+      "kind": "preview",
+      "sha256": "1ff808a4fe08f22904c687406b694043b458a4b7c49b9eb8529c6502cbe5a54d",
+      "bytes": 702360,
+      "width": 640,
+      "height": 320,
+      "audio": false,
+      "unchangedCheckpointBytes": true,
+      "remeasured": {
+        "seamMeanRGBDelta": 1.7643,
+        "normalP95RGBDelta": 1.9734,
+        "seamToP95": 0.894,
+        "passes": true,
+        "frames": 90,
+        "duration": 3.0
+      }
+    },
+    {
+      "id": "jungle-preview",
+      "kind": "preview",
+      "sha256": "bb844cb1bdfd244d208b4af2c38534ea5fa9f43301d525970f85e7bf0a4f9347",
+      "bytes": 709109,
+      "width": 640,
+      "height": 288,
+      "audio": false,
+      "unchangedCheckpointBytes": true,
+      "remeasured": {
+        "seamMeanRGBDelta": 2.6674,
+        "normalP95RGBDelta": 3.0423,
+        "seamToP95": 0.8768,
+        "passes": true,
+        "frames": 190,
+        "duration": 6.3333
+      }
+    },
+    {
+      "id": "savanna-preview",
+      "kind": "preview",
+      "sha256": "9f816a66b042254f7f0753194e2f1fe62975084d1cc48465b63d6ffaa8b3f8a2",
+      "bytes": 725004,
+      "width": 640,
+      "height": 364,
+      "audio": false,
+      "unchangedCheckpointBytes": true,
+      "remeasured": {
+        "seamMeanRGBDelta": 2.4902,
+        "normalP95RGBDelta": 2.712,
+        "seamToP95": 0.9182,
+        "passes": true,
+        "frames": 258,
+        "duration": 8.6
+      }
+    },
+    {
+      "id": "volcano-preview",
+      "kind": "preview",
+      "sha256": "1e1266a5426911c5a324e38f66e5df091586639fec6e9b08d83c10d0f8414d5d",
+      "bytes": 670556,
+      "width": 640,
+      "height": 288,
+      "audio": false,
+      "unchangedCheckpointBytes": true,
+      "remeasured": {
+        "seamMeanRGBDelta": 1.5279,
+        "normalP95RGBDelta": 1.7954,
+        "seamToP95": 0.851,
+        "passes": true,
+        "frames": 132,
+        "duration": 4.4
+      }
+    },
+    {
+      "id": "dragon-preview",
+      "kind": "preview",
+      "sha256": "34c2a880079a5100589c05df407796ea0abe2609c79d713635a8b7e189e392dd",
+      "bytes": 852030,
+      "width": 640,
+      "height": 364,
+      "audio": false,
+      "unchangedCheckpointBytes": true,
+      "remeasured": {
+        "seamMeanRGBDelta": 1.4402,
+        "normalP95RGBDelta": 2.8732,
+        "seamToP95": 0.5012,
+        "passes": true,
+        "frames": 258,
+        "duration": 8.6
+      }
+    },
+    {
+      "id": "aquarium-preview",
+      "kind": "preview",
+      "sha256": "d930d3b624df5e1e4ce75aa7762ba2ee9ca3b5637311a8d2856affe2438a22d5",
+      "bytes": 772685,
+      "width": 640,
+      "height": 288,
+      "audio": false,
+      "unchangedCheckpointBytes": true,
+      "remeasured": {
+        "seamMeanRGBDelta": 3.3142,
+        "normalP95RGBDelta": 4.0698,
+        "seamToP95": 0.8143,
+        "passes": true,
+        "frames": 318,
+        "duration": 10.6
+      }
+    }
+  ],
+  "posters": [
+    {
+      "file": "arena-aquarium-20261019-thumb.webp",
+      "bytes": 17416,
+      "sha256": "c900a808ddd98372017a39b6939e6429e7e98b7af6a0696cb2b30d141d974d51"
+    },
+    {
+      "file": "arena-aquarium-20261019.webp",
+      "bytes": 238238,
+      "sha256": "272fb562f7126404d09196bd9e6e83b6acd21e3a7e66d98d62f3d87c7d0d374b"
+    },
+    {
+      "file": "arena-beach-20261019-thumb.webp",
+      "bytes": 11150,
+      "sha256": "7845cf14e5a94d25db0afd46047fa63c8668c46133e736d251cd829e4c82cc1c"
+    },
+    {
+      "file": "arena-beach-20261019.webp",
+      "bytes": 168770,
+      "sha256": "76eaf539e2ccbaf282d647ff976dc2d97fe1495cfb46bc70c99a54d56aecdd24"
+    },
+    {
+      "file": "arena-brooklyn-20261019-thumb.webp",
+      "bytes": 17080,
+      "sha256": "0dd634eff0cd3f4e9b03a4149351a4511467d494ce100b8aa9b93d9a340bb149"
+    },
+    {
+      "file": "arena-brooklyn-20261019.webp",
+      "bytes": 184650,
+      "sha256": "0f2571e7aa72c02da53092f6503e9f3a24e19d2b87454ab6cf711d67fc5aac98"
+    },
+    {
+      "file": "arena-carrier-20261019-thumb.webp",
+      "bytes": 18008,
+      "sha256": "5c0a31b92dfdd9e54cb61329044e6db8be68a8e610f792fbc558618e5273af9b"
+    },
+    {
+      "file": "arena-carrier-20261019.webp",
+      "bytes": 166186,
+      "sha256": "ca315675872bc78a58399bd86aefe0a167924aa07c0564e4f4e01a26c0c46282"
+    },
+    {
+      "file": "arena-dragon-20261019-thumb.webp",
+      "bytes": 15640,
+      "sha256": "aa96f21502f1342983c6abd20c15a90b5a5e41de6584a31c348efa951b836de0"
+    },
+    {
+      "file": "arena-dragon-20261019.webp",
+      "bytes": 157564,
+      "sha256": "bf97d37f66def80d1912b19f1cc07880be656aff75abfc09786ee79630ad3f19"
+    },
+    {
+      "file": "arena-harbor-20261019-thumb.webp",
+      "bytes": 15498,
+      "sha256": "fc1afebb1dcae6af4753f828322b3104d722e74883ebf2206a7ff646a7112539"
+    },
+    {
+      "file": "arena-harbor-20261019.webp",
+      "bytes": 201062,
+      "sha256": "4170ddc2646324e04d6e4468b1c82ebaaf9b04b49dc34b92e2ff08e26f95536d"
+    },
+    {
+      "file": "arena-himalaya-20261019-thumb.webp",
+      "bytes": 18708,
+      "sha256": "5e1fcac1c65a0233e138c097ea3f5acc5a8ebbdf16fd812dc07db2c3d13b31de"
+    },
+    {
+      "file": "arena-himalaya-20261019.webp",
+      "bytes": 227810,
+      "sha256": "d344b093f98c3ecd9857350474b5487a48718b9ce847411bd1c802721071f744"
+    },
+    {
+      "file": "arena-jungle-20261019-thumb.webp",
+      "bytes": 17722,
+      "sha256": "4258a4e303180e34780f1404a5f6ed292d4b8a61b2c39755c68f8fcfc05d6a9c"
+    },
+    {
+      "file": "arena-jungle-20261019.webp",
+      "bytes": 272108,
+      "sha256": "6aef680f3ba8cbfc6e4a545ef2e49beb607c296d8980fbdd3ba2fa4b2c841290"
+    },
+    {
+      "file": "arena-metro-20261019-thumb.webp",
+      "bytes": 12862,
+      "sha256": "7827bbed2371b8ad413fc751046bf87425a2f717ce468bd383877020f1f2775f"
+    },
+    {
+      "file": "arena-metro-20261019.webp",
+      "bytes": 176116,
+      "sha256": "0fc2d97b3d6a7f54011cfe286bd42eb9464264c92241ad2564520dfdd055e60f"
+    },
+    {
+      "file": "arena-nocny-targ-20261019-thumb.webp",
+      "bytes": 15254,
+      "sha256": "d4374cef50c0a1262273e573a531bd4c3d9e9c7988add338b3ad9874ed8f52b6"
+    },
+    {
+      "file": "arena-nocny-targ-20261019.webp",
+      "bytes": 263922,
+      "sha256": "0f0b72187764cf937894b228e2750e7aac91bc17be76684205c7726a833de55b"
+    },
+    {
+      "file": "arena-reactor-20261019-thumb.webp",
+      "bytes": 18610,
+      "sha256": "e2ae643df1527801c6da54bfdc11132f49b5e07f2b6adeadda7426bbfe85c039"
+    },
+    {
+      "file": "arena-reactor-20261019.webp",
+      "bytes": 188364,
+      "sha256": "7846de0c34d3a796b2e2d037b5d0f2b69f2828eec3f6e9cc8acde34b8baaad5a"
+    },
+    {
+      "file": "arena-rooftop-city-20261019-thumb.webp",
+      "bytes": 14112,
+      "sha256": "72db959f0575731efeb7fe32a77e8c5eca29c84a6174613a96f1f8bf86566516"
+    },
+    {
+      "file": "arena-rooftop-city-20261019.webp",
+      "bytes": 214412,
+      "sha256": "3d5a0b6fe409856a613c0ef7060d20da58bab35d903d7cf286043e29d0ab25bf"
+    },
+    {
+      "file": "arena-savanna-20261019-thumb.webp",
+      "bytes": 15792,
+      "sha256": "9143a9889843c85dd26ec402bb8f21ae3ea4bb9ac2e200f78e82236176ed5435"
+    },
+    {
+      "file": "arena-savanna-20261019.webp",
+      "bytes": 162514,
+      "sha256": "c887c43c0dc77801811be2d8c8627b35a4d5dfd0ab6ad80cf8f67fce1c93073c"
+    },
+    {
+      "file": "arena-volcano-20261019-thumb.webp",
+      "bytes": 14132,
+      "sha256": "efb7ae972665cafee6bdef67fcaec82cda7fac652479d090ca4797d39f3d9584"
+    },
+    {
+      "file": "arena-volcano-20261019.webp",
+      "bytes": 225984,
+      "sha256": "5316d76c80cea315da58842c14638a670308abb90e7c9e80dd8006e3469191c7"
+    }
+  ],
+  "historicalAquariumBytes": 238238,
+  "limitations": "RGB seam measurements do not prove perception on physical devices; old three-cycle Chromium playback evidence is preserved separately, not rerun here.",
+  "sourceRepositoryHead": "7faacf0363dcd59ea2ccf1b164ad1f5c6c1d3c8d",
+  "sourceWorkingTreeIncludesUncommittedArenaChanges": true
+}

@@ -1,7 +1,7 @@
 const {createGame}=require('./audit-new-fighters.cjs'),assert=require('node:assert/strict'),fs=require('node:fs');
 (async()=>{const results=[];for(const hz of [30,60,120])for(const delay of [0,48,96])for(const scenario of ['attack-hit','walk-push','walk-grab','attack-confirm']){
  const h=await createGame(844,390,true),g=await createGame(844,390,true),H=h.context.BRAX_MULTIPLAYER_ENGINE,G=g.context.BRAX_MULTIPLAYER_ENGINE;
- const room={hostFighter:'BRAX',guestFighter:'NYXA',arena:'snow'};await H.start('host',room);await G.start('guest',room);H.go();G.go();h.step(17000);h.test.B.x=35;h.test.O.x=scenario==='walk-grab'?45:65;
+ const room={hostFighter:'BRAX',guestFighter:'NYXA',arena:'rooftop-city'};await H.start('host',room);await G.start('guest',room);H.go();G.go();h.step(17000);h.test.B.x=35;h.test.O.x=scenario==='walk-grab'?45:65;
  const snap=()=>JSON.parse(JSON.stringify(H.snapshot()));G.receive(snap());g.tick(1000/hz);g.tick(1000/hz);
  const input={held:scenario.startsWith('walk')?{left:true}:{},events:[{id:1,kind:scenario.startsWith('walk')?'left':'punch'}],visible:true};G.localInput(input);
  // These are authoritative host state transitions, delivered after a fixed link delay.

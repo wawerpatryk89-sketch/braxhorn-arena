@@ -57,8 +57,16 @@ http.createServer(async(req,res)=>{
    const response=await handler(request);
    const out={};response.headers.forEach((v,k)=>{if(k!=='set-cookie')out[k]=v;});const cookies=response.headers.getSetCookie();if(cookies.length)out['set-cookie']=cookies;res.writeHead(response.status,out);res.end(Buffer.from(await response.arrayBuffer()));return;
   }
-  let file=path.join(root,'game',decodeURIComponent(url.pathname==='/'?'/index.html':url.pathname));
-  if(!file.startsWith(path.join(root,'game'))||!fs.existsSync(file)||fs.statSync(file).isDirectory()){res.writeHead(404);res.end('missing');return;}
+  const media=/^\/api\/arena-media\/([a-z0-9-]+\.[a-f0-9]{12}\.(?:mp4|gif|webp|mp3))$/.exec(url.pathname);
+  const directory=media?path.resolve(process.env.BRAX_MEDIA_ROOT||path.join(root,'arena-media/loops')):path.join(root,'game');
+  const file=media?path.join(directory,media[1]):path.join(directory,decodeURIComponent(url.pathname==='/'?'/index.html':url.pathname));
+  if(!file.startsWith(directory+path.sep)||!fs.existsSync(file)||fs.statSync(file).isDirectory()){res.writeHead(404);res.end('missing');return;}
+  if(media){
+   const size=fs.statSync(file).size,headers={'Content-Type':types[path.extname(file)],'Accept-Ranges':'bytes','Cache-Control':'no-store'};
+   const range=/^bytes=(\d+)-(\d*)$/.exec(req.headers.range||'');
+   if(range){const start=Number(range[1]),end=range[2]?Math.min(Number(range[2]),size-1):size-1;if(start>end||start>=size){res.writeHead(416,{'Content-Range':'bytes */'+size});res.end();return;}res.writeHead(206,{...headers,'Content-Range':`bytes ${start}-${end}/${size}`,'Content-Length':end-start+1});if(req.method==='HEAD')res.end();else fs.createReadStream(file,{start,end}).pipe(res);return;}
+   res.writeHead(200,{...headers,'Content-Length':size});if(req.method==='HEAD')res.end();else fs.createReadStream(file).pipe(res);return;
+  }
   res.writeHead(200,{'Content-Type':types[path.extname(file)]||'application/octet-stream','Cache-Control':'no-store'});fs.createReadStream(file).pipe(res);
  }catch(e){console.error(e);res.writeHead(500);res.end(String(e));}
 }).listen(port,'127.0.0.1',()=>console.log('BRAXHORN local server http://localhost:'+port));

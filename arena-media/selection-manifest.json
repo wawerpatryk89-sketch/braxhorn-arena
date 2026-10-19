@@ -1,0 +1,380 @@
+{
+  "fight": [
+    {
+      "id": "nocny-targ",
+      "label": "NOCNY TARG",
+      "file": "nocny-targ.4e8bdd2f02db.mp4",
+      "sha256": "4e8bdd2f02dbdf0df50ac23b7ef954b4620d81f430ecc973b55b6c8074c973a7",
+      "bytes": 2598768,
+      "poster": "arena-nocny-targ-20261019.webp",
+      "duration": 5.0,
+      "fps": 30,
+      "width": 1138,
+      "height": 640,
+      "audio": true,
+      "overlapSeconds": 0.7
+    },
+    {
+      "id": "rooftop-city",
+      "label": "DACH · METROPOLIA",
+      "file": "rooftop-city.015cd57571aa.mp4",
+      "sha256": "015cd57571aaf7e35cf79dcea11b2fb733bc6bc40fe57223a9772544ccb8fa5f",
+      "bytes": 5098943,
+      "poster": "arena-rooftop-city-20261019.webp",
+      "duration": 6.6,
+      "fps": 30,
+      "width": 1138,
+      "height": 512,
+      "audio": true,
+      "overlapSeconds": 0.7
+    },
+    {
+      "id": "metro",
+      "label": "METRO",
+      "file": "metro.7eae8a1488ce.mp4",
+      "sha256": "7eae8a1488ce7fc4d084f75c3d9bab2a1e191ae5bb3eb14d17afea656426485f",
+      "bytes": 769220,
+      "poster": "arena-metro-20261019.webp",
+      "duration": 4.3,
+      "fps": 30,
+      "width": 960,
+      "height": 540,
+      "audio": true,
+      "overlapSeconds": 0.7
+    },
+    {
+      "id": "brooklyn",
+      "label": "BROOKLYN",
+      "file": "brooklyn.4e34f6b445b7.mp4",
+      "sha256": "4e34f6b445b70aea4fc3706fed2a3cc7252d81359a51242344f1f5431b86e11c",
+      "bytes": 2169977,
+      "poster": "arena-brooklyn-20261019.webp",
+      "duration": 3.0,
+      "fps": 30,
+      "width": 898,
+      "height": 512,
+      "audio": true,
+      "overlapSeconds": 0.7
+    },
+    {
+      "id": "harbor",
+      "label": "PORT",
+      "file": "harbor.fe83c5328190.mp4",
+      "sha256": "fe83c53281909acc893cc9e7df83a0d55d8b4144eea5e2392f72cbbc4018b586",
+      "bytes": 755392,
+      "poster": "arena-harbor-20261019.webp",
+      "duration": 3.3,
+      "fps": 30,
+      "width": 960,
+      "height": 540,
+      "audio": true,
+      "overlapSeconds": 0.7
+    },
+    {
+      "id": "carrier",
+      "label": "LOTNISKOWIEC",
+      "file": "carrier.f7c3ab37a4bd.mp4",
+      "sha256": "f7c3ab37a4bd504d36e3b0992ad54fd34ba03aac00a96e90352bdb110f8c0b81",
+      "bytes": 3890331,
+      "poster": "arena-carrier-20261019.webp",
+      "duration": 5.7667,
+      "fps": 30,
+      "width": 898,
+      "height": 512,
+      "audio": true,
+      "overlapSeconds": 0.7
+    },
+    {
+      "id": "reactor",
+      "label": "REAKTOR",
+      "file": "reactor.f79b5cf33d66.mp4",
+      "sha256": "f79b5cf33d66feaa25b2f1eb5749c72ef01ff91dc2549b390b85ddb1c6045f70",
+      "bytes": 6687280,
+      "poster": "arena-reactor-20261019.webp",
+      "duration": 8.4667,
+      "fps": 30,
+      "width": 898,
+      "height": 512,
+      "audio": true,
+      "overlapSeconds": 0.7
+    },
+    {
+      "id": "beach",
+      "label": "PLAŻA",
+      "file": "beach.401a8f8101c3.mp4",
+      "sha256": "401a8f8101c3d6dd2a07ad4490d70bd65dfb800f0202f7cab22eae59258f71c6",
+      "bytes": 4606733,
+      "poster": "arena-beach-20261019.webp",
+      "duration": 6.6,
+      "fps": 30,
+      "width": 1138,
+      "height": 512,
+      "audio": true,
+      "overlapSeconds": 0.7
+    },
+    {
+      "id": "himalaya",
+      "label": "HIMALAJE",
+      "file": "himalaya.dc7227aa9eba.mp4",
+      "sha256": "dc7227aa9eba5739ece7e13a64a7b2cb96cfa1e3b245922c417e346e62c69e50",
+      "bytes": 1944890,
+      "poster": "arena-himalaya-20261019.webp",
+      "duration": 3.0,
+      "fps": 30,
+      "width": 1024,
+      "height": 512,
+      "audio": true,
+      "overlapSeconds": 0.7
+    },
+    {
+      "id": "jungle",
+      "label": "DŻUNGLA",
+      "file": "jungle.97657769fddf.mp4",
+      "sha256": "97657769fddfef6336dc412d6f883ec8f79e16c9633e6d4689b2f268fa6070ba",
+      "bytes": 6258727,
+      "poster": "arena-jungle-20261019.webp",
+      "duration": 6.3333,
+      "fps": 30,
+      "width": 1138,
+      "height": 512,
+      "audio": true,
+      "overlapSeconds": 0.7
+    },
+    {
+      "id": "savanna",
+      "label": "SAWANNA",
+      "file": "savanna.d383d5257a60.mp4",
+      "sha256": "d383d5257a60d239aa6d37e8ae5b2aa779f7d85f92f99d8051c005dab0538448",
+      "bytes": 3936737,
+      "poster": "arena-savanna-20261019.webp",
+      "duration": 8.6,
+      "fps": 30,
+      "width": 898,
+      "height": 512,
+      "audio": true,
+      "overlapSeconds": 0.7
+    },
+    {
+      "id": "volcano",
+      "label": "KUŹNIA WULKANU",
+      "file": "volcano.c3232c7f0d08.mp4",
+      "sha256": "c3232c7f0d08d1cd53272ab2ca22ce10dc233225d9abbb11f776c23f9e54cb37",
+      "bytes": 4204995,
+      "poster": "arena-volcano-20261019.webp",
+      "duration": 4.4,
+      "fps": 30,
+      "width": 1138,
+      "height": 512,
+      "audio": true,
+      "overlapSeconds": 0.7
+    },
+    {
+      "id": "dragon",
+      "label": "SMOCZA TWIERDZA",
+      "file": "dragon.e93187d88e24.mp4",
+      "sha256": "e93187d88e247cb909ba2b08e5426778b67e5fdf6026178e06204fbe4c553f71",
+      "bytes": 6414703,
+      "poster": "arena-dragon-20261019.webp",
+      "duration": 8.6,
+      "fps": 30,
+      "width": 898,
+      "height": 512,
+      "audio": true,
+      "overlapSeconds": 0.7
+    },
+    {
+      "id": "aquarium",
+      "label": "AKWARIUM",
+      "file": "aquarium.139bb84f8849.mp4",
+      "sha256": "139bb84f88498506e36b105e4e1e05bd0bbd7e5bad259252f1f575df88534e9a",
+      "bytes": 12286232,
+      "poster": "arena-aquarium-20261019.webp",
+      "duration": 10.6,
+      "fps": 30,
+      "width": 1138,
+      "height": 512,
+      "audio": true,
+      "overlapSeconds": 0.7
+    },
+    {
+      "id": "clocktower",
+      "label": "WIEŻA ZEGAROWA",
+      "file": "clocktower.ef2d2b9abf34.mp4",
+      "sha256": "ef2d2b9abf34aba0da788dc0182d9d4a356a4cbf8cdd043941cdc4e6d9798cfd",
+      "bytes": 16385146,
+      "poster": "arena-clocktower-20261019.webp",
+      "duration": 7.7,
+      "fps": 30,
+      "width": 1280,
+      "height": 720,
+      "audio": true,
+      "overlapSeconds": 0.7
+    },
+    {
+      "id": "funfair",
+      "label": "WESOŁE MIASTECZKO",
+      "file": "funfair.ad0f1557d85f.mp4",
+      "sha256": "ad0f1557d85f2ee9bd9cc1344aedf91d19a32d61a78efdc862051bd61776edc6",
+      "bytes": 6748070,
+      "poster": "arena-funfair-20261019.webp",
+      "duration": 3.0,
+      "fps": 30,
+      "width": 1280,
+      "height": 720,
+      "audio": true,
+      "overlapSeconds": 0.7
+    },
+    {
+      "id": "mine",
+      "label": "KOPALNIA",
+      "file": "mine.917b822dd36e.mp4",
+      "sha256": "917b822dd36ee22df0018433e1506882dea0bb5aebb67e48eae5a10ba35a6f1d",
+      "bytes": 10369959,
+      "poster": "arena-mine-20261019.webp",
+      "duration": 5.933333333333334,
+      "fps": 30,
+      "width": 1280,
+      "height": 720,
+      "audio": true,
+      "overlapSeconds": 0.7
+    }
+  ],
+  "previews": [
+    {
+      "id": "nocny-targ-preview",
+      "file": "nocny-targ-preview.324b5e410de5.mp4",
+      "sha256": "324b5e410de52995aae45c5b0adde439560a4b251a97463289b8c80e704c3f45",
+      "bytes": 351878,
+      "kind": "preview",
+      "arena": "nocny-targ"
+    },
+    {
+      "id": "rooftop-city-preview",
+      "file": "rooftop-city-preview.32221efe8a83.mp4",
+      "sha256": "32221efe8a83ed980b1fe4b0f2edeab2faf7aa6a9a8723880be1c6ce24f2277f",
+      "bytes": 736009,
+      "kind": "preview",
+      "arena": "rooftop-city"
+    },
+    {
+      "id": "metro-preview",
+      "file": "metro-preview.81097d55aa1f.mp4",
+      "sha256": "81097d55aa1ff4762c2921b0e65884b75393cd422c350bd9cccf2eb5a2f02af7",
+      "bytes": 258886,
+      "kind": "preview",
+      "arena": "metro"
+    },
+    {
+      "id": "brooklyn-preview",
+      "file": "brooklyn-preview.55e71ae05db6.mp4",
+      "sha256": "55e71ae05db6b68d5a74cffeb557157e7083bdccfd520dfe94eca91d4f0910c5",
+      "bytes": 701714,
+      "kind": "preview",
+      "arena": "brooklyn"
+    },
+    {
+      "id": "harbor-preview",
+      "file": "harbor-preview.37d4c4206a04.mp4",
+      "sha256": "37d4c4206a0434e661e71776a8c46620908c18dce8bd82192d74cceeb6f0aa8a",
+      "bytes": 530054,
+      "kind": "preview",
+      "arena": "harbor"
+    },
+    {
+      "id": "carrier-preview",
+      "file": "carrier-preview.3a812b90ec72.mp4",
+      "sha256": "3a812b90ec72453fca394ee46e348ba62c908ebc4658ff62cde0f29a7f9b5e67",
+      "bytes": 739622,
+      "kind": "preview",
+      "arena": "carrier"
+    },
+    {
+      "id": "reactor-preview",
+      "file": "reactor-preview.233d4c163677.mp4",
+      "sha256": "233d4c163677dfb14f644f2c3b6be7d5dfad82121bf473f0e858498d9d44ae3f",
+      "bytes": 992602,
+      "kind": "preview",
+      "arena": "reactor"
+    },
+    {
+      "id": "beach-preview",
+      "file": "beach-preview.faec036afc77.mp4",
+      "sha256": "faec036afc778ae8c5ae058c44c554e58f6ad41fbd95493ad6cc9b9a8aacf4a6",
+      "bytes": 717956,
+      "kind": "preview",
+      "arena": "beach"
+    },
+    {
+      "id": "himalaya-preview",
+      "file": "himalaya-preview.1ff808a4fe08.mp4",
+      "sha256": "1ff808a4fe08f22904c687406b694043b458a4b7c49b9eb8529c6502cbe5a54d",
+      "bytes": 702360,
+      "kind": "preview",
+      "arena": "himalaya"
+    },
+    {
+      "id": "jungle-preview",
+      "file": "jungle-preview.bb844cb1bdfd.mp4",
+      "sha256": "bb844cb1bdfd244d208b4af2c38534ea5fa9f43301d525970f85e7bf0a4f9347",
+      "bytes": 709109,
+      "kind": "preview",
+      "arena": "jungle"
+    },
+    {
+      "id": "savanna-preview",
+      "file": "savanna-preview.9f816a66b042.mp4",
+      "sha256": "9f816a66b042254f7f0753194e2f1fe62975084d1cc48465b63d6ffaa8b3f8a2",
+      "bytes": 725004,
+      "kind": "preview",
+      "arena": "savanna"
+    },
+    {
+      "id": "volcano-preview",
+      "file": "volcano-preview.1e1266a54269.mp4",
+      "sha256": "1e1266a5426911c5a324e38f66e5df091586639fec6e9b08d83c10d0f8414d5d",
+      "bytes": 670556,
+      "kind": "preview",
+      "arena": "volcano"
+    },
+    {
+      "id": "dragon-preview",
+      "file": "dragon-preview.34c2a880079a.mp4",
+      "sha256": "34c2a880079a5100589c05df407796ea0abe2609c79d713635a8b7e189e392dd",
+      "bytes": 852030,
+      "kind": "preview",
+      "arena": "dragon"
+    },
+    {
+      "id": "aquarium-preview",
+      "file": "aquarium-preview.d930d3b624df.mp4",
+      "sha256": "d930d3b624df5e1e4ce75aa7762ba2ee9ca3b5637311a8d2856affe2438a22d5",
+      "bytes": 772685,
+      "kind": "preview",
+      "arena": "aquarium"
+    },
+    {
+      "id": "clocktower-preview",
+      "file": "clocktower-preview.b65e48a8adfa.mp4",
+      "sha256": "b65e48a8adfa304eea9527fe58d327b03853791b6efd3b9684e9eb9eca386d50",
+      "bytes": 866747,
+      "kind": "preview",
+      "arena": "clocktower"
+    },
+    {
+      "id": "funfair-preview",
+      "file": "funfair-preview.7c5a667f6568.mp4",
+      "sha256": "7c5a667f656867c8e41a4271a2702236d1dc93056ad7d6526a77eb324e3aa99b",
+      "bytes": 473763,
+      "kind": "preview",
+      "arena": "funfair"
+    },
+    {
+      "id": "mine-preview",
+      "file": "mine-preview.79ccf8d90618.mp4",
+      "sha256": "79ccf8d9061868a375ac64973bf9fb949d8d7167b311258cf5159e7b989741ce",
+      "bytes": 695395,
+      "kind": "preview",
+      "arena": "mine"
+    }
+  ]
+}

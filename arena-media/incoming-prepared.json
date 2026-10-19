@@ -1,0 +1,318 @@
+{
+  "status": "prepared-pending-full-21-catalogue",
+  "arenas": [
+    {
+      "id": "clocktower",
+      "entry": {
+        "label": "WIEŻA ZEGAROWA",
+        "category": "fantasy",
+        "description": "MECHANIZM · PARA",
+        "src": "/assets/arena-clocktower-20261019.webp",
+        "thumbnail": "/assets/arena-clocktower-20261019-thumb.webp",
+        "video": "/api/arena-media/clocktower.ef2d2b9abf34.mp4",
+        "preview": "/api/arena-media/clocktower-preview.b65e48a8adfa.mp4",
+        "remote": true,
+        "aspect": 1.7777777777777777,
+        "audio": null
+      },
+      "fight": {
+        "id": "clocktower",
+        "label": "WIEŻA ZEGAROWA",
+        "file": "clocktower.ef2d2b9abf34.mp4",
+        "sha256": "ef2d2b9abf34aba0da788dc0182d9d4a356a4cbf8cdd043941cdc4e6d9798cfd",
+        "bytes": 16385146,
+        "poster": "arena-clocktower-20261019.webp",
+        "duration": 7.7,
+        "fps": 30,
+        "width": 1280,
+        "height": 720,
+        "audio": true,
+        "overlapSeconds": 0.7
+      },
+      "preview": {
+        "id": "clocktower-preview",
+        "file": "clocktower-preview.b65e48a8adfa.mp4",
+        "sha256": "b65e48a8adfa304eea9527fe58d327b03853791b6efd3b9684e9eb9eca386d50",
+        "bytes": 866747,
+        "kind": "preview",
+        "arena": "clocktower"
+      },
+      "measurement": {
+        "id": "clocktower",
+        "label": "WIEŻA ZEGAROWA",
+        "status": "PASS",
+        "source": "clocktower.source.mp4",
+        "sourceSha256": "558d7288c77e086c2dd735c45cdf3928ce2d9014c73cdac46f4df65b8130ba8c",
+        "before": {
+          "seamMeanRGBDelta": 6.5612,
+          "normalP95RGBDelta": 1.0042,
+          "seamToP95": 6.5337,
+          "passes": false,
+          "frames": 301,
+          "duration": 10.0333
+        },
+        "after": {
+          "seamMeanRGBDelta": 0.2165,
+          "normalP95RGBDelta": 0.9557,
+          "seamToP95": 0.2265,
+          "passes": true,
+          "frames": 231,
+          "duration": 7.7
+        },
+        "preview": {
+          "seamMeanRGBDelta": 1.5192,
+          "normalP95RGBDelta": 2.0108,
+          "seamToP95": 0.7555,
+          "passes": true,
+          "frames": 231,
+          "duration": 7.7,
+          "bytes": 866747,
+          "width": 640,
+          "silent": true,
+          "quantizer": 28,
+          "phaseFrames": 0
+        },
+        "cut": {
+          "startFrame": 30,
+          "endFrameExclusive": 282,
+          "startSeconds": 1.0,
+          "endSeconds": 9.4,
+          "crossfadeSeconds": 0.7,
+          "overlapMeanRGBDelta": 3.1216,
+          "rotationFrames": 36
+        },
+        "visualPlayback": "pending-three-cycles"
+      },
+      "audio": {
+        "id": "clocktower",
+        "beforeFile": "clocktower.f1ffeaba69ca.mp4",
+        "afterFile": "clocktower.ef2d2b9abf34.mp4",
+        "sourceAudio": "clocktower.source.mp4",
+        "sourceAudioSha256": "558d7288c77e086c2dd735c45cdf3928ce2d9014c73cdac46f4df65b8130ba8c",
+        "videoPacketSha256Before": "f4deb38ae143be2814b500b8bd51c787ab9df1d0d05ed5f0d07a126535afae1f",
+        "videoPacketSha256After": "f4deb38ae143be2814b500b8bd51c787ab9df1d0d05ed5f0d07a126535afae1f",
+        "videoPacketsUnchanged": true,
+        "audioGain": 1.0,
+        "audioRms": 0.036570023745298386,
+        "audioPeak": 0.28832268714904785,
+        "audioSeamSampleDelta": 0.0012420437997207046,
+        "audioAdjacentSampleP95": 0.001734308898448944,
+        "audioHead100msRms": 0.05948256328701973,
+        "audioTail100msRms": 0.054141152650117874,
+        "avEndDifferenceMs": 0.0,
+        "videoDuration": 7.7,
+        "audioDuration": 7.7
+      },
+      "sourceAttachment": "3-users_54334d5d-6f18-4e14-90df-f464211fefea_generated_d89b8968-a345-4dd3-8544-e46311e5413d_generated_video.mp4"
+    },
+    {
+      "id": "funfair",
+      "entry": {
+        "label": "WESOŁE MIASTECZKO",
+        "category": "fantasy",
+        "description": "KARUZELA · MGŁA",
+        "src": "/assets/arena-funfair-20261019.webp",
+        "thumbnail": "/assets/arena-funfair-20261019-thumb.webp",
+        "video": "/api/arena-media/funfair.ad0f1557d85f.mp4",
+        "preview": "/api/arena-media/funfair-preview.7c5a667f6568.mp4",
+        "remote": true,
+        "aspect": 1.7777777777777777,
+        "audio": null
+      },
+      "fight": {
+        "id": "funfair",
+        "label": "WESOŁE MIASTECZKO",
+        "file": "funfair.ad0f1557d85f.mp4",
+        "sha256": "ad0f1557d85f2ee9bd9cc1344aedf91d19a32d61a78efdc862051bd61776edc6",
+        "bytes": 6748070,
+        "poster": "arena-funfair-20261019.webp",
+        "duration": 3.0,
+        "fps": 30,
+        "width": 1280,
+        "height": 720,
+        "audio": true,
+        "overlapSeconds": 0.7
+      },
+      "preview": {
+        "id": "funfair-preview",
+        "file": "funfair-preview.7c5a667f6568.mp4",
+        "sha256": "7c5a667f656867c8e41a4271a2702236d1dc93056ad7d6526a77eb324e3aa99b",
+        "bytes": 473763,
+        "kind": "preview",
+        "arena": "funfair"
+      },
+      "measurement": {
+        "id": "funfair",
+        "label": "WESOŁE MIASTECZKO",
+        "status": "PASS",
+        "source": "funfair.source.mp4",
+        "sourceSha256": "688a660092e925ad00bb722c0ca640da971b2694757ff1dfe8cafb2443d97528",
+        "before": {
+          "seamMeanRGBDelta": 8.4225,
+          "normalP95RGBDelta": 0.8381,
+          "seamToP95": 10.0496,
+          "passes": false,
+          "frames": 301,
+          "duration": 10.0333
+        },
+        "after": {
+          "seamMeanRGBDelta": 0.2241,
+          "normalP95RGBDelta": 0.8212,
+          "seamToP95": 0.2728,
+          "passes": true,
+          "frames": 90,
+          "duration": 3.0
+        },
+        "preview": {
+          "seamMeanRGBDelta": 1.2525,
+          "normalP95RGBDelta": 1.6956,
+          "seamToP95": 0.7387,
+          "passes": true,
+          "frames": 90,
+          "duration": 3.0,
+          "bytes": 473763,
+          "width": 640,
+          "silent": true,
+          "quantizer": 25,
+          "phaseFrames": 0
+        },
+        "cut": {
+          "startFrame": 30,
+          "endFrameExclusive": 141,
+          "startSeconds": 1.0,
+          "endSeconds": 4.7,
+          "crossfadeSeconds": 0.7,
+          "overlapMeanRGBDelta": 3.9803,
+          "rotationFrames": 16
+        },
+        "visualPlayback": "pending-three-cycles"
+      },
+      "audio": {
+        "id": "funfair",
+        "beforeFile": "funfair.4d7e70ed2181.mp4",
+        "afterFile": "funfair.ad0f1557d85f.mp4",
+        "sourceAudio": "funfair.source.mp4",
+        "sourceAudioSha256": "688a660092e925ad00bb722c0ca640da971b2694757ff1dfe8cafb2443d97528",
+        "videoPacketSha256Before": "7348a7c7bde645c1a24eeba10c91d6a4864229189ca7e088cb6cfdc6dcce25ef",
+        "videoPacketSha256After": "7348a7c7bde645c1a24eeba10c91d6a4864229189ca7e088cb6cfdc6dcce25ef",
+        "videoPacketsUnchanged": true,
+        "audioGain": 1.0,
+        "audioRms": 0.03587787598371506,
+        "audioPeak": 0.15448056161403656,
+        "audioSeamSampleDelta": 0.0012987181544303894,
+        "audioAdjacentSampleP95": 0.0035174954682588577,
+        "audioHead100msRms": 0.03714114427566528,
+        "audioTail100msRms": 0.03327511250972748,
+        "avEndDifferenceMs": 0.0,
+        "videoDuration": 3.0,
+        "audioDuration": 3.0
+      },
+      "sourceAttachment": "2-users_54334d5d-6f18-4e14-90df-f464211fefea_generated_06209a09-45e4-4796-9584-4d50111b5710_generated_video.mp4"
+    },
+    {
+      "id": "mine",
+      "entry": {
+        "label": "KOPALNIA",
+        "category": "industry",
+        "description": "KOPARKA · PYŁ",
+        "src": "/assets/arena-mine-20261019.webp",
+        "thumbnail": "/assets/arena-mine-20261019-thumb.webp",
+        "video": "/api/arena-media/mine.917b822dd36e.mp4",
+        "preview": "/api/arena-media/mine-preview.79ccf8d90618.mp4",
+        "remote": true,
+        "aspect": 1.7777777777777777,
+        "audio": null
+      },
+      "fight": {
+        "id": "mine",
+        "label": "KOPALNIA",
+        "file": "mine.917b822dd36e.mp4",
+        "sha256": "917b822dd36ee22df0018433e1506882dea0bb5aebb67e48eae5a10ba35a6f1d",
+        "bytes": 10369959,
+        "poster": "arena-mine-20261019.webp",
+        "duration": 5.933333333333334,
+        "fps": 30,
+        "width": 1280,
+        "height": 720,
+        "audio": true,
+        "overlapSeconds": 0.7
+      },
+      "preview": {
+        "id": "mine-preview",
+        "file": "mine-preview.79ccf8d90618.mp4",
+        "sha256": "79ccf8d9061868a375ac64973bf9fb949d8d7167b311258cf5159e7b989741ce",
+        "bytes": 695395,
+        "kind": "preview",
+        "arena": "mine"
+      },
+      "measurement": {
+        "id": "mine",
+        "label": "KOPALNIA",
+        "status": "PASS",
+        "source": "mine.source.mp4",
+        "sourceSha256": "469d72fcc50d2b25df5106c5dd78d8374a69d03579b930ccf9def926a5c2ce6b",
+        "before": {
+          "seamMeanRGBDelta": 5.3177,
+          "normalP95RGBDelta": 1.0042,
+          "seamToP95": 5.2954,
+          "passes": false,
+          "frames": 301,
+          "duration": 10.0333
+        },
+        "after": {
+          "seamMeanRGBDelta": 0.2119,
+          "normalP95RGBDelta": 0.9827,
+          "seamToP95": 0.2156,
+          "passes": true,
+          "frames": 178,
+          "duration": 5.9333
+        },
+        "preview": {
+          "seamMeanRGBDelta": 1.1873,
+          "normalP95RGBDelta": 1.7852,
+          "seamToP95": 0.6651,
+          "passes": true,
+          "frames": 178,
+          "duration": 5.9333,
+          "bytes": 695395,
+          "width": 640,
+          "silent": true,
+          "quantizer": 25,
+          "phaseFrames": 0
+        },
+        "cut": {
+          "startFrame": 28,
+          "endFrameExclusive": 227,
+          "startSeconds": 0.9333333333333333,
+          "endSeconds": 7.566666666666666,
+          "crossfadeSeconds": 0.7,
+          "overlapMeanRGBDelta": 2.3161,
+          "rotationFrames": 153
+        },
+        "visualPlayback": "pending-three-cycles"
+      },
+      "audio": {
+        "id": "mine",
+        "beforeFile": "mine.ab291a554d7e.mp4",
+        "afterFile": "mine.917b822dd36e.mp4",
+        "sourceAudio": "mine.source.mp4",
+        "sourceAudioSha256": "469d72fcc50d2b25df5106c5dd78d8374a69d03579b930ccf9def926a5c2ce6b",
+        "videoPacketSha256Before": "a541dd621cf9a8d75e8fe84aee22128687680f126f51731a9388c23b55cfe87e",
+        "videoPacketSha256After": "a541dd621cf9a8d75e8fe84aee22128687680f126f51731a9388c23b55cfe87e",
+        "videoPacketsUnchanged": true,
+        "audioGain": 1.0,
+        "audioRms": 0.16822873055934906,
+        "audioPeak": 0.6050699949264526,
+        "audioSeamSampleDelta": 0.012207597494125366,
+        "audioAdjacentSampleP95": 0.009668804705142975,
+        "audioHead100msRms": 0.144750714302063,
+        "audioTail100msRms": 0.16336321830749512,
+        "avEndDifferenceMs": 0.0,
+        "videoDuration": 5.933333,
+        "audioDuration": 5.933333
+      },
+      "sourceAttachment": "1-users_54334d5d-6f18-4e14-90df-f464211fefea_generated_88cb0bab-7646-4ca3-a7de-fd4fe8819a92_generated_video.mp4"
+    }
+  ],
+  "originalStartupFilmChanged": false
+}

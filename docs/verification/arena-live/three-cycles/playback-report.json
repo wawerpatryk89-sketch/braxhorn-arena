@@ -1,0 +1,257 @@
+[
+  {
+    "id": "metro",
+    "cycles": 3,
+    "active": true,
+    "source": "/api/arena-media/metro.7eae8a1488ce.mp4",
+    "loop": {
+      "switches": 3,
+      "fallbacks": 0,
+      "overlapMs": 120,
+      "decoders": 2
+    },
+    "playing": true,
+    "mean": 57.51787037037037,
+    "errors": []
+  },
+  {
+    "id": "nocny-targ",
+    "cycles": 3,
+    "active": true,
+    "source": "/api/arena-media/nocny-targ.4e8bdd2f02db.mp4",
+    "loop": {
+      "switches": 3,
+      "fallbacks": 0,
+      "overlapMs": 120,
+      "decoders": 2
+    },
+    "playing": true,
+    "mean": 54.61215277777778,
+    "errors": []
+  },
+  {
+    "id": "rooftop-city",
+    "cycles": 3,
+    "active": true,
+    "source": "/api/arena-media/rooftop-city.015cd57571aa.mp4",
+    "loop": {
+      "switches": 3,
+      "fallbacks": 0,
+      "overlapMs": 120,
+      "decoders": 2
+    },
+    "playing": true,
+    "mean": 74.39247685185185,
+    "errors": []
+  },
+  {
+    "id": "brooklyn",
+    "cycles": 3,
+    "active": true,
+    "source": "/api/arena-media/brooklyn.4e34f6b445b7.mp4",
+    "loop": {
+      "switches": 3,
+      "fallbacks": 0,
+      "overlapMs": 120,
+      "decoders": 2
+    },
+    "playing": true,
+    "mean": 59.68729166666667,
+    "errors": []
+  },
+  {
+    "id": "harbor",
+    "cycles": 3,
+    "active": true,
+    "source": "/api/arena-media/harbor.fe83c5328190.mp4",
+    "loop": {
+      "switches": 3,
+      "fallbacks": 0,
+      "overlapMs": 120,
+      "decoders": 2
+    },
+    "playing": true,
+    "mean": 62.322037037037035,
+    "errors": []
+  },
+  {
+    "id": "carrier",
+    "cycles": 3,
+    "active": true,
+    "source": "/api/arena-media/carrier.f7c3ab37a4bd.mp4",
+    "loop": {
+      "switches": 3,
+      "fallbacks": 0,
+      "overlapMs": 120,
+      "decoders": 2
+    },
+    "playing": true,
+    "mean": 66.97951388888889,
+    "errors": []
+  },
+  {
+    "id": "beach",
+    "cycles": 3,
+    "active": true,
+    "source": "/api/arena-media/beach.401a8f8101c3.mp4",
+    "loop": {
+      "switches": 3,
+      "fallbacks": 0,
+      "overlapMs": 120,
+      "decoders": 2
+    },
+    "playing": true,
+    "mean": 130.76766203703704,
+    "errors": []
+  },
+  {
+    "id": "himalaya",
+    "cycles": 3,
+    "active": true,
+    "source": "/api/arena-media/himalaya.dc7227aa9eba.mp4",
+    "loop": {
+      "switches": 3,
+      "fallbacks": 0,
+      "overlapMs": 120,
+      "decoders": 2
+    },
+    "playing": true,
+    "mean": 104.90722222222222,
+    "errors": []
+  },
+  {
+    "id": "reactor",
+    "cycles": 3,
+    "active": true,
+    "source": "/api/arena-media/reactor.f79b5cf33d66.mp4",
+    "loop": {
+      "switches": 3,
+      "fallbacks": 0,
+      "overlapMs": 120,
+      "decoders": 2
+    },
+    "playing": true,
+    "mean": 85.26935185185185,
+    "errors": []
+  },
+  {
+    "id": "volcano",
+    "cycles": 3,
+    "active": true,
+    "source": "/api/arena-media/volcano.c3232c7f0d08.mp4",
+    "loop": {
+      "switches": 3,
+      "fallbacks": 0,
+      "overlapMs": 120,
+      "decoders": 2
+    },
+    "playing": true,
+    "mean": 50.16268518518518,
+    "errors": []
+  },
+  {
+    "id": "jungle",
+    "cycles": 3,
+    "active": true,
+    "source": "/api/arena-media/jungle.97657769fddf.mp4",
+    "loop": {
+      "switches": 3,
+      "fallbacks": 0,
+      "overlapMs": 120,
+      "decoders": 2
+    },
+    "playing": true,
+    "mean": 62.880763888888886,
+    "errors": []
+  },
+  {
+    "id": "savanna",
+    "cycles": 3,
+    "active": true,
+    "source": "/api/arena-media/savanna.d383d5257a60.mp4",
+    "loop": {
+      "switches": 3,
+      "fallbacks": 0,
+      "overlapMs": 120,
+      "decoders": 2
+    },
+    "playing": true,
+    "mean": 76.91592592592593,
+    "errors": []
+  },
+  {
+    "id": "dragon",
+    "cycles": 3,
+    "active": true,
+    "source": "/api/arena-media/dragon.e93187d88e24.mp4",
+    "loop": {
+      "switches": 3,
+      "fallbacks": 0,
+      "overlapMs": 120,
+      "decoders": 2
+    },
+    "playing": true,
+    "mean": 65.05090277777778,
+    "errors": []
+  },
+  {
+    "id": "aquarium",
+    "cycles": 3,
+    "active": true,
+    "source": "/api/arena-media/aquarium.139bb84f8849.mp4",
+    "loop": {
+      "switches": 3,
+      "fallbacks": 0,
+      "overlapMs": 120,
+      "decoders": 2
+    },
+    "playing": true,
+    "mean": 88.8218287037037,
+    "errors": []
+  },
+  {
+    "id": "funfair",
+    "cycles": 3,
+    "active": true,
+    "source": "/api/arena-media/funfair.ad0f1557d85f.mp4",
+    "loop": {
+      "switches": 3,
+      "fallbacks": 0,
+      "overlapMs": 120,
+      "decoders": 2
+    },
+    "playing": true,
+    "mean": 65.71729166666667,
+    "errors": []
+  },
+  {
+    "id": "clocktower",
+    "cycles": 3,
+    "active": true,
+    "source": "/api/arena-media/clocktower.ef2d2b9abf34.mp4",
+    "loop": {
+      "switches": 3,
+      "fallbacks": 0,
+      "overlapMs": 120,
+      "decoders": 2
+    },
+    "playing": true,
+    "mean": 45.85423611111111,
+    "errors": []
+  },
+  {
+    "id": "mine",
+    "cycles": 3,
+    "active": true,
+    "source": "/api/arena-media/mine.917b822dd36e.mp4",
+    "loop": {
+      "switches": 3,
+      "fallbacks": 0,
+      "overlapMs": 120,
+      "decoders": 2
+    },
+    "playing": true,
+    "mean": 73.33638888888889,
+    "errors": []
+  }
+]

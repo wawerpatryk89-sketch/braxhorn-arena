@@ -17,7 +17,7 @@ const {createGame}=require('./audit-new-fighters.cjs');
   for(const element of ['arena','arenaMotion','arenaAudio'])for(const key of ['src','poster'])check(g.elements.get(element)[key],id+'.'+element+'.'+key);
   assert(g.state().running,id+' started');
  }
- assert.equal(Object.keys(catalog).length,19);
- fs.writeFileSync('docs/deleted-arena-runtime-paths.json',JSON.stringify({status:'PASS',scope:'Mock DOM; all arena selection/start paths; catalog URLs and observed media src/poster',arenas:19,deleted,observed},null,2)+'\n');
- console.log('PASS: 19 arena start paths; '+observed.length+' catalog/media URL observations; no deleted path, every package URL in manifest.');
+ assert.equal(Object.keys(catalog).length,17);
+ fs.writeFileSync('docs/deleted-arena-runtime-paths.json',JSON.stringify({status:'PASS',scope:'Mock DOM; all arena selection/start paths; catalog URLs and observed media src/poster',arenas:17,deleted,observed},null,2)+'\n');
+ console.log('PASS: 17 arena start paths; '+observed.length+' catalog/media URL observations; no deleted path, every package URL in manifest.');
 })().catch(e=>{console.error(e);process.exitCode=1;});

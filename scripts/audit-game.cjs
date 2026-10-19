@@ -86,7 +86,7 @@ const results=[];
 for(const [width,height] of [[844,390],[568,320]])for(const slot of [0,1]){
  const g=await createGame(width,height,true);g.elements.get('go').dispatch('click');if(slot)g.elements.get('nextFighter').dispatch('click');await g.flush();assert.equal(g.proof.selectedSlot(),slot);
  assert.equal(g.elements.get('selectionName').textContent,slot?'NYXA':'BRAX');
- g.elements.get('chooseFighter').dispatch('click');g.elements.get('arena-rooftop').dispatch('click');assert(g.state().cinematic);assert(g.elements.get('fighterFilm').src.endsWith(slot?'nyxa-intro-20261007.mp4':'brax-intro-20261007.mp4'));g.step(1000);assert.equal(g.state().time,60);g.elements.get('fighterFilm').dispatch('ended');g.step(7500);
+ g.elements.get('chooseFighter').dispatch('click');g.elements.get('arena-rooftop-city').dispatch('click');assert(g.state().cinematic);assert(g.elements.get('fighterFilm').src.endsWith(slot?'nyxa-intro-20261007.mp4':'brax-intro-20261007.mp4'));g.step(1000);assert.equal(g.state().time,60);g.elements.get('fighterFilm').dispatch('ended');g.step(7500);
  assert.deepEqual(Array.from(g.proof.audio().played.filter(x=>['three','two','one','fight'].includes(x.key)),x=>x.key),['three','two','one','fight'],'spoken countdown in order');assert(g.proof.audio().played.some(x=>x.key==='gong'),'gong begins the fight');assert(g.proof.audio().played.some(x=>x.key===(slot?'nyxa-ready':'brax-ready')),'character introduction voice');
  assert(g.state().running&&!g.state().preFight);assert.equal(g.state().character,slot?'NYXA':'BRAX');assert.equal(g.state().opponent.character,slot?'BRAX':'NYXA');
  const {B,O}=g.test;

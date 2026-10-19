@@ -1,10 +1,12 @@
 import compatibility from '../backend/lib/build-compatibility.json' with {type:'json'};
+import arenaNames from '../backend/lib/arena-list.json' with {type:'json'};
 import {DatabaseSync} from 'node:sqlite';import fs from 'node:fs';import assert from 'node:assert/strict';import {handleDuel} from '../backend/lib/duel-api.ts';
 const sqlite=new DatabaseSync(':memory:');for(const f of fs.readdirSync('backend/drizzle').filter(f=>f.endsWith('.sql')).sort())sqlite.exec(fs.readFileSync('backend/drizzle/'+f,'utf8'));
 const db={prepare(q){const make=(args=[])=>({async first(){return sqlite.prepare(q).get(...args)||null},async all(){return{results:sqlite.prepare(q).all(...args)}},async run(){const s=sqlite.prepare(q);return /^SELECT/i.test(q)?{results:s.all(...args)}:{results:[],meta:{changes:Number(s.run(...args).changes)}}}});return{...make(),bind(...args){return make(args)}}},async batch(writes){sqlite.exec('BEGIN');try{const r=[];for(const w of writes)r.push(await w.run());sqlite.exec('COMMIT');return r}catch(e){sqlite.exec('ROLLBACK');throw e}}};
-const call=async b=>{const r=await handleDuel(new Request('https://game.test/api/duel',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({compat:compatibility,...b})}),db);return{status:r.status,body:await r.json()};};
+const call=async(b,headers={})=>{const r=await handleDuel(new Request('https://game.test/api/duel',{method:'POST',headers:{'content-type':'application/json',...headers},body:JSON.stringify({compat:compatibility,...b})}),db);return{status:r.status,body:await r.json()};};
 for(const compat of [undefined,{...compatibility,protocol:1},{...compatibility,build:'old'},{...compatibility,configs:'other'}]){const r=await call({action:'create',fighter:'BRAX',compat});assert.equal(r.status,409);assert.equal(r.body.error,'Odśwież grę — inna wersja u przeciwnika');}
 const h=await call({action:'create',fighter:'BRAX'});assert.equal(h.status,200);const host=h.body;
+assert.equal((await call({...host,action:'sync'})).body.arena,arenaNames[0],'omitted arena uses the first available arena');
 const g=await call({action:'join',code:host.code,fighter:'NYXA'});assert.equal(g.status,200);const guest=g.body;
 assert.equal((await call({action:'join',code:host.code,fighter:'DANNY'})).status,409);
 assert.equal((await call({...host,token:'wrong',action:'sync'})).status,403);
@@ -36,4 +38,15 @@ console.log('PASS malformed actors rejected, 2:0 at 1600 ms rejected, valid two-
 const drawnHost=(await call({action:'create',fighter:'BEAR'})).body,drawnGuest=(await call({action:'join',code:drawnHost.code,fighter:'DEMON'})).body;await call({...drawnHost,action:'sync',ready:true});await call({...drawnGuest,action:'sync',ready:true});
 assert.equal((await call({...drawnHost,action:'sync',seq:1,snapshot:{...terminal,state:{...terminal.state,round:3,wins:[1,0]}}})).status,200);
 const drawMinimum=limits.fighters.BEAR.roundMinimumMs+120000;sqlite.prepare('UPDATE duel_rooms SET started_at=? WHERE code=?').run(Date.now()-drawMinimum+100,drawnHost.code);assert.equal((await call({...drawnHost,action:'result',score:[1,0]})).status,409);sqlite.prepare('UPDATE duel_rooms SET started_at=? WHERE code=?').run(Date.now()-drawMinimum-10,drawnHost.code);assert.equal((await call({...drawnGuest,action:'result',score:[1,0]})).body.resultStatus,'pending');assert.equal((await call({...drawnHost,action:'result',score:[1,0]})).body.resultStatus,'confirmed');console.log('PASS legitimate 1:0 after three rounds and two 60-second draws');
+assert.equal(arenaNames.length,17);assert.equal(new Set(arenaNames).size,17);
+for(const [i,arena]of arenaNames.entries()){
+ const room=await call({action:'create',fighter:'BRAX',arena},{'cf-connecting-ip':'catalogue-'+i});assert.equal(room.status,200,arena+' can host a room');
+ const joined=await call({action:'join',code:room.body.code,fighter:'NYXA'});assert.equal(joined.status,200,arena+' can be joined');
+ assert.equal((await call({...room.body,action:'sync'})).body.arena,arena);
+ assert.equal((await call({...joined.body,action:'sync'})).body.arena,arena,'guest receives the host arena');
+}
+for(const arena of ['rooftop','underground','temple','snow','canyon']){
+ const rejected=await call({action:'create',fighter:'BRAX',arena});assert.equal(rejected.status,400,arena+' is removed');assert.equal(rejected.body.code,'arena_invalid');
+}
+console.log('PASS all 17 prepared host arenas shared with guests; all five removed arenas rejected; valid default');
 sqlite.close();
