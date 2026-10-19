@@ -72,10 +72,10 @@
  function cameraMessage(value){messages.camera=value;$('accountCameraMessage').textContent=message(value);}
  function layout(){
   const root=$('accountEntry');if(!root||root.hidden)return;
-  // The approved composition's important artwork occupies source rows 40–680.
-  // Limit cover cropping on wide phones so the logo and both fighters' feet stay visible.
+  // Cover the entire viewport without stretching the approved artwork. Include
+  // the safe-area lift in the scale so it cannot leave a strip at the bottom.
   const w=root.clientWidth,h=root.clientHeight,computed=getComputedStyle(root),safeTop=parseFloat(computed.paddingTop)||0,safeBottom=parseFloat(computed.paddingBottom)||0;
-  const rise=Math.min(10,safeBottom/2),s=Math.min(Math.max(w/1280,h/720),(h-rise)/640),top=(h-720*s)/2+215*s-rise,bottom=(h-720*s)/2+582*s-rise;
+  const rise=Math.min(10,safeBottom/2),s=Math.max(w/1280,(h+2*rise)/720),top=(h-720*s)/2+215*s-rise,bottom=(h-720*s)/2+582*s-rise;
   root.style.setProperty('--account-art-width',1280*s+'px');root.style.setProperty('--account-art-height',720*s+'px');
   root.style.setProperty('--account-art-rise',rise+'px');
   root.style.setProperty('--account-reference-bottom',bottom+'px');

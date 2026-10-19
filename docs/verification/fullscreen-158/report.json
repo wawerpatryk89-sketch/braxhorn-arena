@@ -1,0 +1,233 @@
+{
+  "status": "passed",
+  "base": "http://localhost:8791",
+  "views": [
+    {
+      "size": "844x390",
+      "login": {
+        "x": 0,
+        "y": 0,
+        "width": 844,
+        "height": 390,
+        "viewportWidth": 844,
+        "viewportHeight": 390
+      },
+      "movie": {
+        "src": "/assets/start-intro-20261007.mp4",
+        "fit": "cover",
+        "width": 844,
+        "height": 390,
+        "videoWidth": 910,
+        "videoHeight": 512,
+        "drawWidth": 844,
+        "drawHeight": 474.8659340659341,
+        "playing": true,
+        "currentTime": 2.019598
+      },
+      "menu": {
+        "x": 0,
+        "y": 0,
+        "width": 844,
+        "height": 390,
+        "viewportWidth": 844,
+        "viewportHeight": 390
+      },
+      "otherVideos": [
+        {
+          "id": "fighterFilm",
+          "fit": "cover"
+        },
+        {
+          "id": "victoryVideo",
+          "fit": "cover"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "size": "915x412",
+      "login": {
+        "x": 0,
+        "y": 0,
+        "width": 915,
+        "height": 412,
+        "viewportWidth": 915,
+        "viewportHeight": 412
+      },
+      "movie": {
+        "src": "/assets/start-intro-20261007.mp4",
+        "fit": "cover",
+        "width": 915,
+        "height": 412,
+        "videoWidth": 910,
+        "videoHeight": 512,
+        "drawWidth": 915,
+        "drawHeight": 514.8131868131868,
+        "playing": true,
+        "currentTime": 2.025081
+      },
+      "menu": {
+        "x": 0,
+        "y": 0,
+        "width": 915,
+        "height": 412,
+        "viewportWidth": 915,
+        "viewportHeight": 412
+      },
+      "otherVideos": [
+        {
+          "id": "fighterFilm",
+          "fit": "cover"
+        },
+        {
+          "id": "victoryVideo",
+          "fit": "cover"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "size": "932x430",
+      "login": {
+        "x": 0,
+        "y": 0,
+        "width": 932,
+        "height": 430,
+        "viewportWidth": 932,
+        "viewportHeight": 430
+      },
+      "movie": {
+        "src": "/assets/start-intro-20261007.mp4",
+        "fit": "cover",
+        "width": 932,
+        "height": 430,
+        "videoWidth": 910,
+        "videoHeight": 512,
+        "drawWidth": 931.9999999999999,
+        "drawHeight": 524.3780219780219,
+        "playing": true,
+        "currentTime": 2.018924
+      },
+      "menu": {
+        "x": 0,
+        "y": 0,
+        "width": 932,
+        "height": 430,
+        "viewportWidth": 932,
+        "viewportHeight": 430
+      },
+      "otherVideos": [
+        {
+          "id": "fighterFilm",
+          "fit": "cover"
+        },
+        {
+          "id": "victoryVideo",
+          "fit": "cover"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "size": "1280x720",
+      "login": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720,
+        "viewportWidth": 1280,
+        "viewportHeight": 720
+      },
+      "movie": {
+        "src": "/assets/start-intro-20261007.mp4",
+        "fit": "cover",
+        "width": 1280,
+        "height": 720,
+        "videoWidth": 910,
+        "videoHeight": 512,
+        "drawWidth": 1280,
+        "drawHeight": 720.1758241758242,
+        "playing": true,
+        "currentTime": 2.03654
+      },
+      "menu": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720,
+        "viewportWidth": 1280,
+        "viewportHeight": 720
+      },
+      "otherVideos": [
+        {
+          "id": "fighterFilm",
+          "fit": "cover"
+        },
+        {
+          "id": "victoryVideo",
+          "fit": "cover"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "size": "1900x1000",
+      "login": {
+        "x": 0,
+        "y": 0,
+        "width": 1900,
+        "height": 1000,
+        "viewportWidth": 1900,
+        "viewportHeight": 1000
+      },
+      "movie": {
+        "src": "/assets/start-intro-20261007.mp4",
+        "fit": "cover",
+        "width": 1900,
+        "height": 1000,
+        "videoWidth": 910,
+        "videoHeight": 512,
+        "drawWidth": 1900.0000000000002,
+        "drawHeight": 1069.010989010989,
+        "playing": true,
+        "currentTime": 2.018497
+      },
+      "menu": {
+        "x": 0,
+        "y": 0,
+        "width": 1900,
+        "height": 1000,
+        "viewportWidth": 1900,
+        "viewportHeight": 1000
+      },
+      "otherVideos": [
+        {
+          "id": "fighterFilm",
+          "fit": "cover"
+        },
+        {
+          "id": "victoryVideo",
+          "fit": "cover"
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "limitations": [
+    "Chromium viewport emulation; no physical iPhone, Android or Safari test.",
+    "Fixed viewport checks simulate the fullscreen API; a separate native Chromium check is recorded."
+  ],
+  "nativeChromiumFullscreen": {
+    "entered": true,
+    "moviePlaying": true,
+    "game": {
+      "x": 0,
+      "y": 0,
+      "width": 915,
+      "height": 412,
+      "viewportWidth": 915,
+      "viewportHeight": 412
+    }
+  },
+  "originalFilmSha256": "1c300421cfe59f9cf16d70560c19237a36dd339d5fbfb1ff98f942b705ee195a"
+}
