@@ -61,19 +61,38 @@ function tournamentView(run){
 
 function eightFighterView(run){
  const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]));
- const label=n=>displayFighterName(n);
- const ys=[[34,144,254,364],[89,309],[199]],xs=[0,420,840];
- let svg='<svg xmlns="http://www.w3.org/2000/svg" class="tournament-tree" viewBox="0 0 1240 480" role="img" aria-label="Turniej ośmiu zawodników"><g font-family="Arial, sans-serif">';
+ const width=300,height=70,xs=[10,425,840],ys=[[32,116,200,284],[74,242],[158]];
+ // The simulation pairs opening bouts 0+2 and 1+3. Put those next to each
+ // other in the drawing so every connector leads to its actual semifinal.
+ const order=[[0,2,1,3],[0,1],[0]];
+ const rounds=order.map((indices,r)=>indices.map(index=>run.rounds[r]?.[index]||null));
+ for(let r=1;r<3;r++)for(let i=0;i<rounds[r].length;i++)if(!rounds[r][i])rounds[r][i]={a:rounds[r-1][i*2]?.winner||null,b:rounds[r-1][i*2+1]?.winner||null,winner:null};
+ const portrait=(name,x,y)=>{
+  const art=window.BRAX_ROSTER?.portrait(name);
+  return art?art.replace('class="fighter-portrait"','').replace('<svg ',`<svg x="${x}" y="${y}" width="28" height="28" `):`<image href="/assets/portraits/${esc(name.toLowerCase())}.webp" x="${x}" y="${y}" width="28" height="28"/>`;
+ };
+ let svg='<svg xmlns="http://www.w3.org/2000/svg" class="tournament-tree" viewBox="0 0 1150 370" role="img" aria-labelledby="tournamentTreeTitle tournamentTreeDescription"><title id="tournamentTreeTitle">Turniej ośmiu zawodników</title><desc id="tournamentTreeDescription">Ćwierćfinały, półfinały i finał. Połączenia wskazują awans zwycięzców. TY oznacza Twojego zawodnika.</desc><g font-family="Inter, Arial, sans-serif">';
+ for(let r=0;r<2;r++)for(let i=0;i<ys[r].length;i++){
+  const start=xs[r]+width,end=xs[r+1],mid=(start+end)/2,y=ys[r][i]+height/2,target=ys[r+1][Math.floor(i/2)]+height/2;
+  svg+=`<path class="bracket-connector" d="M${start} ${y}H${mid}V${target}H${end}" fill="none" stroke="#526757" stroke-width="2" stroke-linejoin="round"/>`;
+ }
  for(let r=0;r<3;r++){
-  svg+=`<text x="${xs[r]}" y="20" fill="#e9d398" font-size="16">${['ĆWIERĆFINAŁY','PÓŁFINAŁY','FINAŁ'][r]}</text>`;
+  svg+=`<text x="${xs[r]}" y="22" fill="#bdcbbb" font-size="18" font-weight="600" letter-spacing="2">${['ĆWIERĆFINAŁY','PÓŁFINAŁY','FINAŁ'][r]}</text>`;
   for(let i=0;i<4/2**r;i++){
-   const m=run.rounds[r]?.[i],y=ys[r][i],x=xs[r];
-   svg+=`<rect x="${x}" y="${y}" width="390" height="96" rx="4" fill="#08100d" stroke="${m===run.current?'#ead18e':'#746543'}"/>`;
+   const m=rounds[r][i],y=ys[r][i],x=xs[r],current=!!m&&m===run.current;
+   svg+=`<g class="bracket-match${current?' current':''}"><rect x="${x}" y="${y}" width="${width}" height="${height}" rx="8" fill="${current?'#19281a':'#0e1712'}" stroke="${current?'#a6ff3c':'#35473a'}" stroke-width="${current?2:1}"/><path d="M${x+12} ${y+35}H${x+width-12}" stroke="#2b3c30"/>`;
    for(let k=0;k<2;k++){
-    const n=m?.[k?'b':'a'],fx=x+k*195;
-    if(n)svg+=`<image href="/assets/campaign-portraits/${esc(n.toLowerCase())}.webp" x="${fx+2}" y="${y+3}" width="78" height="90" opacity="${m.winner&&m.winner!==n?.4:1}"/>`;
-    svg+=`<text x="${fx+84}" y="${y+44}" fill="#eaf3e0" font-size="16">${esc(n?label(n):'ZWYCIĘZCA')}</text><text x="${fx+84}" y="${y+66}" fill="#e9d398" font-size="12">${n===run.player?'TY':m?.winner===n&&n?'✓':''}</text>`;
+    const n=m?.[k?'b':'a'],row=y+k*35,player=n===run.player,loser=n&&m?.winner&&m.winner!==n;
+    const pending=r===1?'Zwycięzca QF '+(i*2+k+1):'Zwycięzca SF '+(k+1);
+    svg+=`<g opacity="${loser?0.65:1}">`;
+    if(n)svg+=portrait(n,x+8,row+4);
+    else svg+=`<circle cx="${x+24}" cy="${row+20}" r="13" fill="#1a2820"/><text x="${x+24}" y="${row+26}" text-anchor="middle" fill="#809b86" font-size="18">?</text>`;
+    svg+=`<text x="${x+50}" y="${row+25}" fill="${player?'#c9ff97':n?'#f0f5ed':'#93a58f'}" font-size="${n?22:18}" font-weight="${n?600:400}">${esc(n?displayFighterName(n):pending)}</text>`;
+    if(player)svg+=`<text x="${x+width-14}" y="${row+25}" text-anchor="end" fill="#a6ff3c" font-size="13" font-weight="700">TY</text>`;
+    else if(n&&m?.winner===n)svg+=`<text x="${x+width-14}" y="${row+26}" text-anchor="end" fill="#c9dfba" font-size="18">✓</text>`;
+    svg+='</g>';
    }
+   svg+='</g>';
   }
  }
  return svg+'</g></svg>';

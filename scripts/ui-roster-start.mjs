@@ -32,6 +32,15 @@ try{
   if(mode==='fight')assert.equal(await page.evaluate(()=>BRAX_ROSTER.opponent),'VEXA');
   assert.deepEqual(page.errors.filter(error=>!error.includes('Failed to load resource')),[]);
   await page.screenshot({path:out+'/roster-start-'+mode+'.png'});
+  if(mode==='tournament'){
+   assert.equal(await page.evaluate(()=>{const run=BRAX_CHAMPIONSHIP.create('tournament','NYXA',['BRAX','NYXA','VEXA','KROV','NINA','DANNY','BEAR','DEMON'],()=>.4);run.next();const before=JSON.stringify(run);BRAX_CHAMPIONSHIP.tournamentView(run);return JSON.stringify(run)===before;}),true,'Previewing the bracket must not advance matches');
+   const tree=page.locator('#campaignBracket .tournament-tree');
+   assert.equal(await tree.locator('.bracket-match').count(),7);
+   assert.equal(await tree.locator('.bracket-connector').count(),6);
+   assert.equal(await tree.locator('image[href*="campaign-portraits"]').count(),0,'The bracket uses the same unframed portraits as selection');
+   assert.ok(await tree.locator('image[href*="roster-art"]').count()>=8);
+   assert.equal(await tree.evaluate(svg=>{const box=svg.getBoundingClientRect();return [...svg.querySelectorAll('.bracket-match>rect')].every(node=>{const r=node.getBoundingClientRect();return r.left>=box.left&&r.right<=box.right&&r.top>=box.top&&r.bottom<=box.bottom;});}),true,'Every round, including the final, fits the screen');
+  }
   if(mode==='fight'){
    await page.locator('#backFighter').tap();
    await page.waitForSelector('#selection:not(.off)');

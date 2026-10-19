@@ -10,5 +10,5 @@ try{
  });
  console.log('Local API ready; checking direct card selection and the two-client browser story.');
  await import('./ui-roster-start.mjs');
- await import('./ui-online-pair.mjs');
+ if(process.env.BRAX_ONLY_ROSTER!=='1')await import('./ui-online-pair.mjs');
 }finally{server.kill();}

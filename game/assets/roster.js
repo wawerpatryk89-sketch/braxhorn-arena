@@ -22,13 +22,57 @@ const frame=()=>'<svg class="fighter-frame" viewBox="0 0 300 400" preserveAspect
 function layoutCarousel(root){
  const fit=()=>{
   const width=root.clientWidth,height=root.clientHeight;if(!width||!height)return;
-  const gap=Math.max(8,Math.min(16,width*.015));
-  const card=Math.min((width-4*gap)/4,(height-8)*.82),step=card+gap;
+  const card=Math.min(width/3.35,(height-8)*.76),step=card*1.16;
   root.style.setProperty('--carousel-card-width',card+'px');
   root.style.setProperty('--carousel-step',step+'px');
-  root.style.setProperty('--carousel-edge-inset',Math.max(0,(width-4*step)/2)+'px');
+  root.style.setProperty('--carousel-edge-inset','0px');
  };
  new ResizeObserver(fit).observe(root);fit();
+}
+// Both rosters follow the finger, rotating whole slots during long drags.
+// The final partial slot snaps into place without treating release as a card tap.
+function dragCarousel(root,cards,advance,blocked=()=>false){
+ let gesture=null,ignoreUntil=0;
+ const spacing=()=>parseFloat(getComputedStyle(root).getPropertyValue('--carousel-step'))||root.clientWidth/4;
+ function draw(dx,step){
+  root.style.setProperty('--carousel-drag',dx+'px');
+  for(const card of cards){
+   const distance=Math.abs(Number(card.style.getPropertyValue('--offset'))+dx/step);
+   const opacity=distance<=1?1-distance*.12:Math.max(0,.88*(2-distance));
+   card.style.setProperty('--carousel-opacity',opacity);
+   card.style.setProperty('--carousel-scale',Math.max(.83,1-distance*.17));
+  }
+ }
+ root.addEventListener('dragstart',event=>event.preventDefault());
+ root.addEventListener('pointerdown',event=>{
+  if(blocked()||event.isPrimary===false||event.button>0)return;
+  ignoreUntil=0;gesture={id:event.pointerId,x:event.clientX,y:event.clientY,dx:0,moved:false};
+ });
+ root.addEventListener('pointermove',event=>{
+  if(!gesture||gesture.id!==event.pointerId)return;
+  let dx=event.clientX-gesture.x;const dy=event.clientY-gesture.y,step=spacing();
+  if(!gesture.moved){
+   if(Math.abs(dx)<8||Math.abs(dx)<=Math.abs(dy))return;
+   gesture.moved=true;root.classList.add('is-dragging');root.setPointerCapture?.(event.pointerId);
+  }
+  ignoreUntil=performance.now()+400;
+  while(Math.abs(dx)>=step){const direction=dx<0?1:-1;advance(direction);gesture.x-=direction*step;dx+=direction*step;}
+  gesture.dx=dx;draw(dx,step);
+ });
+ function finish(event,cancel=false){
+  if(!gesture||gesture.id!==event.pointerId)return;
+  const last=gesture;gesture=null;if(!last.moved)return;
+  const step=spacing();let dx=cancel?last.dx:event.clientX-last.x;
+  if(!cancel&&Math.abs(dx)>Math.min(35,step*.22)){const direction=dx<0?1:-1;advance(direction);dx+=direction*step;}
+  draw(dx,step);ignoreUntil=performance.now()+400;
+  // Commit the finger position before enabling the snap transition.
+  void root.offsetWidth;root.classList.remove('is-dragging');root.style.setProperty('--carousel-drag','0px');
+ }
+ root.addEventListener('pointerup',event=>finish(event));
+ root.addEventListener('pointercancel',event=>finish(event,true));
+ // Ignore the bubbled loss of the card's implicit capture when the root takes it.
+ root.addEventListener('lostpointercapture',event=>{if(event.target===root)finish(event,true);});
+ root.addEventListener('click',event=>{if(performance.now()<ignoreUntil){event.preventDefault();event.stopImmediatePropagation();}},true);
 }
 const track=$('#rosterTrack');let drag=null,suppressClickUntil=0;
 // Touch uses the browser's native momentum scrolling. Mouse dragging uses capture
@@ -49,7 +93,7 @@ $('#chooseFighter').addEventListener('click',()=>cue(true));
 $('#rosterPrev').addEventListener('click',()=>$('#rosterTrack').scrollBy({left:-$('#rosterTrack').clientWidth*.65,behavior:'smooth'}));
 $('#rosterNext').addEventListener('click',()=>$('#rosterTrack').scrollBy({left:$('#rosterTrack').clientWidth*.65,behavior:'smooth'}));
 const notify=()=>window.dispatchEvent(new Event('brax:roster-change'));
-window.BRAX_ROSTER={portrait,frame,layoutCarousel,setMode(mode){state.mode=mode;state.role='player';paint();notify();},setRole(role){if(!['player','opponent'].includes(role)||automatic()&&role==='opponent')return;state.role=role;paint();cue();notify();},choose(index){if(!Number.isInteger(index)||index<0||index>=names.length)return;state[state.role]=index;if(state.role==='player')selectPlayer(index);paint();cue();notify();},bind(fn){selectPlayer=fn;paint();notify();},sync(index){state.player=index;paint();notify();},get opponent(){return names[state.opponent];},state:()=>({...state})};
+window.BRAX_ROSTER={portrait,frame,layoutCarousel,dragCarousel,setMode(mode){state.mode=mode;state.role='player';paint();notify();},setRole(role){if(!['player','opponent'].includes(role)||automatic()&&role==='opponent')return;state.role=role;paint();cue();notify();},choose(index){if(!Number.isInteger(index)||index<0||index>=names.length)return;state[state.role]=index;if(state.role==='player')selectPlayer(index);paint();cue();notify();},bind(fn){selectPlayer=fn;paint();notify();},sync(index){state.player=index;paint();notify();},get opponent(){return names[state.opponent];},state:()=>({...state})};
 for(const id of ['rosterPlayer','rosterOpponent'])$('#'+id).addEventListener('click',notify);
 paint();
 })();

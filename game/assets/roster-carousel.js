@@ -31,7 +31,8 @@ original.setAttribute('aria-hidden','true');
 for(const card of original.querySelectorAll('button'))card.tabIndex=-1;
 const footer=board.querySelector('.roster-footer'),count=document.createElement('span');
 count.id='rosterCount';count.setAttribute('aria-live','polite');count.setAttribute('aria-atomic','true');footer.append(count);
-let gesture=null,ignoreClickUntil=0,confirming=false;
+const dots=document.createElement('span');dots.className='carousel-dots';dots.setAttribute('aria-hidden','true');dots.innerHTML='<i></i>'.repeat(names.length);footer.append(dots);
+let confirming=false;
 const automatic=s=>['arcade','tournament','survival'].includes(s.mode);
 function paint(){
  const state=roster.state(),current=state[state.role];
@@ -46,7 +47,8 @@ function paint(){
   card.querySelector('.rc-eyebrow').textContent=active?(state.role==='player'?'TWOJA POSTAĆ':'TWÓJ RYWAL'):index===state.player?'TY':!automatic(state)&&index===state.opponent?'RYWAL':'';
  });
  count.textContent=String(current+1).padStart(2,'0')+' / '+String(names.length).padStart(2,'0');
- $('rosterInstruction').textContent=state.role==='player'?'Przesuń · porównaj. Dotknij swojej karty.':'Przesuń · porównaj. Dotknij karty rywala.';
+ [...dots.children].forEach((dot,index)=>dot.classList.toggle('is-current',index===current));
+ $('rosterInstruction').textContent=state.role==='player'?'Przesuń ↔ · dotknij swojej karty':'Przesuń ↔ · dotknij karty rywala';
  $('rosterPlayer').textContent='01  TY · '+label(names[state.player]);
  $('rosterOpponent').textContent='02  RYWAL · '+label(names[state.opponent]);
  $('rosterOpponent').hidden=automatic(state);
@@ -54,26 +56,13 @@ function paint(){
  $('chooseFighter').setAttribute('aria-label',state.role==='player'&&!automatic(state)?'Wybierz '+label(names[current])+' i przejdź do wyboru rywala':'Zatwierdź wybór zawodników');
 }
 function step(direction){const state=roster.state();roster.choose((state[state.role]+direction+names.length)%names.length);}
-root.addEventListener('dragstart',event=>event.preventDefault());
-root.addEventListener('pointerdown',event=>{if(confirming||event.isPrimary===false||event.button>0)return;ignoreClickUntil=0;gesture={id:event.pointerId,x:event.clientX,y:event.clientY,moved:false};});
-root.addEventListener('pointermove',event=>{
- if(!gesture||event.pointerId!==gesture.id)return;
- const dx=event.clientX-gesture.x,dy=event.clientY-gesture.y;
- if(Math.abs(dx)>10&&Math.abs(dx)>Math.abs(dy)){gesture.moved=true;root.setPointerCapture?.(event.pointerId);}
-});
-root.addEventListener('pointerup',event=>{
- if(!gesture||event.pointerId!==gesture.id)return;
- const dx=event.clientX-gesture.x,dy=event.clientY-gesture.y,moved=gesture.moved;gesture=null;
- if(moved){ignoreClickUntil=performance.now()+400;if(Math.abs(dx)>32&&Math.abs(dx)>Math.abs(dy))step(dx<0?1:-1);}
-});
-root.addEventListener('pointercancel',()=>{gesture=null;});
-// Touch starts with implicit capture on the card. Its transfer to the carousel
-// bubbles a lostpointercapture event; that event must not cancel the swipe.
-root.addEventListener('lostpointercapture',event=>{if(event.target===root)gesture=null;});
+roster.dragCarousel(root,cards,step,()=>confirming);
 root.addEventListener('click',event=>{
- const card=event.target.closest('.rc-card');if(!card||confirming||performance.now()<ignoreClickUntil)return;
+ const card=event.target.closest('.rc-card');if(!card||confirming)return;
  const index=Number(card.dataset.index),state=roster.state();
+ const browsing=card.classList.contains('rc-edge');
  roster.choose(index);
+ if(browsing)return;
  if(state.role==='player'&&!automatic(state)){roster.setRole('opponent');return;}
  confirming=true;root.setAttribute('aria-busy','true');$('rosterInstruction').textContent='Ładowanie zawodników…';
  // Preserve capture listeners used by challenge eligibility and both menu engines.

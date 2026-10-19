@@ -1,4 +1,4 @@
-/* Three comparable fighter cards; tap to choose, swipe to browse. */
+/* Fighter selection uses the same three-card coverflow as the mode picker. */
 #selection.premium-screen{background:linear-gradient(180deg,#06100ac9,#050a08a8 55%,#030805e8),url('/assets/shared-menu-background.jpeg') center/cover!important}
 #selection.premium-screen:before{background:radial-gradient(ellipse at 50% 52%,#a6ff3c08,transparent 60%)!important}
 #rosterBoard{grid-template-rows:52px 30px minmax(0,1fr) 20px!important;gap:6px!important}
@@ -10,11 +10,11 @@
 #selection #rosterBoard #rosterOpponent[aria-pressed=true]{border-bottom-color:var(--ui-player)!important;color:#f3f7ed!important;background:transparent!important}
 #rosterBoard .roster-role button[hidden]{display:none!important}
 #rosterCarousel{position:relative;grid-row:3;min-width:0;min-height:0;container-type:size;overflow:hidden;clip-path:inset(0 var(--carousel-edge-inset,0px));touch-action:pan-y;user-select:none;-webkit-user-select:none}
-#rosterCarousel .rc-card{position:absolute;left:50%;top:50%;width:var(--carousel-card-width,23%);height:calc(100% - 8px);max-width:none;min-height:0!important;padding:0!important;border:0!important;border-radius:0!important;clip-path:polygon(6% 0,94% 0,100% 4.5%,100% 95.5%,94% 100%,6% 100%,0 95.5%,0 4.5%)!important;background:#090f0c!important;overflow:hidden;opacity:0;pointer-events:none;transform:translate(calc(-50% + var(--offset)*var(--carousel-step,110%)),-50%);transition:transform .28s cubic-bezier(.2,.7,.2,1),opacity .24s,border-color .24s;will-change:transform;box-shadow:0 14px 32px #0007!important;isolation:isolate}
-#rosterCarousel .rc-card.rc-neighbor{z-index:1;opacity:1;pointer-events:auto}
-#rosterCarousel .rc-card.rc-edge{opacity:.22;transform:translate(calc(-50% + var(--offset)*var(--carousel-step,110%)),-50%) scale(.96);filter:brightness(.65);pointer-events:none}
-#rosterCarousel .rc-card.rc-focused{z-index:2;opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1);box-shadow:0 16px 38px #0009!important}
-#rosterCarousel .rc-art{position:absolute;inset:4px 4px 45%;overflow:hidden;pointer-events:none}
+#rosterCarousel .rc-card{position:absolute;left:50%;top:50%;width:var(--carousel-card-width,23%);height:calc(100% - 8px);max-width:none;min-height:0!important;padding:0!important;border:1px solid #b5c99a77!important;border-radius:9px!important;clip-path:none!important;background:#070e0a!important;overflow:hidden;opacity:0;pointer-events:none;transform:translate(calc(-50% + var(--offset)*var(--carousel-step,110%) + var(--carousel-drag,0px)),-50%);transition:transform .28s cubic-bezier(.2,.7,.2,1),opacity .24s,border-color .24s;will-change:transform;box-shadow:0 14px 32px #0007!important;isolation:isolate}
+#rosterCarousel .rc-card.rc-neighbor{z-index:1;opacity:.88;pointer-events:auto;transform:translate(calc(-50% + var(--offset)*var(--carousel-step) + var(--carousel-drag,0px)),-50%) scale(.83)}
+#rosterCarousel .rc-card.rc-edge{opacity:0;transform:translate(calc(-50% + var(--offset)*var(--carousel-step,110%) + var(--carousel-drag,0px)),-50%);filter:none;pointer-events:none}
+#rosterCarousel .rc-card.rc-focused{z-index:2;opacity:1;pointer-events:auto;border-color:#c3ec92!important;transform:translate(calc(-50% + var(--carousel-drag,0px)),-50%);box-shadow:0 16px 38px #0009!important}
+#rosterCarousel .rc-art{position:absolute;inset:0;overflow:hidden;pointer-events:none}
 .fighter-portrait{display:block;width:100%;height:100%;overflow:hidden;pointer-events:none}
 .fighter-frame{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:5;fill:none}
 .fighter-frame path{vector-effect:non-scaling-stroke;stroke-linejoin:round}
@@ -35,29 +35,29 @@
 #rosterCarousel .fighter-stat>i{gap:2px!important}
 #rosterCarousel .fighter-stat>i,#rosterCarousel .stat-segment{min-height:4px!important}
 #rosterCarousel .stat-segment{animation:none!important;border-radius:2px}
-#rosterBoard .roster-footer{display:grid!important;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px;height:20px!important;background:transparent!important}
+#rosterBoard .roster-footer{display:grid!important;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:12px;height:20px!important;background:transparent!important}
 #rosterInstruction{grid-column:1;max-width:none;font:400 10px/1.5 var(--ui-body)!important;letter-spacing:0!important;color:#a4b39f!important}
 #rosterBoard #chooseFighter{display:none!important}
-#rosterCount{grid-column:2;grid-row:1;text-align:right;font:500 11px var(--ui-body);letter-spacing:.16em;color:#c1ceba}
+#rosterCount{grid-column:3;grid-row:1;text-align:right;font:500 11px var(--ui-body);letter-spacing:.16em;color:#c1ceba}
 @media(max-height:400px){#selection.premium-screen{padding-top:8px!important;padding-bottom:8px!important}#rosterBoard{grid-template-rows:44px 26px minmax(0,1fr) 18px!important;gap:4px!important}#rosterBoard>.ui-header{min-height:44px!important}#rosterBoard .ui-header h1{font-size:26px!important}#rosterBoard .roster-footer{height:18px!important}#rosterCarousel .rc-stats{padding:0}#rosterCarousel .rc-stats .fighter-stats{gap:0!important}#rosterCarousel .rc-copy{position:absolute;inset:44% 0 auto;display:flex;flex-direction:column;align-items:center;gap:2px;padding:12px 7px 0;background:linear-gradient(transparent,#07100b 65%);pointer-events:none}}
-@media(orientation:portrait){#rosterBoard{grid-template-rows:56px 36px minmax(0,1fr) 72px!important}#rosterCarousel .rc-card{width:var(--carousel-card-width,23%);height:calc(100% - 8px);max-width:none}#rosterCarousel .rc-card.rc-focused{transform:translate(-50%,-50%)}#rosterBoard .ui-player-chip{display:none}#rosterBoard .ui-heading h1{font-size:26px!important}#rosterBoard .roster-footer{height:72px!important;grid-template-columns:1fr auto}#rosterBoard #chooseFighter{display:none!important}#rosterInstruction{grid-row:2;max-width:none;font-size:9px!important}#rosterCount{grid-column:2;grid-row:2}#rosterCarousel .rc-copy strong{font-size:44px}}
+@media(orientation:portrait){#rosterBoard{grid-template-rows:56px 36px minmax(0,1fr) 72px!important}#rosterCarousel .rc-card{width:var(--carousel-card-width,23%);height:calc(100% - 8px);max-width:none}#rosterCarousel .rc-card.rc-focused{transform:translate(calc(-50% + var(--carousel-drag,0px)),-50%)}#rosterBoard .ui-player-chip{display:none}#rosterBoard .ui-heading h1{font-size:26px!important}#rosterBoard .roster-footer{height:72px!important;grid-template-columns:1fr auto}#rosterBoard #chooseFighter{display:none!important}#rosterInstruction{grid-row:2;max-width:none;font-size:9px!important}#rosterCount{grid-column:2;grid-row:2}#rosterCarousel .rc-copy strong{font-size:44px}}
 @media(prefers-reduced-motion:reduce){#rosterCarousel .rc-card,#rosterCarousel .rc-stats{transition:none;will-change:auto}}
 
 /* One metal frame and one selection accent across all eight online fighters. */
-#mpSelection .mp-fighter{border:0!important;border-radius:0!important;clip-path:polygon(6% 0,94% 0,100% 4.5%,100% 95.5%,94% 100%,6% 100%,0 95.5%,0 4.5%)!important;background:#090f0c!important}
+#mpSelection .mp-fighter{border:1px solid #b5c99a77!important;border-radius:9px!important;clip-path:none!important;background:#070e0a!important}
 #mpSelection .mp-fighter .mp-fighter-art{inset:4px 4px 10px}
 
-/* Three full-size cards stay in front, with the next two half hidden at the edges. */
+/* The same centered card and two smaller, readable side cards as the mode picker. */
 #mpSelection .mp-roster{container-type:size;clip-path:inset(0 var(--carousel-edge-inset,0px))}
-#mpSelection .mp-fighter{width:var(--carousel-card-width,23%);height:calc(100% - 8px);transform:translate(calc(-50% + var(--offset)*var(--carousel-step,110%)),-50%);filter:none}
-#mpSelection .mp-neighbor{z-index:1;opacity:1;filter:none}
-#mpSelection .mp-edge{opacity:.22;visibility:visible;pointer-events:none;transform:translate(calc(-50% + var(--offset)*var(--carousel-step,110%)),-50%) scale(.96);filter:brightness(.65)}
-#mpSelection .mp-focused{transform:translate(-50%,-50%);filter:none}
+#mpSelection .mp-fighter{width:var(--carousel-card-width,23%);height:calc(100% - 8px);transform:translate(calc(-50% + var(--offset)*var(--carousel-step,110%) + var(--carousel-drag,0px)),-50%);filter:none}
+#mpSelection .mp-neighbor{z-index:1;opacity:.88;filter:none;transform:translate(calc(-50% + var(--offset)*var(--carousel-step) + var(--carousel-drag,0px)),-50%) scale(.83)}
+#mpSelection .mp-edge{opacity:0;visibility:hidden;pointer-events:none;transform:translate(calc(-50% + var(--offset)*var(--carousel-step,110%) + var(--carousel-drag,0px)),-50%);filter:none}
+#mpSelection .mp-focused{border-color:#c3ec92!important;transform:translate(calc(-50% + var(--carousel-drag,0px)),-50%);filter:none}
 
 /* The cards show three real attributes and are the only selection control. */
 #mpSelection #mpNext{display:none!important}
 #mpSelection .mp-roster{inset:18% 6% 7%}
-#mpSelection .mp-fighter .mp-fighter-art{inset:4px 4px 45%}
+#mpSelection .mp-fighter .mp-fighter-art{inset:0}
 #mpSelection .mp-fighter-label{inset:44% 0 auto;height:auto;padding:12px 7px 0;gap:2px;background:linear-gradient(transparent,#07100b 65%)}
 #mpSelection .mp-card-eyebrow{display:none}
 #mpSelection .mp-card-stats{position:absolute;inset:68% 12px 10px;background:#07100b;text-align:left}
@@ -66,3 +66,40 @@
 #mpSelection .mp-card-stats .fighter-stat>b{font-size:11px!important}
 #mpSelection .mp-card-stats .fighter-stat>i,#mpSelection .mp-card-stats .stat-segment{min-height:4px!important}
 #mpSelection .mp-card-stats .stat-segment{animation:none!important;border-radius:2px}
+
+/* Visible continuation and finger-following motion make the loop discoverable. */
+#rosterCarousel.is-dragging .rc-card,#mpSelection .mp-roster.is-dragging .mp-fighter{transition:none;opacity:var(--carousel-opacity,1);visibility:visible;transform:translate(calc(-50% + var(--offset)*var(--carousel-step) + var(--carousel-drag,0px)),-50%) scale(var(--carousel-scale,1))}
+#rosterCarousel,.mp-roster{cursor:grab}
+#rosterCarousel.is-dragging,.mp-roster.is-dragging{cursor:grabbing}
+.carousel-dots{display:flex;align-items:center;justify-content:center;gap:5px;pointer-events:none}
+.carousel-dots i{display:block;flex:0 0 auto;width:5px;height:5px;border-radius:5px;background:#e4efe080;transition:width .2s,background .2s}
+.carousel-dots .is-current{width:18px;background:var(--ui-player)}
+#rosterBoard .roster-footer .carousel-dots{grid-row:1;grid-column:2}
+#mpSelection .mp-selection-footer{position:absolute;left:6%;right:6%;bottom:2%;height:20px;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:12px}
+#mpRosterHint{font:600 12px var(--ui-body);color:#d9e5d1}
+#mpRosterHint b{margin-left:6px;color:var(--ui-player);font-size:18px;vertical-align:-1px}
+#mpSelection #mpPosition{position:static;transform:none;grid-column:3;grid-row:1;text-align:right;font:500 11px var(--ui-body);letter-spacing:.16em}
+#mpSelection .carousel-dots{grid-column:2;grid-row:1}
+@media(prefers-reduced-motion:reduce){.carousel-dots i{transition:none}}
+
+/* Match the clean frame and full portrait treatment of the reference mode cards. */
+#rosterCarousel .fighter-frame,#mpSelection .fighter-frame{display:none}
+#rosterCarousel .rc-card::after,#mpSelection .mp-fighter::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,transparent 25%,#050c0755 44%,#050c07f5 65%,#050c07)}
+#rosterCarousel .rc-number,#mpSelection .mp-card-number{z-index:2;top:9px;left:9px;width:auto;height:auto;min-width:0;padding:4px 6px;border:0;border-radius:3px;background:#07100ba8;font:500 10px var(--ui-body)}
+#rosterCarousel .rc-copy,#mpSelection .mp-fighter-label{inset:auto 10px 31.5%;height:auto;padding:0;gap:3px;background:none;z-index:2}
+#rosterCarousel .rc-copy strong,#mpSelection .mp-fighter-label strong{font:italic 600 clamp(28px,9cqh,36px)/1 var(--ui-display)!important}
+#rosterCarousel .rc-copy small,#mpSelection .mp-fighter-label small{font:500 9px/1.2 var(--ui-body);letter-spacing:.06em;color:#b9cab3}
+#rosterCarousel .rc-stats,#mpSelection .mp-card-stats{inset:70% 14px 12px;background:none;z-index:2}
+#rosterCarousel .fighter-stat>span,#mpSelection .mp-card-stats .fighter-stat>span{font-size:12px!important}
+#rosterCarousel .fighter-stat>b,#mpSelection .mp-card-stats .fighter-stat>b{font-size:13px!important}
+
+/* A readable, connected local bracket with the same portrait artwork. */
+#campaignScreen.tournament-layout{background:linear-gradient(#040a06de,#040a06f0),url('/assets/shared-menu-background.jpeg') center/cover;grid-template-rows:40px minmax(0,1fr) 16px 40px;gap:6px;padding:12px max(20px,var(--safeR)) 10px max(20px,var(--safeL))}
+#campaignScreen.tournament-layout header{border-bottom:1px solid #b5c99a33;padding-right:64px}
+#campaignScreen.tournament-layout #campaignTitle{font:italic 600 30px/1 var(--ui-display);color:#f2f6ed;letter-spacing:.02em;text-shadow:none}
+#campaignScreen.tournament-layout #campaignStatus{color:#c6d7b9;font:500 12px/1.3 var(--ui-body);letter-spacing:0}
+#campaignScreen.tournament-layout #campaignNote{font:400 10px/16px var(--ui-body);color:#9eac99}
+#campaignScreen.tournament-layout footer{border:0;padding:0;gap:12px}
+#campaignScreen.tournament-layout footer button{border:1px solid #b5c99a55;background:#101b13;color:#e4ebdf;border-radius:6px;font:600 12px var(--ui-body);letter-spacing:.03em;height:40px;min-height:40px}
+#campaignScreen.tournament-layout #campaignStart{background:var(--ui-player)!important;border-color:var(--ui-player);color:#0a1305!important;box-shadow:none}
+#campaignScreen.tournament-layout .tournament-tree{overflow:hidden;filter:none}
