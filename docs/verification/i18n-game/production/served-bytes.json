@@ -1,0 +1,443 @@
+{
+  "version": 155,
+  "url": "https://braxhorn-p0-preview.wawerpatryk89.chatgpt.site",
+  "siteSource": "3cbcf7cee4ada6e6d0eed0f3933b0b9c2dae5f90",
+  "githubSource": "adf986658d168a81dba577cdbeca2861f126d726",
+  "pass": true,
+  "checks": [
+    {
+      "path": "/",
+      "matches": true,
+      "bytes": 161525,
+      "servedSha256": "02b1bcf19ba646128bf552ddcb68b01c6e1227c1031f08241bf155107fe80877",
+      "artifactSha256": "02b1bcf19ba646128bf552ddcb68b01c6e1227c1031f08241bf155107fe80877"
+    },
+    {
+      "path": "/assets/account-entry.2c87be0a5ea2.js",
+      "matches": true,
+      "bytes": 32974,
+      "servedSha256": "2c87be0a5ea2cd78ed7bafe18607c5d04fa1dd09139ad2846bb771b614445601",
+      "artifactSha256": "2c87be0a5ea2cd78ed7bafe18607c5d04fa1dd09139ad2846bb771b614445601"
+    },
+    {
+      "path": "/assets/account-entry.9952e2a897e6.css",
+      "matches": true,
+      "bytes": 16670,
+      "servedSha256": "9952e2a897e694113af3eda4b56722feb02bdd4ed8887a878d6d64a0e100520f",
+      "artifactSha256": "9952e2a897e694113af3eda4b56722feb02bdd4ed8887a878d6d64a0e100520f"
+    },
+    {
+      "path": "/assets/arena-catalog.4833bc52c0f3.js",
+      "matches": true,
+      "bytes": 3130,
+      "servedSha256": "4833bc52c0f3b8f47239ad28806d2c45488ad7e11e072985f7200fb0f4b8b04b",
+      "artifactSha256": "4833bc52c0f3b8f47239ad28806d2c45488ad7e11e072985f7200fb0f4b8b04b"
+    },
+    {
+      "path": "/assets/arena-effects.a5106ebc5c22.js",
+      "matches": true,
+      "bytes": 19455,
+      "servedSha256": "a5106ebc5c220d309cc74240cc8df9ac40c9b6ea764f07e08811789469d959c0",
+      "artifactSha256": "a5106ebc5c220d309cc74240cc8df9ac40c9b6ea764f07e08811789469d959c0"
+    },
+    {
+      "path": "/assets/arena-features.ee9fd9c21dc4.js",
+      "matches": true,
+      "bytes": 14647,
+      "servedSha256": "ee9fd9c21dc4cae2359007d93dba38ac237fbb20cdaa1c2f6f1ff7ccf141b21a",
+      "artifactSha256": "ee9fd9c21dc4cae2359007d93dba38ac237fbb20cdaa1c2f6f1ff7ccf141b21a"
+    },
+    {
+      "path": "/assets/arena-interface.16bdd8b5caa4.css",
+      "matches": true,
+      "bytes": 20025,
+      "servedSha256": "16bdd8b5caa4316eeba1f6e45d7c0cf8fa094b0d5e1ed7a3ce841df3154e80e4",
+      "artifactSha256": "16bdd8b5caa4316eeba1f6e45d7c0cf8fa094b0d5e1ed7a3ce841df3154e80e4"
+    },
+    {
+      "path": "/assets/arena-interface.519bdb274352.js",
+      "matches": true,
+      "bytes": 5294,
+      "servedSha256": "519bdb274352fca3b377da41c3bd71dd90adef5627de2887167c5c3f9bef890c",
+      "artifactSha256": "519bdb274352fca3b377da41c3bd71dd90adef5627de2887167c5c3f9bef890c"
+    },
+    {
+      "path": "/assets/arena-media.2a51a119bd06.css",
+      "matches": true,
+      "bytes": 823,
+      "servedSha256": "2a51a119bd06c4e1774c2baef8fd8f627eeea00491864dc0641a72766c589fb2",
+      "artifactSha256": "2a51a119bd06c4e1774c2baef8fd8f627eeea00491864dc0641a72766c589fb2"
+    },
+    {
+      "path": "/assets/arena-media.46b616d50dc1.js",
+      "matches": true,
+      "bytes": 6577,
+      "servedSha256": "46b616d50dc1609fd654a4ef60c4f7ad936eef648c074dd794e3b985de8d8821",
+      "artifactSha256": "46b616d50dc1609fd654a4ef60c4f7ad936eef648c074dd794e3b985de8d8821"
+    },
+    {
+      "path": "/assets/arena-picker.1e8f9cc21778.js",
+      "matches": true,
+      "bytes": 4284,
+      "servedSha256": "1e8f9cc2177857ddc6eae765d7117999a76bd7b99f3d207f7f06c594a169ff66",
+      "artifactSha256": "1e8f9cc2177857ddc6eae765d7117999a76bd7b99f3d207f7f06c594a169ff66"
+    },
+    {
+      "path": "/assets/arena-picker.766e24649169.css",
+      "matches": true,
+      "bytes": 5836,
+      "servedSha256": "766e2464916923e0aa0e8198f975abed036feb976aa2b305b2b03df2deda347c",
+      "artifactSha256": "766e2464916923e0aa0e8198f975abed036feb976aa2b305b2b03df2deda347c"
+    },
+    {
+      "path": "/assets/blood-effects.baf387af102c.js",
+      "matches": true,
+      "bytes": 8841,
+      "servedSha256": "baf387af102cc1bb6630029f3ef2a05090d7b972b42b5508933471d3710ec95f",
+      "artifactSha256": "baf387af102cc1bb6630029f3ef2a05090d7b972b42b5508933471d3710ec95f"
+    },
+    {
+      "path": "/assets/championship.6d1616a58813.js",
+      "matches": true,
+      "bytes": 11736,
+      "servedSha256": "6d1616a588139063226be64d78499c079e13d508fc6684165423092ee6a03ac3",
+      "artifactSha256": "6d1616a588139063226be64d78499c079e13d508fc6684165423092ee6a03ac3"
+    },
+    {
+      "path": "/assets/code-pad.9474170e25c1.css",
+      "matches": true,
+      "bytes": 1968,
+      "servedSha256": "9474170e25c1d9475faa8778dce7b7e022817fe70b9d4d05101dfac8254037a2",
+      "artifactSha256": "9474170e25c1d9475faa8778dce7b7e022817fe70b9d4d05101dfac8254037a2"
+    },
+    {
+      "path": "/assets/code-pad.ff1b0e5eb306.js",
+      "matches": true,
+      "bytes": 3701,
+      "servedSha256": "ff1b0e5eb306772ecc45623dc41e81862e1ec7cb2684ba47b5836e85835065e0",
+      "artifactSha256": "ff1b0e5eb306772ecc45623dc41e81862e1ec7cb2684ba47b5836e85835065e0"
+    },
+    {
+      "path": "/assets/compatibility.093c73c2de17.js",
+      "matches": true,
+      "bytes": 202,
+      "servedSha256": "093c73c2de17ce42f0e05a2305f8b168ed9b28be781d1005b5107fb7a60e7ed3",
+      "artifactSha256": "093c73c2de17ce42f0e05a2305f8b168ed9b28be781d1005b5107fb7a60e7ed3"
+    },
+    {
+      "path": "/assets/diagnostics.aaaa70efad8f.js",
+      "matches": true,
+      "bytes": 5055,
+      "servedSha256": "aaaa70efad8f7b582d37af1c353cd876c96a07f20062a9f2a50f052991dca8c9",
+      "artifactSha256": "aaaa70efad8f7b582d37af1c353cd876c96a07f20062a9f2a50f052991dca8c9"
+    },
+    {
+      "path": "/assets/fighter-names.17037169c276.js",
+      "matches": true,
+      "bytes": 268,
+      "servedSha256": "17037169c276f929924965578ae5599553639625c0949d255edaf7ace53960ca",
+      "artifactSha256": "17037169c276f929924965578ae5599553639625c0949d255edaf7ace53960ca"
+    },
+    {
+      "path": "/assets/fullscreen-tap.js",
+      "matches": true,
+      "bytes": 1577,
+      "servedSha256": "8aa3c15ae3eed8d71a1c302fa98b05e7c460c21c711b5486a585ddc5958a2054",
+      "artifactSha256": "8aa3c15ae3eed8d71a1c302fa98b05e7c460c21c711b5486a585ddc5958a2054"
+    },
+    {
+      "path": "/assets/game-keyboard.679c5119a1c2.js",
+      "matches": true,
+      "bytes": 8143,
+      "servedSha256": "679c5119a1c2c96f0ec7f411dc61e3d7d4f60e88bb05105e708bc92277af8d5e",
+      "artifactSha256": "679c5119a1c2c96f0ec7f411dc61e3d7d4f60e88bb05105e708bc92277af8d5e"
+    },
+    {
+      "path": "/assets/i18n-account.662c0e30874e.js",
+      "matches": true,
+      "bytes": 7626,
+      "servedSha256": "662c0e30874e798d61a50b24e3827f72b4212832fb43ac68bcebe015ab6c2a4d",
+      "artifactSha256": "662c0e30874e798d61a50b24e3827f72b4212832fb43ac68bcebe015ab6c2a4d"
+    },
+    {
+      "path": "/assets/i18n-combat-aux.fed77c623ba0.js",
+      "matches": true,
+      "bytes": 2807,
+      "servedSha256": "fed77c623ba0addc8eefc1a074b4a3c3d849b0c694021d0f7f3fb72a9ad94166",
+      "artifactSha256": "fed77c623ba0addc8eefc1a074b4a3c3d849b0c694021d0f7f3fb72a9ad94166"
+    },
+    {
+      "path": "/assets/i18n-combat.20bb088a0895.js",
+      "matches": true,
+      "bytes": 67088,
+      "servedSha256": "20bb088a0895f513a96e0bc1b76150d0abdf1071d790c32097549e9b93caade1",
+      "artifactSha256": "20bb088a0895f513a96e0bc1b76150d0abdf1071d790c32097549e9b93caade1"
+    },
+    {
+      "path": "/assets/i18n-common.c26d8e774dad.js",
+      "matches": true,
+      "bytes": 25869,
+      "servedSha256": "c26d8e774dad6a9103e3205b6f841966df37083973eb3198d975fac5fe4bf0e7",
+      "artifactSha256": "c26d8e774dad6a9103e3205b6f841966df37083973eb3198d975fac5fe4bf0e7"
+    },
+    {
+      "path": "/assets/i18n-content.f0df810a12f4.js",
+      "matches": true,
+      "bytes": 18616,
+      "servedSha256": "f0df810a12f4eb92b280c8bc3a1c95a68f44090d1e184c446e37680e7c39a73a",
+      "artifactSha256": "f0df810a12f4eb92b280c8bc3a1c95a68f44090d1e184c446e37680e7c39a73a"
+    },
+    {
+      "path": "/assets/i18n-errors.4e34da44161a.js",
+      "matches": true,
+      "bytes": 18783,
+      "servedSha256": "4e34da44161ad13caf5ae8d0b3cbbe8ad25c93231c374dbbc0508d39c7753aa6",
+      "artifactSha256": "4e34da44161ad13caf5ae8d0b3cbbe8ad25c93231c374dbbc0508d39c7753aa6"
+    },
+    {
+      "path": "/assets/i18n-online.477c572d5cf8.js",
+      "matches": true,
+      "bytes": 46294,
+      "servedSha256": "477c572d5cf823f3543b0bef11c66cc4f5d6c2405568f8f056f492f657f684ad",
+      "artifactSha256": "477c572d5cf823f3543b0bef11c66cc4f5d6c2405568f8f056f492f657f684ad"
+    },
+    {
+      "path": "/assets/i18n.0c388bb79039.js",
+      "matches": true,
+      "bytes": 13264,
+      "servedSha256": "0c388bb790397f525e00217b8288a0f704e3ef34652543ac200a4a48a524d16d",
+      "artifactSha256": "0c388bb790397f525e00217b8288a0f704e3ef34652543ac200a4a48a524d16d"
+    },
+    {
+      "path": "/assets/i18n.e9704f787ced.css",
+      "matches": true,
+      "bytes": 3297,
+      "servedSha256": "e9704f787ceddacdd0a197da772ee279d9faee295a7c67d8310f2dad90e8d143",
+      "artifactSha256": "e9704f787ceddacdd0a197da772ee279d9faee295a7c67d8310f2dad90e8d143"
+    },
+    {
+      "path": "/assets/ko-replay.js",
+      "matches": true,
+      "bytes": 5316,
+      "servedSha256": "259490f3a82edfaa50011f86854ca466da7c8bc949a69a5ae40b82436e42a5fd",
+      "artifactSha256": "259490f3a82edfaa50011f86854ca466da7c8bc949a69a5ae40b82436e42a5fd"
+    },
+    {
+      "path": "/assets/menu-carousel.21a3b718e1b7.js",
+      "matches": true,
+      "bytes": 3143,
+      "servedSha256": "21a3b718e1b72404db7aa107a9c42f7b5aca929f731ad0f81401812c22aed1cc",
+      "artifactSha256": "21a3b718e1b72404db7aa107a9c42f7b5aca929f731ad0f81401812c22aed1cc"
+    },
+    {
+      "path": "/assets/menu-premium.39d41a510dae.css",
+      "matches": true,
+      "bytes": 10022,
+      "servedSha256": "39d41a510dae49e30b5aeabed07d5b811072f53e54e0276acb144dcf486b08dd",
+      "artifactSha256": "39d41a510dae49e30b5aeabed07d5b811072f53e54e0276acb144dcf486b08dd"
+    },
+    {
+      "path": "/assets/menu.e29e8ad509d6.js",
+      "matches": true,
+      "bytes": 13349,
+      "servedSha256": "e29e8ad509d6c5d0c781997aadfca744cedfdcb101599ccbe27326b8100b2c04",
+      "artifactSha256": "e29e8ad509d6c5d0c781997aadfca744cedfdcb101599ccbe27326b8100b2c04"
+    },
+    {
+      "path": "/assets/multiplayer.41e5a2a60f4a.js",
+      "matches": true,
+      "bytes": 29669,
+      "servedSha256": "41e5a2a60f4a7b0fead606d5d62f4f2024df666f319b504bdae387c28e7cea5c",
+      "artifactSha256": "41e5a2a60f4a7b0fead606d5d62f4f2024df666f319b504bdae387c28e7cea5c"
+    },
+    {
+      "path": "/assets/multiplayer.css",
+      "matches": true,
+      "bytes": 8320,
+      "servedSha256": "acbd27f68c61f1e3833b90092b681a49b6199c6d2165fc76c85a48bf4d0dc55b",
+      "artifactSha256": "acbd27f68c61f1e3833b90092b681a49b6199c6d2165fc76c85a48bf4d0dc55b"
+    },
+    {
+      "path": "/assets/night-market.90bb5cff1279.js",
+      "matches": true,
+      "bytes": 5419,
+      "servedSha256": "90bb5cff12792dd500367bd41779063c6f4d7232a400c48f531c22577e61d86a",
+      "artifactSha256": "90bb5cff12792dd500367bd41779063c6f4d7232a400c48f531c22577e61d86a"
+    },
+    {
+      "path": "/assets/night-market.css",
+      "matches": true,
+      "bytes": 815,
+      "servedSha256": "c783cc15422e6b2cdbccdb89ebfadaf715c9dd986f588cc401ee7706593d791b",
+      "artifactSha256": "c783cc15422e6b2cdbccdb89ebfadaf715c9dd986f588cc401ee7706593d791b"
+    },
+    {
+      "path": "/assets/online.1b534a98f4c6.js",
+      "matches": true,
+      "bytes": 12538,
+      "servedSha256": "1b534a98f4c64653be0a11a0602f995dffc57d5f2cd2cbab437007144ee16b24",
+      "artifactSha256": "1b534a98f4c64653be0a11a0602f995dffc57d5f2cd2cbab437007144ee16b24"
+    },
+    {
+      "path": "/assets/peer-link.f5c67c29a003.js",
+      "matches": true,
+      "bytes": 8281,
+      "servedSha256": "f5c67c29a0039ed77ff31f1cd5b031bf020495e0c30314971af5b78a83ad625f",
+      "artifactSha256": "f5c67c29a0039ed77ff31f1cd5b031bf020495e0c30314971af5b78a83ad625f"
+    },
+    {
+      "path": "/assets/premium-hub.4d59bc2145a8.js",
+      "matches": true,
+      "bytes": 3745,
+      "servedSha256": "4d59bc2145a802d7474f592f98a9135fbbed96a10ca536e5ae83a575e66035f6",
+      "artifactSha256": "4d59bc2145a802d7474f592f98a9135fbbed96a10ca536e5ae83a575e66035f6"
+    },
+    {
+      "path": "/assets/premium.css",
+      "matches": true,
+      "bytes": 15390,
+      "servedSha256": "58912887706dc5d5795c2ce5c22e7a7b4328235fb8e3b84fbc87e3dcc2eab7ce",
+      "artifactSha256": "58912887706dc5d5795c2ce5c22e7a7b4328235fb8e3b84fbc87e3dcc2eab7ce"
+    },
+    {
+      "path": "/assets/roster-carousel.1484d7e7ba5d.js",
+      "matches": true,
+      "bytes": 6984,
+      "servedSha256": "1484d7e7ba5d072e21a3ef4786b2ce99fa0edf9679a519dfecdcf011cfe12097",
+      "artifactSha256": "1484d7e7ba5d072e21a3ef4786b2ce99fa0edf9679a519dfecdcf011cfe12097"
+    },
+    {
+      "path": "/assets/roster-carousel.78143c502026.css",
+      "matches": true,
+      "bytes": 13072,
+      "servedSha256": "78143c502026a1d9c1742aee642459027f9e35fab8689692047799830d13c6d9",
+      "artifactSha256": "78143c502026a1d9c1742aee642459027f9e35fab8689692047799830d13c6d9"
+    },
+    {
+      "path": "/assets/roster.f2ab5906cc15.js",
+      "matches": true,
+      "bytes": 9261,
+      "servedSha256": "f2ab5906cc15efd362c2819ef5806d99f176b12c0dc58b35a32169be584883eb",
+      "artifactSha256": "f2ab5906cc15efd362c2819ef5806d99f176b12c0dc58b35a32169be584883eb"
+    },
+    {
+      "path": "/assets/rtc.0fe965b24dfe.js",
+      "matches": true,
+      "bytes": 1615,
+      "servedSha256": "0fe965b24dfea5bee683996a9fad751f425b9cf417363f5e54e5058256fe61e5",
+      "artifactSha256": "0fe965b24dfea5bee683996a9fad751f425b9cf417363f5e54e5058256fe61e5"
+    },
+    {
+      "path": "/assets/scene-transition.d88631e593ae.js",
+      "matches": true,
+      "bytes": 1192,
+      "servedSha256": "d88631e593ae7b081e6180393d3ea08904b0a04e63bcd3e90d2d366f63be2d61",
+      "artifactSha256": "d88631e593ae7b081e6180393d3ea08904b0a04e63bcd3e90d2d366f63be2d61"
+    },
+    {
+      "path": "/assets/screen-layout.4c23639c783c.js",
+      "matches": true,
+      "bytes": 2114,
+      "servedSha256": "4c23639c783ceaa35f463eae1c0812de36b2d852c0bb8a08251589bf5a36ae42",
+      "artifactSha256": "4c23639c783ceaa35f463eae1c0812de36b2d852c0bb8a08251589bf5a36ae42"
+    },
+    {
+      "path": "/assets/tournaments.7c7d10f52c91.js",
+      "matches": true,
+      "bytes": 31174,
+      "servedSha256": "7c7d10f52c910d2f0bb7c06bd695773317468988f2315b164c84b722709b338a",
+      "artifactSha256": "7c7d10f52c910d2f0bb7c06bd695773317468988f2315b164c84b722709b338a"
+    },
+    {
+      "path": "/assets/tournaments.d93a36e2c04c.css",
+      "matches": true,
+      "bytes": 20367,
+      "servedSha256": "d93a36e2c04c64564f5cb8004aac475b4a308ce24107399ec02fec1933a97819",
+      "artifactSha256": "d93a36e2c04c64564f5cb8004aac475b4a308ce24107399ec02fec1933a97819"
+    },
+    {
+      "path": "/assets/ui-system.6e945d3bfa45.css",
+      "matches": true,
+      "bytes": 41083,
+      "servedSha256": "6e945d3bfa459f2c2dab037870b56797623a9cb626b29a8bfab86ec75d066401",
+      "artifactSha256": "6e945d3bfa459f2c2dab037870b56797623a9cb626b29a8bfab86ec75d066401"
+    },
+    {
+      "path": "/assets/ui-system.782657938818.js",
+      "matches": true,
+      "bytes": 21577,
+      "servedSha256": "78265793881842fcf91139919c95e888a2b4b3669cf567223a7fb550f7b31310",
+      "artifactSha256": "78265793881842fcf91139919c95e888a2b4b3669cf567223a7fb550f7b31310"
+    },
+    {
+      "path": "/assets/vendor/three.module.js",
+      "matches": true,
+      "bytes": 662772,
+      "servedSha256": "9052042d676cb0fdc1ddfefe193053f34b7ac0513a616fdac4535d49987812ea",
+      "artifactSha256": "9052042d676cb0fdc1ddfefe193053f34b7ac0513a616fdac4535d49987812ea"
+    },
+    {
+      "path": "/assets/victory.11afc327298b.js",
+      "matches": true,
+      "bytes": 2785,
+      "servedSha256": "11afc327298b111863a604df9e0894df6afbad013dcd6cffbad743426d358d9f",
+      "artifactSha256": "11afc327298b111863a604df9e0894df6afbad013dcd6cffbad743426d358d9f"
+    },
+    {
+      "path": "/assets/video-autoplay.js",
+      "matches": true,
+      "bytes": 736,
+      "servedSha256": "2ba6fc5fa748c66b7d9d3351f8fe4622d1be081d9985ccb3db57636182dfc0c6",
+      "artifactSha256": "2ba6fc5fa748c66b7d9d3351f8fe4622d1be081d9985ccb3db57636182dfc0c6"
+    },
+    {
+      "path": "/assets/viewport.56f171a86c3b.js",
+      "matches": true,
+      "bytes": 798,
+      "servedSha256": "56f171a86c3b1881c94c87d057ae278c9734a2061afdc570fa4f46eadbd627c9",
+      "artifactSha256": "56f171a86c3b1881c94c87d057ae278c9734a2061afdc570fa4f46eadbd627c9"
+    },
+    {
+      "path": "/assets/voice-chat.3455b8fd7a78.css",
+      "matches": true,
+      "bytes": 3385,
+      "servedSha256": "3455b8fd7a789a02d5fcec6cf1fcda45b3943e850a137ac3141da91020a8c05e",
+      "artifactSha256": "3455b8fd7a789a02d5fcec6cf1fcda45b3943e850a137ac3141da91020a8c05e"
+    },
+    {
+      "path": "/assets/voice-chat.b8d3a51b3faf.js",
+      "matches": true,
+      "bytes": 10480,
+      "servedSha256": "b8d3a51b3fafa06045d987a91776e19fb2b01304831411fe4cd5089ddcfb5eb0",
+      "artifactSha256": "b8d3a51b3fafa06045d987a91776e19fb2b01304831411fe4cd5089ddcfb5eb0"
+    },
+    {
+      "path": "/assets/avatar-male.jpg",
+      "matches": true,
+      "bytes": 383628,
+      "servedSha256": "ff76ba67a66d5e3aba4e19857c0f8f87730a5cb0aa1ca0c7d9dd67b98618dd81",
+      "artifactSha256": "ff76ba67a66d5e3aba4e19857c0f8f87730a5cb0aa1ca0c7d9dd67b98618dd81"
+    },
+    {
+      "path": "/assets/avatar-female.jpg",
+      "matches": true,
+      "bytes": 363389,
+      "servedSha256": "84398d2088a56dc9c08423ec4ac22568d529ae6a069d126903486e368467bde9",
+      "artifactSha256": "84398d2088a56dc9c08423ec4ac22568d529ae6a069d126903486e368467bde9"
+    },
+    {
+      "path": "/assets/account-login-reference.jpg",
+      "matches": true,
+      "bytes": 220330,
+      "servedSha256": "9446fe193d1596889eeb8c5924f006e30ceda4e69cdacc49b826b523a37db75b",
+      "artifactSha256": "9446fe193d1596889eeb8c5924f006e30ceda4e69cdacc49b826b523a37db75b"
+    },
+    {
+      "path": "/assets/combat.16c3213421a4.js",
+      "matches": true,
+      "bytes": 187381,
+      "servedSha256": "16c3213421a4dd1590140b5b05424775a5ea8be3b0cde0a004863516ad8d0229",
+      "artifactSha256": "16c3213421a4dd1590140b5b05424775a5ea8be3b0cde0a004863516ad8d0229"
+    }
+  ]
+}

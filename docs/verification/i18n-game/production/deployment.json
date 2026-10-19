@@ -1,0 +1,35 @@
+{
+  "version": {
+    "id": "appgprj_6ac62c270a7c8191b3da081e9de40886~appgver_196eab4c7528819184b111a217881ac3",
+    "project_id": "appgprj_6ac62c270a7c8191b3da081e9de40886",
+    "version_number": 155,
+    "source": {
+      "commit_sha": "3cbcf7cee4ada6e6d0eed0f3933b0b9c2dae5f90"
+    },
+    "archive_storage": {
+      "archive_format": "tar",
+      "sediment_file_id": "file_000000000fb48211ae1eab110dfc4043",
+      "content_hash": "sha256:9d12232e11ada4e6c50c0e828e11fc03fb2db38b85517bf738ab2fda92cdcea4",
+      "size_bytes": 120934400,
+      "file_count": 338
+    },
+    "screenshot_url": null,
+    "deployment_id": null
+  },
+  "deployment": {
+    "id": "appgdep_6ad64e05f6ec81919181a4fed8d94c28",
+    "project_id": "appgprj_6ac62c270a7c8191b3da081e9de40886",
+    "title": "BRAXHORN ARENA — podgląd P0",
+    "version_id": "appgprj_6ac62c270a7c8191b3da081e9de40886~appgver_196eab4c7528819184b111a217881ac3",
+    "type": "publish",
+    "status": "succeeded",
+    "url": "https://braxhorn-p0-preview.wawerpatryk89.chatgpt.site",
+    "has_mcp": false,
+    "screenshot_asset_pointer": null,
+    "provider_deployment_id": "site---6ac62c270a7c8191b3da081e9de40886",
+    "failure_message": null,
+    "env_set_revision": 8,
+    "updated_at": "2026-10-19T17:06:56.290692+00:00"
+  },
+  "githubCodeCommit": "adf986658d168a81dba577cdbeca2861f126d726"
+}

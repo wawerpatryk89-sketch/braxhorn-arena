@@ -1,0 +1,22 @@
+{
+  "url": "https://braxhorn-p0-preview.wawerpatryk89.chatgpt.site",
+  "checks": [
+    "Production PL/EN login and separate registration, Polish default, no old entry, no overlapping entry controls",
+    "Real production account language persists across reload and independent-browser login; avatar and player ID unchanged",
+    "No production missing localization keys or uncaught JavaScript errors"
+  ],
+  "screenshots": [
+    "/workspace/braxhorn-i18n/docs/verification/i18n-game/production/pl-login.png",
+    "/workspace/braxhorn-i18n/docs/verification/i18n-game/production/pl-registration.png",
+    "/workspace/braxhorn-i18n/docs/verification/i18n-game/production/en-login.png",
+    "/workspace/braxhorn-i18n/docs/verification/i18n-game/production/en-registration.png",
+    "/workspace/braxhorn-i18n/docs/verification/i18n-game/production/en-menu.png",
+    "/workspace/braxhorn-i18n/docs/verification/i18n-game/production/en-profile.png",
+    "/workspace/braxhorn-i18n/docs/verification/i18n-game/production/pl-profile.png",
+    "/workspace/braxhorn-i18n/docs/verification/i18n-game/production/pl-menu-second-browser.png"
+  ],
+  "physicalDevices": false,
+  "physicalCamera": false,
+  "status": "passed",
+  "playerId": "a:c1159c46-bd45-4f93-a58c-fe3924968ead"
+}
