@@ -1,3 +1,4 @@
+import {registerTestAccount} from './fixtures/account-test-session.mjs';
 import compatibility from '../backend/lib/build-compatibility.json' with {type:'json'};
 import {minimumMatchTime} from '../backend/lib/ranking-time-policy.ts';
 import {DatabaseSync} from 'node:sqlite';import fs from 'node:fs';import assert from 'node:assert/strict';import {handleArena} from '../backend/lib/arena-api.ts';import {handleDuel} from '../backend/lib/duel-api.ts';
@@ -7,9 +8,9 @@ const call=async b=>{const r=await handleDuel(new Request('https://game.test/api
 
 
 const validElapsed=Math.ceil(minimumMatchTime('fight','BRAX',[2,0],2,'normal')*1.6);
-const cookie='12345678-1234-1234-1234-123456789012',owner='g:'+cookie;
-const arena=async (action,b)=>{const r=await handleArena(new Request('https://game.test/api/arena?action='+action,{method:'POST',headers:{cookie:'brax_player='+cookie},body:JSON.stringify(b)}),db);return{status:r.status,body:await r.json()}};
-sqlite.prepare('INSERT INTO players(id,name,created) VALUES(?,?,?)').run(owner,'Tester',Date.now());
+const account=await registerTestAccount(db,'Tester'),cookie=account.cookie,owner=account.id;
+const arena=async (action,b)=>{const r=await handleArena(new Request('https://game.test/api/arena?action='+action,{method:'POST',headers:{cookie},body:JSON.stringify(b)}),db);return{status:r.status,body:await r.json()}};
+
 sqlite.prepare('INSERT INTO runs(id,owner,client,mode,difficulty,fighter,started,updated) VALUES(?,?,?,?,?,?,?,?)').run('run-race',owner,'same-run','survival','normal','BRAX',Date.now(),Date.now());
 const prepare=db.prepare.bind(db);let waiting=[],reads=0;
 db.prepare=(q)=>{const statement=prepare(q);if(q.startsWith('SELECT id FROM matches WHERE run_id=')){

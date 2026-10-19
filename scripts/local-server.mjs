@@ -1,6 +1,7 @@
 // Local stand-in for the Cloudflare deployment: serves game/ and runs the real API handlers
-// (arena, duel, tournaments, rtc) against an in-memory SQLite database shaped like D1.
+// (account, arena, duel, tournaments, rtc) against in-memory SQLite and avatar object storage.
 // Usage: node --experimental-strip-types --experimental-sqlite --import ./scripts/local-server-hooks.mjs scripts/local-server.mjs [port]
+// Optional offline review data: BRAX_ACCOUNT_FIXTURE=1; optional extra startup SQL: BRAX_FIXTURE_SQL=/path/to/fixture.sql.
 import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -36,20 +37,25 @@ const {handleArena}=await import('../backend/lib/arena-api.ts');
 const {handleDuel}=await import('../backend/lib/duel-api.ts');
 const {handleTournaments}=await import('../backend/lib/tournament-api.ts');
 const {handleRTC}=await import('../backend/lib/rtc-config.ts');
+const {handleAccount,playerAvatar}=await import('../backend/lib/account-api.ts');
+const objects=new Map();
+const bucket={async put(key,value,options={}){const bytes=value instanceof Uint8Array?value:new Uint8Array(await new Response(value).arrayBuffer());objects.set(key,{bytes:bytes.slice(),options});return {key};},async get(key){const object=objects.get(key);return object?{size:object.bytes.byteLength,body:object.bytes,httpMetadata:object.options.httpMetadata}:null;}};
 const owner=process.env.BRAX_OWNER_EMAIL||'';
-const api={'/api/arena':r=>handleArena(r,db,owner),'/api/duel':r=>handleDuel(r,db,owner),'/api/tournaments':r=>handleTournaments(r,db,owner),'/api/rtc':r=>handleRTC(r,db,{})};
+if(process.env.BRAX_ACCOUNT_FIXTURE==='1'){const {seedAccountReview}=await import('./fixtures/account-review.mjs');await seedAccountReview({db,sqlite,bucket,handleAccount});}
+if(process.env.BRAX_FIXTURE_SQL)sqlite.exec(fs.readFileSync(process.env.BRAX_FIXTURE_SQL,'utf8'));
+const api={'/api/account':r=>handleAccount(r,db,bucket,owner),'/api/arena':r=>handleArena(r,db,owner),'/api/duel':r=>handleDuel(r,db,owner),'/api/tournaments':r=>handleTournaments(r,db,owner),'/api/rtc':r=>handleRTC(r,db,{})};
 const types={'.html':'text/html; charset=utf-8','.js':'text/javascript','.mjs':'text/javascript','.css':'text/css','.json':'application/json','.webp':'image/webp','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.gif':'image/gif','.svg':'image/svg+xml','.mp3':'audio/mpeg','.mp4':'video/mp4','.gz':'application/octet-stream','.webmanifest':'application/manifest+json'};
 
 http.createServer(async(req,res)=>{
  try{
   const url=new URL(req.url,'http://localhost:'+port);
-  const handler=api[url.pathname];
+  const handler=api[url.pathname]||(url.pathname.startsWith('/api/player-avatar/')?(r=>playerAvatar(r,bucket,url.pathname.slice('/api/player-avatar/'.length))):null);
   if(handler){
    const chunks=[];for await(const c of req)chunks.push(c);
    const headers=new Headers();for(const [k,v] of Object.entries(req.headers))if(typeof v==='string')headers.set(k,v);
    const request=new Request(url,{method:req.method,headers,body:['GET','HEAD'].includes(req.method)?undefined:Buffer.concat(chunks)});
    const response=await handler(request);
-   const out={};response.headers.forEach((v,k)=>{out[k]=v;});res.writeHead(response.status,out);res.end(Buffer.from(await response.arrayBuffer()));return;
+   const out={};response.headers.forEach((v,k)=>{if(k!=='set-cookie')out[k]=v;});const cookies=response.headers.getSetCookie();if(cookies.length)out['set-cookie']=cookies;res.writeHead(response.status,out);res.end(Buffer.from(await response.arrayBuffer()));return;
   }
   let file=path.join(root,'game',decodeURIComponent(url.pathname==='/'?'/index.html':url.pathname));
   if(!file.startsWith(path.join(root,'game'))||!fs.existsSync(file)||fs.statSync(file).isDirectory()){res.writeHead(404);res.end('missing');return;}

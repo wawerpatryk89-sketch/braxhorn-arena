@@ -64,12 +64,6 @@
 .ui-challenge-result{display:grid;gap:4px;color:var(--ui-muted);font-size:12px;margin:8px 0}
 /* Mode screen: keep USTAWIENIA clear of the sound toggle in the top-right corner. */
 #game:has(#matchSetup:not(.off)) #matchSetup .mode-footer #openModeSettings{margin-right:calc(52px + var(--safeR,0px))}
-/* Nickname errors sit between WRÓĆ and ZAPISZ instead of growing the sticky footer over the keyboard. */
-.identity-dialog footer{flex-wrap:nowrap!important}
-.identity-dialog footer #identityBack{order:0;flex:0 0 auto}
-.identity-dialog footer #identityError{order:1;flex:1 1 0!important;min-width:0;max-width:none;margin:0;text-align:center;font-size:11px;line-height:1.2;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.identity-dialog footer #identityError:empty{display:block!important;visibility:hidden}
-.identity-dialog footer #identityContinue{order:2;flex:0 0 auto;margin-left:0}
 /* Arena picker on phones: no search field (it opened the system keyboard), two full rows of
    arenas that scroll sideways and never slide under the LOSUJ / WALCZ TUTAJ bar. */
 #arenaSelection .arena-search{display:none!important}
@@ -101,6 +95,36 @@
 .premium-screen button{clip-path:none!important;border-radius:9px!important}
 .premium-screen .ui-primary{box-shadow:0 5px 22px #a6ff3c16!important}
 .ui-player-chip,.ui-toast,.premium-screen :is(.feature-dialog,.tx-form,.code-pad-card){clip-path:none!important;border-radius:12px!important}
+
+/* Account portraits identify the player; fighter artwork remains a separate layer. */
+.account-avatar{width:40px;height:40px;object-fit:cover;border-radius:50%;flex:0 0 auto}
+.ui-player-chip{min-height:44px!important;min-width:44px;padding:4px 8px!important;cursor:pointer;text-transform:none!important}
+.ui-player-chip .account-avatar{width:34px;height:34px;object-fit:cover}
+#matchSetup{--account-chip-width:clamp(128px,20cqw,180px)}
+#matchSetup>#setupBack.ui-player-chip{position:absolute!important;inset:max(12px,env(safe-area-inset-top)) auto auto max(20px,env(safe-area-inset-left))!important;width:var(--account-chip-width)!important;height:44px!important;min-height:44px!important;max-width:none;display:flex;gap:7px;z-index:5;color:var(--ui-text);background:#0c1712e8;border:1px solid #b9d39a55;border-radius:12px;font:600 12px var(--ui-body);letter-spacing:0;pointer-events:auto;touch-action:manipulation}
+#matchSetup>#setupBack.ui-player-chip>span{flex:1;min-width:0;text-align:left}
+#matchSetup>.shared-menu-heading{top:max(12px,env(safe-area-inset-top));left:calc(max(20px,env(safe-area-inset-left)) + var(--account-chip-width) + 16px);right:calc(max(20px,env(safe-area-inset-right)) + var(--account-chip-width) + 16px)}
+#matchSetup>.shared-menu-heading h1{font-size:clamp(20px,5.8cqh,40px);white-space:nowrap}
+.ui-rank-row .account-avatar{width:40px;height:40px;object-fit:cover}
+.ui-own-rank>.account-avatar{width:32px;height:32px}
+.online-profile button{min-height:44px!important}
+.ui-history{border-top:1px solid var(--ui-line-strong);margin-top:12px;padding-top:8px}
+.ui-history summary{min-height:44px;display:flex;align-items:center;cursor:pointer;color:var(--ui-text);font-size:12px;letter-spacing:.06em}
+.ui-history-row{display:flex;gap:12px;align-items:center;padding:10px 12px;margin:4px 0;background:var(--ui-surface);border:1px solid var(--ui-line);border-radius:10px}
+.ui-history-row>span{display:flex;flex:1;min-width:0;flex-direction:column;gap:4px}
+.ui-history-row strong{overflow-wrap:anywhere;font-size:12px}.ui-history-row small{color:var(--ui-muted);font-size:10px!important}
+#mpChosenPlayer{display:flex!important;align-items:center;justify-content:center;gap:7px;margin:6px 0 0;min-width:0}
+#mpChosenPlayer>.account-avatar{width:30px;height:30px}
+#mpChosenPlayer>strong{font:600 11px var(--ui-body)!important;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mp-account-identity{position:absolute;inset:auto 0 0;min-height:75px;display:grid;grid-template-columns:38px minmax(0,1fr);grid-template-rows:1fr auto;gap:2px 8px;align-items:end;padding:24px 9px 9px;background:linear-gradient(transparent,#040b08 36%);z-index:2;text-align:left}
+.mp-account-identity>.account-avatar{width:38px;height:38px;grid-row:1/3;align-self:center}
+.mp-account-identity>strong{font:italic 700 clamp(16px,4cqh,25px) var(--ui-display);line-height:1.1;overflow-wrap:anywhere;min-width:0}
+.mp-account-identity>.mp-player-name{grid-column:2;font-size:10px;line-height:1.2;margin:0;color:var(--ui-muted)}
+.mp-result-identities{display:flex;align-items:center;justify-content:center;gap:18px;max-width:100%}
+.mp-result-identities>span{display:flex;align-items:center;gap:10px;min-width:0}
+.mp-result-identities>span>strong{font-size:14px;max-width:190px;overflow-wrap:anywhere}
+.mp-result-identities .account-avatar{width:52px;height:52px}
+@media(max-height:440px){#mpOnlineResult{gap:7px}.mp-result-identities .account-avatar{width:38px;height:38px}.mp-result-identities>span>strong{font-size:12px}.mp-account-identity{padding:22px 6px 6px;gap:2px 6px;grid-template-columns:32px minmax(0,1fr)}.mp-account-identity>.account-avatar{width:32px;height:32px}}
 .premium-screen :is(.ui-segments,.tx-tabs){border-radius:10px}
 .premium-screen :is(.ui-segments,.tx-tabs) button{border-radius:6px!important}
 .premium-screen select[data-ui-native]{display:block;width:100%;min-width:0;min-height:40px;padding:8px 10px;background:#141b18;color:var(--ui-text);border:1px solid var(--ui-line-strong);border-radius:8px;font:400 14px var(--ui-body);color-scheme:dark;touch-action:manipulation}

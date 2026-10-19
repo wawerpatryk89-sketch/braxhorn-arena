@@ -1,6 +1,7 @@
 import arenaNames from './arena-list.json';
 import {playerIdentity} from './player-identity';
 import {publicPlayerName,reservedName} from './owner-policy';
+import {responseHeaders} from './account-session';
 const roster=['BRAX','NYXA','VEXA','KROV','NINA','DANNY','BEAR','DEMON'];
 const fail=(message:string,status=400)=>Object.assign(new Error(message),{status});
 const code=()=>crypto.randomUUID().replaceAll('-','').slice(0,8).toUpperCase();
@@ -8,6 +9,10 @@ const rows=async(db:any,sql:string,...args:any[])=>(await db.prepare(sql).bind(.
 const stmt=(db:any,sql:string,...args:any[])=>db.prepare(sql).bind(...args);
 const history=(db:any,t:string,actor:string,action:string,detail:string,id=crypto.randomUUID())=>stmt(db,'INSERT OR IGNORE INTO tournament_events(id,tournament_id,actor,action,detail,created) VALUES(?,?,?,?,?,?)',id,t,actor,action,detail,Date.now());
 const active=(s:string)=>!['finished','bye'].includes(s);
+const defaultAvatar='/assets/avatar-male.jpg';
+const profile=(p:any)=>({id:p.id,playerId:p.id,name:p.name,avatar:p.avatar||defaultAvatar,authenticated:p.authenticated,isOwner:p.isOwner,hasPassword:!!p.hasPassword});
+const entrySelect='SELECT e.*,p.name AS current_name,p.avatar FROM tournament_entries e LEFT JOIN players p ON p.id=e.player_id';
+const entryPlayer=(e:any,ownerId:string|null)=>({id:e.id,playerId:e.player_id.startsWith('invite:')?null:e.player_id,name:publicPlayerName(e.current_name||e.name,e.player_id,ownerId),avatar:e.avatar||defaultAvatar,fighter:e.fighter});
 // Keep all later slots and already-open waiting rooms in step with a moved fight.
 async function scheduleFollowing(db:any,t:any,f:any,startAt:number){
  const earlier=await rows(db,"SELECT scheduled_at FROM tournament_fights WHERE tournament_id=? AND (round<? OR (round=? AND position<?)) AND status<>'bye'",t.id,f.round,f.round,f.position);
@@ -36,17 +41,18 @@ export async function reviewFight(db:any,room:any,reason:string){
  await db.batch([stmt(db,"UPDATE tournament_fights SET status='review',reason=? WHERE id=? AND room_code=? AND status NOT IN ('finished','bye')",reason,room.tournament_fight,room.code),stmt(db,'UPDATE online_tournaments SET revision=revision+1 WHERE id=(SELECT tournament_id FROM tournament_fights WHERE id=?)',room.tournament_fight)]);
 }
 async function detail(db:any,t:any,p:any){
- const entries=await rows(db,'SELECT * FROM tournament_entries WHERE tournament_id=? ORDER BY seed,created,id',t.id);
+ const entries=await rows(db,entrySelect+' WHERE e.tournament_id=? ORDER BY e.seed,e.created,e.id',t.id);
  const fights=await rows(db,'SELECT * FROM tournament_fights WHERE tournament_id=? ORDER BY round,position',t.id);
  const mine=entries.find((e:any)=>e.player_id===p.id),organizer=p.isOwner;
- return{tournament:{id:t.id,code:t.code,name:t.name,status:t.status,capacity:t.capacity,startAt:t.start_at,intervalMinutes:t.interval_minutes,timezone:t.timezone,revision:t.revision,champion:t.champion},profile:{name:p.name,authenticated:p.authenticated,isOwner:p.isOwner},organizer,ownEntry:mine?.id||null,
- entries:entries.map((e:any)=>({id:e.id,name:publicPlayerName(e.name,e.player_id,p.ownerId),fighter:e.fighter,seed:e.seed,own:e.id===mine?.id,pending:e.player_id.startsWith('invite:'),...(organizer&&e.player_id.startsWith('invite:')?{inviteCode:e.player_id.slice(7)}:{})})),
- fights:fights.map((f:any)=>({id:f.id,round:f.round,position:f.position,a:f.a,b:f.b,winner:f.winner,status:f.status,scheduledAt:f.scheduled_at,score:f.score,reason:f.reason,attempt:f.attempt,code:mine&&[f.a,f.b].includes(mine.id)?f.room_code:null})),
+ const participant=(id:string|null)=>{const e=entries.find((e:any)=>e.id===id);return e?entryPlayer(e,p.ownerId):null;};
+ return{tournament:{id:t.id,code:t.code,name:t.name,status:t.status,capacity:t.capacity,startAt:t.start_at,intervalMinutes:t.interval_minutes,timezone:t.timezone,revision:t.revision,champion:t.champion,championPlayer:participant(t.champion)},profile:profile(p),organizer,ownEntry:mine?.id||null,
+ entries:entries.map((e:any)=>({...entryPlayer(e,p.ownerId),seed:e.seed,own:e.id===mine?.id,pending:e.player_id.startsWith('invite:'),...(organizer&&e.player_id.startsWith('invite:')?{inviteCode:e.player_id.slice(7)}:{})})),
+ fights:fights.map((f:any)=>({id:f.id,round:f.round,position:f.position,a:f.a,b:f.b,winner:f.winner,aPlayer:participant(f.a),bPlayer:participant(f.b),winnerPlayer:participant(f.winner),status:f.status,scheduledAt:f.scheduled_at,score:f.score,reason:f.reason,attempt:f.attempt,code:mine&&[f.a,f.b].includes(mine.id)?f.room_code:null})),
  history:organizer?await rows(db,'SELECT action,detail,created FROM tournament_events WHERE tournament_id=? ORDER BY created DESC LIMIT 30',t.id):[],now:Date.now()};
 }
 export async function handleTournaments(request:Request,db:any,ownerEmail=''){
  const headers:Record<string,string>={'Cache-Control':'no-store','Vary':'Cookie'};
- const reply=(body:any,status=200)=>Response.json(body,{status,headers});
+ const reply=(body:any,status=200)=>Response.json(body,{status,headers:responseHeaders(headers)});
  try{
   if(!db)throw fail('Turnieje są chwilowo niedostępne.',503);
   const url=new URL(request.url),origin=request.headers.get('origin');
@@ -54,12 +60,13 @@ export async function handleTournaments(request:Request,db:any,ownerEmail=''){
   if(request.method==='POST'&&((origin&&new URL(origin).host!==url.host)||request.headers.get('sec-fetch-site')==='cross-site'))throw fail('Niedozwolone źródło.',403);
   let b:any={};if(request.method==='POST'){const raw=await request.text();if(raw.length>4096)throw fail('Za duże dane.',413);try{b=JSON.parse(raw);}catch{throw fail('Nieprawidłowe dane.');}if(!b||Array.isArray(b))throw fail('Nieprawidłowe dane.');}
   const p=await playerIdentity(request,db,headers,ownerEmail),action=request.method==='GET'?(url.searchParams.get('code')?'detail':'list'):b.action,now=Date.now();
+  if(!['list','detail'].includes(action)&&!p.authenticated)throw fail('Zaloguj się, aby uczestniczyć w turniejach.',403);
   const requireOwner=()=>{if(!p.isOwner)throw fail('Tylko Wawer po zalogowaniu na konto właściciela może organizować turnieje.',403);};
   if(['create','draw','schedule','restart','resolve','cancel','delete','addParticipant','removeParticipant'].includes(action))requireOwner();
   if(action==='list'){
    const all=await rows(db,`SELECT t.*,COUNT(e.id) AS count,MAX(CASE WHEN e.player_id=? THEN e.id END) AS own_entry FROM online_tournaments t LEFT JOIN tournament_entries e ON e.tournament_id=t.id GROUP BY t.id HAVING t.status!='deleted' AND (t.status IN ('registration','running') OR ?=1 OR own_entry IS NOT NULL) ORDER BY t.created DESC LIMIT 50`,p.id,p.isOwner?1:0);
-   const upcoming=await rows(db,`SELECT f.id,f.scheduled_at,f.status,t.code,t.name,e.name AS player_name,other.name AS opponent_name,other.player_id AS opponent_id FROM tournament_fights f JOIN online_tournaments t ON t.id=f.tournament_id JOIN tournament_entries e ON (e.id=f.a OR e.id=f.b) LEFT JOIN tournament_entries other ON other.id=CASE WHEN e.id=f.a THEN f.b ELSE f.a END WHERE e.player_id=? AND t.status='running' AND f.status NOT IN ('finished','bye') ORDER BY f.scheduled_at LIMIT 8`,p.id);
-   return reply({profile:{name:p.name,authenticated:p.authenticated,isOwner:p.isOwner},tournaments:all.map((t:any)=>({code:t.code,name:t.name,status:t.status,capacity:t.capacity,count:t.count,startAt:t.start_at,own:!!t.own_entry,organizer:p.isOwner})) ,upcoming:upcoming.map(({opponent_id,...f}:any)=>({...f,player_name:p.name,opponent_name:publicPlayerName(f.opponent_name,opponent_id,p.ownerId)})),now});
+   const upcoming=await rows(db,`SELECT f.id,f.scheduled_at,f.status,t.code,t.name,COALESCE(op.name,other.name) AS opponent_name,op.avatar AS opponent_avatar,other.player_id AS opponent_id FROM tournament_fights f JOIN online_tournaments t ON t.id=f.tournament_id JOIN tournament_entries e ON (e.id=f.a OR e.id=f.b) LEFT JOIN tournament_entries other ON other.id=CASE WHEN e.id=f.a THEN f.b ELSE f.a END LEFT JOIN players op ON op.id=other.player_id WHERE e.player_id=? AND t.status='running' AND f.status NOT IN ('finished','bye') ORDER BY f.scheduled_at LIMIT 8`,p.id);
+   return reply({profile:profile(p),tournaments:all.map((t:any)=>({code:t.code,name:t.name,status:t.status,capacity:t.capacity,count:t.count,startAt:t.start_at,own:!!t.own_entry,organizer:p.isOwner})) ,upcoming:upcoming.map((f:any)=>({...f,player_id:p.id,player_name:p.name,player_avatar:p.avatar||defaultAvatar,opponent_name:publicPlayerName(f.opponent_name||'CZEKA NA RYWALA',f.opponent_id,p.ownerId),opponent_avatar:f.opponent_avatar||defaultAvatar,opponent_id:f.opponent_id?.startsWith('invite:')?null:f.opponent_id})),now});
   }
   if(action==='create'){
    const name=String(b.name||'').normalize('NFKC').trim().replace(/\s+/g,' ');
@@ -78,7 +85,7 @@ export async function handleTournaments(request:Request,db:any,ownerEmail=''){
    const tournament=await db.prepare('SELECT * FROM online_tournaments WHERE id=?').bind(entry.tournament_id).first();
    if(!['registration','running'].includes(tournament.status))throw fail('Ten turniej jest już zakończony.',409);
    if(await db.prepare('SELECT id FROM tournament_entries WHERE tournament_id=? AND player_id=?').bind(tournament.id,p.id).first())throw fail('Masz już swoje miejsce w tym turnieju.',409);
-   const result=await stmt(db,"UPDATE tournament_entries SET player_id=? WHERE id=? AND player_id=? AND (SELECT status FROM online_tournaments WHERE id=?) IN ('registration','running')",p.id,entry.id,'invite:'+invite,tournament.id).run();
+   const result=await stmt(db,"UPDATE tournament_entries SET player_id=?,name=? WHERE id=? AND player_id=? AND (SELECT status FROM online_tournaments WHERE id=?) IN ('registration','running')",p.id,p.name,entry.id,'invite:'+invite,tournament.id).run();
    if(!result.meta.changes)throw fail('Kod został już wykorzystany.',409);
    await stmt(db,'UPDATE online_tournaments SET revision=revision+1 WHERE id=?',tournament.id).run();
    return reply(await detail(db,tournament,p));
@@ -100,7 +107,6 @@ export async function handleTournaments(request:Request,db:any,ownerEmail=''){
    if(!result.meta.changes)throw fail('Nie można usunąć tego zgłoszenia po losowaniu.',409);
    await history(db,t.id,p.id,'remove','Usunięto zgłoszenie przed losowaniem.').run();
   }else if(action==='register'){
-   if(p.name==='GRACZ'||p.name.length<2)throw fail('Najpierw zapisz swój pseudonim na ekranie startowym.');
    if(!roster.includes(b.fighter))throw fail('Wybierz zawodnika.');
    const exists=await db.prepare('SELECT id FROM tournament_entries WHERE tournament_id=? AND player_id=?').bind(t.id,p.id).first();
    if(!exists){const r=await stmt(db,"INSERT INTO tournament_entries(id,tournament_id,player_id,name,fighter,created) SELECT ?,?,?,?,?,? WHERE (SELECT status FROM online_tournaments WHERE id=?)='registration' AND (SELECT COUNT(*) FROM tournament_entries WHERE tournament_id=?)<(SELECT capacity FROM online_tournaments WHERE id=?) ON CONFLICT(tournament_id,player_id) DO NOTHING",crypto.randomUUID(),t.id,p.id,p.name,b.fighter,now,t.id,t.id,t.id).run();if(!r.meta.changes)throw fail('Zapisy są zamknięte albo wszystkie miejsca są zajęte.',409);}
@@ -130,13 +136,14 @@ export async function handleTournaments(request:Request,db:any,ownerEmail=''){
   }else if(action==='enter'){
    if(t.status!=='running')throw fail('Turniej nie jest w trakcie rozgrywania.');
    const f=await db.prepare('SELECT * FROM tournament_fights WHERE id=? AND tournament_id=?').bind(b.fight,t.id).first();if(!f||!['scheduled','playing'].includes(f.status)||!f.a||!f.b)throw fail('Ta walka nie jest gotowa do rozpoczęcia.');
-   const participants=await rows(db,'SELECT * FROM tournament_entries WHERE id IN (?,?)',f.a,f.b),a=participants.find((e:any)=>e.id===f.a),guest=participants.find((e:any)=>e.id===f.b);
+   const participants=await rows(db,entrySelect+' WHERE e.id IN (?,?)',f.a,f.b),a=participants.find((e:any)=>e.id===f.a),guest=participants.find((e:any)=>e.id===f.b);
    if(![a.player_id,guest.player_id].includes(p.id))throw fail('Ta walka jest przeznaczona dla innej pary zawodników.',403);
    if(now<f.scheduled_at-600000)throw fail('Pokój otworzy się 10 minut przed walką.');
    if(now>f.scheduled_at+3600000&&f.status!=='playing')throw fail('Termin minął. Poproś organizatora o nową godzinę.');
-   await stmt(db,"INSERT OR IGNORE INTO duel_rooms(code,host_key,guest_key,creator,created,expires,host_seen,guest_seen,host_fighter,guest_fighter,host_player,guest_player,host_name,guest_name,tournament_fight,arena) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",f.room_code,crypto.randomUUID(),crypto.randomUUID(),p.id,now,Math.max(now,f.scheduled_at)+7200000,0,0,a.fighter,guest.fighter,a.player_id,guest.player_id,publicPlayerName(a.name,a.player_id,p.ownerId),publicPlayerName(guest.name,guest.player_id,p.ownerId),f.id,arenaNames[crypto.getRandomValues(new Uint32Array(1))[0]%arenaNames.length]).run();
+   const hostPlayer=entryPlayer(a,p.ownerId),guestPlayer=entryPlayer(guest,p.ownerId);
+   await stmt(db,"INSERT OR IGNORE INTO duel_rooms(code,host_key,guest_key,creator,created,expires,host_seen,guest_seen,host_fighter,guest_fighter,host_player,guest_player,host_name,guest_name,tournament_fight,arena) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",f.room_code,crypto.randomUUID(),crypto.randomUUID(),p.id,now,Math.max(now,f.scheduled_at)+7200000,0,0,a.fighter,guest.fighter,a.player_id,guest.player_id,hostPlayer.name,guestPlayer.name,f.id,arenaNames[crypto.getRandomValues(new Uint32Array(1))[0]%arenaNames.length]).run();
    const room=await db.prepare('SELECT * FROM duel_rooms WHERE code=?').bind(f.room_code).first();if(room.started_at||room.status==='closed')throw fail('Ta próba walki już się rozpoczęła. Po utracie sesji organizator może zarządzić powtórkę.',409);
-   return reply({code:room.code,token:p.id===a.player_id?room.host_key:room.guest_key,role:p.id===a.player_id?'host':'guest',hostName:publicPlayerName(a.name,a.player_id,p.ownerId),guestName:publicPlayerName(guest.name,guest.player_id,p.ownerId),tournamentCode:t.code,tournamentFight:f.id,scheduledAt:f.scheduled_at});
+   return reply({code:room.code,token:p.id===a.player_id?room.host_key:room.guest_key,role:p.id===a.player_id?'host':'guest',hostPlayerId:a.player_id,guestPlayerId:guest.player_id,hostName:hostPlayer.name,guestName:guestPlayer.name,hostAvatar:hostPlayer.avatar,guestAvatar:guestPlayer.avatar,tournamentCode:t.code,tournamentFight:f.id,scheduledAt:f.scheduled_at});
   }else if(action==='resolve'||action==='restart'){
    own();if(t.status!=='running')throw fail('Turniej nie jest aktywny.');const f=await db.prepare('SELECT * FROM tournament_fights WHERE id=? AND tournament_id=?').bind(b.fight,t.id).first();
    if(!f||!active(f.status)||!f.a||!f.b)throw fail('Nie można zmienić tej walki.');

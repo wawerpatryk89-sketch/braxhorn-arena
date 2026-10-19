@@ -12,7 +12,7 @@ async function createGame(width, height, withAudio=false, visualViewport=null, o
       this.firstElementChild = {textContent: ''};
     }
     addEventListener(k, fn) {(this.events[k] ||= []).push(fn);}
-    dispatch(k, more = {}) {const event = {type: k, target: this, pointerId: 1, preventDefault() {}, ...more}; for (const fn of this.events[k] || []) fn(event);if(this.id==='go'&&k==='click'&&!context.__MANUAL_NAME){elements.get('playerNickname').value='TEST';elements.get('identityContinue').dispatch('click');}}
+    dispatch(k, more = {}) {const event = {type: k, target: this, pointerId: 1, preventDefault() {}, ...more}; for (const fn of this.events[k] || []) fn(event);}
     setAttribute(k,v){(this.attributes ||= {})[k]=v;}
     getAttribute(k){return this.attributes?.[k]??this[k]??null;}
     get clientWidth(){return this.id==='game' ? parseFloat(this.style.width)||width : width;}
@@ -25,6 +25,8 @@ async function createGame(width, height, withAudio=false, visualViewport=null, o
     remove() {}
   }
   for (const id of [...html.matchAll(/id="([^"]+)"/g)].map(m => m[1])) elements.set(id, new Element(id));
+  // The real entry screen is created by account-entry.js; physics audits use a fixed authenticated fixture.
+  elements.set('accountEntry',new Element('accountEntry'));
   const buttons = [...html.matchAll(/<button[^>]*data-(hold|tap)="([^"]+)"/g)].map(m => new Element('', {[m[1]]: m[2]}));
   const document = {
     hidden: false,
@@ -35,6 +37,7 @@ async function createGame(width, height, withAudio=false, visualViewport=null, o
     addEventListener: (key, fn) => {(events['document:' + key] ||= []).push(fn);}
   };
   const context = {
+    BRAX_ACCOUNT:{profile:{id:'a:physics-audit',name:'TEST',avatar:'/assets/avatar-male.jpg',authenticated:true,isOwner:false,hasPassword:true},show(){elements.get('accountEntry').classList.remove('off');}},
     BRAX_ONLINE: {start(){},finish(){},challenge(){},leaderboard(doc,progress){const online=context.BRAX_ONLINE;delete context.BRAX_ONLINE;try{return context.BRAX_FEATURES.leaderboard(doc,progress);}finally{context.BRAX_ONLINE=online;}},async saveName(name){await Promise.resolve();if(!/^[\p{L}\p{N} ._-]{2,20}$/u.test(name.trim()))throw Error('Nieprawidłowy pseudonim');return name.trim();}},
     document, innerWidth: width, innerHeight: height, visualViewport,
     performance: {now: () => time}, navigator: {}, screen: {}, console,
@@ -64,7 +67,7 @@ async function createGame(width, height, withAudio=false, visualViewport=null, o
   vm.runInNewContext(fs.readFileSync('game/assets/arena-features.js','utf8'),context);
   vm.runInNewContext(fs.readFileSync('game/assets/championship.js','utf8'),context);
   if(options.boot){context.BRAX_BOOT={dispose(){},slot:0,...options.boot};elements.get('survivalScreen').classList.add('off');context.BRAX_INTERFACE={openSurvival(){elements.get('survivalScreen').classList.remove('off');},helpTab(){},syncPause(){},openKeyboard(){}};}
-  const exposed="window.__TEST__={B,O,S,K,NET,blood,koReplay,helpRows,showFighterHelp,closeFighterHelp,helpPending:()=>helpPending,namePending:()=>namePending,selectGameMode,startChallenge,featureEvent,recordMatchProgress,trainingDrill,launchCampaign,campaignBoard,showMatchResult,progress,FEATURES,featureState:()=>({activeChallenge,campaign,selectedGameMode}),worldHPercent,beginShowcaseContact,showcaseContactStep,faceOpponents,CFG:()=>CFG,opponentPose,resolvePlayerHit,drawOpponent,damage,evade,jump,endRound,startCountdown,playerButtonAttack,render,actionStep,playerHurtbox,opponentHurtbox,fighterRect,frameAnchorY,frameBox,attackRect,moveTempo,actionTempo,baseActionTempo,showMatchResult,contactClinchStep,beginAction,begin,restore,bufferAction,separateFighters,confineFighters,visibleLimits,sourcePushBody,sourceHeight,sourceContact,sourceMoveSpeed,attackDistance,resolveOpponentHit,opponentStep,physics,knockdown,launchSource,beginSourcePair,sourcePairInput,sourcePairStep,releaseClinch,selectOpponent,setupOpponent,selectSlot};";
+  const exposed="window.__TEST__={B,O,S,K,NET,blood,koReplay,helpRows,showFighterHelp,closeFighterHelp,helpPending:()=>helpPending,namePending:()=>false,selectGameMode,startChallenge,featureEvent,recordMatchProgress,trainingDrill,launchCampaign,campaignBoard,showMatchResult,progress,FEATURES,featureState:()=>({activeChallenge,campaign,selectedGameMode}),worldHPercent,beginShowcaseContact,showcaseContactStep,faceOpponents,CFG:()=>CFG,opponentPose,resolvePlayerHit,drawOpponent,damage,evade,jump,endRound,startCountdown,playerButtonAttack,render,actionStep,playerHurtbox,opponentHurtbox,fighterRect,frameAnchorY,frameBox,attackRect,moveTempo,actionTempo,baseActionTempo,showMatchResult,contactClinchStep,beginAction,begin,restore,bufferAction,separateFighters,confineFighters,visibleLimits,sourcePushBody,sourceHeight,sourceContact,sourceMoveSpeed,attackDistance,resolveOpponentHit,opponentStep,physics,knockdown,launchSource,beginSourcePair,sourcePairInput,sourcePairStep,releaseClinch,selectOpponent,setupOpponent,selectSlot};";
   vm.runInNewContext((options.combatSource||script).replace(/\}\)\(\);?\s*$/,exposed+"})();"),context,{timeout:20000});
 
   const send = (name, more = {}) => {for (const fn of events[name] || []) fn({preventDefault() {}, ...more});};
@@ -72,7 +75,7 @@ async function createGame(width, height, withAudio=false, visualViewport=null, o
   const tick = ms => {time+=ms;for(const [id,task] of timers)if(task.at<=time){timers.delete(id);task.fn();}raf(time);};
   const key = (name, down = true) => send(down ? 'keydown' : 'keyup', {key: name, repeat: false});
   const proof = context.__BRAX_PROOF__;
-  const flush=async()=>{for(let i=0;i<6;i++)await Promise.resolve();step(180);for(let i=0;i<6;i++)await Promise.resolve();step(32);};const start=async(name='TEST')=>{context.__MANUAL_NAME=true;elements.get('go').dispatch('click');elements.get('playerNickname').value=name;elements.get('identityContinue').dispatch('click');await flush();assert(!context.__TEST__.namePending(),'identity completed asynchronously');assert(elements.get('playerIdentity').classList.contains('off'));context.__MANUAL_NAME=false;};await flush();return {context,start,flush,tick,test:context.__TEST__, elements, buttons, document, send, step, key, proof, state: proof.state, pixelBytes: () => elements.get('bSprite').pixels, pixels: () => crypto.createHash('sha256').update(elements.get('bSprite').pixels).digest('hex')};
+  const flush=async()=>{for(let i=0;i<6;i++)await Promise.resolve();step(180);for(let i=0;i<6;i++)await Promise.resolve();step(32);};const start=async(name='TEST')=>{context.BRAX_ACCOUNT.profile.name=name;context.__TEST__.progress.name=name;send('brax:account-enter',{detail:{player:context.BRAX_ACCOUNT.profile}});await flush();assert(elements.get('accountEntry').classList.contains('off'),'authenticated entry opens the game menu');};await flush();return {context,start,flush,tick,test:context.__TEST__, elements, buttons, document, send, step, key, proof, state: proof.state, pixelBytes: () => elements.get('bSprite').pixels, pixels: () => crypto.createHash('sha256').update(elements.get('bSprite').pixels).digest('hex')};
 }
 
 module.exports={createGame};

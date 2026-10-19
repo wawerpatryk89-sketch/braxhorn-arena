@@ -2,15 +2,18 @@ import {minimumMatchTime} from './ranking-time-policy';
 import challenges from './challenges.json';
 import {playerIdentity} from './player-identity';
 import {reservedName,publicPlayerName} from './owner-policy';
+import {nickKey,responseHeaders} from './account-session';
 const roster=['BRAX','NYXA','VEXA','KROV','NINA','DANNY','BEAR','DEMON'];
 const levels=['easy','normal','hard'];
 const modes=['fight','arcade','tournament','survival','training'];
 const cleanName=(v:unknown)=>String(v||'').normalize('NFKC').replace(/[^\p{L}\p{N} ._-]/gu,'').trim().replace(/\s+/g,' ').slice(0,20);
 const integer=(v:unknown,min=0,max=1000000)=>typeof v==='number'&&Number.isInteger(v)&&v>=min&&v<=max;
 const fail=(message:string,status=400)=>Object.assign(new Error(message),{status});
+const defaultAvatar='/assets/avatar-male.jpg';
+const profile=(p:any)=>({id:p.id,playerId:p.id,name:p.name,avatar:p.avatar||defaultAvatar,authenticated:p.authenticated,isOwner:p.isOwner,hasPassword:!!p.hasPassword});
 export async function handleArena(request:Request,db:any,ownerEmail=''){
  const headers:Record<string,string>={'Content-Type':'application/json','Cache-Control':'no-store','Vary':'Cookie'};
- const reply=(body:any,status=200)=>new Response(JSON.stringify(body),{status,headers});
+ const reply=(body:any,status=200)=>new Response(JSON.stringify(body),{status,headers:responseHeaders(headers)});
  try{
   if(!db)throw fail('Ranking jest chwilowo niedostępny.',503);
   const url=new URL(request.url),action=url.searchParams.get('action')||'me',now=Date.now();
@@ -19,27 +22,44 @@ export async function handleArena(request:Request,db:any,ownerEmail=''){
    if(Number(request.headers.get('content-length')||0)>8192)throw fail('Zbyt duże żądanie.',413);
   }
   const player=await playerIdentity(request,db,headers,ownerEmail),owner=player.id,auth=player.authenticated;
-  if(request.method==='GET'&&action==='reviewResults'){if(!player.isOwner)throw fail('Tylko właściciel może oceniać wyniki.',403);const rows=await db.prepare('SELECT matches.*,runs.fighter,runs.difficulty,runs.mode,runs.owner FROM matches JOIN runs ON runs.id=matches.run_id WHERE matches.review_status=1 ORDER BY matches.started ASC LIMIT 100').all();return reply({rows:rows.results});}
-  if(request.method==='GET'&&action==='me'){
+  if(request.method==='GET'&&action==='reviewResults'){if(!player.isOwner)throw fail('Tylko właściciel może oceniać wyniki.',403);const rows=await db.prepare('SELECT matches.*,runs.fighter,runs.difficulty,runs.mode,runs.owner AS playerId,p.name,p.avatar FROM matches JOIN runs ON runs.id=matches.run_id JOIN players p ON p.id=runs.owner WHERE matches.review_status=1 ORDER BY matches.started ASC LIMIT 100').all();return reply({rows:rows.results.map((r:any)=>({...r,name:publicPlayerName(r.name,r.playerId,player.ownerId),avatar:r.avatar||defaultAvatar}))});}
+  if(request.method==='GET'&&['me','profile'].includes(action)){
    const won=await db.prepare('SELECT fighter,COUNT(*) AS wins FROM matches JOIN runs ON matches.run_id=runs.id WHERE runs.owner=? AND matches.finished=1 AND matches.wins>matches.losses GROUP BY fighter').bind(owner).all();
    const best=await db.prepare("SELECT fighter,MAX(score) AS best FROM results WHERE owner=? AND mode='survival' GROUP BY fighter").bind(owner).all();
    const done=await db.prepare("SELECT DISTINCT fighter,mode FROM results WHERE owner=? AND mode LIKE 'challenge:%'").bind(owner).all();
-   return reply({name:player.name,authenticated:!!auth,isOwner:player.isOwner,fighters:Object.fromEntries(roster.map(f=>[f,{wins:won.results.find((x:any)=>x.fighter===f)?.wins||0,bestSurvival:best.results.find((x:any)=>x.fighter===f)?.best||0,challenges:done.results.filter((x:any)=>x.fighter===f).map((x:any)=>x.mode.slice(10))}]))});
+   return reply({...profile(player),fighters:Object.fromEntries(roster.map(f=>[f,{wins:won.results.find((x:any)=>x.fighter===f)?.wins||0,bestSurvival:best.results.find((x:any)=>x.fighter===f)?.best||0,challenges:done.results.filter((x:any)=>x.fighter===f).map((x:any)=>x.mode.slice(10))}]))});
+  }
+  if(request.method==='GET'&&action==='history'){
+   const solo=await db.prepare('SELECT r.id,r.mode,r.difficulty,r.fighter,r.score,r.elapsed,r.completed,r.created,r.owner AS playerId,p.name,p.avatar FROM results r JOIN players p ON p.id=r.owner WHERE r.owner=? ORDER BY r.created DESC LIMIT 50').bind(owner).all();
+   const duels=await db.prepare('SELECT r.*,hp.name AS current_host_name,hp.avatar AS host_avatar,gp.name AS current_guest_name,gp.avatar AS guest_avatar FROM duel_results r LEFT JOIN players hp ON hp.id=r.host_player LEFT JOIN players gp ON gp.id=r.guest_player WHERE r.host_player=? OR r.guest_player=? ORDER BY r.created DESC LIMIT 50').bind(owner,owner).all();
+   const results=solo.results.map((r:any)=>({...r,kind:'solo',name:publicPlayerName(r.name,r.playerId,player.ownerId),avatar:r.avatar||defaultAvatar}));
+   const online=duels.results.map((r:any)=>{const host=r.host_player===owner;return{id:r.code,code:r.code,kind:'online',created:r.created,score:JSON.parse(r.score),playerId:owner,name:player.name,avatar:player.avatar||defaultAvatar,opponentPlayerId:host?r.guest_player:r.host_player,opponentName:publicPlayerName(host?(r.current_guest_name||r.guest_name):(r.current_host_name||r.host_name),host?r.guest_player:r.host_player,player.ownerId),opponentAvatar:(host?r.guest_avatar:r.host_avatar)||defaultAvatar,hostPlayerId:r.host_player,guestPlayerId:r.guest_player,hostName:publicPlayerName(r.current_host_name||r.host_name,r.host_player,player.ownerId),guestName:publicPlayerName(r.current_guest_name||r.guest_name,r.guest_player,player.ownerId),hostAvatar:r.host_avatar||defaultAvatar,guestAvatar:r.guest_avatar||defaultAvatar,hostFighter:r.host_fighter,guestFighter:r.guest_fighter,ownRole:host?'host':'guest'};});
+   return reply({profile:profile(player),results,duels:online,rows:[...results,...online].sort((a:any,b:any)=>b.created-a.created).slice(0,50)});
   }
   if(request.method==='GET'&&action==='board'){
    const mode=url.searchParams.get('mode')||'survival',difficulty=url.searchParams.get('difficulty')||'normal';
    if(!levels.includes(difficulty)||!([...modes,...challenges.map(c=>'challenge:'+c.id)].includes(mode)))throw fail('Nieznana kategoria.');
-   const cte=`WITH best AS (SELECT results.*,(SELECT target FROM runs WHERE runs.id=results.id) AS targetWins,players.name,ROW_NUMBER() OVER(PARTITION BY results.owner ORDER BY results.completed DESC,results.score DESC,results.elapsed ASC,results.created ASC,results.id ASC) AS personal FROM results JOIN players ON players.id=results.owner WHERE mode=? AND difficulty=? AND NOT EXISTS(SELECT 1 FROM matches WHERE (matches.run_id=results.id OR results.id LIKE matches.run_id||'-%') AND matches.review_status IN (1,3))), ranked AS (SELECT *,ROW_NUMBER() OVER(ORDER BY completed DESC,score DESC,elapsed ASC,created ASC,id ASC) AS rank FROM best WHERE personal=1) SELECT rank,name,fighter,score,elapsed,completed,targetWins,owner,owner=? AS own FROM ranked`;
+   const cte=`WITH best AS (SELECT results.*,(SELECT target FROM runs WHERE runs.id=results.id) AS targetWins,players.name,players.avatar,ROW_NUMBER() OVER(PARTITION BY results.owner ORDER BY results.completed DESC,results.score DESC,results.elapsed ASC,results.created ASC,results.id ASC) AS personal FROM results JOIN players ON players.id=results.owner WHERE mode=? AND difficulty=? AND NOT EXISTS(SELECT 1 FROM matches WHERE (matches.run_id=results.id OR results.id LIKE matches.run_id||'-%') AND matches.review_status IN (1,3))), ranked AS (SELECT *,ROW_NUMBER() OVER(ORDER BY completed DESC,score DESC,elapsed ASC,created ASC,id ASC) AS rank FROM best WHERE personal=1) SELECT rank,name,avatar,fighter,score,elapsed,completed,targetWins,owner,owner=? AS own FROM ranked`;
    const rows=await db.prepare(cte+' WHERE rank<=100 OR owner=? ORDER BY rank').bind(mode,difficulty,owner,owner).all();
-   const safe=rows.results.map(({owner:id,...r}:any)=>({...r,name:publicPlayerName(r.name,id,player.ownerId)}));
+   const safe=rows.results.map(({owner:id,...r}:any)=>({...r,playerId:id,name:publicPlayerName(r.name,id,player.ownerId),avatar:r.avatar||defaultAvatar}));
    return reply({rows:safe.filter((r:any)=>r.rank<=100),own:safe.find((r:any)=>r.own)||null});
   }
   if(request.method!=='POST')throw fail('Nieznane działanie.',404);
   const raw=await request.text();if(raw.length>8192)throw fail('Zbyt duże żądanie.',413);let body;try{body=JSON.parse(raw);if(!body||typeof body!=='object'||Array.isArray(body))throw Error();}catch{throw fail('Nieprawidłowe dane żądania.');}
   if(action==='reviewResult'){if(!player.isOwner)throw fail('Tylko właściciel może oceniać wyniki.',403);if(typeof body.match!=='string'||!['approve','reject'].includes(body.decision))throw fail('Nieprawidłowa decyzja.');const reviewed=await db.prepare('UPDATE matches SET review_status=?,reviewed_by=?,reviewed_at=? WHERE id=? AND review_status=1').bind(body.decision==='approve'?2:3,owner,now,body.match).run();if(!reviewed.meta.changes)throw fail('Wynik nie oczekuje na ocenę.',409);return reply({saved:true,decision:body.decision});}
   if(action==='name'){
-   const requested=cleanName(body.name);if(reservedName(requested)&&!player.isOwner)throw fail('Pseudonim Wawer jest zarezerwowany dla właściciela. Zaloguj się na konto właściciela lub wybierz inną nazwę.',403);const name=player.isOwner?'WAWER':requested;if(name.length<2)throw fail('Wpisz pseudonim od 2 do 20 znaków.');await db.prepare('UPDATE players SET name=? WHERE id=?').bind(name,owner).run();return reply({name});
+   // Account nicknames are managed by authentication, never by the legacy guest form.
+   if(player.hasPassword)return reply(profile(player));
+   const requested=cleanName(body.name);if(reservedName(requested)&&!player.isOwner)throw fail('Pseudonim Wawer jest zarezerwowany dla właściciela. Zaloguj się na konto właściciela lub wybierz inną nazwę.',403);
+   if(!auth)return reply(profile(player));
+   const name=player.isOwner?'WAWER':requested;if(name.length<2)throw fail('Wpisz pseudonim od 2 do 20 znaków.');
+   const key=nickKey(name),taken=await db.prepare('SELECT id FROM players WHERE nick_key=? AND id<>?').bind(key,owner).first();
+   const legacy=await db.prepare("SELECT id,name FROM players WHERE id LIKE 'u:%' AND id<>? AND name<>'GRACZ'").bind(owner).all();
+   if(taken||legacy.results.some((p:any)=>nickKey(p.name)===key))throw fail('Ten nick jest już zajęty. Wybierz inny.',409);
+   try{await db.prepare('UPDATE players SET name=?,nick_key=? WHERE id=?').bind(name,key,owner).run();}catch(error:any){if(/unique|constraint/i.test(String(error?.message)))throw fail('Ten nick jest już zajęty. Wybierz inny.',409);throw error;}
+   return reply({...profile(player),name});
   }
+  if(['start','finish','challenge'].includes(action)&&!auth)throw fail('Zaloguj się, aby zapisywać wyniki w rankingach i wyzwaniach.',403);
   if(action==='start'){
    const {mode,difficulty,fighter,challenge}=body;const target=mode==='tournament'?(body.targetWins===2?2:3):mode==='arcade'?roster.length-1:1;
    if(!modes.includes(mode)||!levels.includes(difficulty)||!roster.includes(fighter)||typeof body.runId!=='string'||body.runId.length>90)throw fail('Nieprawidłowe ustawienia walki.');

@@ -24,6 +24,17 @@
 
 html.tournaments-open,html.tournaments-open body,html.tournaments-open #game{touch-action:pan-x pan-y}#onlineTournaments{touch-action:pan-x pan-y}#onlineTournaments input,#onlineTournaments textarea{user-select:text;-webkit-user-select:text}
 
+.tx-portrait{width:48px!important;height:48px!important;aspect-ratio:1;border-radius:50%!important;background:transparent}
+.tx-portrait>.account-avatar{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.tx-champion .tx-portrait{width:88px!important;height:88px!important}
+.tx-upcoming>.account-avatar{width:42px;height:42px}.tx-upcoming>span{flex:1;min-width:0}
+.tx-opponent-identity{display:flex;align-items:center;gap:7px;min-width:0;overflow-wrap:anywhere}
+.tx-opponent-identity>.account-avatar{width:32px;height:32px}
+.tx-timetable .tx-fighter-row{min-height:48px;padding:5px 0;border:0}.tx-timetable .tx-portrait{width:32px!important;height:32px!important}
+.tx-account-required{min-height:210px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;text-align:center;background:linear-gradient(120deg,#15251a,#09130e);border:1px solid #72866366;border-radius:12px;padding:20px}
+.tx-account-required h2,.tx-account-required p{margin:0}.tx-account-required p{max-width:400px;color:#b7c7aa}
+#onlineTournaments [data-tx=profile],#onlineTournaments [data-tx=login]{min-height:44px}
+
 .tx-entrants{grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}.tx-entrants .tx-fighter-row{padding:0;gap:14px;min-height:100px;border:0;background:linear-gradient(120deg,#22302180,transparent)}.tx-entrants .tx-portrait{width:83px;height:100px;border-radius:0}.tx-entrants .tx-fighter-row strong{font-size:17px}.tx-entrants .tx-fighter-row small{font-size:9px}.tx-entrants .tx-own{box-shadow:inset 0 0 0 1px #bbce9966}.tx-entrants .tx-fighter-row>span:last-child{padding-right:10px}
 @media(max-height:500px){.tx-form-heading{margin-bottom:4px}.tx-form label{margin:6px 0;gap:5px}.tx-form p{margin:8px 0;font-size:10px;line-height:1.35}.tx-form input,.tx-form select{min-height:36px;padding:8px}.tx-form>.tx-primary{margin-top:4px}.tx-entrants{grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}}
 @media(max-width:600px){.tx-entrants{grid-template-columns:1fr 1fr}.tx-entrants .tx-portrait{width:65px;height:80px}.tx-entrants .tx-fighter-row{min-height:80px;gap:9px}.tx-entrants .tx-fighter-row strong{font-size:14px}}

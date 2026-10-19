@@ -49,7 +49,7 @@ panel.addEventListener('click',e=>{const b=e.target.closest('button');if(!b||!ta
  if(b.dataset.shift!==undefined){when=new Date(when.getTime()+Number(b.dataset.shift)*60000);draw();return;}
  const a=b.dataset.gp;if(a==='close')close();else if(a==='back'){draft=draft.slice(0,-1);draw();}else if(a==='shift'){upper=!upper;draw();}else if(a==='numeric'){numeric=!numeric;draw();}else if(a==='ok'){commit();close();}});
 function attach(input){
- if(!input||input.dataset.gamePad||input.dataset.codePad||input.id==='playerNickname'||input.id==='arenaSearch')return;
+ if(!input||input.dataset.gamePad||input.dataset.codePad||input.dataset.nativeInput==='true'||input.closest('#accountEntry,#accountRegister,#accountProfile')||input.id==='arenaSearch')return;
  const type=(input.getAttribute('type')||'text').toLowerCase();if(!['text','search','datetime-local','date','time',''].includes(type))return;
  input.dataset.gamePad=type.startsWith('date')||type==='time'?'date':'text';
  if(input.dataset.gamePad==='date'){input.type='text';input.dataset.originalType=type;if(input.value)input.value=input.value.slice(0,16);}

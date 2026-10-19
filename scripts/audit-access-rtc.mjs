@@ -1,3 +1,4 @@
+import {registerTestAccount} from './fixtures/account-test-session.mjs';
 import compatibility from '../backend/lib/build-compatibility.json' with {type:'json'};
 import {DatabaseSync} from 'node:sqlite';
 import fs from 'node:fs';
@@ -25,14 +26,16 @@ assert.equal((await call(handleTournaments,'/api/tournaments',{action:'create'},
 const me=await arena('me',owner);assert.equal(me.body.isOwner,true);assert.equal(me.body.name,'WAWER');
 assert.equal((await arena('me',{'oai-authenticated-user-id':'owner'})).body.isOwner,true,'stable subject persists after email changes');
 for(const name of ['Wawer','wAWEr',' ＷＡＷＥＲ ','W a w e r','W.a_w-e-r','Wаwеr'])assert.equal((await arena('name',guest,{name})).status,403,name);
-assert.equal((await arena('name',guest,{name:'Monisia'})).body.name,'Monisia');
+assert.match((await arena('name',guest,{name:'Monisia'})).body.name,/^GOŚĆ-/);
+const participant={cookie:(await registerTestAccount(db,'Monisia')).cookie};
 const created=await t('create',owner,{name:'Test dostępu',capacity:4,startAt:Date.now()+3600000,intervalMinutes:30,timezone:'Europe/Warsaw'});assert.equal(created.status,200,JSON.stringify(created));
 const code=created.body.tournament.code;
 // Even a former guest creator loses administrative authority.
 sql.prepare('UPDATE online_tournaments SET owner=? WHERE code=?').run('g:00000000-0000-0000-0000-000000000001',code);
 for(const action of ['create','draw','schedule','restart','resolve','cancel','delete','addParticipant','removeParticipant'])for(const h of [guest,other])assert.equal((await t(action,h,{code})).status,403,action);
 assert.equal((await t('detail',guest,{code})).body.organizer,false);
-assert.equal((await t('register',guest,{code,fighter:'BRAX'})).status,200,'public participant registration remains available');
+assert.equal((await t('register',guest,{code,fighter:'BRAX'})).status,403,'guest cannot register');
+assert.equal((await t('register',participant,{code,fighter:'BRAX'})).status,200,'authenticated public participant registration remains available');
 assert.equal((await t('detail',owner,{code})).body.organizer,true);
 assert.equal((await t('cancel',owner,{code})).status,200);
 // Public registration and organizer invitations share the same draw slots.
@@ -41,7 +44,8 @@ const ic=invitational.tournament.code;
 let invited=await t('addParticipant',owner,{code:ic,name:'Monika',fighter:'NYXA'});assert.equal(invited.status,200);
 const monika=invited.body.entries[0];assert.match(monika.inviteCode,/^[A-F0-9]{16}$/);
 assert.equal((await t('detail',guest,{code:ic})).body.entries[0].inviteCode,undefined,'private invitation is not public');
-assert.equal((await t('claim',guest,{inviteCode:monika.inviteCode})).body.ownEntry,monika.id);
+assert.equal((await t('claim',guest,{inviteCode:monika.inviteCode})).status,403);
+assert.equal((await t('claim',participant,{inviteCode:monika.inviteCode})).body.ownEntry,monika.id);
 assert.equal((await t('claim',other,{inviteCode:monika.inviteCode})).status,404,'used invitation cannot be stolen');
 const jan=(await t('addParticipant',owner,{code:ic,name:'Jan',fighter:'DANNY'})).body.entries.find(e=>e.name==='Jan');
 await t('addParticipant',owner,{code:ic,name:'Anna',fighter:'NINA'});
@@ -58,12 +62,12 @@ for(const h of [guest,owner]){
  assert.equal((await t('detail',h,{code:ic})).status,404,'deleted tournament cannot reopen by code');
  assert(!(await t('list',h)).body.tournaments.some(t=>t.code===ic),'deleted tournament absent from all lists');
 }
-assert.equal((await t('claim',guest,{inviteCode:monika.inviteCode})).status,404);
+assert.equal((await t('claim',participant,{inviteCode:monika.inviteCode})).status,404);
 
 // Legacy Wawer aliases are not shown as the owner, even before the guest returns.
 sql.prepare('UPDATE players SET name=? WHERE id=?').run('WAWER','g:00000000-0000-0000-0000-000000000001');
 const room=(await call(handleDuel,'/api/duel',{action:'create',fighter:'BRAX'},guest)).body;
-assert.equal(room.hostName,'GRACZ');
+assert.match(room.hostName,/^GOŚĆ-/);
 const joined=(await call(handleDuel,'/api/duel',{action:'join',code:room.code,fighter:'NINA'},owner)).body;assert.equal(joined.guestName,'WAWER');
 await call(handleDuel,'/api/duel',{...room,action:'sync',ready:true},guest);
 const sync=await call(handleDuel,'/api/duel',{...joined,action:'sync',ready:true},owner);assert.equal(sync.body.status,'playing');
@@ -81,4 +85,4 @@ assert.equal((await rtc(room,config,{origin:'https://other.test'})).status,403);
 const meteredConfig={BRAX_METERED_TURN_USERNAME:'test-user',BRAX_METERED_TURN_PASSWORD:'test-password'};
 const metered=await rtc(room,meteredConfig);assert.equal(metered.body.provider,'metered');assert.equal(metered.body.relayAvailable,true);assert.equal(metered.body.iceServers[1].urls.length,4);assert.equal(metered.body.iceServers[1].credential,'test-password');assert.equal((await rtc({...room,token:'invalid'},meteredConfig)).status,403);assert.equal((await rtc(room,meteredConfig,{origin:'https://other.test'})).status,403);
 sql.prepare("UPDATE duel_rooms SET status='closed' WHERE code=?").run(room.code);assert.equal((await rtc(room)).status,403,'room authorization also enforced on credential cache hits');
-globalThis.fetch=realFetch;sql.close();console.log('PASS owner identity, all organizer mutations, reserved aliases, public joins, legacy names, monotonic state, TURN room authorization and temporary-only credentials.');
+globalThis.fetch=realFetch;sql.close();console.log('PASS owner identity, all organizer mutations, reserved aliases, authenticated joins, guest exclusions, legacy names, monotonic state, TURN room authorization and temporary-only credentials.');

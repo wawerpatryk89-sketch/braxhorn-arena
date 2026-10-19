@@ -1,35 +1,80 @@
-/* Shared ranking client. Local progress remains a cache; world results come from the server. */
+/* Account identity comes from the server; local progress is only a per-player cache. */
 (()=>{
 'use strict';
-const displayFighterName=id=>window.BRAX_FIGHTER_NAME?.(id)??String(id??'');
- const F=window.BRAX_FEATURES,base=F.createProgress,instances=[],cache={fighters:{},authenticated:false,name:''};
- let serial=Promise.resolve(),current=null,status='Łączenie z rankingiem…',pending=[];
- try{pending=JSON.parse(localStorage.getItem('braxhorn.online.pending')||'[]').slice(-30);}catch{}
- const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- async function api(action,body,params=''){const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),10000);try{const r=await fetch('/api/arena?action='+action+params,{method:body?'POST':'GET',headers:body?{'Content-Type':'application/json'}:undefined,body:body?JSON.stringify(body):undefined,credentials:'same-origin',signal:controller.signal});const data=await r.json();if(!r.ok)throw Object.assign(Error(data.error||'Ranking chwilowo niedostępny.'),{status:r.status});return data;}finally{clearTimeout(timer);}}
- function show(message){status=message;const el=document.getElementById('onlineSaveStatus');if(el)el.textContent=status;}
- function persist(){try{localStorage.setItem('braxhorn.online.pending',JSON.stringify(pending));}catch{}}
- async function flush(){while(pending.length){const item=pending[0];try{await api(item.action,item.body);pending.shift();persist();show('✓ Wynik zapisany online');}catch(e){if(e.status>=400&&e.status<500&&e.status!==429){pending.shift();persist();show('Wynik nie został przyjęty: '+e.message);continue;}show('Wynik czeka na zapis online. '+e.message);break;}}}
- async function refresh(){try{Object.assign(cache,await api('me'));if(cache.name&&cache.name!=='GRACZ')for(const p of instances)p.localSetName(cache.name);show(pending.length?'Wynik czeka na ponowny zapis.':'Połączono z rankingiem światowym');}catch{show('Brak połączenia z rankingiem. Wyniki online wymagają połączenia.');}}
- F.createProgress=storage=>{const p=base(storage),localFighter=p.fighter.bind(p),localSetName=p.setName.bind(p);p.localSetName=localSetName;p.fighter=n=>{const l=localFighter(n),r=cache.fighters[n];return r?{wins:Math.max(l.wins,r.wins),bestSurvival:Math.max(l.bestSurvival,r.bestSurvival),challenges:[...new Set([...l.challenges,...r.challenges])]}:l;};p.setName=n=>{const ok=localSetName(n);if(ok)serial=serial.catch(()=>{}).then(()=>api('name',{name:p.name})).catch(()=>show('Pseudonim zostanie zapisany przy następnym połączeniu.'));return ok;};instances.push(p);return p;};
- function start(body){const name=instances.at(-1)?.name||'GRACZ';const session={promise:null};current=session;session.promise=serial=serial.catch(()=>{}).then(async()=>{await flush();await api('name',{name});const result=await api('start',body);show('Walka połączona z rankingiem');return result.match;}).catch(e=>{show('Ta walka nie jest połączona z rankingiem. '+e.message);return null;});}
- function submit(action,body){const session=current;if(!session)return;serial=serial.catch(()=>{}).then(async()=>{const match=await session.promise;if(!match)return;pending.push({action,body:{...body,match}});persist();await flush();});}
- const time=ms=>Math.floor(ms/60000)+':'+String(Math.floor(ms/1000)%60).padStart(2,'0');
- let boardRequest=0;
- async function leaderboard(document,progress){const $=id=>document.getElementById(id),mode=$('recordsMode').value,difficulty=$('recordsDifficulty').value,request=++boardRequest;$('rankingNote').textContent='Pobieranie rankingu światowego…';$('leaderboard').innerHTML='<div aria-label="Pobieranie rankingu" role="status"><div class="ui-skeleton"></div><div class="ui-skeleton"></div><div class="ui-skeleton"></div></div>';let profile=$('onlineProfile');if(!profile){profile=document.createElement('div');profile.id='onlineProfile';profile.className='online-profile';$('recordsTools').prepend(profile);}profile.innerHTML='<span id="onlineSaveStatus">'+escape(status)+'</span>'+(cache.authenticated?'<b>PROFIL ONLINE</b>':'<a href="/signin-with-chatgpt?return_to=/" target="_top">ZALOGUJ · PROFIL NA KAŻDYM URZĄDZENIU ↗</a>')+'<button id="retryOnline" type="button">ODŚWIEŻ ↻</button>';$('retryOnline').onclick=async()=>{await flush();await refresh();leaderboard(document,progress);};
- try{const data=await api('board',null,'&mode='+encodeURIComponent(mode)+'&difficulty='+difficulty);if(request!==boardRequest)return;
+const F=window.BRAX_FEATURES,base=F.createProgress,instances=[],cache={fighters:{},authenticated:false,name:'',avatar:'/assets/avatar-male.jpg'};
+const DEFAULT_AVATAR='/assets/avatar-male.jpg',pendingKey='braxhorn.online.pending.accounts.v1';
+let serial=Promise.resolve(),current=null,status='Łączenie z rankingiem…',pending=[],activeId=null,boardRequest=0;
+const escape=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const profile=()=>window.BRAX_ACCOUNT?.profile||((cache.id||cache.playerId)?cache:null);
+const playerId=p=>p?.id||p?.playerId||null;
+const avatarUrl=value=>typeof value==='string'&&/^\/(?!\/)(?:assets\/|api\/)/.test(value)?value:DEFAULT_AVATAR;
+const avatarMarkup=(p={},className='account-avatar')=>'<img class="'+escape(className)+'" src="'+escape(avatarUrl(p?.avatar))+'" alt="Awatar gracza '+escape(p?.name||'Gość')+'" loading="lazy" decoding="async">';
+async function api(action,body,params=''){
+ const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),10000);
+ try{const r=await fetch('/api/arena?action='+action+params,{method:body?'POST':'GET',headers:body?{'Content-Type':'application/json'}:undefined,body:body?JSON.stringify(body):undefined,credentials:'same-origin',signal:controller.signal});const data=await r.json();if(!r.ok)throw Object.assign(Error(data.error||'Ranking chwilowo niedostępny.'),{status:r.status});return data;}finally{clearTimeout(timer);}
+}
+function show(message){status=message;const el=document.getElementById('onlineSaveStatus');if(el)el.textContent=status;}
+function persist(){try{const all=JSON.parse(localStorage.getItem(pendingKey)||'{}');if(activeId)all[activeId]=pending.slice(-30);localStorage.setItem(pendingKey,JSON.stringify(all));}catch{}}
+function identityChanged(p){
+ const id=playerId(p);
+ if(id!==activeId){persist();activeId=id;current=null;cache.fighters={};pending=[];if(p?.authenticated&&id)try{pending=(JSON.parse(localStorage.getItem(pendingKey)||'{}')[id]||[]).filter(item=>item.playerId===id).slice(-30);}catch{}}
+ Object.assign(cache,{id,playerId:id,name:p?.name||'',avatar:avatarUrl(p?.avatar),authenticated:!!p?.authenticated,isOwner:!!p?.isOwner,hasPassword:!!p?.hasPassword});
+ if(!p?.authenticated){pending=[];persist();show('Tryb gościa · turnieje i ranking wymagają zalogowania.');}
+ for(const instance of instances)instance.sync();
+}
+async function ensureProfile(){
+ if(window.BRAX_ACCOUNT)await window.BRAX_ACCOUNT.ready;
+ const p=window.BRAX_ACCOUNT?.profile||await api('me');identityChanged(p);
+ return{...p,avatar:avatarUrl(p?.avatar)};
+}
+async function flush(){
+ const p=profile(),id=playerId(p);if(!p?.authenticated||!id||id!==activeId)return;
+ while(pending.length){const item=pending[0];if(item.playerId!==id){pending.shift();persist();continue;}try{await api(item.action,item.body);if(playerId(profile())!==id)return;pending.shift();persist();show('✓ Wynik zapisany online');}catch(e){if(playerId(profile())!==id)return;if(e.status>=400&&e.status<500&&e.status!==429){pending.shift();persist();show('Wynik nie został przyjęty: '+e.message);continue;}show('Wynik czeka na zapis online. '+e.message);break;}}
+}
+async function refresh(){
+ try{const p=await ensureProfile();if(!p.authenticated)return;const id=playerId(p),data=await api('me');if(playerId(profile())!==id)return;Object.assign(cache,data);show(pending.length?'Wynik czeka na ponowny zapis.':'Połączono z rankingiem światowym');}
+ catch{show('Brak połączenia z rankingiem. Wyniki online wymagają połączenia.');}
+}
+F.createProgress=storage=>{
+ let local,id;const sync=()=>{const p=profile(),next=playerId(p)||'signed-out';if(next!==id){id=next;const scoped=storage?{getItem:key=>storage.getItem(key+':account:'+id),setItem:(key,value)=>storage.setItem(key+':account:'+id,value)}:undefined;local=base(scoped);}if(p?.name&&local.name!==p.name)local.setName(p.name);};sync();
+ const instance={sync};instances.push(instance);
+ return new Proxy({}, {get(_target,key){sync();if(key==='name')return profile()?.name||'';if(key==='setName'||key==='localSetName')return value=>!!profile()?.name&&value===profile().name&&local.setName(value);if(key==='fighter')return n=>{sync();const l=local.fighter(n),r=cache.authenticated&&cache.fighters[n];return r?{wins:Math.max(l.wins,r.wins),bestSurvival:Math.max(l.bestSurvival,r.bestSurvival),challenges:[...new Set([...l.challenges,...r.challenges])]}:l;};const value=local[key];return typeof value==='function'?value.bind(local):value;}});
+};
+function start(body){
+ const session={promise:null,playerId:null};current=session;
+ session.promise=serial=serial.catch(()=>{}).then(async()=>{const p=await ensureProfile();if(current!==session||!p.authenticated)return null;session.playerId=playerId(p);await flush();if(playerId(profile())!==session.playerId)return null;const result=await api('start',body);show('Walka połączona z rankingiem');return result.match;}).catch(e=>{show('Ta walka nie jest połączona z rankingiem. '+e.message);return null;});
+}
+function submit(action,body){
+ const session=current;if(!session)return;
+ serial=serial.catch(()=>{}).then(async()=>{const match=await session.promise,p=profile();if(!match||!p?.authenticated||session.playerId!==playerId(p))return;pending.push({playerId:session.playerId,action,body:{...body,match}});persist();await flush();});
+}
+const time=ms=>Math.floor(ms/60000)+':'+String(Math.floor(ms/1000)%60).padStart(2,'0');
+async function history(document){
+ const target=document.getElementById('onlineHistory');if(!target)return;
+ if(!profile()?.authenticated){target.innerHTML='<p>Zaloguj się, aby zobaczyć historię swojego konta.</p>';return;}
+ const id=playerId(profile());target.innerHTML='<p role="status">Pobieranie historii walk…</p>';
+ try{const data=await api('history');if(playerId(profile())!==id)return;target.innerHTML=data.rows?.length?data.rows.map(r=>{const online=r.kind==='online',other=r.opponentName||(r.ownRole==='host'?r.guestName:r.hostName),score=Array.isArray(r.score)?r.score.join(' : '):String(r.score??'—');return'<article class="ui-history-row" data-player-id="'+escape(r.playerId||id)+'">'+avatarMarkup(r)+'<span><strong>'+escape(r.name||profile().name)+'</strong><small>'+escape(online?'VS '+(other||'Rywal'):r.mode)+' · '+new Date(r.created).toLocaleDateString('pl-PL')+'</small></span>'+(online?avatarMarkup({name:other,avatar:r.opponentAvatar}):'')+'<b>'+escape(score)+'</b></article>';}).join(''):'<p>Nie masz jeszcze zapisanych walk.</p>';}catch(e){target.textContent=e.message;}
+}
+async function leaderboard(document,progress){
+ const $=id=>document.getElementById(id),mode=$('recordsMode').value,difficulty=$('recordsDifficulty').value,request=++boardRequest;
+ $('rankingNote').textContent='Pobieranie rankingu światowego…';$('leaderboard').innerHTML='<div aria-label="Pobieranie rankingu" role="status"><div class="ui-skeleton"></div><div class="ui-skeleton"></div><div class="ui-skeleton"></div></div>';
+ let box=$('onlineProfile');if(!box){box=document.createElement('div');box.id='onlineProfile';box.className='online-profile';$('recordsTools').prepend(box);}
+ box.innerHTML='<span id="onlineSaveStatus">'+escape(status)+'</span><button id="onlineAccount" type="button">'+(profile()?.authenticated?'MÓJ PROFIL':'ZALOGUJ SIĘ')+'</button><button id="retryOnline" type="button">ODŚWIEŻ ↻</button>';
+ $('onlineAccount').onclick=()=>profile()?.authenticated?window.BRAX_ACCOUNT?.openProfile():window.BRAX_ACCOUNT?.show();
+ $('retryOnline').onclick=async()=>{await flush();await refresh();leaderboard(document,progress);};
+ let historyBox=$('onlineHistorySection');if(!historyBox){historyBox=document.createElement('details');historyBox.id='onlineHistorySection';historyBox.className='ui-history';historyBox.innerHTML='<summary>HISTORIA TWOICH WALK</summary><div id="onlineHistory"></div>';$('featureRecords').after(historyBox);historyBox.addEventListener('toggle',()=>{if(historyBox.open)history(document);});}
+ try{await ensureProfile();const data=await api('board',null,'&mode='+encodeURIComponent(mode)+'&difficulty='+difficulty);if(request!==boardRequest)return;
  const result=r=>mode==='survival'?r.score+' '+(window.BRAX_UI?.plural(r.score,'zwycięstwo','zwycięstwa','zwycięstw')||'zwycięstw'):mode==='arcade'?r.score+'/'+(r.targetWins||5)+' · '+(r.completed?'ukończone':'seria'):mode==='tournament'?r.score+' wygr. · '+(r.completed?'mistrz':'seria'):mode.startsWith('challenge:')?'Ukończone':'Przewaga '+r.score+' rund';
- $('rankingNote').textContent='TOP 100 · '+(data.own?'TWOJE MIEJSCE #'+data.own.rank:'TWÓJ WYNIK CZEKA NA PIERWSZĄ UKOŃCZONĄ GRĘ')+' · Przy remisie wygrywa krótszy czas.';
+ $('rankingNote').textContent='TOP 100 · '+(!profile()?.authenticated?'GOŚĆ · ZALOGUJ SIĘ, ABY ZAPISYWAĆ WYNIKI':data.own?'TWOJE MIEJSCE #'+data.own.rank:'TWÓJ WYNIK CZEKA NA PIERWSZĄ UKOŃCZONĄ GRĘ')+' · Przy remisie wygrywa krótszy czas.';
  const rows=data.own&&data.own.rank>100?[...data.rows,data.own]:data.rows;
- const row=r=>'<article class="ui-rank-row '+(r.own?'own':'')+'" aria-label="Miejsce '+r.rank+'"><b>'+r.rank+'</b><img src="/assets/campaign-portraits/'+(F.roster.includes(r.fighter)?r.fighter.toLowerCase():'brax')+'.webp" alt="'+escape(displayFighterName(r.fighter))+'"><strong>'+escape(r.name)+(r.own?' · TY':'')+'</strong><span>'+result(r)+'</span><time>'+time(r.elapsed)+'</time></article>';
+ const row=r=>'<article class="ui-rank-row '+(r.own?'own':'')+'" data-player-id="'+escape(r.playerId)+'" aria-label="Miejsce '+r.rank+'"><b>'+r.rank+'</b>'+avatarMarkup(r)+'<strong>'+escape(r.name)+(r.own?' · TY':'')+'</strong><span>'+result(r)+'</span><time>'+time(r.elapsed)+'</time></article>';
  $('leaderboard').innerHTML=rows.length?'<div class="ui-podium">'+rows.filter(r=>r.rank<=3).map(row).join('')+'</div><div class="ui-ranking-list">'+rows.filter(r=>r.rank>3).map(row).join('')+'</div>':'<div class="ui-empty"><b aria-hidden="true">♜</b><h3>Brak wyników</h3><p>Jeszcze nikt nie zapisał wyniku w tej kategorii. Rozegraj serię i zajmij pierwsze miejsce.</p></div>';
- $('rankingNote').title='Przy remisie wygrywa krótszy czas.';
- $('recordsTools').classList.remove('ui-offline');window.BRAX_UI?.pinOwnRanking(data.own,result,time);
-
- await refresh();$('featureRecords').innerHTML=F.records(progress);
- }catch(e){if(request!==boardRequest)return;$('recordsTools').classList.add('ui-offline');$('rankingNote').textContent='RANKING ŚWIATOWY · BRAK POŁĄCZENIA';$('leaderboard').innerHTML='<p>'+escape(e.message)+'<br>Użyj ODŚWIEŻ, aby spróbować ponownie.</p>';}}
- async function saveName(name){await serial.catch(()=>{});const saved=await api('name',{name});cache.name=saved.name;for(const p of instances)p.localSetName(saved.name);return saved.name;}
- async function ensureProfile(){await serial.catch(()=>{});Object.assign(cache,await api('me'));const name=cache.isOwner?'WAWER':instances.at(-1)?.name||cache.name;if(name&&name!=='GRACZ')await saveName(name);return{name:cache.name,authenticated:cache.authenticated,isOwner:cache.isOwner};}
- window.BRAX_ONLINE={ensureProfile,saveName,get name(){return instances.at(-1)?.name||cache.name||'GRACZ';},start,finish:body=>submit('finish',{...body,elapsed:Math.round(body.elapsed),hp:Math.round(body.hp)}),challenge:(challenge,elapsed,count)=>submit('challenge',{challenge,elapsed:Math.round(elapsed),count}),leaderboard,best:async level=>{try{const b=await api('board',null,'&mode=survival&difficulty='+level);return{level,row:b.rows[0],own:b.own};}catch{return{level,error:true};}}};
- window.addEventListener('online',()=>{serial=serial.catch(()=>{}).then(flush);});refresh();
+ $('rankingNote').title='Przy remisie wygrywa krótszy czas.';$('recordsTools').classList.remove('ui-offline');window.BRAX_UI?.pinOwnRanking(data.own,result,time);
+ await refresh();if(request!==boardRequest)return;$('featureRecords').innerHTML=F.records(progress);if(historyBox.open)history(document);
+ }catch(e){if(request!==boardRequest)return;$('recordsTools').classList.add('ui-offline');$('rankingNote').textContent='RANKING ŚWIATOWY · BRAK POŁĄCZENIA';$('leaderboard').innerHTML='<p>'+escape(e.message)+'<br>Użyj ODŚWIEŻ, aby spróbować ponownie.</p>';}
+}
+async function saveName(name){const p=await ensureProfile();if(name!==p.name)throw Error('Nick jest przypisany do konta.');return p.name;}
+window.BRAX_ONLINE={ensureProfile,saveName,avatarMarkup,avatarUrl,get profile(){return profile();},get name(){return profile()?.name||'GOŚĆ';},get avatar(){return avatarUrl(profile()?.avatar);},start,finish:body=>submit('finish',{...body,elapsed:Math.round(body.elapsed),hp:Math.round(body.hp)}),challenge:(challenge,elapsed,count)=>submit('challenge',{challenge,elapsed:Math.round(elapsed),count}),leaderboard,history,best:async level=>{try{await ensureProfile();const b=await api('board',null,'&mode=survival&difficulty='+level);return{level,row:b.rows[0],own:b.own};}catch{return{level,error:true};}}};
+window.addEventListener('brax:account',event=>{identityChanged(event.detail?.profile);++boardRequest;const target=document.getElementById('onlineHistory');if(target)target.replaceChildren();if(event.detail?.profile?.authenticated)refresh();});
+window.addEventListener('online',()=>{serial=serial.catch(()=>{}).then(flush);});refresh();
 })();

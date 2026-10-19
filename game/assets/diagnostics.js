@@ -19,6 +19,6 @@ function toggle(){if(open){open=false;panel.remove();cancelAnimationFrame(rafId)
  for(const [label,fn] of [['RESET',()=>{meter.reset();window.__BRAX_DIAGNOSTICS__?.reset();}],['JSON',()=>{const blob=new Blob([JSON.stringify(report(),null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='braxhorn-diagnostics.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}],['ZAMKNIJ',toggle]]){const b=document.createElement('button');b.textContent=label;b.style.cssText='font:11px monospace;padding:8px;margin:4px 4px 0 0;color:white;background:#183b20;border:1px solid #58775b';b.addEventListener('click',e=>{e.stopPropagation();fn();});panel.appendChild(b);}
  document.body.appendChild(panel);rafId=requestAnimationFrame(paint);}
 // Existing title artwork, roster wordmark or the BRAXHORN text in the fight HUD.
-document.addEventListener('pointerup',e=>{const t=e.target;if(t.closest?.('#braxDiagnostics')||t.closest?.('button'))return;if(!t.closest?.('#start .menu-art, .roster-heading, #combo'))return;const now=performance.now();taps=taps.filter(x=>now-x<2500);taps.push(now);if(taps.length===5){taps=[];toggle();}});
+document.addEventListener('pointerup',e=>{const t=e.target;if(t.closest?.('#braxDiagnostics')||t.closest?.('button'))return;if(!t.closest?.('#accountEntry .account-reference, .roster-heading, #combo'))return;const now=performance.now();taps=taps.filter(x=>now-x<2500);taps.push(now);if(taps.length===5){taps=[];toggle();}});
 window.BRAX_DIAGNOSTIC_OVERLAY={toggle,report};
 })();

@@ -57,6 +57,13 @@
       "when": 1792324066484,
       "tag": "0007_round_tiger_shark",
       "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "6",
+      "when": 1792423533319,
+      "tag": "0008_regular_meltdown",
+      "breakpoints": true
     }
   ]
 }
