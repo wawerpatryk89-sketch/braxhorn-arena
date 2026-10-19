@@ -1,0 +1,672 @@
+{
+  "startedAt": "2026-10-19T16:24:23.102Z",
+  "base": "http://localhost:8788",
+  "environment": "Chromium emulation; isolated SQLite API; no physical phone or camera",
+  "checks": [
+    {
+      "name": "Real account API available",
+      "status": 200
+    },
+    {
+      "name": "Both actual hooded JPEG avatar resources served",
+      "assets": {
+        "male": {
+          "url": "/assets/avatar-male.jpg",
+          "bytes": 383628
+        },
+        "female": {
+          "url": "/assets/avatar-female.jpg",
+          "bytes": 363389
+        }
+      }
+    },
+    {
+      "name": "Two accounts have distinct stable server IDs and correct preset avatars",
+      "a": {
+        "id": "a:11c28e92-3e23-495f-a85d-41f4b68d3e83",
+        "name": "QAmvfgslqsA",
+        "avatar": "/assets/avatar-male.jpg",
+        "authenticated": true,
+        "isOwner": false,
+        "ownerId": "u:fixture-owner",
+        "hasPassword": true
+      },
+      "b": {
+        "id": "a:8a1c7f8a-6538-48cc-a32a-d9780b259df3",
+        "name": "QAmvfgslqsB",
+        "avatar": "/assets/avatar-female.jpg",
+        "authenticated": true,
+        "isOwner": false,
+        "ownerId": "u:fixture-owner",
+        "hasPassword": true
+      },
+      "sessionCookie": {
+        "httpOnly": true,
+        "sameSite": "Lax",
+        "expires": 1795019064.489
+      },
+      "duplicateStatus": 409
+    },
+    {
+      "name": "Login errors, separate-device ID, refresh and logout verified",
+      "id": "a:11c28e92-3e23-495f-a85d-41f4b68d3e83",
+      "passwordNotInBrowserStorage": true
+    },
+    {
+      "name": "Own-account-only writes, cross-origin rejection and image limits",
+      "forgedTargetStatus": 200,
+      "crossOriginStatus": 403,
+      "svgStatus": 415,
+      "oversizeStatus": 413,
+      "guestAvatarStatus": 401
+    },
+    {
+      "name": "Guest receives automatic name; ranking and tournament registration/claim rejected by server",
+      "guest": {
+        "id": "g:106bdaa7-236a-437e-8d6a-34200770f9f7",
+        "name": "GOŚĆ-106B",
+        "avatar": "/assets/avatar-male.jpg",
+        "authenticated": false,
+        "hasPassword": false,
+        "ownerId": "u:fixture-owner",
+        "isOwner": false
+      },
+      "rankingStatus": 403,
+      "tournamentStatus": 403,
+      "claimStatus": 403
+    },
+    {
+      "name": "844x390 login fills viewport with no collision",
+      "layout": {
+        "screen": {
+          "width": 844,
+          "height": 390
+        },
+        "entry": {
+          "x": 0,
+          "y": 0,
+          "width": 844,
+          "height": 390
+        },
+        "scroll": {
+          "width": 844,
+          "height": 390
+        },
+        "buttons": [
+          {
+            "id": "accountLoginTab",
+            "width": 146,
+            "height": 44
+          },
+          {
+            "id": "accountRegisterTab",
+            "width": 146,
+            "height": 44
+          },
+          {
+            "id": "accountSubmit",
+            "width": 292,
+            "height": 44
+          },
+          {
+            "id": "accountGuest",
+            "width": 292,
+            "height": 44
+          },
+          {
+            "id": "accountLegacy",
+            "width": 160.53125,
+            "height": 44
+          }
+        ]
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      },
+      "safeAreaEmulation": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      }
+    },
+    {
+      "name": "844x390 registration fills viewport with no collision",
+      "layout": {
+        "screen": {
+          "width": 844,
+          "height": 390
+        },
+        "entry": {
+          "x": 0,
+          "y": 0,
+          "width": 844,
+          "height": 390
+        },
+        "scroll": {
+          "width": 844,
+          "height": 390
+        },
+        "buttons": [
+          {
+            "id": "accountRegisterClose",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "id": "accountAvatarMale",
+            "width": 109,
+            "height": 44
+          },
+          {
+            "id": "accountAvatarFemale",
+            "width": 109,
+            "height": 44
+          },
+          {
+            "id": "accountUpload",
+            "width": 109,
+            "height": 44
+          },
+          {
+            "id": "accountSelfie",
+            "width": 109,
+            "height": 44
+          },
+          {
+            "id": "accountRegisterSubmit",
+            "width": 454,
+            "height": 44
+          }
+        ]
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      },
+      "safeAreaEmulation": {
+        "top": 0,
+        "left": 44,
+        "right": 44,
+        "bottom": 21
+      }
+    },
+    {
+      "name": "915x412 login fills viewport with no collision",
+      "layout": {
+        "screen": {
+          "width": 915,
+          "height": 412
+        },
+        "entry": {
+          "x": 0,
+          "y": 0,
+          "width": 915,
+          "height": 412
+        },
+        "scroll": {
+          "width": 915,
+          "height": 412
+        },
+        "buttons": [
+          {
+            "id": "accountLoginTab",
+            "width": 146,
+            "height": 44
+          },
+          {
+            "id": "accountRegisterTab",
+            "width": 146,
+            "height": 44
+          },
+          {
+            "id": "accountSubmit",
+            "width": 292,
+            "height": 44
+          },
+          {
+            "id": "accountGuest",
+            "width": 292,
+            "height": 44
+          },
+          {
+            "id": "accountLegacy",
+            "width": 160.53125,
+            "height": 44
+          }
+        ]
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      },
+      "safeAreaEmulation": "browser default"
+    },
+    {
+      "name": "915x412 registration fills viewport with no collision",
+      "layout": {
+        "screen": {
+          "width": 915,
+          "height": 412
+        },
+        "entry": {
+          "x": 0,
+          "y": 0,
+          "width": 915,
+          "height": 412
+        },
+        "scroll": {
+          "width": 915,
+          "height": 412
+        },
+        "buttons": [
+          {
+            "id": "accountRegisterClose",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "id": "accountAvatarMale",
+            "width": 109,
+            "height": 44
+          },
+          {
+            "id": "accountAvatarFemale",
+            "width": 109,
+            "height": 44
+          },
+          {
+            "id": "accountUpload",
+            "width": 109,
+            "height": 44
+          },
+          {
+            "id": "accountSelfie",
+            "width": 109,
+            "height": 44
+          },
+          {
+            "id": "accountRegisterSubmit",
+            "width": 454,
+            "height": 44
+          }
+        ]
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      },
+      "safeAreaEmulation": "browser default"
+    },
+    {
+      "name": "932x430 login fills viewport with no collision",
+      "layout": {
+        "screen": {
+          "width": 932,
+          "height": 430
+        },
+        "entry": {
+          "x": 0,
+          "y": 0,
+          "width": 932,
+          "height": 430
+        },
+        "scroll": {
+          "width": 932,
+          "height": 430
+        },
+        "buttons": [
+          {
+            "id": "accountLoginTab",
+            "width": 146,
+            "height": 44
+          },
+          {
+            "id": "accountRegisterTab",
+            "width": 146,
+            "height": 44
+          },
+          {
+            "id": "accountSubmit",
+            "width": 292,
+            "height": 44
+          },
+          {
+            "id": "accountGuest",
+            "width": 292,
+            "height": 44
+          },
+          {
+            "id": "accountLegacy",
+            "width": 160.53125,
+            "height": 44
+          }
+        ]
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      },
+      "safeAreaEmulation": "browser default"
+    },
+    {
+      "name": "932x430 registration fills viewport with no collision",
+      "layout": {
+        "screen": {
+          "width": 932,
+          "height": 430
+        },
+        "entry": {
+          "x": 0,
+          "y": 0,
+          "width": 932,
+          "height": 430
+        },
+        "scroll": {
+          "width": 932,
+          "height": 430
+        },
+        "buttons": [
+          {
+            "id": "accountRegisterClose",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "id": "accountAvatarMale",
+            "width": 109,
+            "height": 44
+          },
+          {
+            "id": "accountAvatarFemale",
+            "width": 109,
+            "height": 44
+          },
+          {
+            "id": "accountUpload",
+            "width": 109,
+            "height": 44
+          },
+          {
+            "id": "accountSelfie",
+            "width": 109,
+            "height": 44
+          },
+          {
+            "id": "accountRegisterSubmit",
+            "width": 454,
+            "height": 44
+          }
+        ]
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      },
+      "safeAreaEmulation": "browser default"
+    },
+    {
+      "name": "1366x768 login fills viewport with no collision",
+      "layout": {
+        "screen": {
+          "width": 1366,
+          "height": 768
+        },
+        "entry": {
+          "x": 0,
+          "y": 0,
+          "width": 1366,
+          "height": 768
+        },
+        "scroll": {
+          "width": 1366,
+          "height": 768
+        },
+        "buttons": [
+          {
+            "id": "accountLoginTab",
+            "width": 176.28125,
+            "height": 44
+          },
+          {
+            "id": "accountRegisterTab",
+            "width": 176.28125,
+            "height": 44
+          },
+          {
+            "id": "accountSubmit",
+            "width": 354.5625,
+            "height": 44
+          },
+          {
+            "id": "accountGuest",
+            "width": 354.5625,
+            "height": 44
+          },
+          {
+            "id": "accountLegacy",
+            "width": 160.53125,
+            "height": 44
+          }
+        ]
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      },
+      "safeAreaEmulation": "browser default"
+    },
+    {
+      "name": "1366x768 registration fills viewport with no collision",
+      "layout": {
+        "screen": {
+          "width": 1366,
+          "height": 768
+        },
+        "entry": {
+          "x": 0,
+          "y": 0,
+          "width": 1366,
+          "height": 768
+        },
+        "scroll": {
+          "width": 1366,
+          "height": 768
+        },
+        "buttons": [
+          {
+            "id": "accountRegisterClose",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "id": "accountAvatarMale",
+            "width": 108,
+            "height": 44
+          },
+          {
+            "id": "accountAvatarFemale",
+            "width": 108,
+            "height": 44
+          },
+          {
+            "id": "accountUpload",
+            "width": 108,
+            "height": 44
+          },
+          {
+            "id": "accountSelfie",
+            "width": 108,
+            "height": 44
+          },
+          {
+            "id": "accountRegisterSubmit",
+            "width": 450,
+            "height": 44
+          }
+        ]
+      },
+      "collisions": {
+        "overlaps": [],
+        "offscreen": []
+      },
+      "safeAreaEmulation": "browser default"
+    },
+    {
+      "name": "Registration rejects mismatched password repetition before server write"
+    },
+    {
+      "name": "UI errors and real female-avatar registration, one request during pending state",
+      "player": {
+        "id": "a:e6831b93-4aed-48d5-92bf-5fe65a512835",
+        "name": "QAmvfgslqsUI",
+        "avatar": "/assets/avatar-female.jpg",
+        "authenticated": true,
+        "hasPassword": true,
+        "ownerId": "u:fixture-owner",
+        "isOwner": false
+      },
+      "requests": 1
+    },
+    {
+      "name": "Custom photo crop, upload, refresh and relogin preserve account",
+      "player": {
+        "id": "a:e6831b93-4aed-48d5-92bf-5fe65a512835",
+        "name": "QAmvfgslqsUI",
+        "avatar": "/api/player-avatar/92f8e7bef2a34b46de444a9cc06691975fd988ccbe2ccf45c4076fa957fa16a2.jpg",
+        "authenticated": true,
+        "hasPassword": true,
+        "ownerId": "u:fixture-owner",
+        "isOwner": false
+      },
+      "bytes": 9021
+    },
+    {
+      "name": "EMULATED selfie preview/crop/capture stops camera tracks",
+      "camera": "Chromium fake video device; not physical camera",
+      "tracks": [
+        "ended"
+      ]
+    },
+    {
+      "name": "EMULATED NotAllowedError gives readable error and leaves preset/upload choices enabled"
+    },
+    {
+      "name": "Real room host receives other account stable ID, name and account avatar independent of fighter",
+      "code": "374688E0",
+      "host": {
+        "id": "a:11c28e92-3e23-495f-a85d-41f4b68d3e83",
+        "name": "QAmvfgslqsA",
+        "avatar": "/assets/avatar-male.jpg",
+        "fighter": "BRAX"
+      },
+      "peer": {
+        "id": "a:8a1c7f8a-6538-48cc-a32a-d9780b259df3",
+        "name": "QAmvfgslqsB",
+        "avatar": "/assets/avatar-female.jpg",
+        "fighter": "NINA"
+      }
+    },
+    {
+      "name": "Two real browser clients display persistent account avatars in lobby/waiting room",
+      "identities": {
+        "mpHostIdentity": {
+          "name": "QAmvfgslqsABRAX",
+          "avatar": "/assets/avatar-male.jpg",
+          "loaded": true
+        },
+        "mpGuestIdentity": {
+          "name": "QAmvfgslqsBBRAX",
+          "avatar": "/assets/avatar-female.jpg",
+          "loaded": true
+        }
+      },
+      "code": "F8480B9F"
+    },
+    {
+      "name": "No uncaught JavaScript errors in retained contexts"
+    }
+  ],
+  "problems": [],
+  "screenshots": [
+    "docs/verification/account-entry/844x390-login.png",
+    "docs/verification/account-entry/844x390-register.png",
+    "docs/verification/account-entry/915x412-login.png",
+    "docs/verification/account-entry/915x412-register.png",
+    "docs/verification/account-entry/932x430-login.png",
+    "docs/verification/account-entry/932x430-register.png",
+    "docs/verification/account-entry/1366x768-login.png",
+    "docs/verification/account-entry/1366x768-register.png",
+    "docs/verification/account-entry/844x390-occupied-nickname.png",
+    "docs/verification/account-entry/844x390-invalid-login.png",
+    "docs/verification/account-entry/844x390-authenticated-menu.png",
+    "docs/verification/account-entry/844x390-upload-crop.png",
+    "docs/verification/account-entry/844x390-profile-uploaded-avatar.png",
+    "docs/verification/account-entry/844x390-selfie-emulated-camera.png",
+    "docs/verification/account-entry/844x390-selfie-crop.png",
+    "docs/verification/account-entry/844x390-selfie-permission-denied.png",
+    "docs/verification/account-entry/844x390-online-lobby-account-avatar.png",
+    "docs/verification/account-entry/844x390-online-host-sees-peer-avatar.png",
+    "docs/verification/account-entry/844x390-online-peer-sees-host-avatar.png"
+  ],
+  "unverified": [
+    "Physical iPhone and Android hardware",
+    "A physical selfie camera",
+    "Real Internet / mobile network performance"
+  ],
+  "assets": {
+    "male": {
+      "url": "/assets/avatar-male.jpg",
+      "bytes": 383628
+    },
+    "female": {
+      "url": "/assets/avatar-female.jpg",
+      "bytes": 363389
+    }
+  },
+  "a": {
+    "id": "a:11c28e92-3e23-495f-a85d-41f4b68d3e83",
+    "name": "QAmvfgslqsA",
+    "avatar": "/assets/avatar-male.jpg",
+    "authenticated": true,
+    "isOwner": false,
+    "ownerId": "u:fixture-owner",
+    "hasPassword": true
+  },
+  "b": {
+    "id": "a:8a1c7f8a-6538-48cc-a32a-d9780b259df3",
+    "name": "QAmvfgslqsB",
+    "avatar": "/assets/avatar-female.jpg",
+    "authenticated": true,
+    "isOwner": false,
+    "ownerId": "u:fixture-owner",
+    "hasPassword": true
+  },
+  "uploaded": {
+    "id": "a:e6831b93-4aed-48d5-92bf-5fe65a512835",
+    "name": "QAmvfgslqsUI",
+    "avatar": "/api/player-avatar/92f8e7bef2a34b46de444a9cc06691975fd988ccbe2ccf45c4076fa957fa16a2.jpg",
+    "authenticated": true,
+    "hasPassword": true,
+    "ownerId": "u:fixture-owner",
+    "isOwner": false
+  },
+  "online": {
+    "code": "374688E0",
+    "host": {
+      "id": "a:11c28e92-3e23-495f-a85d-41f4b68d3e83",
+      "name": "QAmvfgslqsA",
+      "avatar": "/assets/avatar-male.jpg",
+      "fighter": "BRAX"
+    },
+    "peer": {
+      "id": "a:8a1c7f8a-6538-48cc-a32a-d9780b259df3",
+      "name": "QAmvfgslqsB",
+      "avatar": "/assets/avatar-female.jpg",
+      "fighter": "NINA"
+    }
+  },
+  "finishedAt": "2026-10-19T16:24:48.089Z",
+  "status": "passed"
+}
