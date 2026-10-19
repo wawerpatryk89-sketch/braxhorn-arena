@@ -1,0 +1,151 @@
+{
+  "startedAt": "2026-10-19T18:48:04.706Z",
+  "checks": [
+    {
+      "name": "Cold load before account script is covered by an opaque shield",
+      "shield": {
+        "background": "rgb(4, 7, 5)",
+        "position": "fixed",
+        "z": "2147483600"
+      }
+    },
+    {
+      "name": "Original video played naturally to its real end before menu",
+      "movie": {
+        "src": "/assets/start-intro-20261007.mp4",
+        "duration": 16.671667,
+        "currentTime": 0.612909,
+        "videoWidth": 910,
+        "videoHeight": 512,
+        "muted": false,
+        "fit": "contain",
+        "layerBackground": "rgb(0, 0, 0)"
+      }
+    },
+    {
+      "name": "915x412 original video plays and skip enters the menu once",
+      "movie": {
+        "src": "/assets/start-intro-20261007.mp4",
+        "duration": 16.671667,
+        "currentTime": 0.628504,
+        "videoWidth": 910,
+        "videoHeight": 512,
+        "muted": false,
+        "fit": "contain",
+        "layerBackground": "rgb(0, 0, 0)"
+      }
+    },
+    {
+      "name": "932x430 original video plays and skip enters the menu once",
+      "movie": {
+        "src": "/assets/start-intro-20261007.mp4",
+        "duration": 16.671667,
+        "currentTime": 0.628464,
+        "videoWidth": 910,
+        "videoHeight": 512,
+        "muted": false,
+        "fit": "contain",
+        "layerBackground": "rgb(0, 0, 0)"
+      }
+    },
+    {
+      "name": "1900x1000 original video plays and skip enters the menu once",
+      "movie": {
+        "src": "/assets/start-intro-20261007.mp4",
+        "duration": 16.671667,
+        "currentTime": 0.65079,
+        "videoWidth": 910,
+        "videoHeight": 512,
+        "muted": false,
+        "fit": "contain",
+        "layerBackground": "rgb(0, 0, 0)"
+      }
+    },
+    {
+      "name": "Network failure keeps retry and skip available; skip recovers to menu"
+    },
+    {
+      "name": "Restored account session retains original video; logout returns directly to the new login"
+    }
+  ],
+  "views": [
+    {
+      "size": "844x390",
+      "screen": "login",
+      "mapping": {
+        "sx": 0.59375,
+        "sy": 0.59375,
+        "left": -2.96875,
+        "right": 2.96875,
+        "top": -2.96875,
+        "bottom": 2.96875,
+        "maskWidth": 222.0625,
+        "panelWidth": 310
+      },
+      "layout": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "size": "915x412",
+      "screen": "login",
+      "mapping": {
+        "sx": 0.628125,
+        "sy": 0.628125,
+        "left": -3.150000000000034,
+        "right": 3.1187499999999773,
+        "top": -3.153125000000017,
+        "bottom": 3.115624999999966,
+        "maskWidth": 234.90625,
+        "panelWidth": 310
+      },
+      "layout": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "size": "932x430",
+      "screen": "login",
+      "mapping": {
+        "sx": 0.65625,
+        "sy": 0.65625,
+        "left": -3.28125,
+        "right": 3.28125,
+        "top": -3.28125,
+        "bottom": 3.28125,
+        "maskWidth": 245.4375,
+        "panelWidth": 310
+      },
+      "layout": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    },
+    {
+      "size": "1900x1000",
+      "screen": "login",
+      "mapping": {
+        "sx": 1.484375,
+        "sy": 1.484375,
+        "left": -7.421875,
+        "right": 7.421875,
+        "top": -7.421875,
+        "bottom": 7.421875,
+        "maskWidth": 555.15625,
+        "panelWidth": 534.375
+      },
+      "layout": {
+        "overlaps": [],
+        "offscreen": []
+      }
+    }
+  ],
+  "limitations": [
+    "Chromium landscape viewport emulation; no physical iPhone, Android or Safari test.",
+    "Only the unchanged original opening clip is tested; no combat or animation changes are included."
+  ],
+  "status": "passed",
+  "finishedAt": "2026-10-19T18:48:40.439Z"
+}
