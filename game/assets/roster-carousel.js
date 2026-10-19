@@ -12,7 +12,7 @@ root.setAttribute('aria-label','Zawodnicy. Przesuń w bok, dotknij wybranej kart
 const cards=names.map((name,index)=>{
  const source=$('card-'+name.toLowerCase()),card=document.createElement('button');
  card.type='button';card.className='rc-card';card.dataset.index=String(index);
- const image=document.createElement('img');image.src='/assets/campaign-portraits/'+name.toLowerCase()+'.webp';image.alt='';image.draggable=false;image.decoding='async';
+ const image=document.createElement('span');image.className='rc-art';image.innerHTML=roster.portrait(name);
  const number=document.createElement('span');number.className='rc-number';number.textContent=String(index+1).padStart(2,'0');number.setAttribute('aria-hidden','true');
  const copy=document.createElement('span');copy.className='rc-copy';
  const eyebrow=document.createElement('small');eyebrow.className='rc-eyebrow';
@@ -23,7 +23,7 @@ const cards=names.map((name,index)=>{
  const statsTitle=document.createElement('strong');statsTitle.textContent=label(name);
  const metrics=source.querySelector('.fighter-stats')?.cloneNode(true);
  stats.append(statsTitle);if(metrics)stats.append(metrics);
- card.append(image,number,copy,stats);root.append(card);
+ card.append(image,number,copy,stats);card.insertAdjacentHTML('beforeend',roster.frame());root.append(card);
  return card;
 });
 original.after(root);

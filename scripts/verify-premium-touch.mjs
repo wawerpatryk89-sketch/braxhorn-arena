@@ -35,8 +35,23 @@ try{
   await page.waitForTimeout(350);
   assert.equal(await page.locator('#rosterStrip').count(),0,'No portrait strip remains');
   assert.equal(await page.locator('#rosterTrack').isVisible(),false);
-  assert.equal(await page.locator('#rosterCarousel .rc-focused img').evaluate(image=>image.complete&&image.naturalWidth>0),true,'The real portrait is available');
+  assert.equal(await page.locator('#rosterCarousel .rc-focused .fighter-portrait image').getAttribute('href'),'/assets/roster-art-a-151.webp','The unframed arena illustration is used');
+  assert.equal(await page.locator('#rosterCarousel .fighter-frame').count(),8,'Every fighter uses the same live frame');
+  assert.equal(await page.evaluate(async()=>{const image=new Image();image.src=document.querySelector('#rosterCarousel .fighter-portrait image').getAttribute('href');await image.decode();return image.naturalWidth;}),1024,'The new portrait artwork decodes correctly');
   await page.screenshot({path:out+'/'+size+'-roster.png'});
+  if(size==='844x390'&&process.env.BRAX_GALLERY==='1'){
+   await page.setViewportSize({width:1280,height:800});
+   await page.evaluate(()=>{
+    const preview=document.createElement('aside');preview.id='rosterGallery';preview.className='premium-screen';preview.style.cssText='position:fixed;inset:0;z-index:50000;padding:0!important;background:#07100b';
+    const gallery=document.getElementById('rosterCarousel').cloneNode(true);gallery.style.cssText='position:absolute;inset:18px;';
+    [...gallery.children].forEach((card,i)=>{card.className='rc-card';card.style.cssText='left:'+(12.5+(i%4)*25)+'%;top:'+(25+Math.floor(i/4)*50)+'%;width:22%;height:44%;max-width:none;opacity:1;transform:translate(-50%,-50%);';});
+    preview.append(gallery);document.body.append(preview);
+   });
+   await page.waitForTimeout(250);await page.screenshot({path:out+'/all-eight-cards.png'});
+   await page.evaluate(()=>document.getElementById('rosterGallery').remove());
+   await page.setViewportSize({width:844,height:390});await page.waitForTimeout(100);
+  }
+
   const session=await context.newCDPSession(page);
   const rect=await page.locator('#rosterCarousel').boundingBox();
   const x=rect.x+rect.width*.55,y=rect.y+rect.height*.4;
