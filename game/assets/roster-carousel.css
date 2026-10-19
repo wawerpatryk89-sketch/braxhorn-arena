@@ -1,0 +1,37 @@
+/* The portrait is the interaction surface; statistics are one tap away. */
+#selection.premium-screen{background:linear-gradient(180deg,#06100ac9,#050a08a8 55%,#030805e8),url('/assets/shared-menu-background.jpeg') center/cover!important}
+#selection.premium-screen:before{background:radial-gradient(ellipse at 50% 52%,#a6ff3c08,transparent 60%)!important}
+#rosterBoard{grid-template-rows:52px 30px minmax(0,1fr) 48px!important;gap:6px!important}
+#rosterBoard>.ui-header{background:transparent!important;min-height:52px!important}
+#rosterTrack,#rosterPrev,#rosterNext{display:none!important}
+#rosterBoard .roster-role{gap:20px!important;align-items:center;justify-content:center}
+#selection #rosterBoard .roster-role button{width:auto!important;flex:0 0 auto!important;min-height:28px!important;padding:3px 0!important;background:transparent!important;border:0!important;border-bottom:2px solid transparent!important;border-radius:0!important;clip-path:none!important;color:#a5afa8!important;font-size:11px!important;letter-spacing:.08em!important}
+#selection #rosterBoard .roster-role button[aria-pressed=true]{border-bottom-color:var(--ui-player)!important;color:#f3f7ed!important;background:transparent!important}
+#selection #rosterBoard #rosterOpponent[aria-pressed=true]{border-bottom-color:var(--ui-cpu)!important;color:#f3f7ed!important;background:transparent!important}
+#rosterBoard .roster-role button[hidden]{display:none!important}
+#rosterCarousel{position:relative;grid-row:3;min-width:0;min-height:0;container-type:size;overflow:hidden;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+#rosterCarousel .rc-card{position:absolute;left:50%;top:50%;width:min(31%,83cqh);height:calc(100% - 8px);max-width:340px;min-height:0!important;padding:0!important;border:1px solid #d6e5cc29!important;border-radius:14px!important;clip-path:none!important;background:#0a100d!important;overflow:hidden;opacity:0;pointer-events:none;transform:translate(calc(-50% + var(--offset)*116%),-50%) scale(.78);transition:transform .28s cubic-bezier(.2,.7,.2,1),opacity .24s,border-color .24s;will-change:transform;box-shadow:0 14px 32px #0007!important;isolation:isolate}
+#rosterCarousel .rc-card.rc-neighbor{opacity:.48;pointer-events:auto}
+#rosterCarousel .rc-card.rc-focused{z-index:2;opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1);border-color:#b7ee83!important;box-shadow:0 0 0 3px #a6ff3c0b,0 16px 38px #0009!important}
+#rosterCarousel[data-role=opponent] .rc-focused{border-color:#ff8c7e!important}
+#rosterCarousel .rc-card>img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 22%;pointer-events:none}
+#rosterCarousel .rc-number{position:absolute;top:9px;left:9px;padding:5px 8px;border:1px solid #ffffff26;border-radius:5px;background:#07100bc9;font:600 10px var(--ui-body);letter-spacing:.12em;color:#e1e9d8}
+#rosterCarousel .rc-copy{position:absolute;inset:auto 0 0;display:flex;flex-direction:column;align-items:center;gap:2px;padding:34px 7px 11px;background:linear-gradient(transparent,#07100b 48%);pointer-events:none}
+#rosterCarousel .rc-copy strong,#rosterCarousel .rc-stats>strong{font:italic 600 clamp(25px,7cqh,40px)/1 var(--ui-display);color:#f3f7ed}
+#rosterCarousel .rc-copy small{font:500 clamp(8px,2.6cqh,11px)/1.35 var(--ui-body);letter-spacing:.06em;color:#bdc9b6}
+#rosterCarousel .rc-copy .rc-eyebrow{font-size:8px;color:var(--ui-player);font-weight:700;letter-spacing:.16em;min-height:11px}
+#rosterCarousel[data-role=opponent] .rc-copy .rc-eyebrow{color:#ff8c7e}
+#rosterCarousel .rc-stats{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap:12px;padding:14px;background:#0a120ff5;opacity:0;pointer-events:none;transition:opacity .18s;text-align:left}
+#rosterCarousel.rc-detail .rc-focused .rc-stats{opacity:1}
+#rosterCarousel .rc-stats .fighter-stats{gap:7px!important}
+#rosterCarousel .fighter-stat>span{font-size:9px!important;letter-spacing:.03em!important}
+#rosterCarousel .fighter-stat>b{font-size:11px!important}
+#rosterCarousel .fighter-stat>i{gap:2px!important}
+#rosterCarousel .stat-segment{animation:none!important;border-radius:2px}
+#rosterBoard .roster-footer{display:grid!important;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:12px;height:48px!important;background:transparent!important}
+#rosterInstruction{grid-column:1;max-width:220px;font:400 10px/1.5 var(--ui-body)!important;letter-spacing:0!important;color:#a4b39f!important}
+#rosterBoard #chooseFighter{grid-column:2;grid-row:1;min-width:200px;width:30cqw;max-width:340px;height:44px!important;min-height:44px!important;border-radius:9px!important;clip-path:none!important;box-shadow:0 4px 24px #a6ff3c1a!important;font-size:13px!important}
+#rosterCount{grid-column:3;grid-row:1;text-align:right;font:500 11px var(--ui-body);letter-spacing:.16em;color:#c1ceba}
+@media(max-height:400px){#selection.premium-screen{padding-top:8px!important;padding-bottom:8px!important}#rosterBoard{grid-template-rows:44px 26px minmax(0,1fr) 44px!important;gap:4px!important}#rosterBoard>.ui-header{min-height:44px!important}#rosterBoard .ui-header h1{font-size:26px!important}#rosterBoard .roster-footer{height:44px!important}#rosterCarousel .rc-stats{padding:10px;gap:7px}#rosterCarousel .rc-stats .fighter-stats{gap:4px!important}#rosterCarousel .rc-copy{padding-bottom:8px}}
+@media(orientation:portrait){#rosterBoard{grid-template-rows:56px 36px minmax(0,1fr) 72px!important}#rosterCarousel .rc-card{width:66%;height:min(calc(100% - 12px),104cqw);max-width:none;transform:translate(calc(-50% + var(--offset)*100%),-50%) scale(.85)}#rosterCarousel .rc-card.rc-focused{transform:translate(-50%,-50%)}#rosterBoard .ui-player-chip{display:none}#rosterBoard .ui-heading h1{font-size:26px!important}#rosterBoard .roster-footer{height:72px!important;grid-template-columns:1fr auto}#rosterBoard #chooseFighter{grid-column:1/-1;grid-row:1;width:100%;max-width:none}#rosterInstruction{grid-row:2;max-width:none;font-size:9px!important}#rosterCount{grid-column:2;grid-row:2}#rosterCarousel .rc-copy strong{font-size:44px}}
+@media(prefers-reduced-motion:reduce){#rosterCarousel .rc-card,#rosterCarousel .rc-stats{transition:none;will-change:auto}}

@@ -3,7 +3,7 @@
 // screen is left on top of the fight, that a guest hit reaches the host, and saves screenshots of both.
 // Usage: node scripts/ui-online-pair.mjs <outDir> [844x390]
 import fs from 'node:fs';
-import {launch,phone,overlaps} from './ui-browser-harness.mjs';
+import {launch,phone,overlaps,swipe} from './ui-browser-harness.mjs';
 const out=process.argv[2]||'docs/ui-online-pair';const size=process.argv[3]||'844x390';const base=process.env.BRAX_URL||'http://localhost:8787/';
 fs.mkdirSync(out,{recursive:true});
 const browser=await launch();
@@ -20,9 +20,9 @@ async function toLobby(p,nick,fighter){
  for(const ch of nick){const k=p.locator(`#arenaKeyboard button:text-is("${ch}")`).first();if(await k.count())await k.tap();}
  await tap(p,'#identityContinue');for(let i=0;i<10&&!(await vis(p,'#modePlay'));i++){await skip(p);await p.waitForTimeout(500);}
  const n=await p.evaluate(()=>document.querySelectorAll('#matchSetup .mode-hit').length);
- for(let i=0;i<n;i++){if(await p.evaluate(()=>document.getElementById('multiplayerMode')?.classList.contains('mode-focused')))break;await tap(p,'#modeFollowing');}
+ for(let i=0;i<n;i++){if(await p.evaluate(()=>document.getElementById('multiplayerMode')?.classList.contains('mode-focused')))break;await swipe(p,'#matchSetup .mode-card-row');}
  await tap(p,'#modePlay');await p.waitForTimeout(800);await skip(p);
- for(let i=0;i<8&&!(await p.evaluate(f=>(document.getElementById('mpPosition')?.textContent||'').startsWith(String(['BRAX','NYXA','VEXA','KROV','NINA','DANNY','BEAR','DEMON'].indexOf(f)+1).padStart(2,'0')),fighter));i++)await tap(p,'#mpFollowing');
+ for(let i=0;i<8&&!(await p.evaluate(f=>(document.getElementById('mpPosition')?.textContent||'').startsWith(String(['BRAX','NYXA','VEXA','KROV','NINA','DANNY','BEAR','DEMON'].indexOf(f)+1).padStart(2,'0')),fighter));i++)await swipe(p,'.mp-roster');
  report.checks['position'+nick]=await p.locator('#mpPosition').textContent().catch(()=>null);
  await tap(p,'#mpNext');await p.waitForTimeout(600);
 }
@@ -79,8 +79,10 @@ if(Math.abs(moved[1].x-before[1].x)<5)fail('host nie widzi ruchu gościa');
 if(![...seen].some(a=>!['IDLE','WALK_FORWARD','WALK_BACK','APPROACH','RUN','BLOCK','BLOCK_LOW','LEAN'].includes(a)))fail('host nie widzi ciosu gościa: '+[...seen].join(','));
 report.checks.hostAfterGuestAttack=await shot(host,'06-host-po-ataku-goscia');report.checks.guestAfterAttack=await shot(guest,'06-gosc-po-ataku');
 report.checks.badges=[await host.locator('#mpConnection').textContent().catch(()=>''),await guest.locator('#mpConnection').textContent().catch(()=>'')];
+report.checks.diagnostics=await Promise.all([host,guest].map(page=>page.evaluate(()=>window.__BRAX_DIAGNOSTICS__?.report())));
 report.errors={host:[...new Set(host.errors)].filter(e=>!/404|Failed to load resource/.test(e)),guest:[...new Set(guest.errors)].filter(e=>!/404|Failed to load resource/.test(e))};
 report.checks.statusLog=[await host.evaluate(()=>window.__st),await guest.evaluate(()=>window.__st)];
 fs.writeFileSync(`${out}/${size}-raport.json`,JSON.stringify(report,null,1));
 await browser.close();
 console.log(JSON.stringify({problems:report.problems,code:report.checks.code,hostState:hs,guestState:gs,actors:report.checks.hostActors,pos:[report.checks.positionHOSTA,report.checks.positionGOSC],timeline:report.checks.holdTimeline,badges:report.checks.badges,arena:[report.checks.arenaHost,report.checks.arenaGuest],errors:report.errors,api:report.checks.apiFailures,trail:report.checks.statusTrail,slow:report.checks.slow,statusLog:report.checks.statusLog,calls:report.checks.apiTrail,ov:[report.checks.hostOverlaps?.slice(0,4),report.checks.guestOverlaps?.slice(0,4),report.checks.roomHostOverlaps?.slice(0,4)]},null,1));
+if(report.problems.length)process.exitCode=1;

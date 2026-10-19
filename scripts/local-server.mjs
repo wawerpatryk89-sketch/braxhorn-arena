@@ -55,4 +55,4 @@ http.createServer(async(req,res)=>{
   if(!file.startsWith(path.join(root,'game'))||!fs.existsSync(file)||fs.statSync(file).isDirectory()){res.writeHead(404);res.end('missing');return;}
   res.writeHead(200,{'Content-Type':types[path.extname(file)]||'application/octet-stream','Cache-Control':'no-store'});fs.createReadStream(file).pipe(res);
  }catch(e){console.error(e);res.writeHead(500);res.end(String(e));}
-}).listen(port,()=>console.log('BRAXHORN local server http://localhost:'+port));
+}).listen(port,'127.0.0.1',()=>console.log('BRAXHORN local server http://localhost:'+port));

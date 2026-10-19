@@ -6,5 +6,5 @@ E.localInput({held:{},events:[{id:2,kind:'punch'}]});g.tick(16);assert.equal(g.t
 const hp=g.test.B.hp;g.tick(100);assert.equal(g.test.B.hp,hp,'prediction cannot deal damage');
 const before=g.test.O.frame;const p=packet(200);p.ack=2;p.actors[1]={...p.actors[1],a:'LIGHT_PUNCH',locked:true,frame:0,actionId:1};E.receive(p);g.tick(16);assert(g.test.O.frame>=before,'confirmation does not rewind same predicted attack');
 const pos=g.test.O.x;g.document.hidden=true;g.tick(100);assert.equal(g.test.O.x,pos,'hidden guest does not draw');g.document.hidden=false;
-E.receive({...packet(250),snapshotId:1});assert.equal(g.context.__BRAX_DIAGNOSTICS__.report().network.interpolationMs,80);assert(g.context.__BRAX_DIAGNOSTICS__.report().network.inputSamples>=1);
+E.receive({...packet(250),snapshotId:1});assert.equal(g.context.__BRAX_DIAGNOSTICS__.report().network.adaptive,true);assert(g.context.__BRAX_DIAGNOSTICS__.report().network.interpolationMs>=32&&g.context.__BRAX_DIAGNOSTICS__.report().network.interpolationMs<=100);assert(g.context.__BRAX_DIAGNOSTICS__.report().network.inputSamples>=1);
 console.log('PASS buffered interpolation, next-frame own movement/attack, host-only damage, same-action confirmation, hidden gate and diagnostics');})().catch(e=>{console.error(e);process.exitCode=1});

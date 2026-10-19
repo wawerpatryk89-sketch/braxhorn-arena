@@ -14,7 +14,7 @@ const stub=m=>({...m,ready:true,render(){},dispose(){},portrait(){return null;}}
 export async function preparePair(names){for(const who of names.filter(Boolean))window[who+'_3D']=stub(await real.prepareMetadata(who));}
 export async function prepareSource(who){return stub(await real.prepareMetadata(who));}`;
 
-export async function launch(){return chromium.launch({args:['--autoplay-policy=user-gesture-required']});}
+export async function launch(){return chromium.launch({...(process.env.BRAX_CHROMIUM_PATH?{executablePath:process.env.BRAX_CHROMIUM_PATH}:{}),args:['--autoplay-policy=user-gesture-required']});}
 
 export async function phone(browser,size='844x390',{stubModels=true}={}){
  const context=await browser.newContext({viewport:PHONES[size],deviceScaleFactor:2,isMobile:true,hasTouch:true,userAgent:'Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Mobile Safari/537.36'});
@@ -31,6 +31,15 @@ export async function phone(browser,size='844x390',{stubModels=true}={}){
 
 // Tap the centre of a visible element (real touch input, like a phone).
 export async function tap(page,selector){const box=await page.locator(selector).first().boundingBox();if(!box)throw Error('not visible: '+selector);await page.touchscreen.tap(box.x+box.width/2,box.y+box.height/2);await page.waitForTimeout(250);}
+const touchSessions=new WeakMap();
+export async function swipe(page,selector,direction=-1){
+ const box=await page.locator(selector).first().boundingBox();if(!box)throw Error('not visible: '+selector);
+ let session=touchSessions.get(page);if(!session){session=await page.context().newCDPSession(page);touchSessions.set(page,session);}
+ const x=box.x+box.width*.5,y=box.y+box.height*.45,distance=Math.min(140,box.width*.25);
+ // Chromium's native gesture completes without a fling swallowing the next tap.
+ await session.send('Input.synthesizeScrollGesture',{x,y,xDistance:direction*distance,yDistance:0,gestureSourceType:'touch',speed:600,preventFling:true});
+ await page.waitForTimeout(320);
+}
 export const visible=(page,selector)=>page.locator(selector).first().isVisible().catch(()=>false);
 
 // Elements that overlap each other although both are visible and interactive.

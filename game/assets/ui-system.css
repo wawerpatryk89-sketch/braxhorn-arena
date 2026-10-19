@@ -97,6 +97,41 @@
 .ui-arena-picker img{height:44px;object-fit:cover}
 .ui-arena-picker span{display:flex;align-items:center;justify-content:center;min-height:2.5em;padding:2px 4px;font-size:10px;line-height:1.2;text-align:center;overflow-wrap:anywhere}
 @media (max-height:480px){#mpPanel .mp-room-option p{display:none}#mpPanel .mp-room-option h2{font-size:20px!important}}
+/* Touch surfaces use continuous borders, including their corners. */
+.premium-screen button{clip-path:none!important;border-radius:9px!important}
+.premium-screen .ui-primary{box-shadow:0 5px 22px #a6ff3c16!important}
+.ui-player-chip,.ui-toast,.premium-screen :is(.feature-dialog,.tx-form,.code-pad-card){clip-path:none!important;border-radius:12px!important}
+.premium-screen :is(.ui-segments,.tx-tabs){border-radius:10px}
+.premium-screen :is(.ui-segments,.tx-tabs) button{border-radius:6px!important}
+.premium-screen select[data-ui-native]{display:block;width:100%;min-width:0;min-height:40px;padding:8px 10px;background:#141b18;color:var(--ui-text);border:1px solid var(--ui-line-strong);border-radius:8px;font:400 14px var(--ui-body);color-scheme:dark;touch-action:manipulation}
+/* Swiping and tapping the large cards replace duplicate arrow controls. */
+.mode-carousel-nav button,#mpPrevious,#mpFollowing,#matchSetup #openModeSettings{display:none!important}
+#matchSetup .mode-card-row,#matchSetup .mode-hit,#mpSelection .mp-roster,#mpSelection .mp-fighter{touch-action:pan-y!important}
+.mode-carousel-nav{left:0!important;right:0!important;bottom:3%!important;justify-content:center}
+#modePosition{position:static!important;transform:none!important;display:block;line-height:18px;font-size:10px!important;letter-spacing:.18em}
+#modePlay{bottom:10%!important;border-radius:9px!important}
+#mpSelection .mp-carousel-nav{pointer-events:none}
+#mpSelection #mpNext{border-radius:9px!important}
+/* Keep the whole create form inside a landscape phone; only its body may scroll. */
+#txModal{padding:10px!important;overflow:hidden!important}
+#txModal .tx-form{display:flex;flex-direction:column;gap:10px;width:min(640px,100%);max-height:100%;min-width:0;padding:16px;overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;box-sizing:border-box}
+#txModal .tx-form-heading{flex-shrink:0;gap:12px;margin:0}
+#txModal .tx-form-heading h2{font-size:27px!important;line-height:1.1}
+#txModal .tx-form-heading button{width:36px;min-height:36px!important;padding:0;flex-shrink:0}
+#txModal .tx-form label{min-width:0;margin:0;gap:5px;font-size:11px!important;line-height:1.35}
+#txModal .tx-form input,#txModal .tx-form textarea{min-width:0;max-width:100%;min-height:40px!important;border-radius:8px!important;font-size:14px!important}
+#txModal .tx-fields,#txModal .tx-create-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:12px 16px;min-width:0}
+#txModal .tx-create-note{display:flex;align-items:center;justify-content:space-between;gap:12px;min-width:0}
+#txModal .tx-form p{margin:0;font-size:10px!important;line-height:1.5!important;color:var(--ui-muted)}
+#txModal .tx-soon{float:none!important;flex-shrink:0;margin:0!important;min-height:32px!important;padding:6px 10px!important;font-size:10px!important}
+#txModal .tx-form>.tx-primary{position:sticky;bottom:-1px;flex-shrink:0;width:100%;height:44px!important;min-height:44px!important;margin:0}
+#txFormError:empty{display:none}
+.ui-date-field{position:relative;display:flex;align-items:center;min-width:0;min-height:40px;padding:8px 10px;border:1px solid var(--ui-line-strong);border-radius:8px;background:var(--ui-raised)}
+.ui-date-field:focus-within{outline:2px solid var(--ui-player);outline-offset:-2px}
+.premium-screen .ui-date-edit{position:absolute;inset:0;z-index:1;opacity:0;width:100%;height:100%;cursor:pointer}
+.ui-date-value{min-width:0;font:400 14px/1.35 var(--ui-body);color:var(--ui-text);pointer-events:none}
+@media(max-height:400px){#txModal .tx-form{padding:12px;gap:8px}#txModal .tx-create-grid{gap:8px 12px}#txModal .tx-form-heading h2{font-size:25px!important}}
+@media(max-width:540px) and (orientation:portrait){#txModal .tx-fields,#txModal .tx-create-grid{grid-template-columns:minmax(0,1fr)}#txModal .tx-create-note{align-items:flex-start}#txModal .tx-form{max-height:calc(100% - 8px)}}
 /* Online guest: combo meter under the guest's own (right) health bar. */
 #hud .side.right .combo-meter{margin-left:auto;text-align:right}
 #hud .side.right .combo-meter .meter{transform:scaleX(-1)}
