@@ -1,0 +1,24 @@
+{
+  "url": "https://braxhorn-p0-preview.wawerpatryk89.chatgpt.site",
+  "date": "2026-10-19T18:02:01.756Z",
+  "checks": [
+    {
+      "language": "pl",
+      "login": true,
+      "registration": true,
+      "collisions": 0
+    },
+    {
+      "language": "en",
+      "login": true,
+      "registration": true,
+      "collisions": 0
+    }
+  ],
+  "limitations": [
+    "Chromium viewport emulation; no physical device or camera hardware test."
+  ],
+  "languageSurvivesReload": true,
+  "browserErrors": [],
+  "status": "passed"
+}

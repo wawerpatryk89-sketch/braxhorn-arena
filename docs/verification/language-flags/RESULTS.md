@@ -7,3 +7,5 @@ Verification: 30 screenshots across 844 × 390, 915 × 412 and 932 × 430, in bo
 The content localization regression audit passed. An independent DOM review also checked direct SVG-path clicks, accessible names, stable icon nodes and idempotent mounting.
 
 These are Chromium landscape emulations, not tests on physical iPhones or Android devices. No camera hardware test was performed for this change. See [proof.json](proof.json) for the measured views and screenshots.
+
+Production version 156 is published from Sites source `7dcaba27577567fafbea9af70585240dac5f2085` and GitHub source `7134902`. Production login/registration flag touches in both languages and refresh persistence passed with no collisions or browser exceptions. All 62 served HTML/JS/CSS/identity-art files match the built artifact byte for byte. See [production/proof.json](production/proof.json) and [production/served-bytes.json](production/served-bytes.json).
