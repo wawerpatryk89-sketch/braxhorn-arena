@@ -127,3 +127,28 @@
 @keyframes comboBannerIn{0%{transform:translateX(-110%)}11%{transform:translateX(0)}80%{transform:translateX(0);opacity:1}100%{transform:translateX(-25%);opacity:0}}
 @keyframes comboBannerInRight{0%{transform:translateX(110%)}11%{transform:translateX(0)}80%{transform:translateX(0);opacity:1}100%{transform:translateX(25%);opacity:0}}
 @media (prefers-reduced-motion:reduce){#comboBanner.play,#comboBanner.right.play{animation:comboBannerFade 1.7s linear forwards;transform:none}@keyframes comboBannerFade{0%,80%{opacity:1}100%{opacity:0}}}
+/* Fighter selection — premium touch carousel (roster-carousel.js). Swipe or tap a side card. */
+#selection.premium-screen{background:linear-gradient(180deg,#020806d9,#03090799 45%,#020806e6),url('/assets/shared-menu-background.jpeg') center/cover!important}
+#rosterTrack,#rosterPrev,#rosterNext,#rosterStrip{display:none!important}
+#rosterBoard .roster-role{justify-self:center;display:flex;gap:8px}
+#rosterBoard .roster-role button{min-width:min(220px,24vw)}
+#rosterCarousel{grid-row:3;position:relative;min-height:0;overflow:hidden;touch-action:pan-y;container-type:size;user-select:none;-webkit-user-select:none}
+#rosterCarousel .rc-card{--glow:#b9f68a;position:absolute;top:50%;left:50%;height:100%;aspect-ratio:.8;padding:0;margin:0;border:1px solid #b5c99a66;border-radius:9px;background:#070e0a;overflow:hidden;transform:translate(calc(-50% + var(--offset)*112%),-50%) scale(.82);opacity:0;visibility:hidden;pointer-events:none;filter:brightness(.62);transition:transform .32s cubic-bezier(.2,.8,.2,1),opacity .32s ease,filter .32s ease;box-shadow:0 12px 30px #000a;touch-action:pan-y}
+#rosterCarousel[data-role=opponent] .rc-card{--glow:#ff6b5e}
+#rosterCarousel .rc-neighbor{opacity:.7;visibility:visible;pointer-events:auto}
+#rosterCarousel .rc-focused{opacity:1;visibility:visible;pointer-events:auto;z-index:2;transform:translate(-50%,-50%) scale(1);filter:none;border:2px solid var(--glow);box-shadow:0 0 0 1px #0008,0 0 26px color-mix(in srgb,var(--glow) 45%,transparent),0 18px 40px #000c}
+#rosterCarousel .rc-art{position:absolute;inset:0 0 38%;overflow:hidden}
+#rosterCarousel .rc-art>img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 12%}
+#rosterCarousel .rc-number{position:absolute;top:4%;left:5%;padding:3px 8px;background:#0b140fe6;border:1px solid #6d8260;color:#d5e4c7;font:700 clamp(9px,4.4cqh,13px)/1.2 inherit;letter-spacing:.14em}
+#rosterCarousel .rc-label{position:absolute;left:0;right:0;bottom:0;height:42%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;padding:0 6% 7%;background:linear-gradient(#06100900,#061009 22%,#040b08);text-align:center}
+#rosterCarousel .rc-label strong{font:italic 900 clamp(20px,11cqh,40px)/1 var(--ui-display,inherit);letter-spacing:.02em;color:#fff;text-shadow:0 2px 8px #000}
+#rosterCarousel .rc-style{font:700 clamp(8px,3.2cqh,11px)/1.25 inherit;letter-spacing:.06em;color:#cbd8bf;max-width:100%;text-wrap:balance}
+#rosterCarousel .rc-eyebrow{font:800 clamp(8px,3.4cqh,11px)/1 inherit;letter-spacing:.18em;color:var(--glow);opacity:0}
+#rosterCarousel .rc-focused .rc-eyebrow{opacity:1}
+#rosterCarousel .rc-also-player:not(.rc-focused) .rc-number{background:#b9f68a;color:#0d1a08;border-color:#d4ffaf}
+#rosterCarousel .rc-also-opponent:not(.rc-focused) .rc-number{background:#ff6b5e;color:#1a0807;border-color:#ffb1a9}
+#rosterBoard .roster-footer{display:grid!important;grid-template-columns:1fr auto 1fr;align-items:center;background:none!important}
+#rosterBoard .roster-footer #chooseFighter{grid-column:2;min-width:min(320px,36vw);height:46px!important}
+#rosterBoard .roster-footer>#rosterInstruction{display:none!important}
+#rosterBoard #rosterCount{grid-column:3;justify-self:start;margin-left:14px;font:700 12px/1 inherit;letter-spacing:.2em;color:#9fb08f}
+@media (prefers-reduced-motion:reduce){#rosterCarousel .rc-card{transition:none}}

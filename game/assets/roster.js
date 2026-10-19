@@ -23,5 +23,5 @@ $('#rosterBack').addEventListener('click',()=>$('#backTitle').click());
 $('#chooseFighter').addEventListener('click',()=>cue(true));
 $('#rosterPrev').addEventListener('click',()=>$('#rosterTrack').scrollBy({left:-$('#rosterTrack').clientWidth*.65,behavior:'smooth'}));
 $('#rosterNext').addEventListener('click',()=>$('#rosterTrack').scrollBy({left:$('#rosterTrack').clientWidth*.65,behavior:'smooth'}));
-window.BRAX_ROSTER={setMode(mode){state.mode=mode;state.role='player';paint();},bind(fn){selectPlayer=fn;paint();},sync(index){state.player=index;paint();},get opponent(){return names[state.opponent];},state:()=>({...state})};paint();
+window.BRAX_ROSTER={setMode(mode){state.mode=mode;state.role='player';paint();},choose(index){state[state.role]=index;if(state.role==='player')selectPlayer(index);paint();cue();},bind(fn){selectPlayer=fn;paint();},sync(index){state.player=index;paint();},get opponent(){return names[state.opponent];},state:()=>({...state})};paint();
 })();
