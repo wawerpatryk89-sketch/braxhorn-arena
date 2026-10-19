@@ -19,6 +19,17 @@ const portraits={
 function portrait(name){const p=portraits[name];return p?'<svg class="fighter-portrait" viewBox="'+p[1]+'" preserveAspectRatio="xMidYMin slice" aria-hidden="true"><image href="'+p[0]+'" width="1024" height="1536"/></svg>':'';}
 
 const frame=()=>'<svg class="fighter-frame" viewBox="0 0 300 400" preserveAspectRatio="none" aria-hidden="true"><path class="frame-edge" d="M18 2H282L298 18V382L282 398H18L2 382V18Z"/><path class="frame-inset" d="M22 8H278L292 22V378L278 392H22L8 378V22Z"/><path class="frame-glint" d="M24 3H138M298 28V115M276 397H162M2 372V285"/></svg>';
+function layoutCarousel(root){
+ const fit=()=>{
+  const width=root.clientWidth,height=root.clientHeight;if(!width||!height)return;
+  const gap=Math.max(8,Math.min(16,width*.015));
+  const card=Math.min((width-4*gap)/4,(height-8)*.82),step=card+gap;
+  root.style.setProperty('--carousel-card-width',card+'px');
+  root.style.setProperty('--carousel-step',step+'px');
+  root.style.setProperty('--carousel-edge-inset',Math.max(0,(width-4*step)/2)+'px');
+ };
+ new ResizeObserver(fit).observe(root);fit();
+}
 const track=$('#rosterTrack');let drag=null,suppressClickUntil=0;
 // Touch uses the browser's native momentum scrolling. Mouse dragging uses capture
 // only after movement, so a normal card tap still reaches its own click handler.
@@ -38,7 +49,7 @@ $('#chooseFighter').addEventListener('click',()=>cue(true));
 $('#rosterPrev').addEventListener('click',()=>$('#rosterTrack').scrollBy({left:-$('#rosterTrack').clientWidth*.65,behavior:'smooth'}));
 $('#rosterNext').addEventListener('click',()=>$('#rosterTrack').scrollBy({left:$('#rosterTrack').clientWidth*.65,behavior:'smooth'}));
 const notify=()=>window.dispatchEvent(new Event('brax:roster-change'));
-window.BRAX_ROSTER={portrait,frame,setMode(mode){state.mode=mode;state.role='player';paint();notify();},setRole(role){if(!['player','opponent'].includes(role)||automatic()&&role==='opponent')return;state.role=role;paint();cue();notify();},choose(index){if(!Number.isInteger(index)||index<0||index>=names.length)return;state[state.role]=index;if(state.role==='player')selectPlayer(index);paint();cue();notify();},bind(fn){selectPlayer=fn;paint();notify();},sync(index){state.player=index;paint();notify();},get opponent(){return names[state.opponent];},state:()=>({...state})};
+window.BRAX_ROSTER={portrait,frame,layoutCarousel,setMode(mode){state.mode=mode;state.role='player';paint();notify();},setRole(role){if(!['player','opponent'].includes(role)||automatic()&&role==='opponent')return;state.role=role;paint();cue();notify();},choose(index){if(!Number.isInteger(index)||index<0||index>=names.length)return;state[state.role]=index;if(state.role==='player')selectPlayer(index);paint();cue();notify();},bind(fn){selectPlayer=fn;paint();notify();},sync(index){state.player=index;paint();notify();},get opponent(){return names[state.opponent];},state:()=>({...state})};
 for(const id of ['rosterPlayer','rosterOpponent'])$('#'+id).addEventListener('click',notify);
 paint();
 })();

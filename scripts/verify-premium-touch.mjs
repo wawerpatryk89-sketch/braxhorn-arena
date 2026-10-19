@@ -8,6 +8,20 @@ const out=process.argv[2]||'/tmp/braxhorn-touch';
 fs.mkdirSync(out,{recursive:true});
 let browser;
 const results=[];
+async function checkCarousel(page,selector,cards){
+ const layout=await page.locator(selector).evaluate((root,cards)=>{
+  const box=root.getBoundingClientRect(),inset=parseFloat(getComputedStyle(root).getPropertyValue('--carousel-edge-inset'))||0,left=box.left+inset,right=box.right-inset;
+  return [...root.querySelectorAll(cards)].map(card=>{const r=card.getBoundingClientRect(),opacity=Number(getComputedStyle(card).opacity),fraction=Math.max(0,Math.min(right,r.right)-Math.max(left,r.left))/r.width;return{opacity,fraction,width:r.width,height:r.height};}).filter(card=>card.opacity>.03&&card.fraction>.03);
+ },cards);
+ const full=layout.filter(card=>card.opacity>.98&&card.fraction>.98),edges=layout.filter(card=>card.opacity<.4&&card.fraction>.4&&card.fraction<.6);
+ assert.equal(full.length,3,'Three full-size cards remain visible');
+ assert.equal(edges.length,2,'The next two cards show dimmed halves at the edges');
+ assert.ok(Math.max(...full.map(card=>card.width))-Math.min(...full.map(card=>card.width))<2,'All three front cards have the same size');
+ const stats=await page.locator(selector).evaluate((root,cards)=>[...root.querySelectorAll(cards)].filter(card=>Number(getComputedStyle(card).opacity)>.98).map(card=>{const box=card.getBoundingClientRect(),rows=[...card.querySelectorAll('.fighter-stat')];return{count:rows.length,labels:rows.map(row=>row.querySelector('span').textContent),fits:rows.every(row=>{const r=row.getBoundingClientRect();return r.top>=box.top&&r.bottom<=box.bottom-4&&r.left>=box.left&&r.right<=box.right;})};}),cards);
+ for(const card of stats){assert.equal(card.count,3,'Each visible card shows three general statistics');assert.deepEqual(card.labels,['SIŁA','SZYBKOŚĆ','ZASIĘG']);assert.equal(card.fits,true,'The visible statistics fit inside the card');}
+
+}
+
 try{
  browser=await launch();console.log('Browser ready.');
  for(const size of ['844x390','915x412']){
@@ -38,6 +52,7 @@ try{
   assert.equal(await page.locator('#rosterCarousel .rc-focused .fighter-portrait image').getAttribute('href'),'/assets/roster-art-a-151.webp','The unframed arena illustration is used');
   assert.equal(await page.locator('#rosterCarousel .fighter-frame').count(),8,'Every fighter uses the same live frame');
   assert.equal(await page.evaluate(async()=>{const image=new Image();image.src=document.querySelector('#rosterCarousel .fighter-portrait image').getAttribute('href');await image.decode();return image.naturalWidth;}),1024,'The new portrait artwork decodes correctly');
+  await checkCarousel(page,'#rosterCarousel','.rc-card');
   await page.screenshot({path:out+'/'+size+'-roster.png'});
   if(size==='844x390'&&process.env.BRAX_GALLERY==='1'){
    await page.setViewportSize({width:1280,height:800});
@@ -61,13 +76,13 @@ try{
   await page.waitForTimeout(450);
   assert.equal(await page.evaluate(()=>BRAX_ROSTER.state().player),1,'A real swipe changes the fighter');
   assert.equal(await page.evaluate(()=>BRAX_ROSTER.state().role),'player','Browsing does not choose the opponent');
+  for(let i=0;i<8;i++){await swipe(page,'#rosterCarousel');await checkCarousel(page,'#rosterCarousel','.rc-card');}
+  assert.equal(await page.evaluate(()=>BRAX_ROSTER.state().player),1,'A full carousel turn returns to the same fighter');
+  assert.equal(await page.locator('#chooseFighter').isVisible(),false,'The redundant green selection button is hidden');
   await page.locator('#rosterCarousel .rc-focused').tap();
-  assert.equal(await page.locator('#rosterCarousel').evaluate(node=>node.classList.contains('rc-detail')),true,'Tapping the centre shows statistics');
-  await page.screenshot({path:out+'/'+size+'-stats.png'});
-  await page.locator('#chooseFighter').tap();
-  assert.equal(await page.evaluate(()=>BRAX_ROSTER.state().role),'opponent','The only main action confirms the player');
+  assert.equal(await page.evaluate(()=>BRAX_ROSTER.state().role),'opponent','Tapping the fighter card confirms the player');
   assert.equal(await page.evaluate(()=>BRAX_ROSTER.state().player),1);
-  const layout=await page.evaluate(()=>{const a=document.getElementById('chooseFighter').getBoundingClientRect(),b=document.getElementById('rosterCount').getBoundingClientRect();return{overlap:Math.min(a.right,b.right)>Math.max(a.left,b.left)&&Math.min(a.bottom,b.bottom)>Math.max(a.top,b.top),offscreen:a.bottom>innerHeight||b.right>innerWidth};});
+  const layout=await page.evaluate(()=>{const a=document.getElementById('rosterInstruction').getBoundingClientRect(),b=document.getElementById('rosterCount').getBoundingClientRect();return{overlap:Math.min(a.right,b.right)>Math.max(a.left,b.left)&&Math.min(a.bottom,b.bottom)>Math.max(a.top,b.top),offscreen:a.bottom>innerHeight||b.right>innerWidth};});
   assert.deepEqual(layout,{overlap:false,offscreen:false},'Counter and main action stay separate');
   await page.evaluate(()=>{document.getElementById('selection').classList.add('off');document.getElementById('matchSetup').classList.remove('off');});
   await page.screenshot({path:out+'/'+size+'-modes.png'});
@@ -78,10 +93,15 @@ try{
   assert.notEqual(await page.locator('.mode-focused').getAttribute('id'),firstMode,'The modes work by real touch, without arrows');
   for(let i=0;i<7&&!await page.locator('#multiplayerMode').evaluate(node=>node.classList.contains('mode-focused'));i++)await swipe(page,'#matchSetup .mode-card-row');
   await page.locator('#modePlay').tap();
-  await page.waitForSelector('#mpNext');
+  await page.waitForSelector('#mpSelection .mp-focused');
+  await checkCarousel(page,'.mp-roster','.mp-fighter');
+  await page.screenshot({path:out+'/'+size+'-online-roster.png'});
   await swipe(page,'.mp-roster');
   assert.equal(await page.evaluate(()=>BRAX_MULTIPLAYER.fighter),'NYXA','The online roster works by real touch, without arrows');
-  await page.locator('#mpNext').tap();
+  for(let i=0;i<8;i++){await swipe(page,'.mp-roster');await checkCarousel(page,'.mp-roster','.mp-fighter');}
+  assert.equal(await page.evaluate(()=>BRAX_MULTIPLAYER.fighter),'NYXA','The online carousel also loops without reversing');
+  assert.equal(await page.locator('#mpNext').isVisible(),false,'Online selection also has no green confirmation button');
+  await page.locator('#mpSelection .mp-focused').tap();
   await page.screenshot({path:out+'/'+size+'-online-lobby.png'});
   await page.locator('#mpLeave').tap();
   await page.evaluate(()=>BRAX_TOURNAMENTS.open());
@@ -112,7 +132,7 @@ try{
   await page.waitForFunction(()=>document.getElementById('arenaSelection').classList.contains('off'));
   assert.equal(await page.evaluate(()=>__transitionFrames.some(frame=>!frame.card&&frame.black<.99)),false,'The VS card stays until the arena is covered by black');
   assert.deepEqual(page.errors.filter(error=>!error.includes('Failed to load resource')),[]);
-  results.push({size,swipe:true,statistics:true,independentRoles:true,onlineEntry:true,onlineSwipe:true,vsCoveredUntilFade:true,localizedDate:true,noHorizontalOverflow:true});
+  results.push({size,threeFullCards:true,dimmedEdgeHalves:true,fullLoop:true,swipe:true,alwaysVisibleStats:true,tapToChoose:true,independentRoles:true,onlineEntry:true,onlineSwipe:true,vsCoveredUntilFade:true,localizedDate:true,noHorizontalOverflow:true});
   console.log('PASS touch preview '+size);
   await context.close();
  }

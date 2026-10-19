@@ -27,8 +27,8 @@ await step('tryby',()=>tapSel('#identityContinue'));
 await step('lista-trybow',async()=>{report.modes=await page.evaluate(()=>[...document.querySelectorAll('#matchSetup .mode-hit')].map(c=>c.id+':'+c.getAttribute('aria-label')));});
 await step('ustawienia-trybu',()=>openMode('fightMode'));
 await step('wybor-postaci',async()=>{if(await isVisible('#setupNext'))await tapSel('#setupNext');else if(await isVisible('#closeModeSettings'))await tapSel('#closeModeSettings');});
-await step('wybor-przeciwnika',async()=>{if(await isVisible('#rosterOpponent'))await tapSel('#rosterOpponent');});
-await step('wybor-areny',async()=>{if(await isVisible('#rosterPlayer'))await tapSel('#rosterPlayer');await tapSel('#chooseFighter');});
+await step('wybor-przeciwnika',()=>tapSel('#rosterCarousel .rc-focused'));
+await step('wybor-areny',()=>tapSel('#rosterCarousel .rc-focused'));
 await step('pomoc-sterowania',async()=>{const a=page.locator('#arena-metro').first();await a.scrollIntoViewIfNeeded().catch(()=>{});await a.tap().catch(()=>{});await page.waitForTimeout(300);await tapSel('#arenaConfirm');await page.waitForTimeout(6000);await page.waitForTimeout(2500);});
 await step('walka',async()=>{if(await isVisible('#helpContinue'))await tapSel('#helpContinue');await page.waitForTimeout(5000);});
 await step('walka-cios',async()=>{for(const s of ['[data-tap="punch"]','[data-tap="kick"]'])if(await isVisible(s))await tapSel(s);await page.waitForTimeout(600);});
@@ -39,7 +39,7 @@ await step('wyjscie-do-menu',async()=>{await tapSel('#pause');await tapSel('#pau
 // Remaining menu destinations.
 for(const [label,id] of [['arcade','arcadeMode'],['trening','mode-training'],['turniej-lokalny','tournamentMode'],['wyzwania-hub','hubMode'],['multiplayer','multiplayerMode'],['turnieje-online','onlineTournamentMode']]){
  await step(label,async()=>{await toModes();await openMode(id);});
- await step(label+'-dalej',async()=>{for(const s of ['#setupNext','#survivalMode','#mpNext','[data-tx="open"]'])if(await isVisible(s)){await tapSel(s);break;}});
+ await step(label+'-dalej',async()=>{for(const s of ['#setupNext','#survivalMode','#mpSelection .mp-focused','[data-tx="open"]'])if(await isVisible(s)){await tapSel(s);break;}});
  if(label==='multiplayer')await step('multiplayer-kod',async()=>{for(const s of ['#mpCode','#mpJoin'])if(await isVisible(s)){await tapSel(s);break;}});
  if(label==='turnieje-online')await step('turnieje-kod',async()=>{for(const s of ['#txCode','#txInviteCode'])if(await isVisible(s)){await tapSel(s);break;}});
  for(let i=0;i<4;i++)for(const back of ['#closeModeSettings','#backFighter','#backTitle','#hubBack','#survivalBack','#challengesBack','#setupBack','#mpExit','#mpLeave','[data-tx="close"]','#txClose'])if(await isVisible(back)){try{await tapSel(back);}catch{}}

@@ -24,7 +24,7 @@ async function toLobby(p,nick,fighter){
  await tap(p,'#modePlay');await p.waitForTimeout(800);await skip(p);
  for(let i=0;i<8&&!(await p.evaluate(f=>(document.getElementById('mpPosition')?.textContent||'').startsWith(String(['BRAX','NYXA','VEXA','KROV','NINA','DANNY','BEAR','DEMON'].indexOf(f)+1).padStart(2,'0')),fighter));i++)await swipe(p,'.mp-roster');
  report.checks['position'+nick]=await p.locator('#mpPosition').textContent().catch(()=>null);
- await tap(p,'#mpNext');await p.waitForTimeout(600);
+ await tap(p,'#mpSelection .mp-focused');await p.waitForTimeout(600);
 }
 async function shot(p,name){const file=`${out}/${size}-${name}.png`;await p.screenshot({path:file});return file;}
 async function fightState(p){return p.evaluate(()=>{

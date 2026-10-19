@@ -16,8 +16,8 @@ await tap('#identityContinue');for(let i=0;i<10&&!(await vis('#modePlay'));i++){
 await tap('#modePlay');await page.waitForTimeout(800);await skip();
 if(await vis('#setupNext'))await tap('#setupNext');
 const idx=['BRAX','NYXA','VEXA','KROV','NINA','DANNY','BEAR','DEMON'].indexOf(fighter);
-await page.screenshot({path:`${out}/debug-before-roster.png`});if(await vis("#rosterPlayer"))await tap("#rosterPlayer");await tap(`#rosterStrip button[data-index="${idx}"]`);
-await tap('#chooseFighter');const a=page.locator('#arena-metro').first();await a.scrollIntoViewIfNeeded().catch(()=>{});await a.tap().catch(()=>{});await page.waitForTimeout(300);await tap('#arenaConfirm');
+await page.screenshot({path:`${out}/debug-before-roster.png`});if(await vis('#rosterPlayer'))await tap('#rosterPlayer');await page.evaluate(index=>BRAX_ROSTER.choose(index),idx);await tap('#rosterCarousel .rc-focused');
+await tap('#rosterCarousel .rc-focused');const a=page.locator('#arena-metro').first();await a.scrollIntoViewIfNeeded().catch(()=>{});await a.tap().catch(()=>{});await page.waitForTimeout(300);await tap('#arenaConfirm');
 let helpShot=false;for(let i=0;i<30;i++){await page.waitForTimeout(700);await skip();if(await vis('#helpContinue')){if(!helpShot){helpShot=true;await page.waitForTimeout(500);await page.screenshot({path:`${out}/${size}-${fighter}-pomoc.png`});if(await vis('#helpMovesTab')){await tap('#helpMovesTab');await page.waitForTimeout(400);await page.screenshot({path:`${out}/${size}-${fighter}-ciosy.png`});}}await tap('#helpContinue');}if(await page.evaluate(()=>{const S=window.__BRAX_DEBUG__?.S();return S&&S.running&&!S.preFight&&!S.cinematic;}))break;}
 await page.waitForFunction(()=>{const S=window.__BRAX_DEBUG__?.S();return S&&S.running&&!S.preFight&&!S.cinematic;},null,{timeout:30000}).catch(async e=>{await page.screenshot({path:`${out}/debug-wait.png`});console.log("dbg",await page.evaluate(()=>[typeof window.__BRAX_DEBUG__,JSON.stringify(window.__BRAX_PROOF__?.state?.()).slice(0,300)]));throw e;});
 await page.evaluate(()=>{const {B,O}=window.__BRAX_DEBUG__;const b=B(),o=O();b.en=100;b.x=44;o.x=56;o.hp=100;});

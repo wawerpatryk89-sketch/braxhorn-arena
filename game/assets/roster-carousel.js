@@ -8,7 +8,7 @@ const names=['BRAX','NYXA','VEXA','KROV','NINA','DANNY','BEAR','DEMON'];
 const label=n=>window.BRAX_FIGHTER_NAME?.(n)||n;
 const root=document.createElement('div');root.id='rosterCarousel';
 root.setAttribute('role','group');root.setAttribute('aria-roledescription','karuzela');
-root.setAttribute('aria-label','Zawodnicy. Przesuń w bok, dotknij wybranej karty, aby zobaczyć statystyki.');
+root.setAttribute('aria-label','Zawodnicy. Przesuń, aby porównać. Dotknij karty, aby wybrać.');
 const cards=names.map((name,index)=>{
  const source=$('card-'+name.toLowerCase()),card=document.createElement('button');
  card.type='button';card.className='rc-card';card.dataset.index=String(index);
@@ -20,33 +20,33 @@ const cards=names.map((name,index)=>{
  const style=document.createElement('small');style.textContent=source.querySelector('.fighter-card-style')?.textContent||'';
  copy.append(eyebrow,title,style);
  const stats=document.createElement('span');stats.className='rc-stats';
- const statsTitle=document.createElement('strong');statsTitle.textContent=label(name);
  const metrics=source.querySelector('.fighter-stats')?.cloneNode(true);
- stats.append(statsTitle);if(metrics)stats.append(metrics);
+ if(metrics){[...metrics.children].slice(3).forEach(row=>row.remove());metrics.children[0].querySelector('span').textContent='SIŁA';stats.append(metrics);}
  card.append(image,number,copy,stats);card.insertAdjacentHTML('beforeend',roster.frame());root.append(card);
  return card;
 });
 original.after(root);
+roster.layoutCarousel(root);
 original.setAttribute('aria-hidden','true');
 for(const card of original.querySelectorAll('button'))card.tabIndex=-1;
 const footer=board.querySelector('.roster-footer'),count=document.createElement('span');
 count.id='rosterCount';count.setAttribute('aria-live','polite');count.setAttribute('aria-atomic','true');footer.append(count);
-let signature='',detail=false,gesture=null,ignoreClickUntil=0;
+let gesture=null,ignoreClickUntil=0,confirming=false;
 const automatic=s=>['arcade','tournament','survival'].includes(s.mode);
 function paint(){
- const state=roster.state(),current=state[state.role],nextSignature=[state.player,state.opponent,state.role,state.mode].join(':');
- if(signature!==nextSignature){detail=false;signature=nextSignature;}
- root.dataset.role=state.role;root.classList.toggle('rc-detail',detail);
+ const state=roster.state(),current=state[state.role];
+ root.dataset.role=state.role;
  cards.forEach((card,index)=>{
   let offset=(index-current+names.length)%names.length;if(offset>names.length/2)offset-=names.length;
   const active=offset===0,near=Math.abs(offset)<=1;
   card.style.setProperty('--offset',offset);card.classList.toggle('rc-focused',active);card.classList.toggle('rc-neighbor',Math.abs(offset)===1);
+  card.classList.toggle('rc-edge',Math.abs(offset)===2);
   card.setAttribute('aria-hidden',String(!near));card.setAttribute('aria-pressed',String(active));card.tabIndex=near?0:-1;
-  card.setAttribute('aria-label',label(names[index])+(active?', dotknij, aby '+(detail?'wrócić do portretu':'zobaczyć statystyki'):', dotknij, aby wybrać'));
+  card.setAttribute('aria-label',label(names[index])+'. '+card.querySelector('.rc-stats').textContent+'. Dotknij, aby wybrać.');
   card.querySelector('.rc-eyebrow').textContent=active?(state.role==='player'?'TWOJA POSTAĆ':'TWÓJ RYWAL'):index===state.player?'TY':!automatic(state)&&index===state.opponent?'RYWAL':'';
  });
  count.textContent=String(current+1).padStart(2,'0')+' / '+String(names.length).padStart(2,'0');
- $('rosterInstruction').textContent=detail?'Dotknij karty · wróć do portretu':'Przesuń · zmień postać  /  Dotknij · statystyki';
+ $('rosterInstruction').textContent=state.role==='player'?'Przesuń · porównaj. Dotknij swojej karty.':'Przesuń · porównaj. Dotknij karty rywala.';
  $('rosterPlayer').textContent='01  TY · '+label(names[state.player]);
  $('rosterOpponent').textContent='02  RYWAL · '+label(names[state.opponent]);
  $('rosterOpponent').hidden=automatic(state);
@@ -55,7 +55,7 @@ function paint(){
 }
 function step(direction){const state=roster.state();roster.choose((state[state.role]+direction+names.length)%names.length);}
 root.addEventListener('dragstart',event=>event.preventDefault());
-root.addEventListener('pointerdown',event=>{if(event.isPrimary===false||event.button>0)return;gesture={id:event.pointerId,x:event.clientX,y:event.clientY,moved:false};});
+root.addEventListener('pointerdown',event=>{if(confirming||event.isPrimary===false||event.button>0)return;ignoreClickUntil=0;gesture={id:event.pointerId,x:event.clientX,y:event.clientY,moved:false};});
 root.addEventListener('pointermove',event=>{
  if(!gesture||event.pointerId!==gesture.id)return;
  const dx=event.clientX-gesture.x,dy=event.clientY-gesture.y;
@@ -71,18 +71,24 @@ root.addEventListener('pointercancel',()=>{gesture=null;});
 // bubbles a lostpointercapture event; that event must not cancel the swipe.
 root.addEventListener('lostpointercapture',event=>{if(event.target===root)gesture=null;});
 root.addEventListener('click',event=>{
- const card=event.target.closest('.rc-card');if(!card||performance.now()<ignoreClickUntil)return;
+ const card=event.target.closest('.rc-card');if(!card||confirming||performance.now()<ignoreClickUntil)return;
  const index=Number(card.dataset.index),state=roster.state();
- if(index!==state[state.role])roster.choose(index);else{detail=!detail;paint();}
+ roster.choose(index);
+ if(state.role==='player'&&!automatic(state)){roster.setRole('opponent');return;}
+ confirming=true;root.setAttribute('aria-busy','true');$('rosterInstruction').textContent='Ładowanie zawodników…';
+ // Preserve capture listeners used by challenge eligibility and both menu engines.
+ const button=$('chooseFighter'),allowed=button.dispatchEvent(new MouseEvent('click',{bubbles:true,cancelable:true}));
+ if(!allowed||!button.disabled){confirming=false;root.setAttribute('aria-busy','false');}
 });
 root.addEventListener('keydown',event=>{
- if(!['ArrowLeft','ArrowRight'].includes(event.key))return;
+ if(confirming||!['ArrowLeft','ArrowRight'].includes(event.key))return;
  event.preventDefault();event.stopPropagation();step(event.key==='ArrowRight'?1:-1);cards[roster.state()[roster.state().role]].focus({preventScroll:true});
 });
 $('chooseFighter').addEventListener('click',event=>{
  const state=roster.state();if(state.role!=='player'||automatic(state))return;
  event.preventDefault();event.stopImmediatePropagation();roster.setRole('opponent');
 },true);
+new MutationObserver(()=>{if(!$('chooseFighter').disabled)confirming=false;root.setAttribute('aria-busy',String(confirming));if(confirming)$('rosterInstruction').textContent='Ładowanie zawodników…';else if($('chooseFighter').textContent.includes('SPRÓBUJ'))$('rosterInstruction').textContent='Nie udało się wczytać walki. Dotknij karty, aby spróbować ponownie.';else paint();}).observe($('chooseFighter'),{attributes:true,attributeFilter:['disabled']});
 window.addEventListener('brax:roster-change',paint);
 new MutationObserver(()=>{if(!$('selection').classList.contains('off'))paint();}).observe($('selection'),{attributes:true,attributeFilter:['class']});
 paint();

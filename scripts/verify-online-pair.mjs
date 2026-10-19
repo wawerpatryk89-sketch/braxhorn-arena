@@ -8,6 +8,7 @@ try{
   server.stderr.on('data',data=>process.stderr.write(data));
   server.stdout.on('data',data=>{if(String(data).includes('http://localhost:8787')){clearTimeout(timeout);resolve();}});
  });
- console.log('Local API ready; starting the two-client browser story.');
+ console.log('Local API ready; checking direct card selection and the two-client browser story.');
+ await import('./ui-roster-start.mjs');
  await import('./ui-online-pair.mjs');
 }finally{server.kill();}
