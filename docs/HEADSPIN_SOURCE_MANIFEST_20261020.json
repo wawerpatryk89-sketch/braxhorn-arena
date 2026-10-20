@@ -1,0 +1,124 @@
+{
+  "archive": "Headspin Start.zip",
+  "archiveSHA256": "913b7bf68e49b3c9f0a161d55e2eb0fca17fbe48309e9f3b153e39feece0b7d2",
+  "archiveBytes": 1593960,
+  "contentCount": 11,
+  "crc": "passed",
+  "format": "FBX Binary 7700",
+  "durationNotes": "FBX timeline duration from AnimationStack LocalStop; NOT verified action-only playable range",
+  "sourceLocation": "ChatGPT Library /BRAXHORN_ARENA/SHARED_MOCAP/Headspin Start.zip",
+  "githubBinaryStatus": "not uploaded to Git LFS; requires access to original library file via authorized transfer",
+  "licenseStatus": "verify provenance for these exact files before commercial release",
+  "entries": [
+    {
+      "name": "Headspin Start.fbx",
+      "bytes": 753776,
+      "fbxTimelineSeconds": 2.82,
+      "sha256": "1591a3b5ee255c905b158796a90ac29a32e803ad35d9e3ba0f4e0d48a027462f",
+      "priority": "review_for_style_or_victory_only",
+      "rig": "mixamorig",
+      "skeletonNodes": 65,
+      "sourceOriginalUnmodified": true
+    },
+    {
+      "name": "Big Kidney Hit.fbx",
+      "bytes": 510976,
+      "fbxTimelineSeconds": 1.58,
+      "sha256": "50ea8ce0b33e5bfc36627c9e51c69696d1c0c14c14a65cdfdacb1d3a872e4ad0",
+      "priority": "body_hit_reaction_candidate",
+      "rig": "mixamorig",
+      "skeletonNodes": 65,
+      "sourceOriginalUnmodified": true
+    },
+    {
+      "name": "Sweep Fall.fbx",
+      "bytes": 696768,
+      "fbxTimelineSeconds": 2.5,
+      "sha256": "b78ccd228050201a39fd076e8e19e7167dc0e1fd1b78d1cc530bb648ef682d36",
+      "priority": "knockdown_reaction_candidate",
+      "rig": "mixamorig",
+      "skeletonNodes": 65,
+      "sourceOriginalUnmodified": true
+    },
+    {
+      "name": "Receiving A Big Uppercut (1).fbx",
+      "bytes": 562752,
+      "fbxTimelineSeconds": 2.43,
+      "sha256": "c3d69d1458c584afad5022dbf962224fa5fa27902eef8e0683fa83cdec974726",
+      "priority": "launcher_reaction_candidate_check_against_peer",
+      "rig": "mixamorig",
+      "skeletonNodes": 65,
+      "sourceOriginalUnmodified": true
+    },
+    {
+      "name": "Receiving A Big Uppercut.fbx",
+      "bytes": 562752,
+      "fbxTimelineSeconds": 2.43,
+      "sha256": "cbd606bcf2f77f03c5ee773ac76ae5c3048ad57ed28a15884ecd6ffe5930e575",
+      "priority": "launcher_reaction_candidate_check_against_peer",
+      "rig": "mixamorig",
+      "skeletonNodes": 65,
+      "sourceOriginalUnmodified": true
+    },
+    {
+      "name": "Head Hit.fbx",
+      "bytes": 483584,
+      "fbxTimelineSeconds": 1.43,
+      "sha256": "c1a8023eda0ac6f03dc6b305f7ae3a9a83014f638dc3640db2e97ae8dcfaf8f2",
+      "priority": "head_hit_reaction_candidate",
+      "rig": "mixamorig",
+      "skeletonNodes": 65,
+      "sourceOriginalUnmodified": true
+    },
+    {
+      "name": "Receiving An Uppercut.fbx",
+      "bytes": 524480,
+      "fbxTimelineSeconds": 1.67,
+      "sha256": "8e61f09a0f26a6146cada47f767cd98211001eecfa2fba5597e0c8934801b960",
+      "priority": "uppercut_reaction_candidate",
+      "rig": "mixamorig",
+      "skeletonNodes": 65,
+      "sourceOriginalUnmodified": true
+    },
+    {
+      "name": "Jump Attack.fbx",
+      "bytes": 915984,
+      "fbxTimelineSeconds": 3.78,
+      "sha256": "6d8cfc35520e5738225d387e1c378ba0757fdec4bd9bd94c3ab1c5c727ec6366",
+      "priority": "aerial_attack_candidate",
+      "rig": "mixamorig",
+      "skeletonNodes": 65,
+      "sourceOriginalUnmodified": true
+    },
+    {
+      "name": "Injured Run Jump.fbx",
+      "bytes": 412736,
+      "fbxTimelineSeconds": 0.72,
+      "sha256": "d9f9c2e7664764d83d84248eef787f25aca0ffa405a2af10045756d3d8ab49d9",
+      "priority": "only_after_root_motion_audit",
+      "rig": "mixamorig",
+      "skeletonNodes": 65,
+      "sourceOriginalUnmodified": true
+    },
+    {
+      "name": "Jump From Wall.fbx",
+      "bytes": 511744,
+      "fbxTimelineSeconds": 1.25,
+      "sha256": "86a85009255d0b68fe5e2dcaf0f8cd7095537ff4ae3ca90876b016d5dc7e5dce",
+      "priority": "reject_wall_mechanic",
+      "rig": "mixamorig",
+      "skeletonNodes": 65,
+      "sourceOriginalUnmodified": true
+    },
+    {
+      "name": "Jumping.fbx",
+      "bytes": 640608,
+      "fbxTimelineSeconds": 1.88,
+      "sha256": "447ba886c696d3875734f7478cc20f878910b1ed5ed5782b6afeb842fe18cc65",
+      "priority": "general_jump_candidate",
+      "rig": "mixamorig",
+      "skeletonNodes": 65,
+      "sourceOriginalUnmodified": true
+    }
+  ]
+}

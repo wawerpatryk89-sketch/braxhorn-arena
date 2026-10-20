@@ -1,0 +1,20 @@
+{
+  "source": "Movement/Jumping_ROM_HUMANIK_WHS.fbx",
+  "sourceLocation": "Owner-supplied Rokoko Movement(1).zip",
+  "retargetedInput": "jump-retargeted.json.gz",
+  "retargetedInputSha256": "330914875f8952a22ca9ab657ff254b82bc1f6d27d5267b3028c7db130fc3e92",
+  "sampleStartSeconds": 3.8,
+  "sampleEndSeconds": 5.2,
+  "samplingHz": 60,
+  "target": "Existing Brax rig; no model, weights, skeleton or texture modifications",
+  "runtimeClip": "BRAX_ROKOKO_JUMP",
+  "runtimeSlot": "JUMP",
+  "build": "node --loader ./scripts/krov-three-loader.mjs scripts/build-bull-breaker-jump.mjs",
+  "otherCandidate": {
+    "source": "Combat/PunchingtheGround_HUMANIK_769.fbx",
+    "sourceArchive": "Combat(5).zip",
+    "sha256": "3d99e2a841e5609781d1db4e1b6aaf07dcb84b1c6bd250f07b849b3c376e7ea1",
+    "duration": 24.890474319458008,
+    "decision": "Not inserted into all opponents: source starts upright, descends to kneeling, then punches the floor; it is not a drop-in replacement for their prone down/get-up clips."
+  }
+}
