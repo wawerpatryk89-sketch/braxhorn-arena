@@ -43,7 +43,19 @@ function preserveWeights(material,groups){
  };
  material.customProgramCacheKey=()=> 'original-influences-'+groups*4;
 }
-export function prepareMetadata(who){if(!metadata.has(who))metadata.set(who,json('/assets/'+who.toLowerCase()+'-new/config.json?v='+(window.BRAX_COMPAT?.configs||'azrak-146')).then(async config=>{if(who==='BRAX'){const override=await json('/assets/brax-new/bull-breaker-v2.json?v=20261020');if(override?.braxSpecial?.version!==2||override.finisherGroup!==4)throw Error('BRAX_SPECIAL_INVALID');config.COMBO=override;}const frames={};for(const c of Object.values(config))frames[c.asset]={w:WIDTH,h:SIZE,frames:c.durations.map(duration=>({duration}))};return{config,frames,ready:false,render(){}};}).catch(e=>{metadata.delete(who);throw e;}));return metadata.get(who);}
+// A short, rig-safe prone fist-thump used only after a landed BRAX special.
+function makeBraxRage(config,who){
+ const c=config.DOWN;if(!c?.sourceVersion||!c.freeze||!c.hurtCapsules?.length)return;
+ const n=29,pick=(a,i)=>a?.[Math.min(a.length-1,i)]??a?.[0];
+ config.BRAX_RAGE={...c,asset:who+'_BRAX_RAGE_FLOOR',label:'Gniew po Bull Breaker',
+  duration:n/60,durations:Array(n).fill(1000/60),attack:false,gain:0,freeze:true,
+  boxes:Array.from({length:n},(_,i)=>pick(c.boxes,i)),
+  footY:Array.from({length:n},(_,i)=>pick(c.footY,i)),
+  pushCenters:Array.from({length:n},(_,i)=>pick(c.pushCenters,i)),
+  hurtCapsules:Array.from({length:n},(_,i)=>pick(c.hurtCapsules,i)),
+  hits:{},braxRagePunch:true,transitionMs:85};
+}
+export function prepareMetadata(who){if(!metadata.has(who))metadata.set(who,json('/assets/'+who.toLowerCase()+'-new/config.json?v='+(window.BRAX_COMPAT?.configs||'azrak-146')).then(async config=>{if(who==='BRAX'){const override=await json('/assets/brax-new/bull-breaker-v2.json?v=20261020');if(override?.braxSpecial?.version!==2||override.finisherGroup!==4)throw Error('BRAX_SPECIAL_INVALID');config.COMBO=override;}makeBraxRage(config,who);const frames={};for(const c of Object.values(config))frames[c.asset]={w:WIDTH,h:SIZE,frames:c.durations.map(duration=>({duration}))};return{config,frames,ready:false,render(){}};}).catch(e=>{metadata.delete(who);throw e;}));return metadata.get(who);}
 export function preparePair(names){const request=[...names];const task=pairQueue.then(()=>loadPair(request));pairQueue=task.catch(()=>{});return task;}
 async function loadPair(names){
  const needed=new Set(names.filter(Boolean));
