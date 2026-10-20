@@ -8,7 +8,8 @@ export function packageFighters(build='build',output='fighter-package'){
  const manifest=[],urls={};
  for(const dir of fs.readdirSync('game/assets').filter(n=>n.endsWith('-new')).sort()){
   const who=dir.slice(0,-4).toUpperCase();urls[who]={};
-  for(const name of ['model.json.gz','clips.json.gz','color.webp','normal.webp','metalness.webp','roughness.webp']){
+  const extra=JSON.parse(fs.readFileSync(path.join('game/assets',dir,'config.json'))).IDLE.chain?.extraClips;
+  for(const name of ['model.json.gz','clips.json.gz','color.webp','normal.webp','metalness.webp','roughness.webp',...(extra?[extra]:[])]){
    const source=path.join('game/assets',dir,name),body=fs.readFileSync(source),sha256=createHash('sha256').update(body).digest('hex');
    const ext=name.endsWith('.gz')?'json.gz':'webp',file=dir+'-'+name.split('.')[0]+'.'+sha256+'.'+ext;
    fs.writeFileSync(path.join(output,file),body);

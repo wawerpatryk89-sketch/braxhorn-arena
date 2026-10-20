@@ -53,7 +53,7 @@ async function loadPair(names){
  for(const who of needed)if(!window[who+'_3D']?.ready){window[who+'_3D']?.dispose?.();window[who+'_3D']=await prepareSource(who);}
 }
 async function load(who){
- const base='/assets/'+who.toLowerCase()+'-new/';const url=n=>base+n+'?v=internet-duel-125';const[modelData,raw,meta]=await Promise.all([json(url('model.json.gz'),true),json(url('clips.json.gz'),true),prepareMetadata(who)]);
+ const base='/assets/'+who.toLowerCase()+'-new/';const url=n=>base+n+'?v=internet-duel-125';const[modelData,raw,meta]=await Promise.all([json(url('model.json.gz'),true),json(url('clips.json.gz'),true),prepareMetadata(who)]);if(meta.config.IDLE.chain?.extraClips)Object.assign(raw,await json(url(meta.config.IDLE.chain.extraClips),true));
  const config=meta.config;const r=rig(new T.ObjectLoader().parse(modelData),raw,who),loader=new T.TextureLoader(),owned=new Set();let disposed=false;
  const keep=x=>{owned.add(x);return x;};const clean=()=>{if(disposed)return;disposed=true;r.mixer.stopAllAction();r.model.traverse(o=>{if(o.isMesh){o.geometry.dispose();o.skeleton?.dispose?.();}});for(const item of owned)item.dispose();};
  try{
@@ -93,7 +93,7 @@ async function load(who){
   for(let i=0;i<bones.length;i++){bones[i].position.toArray(state.pose,i*7);bones[i].quaternion.toArray(state.pose,i*7+3);}state.frame=f;state.face=face;state.lastClock=clock;
   renderer.render(scene,r.camera);ctx.clearRect(0,0,WIDTH,SIZE);ctx.save();
   // The engine mirrors the canvas; cancel that mirror after physically rotating the model.
-  if(face<0){ctx.translate(WIDTH,0);ctx.scale(-1,1);}ctx.drawImage(renderer.domElement,0,0);ctx.restore();
+  if(face<0){ctx.translate(WIDTH,0);ctx.scale(-1,1);}ctx.drawImage(renderer.domElement,0,0);if(c.chainTrail){const trail=c.chainTrail,point=r.point(trail.bone);if(state.trailAsset!==c.asset){state.trail=[];state.trailAsset=c.asset;}state.trail.push(point);state.trail=state.trail.slice(-trail.length);ctx.lineCap='round';for(let i=1;i<state.trail.length;i++){ctx.beginPath();ctx.moveTo(...state.trail[i-1]);ctx.lineTo(...state.trail[i]);ctx.lineWidth=trail.width*i/state.trail.length;ctx.strokeStyle='rgba('+trail.color+','+(i/state.trail.length*.7)+')';ctx.shadowColor='rgb('+trail.color+')';ctx.shadowBlur=12;ctx.stroke();}}else state.trail=[];ctx.restore();
  }};
  }catch(error){clean();throw error;}
 }

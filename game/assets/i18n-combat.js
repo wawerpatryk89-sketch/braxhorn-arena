@@ -2,6 +2,9 @@
 (()=>{
 'use strict';
 const entries={
+ "chain.vibration":{"pl":"Wibracje przy trafieniach","en":"Impact vibration"},
+ "chain.hits":{"pl":"{count} TRAFIEŃ!","en":"{count} HITS!"},
+ "chain.bullBreaker":{"pl":"BULL BREAKER!","en":"BULL BREAKER!"},
  "common.you": {
   "pl": "TY",
   "en": "YOU"
