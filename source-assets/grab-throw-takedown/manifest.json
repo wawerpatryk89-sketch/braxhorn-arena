@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "pack": "Grab_Throw_Takedown",
+  "sha256": "44c9ac14912c981ef7a4090983affd162be3e2b8fdbf7ec2704a9bdd205e3fef",
+  "bytes": 8630068,
+  "pairs": 23,
+  "fightClips": 46,
+  "sourceSkeleton": "Unreal",
+  "targetSkeleton": "Mixamo",
+  "status": "source archived; runtime not activated",
+  "productionBase": {
+    "version": 190,
+    "commit": "10681a4e87c4212f79306f909c8dd65388f107c5"
+  },
+  "proposedAssignments": {
+    "BRAX": {
+      "combo": [
+        "RearArchDrop"
+      ],
+      "grabs": {
+        "P1": "Armbreak",
+        "P2": "PunchSlam",
+        "K1": "KneeKick",
+        "K2": "ClinchKnee"
+      }
+    },
+    "NYXA": {
+      "combo": [
+        "ClimbCrush",
+        "KneeOver"
+      ],
+      "grabs": [
+        "HipSweep",
+        "ClimbRoll"
+      ]
+    },
+    "VEXA": {
+      "combo": [
+        "TumbleLaunch"
+      ],
+      "grabs": [
+        "RollFlip",
+        "SpinOver"
+      ]
+    },
+    "KROV": {
+      "combo": [
+        "BackLift",
+        "BackSlam"
+      ],
+      "grabs": [
+        "BackThrow"
+      ]
+    },
+    "NINA": {
+      "combo": [
+        "RollToss"
+      ],
+      "grabs": [
+        "RollOver",
+        "ClimbRoll"
+      ]
+    },
+    "DANNY": {
+      "combo": [
+        "FaceSlam"
+      ],
+      "grabs": [
+        "GroundSlaps",
+        "PunchSlam"
+      ]
+    },
+    "AZRAK": {
+      "combo": [
+        "ChestSlam"
+      ],
+      "grabs": [
+        "KickStomp",
+        "Armbreak"
+      ]
+    },
+    "BEAR": {
+      "combo": [
+        "RearArchDrop"
+      ],
+      "grabs": [
+        "BackClimb",
+        "DropBack"
+      ]
+    }
+  }
+}
