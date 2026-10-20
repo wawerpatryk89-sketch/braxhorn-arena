@@ -87,7 +87,7 @@ H. Rendering: transparent quads/billboards, pooled buffers, brak kosztownych ful
 
 ## WARUNKI ODBIORU / WYMAGANE DOWODY
 1. Zamiast deklaracji „działa”: tabela 5 ciosów Braxa ze źródłem z rzeczywistych manifestów, przyciętym zakresem klatek, targetem, eventem kontaktu i nazwą animacji ofiary. Zrzuty kluczowych póz wszystkich 8 ofiar (twarz/tułów/stopy) i porównanie po kontakcie.
-2. Wideo E2E jednego specjalnego kombo BRA X z pełnym VFX/SFX/reakcjami przeciw 8 zawodnikom, 2 strony, zwykły i KO; pierwsza arena pilotażowa np. Lotniskowiec w burzy, inne nietknięte dopóki pipeline nie zda QA. Zaprezentować wersję normalną 1x oraz slow preview do inspekcji niepołamanych kończyn.
+2. Wideo E2E jednego specjalnego kombo BRAX z pełnym VFX/SFX/reakcjami przeciw 8 zawodnikom, 2 strony, zwykły i KO; pierwsza arena pilotażowa np. Lotniskowiec w burzy, inne nietknięte dopóki pipeline nie zda QA. Zaprezentować wersję normalną 1x oraz slow preview do inspekcji niepołamanych kończyn.
 3. Test przypadków: kontakt / blok / pudło / evade / przerwanie / inicjacja w środku / przy każdej krawędzi / wejście poza obszar początkowy / po zmianie strony / przeciwnik w powietrzu / w trakcie KO / multiplayer host+guest / wyjście z pauzy / wynik rundy / iPhone portrait->landscape, Android i desktop.
 4. Licznik i HP: dokładnie jeden damage per hitGroup na autorytatywnym hoście; zachować istniejące reguły energii; no perfect hit through guard. Sprawdzić input lock i recovery guard; brak wiecznych stunów.
 5. Wideo ruchu w całym światowym przewinięciu: brak czarnych pasków, skoków kadru, wall bounce, uciętej postaci, kończącego się tła, 2.5D jump do przodu i backward po wyjściu.
