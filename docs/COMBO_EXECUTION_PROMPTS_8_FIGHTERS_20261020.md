@@ -90,7 +90,7 @@ Po: istniejące Yelling Out, skrócony ryk stojąc, ofiara 1 cios w podłoże, g
 1. Meia Lua De Frente: sweep stopą, ofiara ugięcie nogi i krótki balans ramion, FX cienki turkusowy arc.
 2. Nina Extra Chapa 2 lub Chapa-Giratoria: rzeczywisty kontakt w tułów, ofiara wyraźny ruch żeber/ramion na bok; ripple.
 3. Nina Extra Armada: końcowa faza obrotu w głowę, ofiara odrębny recoil szyi, obrotowe speedline przy stopie.
-4. Martelo Do Chau Sem Mao albo Ninja Extra? NIE: użyć wyłącznie istniejącego Martelo Do Chau Sem Mao, jeśli jego rzeczywista trajektoria trafia przeciwnika; w przeciwnym razie sprawdzona Nina Extra Chapa 2 w innym dopuszczalnym fragmencie bez duplikowania identycznego ruchu. Ofiara: uniesienie i dynamiczny odrzut lub ciężki upadek bez sztucznego chwytu. FX jasnozłoty ring na końcu łuku.
+4. Martelo Do Chau Sem Mao, jeśli jego rzeczywista trajektoria trafia przeciwnika. W przeciwnym razie wybrać sprawdzoną Nina Extra Chapa 2 w innym dopuszczalnym fragmencie, bez duplikowania identycznego ruchu. Ofiara: uniesienie i dynamiczny odrzut lub ciężki upadek bez sztucznego chwytu. FX jasnozłoty ring na końcu łuku.
 Po: skrócony Breakdance Ending 2; ofiara frustracja i szybkie Shared Getting Up, o ile walka trwa. Nie zastępować ruchów capoeira zwykłym boksowaniem.
 
 ### PROMPT 06 — DANNY: BACKFLIP DEVASTATOR / CIOS W LOCIE
