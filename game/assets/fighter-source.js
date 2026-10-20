@@ -43,7 +43,7 @@ function preserveWeights(material,groups){
  };
  material.customProgramCacheKey=()=> 'original-influences-'+groups*4;
 }
-export function prepareMetadata(who){if(!metadata.has(who))metadata.set(who,json('/assets/'+who.toLowerCase()+'-new/config.json?v='+(window.BRAX_COMPAT?.configs||'azrak-146')).then(config=>{const frames={};for(const c of Object.values(config))frames[c.asset]={w:WIDTH,h:SIZE,frames:c.durations.map(duration=>({duration}))};return{config,frames,ready:false,render(){}};}).catch(e=>{metadata.delete(who);throw e;}));return metadata.get(who);}
+export function prepareMetadata(who){if(!metadata.has(who))metadata.set(who,json('/assets/'+who.toLowerCase()+'-new/config.json?v='+(window.BRAX_COMPAT?.configs||'azrak-146')).then(async config=>{if(who==='BRAX'){const override=await json('/assets/brax-new/bull-breaker-v2.json?v=20261020');if(override?.braxSpecial?.version!==2||override.finisherGroup!==4)throw Error('BRAX_SPECIAL_INVALID');config.COMBO=override;}const frames={};for(const c of Object.values(config))frames[c.asset]={w:WIDTH,h:SIZE,frames:c.durations.map(duration=>({duration}))};return{config,frames,ready:false,render(){}};}).catch(e=>{metadata.delete(who);throw e;}));return metadata.get(who);}
 export function preparePair(names){const request=[...names];const task=pairQueue.then(()=>loadPair(request));pairQueue=task.catch(()=>{});return task;}
 async function loadPair(names){
  const needed=new Set(names.filter(Boolean));
@@ -54,7 +54,7 @@ async function loadPair(names){
 }
 async function load(who){
  const base='/assets/'+who.toLowerCase()+'-new/';const url=n=>base+n+'?v=internet-duel-125';const[modelData,raw,meta]=await Promise.all([json(url('model.json.gz'),true),json(url('clips.json.gz'),true),prepareMetadata(who)]);
- const config=meta.config;const r=rig(new T.ObjectLoader().parse(modelData),raw,who),loader=new T.TextureLoader(),owned=new Set();let disposed=false;
+ const config=meta.config;if(who==='BRAX'){const takeoff=await json(base+'chain-clips.json.gz?v=bull-breaker-v2',true);if(!takeoff?.BRAX_ROKOKO_JUMP)throw Error('BRAX_ROKOKO_TAKEOFF_MISSING');Object.assign(raw,takeoff);}const r=rig(new T.ObjectLoader().parse(modelData),raw,who),loader=new T.TextureLoader(),owned=new Set();let disposed=false;
  const keep=x=>{owned.add(x);return x;};const clean=()=>{if(disposed)return;disposed=true;r.mixer.stopAllAction();r.model.traverse(o=>{if(o.isMesh){o.geometry.dispose();o.skeleton?.dispose?.();}});for(const item of owned)item.dispose();};
  try{
  const maps=await Promise.allSettled(['color','normal','metalness','roughness'].map(n=>loader.loadAsync(url(n+'.webp')).then(keep)));const failed=maps.find(x=>x.status==='rejected');if(failed)throw failed.reason;
