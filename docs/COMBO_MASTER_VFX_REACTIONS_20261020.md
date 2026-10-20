@@ -101,3 +101,9 @@ H. Rendering: transparent quads/billboards, pooled buffers, brak kosztownych ful
 - Three.js animation system: https://threejs.org/manual/pages/animation-system.html ; https://threejs.org/docs/pages/AnimationAction.html (crossfade/warp/timeScale/sync).
 - Unity rendering: https://docs.unity3d.com/6000.0/Documentation/Manual/OptimizingGraphicsPerformance.html (transparent particles overdraw); źródło koncepcyjne, gra nie działa na Unity.
 - Rokoko: https://www.rokoko.com/resources/download-263-rokoko-motion-capture-assets (263 darmowe assety dla użytku komercyjnego; NIE jest dowodem licencji dla wszystkich innych paczek trzecich).
+
+
+## DOPISEK 20.10 — ZDJĘCIA REFERENCYJNE / WYKONANIE OŚMIU POSTACI
+Właściciel przekazał 3 zdjęcia przedstawiające zalecenia: Starter → Extender/Launcher → Finisher; hitstop 3–6 klatek / 50–100ms przy 60fps; shake kadru; contact sparks, trails i particles; delikatny, kontrolowany cinematic moment; dynamiczny licznik trafień oraz malejące obrażenia kolejnych hitów (przykład 100% → 80% → 60%). Są to zasady koncepcyjne, nie wynik fizycznego pomiaru. Nie dodawać W A L L B O U N C E ze zrzutu, bo gra nie ma ścian dla kombosów. Nie powtarzać niezaakceptowanych gwałtownych przybliżeń kamery ani sztucznych stopklatek przy nogach.
+Osobne, kompletne zlecenia krok po kroku dla wszystkich 8 zawodników (każdy z własnym ciosami, reakcją ofiary, finisherem, roarem/taunt oraz złością pokonanego): docs/COMBO_EXECUTION_PROMPTS_8_FIGHTERS_20261020.md.
+Nowa paczka Zombie Kicking(1).zip została zachowana w ChatGPT Library /BRAXHORN_ARENA/SHARED_MOCAP/Zombie Kicking (2026-10-20).zip; Roar i Standing Yell wykorzystać tylko do stojącego ryku (bez końcowego siadania). Archiwum NIE jest automatycznie dostępne binarnie na maszynie wykonawcy. Prawidłowe reakcje ofiar i sprzętowy QA pozostają wymagane, nie można ogłaszać, że sam dokument ukończył wykonanie.
