@@ -90,6 +90,17 @@ export function rig(model,raw,who){
   // Raise the actual punching arm into a high jab, with a smooth return to guard.
   // Metadata and rendering share this pose; the hitbox is never lifted alone.
   if(c.headPunch){const a=c.headPunch,smooth=x=>{x=Math.max(0,Math.min(1,x));return x*x*(3-2*x);},weight=smooth((t-a.from)/(a.peak-a.from))*(1-smooth((t-a.end)/(a.to-a.end))),side=a.side;const goal=bones[side+'Hand'].getWorldPosition(new T.Vector3());goal.y+=a.lift;contactArm(bones[side+'Arm'],bones[side+'ForeArm'],bones[side+'Hand'],goal,weight);stage.updateMatrixWorld(true);}
+  // Prone anger: two controlled fist-thumps on the original skeleton.
+  if(c.braxRagePunch&&bones.RightArm&&bones.RightForeArm&&bones.RightHand){
+   const u=Math.max(0,Math.min(1,t/.483333));
+   const beat=(at,width)=>Math.pow(Math.max(0,1-Math.abs(u-at)/width),1.4);
+   const strike=Math.min(1,beat(.25,.20)+beat(.67,.17));
+   const hand=bones.RightHand.getWorldPosition(new T.Vector3());
+   const goal=hand.clone();goal.y=Math.max(.055,hand.y-.22*strike);goal.x+=.045*strike;
+   contactArm(bones.RightArm,bones.RightForeArm,bones.RightHand,goal,Math.min(.95,strike));
+   if(bones.Head)bones.Head.quaternion.multiply(new T.Quaternion().setFromAxisAngle(new T.Vector3(1,0,0),.045*strike));
+   stage.updateMatrixWorld(true);
+  }
   const cameraX=(c.cameraOffsetPx||0)*VIEW/SIZE*(face<0?-1:1);camera.position.x=cameraX;camera.lookAt(cameraX,camera.position.y,0);camera.updateMatrixWorld(true);
  }
  function point(name){const b=bones[name];if(!b)throw Error('Missing bone '+name);const p=b.getWorldPosition(new T.Vector3()).project(camera);return[(p.x+1)*WIDTH/2,(1-p.y)*SIZE/2];}
