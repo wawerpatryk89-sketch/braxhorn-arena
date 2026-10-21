@@ -405,7 +405,7 @@ function contactFeedback(target,rect,blocked,point=null){const el=target===B?b:o
 // Opening pulse only for a successfully activated Brax combo; uses the existing overlay.
 function comboActivationVfx(){
  if(!sparks||window.matchMedia?.('(prefers-reduced-motion: reduce)').matches)return;
- const r=game.getBoundingClientRect(),x=B.x/100*r.width,y=groundY()-r.top;
+ const r=game.getBoundingClientRect(),x=B.x/100*r.width,y=groundY();
  if(!Number.isFinite(x)||!Number.isFinite(y))return;
  const ring=document.createElement('i');ring.setAttribute('aria-hidden','true');
  Object.assign(ring.style,{position:'absolute',left:x+'px',top:y+'px',width:'18px',height:'6px',border:'2px solid #c5edc1',borderRadius:'50%',boxShadow:'0 0 9px #8aff66',pointerEvents:'none',opacity:'0.85',transform:'translate(-50%,-50%) scale(1)'});
