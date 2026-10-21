@@ -1,6 +1,6 @@
 # BRAXHORN — BRAX: pre-fight choreography and combo QA (2026-10-21)
 
-Status: SPECIFICATION / NOT IMPLEMENTED. Based on user-recorded 90dbffad-c668-46ea-a448-efacd0af8a71.mp4, the existing main-branch combat engine, and BRAXHORN_KATALOG_ANIMACJI_V4.xlsx. Do not mark as visually tested. Do not deploy without approval.
+Status: PARTIALLY IMPLEMENTED / NOT VISUALLY APPROVED. Based on user-recorded 90dbffad-c668-46ea-a448-efacd0af8a71.mp4, the existing main-branch combat engine, and BRAXHORN_KATALOG_ANIMACJI_V4.xlsx. Do not mark as visually tested. Do not deploy without approval.
 
 ## Mandatory intro order
 
@@ -51,3 +51,7 @@ Both characters walk towards each other using ordinary locomotion, stop at conve
 - On the test branch `buttonMove()` now maps forward+P1 to `DOUBLE_PUNCH` and forward+P2 to `UPPERCUT` consistently both while walking and sprinting. Static mapping checked for both sprint states.
 - `COMBO` input queue and cosmetic contact/activation effects have been implemented in `game/assets/combat.js`; JS syntax passed. No WebGL or on-device tests were run. Preview site `braxhorn-p0-preview.wawerpatryk89.chatgpt.site` has not been verified to use this branch.
 - Do not replace real paired handshake with a simulated gesture. Actual `Shaking Hands 1/2` FBX files are not in the checked GitHub game bundle; catalogue entries alone are insufficient for an animation import.
+
+## Implementation update (2026-10-21)
+
+The shared pre-fight state machine now runs in `game/assets/combat.js` for the current fighter pair: walk-in, alternating procedural dialogue arm motions, procedural fist-bump contact pose, turn-away, walk-back, turn-in, then the existing INTRO and COUNTDOWN. The renderer uses `fighter-source-core.js` and `fighter-source.js` for the procedural arm motions and smooth turning. **The original `Shaking Hands 1/2.fbx` have NOT been imported** because the actual FBX binaries are absent from this branch; the current fist-bump is a temporary rig-based prototype and needs visual contact QA on all eight models. It is not a verified mocap handshake. A static deterministic phase simulation passed with eight initial position/size cases; syntax checks passed for three JS modules. No WebGL, browser, iPhone or multiplayer test has been completed. `scripts/audit-brax-intro-20261021.cjs` is available for CI execution. The draft PR must not be merged before actual mocap integration and visual approval.
