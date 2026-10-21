@@ -85,6 +85,27 @@ export function rig(model,raw,who){
    for(const [side,index] of [['Left',1],['Right',0]]){const p=new T.Vector3(...frames[i][index]).lerp(new T.Vector3(...frames[j][index]),u).multiplyScalar(o.ratio);const goal=new T.Vector3((o.gap-p.x-.18)*direction,Math.min(p.y-.07,bones[side+'Arm'].getWorldPosition(new T.Vector3()).y+.04),-p.z*direction);contactArm(bones[side+'Arm'],bones[side+'ForeArm'],bones[side+'Hand'],goal,weight);}
    stage.updateMatrixWorld(true);
   }
+  // Pre-fight only: procedural upper-body acting on the original idle pose.
+  // No attack animation is reused for dialogue or the fist contact.
+  if(c.greeting&&bones.RightArm&&bones.RightForeArm&&bones.RightHand){
+   const e=c.greeting,sec=e.elapsed/1000,forward=face>=0?1:-1;
+   const shoulder=bones.RightArm.getWorldPosition(new T.Vector3());
+   const hand=bones.RightHand.getWorldPosition(new T.Vector3());
+   const ease=x=>{x=Math.max(0,Math.min(1,x));return x*x*(3-2*x);};
+   if(e.phase==='dialogue'){
+    const speaking=e.actor===0?sec<1.2:sec>=1.1;
+    const wave=(.5+.5*Math.sin(sec*9+(e.actor?1.8:0)));
+    const weight=(speaking?.45:.14)*ease(sec/.25)*ease((2.4-sec)/.25);
+    const goal=hand.clone().add(new T.Vector3(forward*(.10+.10*wave),.09*wave,0));
+    contactArm(bones.RightArm,bones.RightForeArm,bones.RightHand,goal,weight);
+    if(bones.Head)bones.Head.rotation.z+=Math.sin(sec*4+(e.actor?2:0))*.025;
+   }else if(e.phase==='fist-bump'){
+    const weight=ease(sec/.30)*(1-ease((sec-.66)/.33));
+    const goal=shoulder.clone().add(new T.Vector3(forward*.38,-.14,.02));
+    contactArm(bones.RightArm,bones.RightForeArm,bones.RightHand,goal,Math.max(0,Math.min(.96,weight)));
+   }
+   stage.updateMatrixWorld(true);
+  }
   if(c.movingGait)for(const side of ['Left','Right'])floorLeg(bones[side+'UpLeg'],bones[side+'Leg'],bones[side+'Foot'],bones[side+'ToeBase']);
   if(c.plantFeet){const support=Math.min(...['LeftFoot','RightFoot','LeftToeBase','RightToeBase'].map(n=>bones[n].getWorldPosition(new T.Vector3()).y));model.position.y+=.05-support;stage.updateMatrixWorld(true);}
   // Raise the actual punching arm into a high jab, with a smooth return to guard.
