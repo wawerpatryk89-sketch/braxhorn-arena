@@ -4,7 +4,7 @@ Status: SPECIFICATION / NOT IMPLEMENTED. Based on user-recorded 90dbffad-c668-46
 
 ## Mandatory intro order
 
-NORMAL_WALK_IN -> DECELERATE -> RELAXED_STOP -> TWO_ACTOR_DIALOGUE -> HAND_CONTACT_HIGH_FIVE -> RELEASE -> TURN_OUT -> NORMAL_WALK_BACK -> TURN_IN -> EXISTING_INTRO -> EXISTING_COUNTDOWN -> FIGHT.
+NORMAL_WALK_IN -> DECELERATE -> RELAXED_STOP -> TWO_ACTOR_DIALOGUE -> HAND_CONTACT_HANDSHAKE -> RELEASE -> TURN_OUT -> NORMAL_WALK_BACK -> TURN_IN -> EXISTING_INTRO -> EXISTING_COUNTDOWN -> FIGHT.
 
 Preserve existing intro after the new pre-fight sequence. New pre-fight only once per match, not every round. Both fighters should be within the viewport and remain grounded. Stable arena camera; no zoom or screen shake. Synchronize two actors on one monotonic clock. Disable damage, hitboxes, attacks, grabs, special and CPU during the pre-fight. Do not restart timer until existing FIGHT. Do not use combat kicks, taunts or approach lunges as walking.
 
@@ -19,11 +19,12 @@ Preserve existing intro after the new pre-fight sequence. New pre-fight only onc
 | gesticulating speaker B | catalogue INTRO_PRZED_WALKA | talk_animate_hands.fbx | Motifect Emotes & Social v1.0 | humanoid retarget required |
 | alternative response | catalogue INTRO_PRZED_WALKA | explain_wide_gesture.fbx | Motifect Emotes & Social v1.0 | stagger dialogue by 0.3-0.6s |
 | subtle listener response | catalogue INTRO_PRZED_WALKA | Shrugging_mixamo.fbx | Rokoko Studio (Mocap)(2).zip | avoid full-body ungrounded turns |
-| high-five initiator | BA-0600 | hifive_9_v1.fbx | Hifive 9 (Fab) | ONE skeleton only; no synchronized partner supplied |
+| handshake actor A | BA-0568 | Shaking Hands 1.fbx | Goalie Throw.zip / POWITANIE_01 | paired with actor B, visual retarget required |
+| handshake actor B | BA-0569 | Shaking Hands 2.fbx | Goalie Throw.zip / POWITANIE_01 | paired with actor A, visual retarget required |
 
-**Critical:** hifive_9_v1.fbx contains only one skeleton per V4 catalog. Never play it on both fighters blindly and claim that they touched hands. Author/retarget a matching receiver clip using verified wrist targets and contact frames; otherwise report missing partner motion and leave feature unapproved. Shaking Hands 1/2 are a handshake, not an acceptable silent substitution for the requested high-five.
+**User correction (17:04 UTC):** use the already-owned paired NORMAL HANDSHAKE instead of synthetic handshake. BA-0568 / BA-0569 form the catalog pair POWITANIE_01. Both clips must start on the same timeline and contact at the same frame, with matched wrist positions, height and character distance. Retarget animation only; never change original character skeletons or models. Do not claim visual success without testing both actors.
 
-Both characters walk towards each other using ordinary locomotion, stop at conversation distance, talk with alternating gestures, high-five at a common contact frame, turn 180 degrees, walk to original start positions, turn back to face each other, then execute original INTRO and COUNTDOWN. No disappearing/repositioning/teleportation. Build a deterministic state machine with cancellation on menu exit, rematch, network disconnect, reset and visibility changes. For online multiplayer host controls phase and contact clock.
+Both characters walk towards each other using ordinary locomotion, stop at conversation distance, talk with alternating gestures, shake hands at a common contact frame, turn 180 degrees, walk to original start positions, turn back to face each other, then execute original INTRO and COUNTDOWN. No disappearing/repositioning/teleportation. Build a deterministic state machine with cancellation on menu exit, rematch, network disconnect, reset and visibility changes. For online multiplayer host controls phase and contact clock.
 
 ## Brax combo / throw issues observed
 
