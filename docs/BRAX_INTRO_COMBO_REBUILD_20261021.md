@@ -1,0 +1,61 @@
+# BRAXHORN — BRAX: pre-fight choreography and combo QA (2026-10-21)
+
+Status: PARTIALLY IMPLEMENTED / NOT VISUALLY APPROVED. Based on user-recorded 90dbffad-c668-46ea-a448-efacd0af8a71.mp4, the existing main-branch combat engine, and BRAXHORN_KATALOG_ANIMACJI_V4.xlsx. Do not mark as visually tested. Do not deploy without approval.
+
+## Mandatory intro order
+
+NORMAL_WALK_IN -> DECELERATE -> RELAXED_STOP -> TWO_ACTOR_DIALOGUE -> HAND_CONTACT_HANDSHAKE -> RELEASE -> TURN_OUT -> NORMAL_WALK_BACK -> TURN_IN -> EXISTING_INTRO -> EXISTING_COUNTDOWN -> FIGHT.
+
+Preserve existing intro after the new pre-fight sequence. New pre-fight only once per match, not every round. Both fighters should be within the viewport and remain grounded. Stable arena camera; no zoom or screen shake. Synchronize two actors on one monotonic clock. Disable damage, hitboxes, attacks, grabs, special and CPU during the pre-fight. Do not restart timer until existing FIGHT. Do not use combat kicks, taunts or approach lunges as walking.
+
+## NEW source candidates — select by visual verification and retarget
+
+| Role | Catalog ID | Original FBX | Source | Constraint |
+| --- | --- | --- | --- | --- |
+| relaxed-to-walk | BA-0808 | MOB1_Stand_Relaxed_to_Walk_F | MCO V4 / MotusMan v55 | retarget required |
+| natural walk forward | BA-0807 | MOB1_Walk_F | MCO V4 / MotusMan v55 | retarget required, sync root displacement and foot plants |
+| relaxed stop/idle | BA-0809 | MOB1_Stand_Relaxed_Idle | MCO V4 / MotusMan v55 | no combat guard during dialogue |
+| gesticulating speaker A | BA-0806 | Convo_12_Gesturing_Up_C_Center_Loop | MCO V4 / MotusMan v55 | preview: dialogue gestures, not a paired clip |
+| gesticulating speaker B | catalogue INTRO_PRZED_WALKA | talk_animate_hands.fbx | Motifect Emotes & Social v1.0 | humanoid retarget required |
+| alternative response | catalogue INTRO_PRZED_WALKA | explain_wide_gesture.fbx | Motifect Emotes & Social v1.0 | stagger dialogue by 0.3-0.6s |
+| subtle listener response | catalogue INTRO_PRZED_WALKA | Shrugging_mixamo.fbx | Rokoko Studio (Mocap)(2).zip | avoid full-body ungrounded turns |
+| handshake actor A | BA-0568 | Shaking Hands 1.fbx | Goalie Throw.zip / POWITANIE_01 | paired with actor B, visual retarget required |
+| handshake actor B | BA-0569 | Shaking Hands 2.fbx | Goalie Throw.zip / POWITANIE_01 | paired with actor A, visual retarget required |
+
+**User correction (17:04 UTC):** use the already-owned paired NORMAL HANDSHAKE instead of synthetic handshake. BA-0568 / BA-0569 form the catalog pair POWITANIE_01. Both clips must start on the same timeline and contact at the same frame, with matched wrist positions, height and character distance. Retarget animation only; never change original character skeletons or models. Do not claim visual success without testing both actors.
+
+Both characters walk towards each other using ordinary locomotion, stop at conversation distance, talk with alternating gestures, shake hands at a common contact frame, turn 180 degrees, walk to original start positions, turn back to face each other, then execute original INTRO and COUNTDOWN. No disappearing/repositioning/teleportation. Build a deterministic state machine with cancellation on menu exit, rematch, network disconnect, reset and visibility changes. For online multiplayer host controls phase and contact clock.
+
+## Brax combo / throw issues observed
+
+- Video does not demonstrate a completed combo. Do not claim the combo works from that recording.
+- Existing main-branch startCombo() rejects input while B.lock. The separate test branch patch buffers a combo pressed during an active attack and adds contact-driven ring/particle VFX. This is only a first partial fix; run runtime tests.
+- Existing sourcePairInput(kind) accepts only evade/grab during a 200ms pair, not P1/P2. Existing beginSourcePair(B) is a proximity-sensitive single throw, not the two requested CHWYT+P1/P2 distinct techniques. Implement real separate attacker+victim clips, input hold state, and proper contact distance. Do not fake an implementation by aliasing both inputs to the same throw.
+- Main branch already has a short finisher slowdown and camera kick. No confirmed BRAX-specific start energy ring, motion trails or ground shockwave in the tested recording.
+
+## Required BRAX combo QA
+
+1. Verify Brax's actual COMBO sequence and finisher against approved master. Compare actual source clip names and contact groups; never assume animation from its label.
+2. Train mode: energy 100%, COMBO press when idle, after P1/P2, while advancing, from both sides, from edges, vs each of eight opponents. Log accepted/queued/rejected, reason and each contact group.
+3. CHWYT+P1/P2: hold GRAB and tap P1 or P2; separate technique and paired victim reaction; verify proximity windows, no opponent teleport, no control lock.
+4. FX: activation ring, directional contact sparks, hand/foot motion trail, brief finisher slow-down, landing dust/ground wave and low-frequency impact audio. Event-driven; don't trigger effects for blocked/missed attacks. Phone vibration only where supported.
+5. Test with WebGL/iPhone/Android/desktop and real multiplayer; do not claim these tests if unavailable. Keep a clean rollback path and do not deploy without approval.
+
+## Verified BRAX gesture/control status (2026-10-21, main-derived branch)
+
+- Brax source manifest lists `Mixamo Round Victory`, `Mixamo Match Victory`, `Taunt`, `Kip Up`, `Rockin' Shackle B`, `Uppercut Jab`, `Kicking`, and `Boxing`. These are available in the bundled 31 source clips.
+- The engine already selects `WIN_ROUND` and `WIN_MATCH` where present. Actual runtime playback on user preview is NOT verified.
+- `LOSE_ROUND`, `LOSE_MATCH`, `GETUP_ANGER`, `TAUNT_COME_HERE`, `TAUNT_CLAP` and `COMBO_TAUNT` are NOT verified in Brax's current manifest/config. Never claim a complete emotional state system until the corresponding FBX have been imported and retargeted.
+- Source candidates from V4: `Defeat.fbx` BA-0546 for losing, `FacePalms_mixamo.fbx` BA-0136 for frustration, `stomp_frustrated.fbx` BA-0592 for anger after get-up, `taunt_come_here.fbx` BA-0594 and `Clap_SarcasticClap_mixamo.fbx` BA-0094 for taunts. Names exist in catalogue; the FBX bytes are not available in this GitHub branch.
+- Existing source-config builder assigns `UPPERCUT` as an alias of `HEAVY_PUNCH` (Hook), so forward+P2 is NOT an independently authored uppercut. Import a proper dedicated uppercut clip before calling that input complete.
+- On the test branch `buttonMove()` now maps forward+P1 to `DOUBLE_PUNCH` and forward+P2 to `UPPERCUT` consistently both while walking and sprinting. Static mapping checked for both sprint states.
+- `COMBO` input queue and cosmetic contact/activation effects have been implemented in `game/assets/combat.js`; JS syntax passed. No WebGL or on-device tests were run. Preview site `braxhorn-p0-preview.wawerpatryk89.chatgpt.site` has not been verified to use this branch.
+- Do not replace real paired handshake with a simulated gesture. Actual `Shaking Hands 1/2` FBX files are not in the checked GitHub game bundle; catalogue entries alone are insufficient for an animation import.
+
+## Implementation update (2026-10-21)
+
+The shared pre-fight state machine now runs in `game/assets/combat.js` for the current fighter pair: walk-in, alternating procedural dialogue arm motions, procedural fist-bump contact pose, turn-away, walk-back, turn-in, then the existing INTRO and COUNTDOWN. The renderer uses `fighter-source-core.js` and `fighter-source.js` for the procedural arm motions and smooth turning. **The original `Shaking Hands 1/2.fbx` have NOT been imported** because the actual FBX binaries are absent from this branch; the current fist-bump is a temporary rig-based prototype and needs visual contact QA on all eight models. It is not a verified mocap handshake. A static deterministic phase simulation passed with eight initial position/size cases; syntax checks passed for three JS modules. No WebGL, browser, iPhone or multiplayer test has been completed. `scripts/audit-brax-intro-20261021.cjs` is available for CI execution. The draft PR must not be merged before actual mocap integration and visual approval.
+
+## Source library located and verified (2026-10-21 17:26 UTC)
+
+The previous Work's shared ChatGPT Library is available at `/BRAXHORN_ARENA/SHARED_MOCAP/PELNA_BIBLIOTEKA_ANIMACJI_DLA_WORK`. 11 ZIP archives were successfully materialized into the isolated analysis workspace, including original fighting, emotions, movement, four extras, Goalie Throw, Motifect/Hifive, MCO, and pre-fight source packs. ZIP entries were fully streamed and SHA-256 verified; no decompression or FBX-header errors. Count across these ZIPs: **682 FBX entries, 23 Unity .anim entries, 631 unique FBX hashes, 654 unique hashes overall**. This differs from the V4 index's 609 unique files because the MCO original archive includes additional variants and there is cross-archive duplication. Do not conflate counts or claim every motion is visually accepted. Exact original files `Shaking Hands 1.fbx`, `Shaking Hands 2.fbx`, `MOB1_Walk_F.fbx`, `Convo_12_Gesturing_Up_C_Center_Loop.fbx`, `stomp_frustrated.fbx`, `talk_animate_hands.fbx` were confirmed byte-present. The earlier source-unavailable note is superseded. FBX import/retarget and visual QA remain outstanding. Source archives must remain private and license terms must be respected.

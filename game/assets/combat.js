@@ -24,7 +24,7 @@ const CHARACTER_NAMES=['BRAX','NYXA','VEXA','KROV','NINA','DANNY','BEAR','DEMON'
 const SOURCE_ATTACKS={DEMON:['LIGHT_PUNCH','HEAVY_PUNCH','LIGHT_KICK','HEAVY_KICK','SHOULDER','UPPERCUT'],DANNY:['LIGHT_PUNCH','HEAVY_PUNCH','LIGHT_KICK','HEAVY_KICK','HOOK','SIDE_KICK'],NINA:['LIGHT_KICK','HEAVY_PUNCH','MEIA_LUA','HEAVY_KICK','CRESCENT_KICK','SPIN_KICK','LIGHT_PUNCH','GROUND_KICK'],BEAR:['LIGHT_PUNCH','HEAVY_PUNCH','LIGHT_KICK','HEAVY_KICK','SHOULDER','UPPERCUT'],BRAX:['LIGHT_PUNCH','HEAVY_PUNCH','LIGHT_KICK','HEAVY_KICK','DOUBLE_PUNCH','UPPERCUT','TEEP','CAPOEIRA'],NYXA:['LIGHT_PUNCH','HEAVY_PUNCH','LIGHT_KICK','HEAVY_KICK','LUNGE_PUNCH','ELBOW','CLINCH_KNEE','CROUCH_KICK'],KROV:['LIGHT_PUNCH','HEAVY_PUNCH','LIGHT_KICK','HEAVY_KICK','ELBOW','UPPERCUT'],VEXA:['HEAVY_PUNCH','LIGHT_PUNCH','LIGHT_KICK','HEAVY_KICK','SPIN_KICK','FLYING_KICK']};
 // One mapping for the local player, the host applying guest input and the guest's own prediction.
 function buttonMove(who,cfg,kind,forward,sprint,down){const list=SOURCE_ATTACKS[who]||[];if(down&&kind==='heavy'&&cfg.ACROBATIC_PUNCH)return 'ACROBATIC_PUNCH';
- if(forward&&sprint){const move={punch:who==='NINA'?'LIGHT_KICK':list[0],heavy:who==='NINA'?'SPIN_KICK':list[1],kick:list[2],kick2:who==='VEXA'?'FLYING_KICK':who==='NINA'?'SPIN_KICK':list[3]}[kind];if(move)return move;}
+ if(forward&&sprint){const move={punch:who==='NINA'?'LIGHT_KICK':list[4],heavy:who==='NINA'?'SPIN_KICK':list[5],kick:list[2],kick2:who==='VEXA'?'FLYING_KICK':who==='NINA'?'SPIN_KICK':list[3]}[kind];if(move)return move;}
  const index=(list.length>6?{punch:forward?4:0,heavy:forward?5:1,kick:forward?6:2,kick2:forward?7:3}:{punch:forward?4:0,heavy:forward?5:1,kick:2,kick2:3})[kind];return index===undefined?null:list[index]||null;}
 function characterConfig(name){return characterRenderer(name)?.config;}
 function characterRenderer(name){return window[name+'_3D'];}
@@ -174,7 +174,7 @@ function setPose(name='IDLE'){B.comboConnection=null;B.strikeMotion=null;B.anim=
 function safeFit(name){if(cfgOf(name).sourceVersion)return;const c=cfgOf(name),sc=baseScale()*c.scale,p=framePivotX(name,B.frame,c),u=c.pivots?frameBox(c,B.frame):c.union,W=game.clientWidth||innerWidth;let left=(p-u[0])*sc,right=(u[2]-p)*sc;if(B.face<0)[left,right]=[right,left];let px=B.x/100*W,cl=Math.max(left+3,Math.min(W-right-3,px));B.x=cl/W*100}
 function phaseFor(c,fi){const ks=Object.keys(c.hits).map(Number).sort((a,b)=>a-b);if(!c.attack)return'GESTURE';if(!ks.length)return'RECOVERY';if(c===CFG.COMBO){if(fi<ks[0])return'STARTUP';if(c.hits[String(fi)])return'ACTIVE';if(fi<ks[ks.length-1])return'RECOVERY';return'RECOVERY'}if(fi<ks[0])return'STARTUP';if(c.hits[String(fi)])return'ACTIVE';return'RECOVERY'}
 function beginAction(name,onDone=null){const c=cfgOf(name);if(!c)return false;if(c.attack&&(S.preFight||!S.running||S.paused||S.ended||B.lock||B.stun))return false;if(c.attack){if(B.jumpTime!==null&&B.ground)return false;if(c.mode==='air'&&B.ground)return false;if(c.mode!=='air'&&!B.ground)return false}if(name==='COMBO'){if(!S.comboReserved)return false;S.comboReserved=false;S.matchSpecials=(S.matchSpecials||0)+1;}B.strikeMotion=(SOURCE_ATTACKS[playerCharacter]?.includes(name))&&c.sourceVersion&&B.ground&&B.jumpTime===null&&!K.block&&((K.right?1:0)-(K.left?1:0))===B.face?{action:name,face:B.face,clock:['RUN','WALK_FORWARD','APPROACH'].includes(B.a)?B.frameT:0,weight:0,run:!!B.sprintHeld,legStrike:Object.values(c.hits).some(h=>/Foot|Leg|Toe/.test(h.bone||''))}:null;B.lock=true;B.comboConnection=null;B.comboAborted=false;B.hitGroups.clear();if(c.attack){B.repeatCount=B.lastAttackName===name?(B.repeatCount||0)+1:1;B.lastAttackName=name;B.attackSerial=(B.attackSerial||0)+1;B.getupProtection=0;safeFit(name);}B.a=name;B.phase=c.attack?'STARTUP':'GESTURE';B.anim={name,c,a:decodeGif(c.asset),onDone};B.frame=c.startFrame||0;B.frameT=0;b.classList.remove('blocking');render(name,B.frame);setStateAction(name);return true}
-function finishAction(){if(S.celebration?.started&&B===S.celebration.actor&&B.a===S.celebration.action){B.frame=CFG[B.a].durations.length-1;B.frameT=0;B.anim=null;B.lock=true;return;}if(advanceSourceDown(B)||isLegacyKrov(B)&&advanceKrovDown(B))return;const d=B.anim;B.anim=null;B.lock=false;if(d&&d.onDone){const cb=d.onDone;d.onDone=null;cb();return}restore();while(attackQueue.length){const next=attackQueue.shift();if(next==='JUMP'){jump();break}if(beginAction(next))break}}
+function finishAction(){if(S.celebration?.started&&B===S.celebration.actor&&B.a===S.celebration.action){B.frame=CFG[B.a].durations.length-1;B.frameT=0;B.anim=null;B.lock=true;return;}if(advanceSourceDown(B)||isLegacyKrov(B)&&advanceKrovDown(B))return;const d=B.anim;B.anim=null;B.lock=false;if(d&&d.onDone){const cb=d.onDone;d.onDone=null;cb();return}restore();if(S.pendingCombo){S.pendingCombo=false;if(startCombo())return;}while(attackQueue.length){const next=attackQueue.shift();if(next==='JUMP'){jump();break}if(beginAction(next))break}}
 function restore(){const stride=B.strikeMotion?.clock;B.lock=false;B.anim=null;B.hitGroups.clear();if(B.jumpTime!==null)setPose('JUMP');else if(K.block)setPose(K.down&&CFG.BLOCK_LOW?'BLOCK_LOW':'BLOCK');else if(B.sprintHeld&&((K.right?1:0)-(K.left?1:0))===B.face&&CFG.RUN)setPose('RUN');else setPose('IDLE');if(B.a==='RUN'&&stride!==undefined){B.frameT=stride%CFG.RUN.durations.reduce((a,b)=>a+b,0);B.frame=poseFrameAt('RUN',B.frameT);render('RUN',B.frame);}}
 function actionStep(dt){if(!B.anim)return;let remaining=dt;while(B.anim&&remaining>0){const {name,c,a}=B.anim;const tempo=actionTempo(playerCharacter,c,B.frame),duration=c.durations[B.frame]||a.frames[B.frame].duration;const consumed=Math.min(remaining,Math.max(0,duration-B.frameT)/tempo);B.frameT+=consumed*tempo;remaining-=consumed;if(!S.preFight&&!S.ended){resolveKrovGrab();resolveKrovComboGrab();if(S.clinch)return;if(B.anim&&B.anim.name!==name)continue;resolvePlayerHit();if(!B.anim||B.anim.name!==name)return;if(S.hitstop>0&&c.sourceVersion)return;}if(B.frameT+1e-6<duration)break;B.frameT=0;B.frame++;if(B.frame>=c.durations.length){finishAction();continue}render(name,B.frame);fightAudio.frame(name,B.frame,B);if(!S.preFight&&!S.ended){resolveKrovGrab();resolveKrovComboGrab();if(S.clinch)return;if(B.anim&&B.anim.name!==name)continue;resolvePlayerHit();if(!B.anim||B.anim.name!==name)return;if(S.hitstop>0&&c.sourceVersion)return;}B.phase=phaseFor(c,B.frame)}}
 function attackRect(box){const r=game.getBoundingClientRect(),rootX=r.left+B.x/100*r.width,rootY=r.bottom-groundInset()-B.y*.007*r.height,cr=currentRender,sc=cr.scale,p=cr.pivotX,aY=cr.anchorY,[x,y,w,h]=box;let l;if(B.face>=0)l=rootX+(x-p)*sc;else l=rootX-((x+w)-p)*sc;return{left:l,right:l+w*sc,top:rootY+(y-aY)*sc,bottom:rootY+(y+h-aY)*sc}}
@@ -190,11 +190,11 @@ function sourceContact(target,rect,pose=null,detail=false){
  }return null;
 }
 const attackQueue=[];
-function bufferAction(name){if((isLegacyKrov(B)||CFG.IDLE.sourceVersion)&&B.anim){const c=B.anim.c,remaining=c.durations.slice(B.frame+1).reduce((a,d,i)=>a+d/actionTempo(playerCharacter,c,B.frame+1+i),0)+(c.durations[B.frame]-B.frameT)/actionTempo(playerCharacter,c,B.frame);if(remaining>100)return false;}if(!canInput()||!B.anim||!B.anim.c.attack||B.a==='COMBO'||attackQueue.length>=1)return false;if(name==='COMBO'&&B.en<100)return false;attackQueue.push(name);return true}
+function bufferAction(name){if((isLegacyKrov(B)||CFG.IDLE.sourceVersion)&&B.anim){const c=B.anim.c,remaining=c.durations.slice(B.frame+1).reduce((a,d,i)=>a+d/actionTempo(playerCharacter,c,B.frame+1+i),0)+(c.durations[B.frame]-B.frameT)/actionTempo(playerCharacter,c,B.frame);if(remaining>100)return false;}if(!canInput()||!B.anim||!B.anim.c.attack||B.a==='COMBO'||attackQueue.length>=1)return false;if(name==='COMBO'&&!S.training&&B.en<100)return false;attackQueue.push(name);return true}
 function doAttack(name){if(name==='COMBO')return startCombo();if(S.comboApproach)return false;if(B.lock)return bufferAction(name);return beginAction(name)}
 function jump(){if(!CFG.JUMP)return false;if(B.lock){bufferAction('JUMP');return}if(!canInput()||B.jumpTime!==null||!B.ground)return;B.jumpTime=0;B.y=0;fightAudio.play('step',.25);setPose('JUMP');vib(15)}
 function say(t,audio=true){calloutToken=String(t??'');if(audio)fightAudio.cue(t);call.firstElementChild.textContent=displayCallout(calloutToken);call.classList.remove('show');void call.offsetWidth;call.classList.add('show')}
-function reset(replayIntro=false){window.BRAX_NIGHT_MARKET?.destroy();if(selectedArena==='nocny-targ'&&S.running)window.BRAX_NIGHT_MARKET?.start($('#combatStage'),()=>fightAudio.play('thunder',.7));if(NET.active){NET.combo=false;NET.held={};NET.events=[];}S.comboCinema=null;S.comboCamera=null;koReplay?.cancel();blood?.clear(true);S.replayShown=false;releaseInputs();characterRenderer(playerCharacter)?.reset?.(ctx);characterRenderer(O.character)?.reset?.(opponentCtx);if(typeof O!=='undefined')resetOpponent();attackQueue.length=0;Object.assign(B,{x:28,y:0,vy:0,face:1,jumpTime:null,moveHeld:0,pushTime:0,pushSpeed:0,hp:100,recover:0,en:0,a:'IDLE',phase:'IDLE',lock:false,ground:true,anim:null,frame:0,frameT:0});B.hitGroups=new Set();S.entry=null;S.clinch=null;S.celebration=null;S.replaySounds=[];S.contactNeedsSeparation=false;S.grabAttempt=null;S.krovDash=null;B.downState=null;O.downState=null;B.getupProtection=O.getupProtection=0;B.grabProtection=O.grabProtection=0;B.airLaunches=O.airLaunches=0;B.airDamage=O.airDamage=0;B.impactPressure=O.impactPressure=0;B.hitSeries=O.hitSeries=null;B.comboConnection=O.comboConnection=null;B.reactionTier=O.reactionTier=0;B.evadeToken=O.evadeToken=null;B.evadeOrigin=null;S.koSlowMs=0;S.drillMs=0;B.recoilCooldown=O.recoilCooldown=0;B.cleanKickMs=O.cleanKickMs=0;B.cleanKickToken=O.cleanKickToken=null;B.knockdownCooldown=O.knockdownCooldown=0;S.contactMs=0;S.contactAwayMs=0;S.contactCooldown=0;S.contactPressure=0;S.bodyContactMs=0;S.contactHadAttack=false;S.t=60;S.comboUses=0;S.comboApproach=false;S.comboReserved=false;S.acc=0;S.hitstop=0;S.voiceCooldown=12000;B.stun=0;O.stun=0;B.repeatCount=0;B.lastAttackName=null;O.observedSerial=null;B.lastHitBlocked=O.lastHitBlocked=false;S.combo=0;S.comboT=0;combo.textContent='BRAXHORN';setPose('IDLE');B.x=entryCorner(B);O.x=entryCorner(O);draw();if(replayIntro)intro()}
+function reset(replayIntro=false){window.BRAX_NIGHT_MARKET?.destroy();if(selectedArena==='nocny-targ'&&S.running)window.BRAX_NIGHT_MARKET?.start($('#combatStage'),()=>fightAudio.play('thunder',.7));if(NET.active){NET.combo=false;NET.held={};NET.events=[];}S.comboCinema=null;S.comboCamera=null;S.pendingCombo=false;koReplay?.cancel();blood?.clear(true);S.replayShown=false;releaseInputs();characterRenderer(playerCharacter)?.reset?.(ctx);characterRenderer(O.character)?.reset?.(opponentCtx);if(typeof O!=='undefined')resetOpponent();attackQueue.length=0;Object.assign(B,{x:28,y:0,vy:0,face:1,jumpTime:null,moveHeld:0,pushTime:0,pushSpeed:0,hp:100,recover:0,en:0,a:'IDLE',phase:'IDLE',lock:false,ground:true,anim:null,frame:0,frameT:0});B.hitGroups=new Set();S.entry=null;S.clinch=null;S.celebration=null;S.replaySounds=[];S.contactNeedsSeparation=false;S.grabAttempt=null;S.krovDash=null;B.downState=null;O.downState=null;B.getupProtection=O.getupProtection=0;B.grabProtection=O.grabProtection=0;B.airLaunches=O.airLaunches=0;B.airDamage=O.airDamage=0;B.impactPressure=O.impactPressure=0;B.hitSeries=O.hitSeries=null;B.comboConnection=O.comboConnection=null;B.reactionTier=O.reactionTier=0;B.evadeToken=O.evadeToken=null;B.evadeOrigin=null;S.koSlowMs=0;S.drillMs=0;B.recoilCooldown=O.recoilCooldown=0;B.cleanKickMs=O.cleanKickMs=0;B.cleanKickToken=O.cleanKickToken=null;B.knockdownCooldown=O.knockdownCooldown=0;S.contactMs=0;S.contactAwayMs=0;S.contactCooldown=0;S.contactPressure=0;S.bodyContactMs=0;S.contactHadAttack=false;S.t=60;S.comboUses=0;S.comboApproach=false;S.comboReserved=false;S.acc=0;S.hitstop=0;S.voiceCooldown=12000;B.stun=0;O.stun=0;B.repeatCount=0;B.lastAttackName=null;O.observedSerial=null;B.lastHitBlocked=O.lastHitBlocked=false;S.combo=0;S.comboT=0;combo.textContent='BRAXHORN';setPose('IDLE');B.x=entryCorner(B);O.x=entryCorner(O);draw();if(replayIntro)intro()}
 function intro(){if(S.introPlayed)return;S.introPlayed=true;startFighterEntry(true);}
 // Reserve room for the complete original greeting and gait at each screen edge.
 function entryCorner(f){
@@ -207,20 +207,44 @@ function entryCorner(f){
 function startFighterEntry(greeting=false){
  releaseInputs();restore();opponentPose('IDLE');
  S.preFight=true;S.countdown=null;S.countStage=-1;S.audioWait=0;
- S.entry=greeting?{phase:'greeting'}:null;
  B.face=1;O.face=-1;B.x=entryCorner(B);O.x=entryCorner(O);
+ S.entry=greeting?{phase:'walk-in',elapsed:0,originA:B.x,originB:O.x}:null;
  characterVoice(playerCharacter);arenaSound.resume();fightAudio.unlock();calloutToken='';call.firstElementChild.textContent='';
- if(greeting){opponentPose('INTRO',true);beginAction('INTRO',restore);}
+ if(greeting){setPose(CFG.WALK_FORWARD?'WALK_FORWARD':'IDLE');opponentPose(O.cfg.WALK_FORWARD?'WALK_FORWARD':'IDLE');}
  else finishEntry();
  draw();
 }
 function finishEntry(){
- // The actual fight starts at the two sides. Movement begins only after FIGHT.
+ // Preserve the original intro and countdown, with no position teleport at FIGHT.
  S.entry=null;restore();opponentPose('IDLE');
  S.countdown=0;S.countStage=-1;S.audioWait=0;
 }
-function entryStep(){
- if(S.entry&&!B.anim&&O.a!=='INTRO')finishEntry();
+function entryStep(dt){
+ const e=S.entry;if(!e)return;
+ const smooth=u=>{u=Math.max(0,Math.min(1,u));return u*u*(3-2*u);};
+ const move=(from,to,duration)=>{const u=smooth(e.elapsed/duration);B.x=from[0]+(to[0]-from[0])*u;O.x=from[1]+(to[1]-from[1])*u;};
+ const transition=(phase,a='IDLE',z='IDLE')=>{e.phase=phase;e.elapsed=0;setPose(CFG[a]?a:'IDLE');opponentPose(O.cfg[z]?z:'IDLE');};
+ if(e.phase==='existing-intro'){if(!B.anim&&O.a!=='INTRO')finishEntry();return;}
+ e.elapsed+=dt;
+ if(e.phase==='walk-in'){
+  const gap=Math.max(9,Math.min(18,worldHPercent()*.82));
+  e.meetA=50-gap/2;e.meetB=50+gap/2;
+  move([e.originA,e.originB],[e.meetA,e.meetB],1900);
+  if(e.elapsed>=1900)transition('dialogue');
+ }else if(e.phase==='dialogue'){
+  if(e.elapsed>=2400)transition('fist-bump');
+ }else if(e.phase==='fist-bump'){
+  if(e.elapsed>=1050)transition('turn-away');
+ }else if(e.phase==='turn-away'){
+  if(e.elapsed===dt){B.face=-1;O.face=1;}
+  if(e.elapsed>=420)transition('walk-back','WALK_FORWARD','WALK_FORWARD');
+ }else if(e.phase==='walk-back'){
+  move([e.meetA,e.meetB],[e.originA,e.originB],1900);
+  if(e.elapsed>=1900)transition('turn-in');
+ }else if(e.phase==='turn-in'){
+  if(e.elapsed===dt){B.face=1;O.face=-1;}
+  if(e.elapsed>=420){e.phase='existing-intro';e.elapsed=0;opponentPose('INTRO',true);beginAction('INTRO',restore);}
+ }
 }
 function poseFrameAt(name,time){const c=CFG[name];let t=time;for(let i=0;i<c.durations.length;i++){if(t<c.durations[i])return i;t-=c.durations[i]}return c.durations.length-1}
 function motionStep(dt){if(B.anim)return;if(B.a==='WALK_FORWARD'||B.a==='WALK_BACK'||B.a==='APPROACH'||B.a==='RUN'||B.a==='IDLE'){const c=CFG[B.a];B.frameT=(B.frameT+dt*(B.a==='IDLE'?FIGHTER_ACTION_SPEED*(playerCharacter==='NINA'?.93:1):locomotionTempo(playerCharacter,B.a)))%c.durations.reduce((a,b)=>a+b,0);const fi=poseFrameAt(B.a,B.frameT);if(fi!==B.frame){B.frame=fi;render(B.a,fi);if(B.a!=='IDLE'&&(fi===0||fi===Math.floor(c.durations.length/2)))fightAudio.play('step',.17,.98+Math.random()*.04)}}else if(B.a==='JUMP'){const fi=poseFrameAt('JUMP',B.jumpTime||0);B.frame=fi;render('JUMP',fi)}}
@@ -268,6 +292,7 @@ function applyCombatHit(e){
  if(!S.training)captureReplay({poses:e.contactPoses,force:true});
  if(!damage(target,hit.damage,rect,{...hit,moveName:name,kickToken:(player?'player-':'cpu-')+serial,target:region,contactPoint:e.contact,comboPart:c.finisherGroup!==undefined,comboFinish:c.finisherGroup!==undefined&&hit.group===c.finisherGroup,defense}))return;
  if(!target.lastHitBlocked&&name==='COMBO'&&actor.a==='COMBO'&&!S.comboCinema)S.comboCinema={actor,serial,timeScale:1};
+ if(!target.lastHitBlocked&&name==='COMBO'&&actor.a==='COMBO')comboImpactVfx(e.contact,hit.group===c.finisherGroup);
  holdSourceContact(c);groups.add(key);comboFinisher(actor,target,c,hit,target.lastHitBlocked);
  if(!target.lastHitBlocked){if(player){S.combo++;S.comboT=1400;}if(name!=='COMBO'&&(!player||S.comboUses<2)&&!groups.has('energy')){actor.en=Math.min(100,(actor.en||0)+(c.gain||5));groups.add('energy');}}
 }
@@ -278,7 +303,7 @@ function physics(dt){
  if(!S.ended&&(B.hp<=0||O.hp<=0||!S.preFight&&!S.training&&S.t<=0))endRound();
 }
 function advancePhysics(dt){const moving=[B,O].map(f=>{const c=krovConfig(f)[f.a];return{f,c,frame:f.frame,elapsed:(f.frame+(f===B?B.frameT:O.time)/c.durations[f.frame])*c.durations[0]/1000};});physicsStep(dt);for(const z of moving){const{f,c}=z;if(c.contactRecoveryMotion&&krovConfig(f)[f.a]===c&&!S.hitstop&&!S.clinch){const t=(f.frame+(f===B?B.frameT:O.time)/c.durations[f.frame])*c.durations[0]/1000;f.x+=f.face*(contactRecoveryMotion(c,t)-contactRecoveryMotion(c,z.elapsed))*baseScale()*c.scale/arenaSize().width*100;if(z.elapsed<.56&&t>=.56)fightAudio.play('land',.42,.9);}if(c.retreat&&krovConfig(f)[f.a]===c&&!S.hitstop&&!S.preFight&&!S.ended&&!S.clinch){const time=(f.frame+(f===B?B.frameT:O.time)/c.durations[f.frame])*c.durations[0]/1000,a=c.retreat,ease=t=>{const u=Math.max(0,Math.min(1,(t-a.from)/(a.to-a.from)));return u*u*(3-2*u);};f.x-=f.face*(ease(time)-ease(z.elapsed))*worldHPercent()*a.height;}if(f===B&&B.strikeMotion||!c.advance||krovConfig(f)[f.a]!==c||S.hitstop>0||S.preFight||S.clinch)continue;const elapsed=(f.frame+(f===B?B.frameT:O.time)/c.durations[f.frame])*c.durations[0]/1000,a=c.advance,portion=t=>Math.max(0,Math.min(1,(t-a.from)/(a.to-a.from)));const distance=(portion(elapsed)-portion(z.elapsed))*a.px*baseScale()*c.scale/arenaSize().width*100;if(distance>0){f.x+=f.face*distance;separateFighters();}}separateFighters();confineFighters();separateFighters();}
-function physicsStep(dt){if(S.cinematic)return;if(!S.preFight&&!S.ended){S.matchElapsed=(S.matchElapsed||0)+dt;if(!S.training)S.t=Math.max(0,S.t-dt/1000);O.retreatCooldown=Math.max(0,(O.retreatCooldown||0)-dt);O.grabCooldown=Math.max(0,(O.grabCooldown||0)-dt);O.comboCooldown=Math.max(0,(O.comboCooldown||0)-dt);if((!S.training||S.trainingBehavior==='spar')&&!S.hitstop&&!S.clinch)for(const f of [B,O])if(f.a!=='COMBO'&&(f===B?S.comboUses:f.comboUses)<2)f.en=Math.min(100,(f.en||0)+dt*.005);}contactClinchStep(dt);if(S.hitstop>0){S.hitstop=Math.max(0,S.hitstop-dt);return}S.contactCooldown=Math.max(0,(S.contactCooldown||0)-dt);for(const f of [B,O]){f.knockdownCooldown=Math.max(0,(f.knockdownCooldown||0)-dt);f.cleanKickMs=Math.max(0,(f.cleanKickMs||0)-dt);f.recoilCooldown=Math.max(0,(f.recoilCooldown||0)-dt);if(f.hitSeries){f.hitSeries.remaining-=dt;f.hitSeries.awayMs=pressureDisengaged(f)?(f.hitSeries.awayMs||0)+dt:0;if(f.hitSeries.remaining<=0||f.hitSeries.awayMs>=600)f.hitSeries=null;}f.getupProtection=Math.max(0,(f.getupProtection||0)-dt);f.grabProtection=Math.max(0,(f.grabProtection||0)-dt);if(f.pushTime>0){const spent=Math.min(dt,f.pushTime);f.x=Math.max(8,Math.min(92,f.x+f.pushSpeed*spent/1000));f.pushTime-=spent;}}if(S.clinch){clinchStep(dt);if(!S.training&&S.t<=0){releaseClinch();endRound();}return;}S.poseClock=(S.poseClock||0)+dt;krovDashStep(dt);B.stun=Math.max(0,(B.stun||0)-dt);O.stun=Math.max(0,(O.stun||0)-dt);const ss=dt/1000;S.voiceCooldown=Math.max(0,(S.voiceCooldown||0)-dt);faceOpponents();trackKrovCombo(dt);if(S.clinch)return;if(S.cpuPlayer){actionStep(dt);playerCpuStep(dt);}opponentStep(dt);if(S.ended||S.hitstop>0)return;
+function physicsStep(dt){if(S.cinematic)return;if(!S.preFight&&!S.ended){S.matchElapsed=(S.matchElapsed||0)+dt;if(!S.training)S.t=Math.max(0,S.t-dt/1000);O.retreatCooldown=Math.max(0,(O.retreatCooldown||0)-dt);O.grabCooldown=Math.max(0,(O.grabCooldown||0)-dt);O.comboCooldown=Math.max(0,(O.comboCooldown||0)-dt);if((!S.training||S.trainingBehavior==='spar')&&!S.hitstop&&!S.clinch)for(const f of [B,O])if(f.a!=='COMBO'&&(f===B?S.comboUses:f.comboUses)<2)f.en=Math.min(100,(f.en||0)+dt*.005);}contactClinchStep(dt);if(S.hitstop>0){S.hitstop=Math.max(0,S.hitstop-dt);return}S.contactCooldown=Math.max(0,(S.contactCooldown||0)-dt);for(const f of [B,O]){f.knockdownCooldown=Math.max(0,(f.knockdownCooldown||0)-dt);f.cleanKickMs=Math.max(0,(f.cleanKickMs||0)-dt);f.recoilCooldown=Math.max(0,(f.recoilCooldown||0)-dt);if(f.hitSeries){f.hitSeries.remaining-=dt;f.hitSeries.awayMs=pressureDisengaged(f)?(f.hitSeries.awayMs||0)+dt:0;if(f.hitSeries.remaining<=0||f.hitSeries.awayMs>=600)f.hitSeries=null;}f.getupProtection=Math.max(0,(f.getupProtection||0)-dt);f.grabProtection=Math.max(0,(f.grabProtection||0)-dt);if(f.pushTime>0){const spent=Math.min(dt,f.pushTime);f.x=Math.max(8,Math.min(92,f.x+f.pushSpeed*spent/1000));f.pushTime-=spent;}}if(S.clinch){clinchStep(dt);if(!S.training&&S.t<=0){releaseClinch();endRound();}return;}S.poseClock=(S.poseClock||0)+dt;krovDashStep(dt);B.stun=Math.max(0,(B.stun||0)-dt);O.stun=Math.max(0,(O.stun||0)-dt);const ss=dt/1000;S.voiceCooldown=Math.max(0,(S.voiceCooldown||0)-dt);if(!S.preFight||!S.entry||['walk-in','dialogue','fist-bump','existing-intro'].includes(S.entry.phase))faceOpponents();trackKrovCombo(dt);if(S.clinch)return;if(S.cpuPlayer){actionStep(dt);playerCpuStep(dt);}opponentStep(dt);if(S.ended||S.hitstop>0)return;
  if(S.preFight){actionStep(dt);if(CFG.IDLE.sourceVersion)motionStep(dt);entryStep(dt);if(S.countdown!==null&&S.countdown!==undefined){if(S.countdown>=0&&!fightAudio.countdownReady()&&(S.audioWait||0)<4000){S.audioWait=(S.audioWait||0)+dt;return}S.countdown+=dt;const stage=Math.floor(S.countdown/1000);if(stage!==S.countStage){S.countStage=stage;if(stage<0){}else if(stage<3)say(String(3-stage));else{S.countdown=null;S.preFight=false;releaseInputs();restore();say('FIGHT')}}}return}
  if(S.training){B.en=100;S.comboUses=0;for(const f of [B,O]){if(f.hp<=1){f.recover=(f.recover||0)+dt;if(f.recover>=1200){f.hp=100;f.recover=0}}else f.recover=0}}if(!S.training&&S.t<=0){endRound();if(S.ended)return}if(S.comboApproach){advanceCombo(dt);return}
  const dir=(K.right?1:0)-(K.left?1:0);B.moveHeld=dir&&!K.block&&!B.lock?(B.moveHeld||0)+dt:0;
@@ -295,6 +320,13 @@ addEventListener('brax-context-disposed',e=>lostContexts.delete(e.detail.charact
 addEventListener('brax-context-restored',e=>{lostContexts.delete(e.detail.character);if(S.running&&!lostContexts.size){say('OBRAZ GOTOWY — WZNÓW GRĘ',false);draw();}});
 const attackButtons=[...document.querySelectorAll('[data-tap]')];
 function contactRenderConfig(f,c){
+ // Pre-fight walk uses the existing source gait without its combat guard overlay.
+ if(S.entry&&['walk-in','walk-back'].includes(S.entry.phase)&&c.sourceVersion&&['WALK_FORWARD','APPROACH'].includes(f.a)){
+  c={...c,gaitBlend:null,transitionKey:'relaxed-'+S.entry.phase,transitionMs:150};
+ }
+ if(S.entry&&['dialogue','fist-bump','turn-away','turn-in'].includes(S.entry.phase)&&c.sourceVersion){
+  c={...c,greeting:{phase:S.entry.phase,elapsed:S.entry.elapsed,actor:f===B?0:1},transitionKey:'greeting-'+S.entry.phase,transitionMs:150};
+ }
  if(f.a==='COMBO'&&f.comboAborted)c={...c,transitionKey:'combo-recovery',transitionMs:120};
  if(!S.clinch?.showcase||!c.mutualContact)return c;
  const other=f===B?O:B,oc=krovConfig(other)[other.a];
@@ -302,7 +334,7 @@ function contactRenderConfig(f,c){
  return {...c,contactOpponent:{shoulders:oc.contactShoulders,gap,ratio:oc.scale/c.scale}};
 }
 function draw(){if(CFG.IDLE.sourceVersion){const c=contactRenderConfig(B,CFG[B.a]),fraction=B.anim?B.frameT/c.durations[B.frame]:(B.frameT-B.frame*c.durations[0])/c.durations[0];const renderer=characterRenderer(playerCharacter);renderer.render(ctx,B.strikeMotion?.weight>0?{...c,movingGait:{config:B.strikeMotion.run&&CFG.RUN?CFG.RUN:CFG.WALK_FORWARD||CFG.APPROACH,time:B.strikeMotion.clock/1000,weight:B.strikeMotion.weight}}:c,B.frame+Math.max(0,Math.min(1,fraction)),B.face,S.poseClock||0);}if(isLegacyKrov(B))render(B.a,B.frame);drawOpponent();const r=game.getBoundingClientRect();b.style.left=B.x+'%';b.style.bottom=(groundInset()+B.y*.007*r.height)+'px';b.classList.toggle('krov',isLegacyKrov(B));b.classList.toggle('leftface',B.face<0);b.classList.toggle('rightface',B.face>=0);pHp.style.width=B.hp+'%';energy.style.width=B.en+'%';renderCombatHud()}
-function renderCombatHud(copyOnly=false){const guest=NET.active&&!NET.host,localEnergy=copyOnly&&guest?O.en:B.en,localUses=copyOnly&&guest?O.comboUses:S.comboUses;$('#comboCharge').textContent=localUses>=2?tr('hud.comboLimit'):tr('hud.comboUses',{charge:localEnergy>=100?tr('hud.comboReady'):tr('hud.comboCharge',{percent:Math.floor(localEnergy)}),used:localUses,limit:2});attackButtons.forEach(el=>{if(el.dataset.tap==='grab'){const held=S.clinch?.sourcePair;const guest=NET.active&&!NET.host,localConfig=guest?O.cfg:CFG,ownSide=guest?'opponent':'player';if(!copyOnly)el.classList.toggle('off',!localConfig.THROW_ATTACKER&&!(held&&S.clinch.attacker!==ownSide));el.textContent=held?(S.clinch.attacker===ownSide?tr('controls.release'):tr('controls.break')):tr('guide.grabLabel');el.title=held?tr('controls.breakHint'):tr('controls.grabHint');}if(el.dataset.tap==='special'){const ready=localEnergy>=100&&localUses<2&&!S.comboApproach&&!S.ended&&!S.preFight;if(!copyOnly){el.disabled=!ready;el.classList.toggle('charging',!ready);el.classList.toggle('ready',ready);}el.title=localUses>=2?tr('controls.comboLimit'):ready?tr('controls.comboReady'):tr('controls.comboCharging');}});clock.textContent=S.training?'∞':String(Math.ceil(S.t)).padStart(2,'0');$('#round').textContent=S.training?tr('hud.training'):tr('hud.round',{round:S.round,total:3});combo.textContent=S.combo>1?tr('hud.hitCount',{count:S.combo}):S.wins[0]+' : '+S.wins[1]}
+function renderCombatHud(copyOnly=false){const guest=NET.active&&!NET.host,localEnergy=copyOnly&&guest?O.en:B.en,localUses=copyOnly&&guest?O.comboUses:S.comboUses;$('#comboCharge').textContent=localUses>=2?tr('hud.comboLimit'):tr('hud.comboUses',{charge:localEnergy>=100?tr('hud.comboReady'):tr('hud.comboCharge',{percent:Math.floor(localEnergy)}),used:localUses,limit:2});attackButtons.forEach(el=>{if(el.dataset.tap==='grab'){const held=S.clinch?.sourcePair;const guest=NET.active&&!NET.host,localConfig=guest?O.cfg:CFG,ownSide=guest?'opponent':'player';if(!copyOnly)el.classList.toggle('off',!localConfig.THROW_ATTACKER&&!(held&&S.clinch.attacker!==ownSide));el.textContent=held?(S.clinch.attacker===ownSide?tr('controls.release'):tr('controls.break')):tr('guide.grabLabel');el.title=held?tr('controls.breakHint'):tr('controls.grabHint');}if(el.dataset.tap==='special'){const ready=(S.training||(localEnergy>=100&&localUses<2))&&!S.comboApproach&&!S.ended&&!S.preFight;if(!copyOnly){el.disabled=!ready;el.classList.toggle('charging',!ready);el.classList.toggle('ready',ready);}el.title=!S.training&&localUses>=2?tr('controls.comboLimit'):ready?tr('controls.comboReady'):tr('controls.comboCharging');}});clock.textContent=S.training?'∞':String(Math.ceil(S.t)).padStart(2,'0');$('#round').textContent=S.training?tr('hud.training'):tr('hud.round',{round:S.round,total:3});combo.textContent=S.combo>1?tr('hud.hitCount',{count:S.combo}):S.wins[0]+' : '+S.wins[1]}
 
 // Presentation follows confirmed contact; simulation and both actors share one clock.
 function activeComboCinema(){const e=S.comboCinema;if(!e)return false;const f=e.actor;if(S.ended||S.preFight||!S.running||f.a!=='COMBO'||f.attackSerial!==e.serial||!(f===B?B.anim:O.locked)){S.comboCinema=null;return false;}return true;}
@@ -401,6 +433,39 @@ function drawOpponent(){if(!S.running)return;const c=contactRenderConfig(O,O.cfg
 function fighterRect(f,c,box,anchor){const r=game.getBoundingClientRect(),sc=baseScale()*c.scale,x=r.left+f.x/100*r.width,y=r.bottom-groundInset()-(f===B||f.isPlayer?(f.y||0)*.007*r.height:0),[bx,by,bw,bh]=box,pivot=framePivotX(f.a,f.frame,c);const left=f.face>0?x+(bx-pivot)*sc:x-(bx+bw-pivot)*sc;return{left,right:left+bw*sc,top:y+(by-anchor)*sc,bottom:y+(by+bh-anchor)*sc}}
 function opponentHurtbox(){return bodyHurtbox(O,O.cfg[O.a],O.a,O.frame)}
 function contactFeedback(target,rect,blocked,point=null){const el=target===B?b:opponentEl;el.classList.remove('contact');void el.offsetWidth;el.classList.add('contact');setTimeout(()=>el.classList.remove('contact'),160);fightAudio.play(blocked?'heavy':'impact',blocked?.25:.6);if(!blocked)S.hitstop=42;const z=target===B?playerHurtbox():opponentHurtbox(),r=game.getBoundingClientRect();const x=(point?.x??(Math.max(rect.left,z.left)+Math.min(rect.right,z.right))/2)-r.left,y=(point?.y??(Math.max(rect.top,z.top)+Math.min(rect.bottom,z.bottom))/2)-r.top;for(let i=0;i<5;i++){const dot=document.createElement('i');dot.className='spark';dot.style.left=x+'px';dot.style.top=y+'px';dot.style.setProperty('--dx',(Math.cos(i*1.256)*25)+'px');dot.style.setProperty('--dy',(Math.sin(i*1.256)*25)+'px');sparks.appendChild(dot);setTimeout(()=>dot.remove(),450)}}
+// Opening pulse only for a successfully activated Brax combo; uses the existing overlay.
+function comboActivationVfx(){
+ if(!sparks||window.matchMedia?.('(prefers-reduced-motion: reduce)').matches)return;
+ const r=game.getBoundingClientRect(),x=B.x/100*r.width,y=groundY();
+ if(!Number.isFinite(x)||!Number.isFinite(y))return;
+ const ring=document.createElement('i');ring.setAttribute('aria-hidden','true');
+ Object.assign(ring.style,{position:'absolute',left:x+'px',top:y+'px',width:'18px',height:'6px',border:'2px solid #c5edc1',borderRadius:'50%',boxShadow:'0 0 9px #8aff66',pointerEvents:'none',opacity:'0.85',transform:'translate(-50%,-50%) scale(1)'});
+ sparks.appendChild(ring);
+ ring.animate?.([{transform:'translate(-50%,-50%) scale(1)',opacity:.85},{transform:'translate(-50%,-50%) scale(7)',opacity:0}],{duration:340,easing:'ease-out'});
+ setTimeout(()=>ring.remove(),370);
+ fightAudio.play('impact',.23);
+}
+// Event-driven BRAXHORN combo accents: only real, unblocked contacts create VFX.
+// This uses the existing overlay, no camera movement and no added animation assets.
+function comboImpactVfx(point,finisher=false){
+ if(!point||!sparks||window.matchMedia?.('(prefers-reduced-motion: reduce)').matches)return;
+ const rect=game.getBoundingClientRect(),x=point.x-rect.left,y=point.y-rect.top;
+ if(!Number.isFinite(x)||!Number.isFinite(y))return;
+ const ring=document.createElement('i');ring.setAttribute('aria-hidden','true');
+ Object.assign(ring.style,{position:'absolute',left:x+'px',top:y+'px',width:'12px',height:'12px',border:'2px solid '+(finisher?'#c7f9c7':'#d9e3df'),borderRadius:'50%',boxShadow:finisher?'0 0 12px #8aff66':'0 0 6px #b5ff9c',pointerEvents:'none',transform:'translate(-50%,-50%)',opacity:'0.9'});
+ sparks.appendChild(ring);
+ ring.animate?.([{transform:'translate(-50%,-50%) scale(.5)',opacity:.9},{transform:'translate(-50%,-50%) scale('+(finisher?12:5)+')',opacity:0}],{duration:finisher?460:210,easing:'ease-out'});
+ setTimeout(()=>ring.remove(),finisher?490:240);
+ const count=finisher?12:6;
+ for(let i=0;i<count;i++){
+  const p=document.createElement('i');const a=i*Math.PI*2/count,dist=(finisher?60:27)*(0.7+(i%3)*.15);
+  Object.assign(p.style,{position:'absolute',left:x+'px',top:y+'px',width:finisher?'4px':'3px',height:finisher?'12px':'7px',background:i%3===0?'#8aff66':'#dce4e0',borderRadius:'2px',pointerEvents:'none',transform:'translate(-50%,-50%) rotate('+a+'rad)',opacity:'.9'});
+  sparks.appendChild(p);
+  p.animate?.([{transform:'translate(-50%,-50%) rotate('+a+'rad)',opacity:.9},{transform:'translate(calc(-50% + '+(Math.cos(a)*dist)+'px),calc(-50% + '+(Math.sin(a)*dist)+'px)) rotate('+a+'rad)',opacity:0}],{duration:finisher?350:160,easing:'ease-out'});
+  setTimeout(()=>p.remove(),finisher?380:190);
+ }
+ if(finisher){fightAudio.play('land',.8);if(typeof navigator!=='undefined'&&typeof navigator.vibrate==='function')navigator.vibrate(22);}
+}
 // Damage-weighted pressure is shared by both sides and all six styles.
 // Each ordinary attack contributes at most 14 pressure, even if it has many hits.
 // A clear gap of 35% of fighter height beyond both body radii, sustained 600ms.
@@ -647,7 +712,7 @@ function locomotionTempo(who,name){const c=characterConfig(who)[name];if(!c?.sou
 function moveTempo(character){if(character==='VEXA')return 1.14;if(character==='BRAX'&&BRAX_CFG.IDLE.sourceVersion)return 1;if(character==='NYXA'&&NYXA_CFG.IDLE.sourceVersion)return 1.08;if(character==='KROV')return 1;return character==='NYXA'?(NYXA_CFG.IDLE.model3d?1.6104:1.22):(BRAX_CFG.IDLE.model3d?1.3:1)}
 function actionTempo(character,c,frame){if(c.contactRecovery)return 1;return (character==='NINA'?.93:1)*FIGHTER_ACTION_SPEED*baseActionTempo(character,c,frame);}
 function baseActionTempo(character,c,frame){if(c.sourceVersion){const p=c.phaseTempo,m=p?(frame<p.first?p.startup:frame>p.last?p.recovery:1):1;return(c.playbackRate||1)*m;}if(character==='KROV')return c.playbackRate||1;if(c.model3d&&character==='BRAX')return c.playbackRate|| (c.attack?1.8:c===BRAX_CFG.HIT_BODY?2:1.15);if(c===NYXA_CFG.GRAB)return 1;if(c.model3d)return c.playbackRate?c.playbackRate*1.1:c.attack?1.595:c===NYXA_CFG.HIT_BODY?1.65:1.15;if(character==='NYXA'&&c===NYXA_CFG.HIT_BODY)return 2.4;return character==='NYXA'&&c.attack?1.22:1}
-function startCombo(){if(!canInput()||B.lock||B.en<100||S.comboUses>=2||!B.ground||B.jumpTime!==null||B.a==='COMBO')return false;releaseInputs();B.anim=null;B.lock=false;B.en=0;S.comboUses++;S.comboReserved=true;if(isLegacyKrov(B)){S.comboApproach=false;return beginAction('COMBO')}if(playerCharacter==='BRAX'&&!CFG.COMBO.model3d){S.comboApproach=false;return beginAction('COMBO')}S.comboApproach=true;setPose(forwardPose(B));return true}
+function startCombo(){if(!canInput()||(!S.training&&B.en<100)||(!S.training&&S.comboUses>=2)||!B.ground||B.jumpTime!==null||B.a==='COMBO')return false;if(B.lock){if(B.anim?.c?.attack){S.pendingCombo=true;return true;}return false;}releaseInputs();B.anim=null;B.lock=false;if(!S.training){B.en=0;S.comboUses++;}S.comboReserved=true;if(playerCharacter==='BRAX')comboActivationVfx();if(isLegacyKrov(B)){S.comboApproach=false;return beginAction('COMBO')}if(playerCharacter==='BRAX'&&!CFG.COMBO.model3d){S.comboApproach=false;return beginAction('COMBO')}S.comboApproach=true;setPose(forwardPose(B));return true}
 // Vexa's opening fist otherwise stops 1–2 screen pixels short of the real capsule.
 // Adjust approach only: master poses, timing and damage shapes remain unchanged.
 function comboApproachGap(px,c,who){return Math.max(0,px*baseScale()*c.scale-(who==='VEXA'?2:0))/arenaSize().width*100;}
@@ -655,7 +720,7 @@ function advanceCombo(dt){faceOpponents();const pose=forwardPose(B);if(B.a!==pos
 function startCountdown(){controls.classList.remove('off');startFighterEntry(false);}
 function endRound(){
  if(S.ended||S.training||contactBatch)return;if([B,O].some(f=>f.downState?.lethal&&['FLY','FLY_LAND'].includes(f.downState.phase)))return;
- S.ended=true;S.comboApproach=false;S.comboReserved=false;roundRecovery=0;releaseInputs();attackQueue.length=0;
+ S.ended=true;S.comboApproach=false;S.comboReserved=false;S.pendingCombo=false;roundRecovery=0;releaseInputs();attackQueue.length=0;
  const winner=B.hp===O.hp?-1:B.hp>O.hp?0:1;if(winner>=0)S.wins[winner]++;
  S.matchOver=campaign?.mode==='survival'||S.wins.some(n=>n>=2)||S.round>=3;
  const celebratedWinner=S.matchOver?(S.wins[0]===S.wins[1]?-1:S.wins[0]>S.wins[1]?0:1):winner;
