@@ -40,3 +40,14 @@ Both characters walk towards each other using ordinary locomotion, stop at conve
 3. CHWYT+P1/P2: hold GRAB and tap P1 or P2; separate technique and paired victim reaction; verify proximity windows, no opponent teleport, no control lock.
 4. FX: activation ring, directional contact sparks, hand/foot motion trail, brief finisher slow-down, landing dust/ground wave and low-frequency impact audio. Event-driven; don't trigger effects for blocked/missed attacks. Phone vibration only where supported.
 5. Test with WebGL/iPhone/Android/desktop and real multiplayer; do not claim these tests if unavailable. Keep a clean rollback path and do not deploy without approval.
+
+## Verified BRAX gesture/control status (2026-10-21, main-derived branch)
+
+- Brax source manifest lists `Mixamo Round Victory`, `Mixamo Match Victory`, `Taunt`, `Kip Up`, `Rockin' Shackle B`, `Uppercut Jab`, `Kicking`, and `Boxing`. These are available in the bundled 31 source clips.
+- The engine already selects `WIN_ROUND` and `WIN_MATCH` where present. Actual runtime playback on user preview is NOT verified.
+- `LOSE_ROUND`, `LOSE_MATCH`, `GETUP_ANGER`, `TAUNT_COME_HERE`, `TAUNT_CLAP` and `COMBO_TAUNT` are NOT verified in Brax's current manifest/config. Never claim a complete emotional state system until the corresponding FBX have been imported and retargeted.
+- Source candidates from V4: `Defeat.fbx` BA-0546 for losing, `FacePalms_mixamo.fbx` BA-0136 for frustration, `stomp_frustrated.fbx` BA-0592 for anger after get-up, `taunt_come_here.fbx` BA-0594 and `Clap_SarcasticClap_mixamo.fbx` BA-0094 for taunts. Names exist in catalogue; the FBX bytes are not available in this GitHub branch.
+- Existing source-config builder assigns `UPPERCUT` as an alias of `HEAVY_PUNCH` (Hook), so forward+P2 is NOT an independently authored uppercut. Import a proper dedicated uppercut clip before calling that input complete.
+- On the test branch `buttonMove()` now maps forward+P1 to `DOUBLE_PUNCH` and forward+P2 to `UPPERCUT` consistently both while walking and sprinting. Static mapping checked for both sprint states.
+- `COMBO` input queue and cosmetic contact/activation effects have been implemented in `game/assets/combat.js`; JS syntax passed. No WebGL or on-device tests were run. Preview site `braxhorn-p0-preview.wawerpatryk89.chatgpt.site` has not been verified to use this branch.
+- Do not replace real paired handshake with a simulated gesture. Actual `Shaking Hands 1/2` FBX files are not in the checked GitHub game bundle; catalogue entries alone are insufficient for an animation import.
