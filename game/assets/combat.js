@@ -320,6 +320,10 @@ addEventListener('brax-context-disposed',e=>lostContexts.delete(e.detail.charact
 addEventListener('brax-context-restored',e=>{lostContexts.delete(e.detail.character);if(S.running&&!lostContexts.size){say('OBRAZ GOTOWY — WZNÓW GRĘ',false);draw();}});
 const attackButtons=[...document.querySelectorAll('[data-tap]')];
 function contactRenderConfig(f,c){
+ // Pre-fight walk uses the existing source gait without its combat guard overlay.
+ if(S.entry&&['walk-in','walk-back'].includes(S.entry.phase)&&c.sourceVersion&&['WALK_FORWARD','APPROACH'].includes(f.a)){
+  c={...c,gaitBlend:null,transitionKey:'relaxed-'+S.entry.phase,transitionMs:150};
+ }
  if(S.entry&&['dialogue','fist-bump','turn-away','turn-in'].includes(S.entry.phase)&&c.sourceVersion){
   c={...c,greeting:{phase:S.entry.phase,elapsed:S.entry.elapsed,actor:f===B?0:1},transitionKey:'greeting-'+S.entry.phase,transitionMs:150};
  }
