@@ -207,20 +207,44 @@ function entryCorner(f){
 function startFighterEntry(greeting=false){
  releaseInputs();restore();opponentPose('IDLE');
  S.preFight=true;S.countdown=null;S.countStage=-1;S.audioWait=0;
- S.entry=greeting?{phase:'greeting'}:null;
  B.face=1;O.face=-1;B.x=entryCorner(B);O.x=entryCorner(O);
+ S.entry=greeting?{phase:'walk-in',elapsed:0,originA:B.x,originB:O.x}:null;
  characterVoice(playerCharacter);arenaSound.resume();fightAudio.unlock();calloutToken='';call.firstElementChild.textContent='';
- if(greeting){opponentPose('INTRO',true);beginAction('INTRO',restore);}
+ if(greeting){setPose(CFG.WALK_FORWARD?'WALK_FORWARD':'IDLE');opponentPose(O.cfg.WALK_FORWARD?'WALK_FORWARD':'IDLE');}
  else finishEntry();
  draw();
 }
 function finishEntry(){
- // The actual fight starts at the two sides. Movement begins only after FIGHT.
+ // Preserve the original intro and countdown, with no position teleport at FIGHT.
  S.entry=null;restore();opponentPose('IDLE');
  S.countdown=0;S.countStage=-1;S.audioWait=0;
 }
-function entryStep(){
- if(S.entry&&!B.anim&&O.a!=='INTRO')finishEntry();
+function entryStep(dt){
+ const e=S.entry;if(!e)return;
+ const smooth=u=>{u=Math.max(0,Math.min(1,u));return u*u*(3-2*u);};
+ const move=(from,to,duration)=>{const u=smooth(e.elapsed/duration);B.x=from[0]+(to[0]-from[0])*u;O.x=from[1]+(to[1]-from[1])*u;};
+ const transition=(phase,a='IDLE',z='IDLE')=>{e.phase=phase;e.elapsed=0;setPose(CFG[a]?a:'IDLE');opponentPose(O.cfg[z]?z:'IDLE');};
+ if(e.phase==='existing-intro'){if(!B.anim&&O.a!=='INTRO')finishEntry();return;}
+ e.elapsed+=dt;
+ if(e.phase==='walk-in'){
+  const gap=Math.max(9,Math.min(18,worldHPercent()*.82));
+  e.meetA=50-gap/2;e.meetB=50+gap/2;
+  move([e.originA,e.originB],[e.meetA,e.meetB],1900);
+  if(e.elapsed>=1900)transition('dialogue');
+ }else if(e.phase==='dialogue'){
+  if(e.elapsed>=2400)transition('fist-bump');
+ }else if(e.phase==='fist-bump'){
+  if(e.elapsed>=1050)transition('turn-away');
+ }else if(e.phase==='turn-away'){
+  if(e.elapsed===dt){B.face=-1;O.face=1;}
+  if(e.elapsed>=420)transition('walk-back','WALK_FORWARD','WALK_FORWARD');
+ }else if(e.phase==='walk-back'){
+  move([e.meetA,e.meetB],[e.originA,e.originB],1900);
+  if(e.elapsed>=1900)transition('turn-in');
+ }else if(e.phase==='turn-in'){
+  if(e.elapsed===dt){B.face=1;O.face=-1;}
+  if(e.elapsed>=420){e.phase='existing-intro';e.elapsed=0;opponentPose('INTRO',true);beginAction('INTRO',restore);}
+ }
 }
 function poseFrameAt(name,time){const c=CFG[name];let t=time;for(let i=0;i<c.durations.length;i++){if(t<c.durations[i])return i;t-=c.durations[i]}return c.durations.length-1}
 function motionStep(dt){if(B.anim)return;if(B.a==='WALK_FORWARD'||B.a==='WALK_BACK'||B.a==='APPROACH'||B.a==='RUN'||B.a==='IDLE'){const c=CFG[B.a];B.frameT=(B.frameT+dt*(B.a==='IDLE'?FIGHTER_ACTION_SPEED*(playerCharacter==='NINA'?.93:1):locomotionTempo(playerCharacter,B.a)))%c.durations.reduce((a,b)=>a+b,0);const fi=poseFrameAt(B.a,B.frameT);if(fi!==B.frame){B.frame=fi;render(B.a,fi);if(B.a!=='IDLE'&&(fi===0||fi===Math.floor(c.durations.length/2)))fightAudio.play('step',.17,.98+Math.random()*.04)}}else if(B.a==='JUMP'){const fi=poseFrameAt('JUMP',B.jumpTime||0);B.frame=fi;render('JUMP',fi)}}
@@ -296,6 +320,9 @@ addEventListener('brax-context-disposed',e=>lostContexts.delete(e.detail.charact
 addEventListener('brax-context-restored',e=>{lostContexts.delete(e.detail.character);if(S.running&&!lostContexts.size){say('OBRAZ GOTOWY — WZNÓW GRĘ',false);draw();}});
 const attackButtons=[...document.querySelectorAll('[data-tap]')];
 function contactRenderConfig(f,c){
+ if(S.entry&&['dialogue','fist-bump','turn-away','turn-in'].includes(S.entry.phase)&&c.sourceVersion){
+  c={...c,greeting:{phase:S.entry.phase,elapsed:S.entry.elapsed,actor:f===B?0:1},transitionKey:'greeting-'+S.entry.phase,transitionMs:150};
+ }
  if(f.a==='COMBO'&&f.comboAborted)c={...c,transitionKey:'combo-recovery',transitionMs:120};
  if(!S.clinch?.showcase||!c.mutualContact)return c;
  const other=f===B?O:B,oc=krovConfig(other)[other.a];
