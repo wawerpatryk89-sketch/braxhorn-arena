@@ -402,6 +402,18 @@ function drawOpponent(){if(!S.running)return;const c=contactRenderConfig(O,O.cfg
 function fighterRect(f,c,box,anchor){const r=game.getBoundingClientRect(),sc=baseScale()*c.scale,x=r.left+f.x/100*r.width,y=r.bottom-groundInset()-(f===B||f.isPlayer?(f.y||0)*.007*r.height:0),[bx,by,bw,bh]=box,pivot=framePivotX(f.a,f.frame,c);const left=f.face>0?x+(bx-pivot)*sc:x-(bx+bw-pivot)*sc;return{left,right:left+bw*sc,top:y+(by-anchor)*sc,bottom:y+(by+bh-anchor)*sc}}
 function opponentHurtbox(){return bodyHurtbox(O,O.cfg[O.a],O.a,O.frame)}
 function contactFeedback(target,rect,blocked,point=null){const el=target===B?b:opponentEl;el.classList.remove('contact');void el.offsetWidth;el.classList.add('contact');setTimeout(()=>el.classList.remove('contact'),160);fightAudio.play(blocked?'heavy':'impact',blocked?.25:.6);if(!blocked)S.hitstop=42;const z=target===B?playerHurtbox():opponentHurtbox(),r=game.getBoundingClientRect();const x=(point?.x??(Math.max(rect.left,z.left)+Math.min(rect.right,z.right))/2)-r.left,y=(point?.y??(Math.max(rect.top,z.top)+Math.min(rect.bottom,z.bottom))/2)-r.top;for(let i=0;i<5;i++){const dot=document.createElement('i');dot.className='spark';dot.style.left=x+'px';dot.style.top=y+'px';dot.style.setProperty('--dx',(Math.cos(i*1.256)*25)+'px');dot.style.setProperty('--dy',(Math.sin(i*1.256)*25)+'px');sparks.appendChild(dot);setTimeout(()=>dot.remove(),450)}}
+// Opening pulse only for a successfully activated Brax combo; uses the existing overlay.
+function comboActivationVfx(){
+ if(!sparks||window.matchMedia?.('(prefers-reduced-motion: reduce)').matches)return;
+ const r=game.getBoundingClientRect(),x=B.x/100*r.width,y=groundY()-r.top;
+ if(!Number.isFinite(x)||!Number.isFinite(y))return;
+ const ring=document.createElement('i');ring.setAttribute('aria-hidden','true');
+ Object.assign(ring.style,{position:'absolute',left:x+'px',top:y+'px',width:'18px',height:'6px',border:'2px solid #c5edc1',borderRadius:'50%',boxShadow:'0 0 9px #8aff66',pointerEvents:'none',opacity:'0.85',transform:'translate(-50%,-50%) scale(1)'});
+ sparks.appendChild(ring);
+ ring.animate?.([{transform:'translate(-50%,-50%) scale(1)',opacity:.85},{transform:'translate(-50%,-50%) scale(7)',opacity:0}],{duration:340,easing:'ease-out'});
+ setTimeout(()=>ring.remove(),370);
+ fightAudio.play('impact',.23);
+}
 // Event-driven BRAXHORN combo accents: only real, unblocked contacts create VFX.
 // This uses the existing overlay, no camera movement and no added animation assets.
 function comboImpactVfx(point,finisher=false){
@@ -669,7 +681,7 @@ function locomotionTempo(who,name){const c=characterConfig(who)[name];if(!c?.sou
 function moveTempo(character){if(character==='VEXA')return 1.14;if(character==='BRAX'&&BRAX_CFG.IDLE.sourceVersion)return 1;if(character==='NYXA'&&NYXA_CFG.IDLE.sourceVersion)return 1.08;if(character==='KROV')return 1;return character==='NYXA'?(NYXA_CFG.IDLE.model3d?1.6104:1.22):(BRAX_CFG.IDLE.model3d?1.3:1)}
 function actionTempo(character,c,frame){if(c.contactRecovery)return 1;return (character==='NINA'?.93:1)*FIGHTER_ACTION_SPEED*baseActionTempo(character,c,frame);}
 function baseActionTempo(character,c,frame){if(c.sourceVersion){const p=c.phaseTempo,m=p?(frame<p.first?p.startup:frame>p.last?p.recovery:1):1;return(c.playbackRate||1)*m;}if(character==='KROV')return c.playbackRate||1;if(c.model3d&&character==='BRAX')return c.playbackRate|| (c.attack?1.8:c===BRAX_CFG.HIT_BODY?2:1.15);if(c===NYXA_CFG.GRAB)return 1;if(c.model3d)return c.playbackRate?c.playbackRate*1.1:c.attack?1.595:c===NYXA_CFG.HIT_BODY?1.65:1.15;if(character==='NYXA'&&c===NYXA_CFG.HIT_BODY)return 2.4;return character==='NYXA'&&c.attack?1.22:1}
-function startCombo(){if(!canInput()||B.en<100||S.comboUses>=2||!B.ground||B.jumpTime!==null||B.a==='COMBO')return false;if(B.lock){if(B.anim?.c?.attack){S.pendingCombo=true;return true;}return false;}releaseInputs();B.anim=null;B.lock=false;B.en=0;S.comboUses++;S.comboReserved=true;if(isLegacyKrov(B)){S.comboApproach=false;return beginAction('COMBO')}if(playerCharacter==='BRAX'&&!CFG.COMBO.model3d){S.comboApproach=false;return beginAction('COMBO')}S.comboApproach=true;setPose(forwardPose(B));return true}
+function startCombo(){if(!canInput()||B.en<100||S.comboUses>=2||!B.ground||B.jumpTime!==null||B.a==='COMBO')return false;if(B.lock){if(B.anim?.c?.attack){S.pendingCombo=true;return true;}return false;}releaseInputs();B.anim=null;B.lock=false;B.en=0;S.comboUses++;S.comboReserved=true;if(playerCharacter==='BRAX')comboActivationVfx();if(isLegacyKrov(B)){S.comboApproach=false;return beginAction('COMBO')}if(playerCharacter==='BRAX'&&!CFG.COMBO.model3d){S.comboApproach=false;return beginAction('COMBO')}S.comboApproach=true;setPose(forwardPose(B));return true}
 // Vexa's opening fist otherwise stops 1–2 screen pixels short of the real capsule.
 // Adjust approach only: master poses, timing and damage shapes remain unchanged.
 function comboApproachGap(px,c,who){return Math.max(0,px*baseScale()*c.scale-(who==='VEXA'?2:0))/arenaSize().width*100;}
