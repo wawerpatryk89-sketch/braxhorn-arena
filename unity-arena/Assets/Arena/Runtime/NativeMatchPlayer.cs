@@ -180,6 +180,11 @@ namespace Braxhorn.Arena
                 RenderFighter(i,match.Presentation(i));
                 if(adventure!=null)actors[i].SetActive(i==0?adventure.Phase!=AdventurePhase.Entrance||adventure.ElapsedMs>=450:adventure.OpponentVisible);
             }
+            for(var i=0;i<2;i++)
+            {
+                var fighter=match.Fighter(i);
+                poses[i].ApplyMovingGait(fighter.MovingGait,fighter.MovingGaitSeconds,fighter.MovingGaitWeight);
+            }
             if(match.ClinchActive)
                 for(var i=0;i<2;i++)
                 {

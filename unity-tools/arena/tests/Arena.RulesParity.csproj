@@ -15,6 +15,7 @@
     <Compile Include="GestureParityRunner.cs" />
     <Compile Include="ClinchParityRunner.cs" />
     <Compile Include="ArmContactParityRunner.cs" />
+    <Compile Include="MovingStrikeParityRunner.cs" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 </Project>

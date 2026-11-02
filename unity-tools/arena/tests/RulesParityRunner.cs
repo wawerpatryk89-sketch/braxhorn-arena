@@ -67,6 +67,7 @@ static class RulesParityRunner
         GestureParityRunner.Run();
         ClinchParityRunner.Run();
         ArmContactParityRunner.Run();
+        MovingStrikeParityRunner.Run();
         return 0;
     }
 }

@@ -22,8 +22,9 @@ namespace Braxhorn.Arena
         public void Initialize(FighterDefinition fighter)
         {
             DisposeGraph();
-            FindContactBones();
             definition = fighter ? fighter : throw new ArgumentNullException(nameof(fighter));
+            FindContactBones();
+            LoadGaitLayers(fighter);
             // The original roster uses up to twelve influences per vertex.
             // Default mobile quality settings would otherwise truncate the rig.
             QualitySettings.skinWeights = SkinWeights.Unlimited;

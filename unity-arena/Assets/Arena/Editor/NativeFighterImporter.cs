@@ -146,6 +146,14 @@ namespace Braxhorn.Arena.Editor
                 definition.complete = (bool)info["complete"];
                 definition.prefab = prefab;
                 definition.configuration = AssetDatabase.LoadAssetAtPath<TextAsset>(directory + "/config.bytes");
+                var gaitInfo=info["gaitLayers"];
+                if(gaitInfo==null)throw new InvalidDataException(id+": missing raw gait layers; regenerate source export");
+                var gaitPath=directory+"/"+(string)gaitInfo["file"];
+                using(var sha=SHA256.Create())using(var bytes=File.OpenRead(gaitPath))
+                    if(BitConverter.ToString(sha.ComputeHash(bytes)).Replace("-", "").ToLowerInvariant()!=(string)gaitInfo["sha256"])
+                        throw new InvalidDataException(id+": raw gait layer hash mismatch");
+                definition.gaitLayers=AssetDatabase.LoadAssetAtPath<TextAsset>(gaitPath);
+                if(!definition.gaitLayers)throw new InvalidDataException(id+": raw gait layer asset missing");
                 definition.actions = entries.ToArray();
                 var complete = definition.complete;
                 Upsert(definition, output + "/" + id + ".asset");

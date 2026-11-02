@@ -62,6 +62,7 @@ namespace Braxhorn.Arena.Domain
                     f.X+=direction*step;
                 }
             }
+            AdvanceMovingStrike(f,dt);
             AdvancePose(f,dt,false);
         }
     }

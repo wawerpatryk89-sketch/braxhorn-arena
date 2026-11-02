@@ -67,8 +67,7 @@ namespace Braxhorn.Arena.Editor
             camera.orthographic=true;camera.orthographicSize=2;camera.transform.position=new Vector3(0,1,-8);
             camera.nearClipPlane=.1f;camera.farClipPlane=30;camera.clearFlags=CameraClearFlags.SolidColor;
             camera.backgroundColor=new Color(.04f,.05f,.07f);camera.tag="MainCamera";camera.gameObject.AddComponent<AudioListener>();
-            RenderSettings.ambientMode=AmbientMode.Flat;RenderSettings.ambientLight=new Color(.45f,.45f,.5f);
-            var key=new GameObject("Arena key light").AddComponent<Light>();key.type=LightType.Directional;key.intensity=1.3f;key.transform.rotation=Quaternion.Euler(30,-25,0);
+            CreateFighterLighting();
             var player=new GameObject("Native match").AddComponent<NativeMatchPlayer>();player.matchCamera=camera;
             player.arenaMediaShader=AssetDatabase.LoadAssetAtPath<Shader>("Assets/Arena/Shaders/OriginalArenaMedia.shader");
             player.adventureCorpseShader=AssetDatabase.LoadAssetAtPath<Shader>("Assets/Arena/Shaders/OriginalAdventureCorpse.shader");
@@ -78,6 +77,28 @@ namespace Braxhorn.Arena.Editor
             if(!EditorSceneManager.SaveScene(scene,CombatScene))throw new BuildFailedException("Cannot save native combat scene.");
             EditorBuildSettings.scenes=new[]{new EditorBuildSettingsScene(CombatScene,true),new EditorBuildSettingsScene(ReviewScene,true)};
             AssetDatabase.SaveAssets();
+        }
+
+        static void CreateFighterLighting()
+        {
+            // Shared by review, arena and adventure. Video backgrounds are unlit.
+            // These are initial studio values, not a verified Tripo calibration.
+            RenderSettings.ambientMode=AmbientMode.Trilight;
+            RenderSettings.ambientSkyColor=new Color(.30f,.32f,.36f);
+            RenderSettings.ambientEquatorColor=new Color(.18f,.19f,.20f);
+            RenderSettings.ambientGroundColor=new Color(.10f,.09f,.08f);
+            QualitySettings.pixelLightCount=Mathf.Max(3,QualitySettings.pixelLightCount);
+            void Add(string name,Vector3 angles,Color colour,float intensity,bool shadows)
+            {
+                var light=new GameObject(name).AddComponent<Light>();light.enabled=true;
+                light.type=LightType.Directional;light.renderMode=LightRenderMode.ForcePixel;
+                light.color=colour;light.intensity=intensity;light.transform.rotation=Quaternion.Euler(angles);
+                light.shadows=shadows?LightShadows.Soft:LightShadows.None;
+                light.shadowStrength=.65f;light.shadowBias=.03f;light.shadowNormalBias=.2f;
+            }
+            Add("Fighter studio key",new Vector3(30,-25,0),new Color(1,.97f,.94f),1.1f,true);
+            Add("Fighter studio fill",new Vector3(15,35,0),new Color(.88f,.94f,1),.45f,false);
+            Add("Fighter studio rim",new Vector3(25,160,0),new Color(1,.98f,.95f),.55f,false);
         }
 
         public static void CreateReviewScene()
@@ -90,10 +111,7 @@ namespace Braxhorn.Arena.Editor
             camera.clearFlags = CameraClearFlags.SolidColor; camera.backgroundColor = new Color(.04f,.05f,.07f);
             camera.nearClipPlane = .1f;camera.farClipPlane = 30;camera.tag = "MainCamera";
             camera.gameObject.AddComponent<AudioListener>();
-            RenderSettings.ambientMode = AmbientMode.Flat;
-            RenderSettings.ambientLight = new Color(.45f,.45f,.5f);
-            var key = new GameObject("Review key light").AddComponent<Light>();
-            key.type = LightType.Directional;key.intensity = 1.3f;key.transform.rotation = Quaternion.Euler(30,-25,0);
+            CreateFighterLighting();
             new GameObject("Native fighter review").AddComponent<FighterReviewPlayer>().reviewCamera = camera;
             if (!EditorSceneManager.SaveScene(scene,ReviewScene)) throw new BuildFailedException("Cannot save native review scene.");
             EditorBuildSettings.scenes = new[] {new EditorBuildSettingsScene(ReviewScene,true)};

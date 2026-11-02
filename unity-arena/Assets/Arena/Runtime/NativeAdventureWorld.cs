@@ -56,13 +56,14 @@ namespace Braxhorn.Arena
             {var slot=slots[i];if(i==first-1)RememberEdge(i,slot.Media);if(slot.Loading!=null)StopCoroutine(slot.Loading);slot.Media.Clear();Destroy(slot.Media.gameObject);slots.Remove(i);}
             if(previousIndex!=first-1)ReleaseEdge();
             Ensure(first);Ensure(first+1);
+            var buffering=!Ready(run.Camera,run.Span);
             var audible=Math.Min(last,(int)Math.Floor((run.Camera+run.Span*.5)/100));
             foreach(var pair in slots)
             {
                 var media=pair.Value.Media;media.ScreenTile=new Rect((float)((pair.Key*100-run.Camera)/run.Span),0,(float)(100/run.Span),1);
                 media.Sound(muted,false);media.SetAdventureSound((float?)chapters[pair.Key]["gain"]??1,pair.Key==audible);
                 if(media.Error!=null)Error=media.Error;
-                if(media.Ready)media.SetPaused(run.Match.Paused||pair.Key>last||run.Phase==AdventurePhase.Complete||run.Phase==AdventurePhase.Dead);
+                if(media.Ready)media.SetPaused(buffering||run.Match.Paused||pair.Key>last||run.Phase==AdventurePhase.Complete||run.Phase==AdventurePhase.Dead);
                 var mask=run.Route["entry"]?["mask"] as JObject;
                 media.DoorMask(pair.Key==0&&run.Masked&&mask!=null&&run.EntryGround<=(double)mask["y"]+(double)mask["h"]?new Rect((float)mask["x"],(float)mask["y"],(float)mask["w"],(float)mask["h"]):(Rect?)null);
             }

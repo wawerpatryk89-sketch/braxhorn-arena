@@ -1,6 +1,7 @@
 // Migration-time tooling only. No JavaScript or Three.js is shipped in the player.
 // Bake the published rig corrections before converting handedness in Unity.
 import fs from 'node:fs';
+import {exportGaitLayers} from './export-gait-layers.mjs';
 import path from 'node:path';
 import zlib from 'node:zlib';
 import {createHash} from 'node:crypto';
@@ -36,6 +37,7 @@ function matrix(node){node.updateMatrix();return node.matrix.toArray();}
 fs.mkdirSync(destination,{recursive:true});
 const adventureWalks=json(path.join(assetRoot,'adventure/walks.json.gz'));
 const entryRuns=json(path.join(assetRoot,'adventure/entry-runs.json.gz'));
+const gaitsOnly=process.argv.includes('--gaits-only');
 const catalog=[];
 for(const who of [...roster,...outfits.map(o=>o.id)]){
  if(selected&&!selected.includes(who))continue;
@@ -57,6 +59,9 @@ for(const who of [...roster,...outfits.map(o=>o.id)]){
  for(const name of references)if(!raw[name])throw Error(who+': missing authored source clip '+name+' before pose export');
  const model=json(path.join(modelPath,'model.json.gz'));
  const clips=outfit?retargetOutfitClipsFromRecipe(raw,json(path.join(modelPath,'retarget.json')),base):raw;
+ const gaitDirectory=path.join(destination,who);
+ const gaitLayers=exportGaitLayers(clips,config,gaitDirectory);
+ if(gaitsOnly){const file=path.join(gaitDirectory,'fighter.json');const entry=JSON.parse(fs.readFileSync(file));entry.gaitLayers=gaitLayers;save(file,JSON.stringify(entry,null,2));process.stdout.write(JSON.stringify({fighter:who,gaitLayers:gaitLayers.count})+'\n');continue;}
  const r=rig(new THREE.ObjectLoader().parse(model),clips,base,{lazy:true});
  const nodes=[];r.stage.name='Stage';r.model.name='Model';
  r.stage.traverse(node=>nodes.push(node));
@@ -119,11 +124,12 @@ for(const who of [...roster,...outfits.map(o=>o.id)]){
   actions.push({id:name,file,duration,frames:times.length,sha256:hash(data)});
   if(actions.length%25===0)process.stdout.write(JSON.stringify({fighter:who,actions:actions.length,total:Object.keys(config).length})+'\n');
  }
- const entry={id:who,base,displayName:who==='BEAR'?'MIŚ':who==='DEMON'?'AZRAK':who,label:outfit?.label||who,npc:['BOSS','ZOMBIE'].includes(who),actions,nodes:hierarchy.length,meshes:meshes.length,complete:actions.length===Object.keys(config).length};
+ const entry={id:who,base,gaitLayers,displayName:who==='BEAR'?'MIŚ':who==='DEMON'?'AZRAK':who,label:outfit?.label||who,npc:['BOSS','ZOMBIE'].includes(who),actions,nodes:hierarchy.length,meshes:meshes.length,complete:actions.length===Object.keys(config).length};
  save(path.join(directory,'fighter.json'),JSON.stringify(entry,null,2));catalog.push(entry);
  process.stdout.write(JSON.stringify({fighter:who,complete:entry.complete,actions:actions.length})+'\n');
  for(const mesh of meshes)mesh.attributes=null;
 }
+if(gaitsOnly)process.exit(0);
 const manifest={schema:1,sourceCommit:sourceLock.sourceCommit,migrationCodeCommit:execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim(),sourceSiteVersion:271,editor:'6000.3.27f2',fighters:catalog.map(({actions,...r})=>({...r,actionCount:actions.length})),sources:[...sources.values()],partial:!!selected||!!maxActions};
 save(path.join(destination,'manifest.json'),JSON.stringify(manifest,null,2));
 process.stdout.write(JSON.stringify({exported:catalog.length,partial:manifest.partial})+'\n');

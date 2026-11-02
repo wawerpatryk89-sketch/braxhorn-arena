@@ -85,6 +85,9 @@ jobs:
         run: python unity-tools/arena/prepare-source.py
       - name: Apply the verified published outfit model patches
         run: node --loader ./native-source/scripts/krov-three-loader.mjs unity-tools/arena/restore-published-models.mjs
+      - name: Verify original gait conversion and coordinate reflection
+        working-directory: native-source
+        run: node --loader ./scripts/krov-three-loader.mjs unity-tools/arena/tests/gait-export.mjs
       - name: Bake all 18 original models and action poses
         working-directory: native-source
         run: node --max-old-space-size=8192 --loader ./scripts/krov-three-loader.mjs unity-tools/arena/export-source.mjs

@@ -65,7 +65,7 @@ if __name__ == "__main__":
     with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
         for index, path in enumerate(pool.map(restore, entries), 1):
             print(f"[{index}/{len(entries)}] SHA-256 verified: {path}", flush=True)
-    for name in ("export-source.mjs", "validate-export.py", "source-lock.json"):
+    for name in ("export-source.mjs", "export-gait-layers.mjs", "tests/gait-export.mjs", "validate-export.py", "source-lock.json"):
         destination = DEST / "unity-tools/arena" / name
         destination.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(ROOT / "unity-tools/arena" / name, destination)

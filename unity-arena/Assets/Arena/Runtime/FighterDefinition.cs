@@ -22,6 +22,7 @@ namespace Braxhorn.Arena
         public bool complete;
         public GameObject prefab;
         public TextAsset configuration;
+        public TextAsset gaitLayers;
         public FighterActionClip[] actions;
         Dictionary<string, FighterActionClip> index;
 

@@ -45,6 +45,10 @@ namespace Braxhorn.Arena.Domain
         internal readonly HashSet<int> SoundGroups = new HashSet<int>();
         internal readonly HitPressure Pressure = new HitPressure();
         internal int HeadReactions, BodyReactions;
+        internal ArenaMatch.StrikeMotion Motion;
+        public string MovingGait { get; internal set; }
+        public double MovingGaitSeconds { get; internal set; }
+        public double MovingGaitWeight { get; internal set; }
         internal string PendingGesture;
         internal double GestureExpires,GestureCooldown,GestureIdleMs;
         internal int TauntVariant,AngerVariant;
@@ -212,6 +216,7 @@ namespace Braxhorn.Arena.Domain
         internal void Start(MatchFighter f, string id, bool locked)
         {
             if (!f.Configuration.Has(id)) throw new InvalidOperationException(f.Configuration.Character + ": missing required action " + id);
+            f.Motion=CreateStrikeMotion(f,id,locked);f.MovingGait=null;f.MovingGaitWeight=0;
             f.Clock.Start(f.Configuration[id], f.Configuration[id].StartFrame); f.Locked = locked; f.ReactionRate = null;
             f.SoundGroups.Clear();
             f.Ledger = new AttackLedger(); f.PendingPair = null;
@@ -288,7 +293,7 @@ namespace Braxhorn.Arena.Domain
                     Locomotion(f, dt);
                 }
             }
-            foreach(var f in fighters)FollowCombo(f,dt);
+            foreach(var f in fighters){AdvanceMovingStrike(f,dt);FollowCombo(f,dt);}
             Separate(); Confine(); Separate();
             DetectClinch(dt);if(clinch)return;
             for (var i = 0; i < 2; i++) defenses[i] = new Defense(fighters[i], Pose(fighters[i]));
@@ -360,7 +365,12 @@ namespace Braxhorn.Arena.Domain
             if(HoldComboReaction(f))return;
             if(f.ActionId=="JUMP")Emit("land",f);
             if (f.DownPhase != null) { AdvanceDown(f); return; }
-            var queued = f.Buffered; f.Buffered = null; Idle(f);
+            var stride=f.Motion?.Clock;var queued = f.Buffered; f.Buffered = null; Idle(f);
+            if(stride.HasValue&&!f.Input.Block&&f.Input.Direction==f.Face)
+            {
+                var gait=f.Input.Sprint&&f.Configuration.Has("RUN")?"RUN":Adventure&&!AdventureCombat&&f.Configuration.Has("ADVENTURE_WALK")?"ADVENTURE_WALK":null;
+                if(gait!=null){Start(f,gait,false);f.Clock.Seek(stride.Value%f.Action.DurationMs);}
+            }
             if (queued != null && f.Configuration.Has(queued) && queued != "COMBO" && queued != "ENERGY_SPECIAL") Start(f, CloseStrike(f, queued), true);
         }
         void Collect(MatchFighter f)

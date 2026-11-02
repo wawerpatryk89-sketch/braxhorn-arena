@@ -94,13 +94,15 @@ namespace Braxhorn.Arena
                 var rig=Instantiate(definition.prefab,incomingActor.transform);incomingPose=rig.GetComponent<FighterPosePlayer>();incomingPose.Initialize(definition);rig.AddComponent<NativeFighterAppearance>().Apply(definition,true,adventureColourShader);incomingActor.SetActive(false);
             }
         }
+        bool adventureWaitingForFilm;
         void UpdateAdventure()
         {
             if(error!=null){Pause(true);status.text=error;return;}
             adventureWorld.Present(adventure,fightAudio.Muted);
             if(adventureWorld.Error!=null){Pause(true);status.text=adventureWorld.Error;return;}
             if(Input.GetKeyDown(KeyCode.Escape))TogglePause();
-            if(!adventureWorld.Ready(adventure.Camera,adventure.Span)){ReleaseControls();status.text="WCZYTYWANIE FILMU PLANSZY…";return;}
+            if(!adventureWorld.Ready(adventure.Camera,adventure.Span)){adventureWaitingForFilm=true;ReleaseControls();controls.SetActive(false);status.text="WCZYTYWANIE FILMU PLANSZY…";return;}
+            if(adventureWaitingForFilm){adventureWaitingForFilm=false;status.text="";}
             var ready=adventure.PendingOpponentId;
             if(ready!=null&&pendingId==ready)
             {
