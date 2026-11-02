@@ -71,7 +71,10 @@ namespace Braxhorn.Arena.Editor
             var key=new GameObject("Arena key light").AddComponent<Light>();key.type=LightType.Directional;key.intensity=1.3f;key.transform.rotation=Quaternion.Euler(30,-25,0);
             var player=new GameObject("Native match").AddComponent<NativeMatchPlayer>();player.matchCamera=camera;
             player.arenaMediaShader=AssetDatabase.LoadAssetAtPath<Shader>("Assets/Arena/Shaders/OriginalArenaMedia.shader");
-            if(!player.arenaMediaShader||!AssetDatabase.LoadAssetAtPath<TextAsset>("Assets/Arena/Resources/ArenaMediaCatalog.json"))throw new BuildFailedException("Native media export or shader is missing.");
+            player.adventureCorpseShader=AssetDatabase.LoadAssetAtPath<Shader>("Assets/Arena/Shaders/OriginalAdventureCorpse.shader");
+            player.adventureSeamShader=AssetDatabase.LoadAssetAtPath<Shader>("Assets/Arena/Shaders/OriginalAdventureSeam.shader");
+            player.adventureColourShader=AssetDatabase.LoadAssetAtPath<Shader>("Assets/Arena/Shaders/OriginalAdventureColour.shader");
+            if(!player.arenaMediaShader||!player.adventureCorpseShader||!player.adventureSeamShader||!player.adventureColourShader||!AssetDatabase.LoadAssetAtPath<TextAsset>("Assets/Arena/Resources/ArenaMediaCatalog.json"))throw new BuildFailedException("Native media export or shader is missing.");
             if(!EditorSceneManager.SaveScene(scene,CombatScene))throw new BuildFailedException("Cannot save native combat scene.");
             EditorBuildSettings.scenes=new[]{new EditorBuildSettingsScene(CombatScene,true),new EditorBuildSettingsScene(ReviewScene,true)};
             AssetDatabase.SaveAssets();

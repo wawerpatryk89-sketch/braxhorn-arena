@@ -14,6 +14,8 @@ namespace Braxhorn.Arena.Domain
         { Action=f.Action;Seconds=f.Clock.PoseSeconds;X=f.X;Height=f.Height;Face=f.Face;Frame=f.Clock.Frame; }
         internal FighterPresentation(CombatPose pose,double seconds,double floor)
         {Action=pose.Action;Seconds=seconds;X=pose.X;Height=floor-pose.Y;Face=pose.Face;Frame=pose.Frame;}
+        internal FighterPresentation(CombatAction action,double seconds,double x,double height,int face,int frame)
+        {Action=action;Seconds=seconds;X=x;Height=height;Face=face;Frame=frame;}
     }
     public sealed partial class ArenaMatch
     {

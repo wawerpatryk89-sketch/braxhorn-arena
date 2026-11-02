@@ -8,7 +8,7 @@ static class MatchParityRunner
 {
     static int assertions;
     static void Check(bool condition,string message) { assertions++; if(!condition)throw new Exception("Match: "+message); }
-    static JObject Action(string id, bool attack=false, double damage=10, string region="body")
+    internal static JObject Action(string id, bool attack=false, double damage=10, string region="body")
     {
         return new JObject {
             ["durations"]=new JArray(20,20,20,20),["attack"]=attack,["scale"]=1,["gain"]=10,["pivotX"]=0,["anchorY"]=0,
@@ -18,7 +18,7 @@ static class MatchParityRunner
             ["hits"]=attack?new JObject {["1"]=new JObject {["box"]=new JArray(0,-30,50,30),["damage"]=damage,["group"]=0},["2"]=new JObject {["box"]=new JArray(0,-30,50,30),["damage"]=damage,["group"]=0}}:new JObject()
         };
     }
-    static CombatConfiguration Config(double damage=10,string region="body")
+    internal static CombatConfiguration Config(double damage=10,string region="body")
     {
         var root=new JObject();foreach(var id in new[]{"IDLE","BLOCK","BLOCK_LOW","WALK_FORWARD","WALK_BACK","RUN","APPROACH","LEAN","HIT_BODY","FALL","LAND","DOWN","GETUP","KO","KO_HOLD","FLY","FLY_LAND","FLY_DOWN","THROW_DOWN","WIN","WIN_ROUND","WIN_MATCH","LOSE_MATCH"})root[id]=Action(id,false,damage,region);
         foreach(var id in new[]{"LIGHT_PUNCH","HEAVY_PUNCH","LIGHT_KICK","HEAVY_KICK","DOUBLE_PUNCH","UPPERCUT","COMBO"})root[id]=Action(id,true,damage,region);

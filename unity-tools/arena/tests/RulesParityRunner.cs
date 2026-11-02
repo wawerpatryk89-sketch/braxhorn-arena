@@ -63,6 +63,7 @@ static class RulesParityRunner
         Console.WriteLine("PASS "+cases.Count+" campaign parity cases / "+states+" reference states / 3 collision edge cases. This does not validate the full combat loop.");
         if(args.Length>1){CombatParityRunner.Run(args[1]);MediaParityRunner.Run(args[1]);}
         MatchParityRunner.Run(args.Length > 2 ? args[2] : null);
+        AdventureParityRunner.Run(args.Length > 2 ? args[2] : null,args.Length>1?args[1]:null);
         return 0;
     }
 }

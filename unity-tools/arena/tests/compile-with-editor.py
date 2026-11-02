@@ -15,10 +15,16 @@ def compile(name,sources,refs,target):
  args=common+['-target:'+target,'-out:'+str(out/(name+'.dll'))]+['-r:'+str(f) for f in refs]+[str(s) for s in sources]
  response.write_text('\n'.join('"'+s+'"' for s in args))
  subprocess.run([str(dotnet),str(compiler),'-noconfig','@'+str(response)],check=True)
-compile('ArenaNative',list((repo/'unity-arena/Assets/Arena').rglob('*.cs')),
- standard+list((editor/'NetStandard/compat/2.1.0/shims/netfx').glob('*.dll'))+list((editor/'Managed/UnityEngine').glob('*.dll'))+
- [newtonsoft,editor/'Resources/PackageManager/BuiltInPackages/com.unity.ext.nunit/net40/unity-custom/nunit.framework.dll',
- editor/'Resources/PackageManager/ProjectTemplates/libcache/com.unity.template.3d-cross-platform-17.0.14/ScriptAssemblies/UnityEngine.UI.dll'],'library')
+# Compile the real asmdef boundaries independently: a monolithic assembly can
+# hide accidental internal API access from Runtime into Domain or Editor.
+unity_refs=standard+list((editor/'NetStandard/compat/2.1.0/shims/netfx').glob('*.dll'))+list((editor/'Managed/UnityEngine').glob('*.dll'))
+ui=editor/'Resources/PackageManager/ProjectTemplates/libcache/com.unity.template.3d-cross-platform-17.0.14/ScriptAssemblies/UnityEngine.UI.dll'
+nunit=editor/'Resources/PackageManager/BuiltInPackages/com.unity.ext.nunit/net40/unity-custom/nunit.framework.dll'
+assets=repo/'unity-arena/Assets/Arena'
+compile('Arena.Domain',list((assets/'Domain').glob('*.cs')),standard+[newtonsoft],'library')
+compile('Arena.Runtime',list((assets/'Runtime').glob('*.cs')),unity_refs+[newtonsoft,ui,out/'Arena.Domain.dll'],'library')
+compile('Arena.Editor',list((assets/'Editor').glob('*.cs')),unity_refs+[newtonsoft,ui,out/'Arena.Runtime.dll'],'library')
+compile('Arena.Tests',list((assets/'Tests/EditMode').glob('*.cs')),unity_refs+[newtonsoft,nunit,ui,out/'Arena.Domain.dll',out/'Arena.Runtime.dll',out/'Arena.Editor.dll'],'library')
 runners=list(pathlib.Path(__file__).parent.glob('*Runner.cs'))
 compile('RulesParity',list((repo/'unity-arena/Assets/Arena/Domain').glob('*.cs'))+runners,standard+[newtonsoft],'exe')
 shutil.copy2(newtonsoft,out/newtonsoft.name)

@@ -34,6 +34,8 @@ function string(buffer,value){const b=Buffer.from(value);const n=Buffer.alloc(4)
 function matrix(node){node.updateMatrix();return node.matrix.toArray();}
 
 fs.mkdirSync(destination,{recursive:true});
+const adventureWalks=json(path.join(assetRoot,'adventure/walks.json.gz'));
+const entryRuns=json(path.join(assetRoot,'adventure/entry-runs.json.gz'));
 const catalog=[];
 for(const who of [...roster,...outfits.map(o=>o.id)]){
  if(selected&&!selected.includes(who))continue;
@@ -43,6 +45,9 @@ for(const who of [...roster,...outfits.map(o=>o.id)]){
  let config=json(path.join(basePath,'config.json'));
  if(outfit){const patch=json(path.join(modelPath,'config.patch.json'));config=Object.fromEntries(Object.entries(config).map(([key,c])=>[key,{...c,...patch[key]}]));}
  const raw=json(path.join(basePath,'clips.json.gz'));
+ if(adventureWalks.configs[who])config.ADVENTURE_WALK=structuredClone(adventureWalks.configs[who]);
+ if(entryRuns.configs[who])config.ENTRY_RUN=structuredClone(entryRuns.configs[who]);
+ if(adventureWalks.clips[base])Object.assign(raw,adventureWalks.clips[base]);
  for(const supplement of sourceLock.supplements||[])
   if(supplement.base===base)Object.assign(raw,json(path.join(root,supplement.path)));
  for(const file of [config.IDLE.pairedClips,config.IDLE.prefightClips].filter(Boolean))Object.assign(raw,json(path.join(basePath,file)));
@@ -100,7 +105,7 @@ for(const who of [...roster,...outfits.map(o=>o.id)]){
   const times=[0];for(const d of c.durations)times.push(times.at(-1)+d/1000);
   const values=new Float32Array(times.length*nodes.length*10);
   for(let frame=0;frame<times.length;frame++){
-   r.pose(c,Math.min(times[frame],Math.max(0,duration-1e-7)),1);r.groundTail();
+   r.pose(c,Math.min(times[frame],Math.max(0,duration-1e-7)),1);if(c.prefightMotion)r.groundFeet();r.groundTail();
    for(let n=0;n<nodes.length;n++){
     const o=nodes[n],at=(frame*nodes.length+n)*10;
     values.set([o.position.x,o.position.y,o.position.z,o.quaternion.x,o.quaternion.y,o.quaternion.z,o.quaternion.w,o.scale.x,o.scale.y,o.scale.z],at);

@@ -2,6 +2,12 @@ name: Arena Unity migration - native validation
 
 on:
   workflow_dispatch:
+    inputs:
+      build_apk:
+        description: 'Build an Android APK after Unity activation is configured'
+        required: false
+        default: false
+        type: boolean
   push:
     branches: ['codex/arena-unity6-migration-20261102']
     paths: ['unity-arena/**', 'unity-tools/arena/**', '.github/workflows/arena-unity-migration.yml']
@@ -144,7 +150,7 @@ jobs:
   unity-activation-required:
     name: Report missing Unity activation for Arena
     needs: ci-preflight
-    if: needs.ci-preflight.outputs.activation != 'true'
+    if: github.event_name == 'workflow_dispatch' && inputs.build_apk && needs.ci-preflight.outputs.activation != 'true'
     runs-on: ubuntu-latest
     steps:
       - run: |
@@ -154,7 +160,7 @@ jobs:
   android-native-review:
     name: Build native Unity combat integration APK (ARM64)
     needs: [ci-preflight, campaign-parity, native-assets, native-media]
-    if: needs.ci-preflight.outputs.activation == 'true'
+    if: github.event_name == 'workflow_dispatch' && inputs.build_apk && needs.ci-preflight.outputs.activation == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 120
     steps:

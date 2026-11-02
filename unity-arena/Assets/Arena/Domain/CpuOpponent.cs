@@ -43,7 +43,9 @@ namespace Braxhorn.Arena.Domain
             repertoire = new[]{"punch","heavy","kick","kick2"}.SelectMany(k=>new[]{false,true}.Select(f=>CombatRules.ButtonMove(self.Configuration,k,f,false,false)))
                 .Where(n=>self.Configuration.Has(n)&&self.Configuration[n].Attack).Distinct().ToArray();
             cooldown=cooldownDuration;
+            previousRound=match.Round;
         }
+        internal void Delay(double milliseconds){cooldown=Math.Max(0,milliseconds);}
         internal void Tick(double dt)
         {
             if(match.Round!=previousRound){previousRound=match.Round;cooldown=cooldownDuration;observedSerial=-1;responded=false;blockMs=retreatMs=0;wasLocked=false;}

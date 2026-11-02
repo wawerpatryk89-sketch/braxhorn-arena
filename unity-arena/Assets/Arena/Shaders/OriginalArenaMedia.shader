@@ -8,6 +8,8 @@ Shader "Braxhorn/Original Arena Media"
         _Brightness("Source brightness",Float)=1
         _Contrast("Source contrast",Float)=1
         _UvRect("Source crop",Vector)=(0,0,1,1)
+        _DoorMask("Original doorway",Vector)=(0,0,0,0)
+        _MaskEnabled("Foreground mask",Float)=0
     }
     SubShader
     {
@@ -21,12 +23,15 @@ Shader "Braxhorn/Original Arena Media"
             #include "UnityCG.cginc"
             sampler2D _MainTex,_LoopTex;
             float4 _UvRect;
+            float4 _DoorMask;
+            float _MaskEnabled;
             float _LoopBlend,_Brightness,_Contrast;
-            struct v2f {float4 pos:SV_POSITION;float2 uv:TEXCOORD0;};
-            v2f vert(appdata_base v){v2f o;o.pos=UnityObjectToClipPos(v.vertex);o.uv=_UvRect.xy+v.texcoord.xy*_UvRect.zw;return o;}
+            struct v2f {float4 pos:SV_POSITION;float2 uv:TEXCOORD0;float2 tile:TEXCOORD1;};
+            v2f vert(appdata_base v){v2f o;o.pos=UnityObjectToClipPos(v.vertex);o.uv=_UvRect.xy+v.texcoord.xy*_UvRect.zw;o.tile=float2(v.texcoord.x,1-v.texcoord.y);return o;}
             fixed4 frag(v2f i):SV_Target
             {
                 if(any(i.uv<0)||any(i.uv>1))return fixed4(0,0,0,1);
+                if(_MaskEnabled>.5){if(i.tile.y>_DoorMask.y+_DoorMask.w)discard;if(all(i.tile>=_DoorMask.xy)&&all(i.tile<=_DoorMask.xy+_DoorMask.zw))discard;}
                 float3 a=tex2D(_MainTex,i.uv).rgb,b=tex2D(_LoopTex,i.uv).rgb;
                 // CSS filters operate in sRGB. Unity is configured for linear
                 // lighting, so apply the original filter in the original space.

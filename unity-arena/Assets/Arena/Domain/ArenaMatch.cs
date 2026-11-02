@@ -88,7 +88,7 @@ namespace Braxhorn.Arena.Domain
     {
         public const double StepMs = 1000.0 / 60;
         public MatchFighter Player { get; }
-        public MatchFighter Opponent { get; }
+        public MatchFighter Opponent { get; private set; }
         readonly MatchFighter[] fighters;
         readonly Queue<MatchEvent> events = new Queue<MatchEvent>();
         readonly List<PendingHit> pending = new List<PendingHit>(16);
@@ -159,6 +159,7 @@ namespace Braxhorn.Arena.Domain
         {
             var f = Fighter(side);
             if (Paused || Phase != MatchPhase.Fighting || f.Hp <= 0 || recovery != null) return false;
+            if(Adventure&&!AdventureCombat&&(side!=0||button==FightButton.Combo||f.Input.Grab))return false;
             if (pair != null) return button == FightButton.Evade && BreakPair(f);
             if (f.DownPhase != null || f.StunMs > 0) return false;
             var kind = button switch { FightButton.Punch => "punch", FightButton.Heavy => "heavy", FightButton.Kick => "kick", FightButton.HeavyKick => "kick2", _ => null };
@@ -213,7 +214,7 @@ namespace Braxhorn.Arena.Domain
             if (f.Action.Attack) { f.Serial++; f.ProtectionMs = 0; f.CleanComboGroups.Clear(); }
         }
         internal void Idle(MatchFighter f) { f.Locked = false; Start(f, "IDLE", false); }
-        double Tempo(MatchFighter f, int frame) => IsGait(f.ActionId) ? CombatRules.LocomotionTempo(f.Configuration.Character, f.Action)
+        double Tempo(MatchFighter f, int frame) => f.ActionId=="ADVENTURE_WALK"||f.ActionId=="ENTRY_RUN"?1:IsGait(f.ActionId) ? CombatRules.LocomotionTempo(f.Configuration.Character, f.Action)
             : f.ActionId == "IDLE" ? CombatRules.ActionSpeed * (f.Configuration.Character == "NINA" ? .93 : 1)
             : CombatRules.ActionTempo(f.Configuration.Character, f.Action, frame, f.ReactionRate);
         static bool IsGait(string id) => id == "RUN" || id == "WALK_FORWARD" || id == "WALK_BACK" || id == "APPROACH";
@@ -243,6 +244,7 @@ namespace Braxhorn.Arena.Domain
         void Tick(double dt)
         {
             SimulationMs += dt;
+            if(Adventure&&!AdventureCombat){AdvanceAdventureExplore(dt);return;}
             if (holdMs > 0) { holdMs = Math.Max(0, holdMs - dt); return; }
             if (Phase == MatchPhase.Countdown)
             {
@@ -256,7 +258,7 @@ namespace Braxhorn.Arena.Domain
             }
             if (Phase == MatchPhase.RoundOver) { AdvanceCelebration(dt); return; }
             if(recovery!=null){AdvanceRecovery(dt);return;}
-            if (!Training) { RemainingSeconds = Math.Max(0, RemainingSeconds - dt / 1000); if (RemainingSeconds < 1e-8) RemainingSeconds = 0; }
+            if (!Training&&!Adventure) { RemainingSeconds = Math.Max(0, RemainingSeconds - dt / 1000); if (RemainingSeconds < 1e-8) RemainingSeconds = 0; }
             if (pair != null) { AdvancePair(dt); return; }
             foreach (var controller in cpu) controller?.Tick(dt);
             foreach (var f in fighters)
@@ -451,6 +453,7 @@ namespace Braxhorn.Arena.Domain
         }
         void CheckEnd()
         {
+            if(Adventure)return; // Route controller waits for the authored KO to settle.
             if (Training || Phase != MatchPhase.Fighting || Player.Hp > 0 && Opponent.Hp > 0 && RemainingSeconds > 0) return;
             RoundWinner = Player.Hp == Opponent.Hp ? -1 : Player.Hp > Opponent.Hp ? 0 : 1;
             if (RoundWinner == 0) PlayerWins++; if (RoundWinner == 1) OpponentWins++;

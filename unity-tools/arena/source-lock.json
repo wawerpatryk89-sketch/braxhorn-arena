@@ -73,7 +73,7 @@
     {
       "id": "BEAR",
       "base": "BEAR",
-      "displayName": "MIŚ",
+      "displayName": "MI\u015a",
       "label": "BEAR",
       "npc": false,
       "nodes": 69,
@@ -118,7 +118,7 @@
       "id": "BRAX_WHITE",
       "base": "BRAX",
       "displayName": "BRAX_WHITE",
-      "label": "Biały tank",
+      "label": "Bia\u0142y tank",
       "npc": false,
       "nodes": 69,
       "meshes": 1,
@@ -151,7 +151,7 @@
       "id": "NYXA_PINK",
       "base": "NYXA",
       "displayName": "NYXA_PINK",
-      "label": "Różowy komplet",
+      "label": "R\u00f3\u017cowy komplet",
       "npc": false,
       "nodes": 69,
       "meshes": 1,
@@ -1434,6 +1434,16 @@
         "url": "/api/fighter-media/krov-summer-roughness.15e52fdd54b49fa1c9d8fb6744189ac72fa0f66f9449ac7c5d3b1ed9f63c5150.webp",
         "payloadSha256": "15e52fdd54b49fa1c9d8fb6744189ac72fa0f66f9449ac7c5d3b1ed9f63c5150"
       }
+    },
+    {
+      "path": "game/assets/adventure/walks.json.gz",
+      "sha256": "21911b40421825886038787ddce3703493b41c8fe44b0347e4b0fde849b7d168",
+      "bytes": 560361
+    },
+    {
+      "path": "game/assets/adventure/entry-runs.json.gz",
+      "sha256": "4ccf3bb6f5f3b15626ed1a48942f41e9f47ed38f50815a1cf7830c23452d0c01",
+      "bytes": 56705
     }
   ],
   "partial": false,

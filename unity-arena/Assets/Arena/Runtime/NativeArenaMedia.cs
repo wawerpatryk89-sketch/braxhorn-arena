@@ -16,10 +16,19 @@ namespace Braxhorn.Arena
         public string Error { get; private set; }
         public ArenaMediaEntry Entry { get; private set; }
         public bool Paused { get; private set; }
+        public Rect? ScreenTile { get; set; }
+        public float CropAspect { get; set; }
+        public Texture CurrentFrame=>firstFrame?decoded:poster;
+        public Texture LoopFrame=>first;
+        public float LoopAmount=>firstFrame?(looping?1:(float)MediaGeometry.LoopBlend(video.time,video.length)):0;
         Camera view;
         GameObject plane;
         Mesh mesh;
         Material material;
+        Material foregroundMaterial;
+        GameObject foreground;
+        NativeAudioGain gainFilter;
+        float? adventureVolume;
         VideoPlayer video;
         AudioSource ambient;
         AudioClip ambientClip;
@@ -100,26 +109,41 @@ namespace Braxhorn.Arena
         void LateUpdate()
         {
             if(!plane||!view||Entry==null)return;
-            var h=2*view.orthographicSize;plane.transform.localPosition=new Vector3(0,0,Mathf.Min(20,view.farClipPlane-1));plane.transform.localScale=new Vector3(h*view.aspect,h,1);
-            var layout=new MediaGeometry(view.pixelWidth,view.pixelHeight,Entry.aspect,Entry.ground,Entry.fit=="contain");
-            material.SetVector("_UvRect",new Vector4((float)(-layout.Left/layout.Width),(float)(-layout.Top/layout.Height),(float)(view.pixelWidth/layout.Width),(float)(view.pixelHeight/layout.Height)));
+            var h=2*view.orthographicSize;var w=h*view.aspect;var tile=ScreenTile??new Rect(0,0,1,1);
+            plane.transform.localPosition=new Vector3((tile.center.x-.5f)*w,(.5f-tile.center.y)*h,Mathf.Min(20,view.farClipPlane-1));plane.transform.localScale=new Vector3(w*tile.width,h*tile.height,1);
+            var cropWidth=CropAspect>0?CropAspect:tile.width*view.pixelWidth;var cropHeight=CropAspect>0?1:tile.height*view.pixelHeight;
+            var layout=new MediaGeometry(cropWidth,cropHeight,Entry.aspect,Entry.ground,Entry.fit=="contain");
+            material.SetVector("_UvRect",new Vector4((float)(-layout.Left/layout.Width),(float)(-layout.Top/layout.Height),(float)(cropWidth/layout.Width),(float)(cropHeight/layout.Height)));
             if(firstFrame&&video&&!looping)material.SetFloat("_LoopBlend",(float)MediaGeometry.LoopBlend(video.time,video.length));
+            if(foreground&&foreground.activeSelf){var mask=foregroundMaterial.GetVector("_DoorMask");foregroundMaterial.CopyPropertiesFromMaterial(material);foregroundMaterial.SetVector("_DoorMask",mask);foregroundMaterial.SetFloat("_MaskEnabled",1);foreground.transform.localPosition=new Vector3(plane.transform.localPosition.x,plane.transform.localPosition.y,2);foreground.transform.localScale=plane.transform.localScale;}
             UpdateAudio();
         }
         public void SetPaused(bool paused)
         {
+            if(Paused==paused)return;
             Paused=paused;
             if(video&&video.isPrepared){if(paused)video.Pause();else if(Ready)video.Play();}
             if(ambient&&ambient.clip){if(paused)ambient.Pause();else if(!muted)ambient.UnPause();}
         }
         public void Sound(bool mute,bool duck){muted=mute;ducked=duck;UpdateAudio();}
-        void UpdateAudio(){if(ambient){ambient.mute=muted;ambient.volume=Entry!=null&&!string.IsNullOrEmpty(Entry.audio)?(ducked?.045f:.13f):(ducked?.05f:.16f);}}
+        public void SetAdventureSound(float gain,bool audible)
+        {adventureVolume=audible?1:0;if(!gainFilter)gainFilter=gameObject.AddComponent<NativeAudioGain>();gainFilter.Gain=gain;UpdateAudio();}
+        public void DoorMask(Rect? mask)
+        {
+            if(!mask.HasValue){if(foreground)foreground.SetActive(false);return;}
+            if(!material||!plane)return;
+            if(!foreground){foreground=new GameObject("Original doorway foreground",typeof(MeshFilter),typeof(MeshRenderer));foreground.transform.SetParent(view.transform,false);foreground.GetComponent<MeshFilter>().sharedMesh=mesh;foregroundMaterial=new Material(material){renderQueue=3100};foreground.GetComponent<MeshRenderer>().sharedMaterial=foregroundMaterial;}
+            foreground.SetActive(true);var m=mask.Value;foregroundMaterial.SetVector("_DoorMask",new Vector4(m.x,m.y,m.width,m.height));
+        }
+        void UpdateAudio(){if(ambient){ambient.mute=muted;ambient.volume=adventureVolume??(Entry!=null&&!string.IsNullOrEmpty(Entry.audio)?(ducked?.045f:.13f):(ducked?.05f:.16f));}}
         public void Clear()
         {
             generation++;try{pendingRequest?.Abort();}catch(ObjectDisposedException){}pendingRequest=null;
             if(capture!=null){StopCoroutine(capture);capture=null;}lastFrame=-1;
             if(video){video.errorReceived-=OnVideoError;video.frameReady-=OnFrame;video.loopPointReached-=OnLoop;video.Stop();Destroy(video);video=null;}
             if(ambient){ambient.Stop();Destroy(ambient);ambient=null;}if(ambientClip)Destroy(ambientClip);ambientClip=null;
+            if(gainFilter)Destroy(gainFilter);gainFilter=null;adventureVolume=null;
+            if(foreground)Destroy(foreground);if(foregroundMaterial)Destroy(foregroundMaterial);foreground=null;foregroundMaterial=null;
             if(plane)Destroy(plane);if(mesh)Destroy(mesh);if(material)Destroy(material);if(poster)Destroy(poster);
             if(decoded){decoded.Release();Destroy(decoded);}if(first){first.Release();Destroy(first);}
             plane=null;mesh=null;material=null;poster=null;decoded=first=null;Ready=firstFrame=looping=Paused=false;Error=null;Entry=null;

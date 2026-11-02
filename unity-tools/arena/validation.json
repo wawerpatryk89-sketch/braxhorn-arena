@@ -1,20 +1,20 @@
 {
-  "status": "Blocked",
-  "scope": "Native match/campaign and original arena media integration; full game migration incomplete",
+  "status": "In progress",
+  "scope": "Native Unity project for a later app build; match, offline campaigns, original media and adventure integration implemented; full game migration incomplete",
   "sourceSiteVersion": 271,
   "sourceCommit": "f355fe6ac6af41518fde420382512d49bd27d51a",
   "editor": "6000.3.27f2",
   "assetExport": {
     "status": "Passed",
     "fightersAndOutfits": 18,
-    "actions": 2952,
-    "sampledFrames": 268358,
+    "actions": 2986,
+    "sampledFrames": 270381,
     "vertices": 1083207
   },
   "managedCompilation": {
     "status": "Passed",
-    "files": 22,
-    "method": "Roslyn csc with actual Unity 6000.3.27f2 managed assemblies, .NET Standard 2.1 references and compatibility shims",
+    "files": 30,
+    "method": "Separate Domain, Runtime, Editor and EditMode-test assemblies compiled with Roslyn and actual Unity 6000.3.27f2 references; no Editor execution",
     "warnings": [
       "CS1701: Newtonsoft.Json netstandard 2.0 reference resolves against netstandard 2.1 in standalone compiler invocation. UPM runtime resolution not verified."
     ]
@@ -38,7 +38,7 @@
   "shaderCompilation": "Not run",
   "visualComparison": "Not run",
   "fullCombatParity": "Partial implementation: native match/paired combos tested; complete browser-versus-Unity equivalence not established",
-  "androidBuild": "Blocked: repository Unity activation inputs missing; job skipped",
+  "androidBuild": "Deferred by user: only manual workflow_dispatch build_apk=true requests a build; none produced",
   "deviceValidation": "Not run",
   "googlePlayPublication": "Not performed",
   "combatRuleParity": {
@@ -67,15 +67,16 @@
     "productionGame": false
   },
   "cloudAssetExport": {
-    "status": "Passed",
-    "runId": 41502992008,
-    "jobId": 125474982641,
-    "sourceCodeCommit": "3c37f0fc0a36c9052d4f2088708997dd8e144533",
-    "artifactId": 13169783161,
-    "artifactUrl": "https://github.com/wawerpatryk89-sketch/braxhorn-arena/actions/runs/41502992008/artifacts/13169783161",
-    "artifactBytes": 834899254,
-    "finishedAtUtc": "2026-11-02T18:53:09Z",
-    "finishedAtZurich": "2026-11-02T19:53:09+01:00"
+    "status": "Passed at previous media/match checkpoint, before adventure expansion",
+    "runId": 41510507631,
+    "jobId": 125500839938,
+    "sourceCodeCommit": "c5bbfb76fbccaf190a7d3f3fa3ba0b17ec7e2f45",
+    "artifactId": 13172433665,
+    "artifactUrl": "https://github.com/wawerpatryk89-sketch/braxhorn-arena/actions/runs/41510507631/artifacts/13172433665",
+    "artifactBytes": 834897395,
+    "zipSha256": "9d15dabee6d05a016ec8a1cf2ba9a53a78130b2a7cbaa32d491425caa64b6863",
+    "uploadedAtUtc": "2026-11-02T19:37:04Z",
+    "uploadedAtZurich": "2026-11-02T20:37:04+01:00"
   },
   "cloudRuleParity": {
     "status": "Passed",
@@ -86,7 +87,8 @@
     "curves": 2038080,
     "constantCurves": 1649361,
     "originalKeys": 185273970,
-    "retainedKeys": 49095070
+    "retainedKeys": 49095070,
+    "scope": "Previous 2952-action export audit; not recomputed for expanded adventure payload"
   },
   "restoredPoseComparison": {
     "status": "Passed",
@@ -114,7 +116,7 @@
     "expectedChecksWithAssets": 200,
     "scope": "Contacts, guards, evasion, trades, pressure, timing, round transitions, training, grabs, pause; actual self-match combos and base/NPC CPU outcomes. Rendering/phone excluded.",
     "checksPassed": 200,
-    "previousCloudChecksPassed": 196
+    "previousCloudChecksPassed": 200
   },
   "nativeMedia": {
     "status": "Passed local and cloud hash-checked export; native runtime playback untested",
@@ -126,7 +128,7 @@
     "packedBytes": 312704687,
     "referenceGeometryCases": 210,
     "gifConversion": "One original animated GIF converted to H.264 CRF 16; WebP posters losslessly converted to PNG; other media bytes unchanged",
-    "remaining": "Night-market procedural overlays, complete source combo/ground VFX/audio, adventure integration, Android decoding, color and synchronization validation",
+    "remaining": "Night-market overlays, complete source combo/ground VFX/audio, native shader/video/color/synchronization and device validation",
     "cloud": {
       "runId": 41510507631,
       "jobId": 125500840302,
@@ -140,10 +142,23 @@
     }
   },
   "nativeAdventureEntrance": {
-    "status": "Passed source-reference tests; not yet wired into a playable adventure scene",
+    "status": "Source-reference tests passed; wired into native adventure; Unity runtime untested",
     "cases": 90,
     "samples": 810,
     "variants": 18,
     "routes": 5
+  },
+  "nativeAdventure": {
+    "status": "Implemented and managed tests passed; Unity playback untested",
+    "routes": 5,
+    "chaptersPerRoute": 6,
+    "playableVariants": 16,
+    "additionalMotionActions": 34,
+    "syntheticChecks": 71,
+    "checksWithActualAssets": 542,
+    "npcPairCombinations": 98,
+    "ranking": "Offline only; native backend protocol still required",
+    "scope": "Original entry/walk motion, continuous camera, gates, opponent preloading/incoming, persistent player HP/energy/action, KO settlement, corpses, scoring, healing, completion/death, chapter seams and foreground masks",
+    "notValidated": "Unity import/shader execution, audiovisual rendering, mobile memory/touch/performance"
   }
 }

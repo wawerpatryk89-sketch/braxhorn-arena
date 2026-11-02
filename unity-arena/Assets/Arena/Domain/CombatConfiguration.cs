@@ -15,6 +15,7 @@ namespace Braxhorn.Arena.Domain
         public CombatConfiguration(string character, JObject source)
         {
             Character = character ?? throw new ArgumentNullException(nameof(character));
+            ExtendNpcReceivers(source);
             Actions = source.Properties().ToDictionary(p => p.Name, p => new CombatAction(p.Name, (JObject)p.Value), StringComparer.Ordinal);
             if (!Actions.ContainsKey("IDLE")) throw new InvalidDataException(character + ": IDLE is missing.");
         }
@@ -29,6 +30,21 @@ namespace Braxhorn.Arena.Domain
 
         public CombatAction this[string key] => Actions[key];
         public bool Has(string key) => key != null && Actions.ContainsKey(key);
+
+        // Same receiver extension as fighter-source.js: adventure NPCs use the
+        // authored KROV compatibility entries, preserving any explicit override.
+        static void ExtendNpcReceivers(JToken token)
+        {
+            if(token is JObject obj)
+            {
+                foreach(var key in new[]{"gapPx","attackers"})
+                    if(obj[key] is JObject map&&map["KROV"]!=null)
+                        foreach(var id in new[]{"BOSS","ZOMBIE"})if(map[id]==null)map[id]=map["KROV"].DeepClone();
+                if(obj["allowedTargets"] is JArray targets&&targets.Values<string>().Contains("KROV"))
+                    foreach(var id in new[]{"BOSS","ZOMBIE"})if(!targets.Values<string>().Contains(id))targets.Add(id);
+            }
+            if(token is JContainer container)foreach(var child in container.Children().ToArray())ExtendNpcReceivers(child);
+        }
     }
 
     public sealed class CombatAction

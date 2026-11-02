@@ -1,81 +1,66 @@
-# Braxhorn Arena Unity migration
+# Braxhorn Arena — Unity project context
 
-## Confirmed baseline
+## Scope and authority
 
-- User authorized migration of the whole Arena to Unity and eventual native Android/Google Play delivery on 2026-11-02.
-- This is **Arena**, not the separate City/osiedle repository.
-- Published source: Site version 271, commit `f355fe6ac6af41518fde420382512d49bd27d51a` (2026-10-28).
-- GitHub `braxhorn-arena/main` was still `dc7a4f16ccd3214b2ba7cb43f06713ef90bf857a` (2026-10-20). It is not an interchangeable asset baseline.
-- Unity project created in `unity-arena`, Editor `6000.3.27f2`, built-in render pipeline, C# domain rules isolated from Unity presentation.
-- A native review scene generator and ARM64 IL2CPP build method exist but have not run in Unity. No production Scene, APK, AAB or validated Unity player exists yet. Do not describe this checkpoint as a completed game migration.
+The user authorized continuing the entire **Arena** migration to native Unity, preserving the original models, animations and artwork. This is separate from the City/osiedle repository. On 2026-11-02 they clarified that the current deliverable is the Unity project **for an app they will build later**. Continue source work without treating Android activation as a blocker. Do not run the local Editor, publish a site/store release, merge main, or present a partial integration scene as the finished game.
 
-## Current implementation
+- Source: published Site v271, commit `f355fe6ac6af41518fde420382512d49bd27d51a` (2026-10-28).
+- GitHub repository: `wawerpatryk89-sketch/braxhorn-arena`.
+- Dedicated branch in both source and GitHub repositories: `codex/arena-unity6-migration-20261102`.
+- GitHub main was the older 2026-10-20 baseline. Never silently substitute its assets.
+- Unity project: `unity-arena`, version `6000.3.27f2`, built-in pipeline.
+- Generated imports, source caches and original offline media are reproducible/ignored. Preserve unrelated source-restoration temporary files. Stage migration files explicitly.
 
-`unity-tools/arena/export-source.mjs` uses the original Three.js math/rig **offline** to bake authored actions, including existing IK and tail corrections. The Unity player does not include Three.js, JavaScript, a WebView, or a browser canvas. The source models retain their mesh topology and full 8/12-weight skinning. Coordinate handedness is converted by reflecting Z, reversing triangle winding, and converting bind matrices/quaternions together.
+## Implemented native code
 
-The exported payload contains 10 base/NPC models plus 8 outfits, 2,952 configured action poses and all original combat configuration. Native Editor tooling converts them to Unity meshes, prefabs, ScriptableObjects and AnimationClips. Imported assets and source caches are regenerable and ignored by Git. The original source assets remain in the source repository at the pinned baseline.
+`Arena.Domain` is plain C# with no Unity reference. It owns campaign progression, capsule contact geometry, authored action clocks, input mapping, guards/evasion, damage/energy ledgers and the 60 Hz `ArenaMatch`. Match partials implement pressure/fall/getup, paired action clocks/root movement, source combo reaction selection, first-contact pose hold, paired finishers/recovery, countdown, timed/best-of-three rounds, CPU commands and training recovery. Original v271 `middleGrab`, `airCombo` and `groundContinuation` settings remain authoritative.
 
-`Arena.Domain` contains offline Arcade/tournament/Survival rules and circle/capsule contact math. `Arena.Runtime` owns fighter definitions and native Playables pose evaluation. `Arena.Editor` owns import and material conversion. Do not couple Editor namespaces into runtime assemblies.
+`Arena.Runtime` owns original rig definitions, Playables, native audio/video, touch controls and scene presentation. `Arena.Editor` imports meshes, full 8/12-weight skinning, textures, clips and generates integration scenes. C# assemblies must compile separately: a monolithic compile can conceal forbidden access to internal Domain members.
 
-## Still required for complete migration
+`NativeMatchPlayer` connects all 16 playable variants, 21 original arenas, fight/training/Arcade/tournament/Survival and five adventure routes. It uses async resource/configuration loading with generation guards; backgrounding pauses and releases input. The touch interface has a jump button and fits a 1024×576 layout inside the device safe area. It is still an integration menu, not the original production UI.
 
-1. Execute the importer through licensed cloud CI, validate bind poses, facing, 12-weight deformation, shader appearance and action transitions against original rendered samples.
-2. Finish whole-game parity beyond the native match checkpoint below: moving-strike pose layering, complete source CPU/drill variants, neutral clinch/automatic gestures, recoil/lift/travel presentation, KO replay, all authored combo/ground VFX/audio and the procedural night market. Validate all matchup/direction combinations against browser reference traces; current actual-combo tests use each fighter against itself.
-3. Replace the native integration menu with complete Polish/English production menus/art, account entry, portraits, outfit shop, training/challenges, rankings and save migration. Basic native touch and offline campaign navigation now exist; device validation remains required.
-4. Port the adventure routes, films, camera travel, gates, encounters, corpses, boss/zombie behavior and outfit-specific adventure motion overrides.
-5. Keep the existing backend authoritative for accounts/shop/online results. Implement native account/session handling, room/signaling protocol, multiplayer input/snapshot behavior and voice. Two-peer tests are mandatory before claiming parity.
-6. Validate the packaged arenas/media on Android, optimize measured CPU/GPU/memory use, produce APK for device tests and signed AAB for Google Play. Confirm store account, sale price, product identity, signing and declarations before publication.
+## Asset fidelity
 
-## Environment evidence and limits
+`unity-tools/arena/export-source.mjs` uses the original Three.js rig **only offline** to bake authored transforms, IK, tail and prefight foot-grounding corrections. The player does not run JavaScript, Three.js, WebView or browser canvas. Reflecting Z, winding, bind poses and quaternions are converted together. Constant animation channels retain endpoints without losing changing samples.
 
-The local Editor binary can start, but licensing IPC fails with `0x80000000`; Package Manager fails with `uv_interface_addresses` / operation not permitted. This is an environment blocker. It does **not** establish whether the user's Unity account has a license. Do not bypass activation or sandbox restrictions.
+The complete current local export passed validation: **18 models/outfits, 2986 actions, 270381 sampled frames, 1083207 vertices**. The 34 new actions are 16 outfit-specific adventure walks and 18 entry runs. Their source files are hash-pinned. The two previously omitted BEAR/Blocking and DEMON/Standing Block End clips remain exact original supplements. Adventure walk clip names do not overwrite combat/prefight clips.
 
-The C# source was compiled with Roslyn and actual 6000.3.27f2 managed reference assemblies; this is not an Editor import, shader compile or Android build. The offline rules passed 192 reference scenarios / 3,312 states and 3 contact edge cases. Asset payload validation passed for 18 models, 2,952 actions, 268,358 sampled frames and 1,083,207 vertices. Visual/device validation has not run.
+`export-media.py` packages 133 locked source files: 21 arenas, 30 chapter films on five routes, and 31 retained audio keys. Output is 312704687 bytes with 50 H.264/yuv420p streams. Original MP4/audio/JPEG bytes stay unchanged; WebP posters become PNG; Harbor GIF is explicitly transcoded to H.264 CRF16. Immutable delivery URLs reproduce published packaging without weakening source hashes.
 
-## Ownership
+## Adventure implementation
 
-Preserve the original web game and existing untracked source-restoration temporary files. Migration changes belong only to the dedicated branch. Never publish a diagnostic importer or partial scene as the finished paid game. Store release gates remain closed until the complete scope and device tests pass.
+`AdventureRun` owns the six-encounter route and keeps the same player instance across encounters. `AuthoredTravel` follows original root-distance samples. Entry includes the 450 ms establishing shot, source door/edge projection, reciprocal depth, braking and 420 ms yaw turn. `ADVENTURE_WALK` is distinct from normal prefight motion.
 
-## Cloud continuation, 2026-11-02
+Exploration gates at the current encounter, follows the source camera, and preserves HP, energy and move state. The next opponent is preloaded during combat, revealed at 20% enemy HP, walks to its authored staging position, and transfers its position/clock when promoted. Final corpses wait for a grounded settled KO pose. Win scores, no-damage bonuses, post-win healing, the city pickup, boss completion, death and result idempotence are domain-owned. Source KROV receiver metadata is extended to BOSS/ZOMBIE exactly like the browser loader.
 
-The user cannot use a local Unity Editor. Continue through GitHub Actions; do not ask them to install/open the Editor. Native runtime compilation, tests and target builds remain distinct acceptance levels.
+`NativeAdventureWorld` uses at most two video decoders and retains the previous decoded edge for narrow chapter blending. Doorway foreground masks use the actual film. Corpses are snapshots of the rendered original Unity rig, not generated artwork. The original AAC gain uses an audio-thread filter. BRAX and the three NYXA variants retain the source adventure unlit colour profile; PBR variants retain their original textures. Overall PBR/studio/tone-map equivalence is still unvalidated. Rankings are explicitly local/offline.
 
-Added `CombatConfiguration`, `CombatRules`, `ActionClock`, `CombatContacts` and `AttackLedger`: authored timing, directional input mapping, frame-complete advancement, mirrored source capsule contacts, regional guard/evasion, and once-per-group damage/once-per-action energy. The full authoritative match orchestrator is still unported. The frozen source helpers passed 26,198 comparisons across 18 variants/2,952 actions, in addition to 192 campaign scenarios/3,312 states. Extra checks cover frame partitioning, exact contact holds, malformed durations, mirrored contacts and blocked/repeated energy awards.
+## Current evidence
 
-`FighterReviewPlayer` and `ArenaBuild.AndroidReview` provide a native technical review scene and Android ARM64 IL2CPP build entry point. The review UI is explicitly not the production UI or a complete game. It loads only one fighter at a time from `Resources/Fighters`, supports actions/facing/pause, and stops on focus loss. Constant animation channels now retain two identical endpoints; authored changing samples and all skin weights are preserved.
+- All four managed asmdef boundaries (Domain, Runtime, Editor, EditMode tests) compile against actual Unity 6000.3.27f2 assemblies. This does not execute Unity.
+- 192 campaign scenarios / 3312 reference states / 3 contact edge cases.
+- 26198 source combat-helper comparisons across 18 variants / the original 2952 combat actions.
+- 210 original arena floor/crop cases, 90 entrance projections / 810 source samples.
+- 200 native match checks using all 18 actual exported configurations.
+- 542 adventure checks: lifecycle, gates, pause, root travel, incoming rivals, persistent state, KO settlement, healing/scoring, simultaneous KO, all 16 playable variants on five entrances, and 98 paired action/receiver combinations against BOSS/ZOMBIE.
+- Full native payload validation: 18 / 2986 / 270381 / 1083207 as above.
+- Known standalone compiler warning: Newtonsoft netstandard2.0 resolves against netstandard2.1. UPM resolution requires Unity import.
+- No Unity import, shader compilation, Play Mode, screenshots/recordings, Android package or phone validation has been performed for this checkpoint.
 
-CI restores published source payloads with verified hashes and the same model patch as the published client. Exact selected clip samples and reconstructed models were compared with the source baseline before pinning. A missing `vendor/three.core.js` dependency in the first isolated restoration was diagnosed and added to the lock. Do not weaken hashes or substitute older GitHub assets.
+The previous media/match cloud run `41510507631`, code `c5bbfb76fbccaf190a7d3f3fa3ba0b17ec7e2f45`, passed all native asset/media/rule jobs, including 200 match checks. Fighter artifact `13172433665` is 834897395 bytes (ZIP SHA256 `9d15dabee6d05a016ec8a1cf2ba9a53a78130b2a7cbaa32d491425caa64b6863`). Media artifact `13171983537` is 312286395 bytes (ZIP SHA256 `abe9f43c6fd382026c438d9c5d71316c8c28ece943d5e9369b3e43f8cbb31080`). These are previous-checkpoint data archives, not APKs or the newly expanded adventure export.
 
-Cloud preflight on runs 41483474470 and 41486725021 found no UNITY_LICENSE, UNITY_EMAIL, UNITY_PASSWORD or UNITY_SERIAL in the Arena repository. This is a repository configuration gap, not evidence that the user lacks a license. The build job stays blocked and a separate prerequisite job fails explicitly; no APK exists. Do not copy or print secrets from City. The complete gameplay, paired choreography, adventure, production UI, network sessions and native audiovisual integration remain required as listed above.
+## App build workflow
 
-## Confirmed final cloud evidence for this change
+Push CI restores/validates source, exports native assets/media, and runs domain regressions. APK execution is now opt-in through workflow_dispatch `build_apk=true`. `ArenaBuild.AndroidCombat` generates native scenes/imports and an ARM64 IL2CPP development package; `AndroidReview` remains the single-model inspection entry point. Both are review builds using `com.braxhorn.arena.unityreview`, not a paid-release identity.
 
-Run 41489510857 on source commit f196a428132bf16131c6f25ae69997c13b365e84 completed 2026-11-02 18:24:52 Europe/Zurich. Native rule comparisons and the complete 18-variant/2,952-action export validation passed. The verified native source archive is GitHub artifact 13164641101 (834,897,924 bytes). Overall workflow conclusion is failure solely because the explicit missing-activation job fails; the Unity Android job was skipped. No Unity Editor import, shader run, APK, device test or full-game completion is established.
+Previous preflight found no configured Arena UNITY_LICENSE/EMAIL/PASSWORD/SERIAL. The previous run failed its explicit activation prerequisite and skipped Android. This is not evidence about the user's license entitlement. Current source-only validation does not fail merely because no APK was requested. Do not copy secrets from City or expose credentials. Local Editor invocation previously failed licensing IPC and Package Manager; do not retry it against the user's instruction.
 
-Two referenced guard clips were missing from the published packages: BEAR/Blocking and DEMON/Standing Block End. Their exact original source samples are now pinned under unity-tools/arena/supplements and merged during offline conversion. Recursive clip coverage fails early if any future authored reference is missing. Ten restored pose payloads were compared after decompression with the original full-source export and matched byte for byte. Static animation-channel reduction keeps 49,095,070 keys instead of 185,273,970, without discarding changing samples; this is a data-size audit, not a runtime performance measurement.
+## Required before claiming the whole migration is finished
 
-The final evidence update is documentation-only and intentionally does not rerun the expensive unchanged asset exporter. Full gameplay migration still requires the implementation and validation items listed above.
+1. Complete remaining source gameplay/presentation parity: moving-strike leg layers, full CPU/drill variants, neutral clinch/automatic gestures, recoil/lift/travel details, KO replay, all authored VFX/audio and procedural night-market overlays. Expand matchup/direction reference coverage.
+2. Implement the original production menus/art, account entry, portraits, outfit shop, challenges, rankings and save migration. The present integration selector is not a finished UI.
+3. Implement native backend account/session/shop authority, adventure ranking protocol, online rooms/signaling, input/snapshots and voice; verify two peers. Do not fake successful online results.
+4. Execute native import and visual/runtime checks when a permitted Unity execution path is available. Validate rig deformation, facing, entrance masks, unlit/PBR output, actual video orientation/loop seams, audio synchronization and corpse capture.
+5. Measure mobile CPU/GPU/memory and touch usability; then build/test the app. Store signing, product identity, pricing and publication remain later explicit steps.
 
-## Native match continuation (after the asset checkpoint)
-
-Added `ArenaMatch` (including Combo and Pairs partials), `CpuOpponent`, `NativeMatchPlayer`, and `TouchFightButton`. The 60 Hz authoritative simulation handles both fighters symmetrically: commands, movement/sprint, regional guards, authored capsule contacts, once-per-group damage, pressure/recoil/fall/getup protection, shared paired animation time/root travel, source combo reaction selection/pursuit, first-contact pose hold, paired finisher and recovery, training HP restoration, countdown, timed/best-of-three rounds and celebrations. CPU uses the same public commands. The native scene wires these to the actual meshes/clips, async configuration parsing, selection and existing offline campaign domains.
-
-Native play is not yet validated in Unity. No final scene rendering, original arena films/audio/VFX, complete production menu, adventure or multiplayer was demonstrated. The integration UI explicitly states its test scope. Keep Android application ID separate from a paid release. All source remains on the migration branch.
-
-`MatchParityRunner` adds behavioral regression tests and optional real-export tests, in addition to the original reference comparisons. Regression coverage caught and fixed timer rounding and dropping accumulated simulation time when resetting a round. The full-asset run checks 18 variants, configured paired-combo completion and base/NPC CPU matches. This is execution of C# gameplay rules, not an image/video or phone test. The pinned full Unity asset export is unchanged. CI now runs these tests against that export and uses `ArenaBuild.AndroidCombat`; actual build still depends on repository Unity activation.
-
-## Original media continuation
-
-The prior match checkpoint is confirmed in cloud run **41502992008**, commit `3c37f0fc0a36c9052d4f2088708997dd8e144533`: all 18 exports and 196 native match checks passed. The run finished 2026-11-02 **19:53:09 Europe/Zurich** with overall failure because activation inputs remain absent. The Android job was skipped. Artifact **13169783161** (834,899,254 bytes) is source assets, not an APK.
-
-`export-media.py` locks 133 original media files by SHA-256 and packages 21 arenas, all five adventure routes/30 chapter films, and 31 retained audio keys for offline StreamingAssets use. MP4/audio/JPEG stay byte-identical. WebP posters become lossless PNG; the single Harbor GIF is transcoded to H.264 CRF 16, an explicit encoding change, not an invented scene. The output contains provenance and original audio credits. The source catalog and all route metadata are frozen under `unity-tools/arena/media`; do not silently refresh from the live website.
-
-`NativeArenaMedia` and its explicitly referenced shader render behind 3D fighters, apply original cover/contain and brightness/contrast, retain decoded frames across stalls, and blend the final .45 seconds of a loop toward its first decoded frame. `NativeMatchPlayer` selects all 21 arena backgrounds, computes the original crop-dependent floor, and gates the fight on media/audio preparation. `NativeFightAudio` uses native AudioSources with bounded effects, per-fighter voice channels, announcer ducking, source gender/pitch and pause/mute behavior. Authoritative events include 3/2/1/FIGHT and one swish per authored hit group even on misses. Removed taunt/effort voices remain absent. This is implementation plus managed compilation, **not proof of Unity playback**.
-
-Local exporter validation: 133 files / 312,704,687 output bytes; all 50 video streams H.264/yuv420p. Original catalog comparison: 210 floor/crop cases. Remaining audio gaps include source compressor/mix equivalence and every combo/ground cue; night-market procedural overlays and VFX have not yet been ported. Adventure media packaging alone is not adventure gameplay. No new screenshot/recording or APK exists.
-
-`AdventureEntrance` ports the source doorway/edge path, reciprocal projected depth, yaw transition and bounds-based door fitting. It passed 90 original-source cases / 810 samples across all 18 variants and five routes. This domain component is not yet connected to a playable native adventure scene; full entrance run poses, foreground masking and encounters remain open.
-
-The first media CI run (41509872935) exposed original-vs-published delivery paths: the existing `scripts/package-arena-assets.mjs` moves arena WebP/MP4 and underground chapter MP4 files to immutable `/api/arena-media/<stem>.<hash>.ext` URLs. The media lock now records those 28 exact delivery URLs without changing any source SHA-256. Do not interpret the old-path HTTP failure as missing original artwork, and never replace a failed file with a different asset. The decoder now waits until end-of-frame before snapshotting its first frame, and detects loop wrap without assuming that a device renders within 200 ms.
-
-Cloud run **41510507631** on code `c5bbfb76fbccaf190a7d3f3fa3ba0b17ec7e2f45` confirms the media fix: all 133 files / 312,704,687 output bytes passed. Artifact **13171983537** is 312,286,395 bytes, ZIP SHA-256 `abe9f43c6fd382026c438d9c5d71316c8c28ece943d5e9369b3e43f8cbb31080`, uploaded **2026-11-02 20:31:35 Europe/Zurich**. Native rules/geometry/entrance regressions also passed in this run. At this evidence checkpoint, the full fighter export was still running; repository activation still failed, and no Unity/Android result is established. The media artifact is data, not an installable app.
+Never describe managed compilation or source export as a verified working phone game or as full migration completion. Missing later build credentials do not prevent continuing the remaining source implementation.
