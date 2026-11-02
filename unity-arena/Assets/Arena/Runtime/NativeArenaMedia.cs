@@ -25,6 +25,8 @@ namespace Braxhorn.Arena
         AudioClip ambientClip;
         Texture2D poster;
         RenderTexture decoded,first;
+        Coroutine capture;
+        long lastFrame=-1;
         bool firstFrame,looping,muted,ducked;
         int generation;
         UnityWebRequest pendingRequest;
@@ -81,8 +83,17 @@ namespace Braxhorn.Arena
         void OnFrame(VideoPlayer source,long frame)
         {
             if(source!=video||!decoded||!material)return;
-            if(!firstFrame){Graphics.Blit(decoded,first);firstFrame=true;material.SetTexture("_MainTex",decoded);material.SetTexture("_LoopTex",first);Ready=true;}
-            if(looping&&source.time<.2){looping=false;material.SetFloat("_LoopBlend",0);}
+            // frameReady can precede the texture's render-thread update. Capture
+            // only after rendering has completed, rather than copying a black RT.
+            if(!firstFrame&&capture==null)capture=StartCoroutine(CaptureFirst(generation));
+            if(looping&&(frame<lastFrame||source.time<source.length-.45)){looping=false;material.SetFloat("_LoopBlend",0);}
+            lastFrame=frame;
+        }
+        IEnumerator CaptureFirst(int token)
+        {
+            yield return new WaitForEndOfFrame();
+            if(token!=generation||!decoded||!first||!material)yield break;
+            Graphics.Blit(decoded,first);firstFrame=true;material.SetTexture("_MainTex",decoded);material.SetTexture("_LoopTex",first);Ready=true;capture=null;
         }
         void OnLoop(VideoPlayer source){looping=true;if(material)material.SetFloat("_LoopBlend",1);}
         void OnVideoError(VideoPlayer source,string message){Error="Film "+Entry?.id+": "+message;Debug.LogError(Error);}
@@ -106,6 +117,7 @@ namespace Braxhorn.Arena
         public void Clear()
         {
             generation++;try{pendingRequest?.Abort();}catch(ObjectDisposedException){}pendingRequest=null;
+            if(capture!=null){StopCoroutine(capture);capture=null;}lastFrame=-1;
             if(video){video.errorReceived-=OnVideoError;video.frameReady-=OnFrame;video.loopPointReached-=OnLoop;video.Stop();Destroy(video);video=null;}
             if(ambient){ambient.Stop();Destroy(ambient);ambient=null;}if(ambientClip)Destroy(ambientClip);ambientClip=null;
             if(plane)Destroy(plane);if(mesh)Destroy(mesh);if(material)Destroy(material);if(poster)Destroy(poster);

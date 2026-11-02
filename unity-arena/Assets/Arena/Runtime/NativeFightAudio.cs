@@ -82,7 +82,7 @@ namespace Braxhorn.Arena
             if(!source)return false;source.Stop();source.clip=clip;source.volume=Mathf.Clamp01(volume)*.8f;source.pitch=Mathf.Clamp(pitch,.75f,1.25f);source.Play();return true;
         }
         public void Stop()
-        {if(announcer)announcer.Stop();foreach(var s in fighterVoices)if(s)s.Stop();foreach(var s in pool)s.Stop();}
+        {if(announcer)announcer.Stop();foreach(var s in fighterVoices)if(s)s.Stop();foreach(var s in pool)if(s)s.Stop();}
         public void ResetMatch(){Stop();for(var i=0;i<2;i++){hurtCount[i,0]=hurtCount[i,1]=0;hurtTime[i]=double.NegativeInfinity;}paused=false;}
         public void SetPaused(bool value){paused=value;if(value)Stop();}
         public void Mute(bool value){muted=value;if(value)Stop();}

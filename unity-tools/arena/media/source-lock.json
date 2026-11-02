@@ -10,7 +10,8 @@
       "sha256": "4802115bb3963c564fe82bb71dfa92380262336c4e3ee30b39d9de3429f9b364",
       "bytes": 696414,
       "output": "4802115bb3963c564fe8.png",
-      "conversion": "png"
+      "conversion": "png",
+      "deliveryUrl": "/api/arena-media/arena-rooftop-city-20261018.4802115bb396.webp"
     },
     {
       "url": "/api/arena-media/rooftop-city.0fa1a9a4c445.mp4",
@@ -26,7 +27,8 @@
       "sha256": "0156566e8eaee4eb4f090bdd861a532b660c7acdb8eaa1d82f87cccbb11a6196",
       "bytes": 830748,
       "output": "0156566e8eaee4eb4f09.png",
-      "conversion": "png"
+      "conversion": "png",
+      "deliveryUrl": "/api/arena-media/arena-jungle-20261018.0156566e8eae.webp"
     },
     {
       "url": "/api/arena-media/jungle.5da36c4fba53.mp4",
@@ -42,7 +44,8 @@
       "sha256": "7952b9bfad871f80e666f84d9f997abb434eabeaa69e5e936f6ea84cc8c24d3f",
       "bytes": 801878,
       "output": "7952b9bfad871f80e666.png",
-      "conversion": "png"
+      "conversion": "png",
+      "deliveryUrl": "/api/arena-media/arena-volcano-20261018.7952b9bfad87.webp"
     },
     {
       "url": "/api/arena-media/volcano.216629861b12.mp4",
@@ -58,7 +61,8 @@
       "sha256": "6c4543fc940a6e3b8c7e0d8776530420efe52d5fc1433ee4d01da73e3302ff57",
       "bytes": 771472,
       "output": "6c4543fc940a6e3b8c7e.png",
-      "conversion": "png"
+      "conversion": "png",
+      "deliveryUrl": "/api/arena-media/arena-temple-20261018.6c4543fc940a.webp"
     },
     {
       "url": "/api/arena-media/temple.cad5d0b82369.mp4",
@@ -74,7 +78,8 @@
       "sha256": "9ea8b70d0ef178159b0914ac63e8169d6fcb1b5579aadac976e69b0344689859",
       "bytes": 698048,
       "output": "9ea8b70d0ef178159b09.png",
-      "conversion": "png"
+      "conversion": "png",
+      "deliveryUrl": "/api/arena-media/arena-himalaya-20261018.9ea8b70d0ef1.webp"
     },
     {
       "url": "/api/arena-media/himalaya.90b8580a32ae.mp4",
@@ -90,7 +95,8 @@
       "sha256": "b09189ac20a30a5afabd11624ffb01f7ab2ec5b126fe51788acf533cfb87fde8",
       "bytes": 659816,
       "output": "b09189ac20a30a5afabd.png",
-      "conversion": "png"
+      "conversion": "png",
+      "deliveryUrl": "/api/arena-media/arena-beach-20261018.b09189ac20a3.webp"
     },
     {
       "url": "/api/arena-media/beach.8e9ab7847d09.mp4",
@@ -106,7 +112,8 @@
       "sha256": "7c28d350c8d67b502215cdfc2381e121e5e00fb28a02c7f66eea5878a822686a",
       "bytes": 559468,
       "output": "7c28d350c8d67b502215.png",
-      "conversion": "png"
+      "conversion": "png",
+      "deliveryUrl": "/api/arena-media/arena-carrier-20261018.7c28d350c8d6.webp"
     },
     {
       "url": "/api/arena-media/carrier.d55dcea46803.mp4",
@@ -122,7 +129,8 @@
       "sha256": "31b47cc38bf0e6c53d7fcc375fc446158027242b1b28c6b613a99db15563b5a4",
       "bytes": 614760,
       "output": "31b47cc38bf0e6c53d7f.png",
-      "conversion": "png"
+      "conversion": "png",
+      "deliveryUrl": "/api/arena-media/arena-reactor-20261018.31b47cc38bf0.webp"
     },
     {
       "url": "/api/arena-media/reactor.6956a48b6ccc.mp4",
@@ -138,7 +146,8 @@
       "sha256": "8826aeb23b7ae4b70b3c37b6ef0825c653ced6ba68cda5ad0b2278eaa8abf2d9",
       "bytes": 571930,
       "output": "8826aeb23b7ae4b70b3c.png",
-      "conversion": "png"
+      "conversion": "png",
+      "deliveryUrl": "/api/arena-media/arena-savanna.8826aeb23b7a.webp"
     },
     {
       "url": "/assets/arena-savanna.ebd8aad330ff.mp4",
@@ -146,7 +155,8 @@
       "sha256": "ebd8aad330ffc4d82b4ad1fa73a39780d1bf8e71b7fd90ac0d633ec96f36064c",
       "bytes": 3819919,
       "output": "ebd8aad330ffc4d82b4a.mp4",
-      "conversion": "copy"
+      "conversion": "copy",
+      "deliveryUrl": "/api/arena-media/arena-savanna.ebd8aad330ff.mp4"
     },
     {
       "url": "/assets/arena-brooklyn-20261018.webp",
@@ -154,7 +164,8 @@
       "sha256": "6c49e0d5c9bd94e091ab674922706fc7b33d5f1b7b616cae6467345160a5e2c5",
       "bytes": 585184,
       "output": "6c49e0d5c9bd94e091ab.png",
-      "conversion": "png"
+      "conversion": "png",
+      "deliveryUrl": "/api/arena-media/arena-brooklyn-20261018.6c49e0d5c9bd.webp"
     },
     {
       "url": "/api/arena-media/brooklyn.6d9545bcc543.mp4",
@@ -170,7 +181,8 @@
       "sha256": "e44e5766617dfc27bb46f806d4a489991cb5cb5182b53d86476f2830f23a7068",
       "bytes": 500552,
       "output": "e44e5766617dfc27bb46.png",
-      "conversion": "png"
+      "conversion": "png",
+      "deliveryUrl": "/api/arena-media/arena-dragon-20261018.e44e5766617d.webp"
     },
     {
       "url": "/api/arena-media/dragon.f666fd6d5e72.mp4",
@@ -186,7 +198,8 @@
       "sha256": "f106d12bf28260943f2ee1f11172db90ca10e5abe6de1d618bb2098113f9b8e2",
       "bytes": 48916,
       "output": "f106d12bf28260943f2e.png",
-      "conversion": "png"
+      "conversion": "png",
+      "deliveryUrl": "/api/arena-media/arena-aquarium-20261018.f106d12bf282.webp"
     },
     {
       "url": "/api/arena-media/aquarium.2c8649a07a44.mp4",
@@ -242,7 +255,8 @@
       "sha256": "6a3505124e2629113f1489e5cea4fc7e21ccf943879675631467d61063a499ce",
       "bytes": 521688,
       "output": "6a3505124e2629113f14.mp4",
-      "conversion": "copy"
+      "conversion": "copy",
+      "deliveryUrl": "/api/arena-media/arena-metro-20261020.6a3505124e26.mp4"
     },
     {
       "url": "/api/arena-media/harbor.d2da7fb26002.gif",
@@ -282,7 +296,8 @@
       "sha256": "75fd2c95934ebae5a4c371e0d1738b6a72a56a1cfb8fdab35ee4210f6fbecb90",
       "bytes": 470946,
       "output": "75fd2c95934ebae5a4c3.png",
-      "conversion": "png"
+      "conversion": "png",
+      "deliveryUrl": "/api/arena-media/arena-foundry.75fd2c95934e.webp"
     },
     {
       "url": "/assets/arena-foundry.db831634b3ad.mp4",
@@ -290,7 +305,8 @@
       "sha256": "db831634b3ad70ebb468f5a05ef83938fdc74b2bd97602ef0c650df91fa950d8",
       "bytes": 3137108,
       "output": "db831634b3ad70ebb468.mp4",
-      "conversion": "copy"
+      "conversion": "copy",
+      "deliveryUrl": "/api/arena-media/arena-foundry.db831634b3ad.mp4"
     },
     {
       "url": "/assets/arena-storm-complex-20261020.webp",
@@ -298,7 +314,8 @@
       "sha256": "8d4e5353663a366809e4513f626ac9f60eaf8bf08253027a3e583eb36f7a8a6a",
       "bytes": 139034,
       "output": "8d4e5353663a366809e4.png",
-      "conversion": "png"
+      "conversion": "png",
+      "deliveryUrl": "/api/arena-media/arena-storm-complex-20261020.8d4e5353663a.webp"
     },
     {
       "url": "/assets/arena-storm-complex.612b614f0e25.mp4",
@@ -306,7 +323,8 @@
       "sha256": "612b614f0e250d22a3f241ca503189d59c04979b5b5cb5ef45b0f7c476559e12",
       "bytes": 5154903,
       "output": "612b614f0e250d22a3f2.mp4",
-      "conversion": "copy"
+      "conversion": "copy",
+      "deliveryUrl": "/api/arena-media/arena-storm-complex.612b614f0e25.mp4"
     },
     {
       "url": "/assets/arena-octagon-20261020.webp",
@@ -314,7 +332,8 @@
       "sha256": "124f05a4d81eb1f73bad694b24b423158e51b0dc6dcc79337470955c335ceab2",
       "bytes": 183208,
       "output": "124f05a4d81eb1f73bad.png",
-      "conversion": "png"
+      "conversion": "png",
+      "deliveryUrl": "/api/arena-media/arena-octagon-20261020.124f05a4d81e.webp"
     },
     {
       "url": "/assets/arena-octagon.db76fbd2805f.mp4",
@@ -322,7 +341,8 @@
       "sha256": "db76fbd2805f92bc3fb8378d3164a0b680786f3ea271742e88c222d741397234",
       "bytes": 6333427,
       "output": "db76fbd2805f92bc3fb8.mp4",
-      "conversion": "copy"
+      "conversion": "copy",
+      "deliveryUrl": "/api/arena-media/arena-octagon.db76fbd2805f.mp4"
     },
     {
       "url": "/assets/arena-winter-station-20261020.webp",
@@ -330,7 +350,8 @@
       "sha256": "fae67648d4764cfe6266f6c6b3000c625b74ef2319214c899e1595c98ddc93f0",
       "bytes": 236756,
       "output": "fae67648d4764cfe6266.png",
-      "conversion": "png"
+      "conversion": "png",
+      "deliveryUrl": "/api/arena-media/arena-winter-station-20261020.fae67648d476.webp"
     },
     {
       "url": "/assets/arena-winter-station.7401eee3844b.mp4",
@@ -338,7 +359,8 @@
       "sha256": "7401eee3844b41204e5755302b80fbd10a2a396e7386947a765d08fd9538aa73",
       "bytes": 7512789,
       "output": "7401eee3844b41204e57.mp4",
-      "conversion": "copy"
+      "conversion": "copy",
+      "deliveryUrl": "/api/arena-media/arena-winter-station.7401eee3844b.mp4"
     },
     {
       "url": "/adventure-media/city-01.mp4",
@@ -538,7 +560,8 @@
       "sha256": "b9486fbafbfa1739f1aa6ddfcfae0a26fb6dc64cfcfeed4c1575f167a7bbac03",
       "bytes": 3616699,
       "output": "b9486fbafbfa1739f1aa.mp4",
-      "conversion": "copy"
+      "conversion": "copy",
+      "deliveryUrl": "/api/arena-media/adventure-underground-01.b9486fbafbfa.mp4"
     },
     {
       "url": "/assets/adventure/media/underground-01/01.jpg",
@@ -554,7 +577,8 @@
       "sha256": "1d2267c879d46f678fabb0447993b108953cc3f4b486229b1d95bbadfd08e03e",
       "bytes": 4663597,
       "output": "1d2267c879d46f678fab.mp4",
-      "conversion": "copy"
+      "conversion": "copy",
+      "deliveryUrl": "/api/arena-media/adventure-underground-02.1d2267c879d4.mp4"
     },
     {
       "url": "/assets/adventure/media/underground-01/02.jpg",
@@ -570,7 +594,8 @@
       "sha256": "086911275396157e8c39f84ea591d30abf625a9cd0b2fdf06fccaec21681e590",
       "bytes": 4625932,
       "output": "086911275396157e8c39.mp4",
-      "conversion": "copy"
+      "conversion": "copy",
+      "deliveryUrl": "/api/arena-media/adventure-underground-03.086911275396.mp4"
     },
     {
       "url": "/assets/adventure/media/underground-01/03.jpg",
@@ -586,7 +611,8 @@
       "sha256": "96b58f4ea785536fb24885ce079b9e9e7e266032c33353b927d8861b9119ff4f",
       "bytes": 4979854,
       "output": "96b58f4ea785536fb248.mp4",
-      "conversion": "copy"
+      "conversion": "copy",
+      "deliveryUrl": "/api/arena-media/adventure-underground-04.96b58f4ea785.mp4"
     },
     {
       "url": "/assets/adventure/media/underground-01/04.jpg",
@@ -602,7 +628,8 @@
       "sha256": "589a8b753dc97ff71681eec71ae34dae5373e498cf1c7d320e2a1c018b847128",
       "bytes": 4473488,
       "output": "589a8b753dc97ff71681.mp4",
-      "conversion": "copy"
+      "conversion": "copy",
+      "deliveryUrl": "/api/arena-media/adventure-underground-05.589a8b753dc9.mp4"
     },
     {
       "url": "/assets/adventure/media/underground-01/05.jpg",
@@ -618,7 +645,8 @@
       "sha256": "5a67c45e009556ae86010ab3b9983ba59736e2099b01479583d12faebc2817c6",
       "bytes": 6383887,
       "output": "5a67c45e009556ae8601.mp4",
-      "conversion": "copy"
+      "conversion": "copy",
+      "deliveryUrl": "/api/arena-media/adventure-underground-06.5a67c45e0095.mp4"
     },
     {
       "url": "/assets/adventure/media/underground-01/06.jpg",

@@ -55,7 +55,9 @@ def main():
         else:
             if args.offline:
                 raise ValueError('Missing verified local media: ' + entry['path'])
-            url = entry['url']
+            # package-arena-assets.mjs moves selected original files to immutable
+            # R2 addresses before publishing. Keep original identity AND delivery.
+            url = entry.get('deliveryUrl', entry['url'])
             if not url.startswith(('/assets/', '/api/arena-media/', '/adventure-media/')) or '..' in url:
                 raise ValueError('Unsafe media URL')
             for attempt in range(3):
@@ -71,7 +73,7 @@ def main():
                     break
                 except (urllib.error.URLError, TimeoutError) as e:
                     if attempt == 2:
-                        raise RuntimeError('Cannot restore ' + entry['path'] + ': ' + type(e).__name__) from None
+                        raise RuntimeError('Cannot restore ' + entry['path'] + ': ' + type(e).__name__ + ':' + str(getattr(e, 'code', 'connection'))) from None
                     time.sleep(2 ** attempt)
             source = cached
         output = target / safe(entry['output'])
