@@ -50,8 +50,8 @@
   },
   "cloudActivation": {
     "status": "Blocked",
-    "runId": 41502992008,
-    "jobId": 125474983262,
+    "runId": 41510507631,
+    "jobId": 125500840129,
     "missingRepositorySecrets": [
       "UNITY_LICENSE",
       "UNITY_EMAIL",
@@ -79,8 +79,8 @@
   },
   "cloudRuleParity": {
     "status": "Passed",
-    "runId": 41502992008,
-    "jobId": 125474983035
+    "runId": 41510507631,
+    "jobId": 125500840447
   },
   "losslessAnimationKeyReduction": {
     "curves": 2038080,
@@ -117,7 +117,7 @@
     "previousCloudChecksPassed": 196
   },
   "nativeMedia": {
-    "status": "Export and managed compilation passed locally; Unity playback untested",
+    "status": "Passed local and cloud hash-checked export; native runtime playback untested",
     "originalArenas": 21,
     "adventureRoutes": 5,
     "adventureFilms": 30,
@@ -126,7 +126,18 @@
     "packedBytes": 312704687,
     "referenceGeometryCases": 210,
     "gifConversion": "One original animated GIF converted to H.264 CRF 16; WebP posters losslessly converted to PNG; other media bytes unchanged",
-    "remaining": "Night-market procedural overlays, complete source combo/ground VFX/audio, adventure integration, Android decoding, color and synchronization validation"
+    "remaining": "Night-market procedural overlays, complete source combo/ground VFX/audio, adventure integration, Android decoding, color and synchronization validation",
+    "cloud": {
+      "runId": 41510507631,
+      "jobId": 125500840302,
+      "sourceCodeCommit": "c5bbfb76fbccaf190a7d3f3fa3ba0b17ec7e2f45",
+      "artifactId": 13171983537,
+      "artifactUrl": "https://github.com/wawerpatryk89-sketch/braxhorn-arena/actions/runs/41510507631/artifacts/13171983537",
+      "artifactBytes": 312286395,
+      "zipSha256": "abe9f43c6fd382026c438d9c5d71316c8c28ece943d5e9369b3e43f8cbb31080",
+      "uploadedAtUtc": "2026-11-02T19:31:35Z",
+      "uploadedAtZurich": "2026-11-02T20:31:35+01:00"
+    }
   },
   "nativeAdventureEntrance": {
     "status": "Passed source-reference tests; not yet wired into a playable adventure scene",
