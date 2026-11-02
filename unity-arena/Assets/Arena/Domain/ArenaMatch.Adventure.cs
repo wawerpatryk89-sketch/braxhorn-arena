@@ -8,13 +8,13 @@ namespace Braxhorn.Arena.Domain
         public bool AdventureCombat { get; private set; }
         public void EnableAdventure()
         {
-            Adventure=true;AdventureCombat=false;Phase=MatchPhase.Fighting;RemainingSeconds=999999;events.Clear();ReleaseInputs();Opponent.X=-10000;
+            ResetClinch();Adventure=true;AdventureCombat=false;Phase=MatchPhase.Fighting;RemainingSeconds=999999;events.Clear();ReleaseInputs();Opponent.X=-10000;
         }
         public void InstallAdventureOpponent(CombatConfiguration config,double hp,double x)
         {
             if(!Adventure||AdventureCombat)throw new InvalidOperationException("Opponent replacement outside adventure exploration");
             if(hp<=0||hp>100||!Finite(x))throw new ArgumentOutOfRangeException(nameof(hp));
-            Opponent=new MatchFighter(config){Hp=hp,X=x,Face=-1};fighters[1]=Opponent;Idle(Opponent);cpu[1]=null;pair=null;recovery=null;
+            Opponent=new MatchFighter(config){Hp=hp,X=x,Face=-1};fighters[1]=Opponent;Idle(Opponent);cpu[1]=null;ResetClinch();pair=null;recovery=null;
         }
         public void BeginAdventureEncounter(CpuLevel level)
         {
@@ -24,7 +24,7 @@ namespace Braxhorn.Arena.Domain
         public void EndAdventureEncounter()
         {
             if(!Adventure||!AdventureCombat||Opponent.Hp>0)throw new InvalidOperationException("Unfinished encounter");
-            AdventureCombat=false;cpu[1]=null;pair=null;recovery=null;holdMs=0;Player.ApproachingCombo=false;Player.PendingPair=null;
+            AdventureCombat=false;cpu[1]=null;ResetClinch();pair=null;recovery=null;holdMs=0;Player.ApproachingCombo=false;Player.PendingPair=null;
             Player.Hp=Math.Min(100,Player.Hp+20);Opponent.X=-10000;ReleaseInputs();
         }
         public void PlaceAdventureFighter(int side,double x,double height=0)

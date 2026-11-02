@@ -12,6 +12,8 @@
     <Compile Include="MatchParityRunner.cs" />
     <Compile Include="MediaParityRunner.cs" />
     <Compile Include="AdventureParityRunner.cs" />
+    <Compile Include="GestureParityRunner.cs" />
+    <Compile Include="ClinchParityRunner.cs" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 </Project>

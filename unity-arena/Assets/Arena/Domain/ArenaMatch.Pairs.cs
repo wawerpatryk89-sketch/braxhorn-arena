@@ -46,7 +46,7 @@ namespace Braxhorn.Arena.Domain
             pair = new PairState { Attacker = a, Target = z, Data = data, Face = a.Face,
                 Alignment = (gap - desired) * a.Face / 2, FromCombo = fromCombo };
             holdMs = 0; ReleaseInputs();
-            foreach (var f in new[] { a, z }) { f.PushMs = f.StunMs = 0; f.Pressure.Reset(); f.ApproachingCombo = false; }
+            foreach (var f in new[] { a, z }) { f.PushMs = f.StunMs = 0; f.Pressure.Reset(); f.ApproachingCombo = false; ResetGestures(f,SimulationMs+12000); }
             Start(a, attack, true); Start(z, reaction, true); Emit("grab", a, z); return true;
         }
         bool BreakPair(MatchFighter requester)
@@ -88,6 +88,7 @@ namespace Braxhorn.Arena.Domain
             }
             if (e.Time + 1e-8 < duration) return;
             pair = null;
+            if(!e.FromCombo)QueueGesture(a,"AUTO_JOY");
             foreach (var f in new[] { a, z }) { f.GrabProtection = 600; f.PushMs = f.StunMs = 0; }
             Idle(a); z.DownPhase = z.Hp <= 0 ? "KO_HOLD" : "THROW_DOWN";
             var down = (string)data["downState"];

@@ -45,6 +45,9 @@ namespace Braxhorn.Arena.Domain
             cooldown=cooldownDuration;
             previousRound=match.Round;
         }
+        internal bool CanDecideClinch => !match.Training||training==TrainingBehavior.Spar;
+        internal double ClinchReactionMs => Math.Max(650,reaction+300);
+        internal void ResetClinchCooldown(){cooldown=cooldownDuration;}
         internal void Delay(double milliseconds){cooldown=Math.Max(0,milliseconds);}
         internal void Tick(double dt)
         {

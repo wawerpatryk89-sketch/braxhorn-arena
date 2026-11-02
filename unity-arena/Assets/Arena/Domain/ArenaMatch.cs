@@ -45,6 +45,9 @@ namespace Braxhorn.Arena.Domain
         internal readonly HashSet<int> SoundGroups = new HashSet<int>();
         internal readonly HitPressure Pressure = new HitPressure();
         internal int HeadReactions, BodyReactions;
+        internal string PendingGesture;
+        internal double GestureExpires,GestureCooldown,GestureIdleMs;
+        internal int TauntVariant,AngerVariant;
         internal MatchFighter ComboOwner;
         internal int ComboSerial,ComboEndpoint;
         internal string ComboReactionKey;
@@ -117,7 +120,7 @@ namespace Braxhorn.Arena.Domain
         public int Winner => PlayerWins == OpponentWins ? -1 : PlayerWins > OpponentWins ? 0 : 1;
         public int Countdown => Math.Max(1, 3 - (int)(phaseMs / 1000));
         public bool HoldingContact => holdMs > 0;
-        public bool PairActive => pair != null || recovery != null;
+        public bool PairActive => pair != null || recovery != null || clinch;
 
         public ArenaMatch(CombatConfiguration player, CombatConfiguration opponent, Func<double> random,
             bool training = false, bool singleRound = false, double playerHp = 100,
@@ -154,14 +157,16 @@ namespace Braxhorn.Arena.Domain
         { Paused = value; accumulator = 0; if (value) ReleaseInputs(); }
         public void ReleaseInputs() { foreach (var f in fighters) { f.Input = default; f.Buffered = null; } }
         public void SetInput(int side, FightInput value)
-        { var f = Fighter(side); f.Input = !Paused && Phase == MatchPhase.Fighting && pair == null && recovery == null ? value : default; }
+        { var f = Fighter(side); if(clinch){if(!Paused&&Phase==MatchPhase.Fighting&&value.Grab)ReleaseClinch();return;} f.Input = !Paused && Phase == MatchPhase.Fighting && pair == null && recovery == null ? value : default; if(f.Input.Direction!=0||f.Input.Block||f.Input.Down)CancelGesture(f); }
         public bool Press(int side, FightButton button)
         {
             var f = Fighter(side);
             if (Paused || Phase != MatchPhase.Fighting || f.Hp <= 0 || recovery != null) return false;
             if(Adventure&&!AdventureCombat&&(side!=0||button==FightButton.Combo||f.Input.Grab))return false;
+            if(clinch)return ClinchInput(f,button);
             if (pair != null) return button == FightButton.Evade && BreakPair(f);
             if (f.DownPhase != null || f.StunMs > 0) return false;
+            CancelGesture(f);
             var kind = button switch { FightButton.Punch => "punch", FightButton.Heavy => "heavy", FightButton.Kick => "kick", FightButton.HeavyKick => "kick2", _ => null };
             if (f.Input.Grab && kind != null)
                 return TryPair(f, (string)f.Configuration["IDLE"].Source["pairedCombat"]?["buttons"]?[kind], false);
@@ -221,14 +226,14 @@ namespace Braxhorn.Arena.Domain
         internal double Speed(MatchFighter f, bool back = false) => CombatRules.Movement(f.Configuration.Character, ReferenceHeight, Width, back) * Width / 100;
         void ResetRound()
         {
-            phaseMs = holdMs = 0; celebrationStarted = false; pair = null; recovery=null; Phase = MatchPhase.Countdown;
+            ResetClinch();phaseMs = holdMs = 0; celebrationStarted = false; pair = null; recovery=null; Phase = MatchPhase.Countdown;
             RemainingSeconds = 60; RoundWinner = -1; ReleaseInputs();
             for (var i = 0; i < 2; i++)
             {
                 var f = fighters[i]; f.X = Width * (i == 0 ? .28 : .72); f.Face = i == 0 ? 1 : -1;
                 f.Hp = i == 0 && Round == 1 ? initialHp : 100; f.Energy = Training ? 100 : 0;
                 f.DownPhase = null; f.Height = f.StunMs = f.ProtectionMs = f.PushMs = f.PushSpeed = f.RecoilCooldown = f.KnockdownCooldown = f.RecoverMs = f.GrabProtection = 0;
-                f.ComboUses = f.HeadReactions = f.BodyReactions = 0; f.ApproachingCombo = false; f.Pressure.Reset(); Idle(f);
+                f.ComboUses = f.HeadReactions = f.BodyReactions = 0; f.ApproachingCombo = false; f.Pressure.Reset(); ResetGestures(f,18000);f.TauntVariant=f.AngerVariant=0; Idle(f);
             }
             Emit("three",Player);
         }
@@ -260,6 +265,8 @@ namespace Braxhorn.Arena.Domain
             if(recovery!=null){AdvanceRecovery(dt);return;}
             if (!Training&&!Adventure) { RemainingSeconds = Math.Max(0, RemainingSeconds - dt / 1000); if (RemainingSeconds < 1e-8) RemainingSeconds = 0; }
             if (pair != null) { AdvancePair(dt); return; }
+            if(clinch){AdvanceClinch(dt);CheckEnd();return;}
+            AdvanceGestures(dt);
             foreach (var controller in cpu) controller?.Tick(dt);
             foreach (var f in fighters)
             {
@@ -283,6 +290,7 @@ namespace Braxhorn.Arena.Domain
             }
             foreach(var f in fighters)FollowCombo(f,dt);
             Separate(); Confine(); Separate();
+            DetectClinch(dt);if(clinch)return;
             for (var i = 0; i < 2; i++) defenses[i] = new Defense(fighters[i], Pose(fighters[i]));
             pending.Clear();
             foreach (var f in fighters) AdvancePose(f, dt, true);
@@ -448,7 +456,8 @@ namespace Braxhorn.Arena.Domain
             var phase = f.DownPhase; f.X += f.Face * f.Action.RootTravel * Scale * f.Action.Scale;
             var next = f.Hp <= 0 && phase != "FLY" ? "KO_HOLD" : phase switch
             { "FALL" => "LAND", "LAND" => "DOWN", "DOWN" => "GETUP", "THROW_DOWN" => "GETUP", "FLY" => "FLY_LAND", "FLY_LAND" => "FLY_DOWN", "FLY_DOWN" => "GETUP", _ => null };
-            if (next != null) { f.DownPhase = next; if (next != "FLY_LAND") f.PushMs = 0; Start(f, next, true); return; }
+            if (next != null) { if(phase=="FALL"||phase=="FLY")QueueGesture(Other(f),"AUTO_JOY"); f.DownPhase = next; if (next != "FLY_LAND") f.PushMs = 0; Start(f, next, true); return; }
+            if(phase=="GETUP")QueueGesture(f,"AUTO_ANGER");
             f.DownPhase = null; f.StunMs = 0; f.KnockdownCooldown = 3500; f.ProtectionMs = 350; Idle(f);
         }
         void CheckEnd()
@@ -457,7 +466,7 @@ namespace Braxhorn.Arena.Domain
             if (Training || Phase != MatchPhase.Fighting || Player.Hp > 0 && Opponent.Hp > 0 && RemainingSeconds > 0) return;
             RoundWinner = Player.Hp == Opponent.Hp ? -1 : Player.Hp > Opponent.Hp ? 0 : 1;
             if (RoundWinner == 0) PlayerWins++; if (RoundWinner == 1) OpponentWins++;
-            Phase = MatchPhase.RoundOver; phaseMs = 0; holdMs = 0; ReleaseInputs(); Emit("round", Player);
+            ResetClinch();Phase = MatchPhase.RoundOver; phaseMs = 0; holdMs = 0; ReleaseInputs(); Emit("round", Player);
         }
         bool MatchOver => SingleRound || PlayerWins >= 2 || OpponentWins >= 2 || Round >= 3;
         void AdvanceCelebration(double dt)

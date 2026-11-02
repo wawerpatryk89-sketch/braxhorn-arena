@@ -64,6 +64,8 @@ static class RulesParityRunner
         if(args.Length>1){CombatParityRunner.Run(args[1]);MediaParityRunner.Run(args[1]);}
         MatchParityRunner.Run(args.Length > 2 ? args[2] : null);
         AdventureParityRunner.Run(args.Length > 2 ? args[2] : null,args.Length>1?args[1]:null);
+        GestureParityRunner.Run();
+        ClinchParityRunner.Run();
         return 0;
     }
 }
