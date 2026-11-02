@@ -1,0 +1,1072 @@
+{
+  "schema": 1,
+  "sourceSiteVersion": 271,
+  "baseUrl": "https://braxhorn-p0-preview.wawerpatryk89.chatgpt.site",
+  "catalogSha256": "2a0e66301680c67346862c593c8a5b32936bdf4df81952d60a9fd6a672fcd5a5",
+  "sources": [
+    {
+      "url": "/assets/arena-rooftop-city-20261018.webp",
+      "path": "game/assets/arena-rooftop-city-20261018.webp",
+      "sha256": "4802115bb3963c564fe82bb71dfa92380262336c4e3ee30b39d9de3429f9b364",
+      "bytes": 696414,
+      "output": "4802115bb3963c564fe8.png",
+      "conversion": "png"
+    },
+    {
+      "url": "/api/arena-media/rooftop-city.0fa1a9a4c445.mp4",
+      "path": "arena-media/loops/rooftop-city.0fa1a9a4c445.mp4",
+      "sha256": "0fa1a9a4c4453cb1dcd70da738ae9abe0b4ca713e90dc9228bf045344e95a4a0",
+      "bytes": 7283288,
+      "output": "0fa1a9a4c4453cb1dcd7.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/arena-jungle-20261018.webp",
+      "path": "game/assets/arena-jungle-20261018.webp",
+      "sha256": "0156566e8eaee4eb4f090bdd861a532b660c7acdb8eaa1d82f87cccbb11a6196",
+      "bytes": 830748,
+      "output": "0156566e8eaee4eb4f09.png",
+      "conversion": "png"
+    },
+    {
+      "url": "/api/arena-media/jungle.5da36c4fba53.mp4",
+      "path": "arena-media/loops/jungle.5da36c4fba53.mp4",
+      "sha256": "5da36c4fba53a7531469e2c31a5430320294717436c6a3b7f60510a11ed53f83",
+      "bytes": 9003141,
+      "output": "5da36c4fba53a7531469.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/arena-volcano-20261018.webp",
+      "path": "game/assets/arena-volcano-20261018.webp",
+      "sha256": "7952b9bfad871f80e666f84d9f997abb434eabeaa69e5e936f6ea84cc8c24d3f",
+      "bytes": 801878,
+      "output": "7952b9bfad871f80e666.png",
+      "conversion": "png"
+    },
+    {
+      "url": "/api/arena-media/volcano.216629861b12.mp4",
+      "path": "arena-media/loops/volcano.216629861b12.mp4",
+      "sha256": "216629861b12ac89a7b01b56cbc2a04c395c2d8154e4c8acd5859c282324d32b",
+      "bytes": 5560621,
+      "output": "216629861b12ac89a7b0.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/arena-temple-20261018.webp",
+      "path": "game/assets/arena-temple-20261018.webp",
+      "sha256": "6c4543fc940a6e3b8c7e0d8776530420efe52d5fc1433ee4d01da73e3302ff57",
+      "bytes": 771472,
+      "output": "6c4543fc940a6e3b8c7e.png",
+      "conversion": "png"
+    },
+    {
+      "url": "/api/arena-media/temple.cad5d0b82369.mp4",
+      "path": "arena-media/loops/temple.cad5d0b82369.mp4",
+      "sha256": "cad5d0b8236985fd5f5fdf09c03af0f4802ac89ffc67f0c0f480cd27c9e71791",
+      "bytes": 7769214,
+      "output": "cad5d0b8236985fd5f5f.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/arena-himalaya-20261018.webp",
+      "path": "game/assets/arena-himalaya-20261018.webp",
+      "sha256": "9ea8b70d0ef178159b0914ac63e8169d6fcb1b5579aadac976e69b0344689859",
+      "bytes": 698048,
+      "output": "9ea8b70d0ef178159b09.png",
+      "conversion": "png"
+    },
+    {
+      "url": "/api/arena-media/himalaya.90b8580a32ae.mp4",
+      "path": "arena-media/loops/himalaya.90b8580a32ae.mp4",
+      "sha256": "90b8580a32ae337e5ce941c819825f82e6e2d6bdbf488a75611c0ba038d351fa",
+      "bytes": 6153995,
+      "output": "90b8580a32ae337e5ce9.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/arena-beach-20261018.webp",
+      "path": "game/assets/arena-beach-20261018.webp",
+      "sha256": "b09189ac20a30a5afabd11624ffb01f7ab2ec5b126fe51788acf533cfb87fde8",
+      "bytes": 659816,
+      "output": "b09189ac20a30a5afabd.png",
+      "conversion": "png"
+    },
+    {
+      "url": "/api/arena-media/beach.8e9ab7847d09.mp4",
+      "path": "arena-media/loops/beach.8e9ab7847d09.mp4",
+      "sha256": "8e9ab7847d092dfe6063afb15318029de5ac981e135d7fcdb520ecf219bc8747",
+      "bytes": 6656396,
+      "output": "8e9ab7847d092dfe6063.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/arena-carrier-20261018.webp",
+      "path": "game/assets/arena-carrier-20261018.webp",
+      "sha256": "7c28d350c8d67b502215cdfc2381e121e5e00fb28a02c7f66eea5878a822686a",
+      "bytes": 559468,
+      "output": "7c28d350c8d67b502215.png",
+      "conversion": "png"
+    },
+    {
+      "url": "/api/arena-media/carrier.d55dcea46803.mp4",
+      "path": "arena-media/loops/carrier.d55dcea46803.mp4",
+      "sha256": "d55dcea4680399e87983e0ab37034ec1cd3772ede5d0ab6eb834cb3a27bce743",
+      "bytes": 7554292,
+      "output": "d55dcea4680399e87983.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/arena-reactor-20261018.webp",
+      "path": "game/assets/arena-reactor-20261018.webp",
+      "sha256": "31b47cc38bf0e6c53d7fcc375fc446158027242b1b28c6b613a99db15563b5a4",
+      "bytes": 614760,
+      "output": "31b47cc38bf0e6c53d7f.png",
+      "conversion": "png"
+    },
+    {
+      "url": "/api/arena-media/reactor.6956a48b6ccc.mp4",
+      "path": "arena-media/loops/reactor.6956a48b6ccc.mp4",
+      "sha256": "6956a48b6ccc512bcdd6817dcb67a317315ef4764d15ceaa6a8a0caa7ff5b58b",
+      "bytes": 9381554,
+      "output": "6956a48b6ccc512bcdd6.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/arena-savanna.48341554c7de.webp",
+      "path": "game/assets/arena-savanna.48341554c7de.webp",
+      "sha256": "8826aeb23b7ae4b70b3c37b6ef0825c653ced6ba68cda5ad0b2278eaa8abf2d9",
+      "bytes": 571930,
+      "output": "8826aeb23b7ae4b70b3c.png",
+      "conversion": "png"
+    },
+    {
+      "url": "/assets/arena-savanna.ebd8aad330ff.mp4",
+      "path": "game/assets/arena-savanna.ebd8aad330ff.mp4",
+      "sha256": "ebd8aad330ffc4d82b4ad1fa73a39780d1bf8e71b7fd90ac0d633ec96f36064c",
+      "bytes": 3819919,
+      "output": "ebd8aad330ffc4d82b4a.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/arena-brooklyn-20261018.webp",
+      "path": "game/assets/arena-brooklyn-20261018.webp",
+      "sha256": "6c49e0d5c9bd94e091ab674922706fc7b33d5f1b7b616cae6467345160a5e2c5",
+      "bytes": 585184,
+      "output": "6c49e0d5c9bd94e091ab.png",
+      "conversion": "png"
+    },
+    {
+      "url": "/api/arena-media/brooklyn.6d9545bcc543.mp4",
+      "path": "arena-media/loops/brooklyn.6d9545bcc543.mp4",
+      "sha256": "6d9545bcc543a507576fc110e167f31728762a968f14afab97f143dc6dc0424f",
+      "bytes": 8363285,
+      "output": "6d9545bcc543a507576f.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/arena-dragon-20261018.webp",
+      "path": "game/assets/arena-dragon-20261018.webp",
+      "sha256": "e44e5766617dfc27bb46f806d4a489991cb5cb5182b53d86476f2830f23a7068",
+      "bytes": 500552,
+      "output": "e44e5766617dfc27bb46.png",
+      "conversion": "png"
+    },
+    {
+      "url": "/api/arena-media/dragon.f666fd6d5e72.mp4",
+      "path": "arena-media/loops/dragon.f666fd6d5e72.mp4",
+      "sha256": "f666fd6d5e72d10993d0a4d1b800558c5ebd59f2c5e315e58169d80b41bf9345",
+      "bytes": 8612567,
+      "output": "f666fd6d5e72d10993d0.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/arena-aquarium-20261018.webp",
+      "path": "game/assets/arena-aquarium-20261018.webp",
+      "sha256": "f106d12bf28260943f2ee1f11172db90ca10e5abe6de1d618bb2098113f9b8e2",
+      "bytes": 48916,
+      "output": "f106d12bf28260943f2e.png",
+      "conversion": "png"
+    },
+    {
+      "url": "/api/arena-media/aquarium.2c8649a07a44.mp4",
+      "path": "arena-media/loops/aquarium.2c8649a07a44.mp4",
+      "sha256": "2c8649a07a442ec7d413b6d26a5525b6a07baec7242124046454a682af7efee9",
+      "bytes": 10161284,
+      "output": "2c8649a07a442ec7d413.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/arena-snow.jpeg",
+      "path": "game/assets/arena-snow.jpeg",
+      "sha256": "b4db94dbfd610028b52f2c2aa1d4fa3dae0c1d359f2dac1dc7eb04899013ae2d",
+      "bytes": 510212,
+      "output": "b4db94dbfd610028b52f.jpeg",
+      "conversion": "copy"
+    },
+    {
+      "url": "/api/arena-media/snow.1dbb2e6d48ae.mp4",
+      "path": "arena-media/loops/snow.1dbb2e6d48ae.mp4",
+      "sha256": "1dbb2e6d48ae638df8cd2365d8e8dffd058be5d0c4462b693817c1740bfef654",
+      "bytes": 5124625,
+      "output": "1dbb2e6d48ae638df8cd.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/arena-underground.jpeg",
+      "path": "game/assets/arena-underground.jpeg",
+      "sha256": "3ea645d905d784b91b27b63855d5d0fde3e2168c59c0eedec640f9f1b677d82e",
+      "bytes": 596351,
+      "output": "3ea645d905d784b91b27.jpeg",
+      "conversion": "copy"
+    },
+    {
+      "url": "/api/arena-media/underground.971834e4cd67.mp4",
+      "path": "arena-media/loops/underground.971834e4cd67.mp4",
+      "sha256": "971834e4cd67919de6a17b4d36761bc55e2ccc75a4352d47f27a9ce57f2bb9b6",
+      "bytes": 974536,
+      "output": "971834e4cd67919de6a1.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/api/arena-media/metro.ab100a72e1ad.gif",
+      "path": "arena-media/loops/metro.ab100a72e1ad.gif",
+      "sha256": "ab100a72e1ad2fd31394c679213a0d4dcbb24f046740586c14908e40f1f3af58",
+      "bytes": 5531127,
+      "output": "ab100a72e1ad2fd31394.png",
+      "conversion": "png"
+    },
+    {
+      "url": "/assets/arena-metro-20261020.mp4",
+      "path": "game/assets/arena-metro-20261020.mp4",
+      "sha256": "6a3505124e2629113f1489e5cea4fc7e21ccf943879675631467d61063a499ce",
+      "bytes": 521688,
+      "output": "6a3505124e2629113f14.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/api/arena-media/harbor.d2da7fb26002.gif",
+      "path": "arena-media/loops/harbor.d2da7fb26002.gif",
+      "sha256": "d2da7fb260028abcaa8e80228f3daa8d0151f9f15680c7b8dbe6c4f707e1ba3b",
+      "bytes": 2008165,
+      "output": "d2da7fb260028abcaa8e.mp4",
+      "conversion": "gif-video"
+    },
+    {
+      "url": "/api/arena-media/harbor-audio.27e013706a8f.mp3",
+      "path": "arena-media/loops/harbor-audio.27e013706a8f.mp3",
+      "sha256": "27e013706a8fa33b19cf09885ac0abcecffa9e08ee6991fb788369cd793f2690",
+      "bytes": 257517,
+      "output": "27e013706a8fa33b19cf.mp3",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/arena-nocny-targ.jpg",
+      "path": "game/assets/arena-nocny-targ.jpg",
+      "sha256": "0644f3a5dbe7442841c12876852236da33b269f2154f74686339477a626c89d0",
+      "bytes": 445021,
+      "output": "0644f3a5dbe7442841c1.jpg",
+      "conversion": "copy"
+    },
+    {
+      "url": "/api/arena-media/market-audio.289063ea7ff3.mp3",
+      "path": "arena-media/loops/market-audio.289063ea7ff3.mp3",
+      "sha256": "289063ea7ff3aa6bcb024df95e5850c788cd809dfb0f9d6ea7d9b7d85c769fbc",
+      "bytes": 240789,
+      "output": "289063ea7ff3aa6bcb02.mp3",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/arena-foundry.fdb330e68594.webp",
+      "path": "game/assets/arena-foundry.fdb330e68594.webp",
+      "sha256": "75fd2c95934ebae5a4c371e0d1738b6a72a56a1cfb8fdab35ee4210f6fbecb90",
+      "bytes": 470946,
+      "output": "75fd2c95934ebae5a4c3.png",
+      "conversion": "png"
+    },
+    {
+      "url": "/assets/arena-foundry.db831634b3ad.mp4",
+      "path": "game/assets/arena-foundry.db831634b3ad.mp4",
+      "sha256": "db831634b3ad70ebb468f5a05ef83938fdc74b2bd97602ef0c650df91fa950d8",
+      "bytes": 3137108,
+      "output": "db831634b3ad70ebb468.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/arena-storm-complex-20261020.webp",
+      "path": "game/assets/arena-storm-complex-20261020.webp",
+      "sha256": "8d4e5353663a366809e4513f626ac9f60eaf8bf08253027a3e583eb36f7a8a6a",
+      "bytes": 139034,
+      "output": "8d4e5353663a366809e4.png",
+      "conversion": "png"
+    },
+    {
+      "url": "/assets/arena-storm-complex.612b614f0e25.mp4",
+      "path": "game/assets/arena-storm-complex.612b614f0e25.mp4",
+      "sha256": "612b614f0e250d22a3f241ca503189d59c04979b5b5cb5ef45b0f7c476559e12",
+      "bytes": 5154903,
+      "output": "612b614f0e250d22a3f2.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/arena-octagon-20261020.webp",
+      "path": "game/assets/arena-octagon-20261020.webp",
+      "sha256": "124f05a4d81eb1f73bad694b24b423158e51b0dc6dcc79337470955c335ceab2",
+      "bytes": 183208,
+      "output": "124f05a4d81eb1f73bad.png",
+      "conversion": "png"
+    },
+    {
+      "url": "/assets/arena-octagon.db76fbd2805f.mp4",
+      "path": "game/assets/arena-octagon.db76fbd2805f.mp4",
+      "sha256": "db76fbd2805f92bc3fb8378d3164a0b680786f3ea271742e88c222d741397234",
+      "bytes": 6333427,
+      "output": "db76fbd2805f92bc3fb8.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/arena-winter-station-20261020.webp",
+      "path": "game/assets/arena-winter-station-20261020.webp",
+      "sha256": "fae67648d4764cfe6266f6c6b3000c625b74ef2319214c899e1595c98ddc93f0",
+      "bytes": 236756,
+      "output": "fae67648d4764cfe6266.png",
+      "conversion": "png"
+    },
+    {
+      "url": "/assets/arena-winter-station.7401eee3844b.mp4",
+      "path": "game/assets/arena-winter-station.7401eee3844b.mp4",
+      "sha256": "7401eee3844b41204e5755302b80fbd10a2a396e7386947a765d08fd9538aa73",
+      "bytes": 7512789,
+      "output": "7401eee3844b41204e57.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/adventure-media/city-01.mp4",
+      "path": "adventure-media/city-01/city-01.mp4",
+      "sha256": "309ae9843eb0f6aaa7afe3afd90146df1dee8cae7e216fc5c464c0ff29f9b8e4",
+      "bytes": 6780795,
+      "output": "309ae9843eb0f6aaa7af.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/city-01/01.jpg",
+      "path": "game/assets/adventure/media/city-01/01.jpg",
+      "sha256": "751e8a5bcf2026e7b5f1fd77e43332aebac66f2370fa11e019dd99fba44daca5",
+      "bytes": 185646,
+      "output": "751e8a5bcf2026e7b5f1.jpg",
+      "conversion": "copy"
+    },
+    {
+      "url": "/adventure-media/city-02.mp4",
+      "path": "adventure-media/city-01/city-02.mp4",
+      "sha256": "09f3fd9d45f2ed6dd3a686558831d2fc6afeecf5845529873d5fcc7ee3f9e6f0",
+      "bytes": 7629790,
+      "output": "09f3fd9d45f2ed6dd3a6.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/city-01/02.jpg",
+      "path": "game/assets/adventure/media/city-01/02.jpg",
+      "sha256": "54f44aef7886e1dae3cbe7bd50441792473fedd3aa3bce9e78a2ee4564ed6d93",
+      "bytes": 184662,
+      "output": "54f44aef7886e1dae3cb.jpg",
+      "conversion": "copy"
+    },
+    {
+      "url": "/adventure-media/city-03.mp4",
+      "path": "adventure-media/city-01/city-03.mp4",
+      "sha256": "c5256743845542bbb537930534e160f5e7984bf77edeb79c4ca166f6b46308e5",
+      "bytes": 7625281,
+      "output": "c5256743845542bbb537.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/city-01/03.jpg",
+      "path": "game/assets/adventure/media/city-01/03.jpg",
+      "sha256": "4e25fc5b30f661e6d31e1821050c2d96e82b5d11336091cbe240a05f94982bce",
+      "bytes": 206941,
+      "output": "4e25fc5b30f661e6d31e.jpg",
+      "conversion": "copy"
+    },
+    {
+      "url": "/adventure-media/city-04.mp4",
+      "path": "adventure-media/city-01/city-04.mp4",
+      "sha256": "8311822178f0c0935cb0045c20ca8976d2bfe0b88422d51b2381cc5abdf41bef",
+      "bytes": 7171110,
+      "output": "8311822178f0c0935cb0.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/city-01/04.jpg",
+      "path": "game/assets/adventure/media/city-01/04.jpg",
+      "sha256": "3e5db5b8300c8284440ecd356c042d3fd8d22343bc856d48868702c4d848a3d2",
+      "bytes": 174951,
+      "output": "3e5db5b8300c8284440e.jpg",
+      "conversion": "copy"
+    },
+    {
+      "url": "/adventure-media/city-05.mp4",
+      "path": "adventure-media/city-01/city-05.mp4",
+      "sha256": "f3a3f7dce20fcdf3b3cc7e4a5fc55c9b517ab9bd4e7b396c275d805368176957",
+      "bytes": 7018143,
+      "output": "f3a3f7dce20fcdf3b3cc.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/city-01/05.jpg",
+      "path": "game/assets/adventure/media/city-01/05.jpg",
+      "sha256": "1603a71971b33671ee7436cba24ba6cb6f97f6468a9e250769178003d757266b",
+      "bytes": 226932,
+      "output": "1603a71971b33671ee74.jpg",
+      "conversion": "copy"
+    },
+    {
+      "url": "/adventure-media/city-06.mp4",
+      "path": "adventure-media/city-01/city-06.mp4",
+      "sha256": "656871a646e6002ee71360e2cbed6b936a98724fb5602eb89e49705ec8cb5d73",
+      "bytes": 8506954,
+      "output": "656871a646e6002ee713.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/city-01/06.jpg",
+      "path": "game/assets/adventure/media/city-01/06.jpg",
+      "sha256": "8007504ca1a833df9e6fa3d9b261c6eb475f045d24344cf99e29e13c24b5c261",
+      "bytes": 209642,
+      "output": "8007504ca1a833df9e6f.jpg",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/industrial-01/01.mp4",
+      "path": "game/assets/adventure/media/industrial-01/01.mp4",
+      "sha256": "5f0b817dea49ef96779ba9b333ddffc9373babc819b99991b94672d0c44fd3a9",
+      "bytes": 5051805,
+      "output": "5f0b817dea49ef96779b.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/industrial-01/01.jpg",
+      "path": "game/assets/adventure/media/industrial-01/01.jpg",
+      "sha256": "7298f8d01a4f144b5cda10baab82acd273755db8cac3eef400eadb80a0334150",
+      "bytes": 164383,
+      "output": "7298f8d01a4f144b5cda.jpg",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/industrial-01/02.mp4",
+      "path": "game/assets/adventure/media/industrial-01/02.mp4",
+      "sha256": "48d33cfc332ce1e3d932b3dcb84f72ab2014a9561a90d45750b110714c0d67c4",
+      "bytes": 4506885,
+      "output": "48d33cfc332ce1e3d932.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/industrial-01/02.jpg",
+      "path": "game/assets/adventure/media/industrial-01/02.jpg",
+      "sha256": "d47f3641edd4f95a78683597ae305499213e2a3f2c547798c06a308d5e54ecfb",
+      "bytes": 190935,
+      "output": "d47f3641edd4f95a7868.jpg",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/industrial-01/03.mp4",
+      "path": "game/assets/adventure/media/industrial-01/03.mp4",
+      "sha256": "7395b813947f6dcd2f11bcb070b9887e51d519db1eb9f4c046983a168b9f6202",
+      "bytes": 6403430,
+      "output": "7395b813947f6dcd2f11.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/industrial-01/03.jpg",
+      "path": "game/assets/adventure/media/industrial-01/03.jpg",
+      "sha256": "f0181a4d5c264de79c0da6065e8d6a551541518c41c9bb4ec5ecaa54591c13c2",
+      "bytes": 210399,
+      "output": "f0181a4d5c264de79c0d.jpg",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/industrial-01/04.mp4",
+      "path": "game/assets/adventure/media/industrial-01/04.mp4",
+      "sha256": "9847abbfbdc13e735f19467d6970476ddc0d4862560f680e5a5aeaf392a93ab9",
+      "bytes": 6102004,
+      "output": "9847abbfbdc13e735f19.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/industrial-01/04.jpg",
+      "path": "game/assets/adventure/media/industrial-01/04.jpg",
+      "sha256": "e115be3629b40fce7fff0aa3f0135f7a568b0eda43aae3f0cf4daec7606405cf",
+      "bytes": 203527,
+      "output": "e115be3629b40fce7fff.jpg",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/industrial-01/05.mp4",
+      "path": "game/assets/adventure/media/industrial-01/05.mp4",
+      "sha256": "2002e1fc0071a97b43c4c0c5392b9bf6f88db1401caa585061edd870718288c9",
+      "bytes": 6226506,
+      "output": "2002e1fc0071a97b43c4.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/industrial-01/05.jpg",
+      "path": "game/assets/adventure/media/industrial-01/05.jpg",
+      "sha256": "57c81bd513c2341e3bfb0b11f165c1a9f7a2cf56a93365c9556a61f3c061ae7f",
+      "bytes": 201746,
+      "output": "57c81bd513c2341e3bfb.jpg",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/industrial-01/06.mp4",
+      "path": "game/assets/adventure/media/industrial-01/06.mp4",
+      "sha256": "012aa027e08cb8f01b704234d12989f37015c22839cf36ce44ad5f56ed835cc7",
+      "bytes": 6066775,
+      "output": "012aa027e08cb8f01b70.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/industrial-01/06.jpg",
+      "path": "game/assets/adventure/media/industrial-01/06.jpg",
+      "sha256": "9eb242a05a644c7530d41e994e9387edd9f7ba658aea3b43366510aa09305ef5",
+      "bytes": 213081,
+      "output": "9eb242a05a644c7530d4.jpg",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/underground-01/01.mp4",
+      "path": "game/assets/adventure/media/underground-01/01.mp4",
+      "sha256": "b9486fbafbfa1739f1aa6ddfcfae0a26fb6dc64cfcfeed4c1575f167a7bbac03",
+      "bytes": 3616699,
+      "output": "b9486fbafbfa1739f1aa.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/underground-01/01.jpg",
+      "path": "game/assets/adventure/media/underground-01/01.jpg",
+      "sha256": "daadab35dae9b06eaf7c61ddd8ccca47d523aa68d078be858d46f517e4fbe292",
+      "bytes": 128135,
+      "output": "daadab35dae9b06eaf7c.jpg",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/underground-01/02.mp4",
+      "path": "game/assets/adventure/media/underground-01/02.mp4",
+      "sha256": "1d2267c879d46f678fabb0447993b108953cc3f4b486229b1d95bbadfd08e03e",
+      "bytes": 4663597,
+      "output": "1d2267c879d46f678fab.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/underground-01/02.jpg",
+      "path": "game/assets/adventure/media/underground-01/02.jpg",
+      "sha256": "b492f9a431baf157412fb86d14602ff277c5a2371720d96e776c524593059e31",
+      "bytes": 152193,
+      "output": "b492f9a431baf157412f.jpg",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/underground-01/03.mp4",
+      "path": "game/assets/adventure/media/underground-01/03.mp4",
+      "sha256": "086911275396157e8c39f84ea591d30abf625a9cd0b2fdf06fccaec21681e590",
+      "bytes": 4625932,
+      "output": "086911275396157e8c39.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/underground-01/03.jpg",
+      "path": "game/assets/adventure/media/underground-01/03.jpg",
+      "sha256": "285cfcac450885a16d7ea514ba21b3064e1d978d03cc5e0804393547fb88e9e1",
+      "bytes": 159333,
+      "output": "285cfcac450885a16d7e.jpg",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/underground-01/04.mp4",
+      "path": "game/assets/adventure/media/underground-01/04.mp4",
+      "sha256": "96b58f4ea785536fb24885ce079b9e9e7e266032c33353b927d8861b9119ff4f",
+      "bytes": 4979854,
+      "output": "96b58f4ea785536fb248.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/underground-01/04.jpg",
+      "path": "game/assets/adventure/media/underground-01/04.jpg",
+      "sha256": "796da239b764341d3673e4e502953815f69ca538e0de197908cb0790f8701d03",
+      "bytes": 159759,
+      "output": "796da239b764341d3673.jpg",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/underground-01/05.mp4",
+      "path": "game/assets/adventure/media/underground-01/05.mp4",
+      "sha256": "589a8b753dc97ff71681eec71ae34dae5373e498cf1c7d320e2a1c018b847128",
+      "bytes": 4473488,
+      "output": "589a8b753dc97ff71681.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/underground-01/05.jpg",
+      "path": "game/assets/adventure/media/underground-01/05.jpg",
+      "sha256": "38ddd64915161cea8c994bdc0f33e522a0b80c317c46edfea1c74b54af2a9aac",
+      "bytes": 161424,
+      "output": "38ddd64915161cea8c99.jpg",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/underground-01/06.mp4",
+      "path": "game/assets/adventure/media/underground-01/06.mp4",
+      "sha256": "5a67c45e009556ae86010ab3b9983ba59736e2099b01479583d12faebc2817c6",
+      "bytes": 6383887,
+      "output": "5a67c45e009556ae8601.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/underground-01/06.jpg",
+      "path": "game/assets/adventure/media/underground-01/06.jpg",
+      "sha256": "6003e09b8ac3feb0260a8cf01b092709ecc4ecd7593cc1b2ec6e988ed8b37061",
+      "bytes": 77117,
+      "output": "6003e09b8ac3feb0260a.jpg",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/airport-01/01.mp4",
+      "path": "game/assets/adventure/media/airport-01/01.mp4",
+      "sha256": "8ce068d292c34c4afbb07adc64154d2b3f7847bd3b9214259c1a9b0dad1fb0b6",
+      "bytes": 2927091,
+      "output": "8ce068d292c34c4afbb0.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/airport-01/01.jpg",
+      "path": "game/assets/adventure/media/airport-01/01.jpg",
+      "sha256": "bc9dc3fdd8db70ba05b4368db75d9b7a4ee3e9519e67d9374fc5dfec20c36d42",
+      "bytes": 141211,
+      "output": "bc9dc3fdd8db70ba05b4.jpg",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/airport-01/02.mp4",
+      "path": "game/assets/adventure/media/airport-01/02.mp4",
+      "sha256": "1a8ba484a8273f667d5d62b8d8952db8a355009803b65d246645bb3e472d448e",
+      "bytes": 2964866,
+      "output": "1a8ba484a8273f667d5d.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/airport-01/02.jpg",
+      "path": "game/assets/adventure/media/airport-01/02.jpg",
+      "sha256": "4f2e0cc3c68b1d38de1b2dcfad89b57656e52bf6e16c6fb513bcf5ad4f93d06f",
+      "bytes": 136611,
+      "output": "4f2e0cc3c68b1d38de1b.jpg",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/airport-01/03.mp4",
+      "path": "game/assets/adventure/media/airport-01/03.mp4",
+      "sha256": "0dbbe0198e472ff5d2265090b20fb85cc267d819f70bba9445a86a1b33856f6d",
+      "bytes": 3269360,
+      "output": "0dbbe0198e472ff5d226.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/airport-01/03.jpg",
+      "path": "game/assets/adventure/media/airport-01/03.jpg",
+      "sha256": "3950bdcf1b94a934efd0a1ccfa7d6a1815318a43baccd353584b309eebac048e",
+      "bytes": 143865,
+      "output": "3950bdcf1b94a934efd0.jpg",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/airport-01/04.mp4",
+      "path": "game/assets/adventure/media/airport-01/04.mp4",
+      "sha256": "e52a967a8c7d90e4365584e1f1eaa364d7255fd699088bd808f000f09491a030",
+      "bytes": 2106016,
+      "output": "e52a967a8c7d90e43655.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/airport-01/04.jpg",
+      "path": "game/assets/adventure/media/airport-01/04.jpg",
+      "sha256": "8cfaa72310adb8969f5a102cba26bbb59e2813e32f2121b12f71f3c05cf92d46",
+      "bytes": 127414,
+      "output": "8cfaa72310adb8969f5a.jpg",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/airport-01/05.mp4",
+      "path": "game/assets/adventure/media/airport-01/05.mp4",
+      "sha256": "4af6dc94ac42b1f2c78608fcb6f92f085239d24194c58215e7798984f3f2c21e",
+      "bytes": 3027716,
+      "output": "4af6dc94ac42b1f2c786.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/airport-01/05.jpg",
+      "path": "game/assets/adventure/media/airport-01/05.jpg",
+      "sha256": "1586558b70b35b8becb48bbf66b603b29948c25145a39b38a831d415ae05ebef",
+      "bytes": 129258,
+      "output": "1586558b70b35b8becb4.jpg",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/airport-01/06.mp4",
+      "path": "game/assets/adventure/media/airport-01/06.mp4",
+      "sha256": "fa022233ba970960ba54004b1a4f72fd11ab1da63be1c741c47f29ead57c89b8",
+      "bytes": 2336368,
+      "output": "fa022233ba970960ba54.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/airport-01/06.jpg",
+      "path": "game/assets/adventure/media/airport-01/06.jpg",
+      "sha256": "150269f5505285c8c19ffb706884b4b2585919dcde833c65b48f43c5afcd0990",
+      "bytes": 118805,
+      "output": "150269f5505285c8c19f.jpg",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/forest-01/01.mp4",
+      "path": "game/assets/adventure/media/forest-01/01.mp4",
+      "sha256": "4317e68977222c33dac72dc8673514c72fb1b33be3f85e167809846c091691d6",
+      "bytes": 5214284,
+      "output": "4317e68977222c33dac7.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/forest-01/01.jpg",
+      "path": "game/assets/adventure/media/forest-01/01.jpg",
+      "sha256": "16e4d1ab5f07119a355d6b442bbf37c668f49af131af5d6af6295f9ab0b33758",
+      "bytes": 204680,
+      "output": "16e4d1ab5f07119a355d.jpg",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/forest-01/02.mp4",
+      "path": "game/assets/adventure/media/forest-01/02.mp4",
+      "sha256": "accb172d57579a1f98f4df69ab5e71eebb75ef50d73ebeb559b4d05557e16114",
+      "bytes": 6461608,
+      "output": "accb172d57579a1f98f4.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/forest-01/02.jpg",
+      "path": "game/assets/adventure/media/forest-01/02.jpg",
+      "sha256": "e96ad8aea1957d3bf0ad1d9d9f22c81e38788c7a53b5a70c006eac2d18a5e71b",
+      "bytes": 201677,
+      "output": "e96ad8aea1957d3bf0ad.jpg",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/forest-01/03.mp4",
+      "path": "game/assets/adventure/media/forest-01/03.mp4",
+      "sha256": "af4b31ed5979fb2c26c26071e70cf116b04672d152e6f7db6b11b8f17d9fc252",
+      "bytes": 6104058,
+      "output": "af4b31ed5979fb2c26c2.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/forest-01/03.jpg",
+      "path": "game/assets/adventure/media/forest-01/03.jpg",
+      "sha256": "620e68c89a239562a69049f5995a4ae9a7e1dfb5239b25a3b802a7449b067884",
+      "bytes": 226339,
+      "output": "620e68c89a239562a690.jpg",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/forest-01/04.mp4",
+      "path": "game/assets/adventure/media/forest-01/04.mp4",
+      "sha256": "d31caf545bfafa6bd38c5b0044de12bd7095ed687a7a42b601f959b875523bc1",
+      "bytes": 8844703,
+      "output": "d31caf545bfafa6bd38c.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/forest-01/04.jpg",
+      "path": "game/assets/adventure/media/forest-01/04.jpg",
+      "sha256": "1132a82a11759632c39d92ac89277a6b0af2fcf4e179ebba97406c7de5e22eca",
+      "bytes": 213862,
+      "output": "1132a82a11759632c39d.jpg",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/forest-01/05.mp4",
+      "path": "game/assets/adventure/media/forest-01/05.mp4",
+      "sha256": "a083e562049efd44ad98768819ae08f29da54862ae29e44619d95af54d5a6ba5",
+      "bytes": 7877257,
+      "output": "a083e562049efd44ad98.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/forest-01/05.jpg",
+      "path": "game/assets/adventure/media/forest-01/05.jpg",
+      "sha256": "ab42856a5e365481cfddd5216daab0260a1bb9660346b5e382df6d049355bbdc",
+      "bytes": 222133,
+      "output": "ab42856a5e365481cfdd.jpg",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/forest-01/06.mp4",
+      "path": "game/assets/adventure/media/forest-01/06.mp4",
+      "sha256": "196e0df676548553a831a11e00eb49917058471ed9f4ac16e4c675111dcf8e00",
+      "bytes": 6773168,
+      "output": "196e0df676548553a831.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/adventure/media/forest-01/06.jpg",
+      "path": "game/assets/adventure/media/forest-01/06.jpg",
+      "sha256": "76350acc34f65f96cb7c6cc420cca2b39d0d0299fb478d0267081ad1dbb315b7",
+      "bytes": 217422,
+      "output": "76350acc34f65f96cb7c.jpg",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/audio/surface-water.wav",
+      "path": "game/assets/audio/surface-water.wav",
+      "sha256": "986d75d3ea2941deae06251dfb398f65c27a89da841e071da3b491b025e71983",
+      "bytes": 26444,
+      "output": "986d75d3ea2941deae06.wav",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/audio/surface-mat.wav",
+      "path": "game/assets/audio/surface-mat.wav",
+      "sha256": "aacce628d483bec167de2941e30db1d0d4e8b318d2323be4a6f45909498c39a2",
+      "bytes": 26444,
+      "output": "aacce628d483bec167de.wav",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/audio/surface-snow.wav",
+      "path": "game/assets/audio/surface-snow.wav",
+      "sha256": "ff5363d52a3e00603d5b292e00aaf51fdbd5e99023042ab124997b67195af25c",
+      "bytes": 26444,
+      "output": "ff5363d52a3e00603d5b.wav",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/audio/surface-concrete.wav",
+      "path": "game/assets/audio/surface-concrete.wav",
+      "sha256": "0f9c6eb275da84f2f2de0aac04899935566e27fa09c0dfbe90557851f178840f",
+      "bytes": 26444,
+      "output": "0f9c6eb275da84f2f2de.wav",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/audio/surface-nature.wav",
+      "path": "game/assets/audio/surface-nature.wav",
+      "sha256": "7454c55851fc91e35268c3016459dadf0e8e562d7154fd58ffa4f398bb21a3b1",
+      "bytes": 26444,
+      "output": "7454c55851fc91e35268.wav",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/audio/surface-metal.wav",
+      "path": "game/assets/audio/surface-metal.wav",
+      "sha256": "1c40cde9a50086c0ce2c939801015cf7af930f6a4f3e31274c761f459767c605",
+      "bytes": 26444,
+      "output": "1c40cde9a50086c0ce2c.wav",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/audio/surface-fantasy.wav",
+      "path": "game/assets/audio/surface-fantasy.wav",
+      "sha256": "bb9938f0c6d276dcc1efeaf5cdac00bf8943dccec9608a5f76af0945844a7a79",
+      "bytes": 26444,
+      "output": "bb9938f0c6d276dcc1ef.wav",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/audio/brax-glass-crack.mp3",
+      "path": "game/assets/audio/brax-glass-crack.mp3",
+      "sha256": "b624650215a4edaa36cc76b661c718851d9d822d9dfee88ab667692a5d0e7206",
+      "bytes": 6000,
+      "output": "b624650215a4edaa36cc.mp3",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/audio/gong.mp3",
+      "path": "game/assets/audio/gong.mp3",
+      "sha256": "9002a4f954331140f2e91060d442c99a4ed53cf878710ebf58f00cab3e859176",
+      "bytes": 49581,
+      "output": "9002a4f954331140f2e9.mp3",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/audio/fight.mp3",
+      "path": "game/assets/audio/fight.mp3",
+      "sha256": "35b8a34bc3ea24409af64847e8143deab79b8d5e1dfe2e8af66f62a5aeed2118",
+      "bytes": 14254,
+      "output": "35b8a34bc3ea24409af6.mp3",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/audio/3.mp3",
+      "path": "game/assets/audio/3.mp3",
+      "sha256": "acba09a56704aceb28c562d3e71d57a16d024234748052877e595a6ce73bc08d",
+      "bytes": 15508,
+      "output": "acba09a56704aceb28c5.mp3",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/audio/2.mp3",
+      "path": "game/assets/audio/2.mp3",
+      "sha256": "e0a972dc691b17ecbd69d581f469baf83ff47894e8971f450507c3d09b993464",
+      "bytes": 14254,
+      "output": "e0a972dc691b17ecbd69.mp3",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/audio/1.mp3",
+      "path": "game/assets/audio/1.mp3",
+      "sha256": "4b68f7b2b970e2ded09da63dc8c52f50041bea03ee2355526ec805c3bc57c3e3",
+      "bytes": 15090,
+      "output": "4b68f7b2b970e2ded09d.mp3",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/audio/swish.mp3",
+      "path": "game/assets/audio/swish.mp3",
+      "sha256": "5c1dfb95cfcabdd43977dd4d5a696c14e002fae67f94e1d580741078faf2d7b9",
+      "bytes": 11047,
+      "output": "5c1dfb95cfcabdd43977.mp3",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/audio/kick-swish.mp3",
+      "path": "game/assets/audio/kick-swish.mp3",
+      "sha256": "09904bb8a461fd95bdc558e44f49adec138c9d486a72377f775b888f572618bb",
+      "bytes": 11464,
+      "output": "09904bb8a461fd95bdc5.mp3",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/audio/impact.mp3",
+      "path": "game/assets/audio/impact.mp3",
+      "sha256": "b388052d954a7553f5315aa399d5e502a6c317c1b43146358f120e57803f7a24",
+      "bytes": 7601,
+      "output": "b388052d954a7553f531.mp3",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/audio/heavy.mp3",
+      "path": "game/assets/audio/heavy.mp3",
+      "sha256": "9d3757bfe79f9f0d7a12d41cb901344decfec8ec828e4ca6a3185cc2d1501ae0",
+      "bytes": 7184,
+      "output": "9d3757bfe79f9f0d7a12.mp3",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/audio/step.mp3",
+      "path": "game/assets/audio/step.mp3",
+      "sha256": "b29c1f8e272c210c31875deb9de8cc56a8521f0263bf33c05cd2963829995015",
+      "bytes": 2969,
+      "output": "b29c1f8e272c210c3187.mp3",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/audio/land.mp3",
+      "path": "game/assets/audio/land.mp3",
+      "sha256": "4465580fc57da01cb83ccc2f72e4b4d9571e5dc0a42067491b897e6cf4640592",
+      "bytes": 6348,
+      "output": "4465580fc57da01cb83c.mp3",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/audio/night-market-thunder.mp3",
+      "path": "game/assets/audio/night-market-thunder.mp3",
+      "sha256": "ae8ad6649d13255d3300eb062d19fa63defd2fcb2cd98726b15e69ca3f225751",
+      "bytes": 72769,
+      "output": "ae8ad6649d13255d3300.mp3",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/audio/title.mp3",
+      "path": "game/assets/audio/title.mp3",
+      "sha256": "9d0244bcd7490dfd903c4613374b09e627d5f847d9c3741f58379d921aaff6ee",
+      "bytes": 2461302,
+      "output": "9d0244bcd7490dfd903c.mp3",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/audio/crowd.mp3",
+      "path": "game/assets/audio/crowd.mp3",
+      "sha256": "c2f7fff0fa303c71ce19afea627bc41e936b076cf9b7bd064e36fc8ea37fd18c",
+      "bytes": 316649,
+      "output": "c2f7fff0fa303c71ce19.mp3",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/audio/roster-select.mp3",
+      "path": "game/assets/audio/roster-select.mp3",
+      "sha256": "0ea61ab00ba4d7f3878a2395be4e69b7718d6894102f60a9f7ae84fef2a9bc98",
+      "bytes": 5059,
+      "output": "0ea61ab00ba4d7f3878a.mp3",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/audio/roster-confirm.mp3",
+      "path": "game/assets/audio/roster-confirm.mp3",
+      "sha256": "a0d85ce990e0c11959f32e7cc65c63ec9deedf369a022de85ccda6fc6cae24d5",
+      "bytes": 11955,
+      "output": "a0d85ce990e0c11959f3.mp3",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/audio/roster-premium.mp3",
+      "path": "game/assets/audio/roster-premium.mp3",
+      "sha256": "4ddff144d9058d3249c87040a5822e44c6bf73b4f643e7b1f7f177252b169564",
+      "bytes": 481533,
+      "output": "4ddff144d9058d3249c8.mp3",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/audio/vocal-male-hurt-1.mp3",
+      "path": "game/assets/audio/vocal-male-hurt-1.mp3",
+      "sha256": "ea9c0dafebb23490ab2264f53c79c8f06c0db71913f6f48bd396335bb5db77b8",
+      "bytes": 5502,
+      "output": "ea9c0dafebb23490ab22.mp3",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/audio/vocal-male-hurt-2.mp3",
+      "path": "game/assets/audio/vocal-male-hurt-2.mp3",
+      "sha256": "412846ffd065e9f6701ced2a567e749106a13fb9c57f847a8464fdf812e62596",
+      "bytes": 7382,
+      "output": "412846ffd065e9f6701c.mp3",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/audio/vocal-male-hurt-3.mp3",
+      "path": "game/assets/audio/vocal-male-hurt-3.mp3",
+      "sha256": "c9c2423f7029555d2cb251061b80faea2b655f3141d8ef2fd36425eafa778f4d",
+      "bytes": 6442,
+      "output": "c9c2423f7029555d2cb2.mp3",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/audio/vocal-female-hurt-1.mp3",
+      "path": "game/assets/audio/vocal-female-hurt-1.mp3",
+      "sha256": "b41a0d890b0bdcdde52893db450c633de4161b32530e6de822fbf89101c13d8d",
+      "bytes": 9762,
+      "output": "b41a0d890b0bdcdde528.mp3",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/audio/vocal-female-hurt-2.mp3",
+      "path": "game/assets/audio/vocal-female-hurt-2.mp3",
+      "sha256": "9a90a21482a60c4050295a98f66cf286c9781b33888f8219357a4e56d8c8b4e8",
+      "bytes": 8822,
+      "output": "9a90a21482a60c405029.mp3",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/audio/vocal-female-hurt-3.mp3",
+      "path": "game/assets/audio/vocal-female-hurt-3.mp3",
+      "sha256": "61e98289d93a0dce118ec99ed8ead2d71e4290f176cb930a5069f7849ee51f0e",
+      "bytes": 6314,
+      "output": "61e98289d93a0dce118e.mp3",
+      "conversion": "copy"
+    }
+  ]
+}

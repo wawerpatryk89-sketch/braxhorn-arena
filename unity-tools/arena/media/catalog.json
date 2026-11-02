@@ -1,0 +1,1414 @@
+{
+  "schema": 1,
+  "sourceSiteVersion": 271,
+  "arenas": [
+    {
+      "id": "rooftop-city",
+      "name": "DACH · METROPOLIA",
+      "poster": "4802115bb3963c564fe8.png",
+      "video": "0fa1a9a4c4453cb1dcd7.mp4",
+      "audio": null,
+      "ground": 0.81,
+      "aspect": 2.22265625,
+      "fit": "cover",
+      "brightness": 1,
+      "contrast": 1,
+      "surfaceType": "Concrete",
+      "surface": {
+        "surfaceType": "Concrete",
+        "surfaceArena": "rooftop-city",
+        "surfaceContact": "ground",
+        "hitVFX": {
+          "preset": "splash",
+          "color": "#b2cbd8",
+          "count": 24,
+          "radius": 155,
+          "duration": 0.7,
+          "lifetime": 2,
+          "sizeScale": 1.65,
+          "opacity": 1,
+          "ground": true,
+          "scrape": false,
+          "lavaSeep": false,
+          "ring": true
+        },
+        "hitSFX": {
+          "clip": "surface-water",
+          "volume": 0.85,
+          "pitch": 0.88
+        },
+        "screenShake": {
+          "strength": 7,
+          "duration": 0.2
+        }
+      },
+      "customEffects": false
+    },
+    {
+      "id": "jungle",
+      "name": "DŻUNGLA",
+      "poster": "0156566e8eaee4eb4f09.png",
+      "video": "5da36c4fba53a7531469.mp4",
+      "audio": null,
+      "ground": 0.81,
+      "aspect": 2.22265625,
+      "fit": "cover",
+      "brightness": 1.08,
+      "contrast": 0.98,
+      "surfaceType": "Nature",
+      "surface": {
+        "surfaceType": "Nature",
+        "surfaceArena": "jungle",
+        "surfaceContact": "ground",
+        "hitVFX": {
+          "preset": "earth",
+          "color": "#718453",
+          "count": 24,
+          "radius": 155,
+          "duration": 0.8049999999999999,
+          "lifetime": 2,
+          "sizeScale": 1.65,
+          "opacity": 1,
+          "ground": true,
+          "scrape": false,
+          "lavaSeep": false,
+          "ring": false
+        },
+        "hitSFX": {
+          "clip": "surface-nature",
+          "volume": 0.85,
+          "pitch": 0.88
+        },
+        "screenShake": {
+          "strength": 7,
+          "duration": 0.2
+        }
+      },
+      "customEffects": false
+    },
+    {
+      "id": "volcano",
+      "name": "KUŹNIA WULKANU",
+      "poster": "7952b9bfad871f80e666.png",
+      "video": "216629861b12ac89a7b0.mp4",
+      "audio": null,
+      "ground": 0.81,
+      "aspect": 2.22265625,
+      "fit": "cover",
+      "brightness": 1.15,
+      "contrast": 0.94,
+      "surfaceType": "Fantasy",
+      "surface": {
+        "surfaceType": "Fantasy",
+        "surfaceArena": "volcano",
+        "surfaceContact": "ground",
+        "hitVFX": {
+          "preset": "lava",
+          "color": "#f29252",
+          "count": 24,
+          "radius": 178.25,
+          "duration": 1.05,
+          "lifetime": 2,
+          "sizeScale": 1.65,
+          "opacity": 1,
+          "ground": true,
+          "scrape": false,
+          "lavaSeep": true,
+          "ring": false
+        },
+        "hitSFX": {
+          "clip": "surface-concrete",
+          "volume": 0.85,
+          "pitch": 0.88
+        },
+        "screenShake": {
+          "strength": 7,
+          "duration": 0.2
+        }
+      },
+      "customEffects": false
+    },
+    {
+      "id": "temple",
+      "name": "ŚWIĄTYNIA SAKURY",
+      "poster": "6c4543fc940a6e3b8c7e.png",
+      "video": "cad5d0b8236985fd5f5f.mp4",
+      "audio": null,
+      "ground": 0.81,
+      "aspect": 2.22265625,
+      "fit": "cover",
+      "brightness": 1,
+      "contrast": 1,
+      "surfaceType": "Nature",
+      "surface": {
+        "surfaceType": "Nature",
+        "surfaceArena": "temple",
+        "surfaceContact": "ground",
+        "hitVFX": {
+          "preset": "debris",
+          "color": "#d2c7b8",
+          "count": 24,
+          "radius": 139.5,
+          "duration": 0.7,
+          "lifetime": 2,
+          "special": "petals",
+          "sizeScale": 1.65,
+          "opacity": 1,
+          "ground": true,
+          "scrape": false,
+          "lavaSeep": false,
+          "ring": false
+        },
+        "hitSFX": {
+          "clip": "surface-concrete",
+          "volume": 0.85,
+          "pitch": 0.88
+        },
+        "screenShake": {
+          "strength": 7,
+          "duration": 0.2
+        }
+      },
+      "customEffects": false
+    },
+    {
+      "id": "himalaya",
+      "name": "HIMALAJE",
+      "poster": "9ea8b70d0ef178159b09.png",
+      "video": "90b8580a32ae337e5ce9.mp4",
+      "audio": null,
+      "ground": 0.81,
+      "aspect": 2,
+      "fit": "cover",
+      "brightness": 1,
+      "contrast": 1,
+      "surfaceType": "Snow",
+      "surface": {
+        "surfaceType": "Snow",
+        "surfaceArena": "himalaya",
+        "surfaceContact": "ground",
+        "hitVFX": {
+          "preset": "snow",
+          "color": "#e4f4ff",
+          "count": 24,
+          "radius": 209.25,
+          "duration": 1.035,
+          "lifetime": 2,
+          "sizeScale": 1.65,
+          "opacity": 1,
+          "ground": true,
+          "scrape": false,
+          "lavaSeep": false,
+          "ring": false
+        },
+        "hitSFX": {
+          "clip": "surface-snow",
+          "volume": 0.85,
+          "pitch": 0.88
+        },
+        "screenShake": {
+          "strength": 7,
+          "duration": 0.2
+        }
+      },
+      "customEffects": false
+    },
+    {
+      "id": "beach",
+      "name": "PLAŻA",
+      "poster": "b09189ac20a30a5afabd.png",
+      "video": "8e9ab7847d092dfe6063.mp4",
+      "audio": null,
+      "ground": 0.81,
+      "aspect": 2.22265625,
+      "fit": "cover",
+      "brightness": 1,
+      "contrast": 1,
+      "surfaceType": "Nature",
+      "surface": {
+        "surfaceType": "Nature",
+        "surfaceArena": "beach",
+        "surfaceContact": "ground",
+        "hitVFX": {
+          "preset": "earth",
+          "color": "#e7c38c",
+          "count": 24,
+          "radius": 193.75,
+          "duration": 0.8624999999999999,
+          "lifetime": 2,
+          "sizeScale": 1.65,
+          "opacity": 1,
+          "ground": true,
+          "scrape": false,
+          "lavaSeep": false,
+          "ring": false
+        },
+        "hitSFX": {
+          "clip": "surface-nature",
+          "volume": 0.85,
+          "pitch": 0.88
+        },
+        "screenShake": {
+          "strength": 7,
+          "duration": 0.2
+        }
+      },
+      "customEffects": false
+    },
+    {
+      "id": "carrier",
+      "name": "ARENA LOTNISKOWIEC",
+      "poster": "7c28d350c8d67b502215.png",
+      "video": "d55dcea4680399e87983.mp4",
+      "audio": null,
+      "ground": 0.81,
+      "aspect": 1.75390625,
+      "fit": "cover",
+      "brightness": 1,
+      "contrast": 1,
+      "surfaceType": "Metal",
+      "surface": {
+        "surfaceType": "Metal",
+        "surfaceArena": "carrier",
+        "surfaceContact": "ground",
+        "hitVFX": {
+          "preset": "splash",
+          "color": "#c4e4ef",
+          "count": 24,
+          "radius": 193.75,
+          "duration": 0.7474999999999999,
+          "lifetime": 2,
+          "sizeScale": 1.65,
+          "opacity": 1,
+          "ground": true,
+          "scrape": false,
+          "lavaSeep": false,
+          "ring": true
+        },
+        "hitSFX": {
+          "clip": "surface-water",
+          "volume": 0.85,
+          "pitch": 0.88
+        },
+        "screenShake": {
+          "strength": 7,
+          "duration": 0.2
+        }
+      },
+      "customEffects": false
+    },
+    {
+      "id": "reactor",
+      "name": "ARENA REAKTOR",
+      "poster": "31b47cc38bf0e6c53d7f.png",
+      "video": "6956a48b6ccc512bcdd6.mp4",
+      "audio": null,
+      "ground": 0.81,
+      "aspect": 1.75390625,
+      "fit": "cover",
+      "brightness": 1,
+      "contrast": 1,
+      "surfaceType": "Metal",
+      "surface": {
+        "surfaceType": "Metal",
+        "surfaceArena": "reactor",
+        "surfaceContact": "ground",
+        "hitVFX": {
+          "preset": "metal",
+          "color": "#dcecf6",
+          "count": 24,
+          "radius": 178.25,
+          "duration": 0.7,
+          "lifetime": 2,
+          "special": "pulse",
+          "sizeScale": 1.65,
+          "opacity": 1,
+          "ground": true,
+          "scrape": false,
+          "lavaSeep": false,
+          "ring": false
+        },
+        "hitSFX": {
+          "clip": "surface-metal",
+          "volume": 0.85,
+          "pitch": 0.88
+        },
+        "screenShake": {
+          "strength": 7,
+          "duration": 0.2
+        }
+      },
+      "customEffects": false
+    },
+    {
+      "id": "savanna",
+      "name": "ARENA SAWANNA",
+      "poster": "8826aeb23b7ae4b70b3c.png",
+      "video": "ebd8aad330ffc4d82b4a.mp4",
+      "audio": null,
+      "ground": 0.81,
+      "aspect": 1.75390625,
+      "fit": "cover",
+      "brightness": 1,
+      "contrast": 1,
+      "surfaceType": "Nature",
+      "surface": {
+        "surfaceType": "Nature",
+        "surfaceArena": "savanna",
+        "surfaceContact": "ground",
+        "hitVFX": {
+          "preset": "earth",
+          "color": "#c89455",
+          "count": 24,
+          "radius": 186,
+          "duration": 0.828,
+          "lifetime": 2,
+          "sizeScale": 1.65,
+          "opacity": 1,
+          "ground": true,
+          "scrape": false,
+          "lavaSeep": false,
+          "ring": false
+        },
+        "hitSFX": {
+          "clip": "surface-nature",
+          "volume": 0.85,
+          "pitch": 0.88
+        },
+        "screenShake": {
+          "strength": 7,
+          "duration": 0.2
+        }
+      },
+      "customEffects": false
+    },
+    {
+      "id": "brooklyn",
+      "name": "ARENA BROOKLYN",
+      "poster": "6c49e0d5c9bd94e091ab.png",
+      "video": "6d9545bcc543a507576f.mp4",
+      "audio": null,
+      "ground": 0.81,
+      "aspect": 1.75390625,
+      "fit": "cover",
+      "brightness": 1.06,
+      "contrast": 0.98,
+      "surfaceType": "Concrete",
+      "surface": {
+        "surfaceType": "Concrete",
+        "surfaceArena": "brooklyn",
+        "surfaceContact": "ground",
+        "hitVFX": {
+          "preset": "splash",
+          "color": "#becbd1",
+          "count": 24,
+          "radius": 155,
+          "duration": 0.7,
+          "lifetime": 2,
+          "sizeScale": 1.65,
+          "opacity": 1,
+          "ground": true,
+          "scrape": false,
+          "lavaSeep": false,
+          "ring": true
+        },
+        "hitSFX": {
+          "clip": "surface-water",
+          "volume": 0.85,
+          "pitch": 0.88
+        },
+        "screenShake": {
+          "strength": 7,
+          "duration": 0.2
+        }
+      },
+      "customEffects": false
+    },
+    {
+      "id": "dragon",
+      "name": "ARENA SMOCZA TWIERDZA",
+      "poster": "e44e5766617dfc27bb46.png",
+      "video": "f666fd6d5e72d10993d0.mp4",
+      "audio": null,
+      "ground": 0.81,
+      "aspect": 1.75390625,
+      "fit": "contain",
+      "brightness": 1,
+      "contrast": 1,
+      "surfaceType": "Fantasy",
+      "surface": {
+        "surfaceType": "Fantasy",
+        "surfaceArena": "dragon",
+        "surfaceContact": "ground",
+        "hitVFX": {
+          "preset": "splash",
+          "color": "#b6c9c5",
+          "count": 24,
+          "radius": 170.5,
+          "duration": 0.7,
+          "lifetime": 2,
+          "sizeScale": 1.65,
+          "opacity": 1,
+          "ground": true,
+          "scrape": false,
+          "lavaSeep": false,
+          "ring": true
+        },
+        "hitSFX": {
+          "clip": "surface-water",
+          "volume": 0.85,
+          "pitch": 0.88
+        },
+        "screenShake": {
+          "strength": 7,
+          "duration": 0.2
+        }
+      },
+      "customEffects": false
+    },
+    {
+      "id": "aquarium",
+      "name": "ARENA AKWARIUM",
+      "poster": "f106d12bf28260943f2e.png",
+      "video": "2c8649a07a442ec7d413.mp4",
+      "audio": null,
+      "ground": 0.81,
+      "aspect": 2.22265625,
+      "fit": "cover",
+      "brightness": 1,
+      "contrast": 1,
+      "surfaceType": "Fantasy",
+      "surface": {
+        "surfaceType": "Fantasy",
+        "surfaceArena": "aquarium",
+        "surfaceContact": "ground",
+        "hitVFX": {
+          "preset": "splash",
+          "color": "#b4edf7",
+          "count": 24,
+          "radius": 170.5,
+          "duration": 0.7474999999999999,
+          "lifetime": 2,
+          "sizeScale": 1.65,
+          "opacity": 1,
+          "ground": true,
+          "scrape": false,
+          "lavaSeep": false,
+          "ring": true
+        },
+        "hitSFX": {
+          "clip": "surface-water",
+          "volume": 0.85,
+          "pitch": 0.88
+        },
+        "screenShake": {
+          "strength": 7,
+          "duration": 0.2
+        }
+      },
+      "customEffects": false
+    },
+    {
+      "id": "snow",
+      "name": "ŚNIEŻNY DACH",
+      "poster": "b4db94dbfd610028b52f.jpeg",
+      "video": "1dbb2e6d48ae638df8cd.mp4",
+      "audio": null,
+      "ground": 0.81,
+      "aspect": 2.1666666666666665,
+      "fit": "cover",
+      "brightness": 1,
+      "contrast": 1,
+      "surfaceType": "Snow",
+      "surface": {
+        "surfaceType": "Snow",
+        "surfaceArena": "snow",
+        "surfaceContact": "ground",
+        "hitVFX": {
+          "preset": "snow",
+          "color": "#f0f8ff",
+          "count": 24,
+          "radius": 193.75,
+          "duration": 0.9774999999999999,
+          "lifetime": 2,
+          "snowRoof": true,
+          "sizeScale": 1.65,
+          "opacity": 1,
+          "ground": true,
+          "scrape": false,
+          "lavaSeep": false,
+          "ring": false
+        },
+        "hitSFX": {
+          "clip": "surface-snow",
+          "volume": 0.85,
+          "pitch": 0.88
+        },
+        "screenShake": {
+          "strength": 7,
+          "duration": 0.2
+        }
+      },
+      "customEffects": false
+    },
+    {
+      "id": "underground",
+      "name": "UNDERGROUND",
+      "poster": "3ea645d905d784b91b27.jpeg",
+      "video": "971834e4cd67919de6a1.mp4",
+      "audio": null,
+      "ground": 0.81,
+      "aspect": 2.1666666666666665,
+      "fit": "cover",
+      "brightness": 1.2,
+      "contrast": 0.96,
+      "surfaceType": "Concrete",
+      "surface": {
+        "surfaceType": "Concrete",
+        "surfaceArena": "underground",
+        "surfaceContact": "ground",
+        "hitVFX": {
+          "preset": "splash",
+          "color": "#b4c8d2",
+          "count": 24,
+          "radius": 147.25,
+          "duration": 0.7,
+          "lifetime": 2,
+          "sizeScale": 1.65,
+          "opacity": 1,
+          "ground": true,
+          "scrape": false,
+          "lavaSeep": false,
+          "ring": true
+        },
+        "hitSFX": {
+          "clip": "surface-water",
+          "volume": 0.85,
+          "pitch": 0.88
+        },
+        "screenShake": {
+          "strength": 7,
+          "duration": 0.2
+        }
+      },
+      "customEffects": false
+    },
+    {
+      "id": "metro",
+      "name": "ARENA METRO",
+      "poster": "ab100a72e1ad2fd31394.png",
+      "video": "6a3505124e2629113f14.mp4",
+      "audio": null,
+      "ground": 0.81,
+      "aspect": 1.7777777777777777,
+      "fit": "cover",
+      "brightness": 1.04,
+      "contrast": 1,
+      "surfaceType": "Concrete",
+      "surface": {
+        "surfaceType": "Concrete",
+        "surfaceArena": "metro",
+        "surfaceContact": "ground",
+        "hitVFX": {
+          "preset": "splash",
+          "color": "#bac4cb",
+          "count": 24,
+          "radius": 147.25,
+          "duration": 0.7,
+          "lifetime": 2,
+          "sizeScale": 1.65,
+          "opacity": 1,
+          "ground": true,
+          "scrape": false,
+          "lavaSeep": false,
+          "ring": true
+        },
+        "hitSFX": {
+          "clip": "surface-water",
+          "volume": 0.85,
+          "pitch": 0.88
+        },
+        "screenShake": {
+          "strength": 7,
+          "duration": 0.2
+        }
+      },
+      "customEffects": false
+    },
+    {
+      "id": "harbor",
+      "name": "ARENA PORT",
+      "poster": null,
+      "video": "d2da7fb260028abcaa8e.mp4",
+      "audio": "27e013706a8fa33b19cf.mp3",
+      "ground": 0.81,
+      "aspect": 1.7777777777777777,
+      "fit": "cover",
+      "brightness": 1.04,
+      "contrast": 1,
+      "surfaceType": "Metal",
+      "surface": {
+        "surfaceType": "Metal",
+        "surfaceArena": "harbor",
+        "surfaceContact": "ground",
+        "hitVFX": {
+          "preset": "splash",
+          "color": "#a8d8eb",
+          "count": 24,
+          "radius": 186,
+          "duration": 0.7474999999999999,
+          "lifetime": 2,
+          "sizeScale": 1.65,
+          "opacity": 1,
+          "ground": true,
+          "scrape": false,
+          "lavaSeep": false,
+          "ring": true
+        },
+        "hitSFX": {
+          "clip": "surface-water",
+          "volume": 0.85,
+          "pitch": 0.88
+        },
+        "screenShake": {
+          "strength": 7,
+          "duration": 0.2
+        }
+      },
+      "customEffects": false
+    },
+    {
+      "id": "nocny-targ",
+      "name": "NOCNY TARG",
+      "poster": "0644f3a5dbe7442841c1.jpg",
+      "video": null,
+      "audio": "289063ea7ff3aa6bcb02.mp3",
+      "ground": 0.8289054197662061,
+      "aspect": 1.7768331562167907,
+      "fit": "cover",
+      "brightness": 1.06,
+      "contrast": 0.98,
+      "surfaceType": "Concrete",
+      "surface": {
+        "surfaceType": "Concrete",
+        "surfaceArena": "nocny-targ",
+        "surfaceContact": "ground",
+        "hitVFX": {
+          "preset": "splash",
+          "color": "#bce7f3",
+          "count": 24,
+          "radius": 170.5,
+          "duration": 0.7,
+          "lifetime": 2,
+          "sizeScale": 1.65,
+          "opacity": 1,
+          "ground": true,
+          "scrape": false,
+          "lavaSeep": false,
+          "ring": true
+        },
+        "hitSFX": {
+          "clip": "surface-water",
+          "volume": 0.85,
+          "pitch": 0.88
+        },
+        "screenShake": {
+          "strength": 7,
+          "duration": 0.2
+        }
+      },
+      "customEffects": true
+    },
+    {
+      "id": "foundry",
+      "name": "HUTA",
+      "poster": "75fd2c95934ebae5a4c3.png",
+      "video": "db831634b3ad70ebb468.mp4",
+      "audio": null,
+      "ground": 0.81,
+      "aspect": 1.77734375,
+      "fit": "cover",
+      "brightness": 1.18,
+      "contrast": 0.94,
+      "surfaceType": "Metal",
+      "surface": {
+        "surfaceType": "Metal",
+        "surfaceArena": "foundry",
+        "surfaceContact": "ground",
+        "hitVFX": {
+          "preset": "splash",
+          "color": "#ddbd9e",
+          "count": 24,
+          "radius": 201.5,
+          "duration": 0.7,
+          "lifetime": 2,
+          "special": "steam",
+          "sizeScale": 1.65,
+          "opacity": 1,
+          "ground": true,
+          "scrape": false,
+          "lavaSeep": false,
+          "ring": true
+        },
+        "hitSFX": {
+          "clip": "surface-water",
+          "volume": 0.85,
+          "pitch": 0.88
+        },
+        "screenShake": {
+          "strength": 7,
+          "duration": 0.2
+        }
+      },
+      "customEffects": false
+    },
+    {
+      "id": "storm-complex",
+      "name": "KOMPLEKS BURZOWY",
+      "poster": "8d4e5353663a366809e4.png",
+      "video": "612b614f0e250d22a3f2.mp4",
+      "audio": null,
+      "ground": 0.81,
+      "aspect": 1.77734375,
+      "fit": "cover",
+      "brightness": 1.12,
+      "contrast": 0.96,
+      "surfaceType": "Fantasy",
+      "surface": {
+        "surfaceType": "Fantasy",
+        "surfaceArena": "storm-complex",
+        "surfaceContact": "ground",
+        "hitVFX": {
+          "preset": "splash",
+          "color": "#b8dbe9",
+          "count": 24,
+          "radius": 193.75,
+          "duration": 0.7474999999999999,
+          "lifetime": 2,
+          "sizeScale": 1.65,
+          "opacity": 1,
+          "ground": true,
+          "scrape": false,
+          "lavaSeep": false,
+          "ring": true
+        },
+        "hitSFX": {
+          "clip": "surface-water",
+          "volume": 0.85,
+          "pitch": 0.88
+        },
+        "screenShake": {
+          "strength": 7,
+          "duration": 0.2
+        }
+      },
+      "customEffects": false
+    },
+    {
+      "id": "octagon",
+      "name": "OKTAGON MMA",
+      "poster": "124f05a4d81eb1f73bad.png",
+      "video": "db76fbd2805f92bc3fb8.mp4",
+      "audio": null,
+      "ground": 0.81,
+      "aspect": 1.75390625,
+      "fit": "cover",
+      "brightness": 1,
+      "contrast": 1,
+      "surfaceType": "Fantasy",
+      "surface": {
+        "surfaceType": "Fantasy",
+        "surfaceArena": "octagon",
+        "surfaceContact": "ground",
+        "hitVFX": {
+          "preset": "ground",
+          "color": "#d8d8d8",
+          "count": 24,
+          "radius": 100.75,
+          "duration": 0.7,
+          "lifetime": 2,
+          "sizeScale": 1.65,
+          "opacity": 1,
+          "ground": true,
+          "scrape": false,
+          "lavaSeep": false,
+          "ring": false
+        },
+        "hitSFX": {
+          "clip": "surface-mat",
+          "volume": 0.85,
+          "pitch": 0.88
+        },
+        "screenShake": {
+          "strength": 7,
+          "duration": 0.2
+        }
+      },
+      "customEffects": false
+    },
+    {
+      "id": "winter-station",
+      "name": "ZIMOWA STACJA",
+      "poster": "fae67648d4764cfe6266.png",
+      "video": "7401eee3844b41204e57.mp4",
+      "audio": null,
+      "ground": 0.81,
+      "aspect": 1.75390625,
+      "fit": "cover",
+      "brightness": 1,
+      "contrast": 1,
+      "surfaceType": "Snow",
+      "surface": {
+        "surfaceType": "Snow",
+        "surfaceArena": "winter-station",
+        "surfaceContact": "ground",
+        "hitVFX": {
+          "preset": "snow",
+          "color": "#d9ebf6",
+          "count": 24,
+          "radius": 178.25,
+          "duration": 0.9199999999999999,
+          "lifetime": 2,
+          "sizeScale": 1.65,
+          "opacity": 1,
+          "ground": true,
+          "scrape": false,
+          "lavaSeep": false,
+          "ring": false
+        },
+        "hitSFX": {
+          "clip": "surface-snow",
+          "volume": 0.85,
+          "pitch": 0.88
+        },
+        "screenShake": {
+          "strength": 7,
+          "duration": 0.2
+        }
+      },
+      "customEffects": false
+    }
+  ],
+  "routes": [
+    {
+      "id": "city-01",
+      "title": "Pierwsza Arena",
+      "ready": true,
+      "description": "Nocne miasto. Sześć starć. Finał na arenie.",
+      "entry": {
+        "xFrom": 15,
+        "xTo": 24,
+        "groundFrom": 0.59,
+        "depthFrom": 0.53,
+        "yawFrom": 0.26,
+        "description": "wychodzi z garażu",
+        "mask": {
+          "x": 0.038,
+          "y": 0.278,
+          "w": 0.231,
+          "h": 0.322
+        }
+      },
+      "heal": {
+        "x": 411,
+        "index": 4,
+        "label": "Fontanna"
+      },
+      "chapters": [
+        {
+          "id": 0,
+          "name": "Garaż",
+          "video": "309ae9843eb0f6aaa7af.mp4",
+          "poster": "751e8a5bcf2026e7b5f1.jpg",
+          "trigger": 44,
+          "aspect": 1.75390625,
+          "gain": 31.62
+        },
+        {
+          "id": 1,
+          "name": "Klub",
+          "video": "09f3fd9d45f2ed6dd3a6.mp4",
+          "poster": "54f44aef7886e1dae3cb.jpg",
+          "trigger": 144,
+          "aspect": 1.75390625,
+          "gain": 7.59
+        },
+        {
+          "id": 2,
+          "name": "Restauracja",
+          "video": "c5256743845542bbb537.mp4",
+          "poster": "4e25fc5b30f661e6d31e.jpg",
+          "trigger": 244,
+          "aspect": 1.75390625,
+          "gain": 22.65
+        },
+        {
+          "id": 3,
+          "name": "Pod wiaduktem",
+          "video": "8311822178f0c0935cb0.mp4",
+          "poster": "3e5db5b8300c8284440e.jpg",
+          "trigger": 344,
+          "aspect": 1.75390625,
+          "gain": 3.55
+        },
+        {
+          "id": 4,
+          "name": "Fontanny",
+          "video": "f3a3f7dce20fcdf3b3cc.mp4",
+          "poster": "1603a71971b33671ee74.jpg",
+          "trigger": 444,
+          "aspect": 1.75390625,
+          "gain": 4.84
+        },
+        {
+          "id": 5,
+          "name": "Braxhorn Arena",
+          "video": "656871a646e6002ee713.mp4",
+          "poster": "8007504ca1a833df9e6f.jpg",
+          "trigger": 544,
+          "aspect": 1.75390625,
+          "gain": 6.68
+        }
+      ],
+      "length": 600
+    },
+    {
+      "id": "industrial-01",
+      "title": "Stalowa Dzielnica",
+      "ready": true,
+      "description": "Od ulicznego klubu przez hutę do nielegalnej areny.",
+      "entry": {
+        "xFrom": 16,
+        "xTo": 24,
+        "groundFrom": 0.47,
+        "depthFrom": 0.48,
+        "yawFrom": 0.2,
+        "description": "wychodzi z klubu",
+        "mask": {
+          "x": 0.112,
+          "y": 0.164,
+          "w": 0.101,
+          "h": 0.308
+        }
+      },
+      "heal": null,
+      "chapters": [
+        {
+          "id": 0,
+          "name": "Klub",
+          "video": "5f0b817dea49ef96779b.mp4",
+          "poster": "7298f8d01a4f144b5cda.jpg",
+          "trigger": 44,
+          "aspect": 1.75390625,
+          "gain": 1
+        },
+        {
+          "id": 1,
+          "name": "Warsztat",
+          "video": "48d33cfc332ce1e3d932.mp4",
+          "poster": "d47f3641edd4f95a7868.jpg",
+          "trigger": 144,
+          "aspect": 1.75390625,
+          "gain": 1
+        },
+        {
+          "id": 2,
+          "name": "Złomowisko",
+          "video": "7395b813947f6dcd2f11.mp4",
+          "poster": "f0181a4d5c264de79c0d.jpg",
+          "trigger": 244,
+          "aspect": 1.75390625,
+          "gain": 1
+        },
+        {
+          "id": 3,
+          "name": "Spalony magazyn",
+          "video": "9847abbfbdc13e735f19.mp4",
+          "poster": "e115be3629b40fce7fff.jpg",
+          "trigger": 344,
+          "aspect": 1.75390625,
+          "gain": 1
+        },
+        {
+          "id": 4,
+          "name": "Huta",
+          "video": "2002e1fc0071a97b43c4.mp4",
+          "poster": "57c81bd513c2341e3bfb.jpg",
+          "trigger": 444,
+          "aspect": 1.75390625,
+          "gain": 1
+        },
+        {
+          "id": 5,
+          "name": "Podziemna arena",
+          "video": "012aa027e08cb8f01b70.mp4",
+          "poster": "9eb242a05a644c7530d4.jpg",
+          "trigger": 544,
+          "aspect": 1.75390625,
+          "gain": 1
+        }
+      ],
+      "length": 600
+    },
+    {
+      "id": "underground-01",
+      "title": "Podziemia",
+      "ready": true,
+      "description": "Sześć odcinków pod miastem. Finał w klubie walki.",
+      "entry": {
+        "xFrom": 9,
+        "xTo": 22,
+        "groundFrom": 0.55,
+        "depthFrom": 0.54,
+        "yawFrom": 0.26,
+        "description": "wychodzi z korytarza",
+        "mask": {
+          "x": 0.015,
+          "y": 0.13,
+          "w": 0.145,
+          "h": 0.42
+        }
+      },
+      "heal": null,
+      "chapters": [
+        {
+          "id": 0,
+          "name": "Szatnia",
+          "video": "b9486fbafbfa1739f1aa.mp4",
+          "poster": "daadab35dae9b06eaf7c.jpg",
+          "trigger": 44,
+          "aspect": 1.75390625,
+          "gain": 1
+        },
+        {
+          "id": 1,
+          "name": "Destylarnia",
+          "video": "1d2267c879d46f678fab.mp4",
+          "poster": "b492f9a431baf157412f.jpg",
+          "trigger": 144,
+          "aspect": 1.75390625,
+          "gain": 1
+        },
+        {
+          "id": 2,
+          "name": "Basen",
+          "video": "086911275396157e8c39.mp4",
+          "poster": "285cfcac450885a16d7e.jpg",
+          "trigger": 244,
+          "aspect": 1.77734375,
+          "gain": 1
+        },
+        {
+          "id": 3,
+          "name": "Drukarnia",
+          "video": "96b58f4ea785536fb248.mp4",
+          "poster": "796da239b764341d3673.jpg",
+          "trigger": 344,
+          "aspect": 1.75390625,
+          "gain": 1
+        },
+        {
+          "id": 4,
+          "name": "Skarbiec",
+          "video": "589a8b753dc97ff71681.mp4",
+          "poster": "38ddd64915161cea8c99.jpg",
+          "trigger": 444,
+          "aspect": 1.75390625,
+          "gain": 1
+        },
+        {
+          "id": 5,
+          "name": "Klub walki",
+          "video": "5a67c45e009556ae8601.mp4",
+          "poster": "6003e09b8ac3feb0260a.jpg",
+          "trigger": 544,
+          "aspect": 1.77734375,
+          "gain": 1
+        }
+      ],
+      "length": 600
+    },
+    {
+      "id": "airport-01",
+      "title": "Ostatni Terminal",
+      "ready": true,
+      "description": "Opuszczony terminal w środku nocnego alarmu.",
+      "entry": {
+        "xFrom": 11,
+        "xTo": 23,
+        "groundFrom": 0.53,
+        "depthFrom": 0.53,
+        "yawFrom": 0.26,
+        "description": "wychodzi z terminalu",
+        "mask": {
+          "x": 0.037,
+          "y": 0.136,
+          "w": 0.137,
+          "h": 0.394
+        }
+      },
+      "heal": null,
+      "chapters": [
+        {
+          "id": 0,
+          "name": "Przyloty",
+          "video": "8ce068d292c34c4afbb0.mp4",
+          "poster": "bc9dc3fdd8db70ba05b4.jpg",
+          "trigger": 44,
+          "aspect": 1.81640625,
+          "gain": 1
+        },
+        {
+          "id": 1,
+          "name": "Kontrola",
+          "video": "1a8ba484a8273f667d5d.mp4",
+          "poster": "4f2e0cc3c68b1d38de1b.jpg",
+          "trigger": 144,
+          "aspect": 1.81640625,
+          "gain": 1
+        },
+        {
+          "id": 2,
+          "name": "Pasaż",
+          "video": "0dbbe0198e472ff5d226.mp4",
+          "poster": "3950bdcf1b94a934efd0.jpg",
+          "trigger": 244,
+          "aspect": 1.81640625,
+          "gain": 1
+        },
+        {
+          "id": 3,
+          "name": "Bagaże",
+          "video": "e52a967a8c7d90e43655.mp4",
+          "poster": "8cfaa72310adb8969f5a.jpg",
+          "trigger": 344,
+          "aspect": 1.75390625,
+          "gain": 1
+        },
+        {
+          "id": 4,
+          "name": "Alarm",
+          "video": "4af6dc94ac42b1f2c786.mp4",
+          "poster": "1586558b70b35b8becb4.jpg",
+          "trigger": 444,
+          "aspect": 1.75390625,
+          "gain": 1
+        },
+        {
+          "id": 5,
+          "name": "Hala finałowa",
+          "video": "fa022233ba970960ba54.mp4",
+          "poster": "150269f5505285c8c19f.jpg",
+          "trigger": 544,
+          "aspect": 1.75390625,
+          "gain": 1
+        }
+      ],
+      "length": 600
+    },
+    {
+      "id": "forest-01",
+      "title": "Czarny Las",
+      "ready": true,
+      "description": "Nocny szlak przez ruiny do strzeżonego bunkra.",
+      "entry": {
+        "xFrom": 10,
+        "xTo": 23,
+        "groundFrom": 0.59,
+        "depthFrom": 0.54,
+        "yawFrom": 0.26,
+        "description": "przechodzi przez bramę",
+        "mask": {
+          "x": 0.063,
+          "y": 0.338,
+          "w": 0.105,
+          "h": 0.252
+        }
+      },
+      "heal": null,
+      "chapters": [
+        {
+          "id": 0,
+          "name": "Brama",
+          "video": "4317e68977222c33dac7.mp4",
+          "poster": "16e4d1ab5f07119a355d.jpg",
+          "trigger": 44,
+          "aspect": 1.75390625,
+          "gain": 1
+        },
+        {
+          "id": 1,
+          "name": "Wyrąb",
+          "video": "accb172d57579a1f98f4.mp4",
+          "poster": "e96ad8aea1957d3bf0ad.jpg",
+          "trigger": 144,
+          "aspect": 1.75390625,
+          "gain": 1
+        },
+        {
+          "id": 2,
+          "name": "Wodospad",
+          "video": "af4b31ed5979fb2c26c2.mp4",
+          "poster": "620e68c89a239562a690.jpg",
+          "trigger": 244,
+          "aspect": 1.75390625,
+          "gain": 1
+        },
+        {
+          "id": 3,
+          "name": "Ruiny",
+          "video": "d31caf545bfafa6bd38c.mp4",
+          "poster": "1132a82a11759632c39d.jpg",
+          "trigger": 344,
+          "aspect": 1.75390625,
+          "gain": 1
+        },
+        {
+          "id": 4,
+          "name": "Obóz",
+          "video": "a083e562049efd44ad98.mp4",
+          "poster": "ab42856a5e365481cfdd.jpg",
+          "trigger": 444,
+          "aspect": 1.75390625,
+          "gain": 1
+        },
+        {
+          "id": 5,
+          "name": "Bunkier",
+          "video": "196e0df676548553a831.mp4",
+          "poster": "76350acc34f65f96cb7c.jpg",
+          "trigger": 544,
+          "aspect": 1.81640625,
+          "gain": 1
+        }
+      ],
+      "length": 600
+    }
+  ],
+  "sounds": [
+    {
+      "id": "surface-water",
+      "file": "986d75d3ea2941deae06.wav"
+    },
+    {
+      "id": "surface-mat",
+      "file": "aacce628d483bec167de.wav"
+    },
+    {
+      "id": "surface-snow",
+      "file": "ff5363d52a3e00603d5b.wav"
+    },
+    {
+      "id": "surface-concrete",
+      "file": "0f9c6eb275da84f2f2de.wav"
+    },
+    {
+      "id": "surface-nature",
+      "file": "7454c55851fc91e35268.wav"
+    },
+    {
+      "id": "surface-metal",
+      "file": "1c40cde9a50086c0ce2c.wav"
+    },
+    {
+      "id": "surface-fantasy",
+      "file": "bb9938f0c6d276dcc1ef.wav"
+    },
+    {
+      "id": "glass",
+      "file": "b624650215a4edaa36cc.mp3"
+    },
+    {
+      "id": "gong",
+      "file": "9002a4f954331140f2e9.mp3"
+    },
+    {
+      "id": "fight",
+      "file": "35b8a34bc3ea24409af6.mp3"
+    },
+    {
+      "id": "three",
+      "file": "acba09a56704aceb28c5.mp3"
+    },
+    {
+      "id": "two",
+      "file": "e0a972dc691b17ecbd69.mp3"
+    },
+    {
+      "id": "one",
+      "file": "4b68f7b2b970e2ded09d.mp3"
+    },
+    {
+      "id": "punch",
+      "file": "5c1dfb95cfcabdd43977.mp3"
+    },
+    {
+      "id": "kick",
+      "file": "09904bb8a461fd95bdc5.mp3"
+    },
+    {
+      "id": "impact",
+      "file": "b388052d954a7553f531.mp3"
+    },
+    {
+      "id": "heavy",
+      "file": "9d3757bfe79f9f0d7a12.mp3"
+    },
+    {
+      "id": "step",
+      "file": "b29c1f8e272c210c3187.mp3"
+    },
+    {
+      "id": "land",
+      "file": "4465580fc57da01cb83c.mp3"
+    },
+    {
+      "id": "thunder",
+      "file": "ae8ad6649d13255d3300.mp3"
+    },
+    {
+      "id": "title",
+      "file": "9d0244bcd7490dfd903c.mp3"
+    },
+    {
+      "id": "crowd",
+      "file": "c2f7fff0fa303c71ce19.mp3"
+    },
+    {
+      "id": "roster-select",
+      "file": "0ea61ab00ba4d7f3878a.mp3"
+    },
+    {
+      "id": "roster-confirm",
+      "file": "a0d85ce990e0c11959f3.mp3"
+    },
+    {
+      "id": "roster-premium",
+      "file": "4ddff144d9058d3249c8.mp3"
+    },
+    {
+      "id": "vocal-male-hurt-1",
+      "file": "ea9c0dafebb23490ab22.mp3"
+    },
+    {
+      "id": "vocal-male-hurt-2",
+      "file": "412846ffd065e9f6701c.mp3"
+    },
+    {
+      "id": "vocal-male-hurt-3",
+      "file": "c9c2423f7029555d2cb2.mp3"
+    },
+    {
+      "id": "vocal-female-hurt-1",
+      "file": "b41a0d890b0bdcdde528.mp3"
+    },
+    {
+      "id": "vocal-female-hurt-2",
+      "file": "9a90a21482a60c405029.mp3"
+    },
+    {
+      "id": "vocal-female-hurt-3",
+      "file": "61e98289d93a0dce118e.mp3"
+    }
+  ]
+}

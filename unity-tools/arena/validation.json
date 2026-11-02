@@ -1,6 +1,6 @@
 {
   "status": "Blocked",
-  "scope": "Native match/campaign integration and source assets; full game migration incomplete",
+  "scope": "Native match/campaign and original arena media integration; full game migration incomplete",
   "sourceSiteVersion": 271,
   "sourceCommit": "f355fe6ac6af41518fde420382512d49bd27d51a",
   "editor": "6000.3.27f2",
@@ -13,7 +13,7 @@
   },
   "managedCompilation": {
     "status": "Passed",
-    "files": 17,
+    "files": 22,
     "method": "Roslyn csc with actual Unity 6000.3.27f2 managed assemblies, .NET Standard 2.1 references and compatibility shims",
     "warnings": [
       "CS1701: Newtonsoft.Json netstandard 2.0 reference resolves against netstandard 2.1 in standalone compiler invocation. UPM runtime resolution not verified."
@@ -50,8 +50,8 @@
   },
   "cloudActivation": {
     "status": "Blocked",
-    "runId": 41489510857,
-    "jobId": 125428505494,
+    "runId": 41502992008,
+    "jobId": 125474983262,
     "missingRepositorySecrets": [
       "UNITY_LICENSE",
       "UNITY_EMAIL",
@@ -68,20 +68,19 @@
   },
   "cloudAssetExport": {
     "status": "Passed",
-    "runId": 41489510857,
-    "jobId": 125428505717,
-    "sourceCodeCommit": "f196a428132bf16131c6f25ae69997c13b365e84",
-    "artifactId": 13164641101,
-    "artifactUrl": "https://github.com/wawerpatryk89-sketch/braxhorn-arena/actions/runs/41489510857/artifacts/13164641101",
-    "artifactZipSha256": "b8d63c42781785a48a6ce2884b08702e2f83739aebe4eabf5bc9e7dfed6467d6",
-    "artifactBytes": 834897924,
-    "finishedAtUtc": "2026-11-02T17:24:52Z",
-    "finishedAtZurich": "2026-11-02T18:24:52+01:00"
+    "runId": 41502992008,
+    "jobId": 125474982641,
+    "sourceCodeCommit": "3c37f0fc0a36c9052d4f2088708997dd8e144533",
+    "artifactId": 13169783161,
+    "artifactUrl": "https://github.com/wawerpatryk89-sketch/braxhorn-arena/actions/runs/41502992008/artifacts/13169783161",
+    "artifactBytes": 834899254,
+    "finishedAtUtc": "2026-11-02T18:53:09Z",
+    "finishedAtZurich": "2026-11-02T19:53:09+01:00"
   },
   "cloudRuleParity": {
     "status": "Passed",
-    "runId": 41489510857,
-    "jobId": 125428505643
+    "runId": 41502992008,
+    "jobId": 125474983035
   },
   "losslessAnimationKeyReduction": {
     "curves": 2038080,
@@ -110,10 +109,30 @@
   },
   "nativeMatchRegression": {
     "status": "Passed locally using actual Unity reference assemblies and .NET 6",
-    "syntheticChecks": 35,
+    "syntheticChecks": 39,
     "actualVariants": 18,
-    "expectedChecksWithAssets": 196,
+    "expectedChecksWithAssets": 200,
     "scope": "Contacts, guards, evasion, trades, pressure, timing, round transitions, training, grabs, pause; actual self-match combos and base/NPC CPU outcomes. Rendering/phone excluded.",
-    "checksPassed": 196
+    "checksPassed": 200,
+    "previousCloudChecksPassed": 196
+  },
+  "nativeMedia": {
+    "status": "Export and managed compilation passed locally; Unity playback untested",
+    "originalArenas": 21,
+    "adventureRoutes": 5,
+    "adventureFilms": 30,
+    "soundKeys": 31,
+    "sourceFiles": 133,
+    "packedBytes": 312704687,
+    "referenceGeometryCases": 210,
+    "gifConversion": "One original animated GIF converted to H.264 CRF 16; WebP posters losslessly converted to PNG; other media bytes unchanged",
+    "remaining": "Night-market procedural overlays, complete source combo/ground VFX/audio, adventure integration, Android decoding, color and synchronization validation"
+  },
+  "nativeAdventureEntrance": {
+    "status": "Passed source-reference tests; not yet wired into a playable adventure scene",
+    "cases": 90,
+    "samples": 810,
+    "variants": 18,
+    "routes": 5
   }
 }

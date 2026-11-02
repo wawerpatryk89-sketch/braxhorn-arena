@@ -20,11 +20,11 @@ The exported payload contains 10 base/NPC models plus 8 outfits, 2,952 configure
 ## Still required for complete migration
 
 1. Execute the importer through licensed cloud CI, validate bind poses, facing, 12-weight deformation, shader appearance and action transitions against original rendered samples.
-2. Finish whole-game parity beyond the native match checkpoint below: moving-strike pose layering, complete source CPU/drill variants, neutral clinch/automatic gestures, recoil/lift/travel presentation, KO replay and original audio/VFX. Validate all matchup/direction combinations against browser reference traces; current actual-combo tests use each fighter against itself.
+2. Finish whole-game parity beyond the native match checkpoint below: moving-strike pose layering, complete source CPU/drill variants, neutral clinch/automatic gestures, recoil/lift/travel presentation, KO replay, all authored combo/ground VFX/audio and the procedural night market. Validate all matchup/direction combinations against browser reference traces; current actual-combo tests use each fighter against itself.
 3. Replace the native integration menu with complete Polish/English production menus/art, account entry, portraits, outfit shop, training/challenges, rankings and save migration. Basic native touch and offline campaign navigation now exist; device validation remains required.
 4. Port the adventure routes, films, camera travel, gates, encounters, corpses, boss/zombie behavior and outfit-specific adventure motion overrides.
 5. Keep the existing backend authoritative for accounts/shop/online results. Implement native account/session handling, room/signaling protocol, multiplayer input/snapshot behavior and voice. Two-peer tests are mandatory before claiming parity.
-6. Package arenas/media for Android, optimize measured CPU/GPU/memory use, produce APK for device tests and signed AAB for Google Play. Confirm store account, sale price, product identity, signing and declarations before publication.
+6. Validate the packaged arenas/media on Android, optimize measured CPU/GPU/memory use, produce APK for device tests and signed AAB for Google Play. Confirm store account, sale price, product identity, signing and declarations before publication.
 
 ## Environment evidence and limits
 
@@ -63,3 +63,15 @@ Added `ArenaMatch` (including Combo and Pairs partials), `CpuOpponent`, `NativeM
 Native play is not yet validated in Unity. No final scene rendering, original arena films/audio/VFX, complete production menu, adventure or multiplayer was demonstrated. The integration UI explicitly states its test scope. Keep Android application ID separate from a paid release. All source remains on the migration branch.
 
 `MatchParityRunner` adds behavioral regression tests and optional real-export tests, in addition to the original reference comparisons. Regression coverage caught and fixed timer rounding and dropping accumulated simulation time when resetting a round. The full-asset run checks 18 variants, configured paired-combo completion and base/NPC CPU matches. This is execution of C# gameplay rules, not an image/video or phone test. The pinned full Unity asset export is unchanged. CI now runs these tests against that export and uses `ArenaBuild.AndroidCombat`; actual build still depends on repository Unity activation.
+
+## Original media continuation
+
+The prior match checkpoint is confirmed in cloud run **41502992008**, commit `3c37f0fc0a36c9052d4f2088708997dd8e144533`: all 18 exports and 196 native match checks passed. The run finished 2026-11-02 **19:53:09 Europe/Zurich** with overall failure because activation inputs remain absent. The Android job was skipped. Artifact **13169783161** (834,899,254 bytes) is source assets, not an APK.
+
+`export-media.py` locks 133 original media files by SHA-256 and packages 21 arenas, all five adventure routes/30 chapter films, and 31 retained audio keys for offline StreamingAssets use. MP4/audio/JPEG stay byte-identical. WebP posters become lossless PNG; the single Harbor GIF is transcoded to H.264 CRF 16, an explicit encoding change, not an invented scene. The output contains provenance and original audio credits. The source catalog and all route metadata are frozen under `unity-tools/arena/media`; do not silently refresh from the live website.
+
+`NativeArenaMedia` and its explicitly referenced shader render behind 3D fighters, apply original cover/contain and brightness/contrast, retain decoded frames across stalls, and blend the final .45 seconds of a loop toward its first decoded frame. `NativeMatchPlayer` selects all 21 arena backgrounds, computes the original crop-dependent floor, and gates the fight on media/audio preparation. `NativeFightAudio` uses native AudioSources with bounded effects, per-fighter voice channels, announcer ducking, source gender/pitch and pause/mute behavior. Authoritative events include 3/2/1/FIGHT and one swish per authored hit group even on misses. Removed taunt/effort voices remain absent. This is implementation plus managed compilation, **not proof of Unity playback**.
+
+Local exporter validation: 133 files / 312,704,687 output bytes; all 50 video streams H.264/yuv420p. Original catalog comparison: 210 floor/crop cases. Remaining audio gaps include source compressor/mix equivalence and every combo/ground cue; night-market procedural overlays and VFX have not yet been ported. Adventure media packaging alone is not adventure gameplay. No new screenshot/recording or APK exists.
+
+`AdventureEntrance` ports the source doorway/edge path, reciprocal projected depth, yaw transition and bounds-based door fitting. It passed 90 original-source cases / 810 samples across all 18 variants and five routes. This domain component is not yet connected to a playable native adventure scene; full entrance run poses, foreground masking and encounters remain open.

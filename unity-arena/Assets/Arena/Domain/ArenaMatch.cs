@@ -42,6 +42,7 @@ namespace Braxhorn.Arena.Domain
         internal bool ApproachingCombo;
         internal AttackLedger Ledger = new AttackLedger();
         internal readonly HashSet<int> CleanComboGroups = new HashSet<int>();
+        internal readonly HashSet<int> SoundGroups = new HashSet<int>();
         internal readonly HitPressure Pressure = new HitPressure();
         internal int HeadReactions, BodyReactions;
         internal MatchFighter ComboOwner;
@@ -206,6 +207,7 @@ namespace Braxhorn.Arena.Domain
         {
             if (!f.Configuration.Has(id)) throw new InvalidOperationException(f.Configuration.Character + ": missing required action " + id);
             f.Clock.Start(f.Configuration[id], f.Configuration[id].StartFrame); f.Locked = locked; f.ReactionRate = null;
+            f.SoundGroups.Clear();
             f.Ledger = new AttackLedger(); f.PendingPair = null;
             if(!id.StartsWith("HIT_COMBO_",StringComparison.Ordinal)){f.ComboReactionKey=null;f.ComboOwner=null;}
             if (f.Action.Attack) { f.Serial++; f.ProtectionMs = 0; f.CleanComboGroups.Clear(); }
@@ -227,6 +229,7 @@ namespace Braxhorn.Arena.Domain
                 f.DownPhase = null; f.Height = f.StunMs = f.ProtectionMs = f.PushMs = f.PushSpeed = f.RecoilCooldown = f.KnockdownCooldown = f.RecoverMs = f.GrabProtection = 0;
                 f.ComboUses = f.HeadReactions = f.BodyReactions = 0; f.ApproachingCombo = false; f.Pressure.Reset(); Idle(f);
             }
+            Emit("three",Player);
         }
         public void Advance(double milliseconds)
         {
@@ -244,7 +247,10 @@ namespace Braxhorn.Arena.Domain
             if (Phase == MatchPhase.Countdown)
             {
                 foreach (var f in fighters) AdvancePose(f, dt, false);
+                var previousCue=(int)((phaseMs+1e-6)/1000);
                 phaseMs += dt;
+                var currentCue=(int)((phaseMs+1e-6)/1000);
+                if(currentCue!=previousCue&&currentCue<3)Emit(currentCue==1?"two":"one",Player);
                 if (phaseMs + 1e-6 >= 3000) { Phase = MatchPhase.Fighting; phaseMs = 0; Emit("fight", Player); }
                 return;
             }
@@ -317,7 +323,14 @@ namespace Braxhorn.Arena.Domain
         void AdvancePose(MatchFighter f, double dt, bool contacts)
         {
             var action = f.Action; var before = f.Clock.PoseSeconds;
-            f.Clock.Advance(dt, frame => Tempo(f, frame), frame => { if (contacts) Collect(f); return true; }, !f.Locked);
+            f.Clock.Advance(dt, frame => Tempo(f, frame), frame => {
+                if (contacts)
+                {
+                    Collect(f);
+                    if(IsGait(f.ActionId)&&(frame==0||frame==f.Action.Durations.Length/2))Emit("step",f);
+                }
+                return true;
+            }, !f.Locked);
             if (f.Action == action) AuthoredMovement(f, before, f.Clock.PoseSeconds);
             if (!contacts && f.Clock.Finished && f.Locked && Phase != MatchPhase.RoundOver) FinishAction(f);
         }
@@ -335,13 +348,18 @@ namespace Braxhorn.Arena.Domain
         void FinishAction(MatchFighter f)
         {
             if(HoldComboReaction(f))return;
+            if(f.ActionId=="JUMP")Emit("land",f);
             if (f.DownPhase != null) { AdvanceDown(f); return; }
             var queued = f.Buffered; f.Buffered = null; Idle(f);
             if (queued != null && f.Configuration.Has(queued) && queued != "COMBO" && queued != "ENERGY_SPECIAL") Start(f, CloseStrike(f, queued), true);
         }
         void Collect(MatchFighter f)
         {
-            if (!f.Action.Attack || !f.Action.Hits.TryGetValue(f.Clock.Frame, out var hit) || f.Ledger.Contains(hit.Group)) return;
+            if (!f.Action.Attack || !f.Action.Hits.TryGetValue(f.Clock.Frame, out var hit)) return;
+            // The source swish is tied to the authored active frame, including a
+            // missed strike. Collision/damage ledgers must not suppress it.
+            if(f.SoundGroups.Add(hit.Group))Emit("swing",f,hit:hit);
+            if(f.Ledger.Contains(hit.Group))return;
             foreach (var p in pending) if (p.Actor == f && p.Serial == f.Serial && p.Hit.Group == hit.Group) return;
             var defense = defenses[1 - Side(f)]; var contact = CombatContacts.Find(Pose(f), hit, defense.Pose);
             if (contact.Hit) pending.Add(new PendingHit(f, Other(f), f.Action, hit, contact, defense, Pose(f)));

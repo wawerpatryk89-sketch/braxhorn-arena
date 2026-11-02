@@ -10,6 +10,7 @@
     <Compile Include="RulesParityRunner.cs" />
     <Compile Include="CombatParityRunner.cs" />
     <Compile Include="MatchParityRunner.cs" />
+    <Compile Include="MediaParityRunner.cs" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 </Project>

@@ -69,7 +69,9 @@ namespace Braxhorn.Arena.Editor
             camera.backgroundColor=new Color(.04f,.05f,.07f);camera.tag="MainCamera";camera.gameObject.AddComponent<AudioListener>();
             RenderSettings.ambientMode=AmbientMode.Flat;RenderSettings.ambientLight=new Color(.45f,.45f,.5f);
             var key=new GameObject("Arena key light").AddComponent<Light>();key.type=LightType.Directional;key.intensity=1.3f;key.transform.rotation=Quaternion.Euler(30,-25,0);
-            new GameObject("Native match").AddComponent<NativeMatchPlayer>().matchCamera=camera;
+            var player=new GameObject("Native match").AddComponent<NativeMatchPlayer>();player.matchCamera=camera;
+            player.arenaMediaShader=AssetDatabase.LoadAssetAtPath<Shader>("Assets/Arena/Shaders/OriginalArenaMedia.shader");
+            if(!player.arenaMediaShader||!AssetDatabase.LoadAssetAtPath<TextAsset>("Assets/Arena/Resources/ArenaMediaCatalog.json"))throw new BuildFailedException("Native media export or shader is missing.");
             if(!EditorSceneManager.SaveScene(scene,CombatScene))throw new BuildFailedException("Cannot save native combat scene.");
             EditorBuildSettings.scenes=new[]{new EditorBuildSettingsScene(CombatScene,true),new EditorBuildSettingsScene(ReviewScene,true)};
             AssetDatabase.SaveAssets();

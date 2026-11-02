@@ -52,6 +52,7 @@ jobs:
         run: |
           node unity-tools/arena/tests/campaign-reference.mjs
           node unity-tools/arena/tests/combat-reference.mjs
+          node unity-tools/arena/tests/media-reference.mjs
       - name: Compare native rules with every reference state
         run: dotnet run --project unity-tools/arena/tests/Arena.RulesParity.csproj -- unity-tools/arena/tests/campaign-reference.json.gz unity-tools/arena/tests
       - name: Report scope
@@ -91,6 +92,7 @@ jobs:
         run: |
           node unity-tools/arena/tests/campaign-reference.mjs
           node unity-tools/arena/tests/combat-reference.mjs
+          node unity-tools/arena/tests/media-reference.mjs
           dotnet run --project unity-tools/arena/tests/Arena.RulesParity.csproj -- unity-tools/arena/tests/campaign-reference.json.gz unity-tools/arena/tests native-source/unity-arena/Assets/Arena/SourceData
       - name: Package native source data and provenance
         run: |
@@ -107,6 +109,38 @@ jobs:
           if-no-files-found: error
           retention-days: 90
 
+  native-media:
+    name: Verify and package 21 original arenas and 30 adventure films
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install Pillow==11.3.0
+      - name: Install the video validation/transcode tool
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - name: Restore original media with locked SHA-256 hashes
+        run: python unity-tools/arena/export-media.py --project native-media/unity-arena
+      - name: Package offline media and provenance
+        run: |
+          tar -C native-media/unity-arena/Assets -czf arena-native-media.tar.gz StreamingAssets Arena/Resources/ArenaMediaCatalog.json
+          sha256sum arena-native-media.tar.gz > arena-native-media.sha256
+      - uses: actions/upload-artifact@v4
+        with:
+          name: arena-native-media-${{ github.sha }}
+          path: |
+            arena-native-media.tar.gz
+            arena-native-media.sha256
+            unity-tools/arena/media/source-lock.json
+          compression-level: 0
+          if-no-files-found: error
+          retention-days: 90
+
   unity-activation-required:
     name: Report missing Unity activation for Arena
     needs: ci-preflight
@@ -119,7 +153,7 @@ jobs:
 
   android-native-review:
     name: Build native Unity combat integration APK (ARM64)
-    needs: [ci-preflight, campaign-parity, native-assets]
+    needs: [ci-preflight, campaign-parity, native-assets, native-media]
     if: needs.ci-preflight.outputs.activation == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 120
@@ -131,10 +165,15 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: arena-native-assets-${{ github.sha }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: arena-native-media-${{ github.sha }}
       - name: Restore verified Unity source payload
         run: |
           sha256sum -c arena-native-assets.sha256
           tar -xzf arena-native-assets.tar.gz -C unity-arena/Assets/Arena
+          sha256sum -c arena-native-media.sha256
+          tar -xzf arena-native-media.tar.gz -C unity-arena/Assets
       - uses: game-ci/unity-builder@4423ee75828dff56037d1d1cfdac6b68e3a6ba00
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}

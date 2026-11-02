@@ -14,6 +14,7 @@ namespace Braxhorn.Arena
     public sealed class NativeMatchPlayer : MonoBehaviour
     {
         public Camera matchCamera;
+        public Shader arenaMediaShader;
         static readonly string[] Roster = { "BRAX", "NYXA", "VEXA", "KROV", "NINA", "DANNY", "BEAR", "DEMON" };
         static readonly string[] Variants = { "BRAX", "BRAX_WHITE", "BRAX_STREET", "NYXA", "NYXA_SPORT", "NYXA_PINK", "VEXA", "VEXA_PURPLE", "VEXA_STREET", "KROV", "KROV_TRACKSUIT", "KROV_SUMMER", "NINA", "DANNY", "BEAR", "DEMON" };
         static readonly string[] Modes = { "fight", "training", "arcade", "tournament", "survival" };
@@ -24,6 +25,10 @@ namespace Braxhorn.Arena
         readonly List<TouchFightButton> buttons = new List<TouchFightButton>();
         readonly System.Random random = new System.Random();
         ArenaMatch match;
+        ArenaMediaCatalog mediaCatalog;
+        NativeArenaMedia arenaMedia;
+        NativeFightAudio fightAudio;
+        int arenaIndex;
         CampaignRun campaign;
         SurvivalRun survival;
         Font font;
@@ -32,7 +37,7 @@ namespace Braxhorn.Arena
         Text status, hud, chosen, result, pauseLabel;
         TouchFightButton left,right,block,down,sprint,grab;
         int variantIndex,opponentIndex=1,modeIndex,difficulty=1,generation;
-        bool loading, resultApplied, disposed;
+        bool loading, resultApplied, disposed, applicationSuspended;
         string error, campaignOpponent;
         RectTransform safeRoot;
 
@@ -41,7 +46,9 @@ namespace Braxhorn.Arena
             Application.targetFrameRate=60;QualitySettings.skinWeights=SkinWeights.Unlimited;
             Screen.sleepTimeout=SleepTimeout.NeverSleep;
             font=Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
-            BuildUi(); ShowSelection();
+            BuildUi();
+            try{mediaCatalog=ArenaMediaCatalog.Load();arenaMedia=gameObject.AddComponent<NativeArenaMedia>();fightAudio=gameObject.AddComponent<NativeFightAudio>();ShowSelection();}
+            catch(Exception e){Fail(e.Message);}
         }
         static string Display(string id) => id=="BEAR"?"MIŚ":id=="DEMON"?"AZRAK":id.Replace('_',' ');
         static string Base(string id) => id.Split('_')[0];
@@ -56,13 +63,14 @@ namespace Braxhorn.Arena
             status.text="BRAXHORN ARENA · UNITY · TEST MIGRACJI WALKI";
             selection=Panel("Selection",new Rect(100,76,824,420),new Color(.04f,.05f,.07f,.97f));
             Label(selection.transform,"Title",new Rect(24,20,776,50),30).text="BRAXHORN ARENA";
-            chosen=Label(selection.transform,"Selection details",new Rect(24,78,776,112),21);
+            chosen=Label(selection.transform,"Selection details",new Rect(24,68,776,126),21);
             Click(selection.transform,"Postać ◀",new Rect(24,204,184,48),()=>{variantIndex=(variantIndex+Variants.Length-1)%Variants.Length;RefreshSelection();});
             Click(selection.transform,"Postać ▶",new Rect(220,204,184,48),()=>{variantIndex=(variantIndex+1)%Variants.Length;RefreshSelection();});
             Click(selection.transform,"Przeciwnik",new Rect(416,204,184,48),()=>{opponentIndex=(opponentIndex+1)%Roster.Length;RefreshSelection();});
             Click(selection.transform,"Trudność",new Rect(612,204,184,48),()=>{difficulty=(difficulty+1)%3;RefreshSelection();});
             Click(selection.transform,"Tryb",new Rect(24,274,232,58),()=>{modeIndex=(modeIndex+1)%Modes.Length;RefreshSelection();});
-            Click(selection.transform,"ROZPOCZNIJ",new Rect(280,274,516,58),BeginSession);
+            Click(selection.transform,"Arena",new Rect(280,274,232,58),()=>{if(mediaCatalog!=null){arenaIndex=(arenaIndex+1)%mediaCatalog.Arenas.Length;RefreshSelection();}});
+            Click(selection.transform,"ROZPOCZNIJ",new Rect(536,274,260,58),BeginSession);
             Label(selection.transform,"Scope",new Rect(24,348,776,56),16).text="Natywna walka i kampanie. Przygodę, internet i pełną oprawę przenosimy oddzielnie. Wersja nieprzeznaczona do sprzedaży.";
             controls=Panel("Controls",new Rect(0,440,1024,136),Color.clear);
             left=Hold("◀",new Rect(16,54,74,62));right=Hold("▶",new Rect(98,54,74,62));
@@ -74,6 +82,7 @@ namespace Braxhorn.Arena
             Tap("COMBO",new Rect(672,0,156,44),FightButton.Combo);Tap("ENERGIA",new Rect(844,0,162,44),FightButton.Energy);
             hud=Label(safeRoot,"HUD",new Rect(24,56,976,68),22);
             var pause=Click(safeRoot,"PAUZA",new Rect(850,12,150,36),TogglePause);pauseLabel=pause.GetComponentInChildren<Text>();
+            Click(safeRoot,"DŹWIĘK",new Rect(708,12,132,36),()=>{if(fightAudio)fightAudio.Mute(!fightAudio.Muted);});
             resultPanel=Panel("Result",new Rect(240,150,544,250),new Color(.03f,.04f,.05f,.97f));
             result=Label(resultPanel.transform,"Result text",new Rect(24,20,496,104),26);
             Click(resultPanel.transform,"DALEJ",new Rect(24,160,230,60),ContinueSession);
@@ -96,10 +105,10 @@ namespace Braxhorn.Arena
         {var obj=Click(controls.transform,text,rect,()=>{});var button=obj.AddComponent<TouchFightButton>();buttons.Add(button);return button;}
         void Tap(string text,Rect rect,FightButton action)
         {var button=Hold(text,rect);button.Pressed=()=>{ReadInput();match?.Press(0,action);};}
-        void RefreshSelection() => chosen.text="POSTAĆ: "+Display(Variants[variantIndex])+"\nPRZECIWNIK: "+Display(Roster[opponentIndex])+"\n"+ModeNames[modeIndex]+" · "+new[]{"ŁATWY","ŚREDNI","TRUDNY"}[difficulty];
+        void RefreshSelection() => chosen.text="POSTAĆ: "+Display(Variants[variantIndex])+"\nPRZECIWNIK: "+Display(Roster[opponentIndex])+"\n"+ModeNames[modeIndex]+" · "+new[]{"ŁATWY","ŚREDNI","TRUDNY"}[difficulty]+"\n"+(mediaCatalog?.Arenas[arenaIndex].name??"BRAK KATALOGU AREN");
         void BeginSession()
         {
-            if(loading)return;
+            if(loading||mediaCatalog==null)return;
             campaign=null;survival=null;var mode=Modes[modeIndex];var player=Base(Variants[variantIndex]);
             if(mode=="arcade"||mode=="tournament")campaign=new CampaignRun(mode,player,Roster,random.NextDouble);
             if(mode=="survival")survival=new SurvivalRun(player,random.NextDouble);
@@ -111,6 +120,13 @@ namespace Braxhorn.Arena
             loading=true;resultApplied=false;error=null;var requestId=++generation;
             ReleaseControls();match=null;selection.SetActive(false);controls.SetActive(false);resultPanel.SetActive(false);hud.text="WCZYTYWANIE…";
             ClearActors();yield return null;yield return Resources.UnloadUnusedAssets();
+            yield return arenaMedia.Load(mediaCatalog.Arenas[arenaIndex],matchCamera,arenaMediaShader);
+            if(disposed||requestId!=generation)yield break;
+            if(arenaMedia.Error!=null){Fail(arenaMedia.Error);yield break;}
+            yield return fightAudio.Load(mediaCatalog);
+            if(disposed||requestId!=generation)yield break;
+            if(fightAudio.Error!=null){Fail(fightAudio.Error);yield break;}
+            fightAudio.ResetMatch();
             var configs=new CombatConfiguration[2];var ids=new[]{player,opponent};
             for(var i=0;i<2;i++)
             {
@@ -129,20 +145,24 @@ namespace Braxhorn.Arena
             }
             try
             {
-                match=new ArenaMatch(configs[0],configs[1],random.NextDouble,training:Modes[modeIndex]=="training",singleRound:survival!=null,playerHp:hp);
+                var logicalWidth=Math.Max(320,576.0*matchCamera.aspect);var arena=mediaCatalog.Arenas[arenaIndex];
+                var geometry=new MediaGeometry(logicalWidth,576,arena.aspect,arena.ground,arena.fit=="contain");
+                match=new ArenaMatch(configs[0],configs[1],random.NextDouble,training:Modes[modeIndex]=="training",singleRound:survival!=null,playerHp:hp,width:logicalWidth,groundRatio:geometry.Floor/576);
                 match.UseCpu(1,(CpuLevel)difficulty,TrainingBehavior.Spar);
                 var worldPerPixel=3.25f/640/(float)match.Scale;
                 matchCamera.orthographic=true;matchCamera.orthographicSize=(float)match.Height*worldPerPixel/2;
                 matchCamera.transform.position=new Vector3(0,(float)(match.Floor-match.Height/2)*worldPerPixel,-8);
-                loading=false;controls.SetActive(true);Present();
+                loading=false;controls.SetActive(true);if(applicationSuspended)Pause(true);Present();
             }
             catch(Exception e){Debug.LogException(e);Fail(e.Message);}
         }
-        void Fail(string message){loading=false;error=message;hud.text="Nie udało się wczytać meczu: "+message;selection.SetActive(true);}
+        void Fail(string message){loading=false;error=message;hud.text="Nie udało się wczytać meczu: "+message;selection.SetActive(true);if(arenaMedia)arenaMedia.Clear();if(fightAudio)fightAudio.Stop();}
         void Update()
         {
             if(safeRoot){var r=Screen.safeArea;safeRoot.anchorMin=r.min/new Vector2(Screen.width,Screen.height);safeRoot.anchorMax=r.max/new Vector2(Screen.width,Screen.height);}
+            if(arenaMedia&&fightAudio)arenaMedia.Sound(fightAudio.Muted,fightAudio.Duck);
             if(loading||match==null)return;
+            if(arenaMedia.Error!=null&&error!=arenaMedia.Error){error=arenaMedia.Error;Pause(true);status.text=error;}
             if(Input.GetKeyDown(KeyCode.Escape))TogglePause();ReadInput();
             var keys=new[]{KeyCode.J,KeyCode.K,KeyCode.U,KeyCode.I,KeyCode.L,KeyCode.Space,KeyCode.O,KeyCode.P};
             for(var i=0;i<keys.Length;i++)if(Input.GetKeyDown(keys[i]))match.Press(0,(FightButton)i);
@@ -170,11 +190,16 @@ namespace Braxhorn.Arena
             hud.text=Display(definitions[0].id)+"  "+Math.Ceiling(match.Player.Hp)+" HP · "+(int)match.Player.Energy+" EN     "+Math.Ceiling(match.RemainingSeconds)+"     "+Display(definitions[1].id)+"  "+Math.Ceiling(match.Opponent.Hp)+" HP\n"+
                 "RUNDA "+match.Round+" · "+match.PlayerWins+" : "+match.OpponentWins+(match.Paused?" · PAUZA":match.Phase==MatchPhase.Countdown?" · "+match.Countdown:"");
             pauseLabel.text=match.Paused?"WZNÓW":"PAUZA";
-            while(match.TryDequeue(out var e))if(e.Kind=="hit"||e.Kind=="slam")status.text="TRAFIENIE · "+Display(match.Fighter(e.Actor).Configuration.Character)+" · "+e.Region+" · "+e.Damage;
+            while(match.TryDequeue(out var e))
+            {
+                fightAudio?.Consume(e,match,mediaCatalog.Arenas[arenaIndex]);
+                if(e.Kind=="hit"||e.Kind=="slam")status.text="TRAFIENIE · "+Display(match.Fighter(e.Actor).Configuration.Character)+" · "+e.Region+" · "+e.Damage;
+            }
         }
         void CompleteMatch()
         {
             resultApplied=true;ReleaseControls();controls.SetActive(false);resultPanel.SetActive(true);
+            arenaMedia.SetPaused(true);fightAudio.Stop();
             var outcome=match.Winner<0?BoutOutcome.Draw:match.Winner==0?BoutOutcome.Win:BoutOutcome.Loss;
             campaign?.Result(outcome);survival?.Result(outcome,match.Player.Hp);
             result.text=(outcome==BoutOutcome.Draw?"REMIS":outcome==BoutOutcome.Win?"WYGRYWASZ":"WYGRYWA PRZECIWNIK")+"\n"+match.PlayerWins+" : "+match.OpponentWins;
@@ -188,13 +213,14 @@ namespace Braxhorn.Arena
             else if(survival!=null){if(!survival.Advance()){ShowSelection();return;}campaignOpponent=survival.Next();}
             StartCoroutine(LoadMatch(Variants[variantIndex],campaignOpponent??Roster[opponentIndex],survival?.Hp??100));
         }
-        void TogglePause(){if(match==null||loading||match.Phase==MatchPhase.Complete)return;match.SetPaused(!match.Paused);ReleaseControls();}
+        void TogglePause(){if(match==null||loading||match.Phase==MatchPhase.Complete)return;Pause(match.Paused?false:true);}
+        void Pause(bool value){match?.SetPaused(value);arenaMedia?.SetPaused(value);fightAudio?.SetPaused(value);ReleaseControls();}
         void ReleaseControls(){foreach(var button in buttons)button.Release();match?.ReleaseInputs();}
         void ShowSelection()
-        {generation++;StopAllCoroutines();loading=false;match=null;ClearActors();ReleaseControls();selection.SetActive(true);controls.SetActive(false);resultPanel.SetActive(false);hud.text="";RefreshSelection();}
+        {generation++;StopAllCoroutines();loading=false;match=null;ClearActors();if(arenaMedia)arenaMedia.Clear();if(fightAudio)fightAudio.Stop();ReleaseControls();selection.SetActive(true);controls.SetActive(false);resultPanel.SetActive(false);hud.text="";RefreshSelection();}
         void ClearActors(){for(var i=0;i<2;i++){if(actors[i])Destroy(actors[i]);actors[i]=null;poses[i]=null;definitions[i]=null;}}
-        void OnApplicationPause(bool pause){if(pause){match?.SetPaused(true);ReleaseControls();}}
-        void OnApplicationFocus(bool focus){if(!focus){match?.SetPaused(true);ReleaseControls();}}
+        void OnApplicationPause(bool pause){applicationSuspended=pause;if(pause)Pause(true);}
+        void OnApplicationFocus(bool focus){applicationSuspended=!focus;if(!focus)Pause(true);}
         void OnDestroy(){disposed=true;generation++;ClearActors();if(canvas)Destroy(canvas.gameObject);}
     }
 }

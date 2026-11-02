@@ -61,3 +61,13 @@ python unity-tools/arena/tests/compile-with-editor.py --editor-data /path/to/Edi
 ```
 
 This compiles managed source against real Unity assemblies and executes plain C# tests; it cannot validate imported animation/materials, Play Mode, IL2CPP or phone behavior.
+
+### Original offline arenas and audio
+
+Run `python unity-tools/arena/export-media.py --offline` against the full verified source checkout, or omit `--offline` for hash-checked restoration from the pinned public source URLs. The script requires Pillow and ffmpeg/ffprobe. It writes generated media to `unity-arena/Assets/StreamingAssets/ArenaMedia` and the catalog to `Assets/Arena/Resources/ArenaMediaCatalog.json`; both are ignored by Git. CI separately packages/restores the payload before `ArenaBuild.AndroidCombat`.
+
+The native match selector includes all 21 original backgrounds. No network/browser is required for playback. Audio uses the surviving v271 recorded clips, never TTS or replacement voices. MP4s and audio remain byte-identical; WebP posters decode to PNG; Harbor's animated GIF is transcoded to H.264 CRF 16. Thirty adventure films and all five route definitions are packaged, but this alone does not implement the adventure mode.
+
+`node unity-tools/arena/tests/media-reference.mjs` produces 210 comparison cases from the frozen original arena catalog. The managed runner checks native floor/crop calculation and loop edges, plus countdown/swishes during misses/repeated hit frames/pause. Actual Unity video decoding, first-frame orientation/color, transition seams, audio synchronization, shader compilation and phone performance are untested. Night-market procedural effects, complete VFX/replay, adventure, full production UI and online features remain open.
+
+Unity API basis: [StreamingAssets](https://docs.unity.com/en-us/engine/6000.3/manual/building-and-publishing/streaming-assets) and [Video Player](https://docs.unity.com/en-us/engine/6000.3/manual/video/player). Android StreamingAssets is a URL inside the APK, so native requests use UnityWebRequest/VideoPlayer rather than ordinary filesystem reads.

@@ -73,6 +73,18 @@ static class MatchParityRunner
         m=Start();m.SetInput(1,new FightInput(0,block:true));m.Advance(ArenaMatch.StepMs);m.SetInput(0,new FightInput(0,grab:true));Check(!m.Press(0,FightButton.Punch),"guard rejects grab");
         m=Start();m.Opponent.X=850;m.SetInput(0,new FightInput(0,grab:true));Check(!m.Press(0,FightButton.Punch),"distant grab rejected");
     }
+    static void AudioTimelineTests()
+    {
+        var m=new ArenaMatch(Config(),Config(),()=>.5);m.Advance(3000);
+        var cues=new System.Collections.Generic.List<string>();while(m.TryDequeue(out var e))cues.Add(e.Kind);
+        Check(string.Join(",",cues)=="three,two,one,fight","countdown emits original ordered cues even with a large host tick");
+        m.Player.X=200;m.Opponent.X=850;m.Press(0,FightButton.Punch);m.Advance(500);
+        var swings=0;var hits=0;while(m.TryDequeue(out var e)){if(e.Kind=="swing")swings++;if(e.Kind=="hit")hits++;}
+        Check(swings==1&&hits==0,"missed strike has one swish for repeated authored hit group and no impact");
+        m.Press(0,FightButton.Punch);m.Advance(500);swings=0;while(m.TryDequeue(out var e))if(e.Kind=="swing")swings++;
+        Check(swings==1,"sound ledger resets on next attack");
+        m.SetPaused(true);m.Advance(1000);Check(!m.TryDequeue(out _),"paused simulation emits no stale audio events");
+    }
     static void ActualRoster(string root)
     {
         if(!Directory.Exists(root))throw new DirectoryNotFoundException(root);
@@ -110,7 +122,7 @@ static class MatchParityRunner
     }
     internal static void Run(string sourceRoot=null)
     {
-        ContactTests();LifecycleTests();PairTests();if(sourceRoot!=null)ActualRoster(sourceRoot);
+        ContactTests();LifecycleTests();PairTests();AudioTimelineTests();if(sourceRoot!=null)ActualRoster(sourceRoot);
         Console.WriteLine("PASS "+assertions+" match checks: contact, guard, evasion, trades, timing, round transitions, training, grabs, pause. Render/device validation is separate.");
     }
 }

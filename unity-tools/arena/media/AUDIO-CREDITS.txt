@@ -1,0 +1,24 @@
+BRAXHORN: combat vocals added in release 239
+
+Female attack, heavy effort and ready cues:
+"Fighting Game grunts - young female.wav" by AderuMoro
+https://freesound.org/people/AderuMoro/sounds/213295/
+https://www.youtube.com/user/AderuMoro
+Creative Commons Attribution 4.0 International
+https://creativecommons.org/licenses/by/4.0/
+Changes: selected short excerpts, trimmed silence, EQ, loudness normalization,
+short fades, MP3 encoding. In-game slight pitch variations by fighter.
+No endorsement by the author is implied.
+
+Female hurt cues:
+"Female Hurt Grunts & Groans" by AuraVoice / Nocturnal_Vanguard
+https://opengameart.org/content/female-hurt-grunts-groans
+CC0 1.0. Changes: excerpting, EQ, loudness normalization, fades, MP3 encoding.
+
+Male effort, hurt and ready cues:
+"Male Grunt/Yelling sounds" by HaelDB
+https://opengameart.org/content/male-gruntyelling-sounds
+Used under offered CC0 1.0 option.
+Changes: excerpting, EQ, loudness normalization, fades, MP3 encoding.
+
+CC0: https://creativecommons.org/publicdomain/zero/1.0/
