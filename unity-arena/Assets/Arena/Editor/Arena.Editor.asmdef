@@ -1,0 +1,1 @@
+{"name":"Arena.Editor","rootNamespace":"Braxhorn.Arena.Editor","references":["Arena.Runtime","Unity.Newtonsoft.Json"],"includePlatforms":["Editor"],"autoReferenced":true}

@@ -1,0 +1,14 @@
+{
+  "sourceCommit": "f355fe6ac6af41518fde420382512d49bd27d51a",
+  "siteVersion": 271,
+  "files": [
+    {
+      "path": "championship.js",
+      "sha256": "cdcb96e1013c6b67f77cd29eff2b3c163433fc16329d1ee838842e9e5c812a5f"
+    },
+    {
+      "path": "arena-features.js",
+      "sha256": "75a6d3d9c2af0eaf6c3b3036856ac30a7807e093767b16a973c15b18bbe39a48"
+    }
+  ]
+}

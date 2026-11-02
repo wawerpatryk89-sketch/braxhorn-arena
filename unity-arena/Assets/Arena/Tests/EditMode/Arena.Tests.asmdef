@@ -1,0 +1,17 @@
+{
+  "name": "Arena.Tests",
+  "rootNamespace": "Braxhorn.Arena.Tests",
+  "references": [
+    "Arena.Runtime",
+    "Arena.Editor",
+    "Unity.Newtonsoft.Json",
+    "Arena.Domain"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ],
+  "autoReferenced": false
+}

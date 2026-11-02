@@ -1,0 +1,44 @@
+{
+  "status": "Blocked",
+  "scope": "Asset pipeline and partial C# rules migration; not a complete Unity game",
+  "sourceSiteVersion": 271,
+  "sourceCommit": "f355fe6ac6af41518fde420382512d49bd27d51a",
+  "editor": "6000.3.27f2",
+  "assetExport": {
+    "status": "Passed",
+    "fightersAndOutfits": 18,
+    "actions": 2952,
+    "sampledFrames": 268358,
+    "vertices": 1083207
+  },
+  "managedCompilation": {
+    "status": "Passed",
+    "files": 6,
+    "method": "Roslyn csc with actual Unity 6000.3.27f2 managed assemblies, .NET Standard 2.1 references and compatibility shims",
+    "warnings": [
+      "CS1701: Newtonsoft.Json netstandard 2.0 reference resolves against netstandard 2.1 in standalone compiler invocation. UPM runtime resolution not verified."
+    ]
+  },
+  "ruleParity": {
+    "status": "Passed",
+    "method": "Execute C# rules using .NET 6.0.21 against frozen v271 JS reference traces",
+    "scenarios": 192,
+    "referenceStates": 3312,
+    "contactEdgeCases": 3
+  },
+  "unityEditorImport": {
+    "status": "Blocked",
+    "diagnostics": [
+      "Licensing initialization failed: IPC channel connection 0x80000000",
+      "Package Manager uv_interface_addresses: operation not permitted"
+    ],
+    "licenseEntitlement": "Unknown; IPC failure is not evidence of absent user license"
+  },
+  "editModeExecution": "Not run",
+  "shaderCompilation": "Not run",
+  "visualComparison": "Not run",
+  "fullCombatParity": "Not implemented",
+  "androidBuild": "Not run",
+  "deviceValidation": "Not run",
+  "googlePlayPublication": "Not performed"
+}

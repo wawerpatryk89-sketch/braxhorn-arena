@@ -1,0 +1,13 @@
+/Library/
+/Temp/
+/Obj/
+/Logs/
+/UserSettings/
+/Builds/
+/Assets/Arena/Imported/
+/Assets/Arena/Imported.meta
+/Assets/Arena/SourceData/
+/Assets/Arena/SourceData.meta
+*.csproj
+*.sln
+*.slnx

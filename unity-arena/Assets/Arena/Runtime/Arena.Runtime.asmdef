@@ -1,0 +1,10 @@
+{
+  "name": "Arena.Runtime",
+  "rootNamespace": "Braxhorn.Arena",
+  "references": [
+    "Unity.Newtonsoft.Json",
+    "Unity.ugui",
+    "Arena.Domain"
+  ],
+  "autoReferenced": true
+}

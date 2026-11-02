@@ -1,0 +1,35 @@
+name: Arena Unity migration - rule parity
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['codex/arena-unity6-migration-20261102']
+    paths: ['unity-arena/**', 'unity-tools/arena/**', '.github/workflows/arena-unity-migration.yml']
+  pull_request:
+    paths: ['unity-arena/**', 'unity-tools/arena/**', '.github/workflows/arena-unity-migration.yml']
+
+permissions:
+  contents: read
+
+jobs:
+  campaign-parity:
+    name: C# campaign rules against v271 reference
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Generate reference from frozen published rules
+        run: node unity-tools/arena/tests/campaign-reference.mjs
+      - name: Compare native rules with every reference state
+        run: dotnet run --project unity-tools/arena/tests/Arena.RulesParity.csproj -- unity-tools/arena/tests/campaign-reference.json.gz
+      - name: Report scope
+        run: |
+          echo 'Campaign and collision rules only. This job does not build Unity, Android or Google Play packages.' >> "$GITHUB_STEP_SUMMARY"

@@ -1,0 +1,932 @@
+{
+  "schema": 1,
+  "sourceCommit": "f355fe6ac6af41518fde420382512d49bd27d51a",
+  "sourceSiteVersion": 271,
+  "editor": "6000.3.27f2",
+  "fighters": [
+    {
+      "id": "BRAX",
+      "base": "BRAX",
+      "displayName": "BRAX",
+      "label": "BRAX",
+      "npc": false,
+      "nodes": 69,
+      "meshes": 1,
+      "complete": true,
+      "actionCount": 192
+    },
+    {
+      "id": "NYXA",
+      "base": "NYXA",
+      "displayName": "NYXA",
+      "label": "NYXA",
+      "npc": false,
+      "nodes": 69,
+      "meshes": 1,
+      "complete": true,
+      "actionCount": 169
+    },
+    {
+      "id": "VEXA",
+      "base": "VEXA",
+      "displayName": "VEXA",
+      "label": "VEXA",
+      "npc": false,
+      "nodes": 69,
+      "meshes": 1,
+      "complete": true,
+      "actionCount": 159
+    },
+    {
+      "id": "KROV",
+      "base": "KROV",
+      "displayName": "KROV",
+      "label": "KROV",
+      "npc": false,
+      "nodes": 69,
+      "meshes": 1,
+      "complete": true,
+      "actionCount": 159
+    },
+    {
+      "id": "NINA",
+      "base": "NINA",
+      "displayName": "NINA",
+      "label": "NINA",
+      "npc": false,
+      "nodes": 69,
+      "meshes": 1,
+      "complete": true,
+      "actionCount": 158
+    },
+    {
+      "id": "DANNY",
+      "base": "DANNY",
+      "displayName": "DANNY",
+      "label": "DANNY",
+      "npc": false,
+      "nodes": 69,
+      "meshes": 1,
+      "complete": true,
+      "actionCount": 159
+    },
+    {
+      "id": "BEAR",
+      "base": "BEAR",
+      "displayName": "MIŚ",
+      "label": "BEAR",
+      "npc": false,
+      "nodes": 69,
+      "meshes": 1,
+      "complete": true,
+      "actionCount": 201
+    },
+    {
+      "id": "DEMON",
+      "base": "DEMON",
+      "displayName": "AZRAK",
+      "label": "DEMON",
+      "npc": false,
+      "nodes": 69,
+      "meshes": 1,
+      "complete": true,
+      "actionCount": 158
+    },
+    {
+      "id": "BOSS",
+      "base": "BOSS",
+      "displayName": "BOSS",
+      "label": "BOSS",
+      "npc": true,
+      "nodes": 70,
+      "meshes": 2,
+      "complete": true,
+      "actionCount": 120
+    },
+    {
+      "id": "ZOMBIE",
+      "base": "ZOMBIE",
+      "displayName": "ZOMBIE",
+      "label": "ZOMBIE",
+      "npc": true,
+      "nodes": 69,
+      "meshes": 1,
+      "complete": true,
+      "actionCount": 119
+    },
+    {
+      "id": "BRAX_WHITE",
+      "base": "BRAX",
+      "displayName": "BRAX_WHITE",
+      "label": "Biały tank",
+      "npc": false,
+      "nodes": 69,
+      "meshes": 1,
+      "complete": true,
+      "actionCount": 192
+    },
+    {
+      "id": "BRAX_STREET",
+      "base": "BRAX",
+      "displayName": "BRAX_STREET",
+      "label": "Zielone szorty",
+      "npc": false,
+      "nodes": 69,
+      "meshes": 1,
+      "complete": true,
+      "actionCount": 192
+    },
+    {
+      "id": "NYXA_SPORT",
+      "base": "NYXA",
+      "displayName": "NYXA_SPORT",
+      "label": "Czarny sport",
+      "npc": false,
+      "nodes": 69,
+      "meshes": 1,
+      "complete": true,
+      "actionCount": 169
+    },
+    {
+      "id": "NYXA_PINK",
+      "base": "NYXA",
+      "displayName": "NYXA_PINK",
+      "label": "Różowy komplet",
+      "npc": false,
+      "nodes": 69,
+      "meshes": 1,
+      "complete": true,
+      "actionCount": 169
+    },
+    {
+      "id": "VEXA_PURPLE",
+      "base": "VEXA",
+      "displayName": "VEXA_PURPLE",
+      "label": "Fioletowy komplet",
+      "npc": false,
+      "nodes": 69,
+      "meshes": 1,
+      "complete": true,
+      "actionCount": 159
+    },
+    {
+      "id": "VEXA_STREET",
+      "base": "VEXA",
+      "displayName": "VEXA_STREET",
+      "label": "Czarny kombinezon",
+      "npc": false,
+      "nodes": 69,
+      "meshes": 1,
+      "complete": true,
+      "actionCount": 159
+    },
+    {
+      "id": "KROV_TRACKSUIT",
+      "base": "KROV",
+      "displayName": "KROV_TRACKSUIT",
+      "label": "Czarny dres",
+      "npc": false,
+      "nodes": 69,
+      "meshes": 1,
+      "complete": true,
+      "actionCount": 159
+    },
+    {
+      "id": "KROV_SUMMER",
+      "base": "KROV",
+      "displayName": "KROV_SUMMER",
+      "label": "Letni komplet",
+      "npc": false,
+      "nodes": 69,
+      "meshes": 1,
+      "complete": true,
+      "actionCount": 159
+    }
+  ],
+  "sources": [
+    {
+      "path": "game/assets/brax-new/config.json",
+      "sha256": "6d3fba96750275e751ef6f7334e33b09ce7c2a2a90b46e8973f63854a0365aaf",
+      "bytes": 16320570
+    },
+    {
+      "path": "game/assets/brax-new/clips.json.gz",
+      "sha256": "0fc0d3d2d3b33a6079ecb3846026aea54784b15dd57d8186d9a62281ed438a66",
+      "bytes": 9403470
+    },
+    {
+      "path": "game/assets/brax-new/paired-clips-5914743788f6.json.gz",
+      "sha256": "5914743788f6a05f80c99137393eda9bb811ed3f1c6c573449b07096539f7fb0",
+      "bytes": 5338076
+    },
+    {
+      "path": "game/assets/brax-new/prefight-clips.json.gz",
+      "sha256": "9ca7551e6f7c991f8faf41cc0207f726d0d49ed558700292f800c9f95c3de072",
+      "bytes": 392449
+    },
+    {
+      "path": "game/assets/brax-new/model.json.gz",
+      "sha256": "3832d0239aa02944d8be6adf73aeca8e0bc74d56d4d6371a20fd9401cee4670f",
+      "bytes": 3476181
+    },
+    {
+      "path": "game/assets/brax-new/color.webp",
+      "sha256": "d738408f64d1419108c0d0c6f93611ab37572e59de47438df99f5fbe54a24f72",
+      "bytes": 12221182
+    },
+    {
+      "path": "game/assets/brax-new/normal.webp",
+      "sha256": "485bdedd9c68eddc3b56292605fad3377276a084143986630050069d6813c9be",
+      "bytes": 4145884
+    },
+    {
+      "path": "game/assets/brax-new/metalness.webp",
+      "sha256": "cbbd3272f70d7aab01eed3d521205942745846860f95a85569fe04ac323c8aec",
+      "bytes": 1567090
+    },
+    {
+      "path": "game/assets/brax-new/roughness.webp",
+      "sha256": "08f8b85fded8c613fcaec30ca62c6187bb5516dc6d1c245bcfc8c1942d248698",
+      "bytes": 1423368
+    },
+    {
+      "path": "game/assets/nyxa-new/config.json",
+      "sha256": "626fd759b66c20e57076e2f670648ecacb1229006d462fbb4bd949481e185e07",
+      "bytes": 14201396
+    },
+    {
+      "path": "game/assets/nyxa-new/clips.json.gz",
+      "sha256": "674e1b8912313d101fbe4fdb66d8b9da7602e53f44865c5fc055a1da98418111",
+      "bytes": 7784432
+    },
+    {
+      "path": "game/assets/nyxa-new/paired-clips-2231664c9f13.json.gz",
+      "sha256": "2231664c9f131bb54f5231a9fe0a5d0f20073b08a94b3f8f3db0b80f1a1bc361",
+      "bytes": 3372507
+    },
+    {
+      "path": "game/assets/nyxa-new/prefight-clips.json.gz",
+      "sha256": "29162326b0b3f305fde2ccc97201927804bacb8af0ed71f0cf0d3f66686c1d4d",
+      "bytes": 395278
+    },
+    {
+      "path": "game/assets/nyxa-new/model.json.gz",
+      "sha256": "2fceadf28742d7990f64d01b81d4495755863fcc396b1e637305d2d4f2b9cd3e",
+      "bytes": 2372685
+    },
+    {
+      "path": "game/assets/nyxa-new/color.webp",
+      "sha256": "8e8410f6c125ef537f52e2904399f3aec56d3237139b61459a0e6909c5d11318",
+      "bytes": 8841218
+    },
+    {
+      "path": "game/assets/nyxa-new/normal.webp",
+      "sha256": "b6bc7ff7b0b51aca0599ed01d562771682f220fe371c9f7bd50eba854cdcbd2a",
+      "bytes": 3172686
+    },
+    {
+      "path": "game/assets/nyxa-new/metalness.webp",
+      "sha256": "6bb7fc8c851fc9b58585b02003b0174df925d269780f2957bded1a5471f4b033",
+      "bytes": 1579250
+    },
+    {
+      "path": "game/assets/nyxa-new/roughness.webp",
+      "sha256": "89e79eb53d25528c7fbe07d9a43ffd00f11aedcb18522bf8828f22622d71673d",
+      "bytes": 2228832
+    },
+    {
+      "path": "game/assets/vexa-new/config.json",
+      "sha256": "fe2145747ed956f65042ac8d52b712ce2eacb006e369193149dffb2f59acff58",
+      "bytes": 12044307
+    },
+    {
+      "path": "game/assets/vexa-new/clips.json.gz",
+      "sha256": "27797f55add630b94c6c2ce3b27d6a07bde576da9ec7e22bf22e75fad6565082",
+      "bytes": 6711422
+    },
+    {
+      "path": "game/assets/vexa-new/paired-clips-a2e5dad7f9cf.json.gz",
+      "sha256": "a2e5dad7f9cf2349f3776e17dfea2464311d82441c30ab26ce23427674ba808a",
+      "bytes": 2983180
+    },
+    {
+      "path": "game/assets/vexa-new/prefight-clips.json.gz",
+      "sha256": "688f74f69ee087b068635e742a26dc59e8505a5fff0395b075b0bf3bcbb4e62e",
+      "bytes": 394740
+    },
+    {
+      "path": "game/assets/vexa-new/model.json.gz",
+      "sha256": "a0f069adb892db54bb94e3ef4a77ae4a73f8af23a144ed71afd506fb0363d186",
+      "bytes": 3200003
+    },
+    {
+      "path": "game/assets/vexa-new/color.webp",
+      "sha256": "acab17e0318bc3bae21d0a69e83d9486db81148164c859bc6968c46379071335",
+      "bytes": 15979334
+    },
+    {
+      "path": "game/assets/vexa-new/normal.webp",
+      "sha256": "ba9b97cca4faac3afb538f949339fddf05b3868111695beebbfac36eeff4d07c",
+      "bytes": 4402962
+    },
+    {
+      "path": "game/assets/vexa-new/metalness.webp",
+      "sha256": "94b8a7acc841576f584430e35e41368446e5082b45ecef81e293f938fdb698b7",
+      "bytes": 1668524
+    },
+    {
+      "path": "game/assets/vexa-new/roughness.webp",
+      "sha256": "9f0292e78ca3e61177b295133cf79d9026cdaf521f46e477c02ab624b0dd4c4f",
+      "bytes": 1510092
+    },
+    {
+      "path": "game/assets/krov-new/config.json",
+      "sha256": "6d7be6c937c76e3d97c5fcb097815dbd44fb066c67450daf7da135146f084224",
+      "bytes": 12126196
+    },
+    {
+      "path": "game/assets/krov-new/clips.json.gz",
+      "sha256": "dd77d6786e7c04c7f4fd6e9b4d39d71ba09b695d8cd2a69eaae4b68b5fbab9ba",
+      "bytes": 8867947
+    },
+    {
+      "path": "game/assets/krov-new/paired-clips-500878e0e585.json.gz",
+      "sha256": "500878e0e5852230f9f7ca790a9dfc5c9d92946393844ebddd5debfeb2ec5acf",
+      "bytes": 3588770
+    },
+    {
+      "path": "game/assets/krov-new/prefight-clips.json.gz",
+      "sha256": "6f372dda1e167dc204a094358f5afac8cbce5c03e46314c0cd3243c6ccf90f4c",
+      "bytes": 390998
+    },
+    {
+      "path": "game/assets/krov-new/model.json.gz",
+      "sha256": "71c38c4d96f01c14f5a36fee14104d1be5ab26b3732b41e00606d2b96abb07c9",
+      "bytes": 3466696
+    },
+    {
+      "path": "game/assets/krov-new/color.webp",
+      "sha256": "298dc6b18e76ab931245f401398e2a3cdba17dddedf99553b5d52b20a8abd9ff",
+      "bytes": 13585112
+    },
+    {
+      "path": "game/assets/krov-new/normal.webp",
+      "sha256": "6c4c02c9f3d25cb482f72f65a852b572cbfd38f228a442a8c2a30a1485c85d86",
+      "bytes": 4258216
+    },
+    {
+      "path": "game/assets/krov-new/metalness.webp",
+      "sha256": "9e87c6f2107cff62e5ba0c2581d6892a65417d50132398649948f4ddff4bba65",
+      "bytes": 1491564
+    },
+    {
+      "path": "game/assets/krov-new/roughness.webp",
+      "sha256": "8d3b7347038a80175ddeac4dbbbdb2e9216175d251ef801682ba02e85ac1543c",
+      "bytes": 1297052
+    },
+    {
+      "path": "game/assets/nina-new/config.json",
+      "sha256": "5b8ca333b0a0e6ba1c0ae036dc1fc6945dc27770b35b6cda467d67f1e96c6516",
+      "bytes": 13489425
+    },
+    {
+      "path": "game/assets/nina-new/clips.json.gz",
+      "sha256": "294fe1cc911e45fd46466b0d5e096546d2ca27551a71f4cc02afd90f60302adb",
+      "bytes": 9229104
+    },
+    {
+      "path": "game/assets/nina-new/paired-clips-ebb6b415d0e7.json.gz",
+      "sha256": "ebb6b415d0e75248b8e89e2c40d097aa316877152ecc14fbaa4790661ab652a2",
+      "bytes": 2951632
+    },
+    {
+      "path": "game/assets/nina-new/prefight-clips.json.gz",
+      "sha256": "44cd4ad735eba03fc7b1d7d80c11ed23b4f06f6eb300daacbd65535f97d7a10c",
+      "bytes": 425307
+    },
+    {
+      "path": "game/assets/nina-new/model.json.gz",
+      "sha256": "b22f21826c2143c56f2b68c6f137da148f3d3d76274ba76f7e534da30451bf19",
+      "bytes": 3204341
+    },
+    {
+      "path": "game/assets/nina-new/color.webp",
+      "sha256": "729193c6deb4624158042d80bbb14b36116a7e28e3df79c1b8c8299c13b35b55",
+      "bytes": 10712818
+    },
+    {
+      "path": "game/assets/nina-new/normal.webp",
+      "sha256": "ad69ec845beae188d972430bd4521b4c3a47490cee077154fd0ab04c843fa044",
+      "bytes": 3769170
+    },
+    {
+      "path": "game/assets/nina-new/metalness.webp",
+      "sha256": "f9a69d43bc86d5ac531d09e3bf394354e964055cb0ece76a9088e47d9f1b5092",
+      "bytes": 1426860
+    },
+    {
+      "path": "game/assets/nina-new/roughness.webp",
+      "sha256": "ecba5bc730161be85559157e3a592c2f8227e3cd00212740571652d22db23da3",
+      "bytes": 1037926
+    },
+    {
+      "path": "game/assets/danny-new/config.json",
+      "sha256": "2afed7f493ee20e995fce09df90dfa98c9b570d4f5ce678ec6802375f39551f3",
+      "bytes": 12371481
+    },
+    {
+      "path": "game/assets/danny-new/clips.json.gz",
+      "sha256": "2eb118af79378cf2087846677f11aec18694137c399ace46d381ea8c82b46990",
+      "bytes": 6225010
+    },
+    {
+      "path": "game/assets/danny-new/paired-clips-cdf6f5d5e27b.json.gz",
+      "sha256": "cdf6f5d5e27b0c7177fa9ffaee9fcfa6b3437b967e411109dd5c0c9eb66ba3f0",
+      "bytes": 2970937
+    },
+    {
+      "path": "game/assets/danny-new/prefight-clips.json.gz",
+      "sha256": "d8bf92bda95a7cf4abe3e6c0482020054990e6bd3fd958dd9da7039ad75d3bbd",
+      "bytes": 392307
+    },
+    {
+      "path": "game/assets/danny-new/model.json.gz",
+      "sha256": "08f628343e4851e543f15cb65ab2bf366987b1459ed92515f41187ea8ac949c3",
+      "bytes": 2902449
+    },
+    {
+      "path": "game/assets/danny-new/color.webp",
+      "sha256": "0d5cdfdd68007c98bafa373dd58cf2db48045bf9c8e2ee159bf490a28feb9729",
+      "bytes": 12455936
+    },
+    {
+      "path": "game/assets/danny-new/normal.webp",
+      "sha256": "e57dd0be248953d5508a1898ad9d8ffbb860fddd1d1812b70da4650c83cd1263",
+      "bytes": 3396512
+    },
+    {
+      "path": "game/assets/danny-new/metalness.webp",
+      "sha256": "44c42ffbce1f74342b9956f964febd1019b9530bc69bcfa88eca3af142d19853",
+      "bytes": 1337626
+    },
+    {
+      "path": "game/assets/danny-new/roughness.webp",
+      "sha256": "af8cf6f75008c0a270cb7d316e77786ba1d09b0cde5e3078b4f22a893a5f1c63",
+      "bytes": 1082810
+    },
+    {
+      "path": "game/assets/bear-new/config.json",
+      "sha256": "57f021bbf9fa3700d8d46f3b033c15721f9895baee5bbe1a74c4e56e4d86b9f2",
+      "bytes": 17385238
+    },
+    {
+      "path": "game/assets/bear-new/clips.json.gz",
+      "sha256": "13c43ba573bc34ccc8b2236eda1b6e6c1ecd9ba43a0631f4d7e97effac3eb61b",
+      "bytes": 22666589
+    },
+    {
+      "path": "game/assets/bear-new/paired-clips-6a07819272eb.json.gz",
+      "sha256": "6a07819272ebfdfa4f6b886e7dd983a627cb2710a81420486e957cb9109ee91b",
+      "bytes": 7871683
+    },
+    {
+      "path": "game/assets/bear-new/prefight-clips.json.gz",
+      "sha256": "b629fe3a770f43e83e807bcb6a4721845253290b502195f37b70afaf41211462",
+      "bytes": 391095
+    },
+    {
+      "path": "game/assets/bear-new/model.json.gz",
+      "sha256": "7dec5a9e8784d2c2628f9cf36c3a723c19c9577a558aada90aa85f3e7b2119c3",
+      "bytes": 3020078
+    },
+    {
+      "path": "game/assets/bear-new/color.webp",
+      "sha256": "db2a9ef0ebbc75f9e4bbf185fef7382618d6fec5f445c311854c6800b9aba5e4",
+      "bytes": 12405784
+    },
+    {
+      "path": "game/assets/bear-new/normal.webp",
+      "sha256": "6cd823e9a3671b62ed0cf4fb47f99a7348aabf48a34585978cdf02586390b1ab",
+      "bytes": 3863638
+    },
+    {
+      "path": "game/assets/bear-new/metalness.webp",
+      "sha256": "7d70b12750c5b12e83b1808c97086d01e872d7874143a9562222e218ae62ec04",
+      "bytes": 1530774
+    },
+    {
+      "path": "game/assets/bear-new/roughness.webp",
+      "sha256": "2db1f2524d8b136bd90763691d07fb4239b9838ccea5595fb459a5f4870c973c",
+      "bytes": 1051110
+    },
+    {
+      "path": "game/assets/demon-new/config.json",
+      "sha256": "735806beba392a31860f85ba5eb99e1c471e6fde501f2a84d357d27c9ac3e765",
+      "bytes": 11877900
+    },
+    {
+      "path": "game/assets/demon-new/clips.json.gz",
+      "sha256": "1e0d7d2698fe56ed75e7a8ca3527267e2773f3b7f589fa3acd2caf62cc1867da",
+      "bytes": 21974119
+    },
+    {
+      "path": "game/assets/demon-new/paired-clips-e46d62d3fc52.json.gz",
+      "sha256": "e46d62d3fc52462c705712066289d03f356356658824b8b50324d6eaf3425a63",
+      "bytes": 2958860
+    },
+    {
+      "path": "game/assets/demon-new/prefight-clips.json.gz",
+      "sha256": "c65b8f2a104eca371e0a4dc6d2d1c892c843a8c0fc0cbe02092afe5054e6ad47",
+      "bytes": 393940
+    },
+    {
+      "path": "game/assets/demon-new/model.json.gz",
+      "sha256": "c9943430e9dd5cfbe7129f31b9df5ac238f1d87f2041cbcef81916ba57dd82d2",
+      "bytes": 3181996
+    },
+    {
+      "path": "game/assets/demon-new/color.webp",
+      "sha256": "594d07e6b1ff9e5fd5a91186baa3431f4ac553d76a380d19a7c385f31dcefa68",
+      "bytes": 15458864
+    },
+    {
+      "path": "game/assets/demon-new/normal.webp",
+      "sha256": "1d64f335c0c6c8edf3dfdaab1c055ae8edd5cf51480c0acf43fb2470ec959d26",
+      "bytes": 5363604
+    },
+    {
+      "path": "game/assets/demon-new/metalness.webp",
+      "sha256": "0f5fed78553c7920e160bb37186236357747fcc8dd498edef68a9e1c83ecde20",
+      "bytes": 1894136
+    },
+    {
+      "path": "game/assets/demon-new/roughness.webp",
+      "sha256": "935cd1f60f50cf201af87e790738d878888295ec432a74dbcbc05ba8f7f14bcc",
+      "bytes": 1693032
+    },
+    {
+      "path": "game/assets/boss-new/config.json",
+      "sha256": "4e8785ae611c7ffb04a4c3d26057bd8df72cb3478e997da28b6bb23894c1beab",
+      "bytes": 8191457
+    },
+    {
+      "path": "game/assets/boss-new/clips.json.gz",
+      "sha256": "62f65eb73d090e6d137bb0ee6778d0cab73449c36d8b72af1ff38c45f3eeebfd",
+      "bytes": 5147903
+    },
+    {
+      "path": "game/assets/boss-new/model.json.gz",
+      "sha256": "01ce454f4b0560d06f01ae03c7d76356c388944f7f1b85e58f5f90126e1f72ed",
+      "bytes": 5080904
+    },
+    {
+      "path": "game/assets/boss-new/color.webp",
+      "sha256": "629143ba5d0b46c33effe5e1b7fbb00351629b37619c66abd5e629b2735d602b",
+      "bytes": 804062
+    },
+    {
+      "path": "game/assets/boss-new/normal.webp",
+      "sha256": "b79e1ece59a9197be2e67222b8664496407c3065c64044c9ee37e193b30d674f",
+      "bytes": 720706
+    },
+    {
+      "path": "game/assets/boss-new/metalness.webp",
+      "sha256": "e65aad137579aef8baadf66bdc710ef70e3b01f03e774a4ed8a6bdfd70f3f6bd",
+      "bytes": 509258
+    },
+    {
+      "path": "game/assets/boss-new/roughness.webp",
+      "sha256": "820543ce63bfa6cbffd907c8cceb6c46d50dd08633832fafc4fedb48f6b1c92c",
+      "bytes": 425612
+    },
+    {
+      "path": "game/assets/zombie-new/config.json",
+      "sha256": "ee7103cee53274c51f07c3e2427e4440ad81e24159bd7064f38cd019da75e182",
+      "bytes": 7691381
+    },
+    {
+      "path": "game/assets/zombie-new/clips.json.gz",
+      "sha256": "a5523f6b2407ddb38ec9dab09f5a4474362207e2e31a3ad6dbe031e35d0cbc9c",
+      "bytes": 5467545
+    },
+    {
+      "path": "game/assets/zombie-new/model.json.gz",
+      "sha256": "0017475f3c2305c46043c77c26d26f360b1996a553456a686290e31579982505",
+      "bytes": 3410715
+    },
+    {
+      "path": "game/assets/zombie-new/color.webp",
+      "sha256": "1394431a764d6b62b0c683ba854013c42a9d7bf9eb161b10cd7cce376c845669",
+      "bytes": 1067524
+    },
+    {
+      "path": "game/assets/zombie-new/normal.webp",
+      "sha256": "dc4a384bbd72154216265139a487892a8c8e2209c9a6bf7ba50d4642a2b7ef7b",
+      "bytes": 781914
+    },
+    {
+      "path": "game/assets/zombie-new/metalness.webp",
+      "sha256": "37be18f115571a59643046e83a0ac8f76e24ad12d21b6e4b504b82e4d8792e16",
+      "bytes": 553148
+    },
+    {
+      "path": "game/assets/zombie-new/roughness.webp",
+      "sha256": "77062c68efe1f84bfce90f258baa49e2dd4afea2f9ca14451a458f7ca175a4b4",
+      "bytes": 465332
+    },
+    {
+      "path": "game/assets/outfits/brax-white/config.patch.json",
+      "sha256": "403df6d3a4368ff525756bec2f946447087d06944a063c5f4b7664a86a6c0e30",
+      "bytes": 586719
+    },
+    {
+      "path": "game/assets/outfits/brax-white/model.json.gz",
+      "sha256": "cfe2a2563e07515a3f124aa00124e8c76e82a236bd778ebb37a1908a1b57b70d",
+      "bytes": 2890202
+    },
+    {
+      "path": "game/assets/outfits/brax-white/retarget.json",
+      "sha256": "ea3ab8e0326b136b77c2a7c2d229f701f6c9cb2870656b268c5070ec850ab5f4",
+      "bytes": 163863
+    },
+    {
+      "path": "game/assets/outfits/brax-white/color.jpg",
+      "sha256": "db0ad9a6851ef5f2d30e3d42c6bae17de735e70e39eb33806cd70128d7c15e26",
+      "bytes": 2454549
+    },
+    {
+      "path": "game/assets/outfits/brax-white/normal-original.jpg",
+      "sha256": "56af7d9f02fc7fbda78fb3016600df48647c95e2a07c2f7a9bde9ece12545198",
+      "bytes": 1387244
+    },
+    {
+      "path": "game/assets/outfits/brax-white/metallic-roughness-original.png",
+      "sha256": "31fd0081c431abd3a269c432ff6ebcf4994ef9f574ab8baa200339f2267dd61b",
+      "bytes": 5675332
+    },
+    {
+      "path": "game/assets/outfits/brax-street/config.patch.json",
+      "sha256": "27f296b0dcfa54c3f094aa901bcdd5b736d43bac5499fd5d1644611d6b7d63bf",
+      "bytes": 373178
+    },
+    {
+      "path": "game/assets/outfits/brax-street/model.json.gz",
+      "sha256": "47c6ae22fde4e053c37f7ee71dfd449f43a02e8f558b60474aa2195366bb1504",
+      "bytes": 3004037
+    },
+    {
+      "path": "game/assets/outfits/brax-street/retarget.json",
+      "sha256": "5182315ee0a3ecaedb73c1280ed312076a4e91bfdd598ac3bfde5dd4967595f1",
+      "bytes": 163954
+    },
+    {
+      "path": "game/assets/outfits/brax-street/color.jpg",
+      "sha256": "4d9833bf5e05e5363a952c7b139b3dbc62890cde44708d635b707456831df850",
+      "bytes": 2857720
+    },
+    {
+      "path": "game/assets/outfits/brax-street/normal-original.jpg",
+      "sha256": "d4a9d164a87275e9fe01c46aefdee4b259b36126709e8645523a247ad2f0c4d3",
+      "bytes": 1414769
+    },
+    {
+      "path": "game/assets/outfits/brax-street/metalness-original.jpg",
+      "sha256": "b065162494ee04bb861a28d6a0a57abe452dc0660c33962826ec53d08a4d95ea",
+      "bytes": 491781
+    },
+    {
+      "path": "game/assets/outfits/brax-street/roughness-original.jpg",
+      "sha256": "91ecda3627186a87b9daafe5b91bdf407de87eec60353029ce832a1c3cfaf651",
+      "bytes": 460632
+    },
+    {
+      "path": "game/assets/outfits/nyxa-sport/config.patch.json",
+      "sha256": "6294fb0d1680cddb33ae20f9da76c4cc9fb7f27f5c14985614b63535daf6014d",
+      "bytes": 1004108
+    },
+    {
+      "path": "game/assets/outfits/nyxa-sport/model.json.gz",
+      "sha256": "68a0cbc47604bf5db27d2686e98ff7d2e5fa48421892d81957b139249c023e48",
+      "bytes": 3293425
+    },
+    {
+      "path": "game/assets/outfits/nyxa-sport/retarget.json",
+      "sha256": "c71c916b8767354563d7532c161f073729b0845b2e96ca92d846d94ffd6dc128",
+      "bytes": 163929
+    },
+    {
+      "path": "game/assets/outfits/nyxa-sport/color.jpg",
+      "sha256": "59958cfebddaaf452a2d2609121cdf101019143e1e3d5f8b9c54973d98a0138c",
+      "bytes": 2408885
+    },
+    {
+      "path": "game/assets/outfits/nyxa-sport/normal.webp",
+      "sha256": "23e148dc94cbb9c17c04300a7880115cafe77562e7765f7da99ca46d20b72683",
+      "bytes": 828560
+    },
+    {
+      "path": "game/assets/outfits/nyxa-sport/metalness.webp",
+      "sha256": "4ee0dab2af10a8a2d2d9348483129e32f72e7842a565acfd1a70edbd72f8ba9d",
+      "bytes": 594022
+    },
+    {
+      "path": "game/assets/outfits/nyxa-sport/roughness.webp",
+      "sha256": "03749b5ccb1f4ca929ed4d9fc580e08d3773619f30bed9ac57a2a5315c5e5a8d",
+      "bytes": 448200
+    },
+    {
+      "path": "game/assets/outfits/nyxa-pink/config.patch.json",
+      "sha256": "d80d82a4cd1044a6414f5e1e26177c386b66ed69790b051516ea4ce4b3e7e7bd",
+      "bytes": 1192692
+    },
+    {
+      "path": "game/assets/outfits/nyxa-pink/model.json.gz",
+      "sha256": "04d543f2b3b8e66197ab325c2ecceee29919173df5d77d5f5c452283cd012be7",
+      "bytes": 3205244
+    },
+    {
+      "path": "game/assets/outfits/nyxa-pink/retarget.json",
+      "sha256": "e5dac1233b90278f0b627be203ff41ca77430f4412d43ea5c78b5bf0c559ec5c",
+      "bytes": 163955
+    },
+    {
+      "path": "game/assets/outfits/nyxa-pink/color.jpg",
+      "sha256": "9e495c9d4fa96a4bd8abb1131346790def1b6e7c4aa2ee64e7ceaf4b43cc5271",
+      "bytes": 2387715
+    },
+    {
+      "path": "game/assets/outfits/nyxa-pink/normal.webp",
+      "sha256": "1997d5116ba9fb4702efe190bae701e6485d8f6a5754d5ab2d9d55f4bc45b419",
+      "bytes": 782722
+    },
+    {
+      "path": "game/assets/outfits/nyxa-pink/metalness.webp",
+      "sha256": "bb2afcb2f592e8a0977c9a4fbf999f32f82abaf04db784fdef224530ba470031",
+      "bytes": 510908
+    },
+    {
+      "path": "game/assets/outfits/nyxa-pink/roughness.webp",
+      "sha256": "51b35b51737f47a10feb7e61ee25cedad34781ca5debfc32499e507bacef5ec8",
+      "bytes": 331752
+    },
+    {
+      "path": "game/assets/outfits/vexa-purple/config.patch.json",
+      "sha256": "93b4c712657af110700c2869b9055721b323f7464ac05399b5d69ac69cd0c71c",
+      "bytes": 502176
+    },
+    {
+      "path": "game/assets/outfits/vexa-purple/model.json.gz",
+      "sha256": "4f10c799bd93aa062d8b5edc6a4d28cf4a8e5f602abbc2f34a53dbdac0d3cb54",
+      "bytes": 3097428
+    },
+    {
+      "path": "game/assets/outfits/vexa-purple/retarget.json",
+      "sha256": "d7f156045dac9658e7136c0819c9fb7eb17baeecc8041f3c7bbecae804b1aaeb",
+      "bytes": 163930
+    },
+    {
+      "path": "game/assets/outfits/vexa-purple/color.webp",
+      "sha256": "2a1203199cf20d443d340b41ab74d563a4ef6a3fb2db215a97ad4d9d85a2505e",
+      "bytes": 1264056
+    },
+    {
+      "path": "game/assets/outfits/vexa-purple/normal.webp",
+      "sha256": "a8f1a64137d1aa00ceffe25c11a75af47d7441e3cab3188633f3d39a59e25cac",
+      "bytes": 867722
+    },
+    {
+      "path": "game/assets/outfits/vexa-purple/metalness.webp",
+      "sha256": "618456b0adaa4b1860e9b35c817a552885be295e15a4200a505484d7d278b94e",
+      "bytes": 767064
+    },
+    {
+      "path": "game/assets/outfits/vexa-purple/roughness.webp",
+      "sha256": "f98240d46e5a3f73d1ef03721ce058d5204d5614df9e271a931108deb12a7f56",
+      "bytes": 537616
+    },
+    {
+      "path": "game/assets/outfits/vexa-street/config.patch.json",
+      "sha256": "06f0851efc00329a4680c2df846f8e848ff160d2b86f59b23b7b5623b983c349",
+      "bytes": 515064
+    },
+    {
+      "path": "game/assets/outfits/vexa-street/model.json.gz",
+      "sha256": "b73ba3fbd15d6a8f5eb12a9e862e0ad2b51c6388c5a2c1c2206b5fdf5b783a16",
+      "bytes": 3199653
+    },
+    {
+      "path": "game/assets/outfits/vexa-street/retarget.json",
+      "sha256": "688d0acc2f4fa546b025fda2953155f8d92b972b1d2a1ce14e1edd240e048608",
+      "bytes": 163458
+    },
+    {
+      "path": "game/assets/outfits/vexa-street/color.webp",
+      "sha256": "2c6abf008d5368e7676e8efef7fa1e84f4a05422994ee974467b5e68ac41fee9",
+      "bytes": 1089966
+    },
+    {
+      "path": "game/assets/outfits/vexa-street/normal.webp",
+      "sha256": "d4d10f52a86ecef358b9ad436a7e782730d353b04f6578432d0e0b115fd96056",
+      "bytes": 855676
+    },
+    {
+      "path": "game/assets/outfits/vexa-street/metalness.webp",
+      "sha256": "46f0fa90ba9432f57dff051c18df66da372c2a80cc1b3e7f4e067a1f0fb29d79",
+      "bytes": 581940
+    },
+    {
+      "path": "game/assets/outfits/vexa-street/roughness.webp",
+      "sha256": "9bd39c5dae4da0c958f4267900e7df0bc6bb5937adb93031a73bd061c2cf9f49",
+      "bytes": 321070
+    },
+    {
+      "path": "game/assets/outfits/krov-tracksuit/config.patch.json",
+      "sha256": "02b203e5cd314d5f30bdd705c03343c64dccac06863447f2a45babc3f757c9e9",
+      "bytes": 437006
+    },
+    {
+      "path": "game/assets/outfits/krov-tracksuit/model.json.gz",
+      "sha256": "ecafe2e78fb085eed9eb01f27bdd482ca01cecc1444f46281b137c0b226dc9cf",
+      "bytes": 3083361
+    },
+    {
+      "path": "game/assets/outfits/krov-tracksuit/retarget.json",
+      "sha256": "ef8e92354179a7023cb10f05a515701734534cfe8babbe092798838e6dce22a0",
+      "bytes": 163901
+    },
+    {
+      "path": "game/assets/outfits/krov-tracksuit/color.webp",
+      "sha256": "e67226cfa6a55bb6b20ce80be9bd6b4c03108cec3c714d606f0f9842c5ee1601",
+      "bytes": 818282
+    },
+    {
+      "path": "game/assets/outfits/krov-tracksuit/normal.webp",
+      "sha256": "7e251ef38f1001ed249c808471c428c3377a01484826411f489149cf728ad06d",
+      "bytes": 840520
+    },
+    {
+      "path": "game/assets/outfits/krov-tracksuit/metalness.webp",
+      "sha256": "dbd24e476d5bd247d27102c1a8dcc1877fbcb4bfe28d3dbb0c0d5cc61c900585",
+      "bytes": 546288
+    },
+    {
+      "path": "game/assets/outfits/krov-tracksuit/roughness.webp",
+      "sha256": "fcb1bf7a9e9b0017297a8fbee22a68dbea17ebf10e5a7a2bdbb46bdc48050f85",
+      "bytes": 396110
+    },
+    {
+      "path": "game/assets/outfits/krov-summer/config.patch.json",
+      "sha256": "454e50d14dd4667c1228403f19b4d5e6121dc9c1d2d88a8215fdab14efb89a87",
+      "bytes": 572320
+    },
+    {
+      "path": "game/assets/outfits/krov-summer/model.json.gz",
+      "sha256": "47bcd11f051a44b544189b2bfcd29b6fe1725278fd3a9e3bf56d53da16a6c4e5",
+      "bytes": 3107370
+    },
+    {
+      "path": "game/assets/outfits/krov-summer/retarget.json",
+      "sha256": "1f29f690f61acc05fc6aa8b0e51ac667b266918de822c75ee840fd4f0d736e7f",
+      "bytes": 163943
+    },
+    {
+      "path": "game/assets/outfits/krov-summer/color.webp",
+      "sha256": "47115a98af74e10629d11314972b99a9b3c887749c1aecef24eb75b7c7da9391",
+      "bytes": 1196108
+    },
+    {
+      "path": "game/assets/outfits/krov-summer/normal.webp",
+      "sha256": "4a409cce3b8dd4e13d153566a2607ce3776ccec1a3c6c7537355e14b5d681490",
+      "bytes": 859362
+    },
+    {
+      "path": "game/assets/outfits/krov-summer/metalness.webp",
+      "sha256": "7e987e3dc444d4a2c7139ae3638367e3085070be8d13d0b873f4f8ba551cc9ed",
+      "bytes": 562458
+    },
+    {
+      "path": "game/assets/outfits/krov-summer/roughness.webp",
+      "sha256": "15e52fdd54b49fa1c9d8fb6744189ac72fa0f66f9449ac7c5d3b1ed9f63c5150",
+      "bytes": 361288
+    }
+  ],
+  "partial": false,
+  "toolSources": [
+    {
+      "path": "game/assets/fighter-source-core.js",
+      "sha256": "0191b096ef1967125501bad6218d0d577ac6fde73c3991bd99fcd816eec813a0"
+    },
+    {
+      "path": "game/assets/tail-floor.js",
+      "sha256": "a330eb11bfdc1a64d6d031a783821f3d156607ad96728cc4a73c7d6f260be37e"
+    },
+    {
+      "path": "game/assets/outfit-retarget.js",
+      "sha256": "e01f57d33e74b88168dc39518a4f02080cd189d5e7657cd13f4339ca8887ed42"
+    },
+    {
+      "path": "game/assets/outfit-materials.js",
+      "sha256": "ecfb31411402c0de8e6e9ecf8734b763d9dd737a9b3139fb134b3874df86d5f9"
+    }
+  ]
+}
