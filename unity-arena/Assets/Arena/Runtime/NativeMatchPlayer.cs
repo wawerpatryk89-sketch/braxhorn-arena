@@ -180,6 +180,13 @@ namespace Braxhorn.Arena
                 RenderFighter(i,match.Presentation(i));
                 if(adventure!=null)actors[i].SetActive(i==0?adventure.Phase!=AdventurePhase.Entrance||adventure.ElapsedMs>=450:adventure.OpponentVisible);
             }
+            if(match.ClinchActive)
+                for(var i=0;i<2;i++)
+                {
+                    var self=match.Fighter(i);var other=match.Fighter(1-i);
+                    var gap=Math.Abs(self.X-other.X)/match.Scale/self.Action.Scale*3.25/640;
+                    poses[i].ApplyClinchContact(self.Action,other.Action,gap,self.Clock.PoseSeconds);
+                }
             hud.text=Display(definitions[0].id)+"  "+Math.Ceiling(match.Player.Hp)+" HP · "+(int)match.Player.Energy+" EN     "+Math.Ceiling(match.RemainingSeconds)+"     "+Display(definitions[1].id)+"  "+Math.Ceiling(match.Opponent.Hp)+" HP\n"+
                 "RUNDA "+match.Round+" · "+match.PlayerWins+" : "+match.OpponentWins+(match.Paused?" · PAUZA":match.Phase==MatchPhase.Countdown?" · "+match.Countdown:"");
             if(adventure!=null)hud.text=Display(definitions[0].id)+" · "+Math.Ceiling(match.Player.Hp)+" HP · "+(int)match.Player.Energy+" EN     "+(int)(adventure.ElapsedMs/60000)+":"+((int)(adventure.ElapsedMs/1000)%60).ToString("00")+"\nSZLAK "+adventure.Defeated+"/6 · "+adventure.Score+" PKT · "+(string)adventure.Route["chapters"][adventure.Chapter]["name"];

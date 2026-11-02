@@ -57,7 +57,7 @@ Previous preflight found no configured Arena UNITY_LICENSE/EMAIL/PASSWORD/SERIAL
 
 ## Required before claiming the whole migration is finished
 
-1. Complete remaining source gameplay/presentation parity: moving-strike leg layers, full CPU/drill variants, dynamic clinch hand IK and combo-aftermath gestures, recoil/lift/travel details, KO replay, all authored VFX/audio and procedural night-market overlays. Expand matchup/direction reference coverage.
+1. Complete remaining source gameplay/presentation parity: moving-strike leg layers, full CPU/drill variants, runtime verification of clinch hand IK, combo-aftermath gestures, recoil/lift/travel details, KO replay, all authored VFX/audio and procedural night-market overlays. Expand matchup/direction reference coverage.
 2. Implement the original production menus/art, account entry, portraits, outfit shop, challenges, rankings and save migration. The present integration selector is not a finished UI.
 3. Implement native backend account/session/shop authority, adventure ranking protocol, online rooms/signaling, input/snapshots and voice; verify two peers. Do not fake successful online results.
 4. Execute native import and visual/runtime checks when a permitted Unity execution path is available. Validate rig deformation, facing, entrance masks, unlit/PBR output, actual video orientation/loop seams, audio synchronization and corpse capture.
@@ -69,6 +69,12 @@ Never describe managed compilation or source export as a verified working phone 
 
 Automatic taunts, queued joy/anger, alternating variants and authored cooldowns now run in C#. Movement, guard and strikes interrupt a gesture immediately. Exploration suppresses combat gestures. Normal throw completion, fall and get-up queue original actions. Combo-specific aftermath presentation remains incomplete.
 
-Neutral clinch detects original torso/push-capsule proximity and forward pressure, uses CLINCH_HOLD, freezes its pose at 280 ms, and supports break or original paired-move selection. Contact itself causes no damage. Release restores separation/protection/cooldown; pause freezes the timeout. CPU waits for its reaction window; passive training does not act. Round/adventure transitions reset the state. Dynamic hand-to-opponent IK is not yet ported; a baked hold alone is not proof of correct hand placement across different sizes.
+Neutral clinch detects original torso/push-capsule proximity and forward pressure, uses CLINCH_HOLD, freezes its pose at 280 ms, and supports break or original paired-move selection. Contact itself causes no damage. Release restores separation/protection/cooldown; pause freezes the timeout. CPU waits for its reaction window; passive training does not act. Round/adventure transitions reset the state. Dynamic hand-to-opponent IK is now implemented after both Unity poses have been sampled; visual placement still requires runtime verification across different sizes.
 
 Validation: 15 dedicated gesture checks and 18 dedicated clinch checks supplement the existing match/adventure suite. Managed compilation is performed without running the Unity Editor. No new APK or runtime images are produced by this checkpoint.
+
+## Native clinch contact IK
+
+`FighterPosePlayer.Contact` consumes the original contactShoulders/contactClavicles metadata and scale ratio. It uses the original 0.07 horizontal / 0.06 vertical offsets, reachable-height fallback, 75% clavicle fallback and 180 ms smoothstep. Source Z is reflected consistently with the imported rig. Actor-facing/scale transforms are applied outside the solver. Both base poses are sampled before contact correction; rotations are corrected without changing bone translations or scale. Hand world orientation is retained at full blend. No generated replacement animation is introduced.
+
+`ArmContactGeometry` has 4019 executable geometry checks over 1000 varied chains/targets plus vertical, unreachable, degenerate and invalid inputs. All four Unity assembly boundaries compile. These checks validate geometry and compilation, not rendered skin deformation or touch-device behavior.

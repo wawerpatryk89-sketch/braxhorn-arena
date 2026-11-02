@@ -66,6 +66,7 @@ static class RulesParityRunner
         AdventureParityRunner.Run(args.Length > 2 ? args[2] : null,args.Length>1?args[1]:null);
         GestureParityRunner.Run();
         ClinchParityRunner.Run();
+        ArmContactParityRunner.Run();
         return 0;
     }
 }

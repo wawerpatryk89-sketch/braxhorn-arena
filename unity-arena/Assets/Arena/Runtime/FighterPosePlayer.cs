@@ -7,7 +7,7 @@ namespace Braxhorn.Arena
 {
     // Simulation owns action and time. Unity owns deformation and pose blending.
     // No JS interpreter, browser canvas, WebView or Three.js runtime is involved.
-    public sealed class FighterPosePlayer : MonoBehaviour
+    public sealed partial class FighterPosePlayer : MonoBehaviour
     {
         PlayableGraph graph;
         AnimationMixerPlayable mixer;
@@ -22,6 +22,7 @@ namespace Braxhorn.Arena
         public void Initialize(FighterDefinition fighter)
         {
             DisposeGraph();
+            FindContactBones();
             definition = fighter ? fighter : throw new ArgumentNullException(nameof(fighter));
             // The original roster uses up to twelve influences per vertex.
             // Default mobile quality settings would otherwise truncate the rig.
