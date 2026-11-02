@@ -61,7 +61,7 @@ def restore(entry):
     return str(relative)
 
 if __name__ == "__main__":
-    entries = lock["sources"] + lock["toolSources"]
+    entries = lock["sources"] + lock["toolSources"] + lock.get("supplements", [])
     with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
         for index, path in enumerate(pool.map(restore, entries), 1):
             print(f"[{index}/{len(entries)}] SHA-256 verified: {path}", flush=True)

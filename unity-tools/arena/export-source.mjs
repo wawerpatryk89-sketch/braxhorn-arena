@@ -19,7 +19,7 @@ const selected=process.argv.find(a=>a.startsWith('--fighters='))?.split('=')[1].
 const maxActions=Number(process.argv.find(a=>a.startsWith('--max-actions='))?.split('=')[1]||0);
 const hash=b=>createHash('sha256').update(b).digest('hex');
 const sourceLock=JSON.parse(fs.readFileSync(path.join(root,'unity-tools/arena/source-lock.json')));
-for(const entry of [...sourceLock.sources,...sourceLock.toolSources]){
+for(const entry of [...sourceLock.sources,...sourceLock.toolSources,...(sourceLock.supplements||[])]){
  const file=path.join(root,entry.path);
  if(!fs.existsSync(file)||![entry.sha256,entry.delivery?.restoredSha256].includes(hash(fs.readFileSync(file))))
   throw Error('Wrong migration baseline: '+entry.path+'. Restore the v271 source snapshot '+sourceLock.sourceCommit+' before exporting.');
@@ -43,7 +43,13 @@ for(const who of [...roster,...outfits.map(o=>o.id)]){
  let config=json(path.join(basePath,'config.json'));
  if(outfit){const patch=json(path.join(modelPath,'config.patch.json'));config=Object.fromEntries(Object.entries(config).map(([key,c])=>[key,{...c,...patch[key]}]));}
  const raw=json(path.join(basePath,'clips.json.gz'));
+ for(const supplement of sourceLock.supplements||[])
+  if(supplement.base===base)Object.assign(raw,json(path.join(root,supplement.path)));
  for(const file of [config.IDLE.pairedClips,config.IDLE.prefightClips].filter(Boolean))Object.assign(raw,json(path.join(basePath,file)));
+ const references=new Set();
+ const inspect=value=>{if(!value||typeof value!=='object')return;if(typeof value.clip==='string')references.add(value.clip);for(const child of Object.values(value))inspect(child);};
+ inspect(config);
+ for(const name of references)if(!raw[name])throw Error(who+': missing authored source clip '+name+' before pose export');
  const model=json(path.join(modelPath,'model.json.gz'));
  const clips=outfit?retargetOutfitClipsFromRecipe(raw,json(path.join(modelPath,'retarget.json')),base):raw;
  const r=rig(new THREE.ObjectLoader().parse(model),clips,base,{lazy:true});

@@ -73,7 +73,7 @@
     {
       "id": "BEAR",
       "base": "BEAR",
-      "displayName": "MI\u015a",
+      "displayName": "MIŚ",
       "label": "BEAR",
       "npc": false,
       "nodes": 69,
@@ -118,7 +118,7 @@
       "id": "BRAX_WHITE",
       "base": "BRAX",
       "displayName": "BRAX_WHITE",
-      "label": "Bia\u0142y tank",
+      "label": "Biały tank",
       "npc": false,
       "nodes": 69,
       "meshes": 1,
@@ -151,7 +151,7 @@
       "id": "NYXA_PINK",
       "base": "NYXA",
       "displayName": "NYXA_PINK",
-      "label": "R\u00f3\u017cowy komplet",
+      "label": "Różowy komplet",
       "npc": false,
       "nodes": 69,
       "meshes": 1,
@@ -1465,6 +1465,28 @@
     {
       "path": "game/assets/vendor/three.core.js",
       "sha256": "9edde002b066a9a05676a6127f67735b62baf399bdea529f2f7e31657da769e6"
+    }
+  ],
+  "supplements": [
+    {
+      "base": "BEAR",
+      "path": "unity-tools/arena/supplements/BEAR.json.gz",
+      "sha256": "7a91cdfcb32014cc3292b62bf7f509b8f7e33bd89bf87dac97b1762a76c7a7e9",
+      "bytes": 60783,
+      "clips": [
+        "Blocking"
+      ],
+      "source": "game/assets/bear-new/clips.json.gz"
+    },
+    {
+      "base": "DEMON",
+      "path": "unity-tools/arena/supplements/DEMON.json.gz",
+      "sha256": "45a88bff571da8b879276820e0f0ade9fc5edf79e8163ccbd6de5ce2b29b3480",
+      "bytes": 150054,
+      "clips": [
+        "Standing Block End"
+      ],
+      "source": "game/assets/demon-new/clips.json.gz"
     }
   ]
 }
