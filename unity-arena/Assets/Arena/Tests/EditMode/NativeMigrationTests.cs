@@ -35,10 +35,10 @@ namespace Braxhorn.Arena.Tests
                 using (var gzip = new GZipStream(output, CompressionMode.Compress))
                 using (var writer = new BinaryWriter(gzip))
                 {
-                    writer.Write(Encoding.ASCII.GetBytes("BAP1")); writer.Write(1); writer.Write(2);
+                    writer.Write(Encoding.ASCII.GetBytes("BAP1")); writer.Write(1); writer.Write(3);
                     var path = Encoding.UTF8.GetBytes("Model/Hips"); writer.Write(path.Length); writer.Write(path);
-                    writer.Write(0f); writer.Write(1f);
-                    foreach (var x in new[] { 1f, 2f })
+                    writer.Write(0f); writer.Write(.5f); writer.Write(1f);
+                    foreach (var x in new[] { 1f, 2f, 3f })
                         foreach (var value in new[] { x, 3f, 4f, 0f, 0f, 0f, 1f, 1f, 1f, 1f }) writer.Write(value);
                 }
                 clip = NativeFighterImporter.ImportAnimation(file, "fixture");

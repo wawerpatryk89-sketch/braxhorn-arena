@@ -7,7 +7,7 @@
 - Published source: Site version 271, commit `f355fe6ac6af41518fde420382512d49bd27d51a` (2026-10-28).
 - GitHub `braxhorn-arena/main` was still `dc7a4f16ccd3214b2ba7cb43f06713ef90bf857a` (2026-10-20). It is not an interchangeable asset baseline.
 - Unity project created in `unity-arena`, Editor `6000.3.27f2`, built-in render pipeline, C# domain rules isolated from Unity presentation.
-- No production Scene, APK, AAB or validated Unity player exists yet. Do not describe this checkpoint as a completed game migration.
+- A native review scene generator and ARM64 IL2CPP build method exist but have not run in Unity. No production Scene, APK, AAB or validated Unity player exists yet. Do not describe this checkpoint as a completed game migration.
 
 ## Current implementation
 
@@ -19,7 +19,7 @@ The exported payload contains 10 base/NPC models plus 8 outfits, 2,952 configure
 
 ## Still required for complete migration
 
-1. Execute the importer in a working licensed Unity Editor, validate bind poses, facing, 12-weight deformation, shader appearance and action transitions against original rendered samples.
+1. Execute the importer through licensed cloud CI, validate bind poses, facing, 12-weight deformation, shader appearance and action transitions against original rendered samples.
 2. Port the complete authoritative combat loop, paired moves, moving-strike layering, combo aftermath, CPU behavior, input buffering, round/KO/replay behavior and audio/VFX; preserve damage/timing configuration.
 3. Port the Polish/English menus, touch controls, account entry, portraits, outfit shop, training/challenges, rankings and save migration.
 4. Port the adventure routes, films, camera travel, gates, encounters, corpses, boss/zombie behavior and outfit-specific adventure motion overrides.
@@ -35,3 +35,15 @@ The C# source was compiled with Roslyn and actual 6000.3.27f2 managed reference 
 ## Ownership
 
 Preserve the original web game and existing untracked source-restoration temporary files. Migration changes belong only to the dedicated branch. Never publish a diagnostic importer or partial scene as the finished paid game. Store release gates remain closed until the complete scope and device tests pass.
+
+## Cloud continuation, 2026-11-02
+
+The user cannot use a local Unity Editor. Continue through GitHub Actions; do not ask them to install/open the Editor. Native runtime compilation, tests and target builds remain distinct acceptance levels.
+
+Added `CombatConfiguration`, `CombatRules`, `ActionClock`, `CombatContacts` and `AttackLedger`: authored timing, directional input mapping, frame-complete advancement, mirrored source capsule contacts, regional guard/evasion, and once-per-group damage/once-per-action energy. The full authoritative match orchestrator is still unported. The frozen source helpers passed 26,198 comparisons across 18 variants/2,952 actions, in addition to 192 campaign scenarios/3,312 states. Extra checks cover frame partitioning, exact contact holds, malformed durations, mirrored contacts and blocked/repeated energy awards.
+
+`FighterReviewPlayer` and `ArenaBuild.AndroidReview` provide a native technical review scene and Android ARM64 IL2CPP build entry point. The review UI is explicitly not the production UI or a complete game. It loads only one fighter at a time from `Resources/Fighters`, supports actions/facing/pause, and stops on focus loss. Constant animation channels now retain two identical endpoints; authored changing samples and all skin weights are preserved.
+
+CI restores published source payloads with verified hashes and the same model patch as the published client. Exact selected clip samples and reconstructed models were compared with the source baseline before pinning. A missing `vendor/three.core.js` dependency in the first isolated restoration was diagnosed and added to the lock. Do not weaken hashes or substitute older GitHub assets.
+
+Cloud preflight on runs 41483474470 and 41486725021 found no UNITY_LICENSE, UNITY_EMAIL, UNITY_PASSWORD or UNITY_SERIAL in the Arena repository. This is a repository configuration gap, not evidence that the user lacks a license. The build job stays blocked and a separate prerequisite job fails explicitly; no APK exists. Do not copy or print secrets from City. The complete gameplay, paired choreography, adventure, production UI, network sessions and native audiovisual integration remain required as listed above.

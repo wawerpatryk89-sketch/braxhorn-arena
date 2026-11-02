@@ -1,37 +1,43 @@
-# Arena → Unity 6 migration checkpoint
+# Arena → Unity 6 migration
 
-This checkpoint is an asset migration pipeline and a partial C# rules port, **not a finished Unity game or Android release**. The web game stays intact.
+Native asset pipeline, ported rules and a technical model/animation review player. **This is not the completed Arena game or a Google Play release.**
 
-Use Unity **6000.3.27f2** (`22188f149405`). The project is `unity-arena/`.
+## GitHub Actions build
 
-## Source requirement
+No local Editor is required. `Arena Unity migration - native validation` on `codex/arena-unity6-migration-20261102` runs:
 
-Assets and pose corrections are pinned by `source-lock.json` to published Arena v271, source commit `f355fe6ac6af41518fde420382512d49bd27d51a`. The complete source checkout is retained on the migration branch of the existing source repository. The GitHub migration branch mirrors the new Unity code/tooling; the older GitHub main asset tree alone cannot recreate v271. The exporter rejects missing or changed baseline files instead of silently importing an older game.
+1. Presence-only check of Unity activation inputs, without printing values.
+2. Native C# comparisons against frozen published v271 rules.
+3. Hash-verified reconstruction of the source inputs in `native-source/`.
+4. Full native model/action export and validation, with asset archive and SHA-256 artifacts.
+5. Unity 6000.3.27f2 import and an Android ARM64/IL2CPP development build when activation is configured.
 
-With that source checkout, Node 22+ and Python/Pillow:
+Build entry point: `Braxhorn.Arena.Editor.ArenaBuild.AndroidReview`.
+Output: `build/Android/BraxhornArena-UnityReview.apk`.
+Review package ID: `com.braxhorn.arena.unityreview`.
+The review scene loads actual models and authored actions with native Unity rendering, supports changing fighter/action/facing, and pauses on focus loss. Its technical UI is not the production menu and must not be described as a gameplay acceptance build.
+
+The Arena repository currently has no Unity activation secrets. CI needs UNITY_EMAIL, UNITY_PASSWORD and either UNITY_LICENSE or UNITY_SERIAL through GitHub Actions secrets. Missing inputs cause an explicit failure; a skipped APK is not success. Never put secret values in code, artifacts, logs or chat.
+
+## Source fidelity
+
+`source-lock.json` pins v271 / f355fe6ac6af41518fde420382512d49bd27d51a. Public payload URLs and hashes are also pinned. Metadata is decoded from gzip, published model patches reproduce the source mesh, and packaged clips contain the exact selected source samples. Original and verified published encodings are accepted; arbitrary data is rejected. Three.js is used only for offline conversion; the native player runs C# without JavaScript, Three.js, WebView or browser canvas.
 
 ```bash
 node --max-old-space-size=8192 --loader ./scripts/krov-three-loader.mjs unity-tools/arena/export-source.mjs
 python3 unity-tools/arena/validate-export.py
 ```
 
-The exporter writes `unity-arena/Assets/Arena/SourceData`. Source bytes are hashed; textures are decoded losslessly to PNG; configured poses are baked using the original procedural rig. Dynamic gameplay pose combinations, adventure motion overrides and transitions still require runtime parity validation.
+These commands require the complete pinned source checkout. The CI reconstruction handles the older GitHub source tree automatically. Texture conversion preserves decoded pixels; all skin influences are retained. Constant animation channels keep identical endpoints instead of redundant repeated values.
 
-Open `unity-arena` in Unity, let package imports finish, then run **Braxhorn → Migration → Import exported fighters**. For automated import:
-
-```bash
-"$UNITY_EDITOR" -batchmode -nographics -quit -projectPath "$PWD/unity-arena" -executeMethod Braxhorn.Arena.Editor.NativeFighterImporter.ImportAll -logFile "$PWD/unity-import.log"
-```
-
-Run EditMode `NativeMigrationTests` in a working Editor. A non-graphical import does not verify appearance. No production startup Scene or Android build method is supplied at this checkpoint.
-
-## Rules regression tests
+## Rule verification
 
 ```bash
 node unity-tools/arena/tests/campaign-reference.mjs
-dotnet run --project unity-tools/arena/tests/Arena.RulesParity.csproj -- unity-tools/arena/tests/campaign-reference.json.gz
+node unity-tools/arena/tests/combat-reference.mjs
+dotnet run --project unity-tools/arena/tests/Arena.RulesParity.csproj -- unity-tools/arena/tests/campaign-reference.json.gz unity-tools/arena/tests
 ```
 
-The reference JS files are frozen from v271 and are used only by migration tests. The GitHub workflow runs these rule tests; it does not build an APK. C# runtime uses neither JS nor Three.js.
+Evidence: 192 campaign scenarios / 3,312 states and 26,198 combat-reference comparisons across 18 variants. Extra checks cover mirrored contacts, once-per-group damage, once-per-action energy, regional guard, frame skipping and contact holds. They do not validate the full match orchestrator, paired combos, adventure, multiplayer or native production menus.
 
-See `unity-arena/Docs/AI/UnityProjectContext.md` for the remaining full-game scope and validation blockers.
+See `unity-arena/Docs/AI/UnityProjectContext.md` and `validation.json` for remaining scope. C# compilation does not prove Unity import, APK build, device behavior or completed migration.

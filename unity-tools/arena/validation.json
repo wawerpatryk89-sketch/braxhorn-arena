@@ -1,6 +1,6 @@
 {
   "status": "Blocked",
-  "scope": "Asset pipeline and partial C# rules migration; not a complete Unity game",
+  "scope": "Native source restoration, combat rules and model review scene; not a complete game",
   "sourceSiteVersion": 271,
   "sourceCommit": "f355fe6ac6af41518fde420382512d49bd27d51a",
   "editor": "6000.3.27f2",
@@ -13,7 +13,7 @@
   },
   "managedCompilation": {
     "status": "Passed",
-    "files": 6,
+    "files": 11,
     "method": "Roslyn csc with actual Unity 6000.3.27f2 managed assemblies, .NET Standard 2.1 references and compatibility shims",
     "warnings": [
       "CS1701: Newtonsoft.Json netstandard 2.0 reference resolves against netstandard 2.1 in standalone compiler invocation. UPM runtime resolution not verified."
@@ -40,5 +40,30 @@
   "fullCombatParity": "Not implemented",
   "androidBuild": "Not run",
   "deviceValidation": "Not run",
-  "googlePlayPublication": "Not performed"
+  "googlePlayPublication": "Not performed",
+  "combatRuleParity": {
+    "status": "Passed",
+    "referenceComparisons": 26198,
+    "variants": 18,
+    "configuredActions": 2952,
+    "scope": "Authored tempo, input mapping, locomotion; additional timeline, guard, contact and energy checks. Full paired combat is not covered."
+  },
+  "cloudActivation": {
+    "status": "Blocked",
+    "runId": 41483474470,
+    "jobId": 125407569223,
+    "missingRepositorySecrets": [
+      "UNITY_LICENSE",
+      "UNITY_EMAIL",
+      "UNITY_PASSWORD",
+      "UNITY_SERIAL"
+    ],
+    "userLicenseEntitlement": "Unknown; only repository configuration was checked."
+  },
+  "nativeReviewScene": {
+    "status": "Implemented; Unity execution not run",
+    "builder": "Braxhorn.Arena.Editor.ArenaBuild.AndroidReview",
+    "platform": "Android ARM64 IL2CPP development APK",
+    "productionGame": false
+  }
 }
