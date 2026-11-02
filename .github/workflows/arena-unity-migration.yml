@@ -1,4 +1,4 @@
-name: Arena Unity migration - rule parity
+name: Arena Unity migration - native validation
 
 on:
   workflow_dispatch:
@@ -12,6 +12,28 @@ permissions:
   contents: read
 
 jobs:
+  ci-preflight:
+    name: Check cloud build prerequisites (no secret values)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      activation: ${{ steps.check.outputs.activation }}
+      source: ${{ steps.check.outputs.source }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check activation inputs and pinned source availability
+        id: check
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
+        run: python3 unity-tools/arena/ci-preflight.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: arena-ci-preflight-${{ github.sha }}
+          path: arena-ci-preflight.json
+          if-no-files-found: error
   campaign-parity:
     name: C# campaign rules against v271 reference
     runs-on: ubuntu-latest
