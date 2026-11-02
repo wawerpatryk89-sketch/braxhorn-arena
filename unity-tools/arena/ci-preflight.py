@@ -12,7 +12,7 @@ credentials = present["UNITY_EMAIL"] and present["UNITY_PASSWORD"]
 activation = credentials and (present["UNITY_LICENSE"] or present["UNITY_SERIAL"])
 lock = json.loads((root / "unity-tools/arena/source-lock.json").read_text())
 entry = lock["toolSources"][0]
-url = "https://braxhorn-p0-preview.wawerpatryk89.chatgpt.site/" + entry["path"]
+url = "https://braxhorn-p0-preview.wawerpatryk89.chatgpt.site/" + entry["path"].removeprefix("game/")
 asset_status = "unavailable"
 try:
     request = urllib.request.Request(url, headers={"User-Agent": "Braxhorn-Arena-Migration/1.0"})

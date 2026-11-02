@@ -73,7 +73,7 @@
     {
       "id": "BEAR",
       "base": "BEAR",
-      "displayName": "MIŚ",
+      "displayName": "MI\u015a",
       "label": "BEAR",
       "npc": false,
       "nodes": 69,
@@ -118,7 +118,7 @@
       "id": "BRAX_WHITE",
       "base": "BRAX",
       "displayName": "BRAX_WHITE",
-      "label": "Biały tank",
+      "label": "Bia\u0142y tank",
       "npc": false,
       "nodes": 69,
       "meshes": 1,
@@ -151,7 +151,7 @@
       "id": "NYXA_PINK",
       "base": "NYXA",
       "displayName": "NYXA_PINK",
-      "label": "Różowy komplet",
+      "label": "R\u00f3\u017cowy komplet",
       "npc": false,
       "nodes": 69,
       "meshes": 1,
@@ -927,6 +927,14 @@
     {
       "path": "game/assets/outfit-materials.js",
       "sha256": "ecfb31411402c0de8e6e9ecf8734b763d9dd737a9b3139fb134b3874df86d5f9"
+    },
+    {
+      "path": "game/assets/vendor/three.module.js",
+      "sha256": "9052042d676cb0fdc1ddfefe193053f34b7ac0513a616fdac4535d49987812ea"
+    },
+    {
+      "path": "game/assets/outfits/catalog.json",
+      "sha256": "deeccf5f2d5378bb0648d50572634a07c65b2caf11c87cb7aff2ca54b5d38ba6"
     }
   ]
 }
