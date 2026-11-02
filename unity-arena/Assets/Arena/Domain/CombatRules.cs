@@ -107,5 +107,15 @@ namespace Braxhorn.Arena.Domain
             for (var i = Frame + 1; i < Action.Durations.Length; i++) sum += Action.Durations[i] / tempo(i);
             return sum;
         }
+        // Paired clips share authored time, independently of their frame counts.
+        public void Seek(double milliseconds)
+        {
+            if (Action == null || double.IsNaN(milliseconds) || double.IsInfinity(milliseconds) || milliseconds < 0)
+                throw new ArgumentOutOfRangeException(nameof(milliseconds));
+            milliseconds = Math.Min(milliseconds, Action.DurationMs);
+            Frame = Action.FrameAt(milliseconds);
+            FrameMs = milliseconds - Action.Starts[Frame];
+            Finished = milliseconds >= Action.DurationMs;
+        }
     }
 }

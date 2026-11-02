@@ -44,6 +44,11 @@ namespace Braxhorn.Arena.Domain
         public readonly Dictionary<int, CombatHit> Hits;
         public readonly CombatCapsule[][] Capsules;
         public readonly double[][] Boxes;
+        public readonly double[][] PushCenters;
+        public readonly double[] RootTrack;
+        public readonly double RootTravel;
+        public readonly int StartFrame;
+        public readonly string ReactionRegion;
         public readonly double[] FootY, Pivots;
         public readonly int[] EvadeFrames;
         public readonly double PhaseStartup, PhaseRecovery, GaitRate;
@@ -83,6 +88,12 @@ namespace Braxhorn.Arena.Domain
             OpeningEnd = Hits.Where(p => p.Value.Group == 0).Select(p => p.Key).DefaultIfEmpty(0).Max();
             TempoBeats = (source["comboTempo"] as JArray ?? new JArray()).Select(t => new TempoBeat((double)t["from"], (double)t["to"], (double?)t["rate"] ?? 1)).ToArray();
             Boxes = ReadRows(source["boxes"]);
+            PushCenters = ReadRows(source["pushCenters"]);
+            RootTrack = source["rootTrackPx"]?.Values<double>().ToArray() ?? Array.Empty<double>();
+            RootTravel = Number("rootTravelPx", 0);
+            StartFrame = (int?)source["startFrame"] ?? 0;
+            if (StartFrame < 0 || StartFrame >= Durations.Length) throw new InvalidDataException(id + ": invalid start frame.");
+            ReactionRegion = (string)source["reactionRegion"];
             FootY = source["footY"]?.Values<double>().ToArray() ?? Array.Empty<double>();
             Pivots = source["pivots"]?.Values<double>().ToArray() ?? Array.Empty<double>();
             EvadeFrames = source["evadeFrames"]?.Values<int>().ToArray();

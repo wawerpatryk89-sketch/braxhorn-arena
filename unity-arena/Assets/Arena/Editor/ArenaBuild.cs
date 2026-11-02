@@ -13,13 +13,21 @@ namespace Braxhorn.Arena.Editor
     public static class ArenaBuild
     {
         public const string ReviewScene = "Assets/Arena/Scenes/FighterReview.unity";
+        public const string CombatScene = "Assets/Arena/Scenes/NativeCombat.unity";
 
         public static void AndroidReview()
+        { BuildAndroid(false); }
+
+        public static void AndroidCombat()
+        { BuildAndroid(true); }
+
+        static void BuildAndroid(bool combat)
         {
             NativeFighterImporter.ImportAll();
             CreateReviewScene();
+            if(combat) CreateCombatScene();
             PlayerSettings.companyName = "Braxhorn";
-            PlayerSettings.productName = "Braxhorn Arena Unity Review";
+            PlayerSettings.productName = combat ? "Braxhorn Arena Unity Combat" : "Braxhorn Arena Unity Review";
             PlayerSettings.SetApplicationIdentifier(NamedBuildTarget.Android,"com.braxhorn.arena.unityreview");
             PlayerSettings.bundleVersion = "0.1.0";
             PlayerSettings.Android.bundleVersionCode = 1;
@@ -34,20 +42,37 @@ namespace Braxhorn.Arena.Editor
             PlayerSettings.SetGraphicsAPIs(BuildTarget.Android,new[] {GraphicsDeviceType.OpenGLES3});
             EditorUserBuildSettings.buildAppBundle = false;
             Directory.CreateDirectory("../build/Android");
-            var output = "../build/Android/BraxhornArena-UnityReview.apk";
+            var output = "../build/Android/"+(combat ? "BraxhornArena-UnityCombat.apk" : "BraxhornArena-UnityReview.apk");
             var report = BuildPipeline.BuildPlayer(new BuildPlayerOptions
             {
-                scenes = new[] {ReviewScene}, locationPathName = output,
+                scenes = combat ? new[] {CombatScene,ReviewScene} : new[] {ReviewScene}, locationPathName = output,
                 target = BuildTarget.Android, options = BuildOptions.Development
             });
             File.WriteAllText("../build/Android/build-result.json",JsonUtility.ToJson(new BuildEvidence
             {
                 result = report.summary.result.ToString(), errors = report.summary.totalErrors,
                 warnings = report.summary.totalWarnings, unityVersion = Application.unityVersion,
-                sourceVersion = 271, scope = "Native model/animation review scene; full game migration and device validation incomplete"
+                sourceVersion = 271, scope = combat ? "Native combat/campaign integration; production UI, audiovisual, adventure, online and device validation incomplete" : "Native model/animation review scene; full game migration and device validation incomplete"
             },true));
             if (report.summary.result != BuildResult.Succeeded || !File.Exists(output))
                 throw new BuildFailedException("Native Android review build failed: " + report.summary.result);
+        }
+
+        [MenuItem("Braxhorn/Migration/Create native combat scene")]
+        public static void CreateCombatScene()
+        {
+            Directory.CreateDirectory("Assets/Arena/Scenes");
+            var scene=EditorSceneManager.NewScene(NewSceneSetup.EmptyScene,NewSceneMode.Single);
+            var camera=new GameObject("Native arena camera").AddComponent<Camera>();
+            camera.orthographic=true;camera.orthographicSize=2;camera.transform.position=new Vector3(0,1,-8);
+            camera.nearClipPlane=.1f;camera.farClipPlane=30;camera.clearFlags=CameraClearFlags.SolidColor;
+            camera.backgroundColor=new Color(.04f,.05f,.07f);camera.tag="MainCamera";camera.gameObject.AddComponent<AudioListener>();
+            RenderSettings.ambientMode=AmbientMode.Flat;RenderSettings.ambientLight=new Color(.45f,.45f,.5f);
+            var key=new GameObject("Arena key light").AddComponent<Light>();key.type=LightType.Directional;key.intensity=1.3f;key.transform.rotation=Quaternion.Euler(30,-25,0);
+            new GameObject("Native match").AddComponent<NativeMatchPlayer>().matchCamera=camera;
+            if(!EditorSceneManager.SaveScene(scene,CombatScene))throw new BuildFailedException("Cannot save native combat scene.");
+            EditorBuildSettings.scenes=new[]{new EditorBuildSettingsScene(CombatScene,true),new EditorBuildSettingsScene(ReviewScene,true)};
+            AssetDatabase.SaveAssets();
         }
 
         public static void CreateReviewScene()

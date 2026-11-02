@@ -1,6 +1,6 @@
 # Arena → Unity 6 migration
 
-Native asset pipeline, ported rules and a technical model/animation review player. **This is not the completed Arena game or a Google Play release.**
+Native asset pipeline, ported rules, match simulation and a native combat integration scene. **This is not the completed Arena game or a Google Play release.**
 
 ## GitHub Actions build
 
@@ -12,10 +12,10 @@ No local Editor is required. `Arena Unity migration - native validation` on `cod
 4. Full native model/action export and validation, with asset archive and SHA-256 artifacts.
 5. Unity 6000.3.27f2 import and an Android ARM64/IL2CPP development build when activation is configured.
 
-Build entry point: `Braxhorn.Arena.Editor.ArenaBuild.AndroidReview`.
-Output: `build/Android/BraxhornArena-UnityReview.apk`.
+Build entry point: `Braxhorn.Arena.Editor.ArenaBuild.AndroidCombat`. The separate `AndroidReview` entry point remains available for single-fighter inspection.
+Output: `build/Android/BraxhornArena-UnityCombat.apk` (only after a successful licensed Unity build).
 Review package ID: `com.braxhorn.arena.unityreview`.
-The review scene loads actual models and authored actions with native Unity rendering, supports changing fighter/action/facing, and pauses on focus loss. Its technical UI is not the production menu and must not be described as a gameplay acceptance build.
+The combat scene connects actual fighters to native fixed-step match simulation, two-finger touch/keyboard input, CPU, round results and the existing Arcade/tournament/Survival domains. The model review scene remains separate. Neither interface is the final production menu. Unity rendering, scene wiring, mobile usability and device performance remain unverified.
 
 The Arena repository currently has no Unity activation secrets. CI needs UNITY_EMAIL, UNITY_PASSWORD and either UNITY_LICENSE or UNITY_SERIAL through GitHub Actions secrets. Missing inputs cause an explicit failure; a skipped APK is not success. Never put secret values in code, artifacts, logs or chat.
 
@@ -38,7 +38,7 @@ node unity-tools/arena/tests/combat-reference.mjs
 dotnet run --project unity-tools/arena/tests/Arena.RulesParity.csproj -- unity-tools/arena/tests/campaign-reference.json.gz unity-tools/arena/tests
 ```
 
-Evidence: 192 campaign scenarios / 3,312 states and 26,198 combat-reference comparisons across 18 variants. Extra checks cover mirrored contacts, once-per-group damage, once-per-action energy, regional guard, frame skipping and contact holds. They do not validate the full match orchestrator, paired combos, adventure, multiplayer or native production menus.
+Evidence: 192 campaign scenarios / 3,312 states and 26,198 combat-reference comparisons across 18 variants. Extra checks cover mirrored contacts, once-per-group damage, once-per-action energy, regional guard, frame skipping and contact holds. The additional match regression runner checks native contacts, same-step trades, regional guard/evasion, training recovery, input release, round progression and paired grabs. With the full exported SourceData directory as a third argument it also executes every actual variant, checks each configured combo reaching its paired finisher, and runs CPU matches for base/NPC fighters. These checks do not establish full browser/Unity gameplay parity, rendering, adventure, multiplayer or production-menu equivalence.
 
 See `unity-arena/Docs/AI/UnityProjectContext.md` and `validation.json` for remaining scope. C# compilation does not prove Unity import, APK build, device behavior or completed migration.
 
@@ -47,3 +47,17 @@ See `unity-arena/Docs/AI/UnityProjectContext.md` and `validation.json` for remai
 Run 41489510857 (code f196a428132bf16131c6f25ae69997c13b365e84) successfully exported and validated the full native asset payload and passed the rule comparisons. Artifact 13164641101 is the native asset archive, not an APK. The workflow remains failed because Unity activation is absent, and the Android build was skipped. See validation.json for direct artifact links and checksums.
 
 The two source guard clips omitted from public packaging are preserved verbatim in supplements/. Their hashes are pinned in source-lock.json; source conversion never substitutes another animation.
+
+## Native match integration checkpoint
+
+`ArenaMatch` owns simulation, contacts, pressure, action buffering, recovery, rounds and results. `CpuOpponent` submits the same commands as the player and keeps the source fighter preferences/reaction delays. The source-calibrated combo reaction selection, capsule pursuit, paired clocks/root tracks and post-pair recovery are ported in the match partials. Touch pointer ownership is in `TouchFightButton`; `NativeMatchPlayer` owns Unity loading, scene presentation and campaign navigation.
+
+Keyboard: A/D or arrows to move, Ctrl guard, S low guard, Shift sprint, G grab modifier; J/K punches, U/I kicks, L evade, O combo, P energy, Escape pause. Touch controls mirror these commands. Jump is only accepted when an authored JUMP action exists. Backgrounding clears held input and requires explicit resume.
+
+Fallback verification without running the Editor:
+
+```bash
+python unity-tools/arena/tests/compile-with-editor.py --editor-data /path/to/Editor/Data --out-dir /tmp/arena-rule-tests --with-assets
+```
+
+This compiles managed source against real Unity assemblies and executes plain C# tests; it cannot validate imported animation/materials, Play Mode, IL2CPP or phone behavior.

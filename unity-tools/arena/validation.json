@@ -1,6 +1,6 @@
 {
   "status": "Blocked",
-  "scope": "Native source restoration, combat rules and model review scene; not a complete game",
+  "scope": "Native match/campaign integration and source assets; full game migration incomplete",
   "sourceSiteVersion": 271,
   "sourceCommit": "f355fe6ac6af41518fde420382512d49bd27d51a",
   "editor": "6000.3.27f2",
@@ -13,7 +13,7 @@
   },
   "managedCompilation": {
     "status": "Passed",
-    "files": 11,
+    "files": 17,
     "method": "Roslyn csc with actual Unity 6000.3.27f2 managed assemblies, .NET Standard 2.1 references and compatibility shims",
     "warnings": [
       "CS1701: Newtonsoft.Json netstandard 2.0 reference resolves against netstandard 2.1 in standalone compiler invocation. UPM runtime resolution not verified."
@@ -37,7 +37,7 @@
   "editModeExecution": "Not run",
   "shaderCompilation": "Not run",
   "visualComparison": "Not run",
-  "fullCombatParity": "Not implemented",
+  "fullCombatParity": "Partial implementation: native match/paired combos tested; complete browser-versus-Unity equivalence not established",
   "androidBuild": "Blocked: repository Unity activation inputs missing; job skipped",
   "deviceValidation": "Not run",
   "googlePlayPublication": "Not performed",
@@ -101,5 +101,19 @@
       "DEMON/Standing Block End"
     ],
     "comparison": "Exact original source animation data, hash checked"
+  },
+  "nativeCombatScene": {
+    "status": "Implemented; Unity execution not run",
+    "builder": "Braxhorn.Arena.Editor.ArenaBuild.AndroidCombat",
+    "output": "build/Android/BraxhornArena-UnityCombat.apk",
+    "productionGame": false
+  },
+  "nativeMatchRegression": {
+    "status": "Passed locally using actual Unity reference assemblies and .NET 6",
+    "syntheticChecks": 35,
+    "actualVariants": 18,
+    "expectedChecksWithAssets": 196,
+    "scope": "Contacts, guards, evasion, trades, pressure, timing, round transitions, training, grabs, pause; actual self-match combos and base/NPC CPU outcomes. Rendering/phone excluded.",
+    "checksPassed": 196
   }
 }

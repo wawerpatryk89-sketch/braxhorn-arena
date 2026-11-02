@@ -62,6 +62,7 @@ static class RulesParityRunner
         if(!CombatGeometry.CircleCapsule(new Point2(0,0),0,new Point2(0,0),new Point2(0,0),0).Hit)throw new Exception("Degenerate capsule rejected");
         Console.WriteLine("PASS "+cases.Count+" campaign parity cases / "+states+" reference states / 3 collision edge cases. This does not validate the full combat loop.");
         if(args.Length>1)CombatParityRunner.Run(args[1]);
+        MatchParityRunner.Run(args.Length > 2 ? args[2] : null);
         return 0;
     }
 }

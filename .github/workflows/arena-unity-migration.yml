@@ -35,7 +35,7 @@ jobs:
           path: arena-ci-preflight.json
           if-no-files-found: error
   campaign-parity:
-    name: C# campaign rules against v271 reference
+    name: Native C# rules and match regression tests
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -56,7 +56,7 @@ jobs:
         run: dotnet run --project unity-tools/arena/tests/Arena.RulesParity.csproj -- unity-tools/arena/tests/campaign-reference.json.gz unity-tools/arena/tests
       - name: Report scope
         run: |
-          echo 'Campaign and collision rules only. This job does not build Unity, Android or Google Play packages.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'C# source-rule comparisons and native match regression tests. This job does not execute the Unity renderer or build Android packages.' >> "$GITHUB_STEP_SUMMARY"
 
   native-assets:
     name: Export and verify all v271 fighters for Unity
@@ -84,6 +84,14 @@ jobs:
       - name: Validate complete asset payload
         working-directory: native-source
         run: python unity-tools/arena/validate-export.py
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Verify full native match with every actual fighter and outfit
+        run: |
+          node unity-tools/arena/tests/campaign-reference.mjs
+          node unity-tools/arena/tests/combat-reference.mjs
+          dotnet run --project unity-tools/arena/tests/Arena.RulesParity.csproj -- unity-tools/arena/tests/campaign-reference.json.gz unity-tools/arena/tests native-source/unity-arena/Assets/Arena/SourceData
       - name: Package native source data and provenance
         run: |
           tar -C native-source/unity-arena/Assets/Arena -czf arena-native-assets.tar.gz SourceData
@@ -110,7 +118,7 @@ jobs:
           exit 1
 
   android-native-review:
-    name: Build actual native Unity review APK (ARM64)
+    name: Build native Unity combat integration APK (ARM64)
     needs: [ci-preflight, campaign-parity, native-assets]
     if: needs.ci-preflight.outputs.activation == 'true'
     runs-on: ubuntu-latest
@@ -137,16 +145,16 @@ jobs:
           projectPath: unity-arena
           unityVersion: 6000.3.27f2
           targetPlatform: Android
-          buildMethod: Braxhorn.Arena.Editor.ArenaBuild.AndroidReview
+          buildMethod: Braxhorn.Arena.Editor.ArenaBuild.AndroidCombat
           allowDirtyBuild: true
           versioning: None
       - name: Verify native artifact exists
         run: |
-          test -s build/Android/BraxhornArena-UnityReview.apk
-          sha256sum build/Android/BraxhornArena-UnityReview.apk > build/Android/apk.sha256
+          test -s build/Android/BraxhornArena-UnityCombat.apk
+          sha256sum build/Android/BraxhornArena-UnityCombat.apk > build/Android/apk.sha256
       - uses: actions/upload-artifact@v4
         with:
-          name: arena-unity-review-apk-${{ github.sha }}
+          name: arena-unity-combat-apk-${{ github.sha }}
           path: build/Android/
           if-no-files-found: error
       - uses: actions/upload-artifact@v4
