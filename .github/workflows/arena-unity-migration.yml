@@ -49,9 +49,11 @@ jobs:
         with:
           dotnet-version: '8.0.x'
       - name: Generate reference from frozen published rules
-        run: node unity-tools/arena/tests/campaign-reference.mjs
+        run: |
+          node unity-tools/arena/tests/campaign-reference.mjs
+          node unity-tools/arena/tests/combat-reference.mjs
       - name: Compare native rules with every reference state
-        run: dotnet run --project unity-tools/arena/tests/Arena.RulesParity.csproj -- unity-tools/arena/tests/campaign-reference.json.gz
+        run: dotnet run --project unity-tools/arena/tests/Arena.RulesParity.csproj -- unity-tools/arena/tests/campaign-reference.json.gz unity-tools/arena/tests
       - name: Report scope
         run: |
           echo 'Campaign and collision rules only. This job does not build Unity, Android or Google Play packages.' >> "$GITHUB_STEP_SUMMARY"
@@ -74,6 +76,8 @@ jobs:
       - run: python -m pip install Pillow==11.3.0
       - name: Restore exact published inputs (hash checked)
         run: python unity-tools/arena/prepare-source.py
+      - name: Apply the verified published outfit model patches
+        run: node --loader ./native-source/scripts/krov-three-loader.mjs unity-tools/arena/restore-published-models.mjs
       - name: Bake all 18 original models and action poses
         working-directory: native-source
         run: node --max-old-space-size=8192 --loader ./scripts/krov-three-loader.mjs unity-tools/arena/export-source.mjs
@@ -94,3 +98,62 @@ jobs:
           compression-level: 0
           if-no-files-found: error
           retention-days: 90
+
+  unity-activation-required:
+    name: Report missing Unity activation for Arena
+    needs: ci-preflight
+    if: needs.ci-preflight.outputs.activation != 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo '::error::Arena repository has no complete Unity activation inputs. Configure UNITY_EMAIL, UNITY_PASSWORD and UNITY_LICENSE (or UNITY_SERIAL) in repository Actions secrets. No local Editor is required. No APK was built.'
+          exit 1
+
+  android-native-review:
+    name: Build actual native Unity review APK (ARM64)
+    needs: [ci-preflight, campaign-parity, native-assets]
+    if: needs.ci-preflight.outputs.activation == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+          persist-credentials: false
+      - uses: actions/download-artifact@v4
+        with:
+          name: arena-native-assets-${{ github.sha }}
+      - name: Restore verified Unity source payload
+        run: |
+          sha256sum -c arena-native-assets.sha256
+          tar -xzf arena-native-assets.tar.gz -C unity-arena/Assets/Arena
+      - uses: game-ci/unity-builder@4423ee75828dff56037d1d1cfdac6b68e3a6ba00
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
+        with:
+          projectPath: unity-arena
+          unityVersion: 6000.3.27f2
+          targetPlatform: Android
+          buildMethod: Braxhorn.Arena.Editor.ArenaBuild.AndroidReview
+          allowDirtyBuild: true
+          versioning: None
+      - name: Verify native artifact exists
+        run: |
+          test -s build/Android/BraxhornArena-UnityReview.apk
+          sha256sum build/Android/BraxhornArena-UnityReview.apk > build/Android/apk.sha256
+      - uses: actions/upload-artifact@v4
+        with:
+          name: arena-unity-review-apk-${{ github.sha }}
+          path: build/Android/
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: arena-unity-build-logs-${{ github.sha }}
+          path: |
+            artifacts/
+            unity-arena/Logs/
+          if-no-files-found: ignore

@@ -5,6 +5,7 @@ GitHub asset or a changed live asset. No account, cookie or credential is used.
 """
 import concurrent.futures
 import hashlib
+import gzip
 import json
 import shutil
 import time
@@ -23,7 +24,9 @@ def restore(entry):
         raise ValueError("Unsafe locked input path")
     output = DEST / relative
     expected = entry["sha256"]
-    if output.is_file() and hashlib.sha256(output.read_bytes()).hexdigest() == expected:
+    delivery = entry.get("delivery", {})
+    allowed = {expected, delivery.get("restoredSha256", expected)}
+    if output.is_file() and hashlib.sha256(output.read_bytes()).hexdigest() in allowed:
         return str(relative)
     local = ROOT / relative
     if local.is_file() and hashlib.sha256(local.read_bytes()).hexdigest() == expected:
@@ -31,18 +34,25 @@ def restore(entry):
     else:
         if not str(relative).startswith("game/assets/"):
             raise ValueError("Missing local build input: " + str(relative))
-        request = urllib.request.Request(BASE + str(relative).removeprefix("game/"),
+        url_path = delivery.get("url", "/" + str(relative).removeprefix("game/"))
+        if not url_path.startswith(("/assets/", "/api/fighter-media/")) or ".." in url_path:
+            raise ValueError("Unsafe published input URL")
+        request = urllib.request.Request(BASE.rstrip("/") + url_path,
                                         headers={"User-Agent": "Braxhorn-Arena-Migration/1.0"})
         for attempt in range(3):
             try:
                 with urllib.request.urlopen(request, timeout=90) as response:
                     data = response.read(128 * 1024 * 1024)
                 break
-            except (urllib.error.URLError, TimeoutError):
+            except (urllib.error.URLError, TimeoutError) as error:
                 if attempt == 2:
-                    raise
+                    raise RuntimeError("Cannot restore " + str(relative) + ": " + type(error).__name__ + ":" + str(getattr(error, "code", "connection"))) from None
                 time.sleep(2 ** attempt)
-    if hashlib.sha256(data).hexdigest() != expected:
+        if delivery.get("payloadSha256") and hashlib.sha256(data).hexdigest() != delivery["payloadSha256"]:
+            raise ValueError("Published payload SHA-256 mismatch: " + str(relative))
+        if delivery.get("encoding") == "gzip":
+            data = gzip.decompress(data)
+    if hashlib.sha256(data).hexdigest() not in allowed and not (delivery.get("patch") and hashlib.sha256(data).hexdigest() == delivery["payloadSha256"]):
         raise ValueError("v271 SHA-256 mismatch: " + str(relative))
     output.parent.mkdir(parents=True, exist_ok=True)
     temporary = output.with_suffix(output.suffix + ".download")

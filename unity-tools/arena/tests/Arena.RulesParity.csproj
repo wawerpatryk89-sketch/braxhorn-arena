@@ -8,6 +8,7 @@
   <ItemGroup>
     <Compile Include="../../../unity-arena/Assets/Arena/Domain/*.cs" />
     <Compile Include="RulesParityRunner.cs" />
+    <Compile Include="CombatParityRunner.cs" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 </Project>

@@ -21,7 +21,7 @@ const hash=b=>createHash('sha256').update(b).digest('hex');
 const sourceLock=JSON.parse(fs.readFileSync(path.join(root,'unity-tools/arena/source-lock.json')));
 for(const entry of [...sourceLock.sources,...sourceLock.toolSources]){
  const file=path.join(root,entry.path);
- if(!fs.existsSync(file)||hash(fs.readFileSync(file))!==entry.sha256)
+ if(!fs.existsSync(file)||![entry.sha256,entry.delivery?.restoredSha256].includes(hash(fs.readFileSync(file))))
   throw Error('Wrong migration baseline: '+entry.path+'. Restore the v271 source snapshot '+sourceLock.sourceCommit+' before exporting.');
 }
 const sources=new Map();

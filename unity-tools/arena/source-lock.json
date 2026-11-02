@@ -73,7 +73,7 @@
     {
       "id": "BEAR",
       "base": "BEAR",
-      "displayName": "MI\u015a",
+      "displayName": "MIŚ",
       "label": "BEAR",
       "npc": false,
       "nodes": 69,
@@ -118,7 +118,7 @@
       "id": "BRAX_WHITE",
       "base": "BRAX",
       "displayName": "BRAX_WHITE",
-      "label": "Bia\u0142y tank",
+      "label": "Biały tank",
       "npc": false,
       "nodes": 69,
       "meshes": 1,
@@ -151,7 +151,7 @@
       "id": "NYXA_PINK",
       "base": "NYXA",
       "displayName": "NYXA_PINK",
-      "label": "R\u00f3\u017cowy komplet",
+      "label": "Różowy komplet",
       "npc": false,
       "nodes": 69,
       "meshes": 1,
@@ -207,12 +207,21 @@
     {
       "path": "game/assets/brax-new/config.json",
       "sha256": "6d3fba96750275e751ef6f7334e33b09ce7c2a2a90b46e8973f63854a0365aaf",
-      "bytes": 16320570
+      "bytes": 16320570,
+      "delivery": {
+        "url": "/assets/brax-new/config.json.gz",
+        "encoding": "gzip"
+      }
     },
     {
       "path": "game/assets/brax-new/clips.json.gz",
       "sha256": "0fc0d3d2d3b33a6079ecb3846026aea54784b15dd57d8186d9a62281ed438a66",
-      "bytes": 9403470
+      "bytes": 9403470,
+      "delivery": {
+        "url": "/api/fighter-media/brax-new-clips.07d6ed2316a9f07297fcc061f72583a2a8b00b7fe0204602927e6cf38d6b1765.json.gz",
+        "payloadSha256": "07d6ed2316a9f07297fcc061f72583a2a8b00b7fe0204602927e6cf38d6b1765",
+        "restoredSha256": "07d6ed2316a9f07297fcc061f72583a2a8b00b7fe0204602927e6cf38d6b1765"
+      }
     },
     {
       "path": "game/assets/brax-new/paired-clips-5914743788f6.json.gz",
@@ -222,42 +231,75 @@
     {
       "path": "game/assets/brax-new/prefight-clips.json.gz",
       "sha256": "9ca7551e6f7c991f8faf41cc0207f726d0d49ed558700292f800c9f95c3de072",
-      "bytes": 392449
+      "bytes": 392449,
+      "delivery": {
+        "url": "/api/fighter-media/brax-new-prefight-clips.9ca7551e6f7c991f8faf41cc0207f726d0d49ed558700292f800c9f95c3de072.json.gz",
+        "payloadSha256": "9ca7551e6f7c991f8faf41cc0207f726d0d49ed558700292f800c9f95c3de072"
+      }
     },
     {
       "path": "game/assets/brax-new/model.json.gz",
       "sha256": "3832d0239aa02944d8be6adf73aeca8e0bc74d56d4d6371a20fd9401cee4670f",
-      "bytes": 3476181
+      "bytes": 3476181,
+      "delivery": {
+        "url": "/api/fighter-media/brax-new-model.3832d0239aa02944d8be6adf73aeca8e0bc74d56d4d6371a20fd9401cee4670f.json.gz",
+        "payloadSha256": "3832d0239aa02944d8be6adf73aeca8e0bc74d56d4d6371a20fd9401cee4670f"
+      }
     },
     {
       "path": "game/assets/brax-new/color.webp",
       "sha256": "d738408f64d1419108c0d0c6f93611ab37572e59de47438df99f5fbe54a24f72",
-      "bytes": 12221182
+      "bytes": 12221182,
+      "delivery": {
+        "url": "/api/fighter-media/brax-new-color.d738408f64d1419108c0d0c6f93611ab37572e59de47438df99f5fbe54a24f72.webp",
+        "payloadSha256": "d738408f64d1419108c0d0c6f93611ab37572e59de47438df99f5fbe54a24f72"
+      }
     },
     {
       "path": "game/assets/brax-new/normal.webp",
       "sha256": "485bdedd9c68eddc3b56292605fad3377276a084143986630050069d6813c9be",
-      "bytes": 4145884
+      "bytes": 4145884,
+      "delivery": {
+        "url": "/api/fighter-media/brax-new-normal.485bdedd9c68eddc3b56292605fad3377276a084143986630050069d6813c9be.webp",
+        "payloadSha256": "485bdedd9c68eddc3b56292605fad3377276a084143986630050069d6813c9be"
+      }
     },
     {
       "path": "game/assets/brax-new/metalness.webp",
       "sha256": "cbbd3272f70d7aab01eed3d521205942745846860f95a85569fe04ac323c8aec",
-      "bytes": 1567090
+      "bytes": 1567090,
+      "delivery": {
+        "url": "/api/fighter-media/brax-new-metalness.cbbd3272f70d7aab01eed3d521205942745846860f95a85569fe04ac323c8aec.webp",
+        "payloadSha256": "cbbd3272f70d7aab01eed3d521205942745846860f95a85569fe04ac323c8aec"
+      }
     },
     {
       "path": "game/assets/brax-new/roughness.webp",
       "sha256": "08f8b85fded8c613fcaec30ca62c6187bb5516dc6d1c245bcfc8c1942d248698",
-      "bytes": 1423368
+      "bytes": 1423368,
+      "delivery": {
+        "url": "/api/fighter-media/brax-new-roughness.08f8b85fded8c613fcaec30ca62c6187bb5516dc6d1c245bcfc8c1942d248698.webp",
+        "payloadSha256": "08f8b85fded8c613fcaec30ca62c6187bb5516dc6d1c245bcfc8c1942d248698"
+      }
     },
     {
       "path": "game/assets/nyxa-new/config.json",
       "sha256": "626fd759b66c20e57076e2f670648ecacb1229006d462fbb4bd949481e185e07",
-      "bytes": 14201396
+      "bytes": 14201396,
+      "delivery": {
+        "url": "/assets/nyxa-new/config.json.gz",
+        "encoding": "gzip"
+      }
     },
     {
       "path": "game/assets/nyxa-new/clips.json.gz",
       "sha256": "674e1b8912313d101fbe4fdb66d8b9da7602e53f44865c5fc055a1da98418111",
-      "bytes": 7784432
+      "bytes": 7784432,
+      "delivery": {
+        "url": "/api/fighter-media/nyxa-new-clips.25b215ab4ce247be6aa6d2eac7c439634413442a8c73f14d3dac6c639c01783a.json.gz",
+        "payloadSha256": "25b215ab4ce247be6aa6d2eac7c439634413442a8c73f14d3dac6c639c01783a",
+        "restoredSha256": "25b215ab4ce247be6aa6d2eac7c439634413442a8c73f14d3dac6c639c01783a"
+      }
     },
     {
       "path": "game/assets/nyxa-new/paired-clips-2231664c9f13.json.gz",
@@ -267,42 +309,75 @@
     {
       "path": "game/assets/nyxa-new/prefight-clips.json.gz",
       "sha256": "29162326b0b3f305fde2ccc97201927804bacb8af0ed71f0cf0d3f66686c1d4d",
-      "bytes": 395278
+      "bytes": 395278,
+      "delivery": {
+        "url": "/api/fighter-media/nyxa-new-prefight-clips.29162326b0b3f305fde2ccc97201927804bacb8af0ed71f0cf0d3f66686c1d4d.json.gz",
+        "payloadSha256": "29162326b0b3f305fde2ccc97201927804bacb8af0ed71f0cf0d3f66686c1d4d"
+      }
     },
     {
       "path": "game/assets/nyxa-new/model.json.gz",
       "sha256": "2fceadf28742d7990f64d01b81d4495755863fcc396b1e637305d2d4f2b9cd3e",
-      "bytes": 2372685
+      "bytes": 2372685,
+      "delivery": {
+        "url": "/api/fighter-media/nyxa-new-model.2fceadf28742d7990f64d01b81d4495755863fcc396b1e637305d2d4f2b9cd3e.json.gz",
+        "payloadSha256": "2fceadf28742d7990f64d01b81d4495755863fcc396b1e637305d2d4f2b9cd3e"
+      }
     },
     {
       "path": "game/assets/nyxa-new/color.webp",
       "sha256": "8e8410f6c125ef537f52e2904399f3aec56d3237139b61459a0e6909c5d11318",
-      "bytes": 8841218
+      "bytes": 8841218,
+      "delivery": {
+        "url": "/api/fighter-media/nyxa-new-color.8e8410f6c125ef537f52e2904399f3aec56d3237139b61459a0e6909c5d11318.webp",
+        "payloadSha256": "8e8410f6c125ef537f52e2904399f3aec56d3237139b61459a0e6909c5d11318"
+      }
     },
     {
       "path": "game/assets/nyxa-new/normal.webp",
       "sha256": "b6bc7ff7b0b51aca0599ed01d562771682f220fe371c9f7bd50eba854cdcbd2a",
-      "bytes": 3172686
+      "bytes": 3172686,
+      "delivery": {
+        "url": "/api/fighter-media/nyxa-new-normal.b6bc7ff7b0b51aca0599ed01d562771682f220fe371c9f7bd50eba854cdcbd2a.webp",
+        "payloadSha256": "b6bc7ff7b0b51aca0599ed01d562771682f220fe371c9f7bd50eba854cdcbd2a"
+      }
     },
     {
       "path": "game/assets/nyxa-new/metalness.webp",
       "sha256": "6bb7fc8c851fc9b58585b02003b0174df925d269780f2957bded1a5471f4b033",
-      "bytes": 1579250
+      "bytes": 1579250,
+      "delivery": {
+        "url": "/api/fighter-media/nyxa-new-metalness.6bb7fc8c851fc9b58585b02003b0174df925d269780f2957bded1a5471f4b033.webp",
+        "payloadSha256": "6bb7fc8c851fc9b58585b02003b0174df925d269780f2957bded1a5471f4b033"
+      }
     },
     {
       "path": "game/assets/nyxa-new/roughness.webp",
       "sha256": "89e79eb53d25528c7fbe07d9a43ffd00f11aedcb18522bf8828f22622d71673d",
-      "bytes": 2228832
+      "bytes": 2228832,
+      "delivery": {
+        "url": "/api/fighter-media/nyxa-new-roughness.89e79eb53d25528c7fbe07d9a43ffd00f11aedcb18522bf8828f22622d71673d.webp",
+        "payloadSha256": "89e79eb53d25528c7fbe07d9a43ffd00f11aedcb18522bf8828f22622d71673d"
+      }
     },
     {
       "path": "game/assets/vexa-new/config.json",
       "sha256": "fe2145747ed956f65042ac8d52b712ce2eacb006e369193149dffb2f59acff58",
-      "bytes": 12044307
+      "bytes": 12044307,
+      "delivery": {
+        "url": "/assets/vexa-new/config.json.gz",
+        "encoding": "gzip"
+      }
     },
     {
       "path": "game/assets/vexa-new/clips.json.gz",
       "sha256": "27797f55add630b94c6c2ce3b27d6a07bde576da9ec7e22bf22e75fad6565082",
-      "bytes": 6711422
+      "bytes": 6711422,
+      "delivery": {
+        "url": "/api/fighter-media/vexa-new-clips.110ce722f074276d8e34c49258f53a7e28bb341e240306c85e70fc4109e5ab66.json.gz",
+        "payloadSha256": "110ce722f074276d8e34c49258f53a7e28bb341e240306c85e70fc4109e5ab66",
+        "restoredSha256": "110ce722f074276d8e34c49258f53a7e28bb341e240306c85e70fc4109e5ab66"
+      }
     },
     {
       "path": "game/assets/vexa-new/paired-clips-a2e5dad7f9cf.json.gz",
@@ -312,42 +387,75 @@
     {
       "path": "game/assets/vexa-new/prefight-clips.json.gz",
       "sha256": "688f74f69ee087b068635e742a26dc59e8505a5fff0395b075b0bf3bcbb4e62e",
-      "bytes": 394740
+      "bytes": 394740,
+      "delivery": {
+        "url": "/api/fighter-media/vexa-new-prefight-clips.688f74f69ee087b068635e742a26dc59e8505a5fff0395b075b0bf3bcbb4e62e.json.gz",
+        "payloadSha256": "688f74f69ee087b068635e742a26dc59e8505a5fff0395b075b0bf3bcbb4e62e"
+      }
     },
     {
       "path": "game/assets/vexa-new/model.json.gz",
       "sha256": "a0f069adb892db54bb94e3ef4a77ae4a73f8af23a144ed71afd506fb0363d186",
-      "bytes": 3200003
+      "bytes": 3200003,
+      "delivery": {
+        "url": "/api/fighter-media/vexa-new-model.a0f069adb892db54bb94e3ef4a77ae4a73f8af23a144ed71afd506fb0363d186.json.gz",
+        "payloadSha256": "a0f069adb892db54bb94e3ef4a77ae4a73f8af23a144ed71afd506fb0363d186"
+      }
     },
     {
       "path": "game/assets/vexa-new/color.webp",
       "sha256": "acab17e0318bc3bae21d0a69e83d9486db81148164c859bc6968c46379071335",
-      "bytes": 15979334
+      "bytes": 15979334,
+      "delivery": {
+        "url": "/api/fighter-media/vexa-new-color.acab17e0318bc3bae21d0a69e83d9486db81148164c859bc6968c46379071335.webp",
+        "payloadSha256": "acab17e0318bc3bae21d0a69e83d9486db81148164c859bc6968c46379071335"
+      }
     },
     {
       "path": "game/assets/vexa-new/normal.webp",
       "sha256": "ba9b97cca4faac3afb538f949339fddf05b3868111695beebbfac36eeff4d07c",
-      "bytes": 4402962
+      "bytes": 4402962,
+      "delivery": {
+        "url": "/api/fighter-media/vexa-new-normal.ba9b97cca4faac3afb538f949339fddf05b3868111695beebbfac36eeff4d07c.webp",
+        "payloadSha256": "ba9b97cca4faac3afb538f949339fddf05b3868111695beebbfac36eeff4d07c"
+      }
     },
     {
       "path": "game/assets/vexa-new/metalness.webp",
       "sha256": "94b8a7acc841576f584430e35e41368446e5082b45ecef81e293f938fdb698b7",
-      "bytes": 1668524
+      "bytes": 1668524,
+      "delivery": {
+        "url": "/api/fighter-media/vexa-new-metalness.94b8a7acc841576f584430e35e41368446e5082b45ecef81e293f938fdb698b7.webp",
+        "payloadSha256": "94b8a7acc841576f584430e35e41368446e5082b45ecef81e293f938fdb698b7"
+      }
     },
     {
       "path": "game/assets/vexa-new/roughness.webp",
       "sha256": "9f0292e78ca3e61177b295133cf79d9026cdaf521f46e477c02ab624b0dd4c4f",
-      "bytes": 1510092
+      "bytes": 1510092,
+      "delivery": {
+        "url": "/api/fighter-media/vexa-new-roughness.9f0292e78ca3e61177b295133cf79d9026cdaf521f46e477c02ab624b0dd4c4f.webp",
+        "payloadSha256": "9f0292e78ca3e61177b295133cf79d9026cdaf521f46e477c02ab624b0dd4c4f"
+      }
     },
     {
       "path": "game/assets/krov-new/config.json",
       "sha256": "6d7be6c937c76e3d97c5fcb097815dbd44fb066c67450daf7da135146f084224",
-      "bytes": 12126196
+      "bytes": 12126196,
+      "delivery": {
+        "url": "/assets/krov-new/config.json.gz",
+        "encoding": "gzip"
+      }
     },
     {
       "path": "game/assets/krov-new/clips.json.gz",
       "sha256": "dd77d6786e7c04c7f4fd6e9b4d39d71ba09b695d8cd2a69eaae4b68b5fbab9ba",
-      "bytes": 8867947
+      "bytes": 8867947,
+      "delivery": {
+        "url": "/api/fighter-media/krov-new-clips.b34d0b43523fdee9609916a8bdcc7c5ec858fc7a1939c3649999463757501c46.json.gz",
+        "payloadSha256": "b34d0b43523fdee9609916a8bdcc7c5ec858fc7a1939c3649999463757501c46",
+        "restoredSha256": "b34d0b43523fdee9609916a8bdcc7c5ec858fc7a1939c3649999463757501c46"
+      }
     },
     {
       "path": "game/assets/krov-new/paired-clips-500878e0e585.json.gz",
@@ -357,42 +465,75 @@
     {
       "path": "game/assets/krov-new/prefight-clips.json.gz",
       "sha256": "6f372dda1e167dc204a094358f5afac8cbce5c03e46314c0cd3243c6ccf90f4c",
-      "bytes": 390998
+      "bytes": 390998,
+      "delivery": {
+        "url": "/api/fighter-media/krov-new-prefight-clips.6f372dda1e167dc204a094358f5afac8cbce5c03e46314c0cd3243c6ccf90f4c.json.gz",
+        "payloadSha256": "6f372dda1e167dc204a094358f5afac8cbce5c03e46314c0cd3243c6ccf90f4c"
+      }
     },
     {
       "path": "game/assets/krov-new/model.json.gz",
       "sha256": "71c38c4d96f01c14f5a36fee14104d1be5ab26b3732b41e00606d2b96abb07c9",
-      "bytes": 3466696
+      "bytes": 3466696,
+      "delivery": {
+        "url": "/api/fighter-media/krov-new-model.71c38c4d96f01c14f5a36fee14104d1be5ab26b3732b41e00606d2b96abb07c9.json.gz",
+        "payloadSha256": "71c38c4d96f01c14f5a36fee14104d1be5ab26b3732b41e00606d2b96abb07c9"
+      }
     },
     {
       "path": "game/assets/krov-new/color.webp",
       "sha256": "298dc6b18e76ab931245f401398e2a3cdba17dddedf99553b5d52b20a8abd9ff",
-      "bytes": 13585112
+      "bytes": 13585112,
+      "delivery": {
+        "url": "/api/fighter-media/krov-new-color.298dc6b18e76ab931245f401398e2a3cdba17dddedf99553b5d52b20a8abd9ff.webp",
+        "payloadSha256": "298dc6b18e76ab931245f401398e2a3cdba17dddedf99553b5d52b20a8abd9ff"
+      }
     },
     {
       "path": "game/assets/krov-new/normal.webp",
       "sha256": "6c4c02c9f3d25cb482f72f65a852b572cbfd38f228a442a8c2a30a1485c85d86",
-      "bytes": 4258216
+      "bytes": 4258216,
+      "delivery": {
+        "url": "/api/fighter-media/krov-new-normal.6c4c02c9f3d25cb482f72f65a852b572cbfd38f228a442a8c2a30a1485c85d86.webp",
+        "payloadSha256": "6c4c02c9f3d25cb482f72f65a852b572cbfd38f228a442a8c2a30a1485c85d86"
+      }
     },
     {
       "path": "game/assets/krov-new/metalness.webp",
       "sha256": "9e87c6f2107cff62e5ba0c2581d6892a65417d50132398649948f4ddff4bba65",
-      "bytes": 1491564
+      "bytes": 1491564,
+      "delivery": {
+        "url": "/api/fighter-media/krov-new-metalness.9e87c6f2107cff62e5ba0c2581d6892a65417d50132398649948f4ddff4bba65.webp",
+        "payloadSha256": "9e87c6f2107cff62e5ba0c2581d6892a65417d50132398649948f4ddff4bba65"
+      }
     },
     {
       "path": "game/assets/krov-new/roughness.webp",
       "sha256": "8d3b7347038a80175ddeac4dbbbdb2e9216175d251ef801682ba02e85ac1543c",
-      "bytes": 1297052
+      "bytes": 1297052,
+      "delivery": {
+        "url": "/api/fighter-media/krov-new-roughness.8d3b7347038a80175ddeac4dbbbdb2e9216175d251ef801682ba02e85ac1543c.webp",
+        "payloadSha256": "8d3b7347038a80175ddeac4dbbbdb2e9216175d251ef801682ba02e85ac1543c"
+      }
     },
     {
       "path": "game/assets/nina-new/config.json",
       "sha256": "5b8ca333b0a0e6ba1c0ae036dc1fc6945dc27770b35b6cda467d67f1e96c6516",
-      "bytes": 13489425
+      "bytes": 13489425,
+      "delivery": {
+        "url": "/assets/nina-new/config.json.gz",
+        "encoding": "gzip"
+      }
     },
     {
       "path": "game/assets/nina-new/clips.json.gz",
       "sha256": "294fe1cc911e45fd46466b0d5e096546d2ca27551a71f4cc02afd90f60302adb",
-      "bytes": 9229104
+      "bytes": 9229104,
+      "delivery": {
+        "url": "/api/fighter-media/nina-new-clips.ff953969728b819927801b86fa1d1a09671053532f44b79ef7e977775fe62bee.json.gz",
+        "payloadSha256": "ff953969728b819927801b86fa1d1a09671053532f44b79ef7e977775fe62bee",
+        "restoredSha256": "ff953969728b819927801b86fa1d1a09671053532f44b79ef7e977775fe62bee"
+      }
     },
     {
       "path": "game/assets/nina-new/paired-clips-ebb6b415d0e7.json.gz",
@@ -402,42 +543,75 @@
     {
       "path": "game/assets/nina-new/prefight-clips.json.gz",
       "sha256": "44cd4ad735eba03fc7b1d7d80c11ed23b4f06f6eb300daacbd65535f97d7a10c",
-      "bytes": 425307
+      "bytes": 425307,
+      "delivery": {
+        "url": "/api/fighter-media/nina-new-prefight-clips.44cd4ad735eba03fc7b1d7d80c11ed23b4f06f6eb300daacbd65535f97d7a10c.json.gz",
+        "payloadSha256": "44cd4ad735eba03fc7b1d7d80c11ed23b4f06f6eb300daacbd65535f97d7a10c"
+      }
     },
     {
       "path": "game/assets/nina-new/model.json.gz",
       "sha256": "b22f21826c2143c56f2b68c6f137da148f3d3d76274ba76f7e534da30451bf19",
-      "bytes": 3204341
+      "bytes": 3204341,
+      "delivery": {
+        "url": "/api/fighter-media/nina-new-model.b22f21826c2143c56f2b68c6f137da148f3d3d76274ba76f7e534da30451bf19.json.gz",
+        "payloadSha256": "b22f21826c2143c56f2b68c6f137da148f3d3d76274ba76f7e534da30451bf19"
+      }
     },
     {
       "path": "game/assets/nina-new/color.webp",
       "sha256": "729193c6deb4624158042d80bbb14b36116a7e28e3df79c1b8c8299c13b35b55",
-      "bytes": 10712818
+      "bytes": 10712818,
+      "delivery": {
+        "url": "/api/fighter-media/nina-new-color.729193c6deb4624158042d80bbb14b36116a7e28e3df79c1b8c8299c13b35b55.webp",
+        "payloadSha256": "729193c6deb4624158042d80bbb14b36116a7e28e3df79c1b8c8299c13b35b55"
+      }
     },
     {
       "path": "game/assets/nina-new/normal.webp",
       "sha256": "ad69ec845beae188d972430bd4521b4c3a47490cee077154fd0ab04c843fa044",
-      "bytes": 3769170
+      "bytes": 3769170,
+      "delivery": {
+        "url": "/api/fighter-media/nina-new-normal.ad69ec845beae188d972430bd4521b4c3a47490cee077154fd0ab04c843fa044.webp",
+        "payloadSha256": "ad69ec845beae188d972430bd4521b4c3a47490cee077154fd0ab04c843fa044"
+      }
     },
     {
       "path": "game/assets/nina-new/metalness.webp",
       "sha256": "f9a69d43bc86d5ac531d09e3bf394354e964055cb0ece76a9088e47d9f1b5092",
-      "bytes": 1426860
+      "bytes": 1426860,
+      "delivery": {
+        "url": "/api/fighter-media/nina-new-metalness.f9a69d43bc86d5ac531d09e3bf394354e964055cb0ece76a9088e47d9f1b5092.webp",
+        "payloadSha256": "f9a69d43bc86d5ac531d09e3bf394354e964055cb0ece76a9088e47d9f1b5092"
+      }
     },
     {
       "path": "game/assets/nina-new/roughness.webp",
       "sha256": "ecba5bc730161be85559157e3a592c2f8227e3cd00212740571652d22db23da3",
-      "bytes": 1037926
+      "bytes": 1037926,
+      "delivery": {
+        "url": "/api/fighter-media/nina-new-roughness.ecba5bc730161be85559157e3a592c2f8227e3cd00212740571652d22db23da3.webp",
+        "payloadSha256": "ecba5bc730161be85559157e3a592c2f8227e3cd00212740571652d22db23da3"
+      }
     },
     {
       "path": "game/assets/danny-new/config.json",
       "sha256": "2afed7f493ee20e995fce09df90dfa98c9b570d4f5ce678ec6802375f39551f3",
-      "bytes": 12371481
+      "bytes": 12371481,
+      "delivery": {
+        "url": "/assets/danny-new/config.json.gz",
+        "encoding": "gzip"
+      }
     },
     {
       "path": "game/assets/danny-new/clips.json.gz",
       "sha256": "2eb118af79378cf2087846677f11aec18694137c399ace46d381ea8c82b46990",
-      "bytes": 6225010
+      "bytes": 6225010,
+      "delivery": {
+        "url": "/api/fighter-media/danny-new-clips.2b1c0759bb33728d63adcc452dfca01911cf09bc108d7d59369274aa6eccca10.json.gz",
+        "payloadSha256": "2b1c0759bb33728d63adcc452dfca01911cf09bc108d7d59369274aa6eccca10",
+        "restoredSha256": "2b1c0759bb33728d63adcc452dfca01911cf09bc108d7d59369274aa6eccca10"
+      }
     },
     {
       "path": "game/assets/danny-new/paired-clips-cdf6f5d5e27b.json.gz",
@@ -447,42 +621,75 @@
     {
       "path": "game/assets/danny-new/prefight-clips.json.gz",
       "sha256": "d8bf92bda95a7cf4abe3e6c0482020054990e6bd3fd958dd9da7039ad75d3bbd",
-      "bytes": 392307
+      "bytes": 392307,
+      "delivery": {
+        "url": "/api/fighter-media/danny-new-prefight-clips.d8bf92bda95a7cf4abe3e6c0482020054990e6bd3fd958dd9da7039ad75d3bbd.json.gz",
+        "payloadSha256": "d8bf92bda95a7cf4abe3e6c0482020054990e6bd3fd958dd9da7039ad75d3bbd"
+      }
     },
     {
       "path": "game/assets/danny-new/model.json.gz",
       "sha256": "08f628343e4851e543f15cb65ab2bf366987b1459ed92515f41187ea8ac949c3",
-      "bytes": 2902449
+      "bytes": 2902449,
+      "delivery": {
+        "url": "/api/fighter-media/danny-new-model.08f628343e4851e543f15cb65ab2bf366987b1459ed92515f41187ea8ac949c3.json.gz",
+        "payloadSha256": "08f628343e4851e543f15cb65ab2bf366987b1459ed92515f41187ea8ac949c3"
+      }
     },
     {
       "path": "game/assets/danny-new/color.webp",
       "sha256": "0d5cdfdd68007c98bafa373dd58cf2db48045bf9c8e2ee159bf490a28feb9729",
-      "bytes": 12455936
+      "bytes": 12455936,
+      "delivery": {
+        "url": "/api/fighter-media/danny-new-color.0d5cdfdd68007c98bafa373dd58cf2db48045bf9c8e2ee159bf490a28feb9729.webp",
+        "payloadSha256": "0d5cdfdd68007c98bafa373dd58cf2db48045bf9c8e2ee159bf490a28feb9729"
+      }
     },
     {
       "path": "game/assets/danny-new/normal.webp",
       "sha256": "e57dd0be248953d5508a1898ad9d8ffbb860fddd1d1812b70da4650c83cd1263",
-      "bytes": 3396512
+      "bytes": 3396512,
+      "delivery": {
+        "url": "/api/fighter-media/danny-new-normal.e57dd0be248953d5508a1898ad9d8ffbb860fddd1d1812b70da4650c83cd1263.webp",
+        "payloadSha256": "e57dd0be248953d5508a1898ad9d8ffbb860fddd1d1812b70da4650c83cd1263"
+      }
     },
     {
       "path": "game/assets/danny-new/metalness.webp",
       "sha256": "44c42ffbce1f74342b9956f964febd1019b9530bc69bcfa88eca3af142d19853",
-      "bytes": 1337626
+      "bytes": 1337626,
+      "delivery": {
+        "url": "/api/fighter-media/danny-new-metalness.44c42ffbce1f74342b9956f964febd1019b9530bc69bcfa88eca3af142d19853.webp",
+        "payloadSha256": "44c42ffbce1f74342b9956f964febd1019b9530bc69bcfa88eca3af142d19853"
+      }
     },
     {
       "path": "game/assets/danny-new/roughness.webp",
       "sha256": "af8cf6f75008c0a270cb7d316e77786ba1d09b0cde5e3078b4f22a893a5f1c63",
-      "bytes": 1082810
+      "bytes": 1082810,
+      "delivery": {
+        "url": "/api/fighter-media/danny-new-roughness.af8cf6f75008c0a270cb7d316e77786ba1d09b0cde5e3078b4f22a893a5f1c63.webp",
+        "payloadSha256": "af8cf6f75008c0a270cb7d316e77786ba1d09b0cde5e3078b4f22a893a5f1c63"
+      }
     },
     {
       "path": "game/assets/bear-new/config.json",
       "sha256": "57f021bbf9fa3700d8d46f3b033c15721f9895baee5bbe1a74c4e56e4d86b9f2",
-      "bytes": 17385238
+      "bytes": 17385238,
+      "delivery": {
+        "url": "/assets/bear-new/config.json.gz",
+        "encoding": "gzip"
+      }
     },
     {
       "path": "game/assets/bear-new/clips.json.gz",
       "sha256": "13c43ba573bc34ccc8b2236eda1b6e6c1ecd9ba43a0631f4d7e97effac3eb61b",
-      "bytes": 22666589
+      "bytes": 22666589,
+      "delivery": {
+        "url": "/api/fighter-media/bear-new-clips.3548795f134c574e06a98521e51caefbd293e066cb78298bb60d184f3772be68.json.gz",
+        "payloadSha256": "3548795f134c574e06a98521e51caefbd293e066cb78298bb60d184f3772be68",
+        "restoredSha256": "3548795f134c574e06a98521e51caefbd293e066cb78298bb60d184f3772be68"
+      }
     },
     {
       "path": "game/assets/bear-new/paired-clips-6a07819272eb.json.gz",
@@ -492,42 +699,75 @@
     {
       "path": "game/assets/bear-new/prefight-clips.json.gz",
       "sha256": "b629fe3a770f43e83e807bcb6a4721845253290b502195f37b70afaf41211462",
-      "bytes": 391095
+      "bytes": 391095,
+      "delivery": {
+        "url": "/api/fighter-media/bear-new-prefight-clips.b629fe3a770f43e83e807bcb6a4721845253290b502195f37b70afaf41211462.json.gz",
+        "payloadSha256": "b629fe3a770f43e83e807bcb6a4721845253290b502195f37b70afaf41211462"
+      }
     },
     {
       "path": "game/assets/bear-new/model.json.gz",
       "sha256": "7dec5a9e8784d2c2628f9cf36c3a723c19c9577a558aada90aa85f3e7b2119c3",
-      "bytes": 3020078
+      "bytes": 3020078,
+      "delivery": {
+        "url": "/api/fighter-media/bear-new-model.7dec5a9e8784d2c2628f9cf36c3a723c19c9577a558aada90aa85f3e7b2119c3.json.gz",
+        "payloadSha256": "7dec5a9e8784d2c2628f9cf36c3a723c19c9577a558aada90aa85f3e7b2119c3"
+      }
     },
     {
       "path": "game/assets/bear-new/color.webp",
       "sha256": "db2a9ef0ebbc75f9e4bbf185fef7382618d6fec5f445c311854c6800b9aba5e4",
-      "bytes": 12405784
+      "bytes": 12405784,
+      "delivery": {
+        "url": "/api/fighter-media/bear-new-color.db2a9ef0ebbc75f9e4bbf185fef7382618d6fec5f445c311854c6800b9aba5e4.webp",
+        "payloadSha256": "db2a9ef0ebbc75f9e4bbf185fef7382618d6fec5f445c311854c6800b9aba5e4"
+      }
     },
     {
       "path": "game/assets/bear-new/normal.webp",
       "sha256": "6cd823e9a3671b62ed0cf4fb47f99a7348aabf48a34585978cdf02586390b1ab",
-      "bytes": 3863638
+      "bytes": 3863638,
+      "delivery": {
+        "url": "/api/fighter-media/bear-new-normal.6cd823e9a3671b62ed0cf4fb47f99a7348aabf48a34585978cdf02586390b1ab.webp",
+        "payloadSha256": "6cd823e9a3671b62ed0cf4fb47f99a7348aabf48a34585978cdf02586390b1ab"
+      }
     },
     {
       "path": "game/assets/bear-new/metalness.webp",
       "sha256": "7d70b12750c5b12e83b1808c97086d01e872d7874143a9562222e218ae62ec04",
-      "bytes": 1530774
+      "bytes": 1530774,
+      "delivery": {
+        "url": "/api/fighter-media/bear-new-metalness.7d70b12750c5b12e83b1808c97086d01e872d7874143a9562222e218ae62ec04.webp",
+        "payloadSha256": "7d70b12750c5b12e83b1808c97086d01e872d7874143a9562222e218ae62ec04"
+      }
     },
     {
       "path": "game/assets/bear-new/roughness.webp",
       "sha256": "2db1f2524d8b136bd90763691d07fb4239b9838ccea5595fb459a5f4870c973c",
-      "bytes": 1051110
+      "bytes": 1051110,
+      "delivery": {
+        "url": "/api/fighter-media/bear-new-roughness.2db1f2524d8b136bd90763691d07fb4239b9838ccea5595fb459a5f4870c973c.webp",
+        "payloadSha256": "2db1f2524d8b136bd90763691d07fb4239b9838ccea5595fb459a5f4870c973c"
+      }
     },
     {
       "path": "game/assets/demon-new/config.json",
       "sha256": "735806beba392a31860f85ba5eb99e1c471e6fde501f2a84d357d27c9ac3e765",
-      "bytes": 11877900
+      "bytes": 11877900,
+      "delivery": {
+        "url": "/assets/demon-new/config.json.gz",
+        "encoding": "gzip"
+      }
     },
     {
       "path": "game/assets/demon-new/clips.json.gz",
       "sha256": "1e0d7d2698fe56ed75e7a8ca3527267e2773f3b7f589fa3acd2caf62cc1867da",
-      "bytes": 21974119
+      "bytes": 21974119,
+      "delivery": {
+        "url": "/api/fighter-media/demon-new-clips.79508f94bede7e7529c5e1280c148d430832b42e197c3280331cfa4a6224aa2d.json.gz",
+        "payloadSha256": "79508f94bede7e7529c5e1280c148d430832b42e197c3280331cfa4a6224aa2d",
+        "restoredSha256": "79508f94bede7e7529c5e1280c148d430832b42e197c3280331cfa4a6224aa2d"
+      }
     },
     {
       "path": "game/assets/demon-new/paired-clips-e46d62d3fc52.json.gz",
@@ -537,112 +777,204 @@
     {
       "path": "game/assets/demon-new/prefight-clips.json.gz",
       "sha256": "c65b8f2a104eca371e0a4dc6d2d1c892c843a8c0fc0cbe02092afe5054e6ad47",
-      "bytes": 393940
+      "bytes": 393940,
+      "delivery": {
+        "url": "/api/fighter-media/demon-new-prefight-clips.c65b8f2a104eca371e0a4dc6d2d1c892c843a8c0fc0cbe02092afe5054e6ad47.json.gz",
+        "payloadSha256": "c65b8f2a104eca371e0a4dc6d2d1c892c843a8c0fc0cbe02092afe5054e6ad47"
+      }
     },
     {
       "path": "game/assets/demon-new/model.json.gz",
       "sha256": "c9943430e9dd5cfbe7129f31b9df5ac238f1d87f2041cbcef81916ba57dd82d2",
-      "bytes": 3181996
+      "bytes": 3181996,
+      "delivery": {
+        "url": "/api/fighter-media/demon-new-model.c9943430e9dd5cfbe7129f31b9df5ac238f1d87f2041cbcef81916ba57dd82d2.json.gz",
+        "payloadSha256": "c9943430e9dd5cfbe7129f31b9df5ac238f1d87f2041cbcef81916ba57dd82d2"
+      }
     },
     {
       "path": "game/assets/demon-new/color.webp",
       "sha256": "594d07e6b1ff9e5fd5a91186baa3431f4ac553d76a380d19a7c385f31dcefa68",
-      "bytes": 15458864
+      "bytes": 15458864,
+      "delivery": {
+        "url": "/api/fighter-media/demon-new-color.594d07e6b1ff9e5fd5a91186baa3431f4ac553d76a380d19a7c385f31dcefa68.webp",
+        "payloadSha256": "594d07e6b1ff9e5fd5a91186baa3431f4ac553d76a380d19a7c385f31dcefa68"
+      }
     },
     {
       "path": "game/assets/demon-new/normal.webp",
       "sha256": "1d64f335c0c6c8edf3dfdaab1c055ae8edd5cf51480c0acf43fb2470ec959d26",
-      "bytes": 5363604
+      "bytes": 5363604,
+      "delivery": {
+        "url": "/api/fighter-media/demon-new-normal.1d64f335c0c6c8edf3dfdaab1c055ae8edd5cf51480c0acf43fb2470ec959d26.webp",
+        "payloadSha256": "1d64f335c0c6c8edf3dfdaab1c055ae8edd5cf51480c0acf43fb2470ec959d26"
+      }
     },
     {
       "path": "game/assets/demon-new/metalness.webp",
       "sha256": "0f5fed78553c7920e160bb37186236357747fcc8dd498edef68a9e1c83ecde20",
-      "bytes": 1894136
+      "bytes": 1894136,
+      "delivery": {
+        "url": "/api/fighter-media/demon-new-metalness.0f5fed78553c7920e160bb37186236357747fcc8dd498edef68a9e1c83ecde20.webp",
+        "payloadSha256": "0f5fed78553c7920e160bb37186236357747fcc8dd498edef68a9e1c83ecde20"
+      }
     },
     {
       "path": "game/assets/demon-new/roughness.webp",
       "sha256": "935cd1f60f50cf201af87e790738d878888295ec432a74dbcbc05ba8f7f14bcc",
-      "bytes": 1693032
+      "bytes": 1693032,
+      "delivery": {
+        "url": "/api/fighter-media/demon-new-roughness.935cd1f60f50cf201af87e790738d878888295ec432a74dbcbc05ba8f7f14bcc.webp",
+        "payloadSha256": "935cd1f60f50cf201af87e790738d878888295ec432a74dbcbc05ba8f7f14bcc"
+      }
     },
     {
       "path": "game/assets/boss-new/config.json",
       "sha256": "4e8785ae611c7ffb04a4c3d26057bd8df72cb3478e997da28b6bb23894c1beab",
-      "bytes": 8191457
+      "bytes": 8191457,
+      "delivery": {
+        "url": "/assets/boss-new/config.json.gz",
+        "encoding": "gzip"
+      }
     },
     {
       "path": "game/assets/boss-new/clips.json.gz",
       "sha256": "62f65eb73d090e6d137bb0ee6778d0cab73449c36d8b72af1ff38c45f3eeebfd",
-      "bytes": 5147903
+      "bytes": 5147903,
+      "delivery": {
+        "url": "/api/fighter-media/boss-new-clips.dfa6407766d3e0e5a4b48d82682d96bdb5cc87d753f139211704713fda53d6f0.json.gz",
+        "payloadSha256": "dfa6407766d3e0e5a4b48d82682d96bdb5cc87d753f139211704713fda53d6f0",
+        "restoredSha256": "dfa6407766d3e0e5a4b48d82682d96bdb5cc87d753f139211704713fda53d6f0"
+      }
     },
     {
       "path": "game/assets/boss-new/model.json.gz",
       "sha256": "01ce454f4b0560d06f01ae03c7d76356c388944f7f1b85e58f5f90126e1f72ed",
-      "bytes": 5080904
+      "bytes": 5080904,
+      "delivery": {
+        "url": "/api/fighter-media/boss-new-model.01ce454f4b0560d06f01ae03c7d76356c388944f7f1b85e58f5f90126e1f72ed.json.gz",
+        "payloadSha256": "01ce454f4b0560d06f01ae03c7d76356c388944f7f1b85e58f5f90126e1f72ed"
+      }
     },
     {
       "path": "game/assets/boss-new/color.webp",
       "sha256": "629143ba5d0b46c33effe5e1b7fbb00351629b37619c66abd5e629b2735d602b",
-      "bytes": 804062
+      "bytes": 804062,
+      "delivery": {
+        "url": "/api/fighter-media/boss-new-color.629143ba5d0b46c33effe5e1b7fbb00351629b37619c66abd5e629b2735d602b.webp",
+        "payloadSha256": "629143ba5d0b46c33effe5e1b7fbb00351629b37619c66abd5e629b2735d602b"
+      }
     },
     {
       "path": "game/assets/boss-new/normal.webp",
       "sha256": "b79e1ece59a9197be2e67222b8664496407c3065c64044c9ee37e193b30d674f",
-      "bytes": 720706
+      "bytes": 720706,
+      "delivery": {
+        "url": "/api/fighter-media/boss-new-normal.b79e1ece59a9197be2e67222b8664496407c3065c64044c9ee37e193b30d674f.webp",
+        "payloadSha256": "b79e1ece59a9197be2e67222b8664496407c3065c64044c9ee37e193b30d674f"
+      }
     },
     {
       "path": "game/assets/boss-new/metalness.webp",
       "sha256": "e65aad137579aef8baadf66bdc710ef70e3b01f03e774a4ed8a6bdfd70f3f6bd",
-      "bytes": 509258
+      "bytes": 509258,
+      "delivery": {
+        "url": "/api/fighter-media/boss-new-metalness.e65aad137579aef8baadf66bdc710ef70e3b01f03e774a4ed8a6bdfd70f3f6bd.webp",
+        "payloadSha256": "e65aad137579aef8baadf66bdc710ef70e3b01f03e774a4ed8a6bdfd70f3f6bd"
+      }
     },
     {
       "path": "game/assets/boss-new/roughness.webp",
       "sha256": "820543ce63bfa6cbffd907c8cceb6c46d50dd08633832fafc4fedb48f6b1c92c",
-      "bytes": 425612
+      "bytes": 425612,
+      "delivery": {
+        "url": "/api/fighter-media/boss-new-roughness.820543ce63bfa6cbffd907c8cceb6c46d50dd08633832fafc4fedb48f6b1c92c.webp",
+        "payloadSha256": "820543ce63bfa6cbffd907c8cceb6c46d50dd08633832fafc4fedb48f6b1c92c"
+      }
     },
     {
       "path": "game/assets/zombie-new/config.json",
       "sha256": "ee7103cee53274c51f07c3e2427e4440ad81e24159bd7064f38cd019da75e182",
-      "bytes": 7691381
+      "bytes": 7691381,
+      "delivery": {
+        "url": "/assets/zombie-new/config.json.gz",
+        "encoding": "gzip"
+      }
     },
     {
       "path": "game/assets/zombie-new/clips.json.gz",
       "sha256": "a5523f6b2407ddb38ec9dab09f5a4474362207e2e31a3ad6dbe031e35d0cbc9c",
-      "bytes": 5467545
+      "bytes": 5467545,
+      "delivery": {
+        "url": "/api/fighter-media/zombie-new-clips.a5523f6b2407ddb38ec9dab09f5a4474362207e2e31a3ad6dbe031e35d0cbc9c.json.gz",
+        "payloadSha256": "a5523f6b2407ddb38ec9dab09f5a4474362207e2e31a3ad6dbe031e35d0cbc9c",
+        "restoredSha256": "a5523f6b2407ddb38ec9dab09f5a4474362207e2e31a3ad6dbe031e35d0cbc9c"
+      }
     },
     {
       "path": "game/assets/zombie-new/model.json.gz",
       "sha256": "0017475f3c2305c46043c77c26d26f360b1996a553456a686290e31579982505",
-      "bytes": 3410715
+      "bytes": 3410715,
+      "delivery": {
+        "url": "/api/fighter-media/zombie-new-model.0017475f3c2305c46043c77c26d26f360b1996a553456a686290e31579982505.json.gz",
+        "payloadSha256": "0017475f3c2305c46043c77c26d26f360b1996a553456a686290e31579982505"
+      }
     },
     {
       "path": "game/assets/zombie-new/color.webp",
       "sha256": "1394431a764d6b62b0c683ba854013c42a9d7bf9eb161b10cd7cce376c845669",
-      "bytes": 1067524
+      "bytes": 1067524,
+      "delivery": {
+        "url": "/api/fighter-media/zombie-new-color.1394431a764d6b62b0c683ba854013c42a9d7bf9eb161b10cd7cce376c845669.webp",
+        "payloadSha256": "1394431a764d6b62b0c683ba854013c42a9d7bf9eb161b10cd7cce376c845669"
+      }
     },
     {
       "path": "game/assets/zombie-new/normal.webp",
       "sha256": "dc4a384bbd72154216265139a487892a8c8e2209c9a6bf7ba50d4642a2b7ef7b",
-      "bytes": 781914
+      "bytes": 781914,
+      "delivery": {
+        "url": "/api/fighter-media/zombie-new-normal.dc4a384bbd72154216265139a487892a8c8e2209c9a6bf7ba50d4642a2b7ef7b.webp",
+        "payloadSha256": "dc4a384bbd72154216265139a487892a8c8e2209c9a6bf7ba50d4642a2b7ef7b"
+      }
     },
     {
       "path": "game/assets/zombie-new/metalness.webp",
       "sha256": "37be18f115571a59643046e83a0ac8f76e24ad12d21b6e4b504b82e4d8792e16",
-      "bytes": 553148
+      "bytes": 553148,
+      "delivery": {
+        "url": "/api/fighter-media/zombie-new-metalness.37be18f115571a59643046e83a0ac8f76e24ad12d21b6e4b504b82e4d8792e16.webp",
+        "payloadSha256": "37be18f115571a59643046e83a0ac8f76e24ad12d21b6e4b504b82e4d8792e16"
+      }
     },
     {
       "path": "game/assets/zombie-new/roughness.webp",
       "sha256": "77062c68efe1f84bfce90f258baa49e2dd4afea2f9ca14451a458f7ca175a4b4",
-      "bytes": 465332
+      "bytes": 465332,
+      "delivery": {
+        "url": "/api/fighter-media/zombie-new-roughness.77062c68efe1f84bfce90f258baa49e2dd4afea2f9ca14451a458f7ca175a4b4.webp",
+        "payloadSha256": "77062c68efe1f84bfce90f258baa49e2dd4afea2f9ca14451a458f7ca175a4b4"
+      }
     },
     {
       "path": "game/assets/outfits/brax-white/config.patch.json",
       "sha256": "403df6d3a4368ff525756bec2f946447087d06944a063c5f4b7664a86a6c0e30",
-      "bytes": 586719
+      "bytes": 586719,
+      "delivery": {
+        "url": "/assets/outfits/brax-white/config.patch.json.gz",
+        "encoding": "gzip"
+      }
     },
     {
       "path": "game/assets/outfits/brax-white/model.json.gz",
       "sha256": "cfe2a2563e07515a3f124aa00124e8c76e82a236bd778ebb37a1908a1b57b70d",
-      "bytes": 2890202
+      "bytes": 2890202,
+      "delivery": {
+        "url": "/api/fighter-media/brax-white-model.6380c3bf13d63c75cd0af55554662109beb84e676d706752a8bf66b4addaa742.json.gz",
+        "payloadSha256": "6380c3bf13d63c75cd0af55554662109beb84e676d706752a8bf66b4addaa742",
+        "patch": "game/assets/outfits/brax-white/retarget.json",
+        "restoredSha256": "4a1378323eedf91bdd87e28fccf86768ada8b36875e235a328caf306cf521267"
+      }
     },
     {
       "path": "game/assets/outfits/brax-white/retarget.json",
@@ -652,27 +984,49 @@
     {
       "path": "game/assets/outfits/brax-white/color.jpg",
       "sha256": "db0ad9a6851ef5f2d30e3d42c6bae17de735e70e39eb33806cd70128d7c15e26",
-      "bytes": 2454549
+      "bytes": 2454549,
+      "delivery": {
+        "url": "/assets/outfit-colours/brax-white-color.db0ad9a6851ef5f2d30e3d42c6bae17de735e70e39eb33806cd70128d7c15e26.jpg",
+        "payloadSha256": "db0ad9a6851ef5f2d30e3d42c6bae17de735e70e39eb33806cd70128d7c15e26"
+      }
     },
     {
       "path": "game/assets/outfits/brax-white/normal-original.jpg",
       "sha256": "56af7d9f02fc7fbda78fb3016600df48647c95e2a07c2f7a9bde9ece12545198",
-      "bytes": 1387244
+      "bytes": 1387244,
+      "delivery": {
+        "url": "/assets/outfit-colours/brax_white-56af7d9f02fc7fbda78fb3016600df48647c95e2a07c2f7a9bde9ece12545198.jpg",
+        "payloadSha256": "56af7d9f02fc7fbda78fb3016600df48647c95e2a07c2f7a9bde9ece12545198"
+      }
     },
     {
       "path": "game/assets/outfits/brax-white/metallic-roughness-original.png",
       "sha256": "31fd0081c431abd3a269c432ff6ebcf4994ef9f574ab8baa200339f2267dd61b",
-      "bytes": 5675332
+      "bytes": 5675332,
+      "delivery": {
+        "url": "/assets/outfit-colours/brax_white-31fd0081c431abd3a269c432ff6ebcf4994ef9f574ab8baa200339f2267dd61b.png",
+        "payloadSha256": "31fd0081c431abd3a269c432ff6ebcf4994ef9f574ab8baa200339f2267dd61b"
+      }
     },
     {
       "path": "game/assets/outfits/brax-street/config.patch.json",
       "sha256": "27f296b0dcfa54c3f094aa901bcdd5b736d43bac5499fd5d1644611d6b7d63bf",
-      "bytes": 373178
+      "bytes": 373178,
+      "delivery": {
+        "url": "/assets/outfits/brax-street/config.patch.json.gz",
+        "encoding": "gzip"
+      }
     },
     {
       "path": "game/assets/outfits/brax-street/model.json.gz",
       "sha256": "47c6ae22fde4e053c37f7ee71dfd449f43a02e8f558b60474aa2195366bb1504",
-      "bytes": 3004037
+      "bytes": 3004037,
+      "delivery": {
+        "url": "/api/fighter-media/brax-street-model.03d4b9321a275515d8de2c90659cff9e30d8f5a79bdbaf70f15c07e6419728ea.json.gz",
+        "payloadSha256": "03d4b9321a275515d8de2c90659cff9e30d8f5a79bdbaf70f15c07e6419728ea",
+        "patch": "game/assets/outfits/brax-street/retarget.json",
+        "restoredSha256": "d9b0c48a5fab30f11eb58070c93e540f87b138e2fa967b929c8085d20048c2e8"
+      }
     },
     {
       "path": "game/assets/outfits/brax-street/retarget.json",
@@ -682,32 +1036,58 @@
     {
       "path": "game/assets/outfits/brax-street/color.jpg",
       "sha256": "4d9833bf5e05e5363a952c7b139b3dbc62890cde44708d635b707456831df850",
-      "bytes": 2857720
+      "bytes": 2857720,
+      "delivery": {
+        "url": "/assets/outfit-colours/brax-street-color.4d9833bf5e05e5363a952c7b139b3dbc62890cde44708d635b707456831df850.jpg",
+        "payloadSha256": "4d9833bf5e05e5363a952c7b139b3dbc62890cde44708d635b707456831df850"
+      }
     },
     {
       "path": "game/assets/outfits/brax-street/normal-original.jpg",
       "sha256": "d4a9d164a87275e9fe01c46aefdee4b259b36126709e8645523a247ad2f0c4d3",
-      "bytes": 1414769
+      "bytes": 1414769,
+      "delivery": {
+        "url": "/assets/outfit-colours/brax_street-d4a9d164a87275e9fe01c46aefdee4b259b36126709e8645523a247ad2f0c4d3.jpg",
+        "payloadSha256": "d4a9d164a87275e9fe01c46aefdee4b259b36126709e8645523a247ad2f0c4d3"
+      }
     },
     {
       "path": "game/assets/outfits/brax-street/metalness-original.jpg",
       "sha256": "b065162494ee04bb861a28d6a0a57abe452dc0660c33962826ec53d08a4d95ea",
-      "bytes": 491781
+      "bytes": 491781,
+      "delivery": {
+        "url": "/assets/outfit-colours/brax_street-b065162494ee04bb861a28d6a0a57abe452dc0660c33962826ec53d08a4d95ea.jpg",
+        "payloadSha256": "b065162494ee04bb861a28d6a0a57abe452dc0660c33962826ec53d08a4d95ea"
+      }
     },
     {
       "path": "game/assets/outfits/brax-street/roughness-original.jpg",
       "sha256": "91ecda3627186a87b9daafe5b91bdf407de87eec60353029ce832a1c3cfaf651",
-      "bytes": 460632
+      "bytes": 460632,
+      "delivery": {
+        "url": "/assets/outfit-colours/brax_street-91ecda3627186a87b9daafe5b91bdf407de87eec60353029ce832a1c3cfaf651.jpg",
+        "payloadSha256": "91ecda3627186a87b9daafe5b91bdf407de87eec60353029ce832a1c3cfaf651"
+      }
     },
     {
       "path": "game/assets/outfits/nyxa-sport/config.patch.json",
       "sha256": "6294fb0d1680cddb33ae20f9da76c4cc9fb7f27f5c14985614b63535daf6014d",
-      "bytes": 1004108
+      "bytes": 1004108,
+      "delivery": {
+        "url": "/assets/outfits/nyxa-sport/config.patch.json.gz",
+        "encoding": "gzip"
+      }
     },
     {
       "path": "game/assets/outfits/nyxa-sport/model.json.gz",
       "sha256": "68a0cbc47604bf5db27d2686e98ff7d2e5fa48421892d81957b139249c023e48",
-      "bytes": 3293425
+      "bytes": 3293425,
+      "delivery": {
+        "url": "/api/fighter-media/nyxa-sport-model.9453a07eb16ff765ea5e07a362f87167cb1ebb9592067c8c91e4e4271b57723f.json.gz",
+        "payloadSha256": "9453a07eb16ff765ea5e07a362f87167cb1ebb9592067c8c91e4e4271b57723f",
+        "patch": "game/assets/outfits/nyxa-sport/retarget.json",
+        "restoredSha256": "6832184a89840cfbbece184a834b838952fe63d82fe260a59cd7cdfe6abbfadc"
+      }
     },
     {
       "path": "game/assets/outfits/nyxa-sport/retarget.json",
@@ -717,32 +1097,58 @@
     {
       "path": "game/assets/outfits/nyxa-sport/color.jpg",
       "sha256": "59958cfebddaaf452a2d2609121cdf101019143e1e3d5f8b9c54973d98a0138c",
-      "bytes": 2408885
+      "bytes": 2408885,
+      "delivery": {
+        "url": "/assets/outfit-colours/nyxa-sport-color.59958cfebddaaf452a2d2609121cdf101019143e1e3d5f8b9c54973d98a0138c.jpg",
+        "payloadSha256": "59958cfebddaaf452a2d2609121cdf101019143e1e3d5f8b9c54973d98a0138c"
+      }
     },
     {
       "path": "game/assets/outfits/nyxa-sport/normal.webp",
       "sha256": "23e148dc94cbb9c17c04300a7880115cafe77562e7765f7da99ca46d20b72683",
-      "bytes": 828560
+      "bytes": 828560,
+      "delivery": {
+        "url": "/api/fighter-media/nyxa-sport-normal.23e148dc94cbb9c17c04300a7880115cafe77562e7765f7da99ca46d20b72683.webp",
+        "payloadSha256": "23e148dc94cbb9c17c04300a7880115cafe77562e7765f7da99ca46d20b72683"
+      }
     },
     {
       "path": "game/assets/outfits/nyxa-sport/metalness.webp",
       "sha256": "4ee0dab2af10a8a2d2d9348483129e32f72e7842a565acfd1a70edbd72f8ba9d",
-      "bytes": 594022
+      "bytes": 594022,
+      "delivery": {
+        "url": "/api/fighter-media/nyxa-sport-metalness.4ee0dab2af10a8a2d2d9348483129e32f72e7842a565acfd1a70edbd72f8ba9d.webp",
+        "payloadSha256": "4ee0dab2af10a8a2d2d9348483129e32f72e7842a565acfd1a70edbd72f8ba9d"
+      }
     },
     {
       "path": "game/assets/outfits/nyxa-sport/roughness.webp",
       "sha256": "03749b5ccb1f4ca929ed4d9fc580e08d3773619f30bed9ac57a2a5315c5e5a8d",
-      "bytes": 448200
+      "bytes": 448200,
+      "delivery": {
+        "url": "/api/fighter-media/nyxa-sport-roughness.03749b5ccb1f4ca929ed4d9fc580e08d3773619f30bed9ac57a2a5315c5e5a8d.webp",
+        "payloadSha256": "03749b5ccb1f4ca929ed4d9fc580e08d3773619f30bed9ac57a2a5315c5e5a8d"
+      }
     },
     {
       "path": "game/assets/outfits/nyxa-pink/config.patch.json",
       "sha256": "d80d82a4cd1044a6414f5e1e26177c386b66ed69790b051516ea4ce4b3e7e7bd",
-      "bytes": 1192692
+      "bytes": 1192692,
+      "delivery": {
+        "url": "/assets/outfits/nyxa-pink/config.patch.json.gz",
+        "encoding": "gzip"
+      }
     },
     {
       "path": "game/assets/outfits/nyxa-pink/model.json.gz",
       "sha256": "04d543f2b3b8e66197ab325c2ecceee29919173df5d77d5f5c452283cd012be7",
-      "bytes": 3205244
+      "bytes": 3205244,
+      "delivery": {
+        "url": "/api/fighter-media/nyxa-pink-model.a0e31310c89f1113eb5f418351e5e3efbf10f564dbe4ed2f4054fb2b87ee2523.json.gz",
+        "payloadSha256": "a0e31310c89f1113eb5f418351e5e3efbf10f564dbe4ed2f4054fb2b87ee2523",
+        "patch": "game/assets/outfits/nyxa-pink/retarget.json",
+        "restoredSha256": "dabac4df4d109dee0febdfc0f7a7eb6e9e732a64bc5530156964c7683f99a015"
+      }
     },
     {
       "path": "game/assets/outfits/nyxa-pink/retarget.json",
@@ -752,32 +1158,58 @@
     {
       "path": "game/assets/outfits/nyxa-pink/color.jpg",
       "sha256": "9e495c9d4fa96a4bd8abb1131346790def1b6e7c4aa2ee64e7ceaf4b43cc5271",
-      "bytes": 2387715
+      "bytes": 2387715,
+      "delivery": {
+        "url": "/assets/outfit-colours/nyxa-pink-color.9e495c9d4fa96a4bd8abb1131346790def1b6e7c4aa2ee64e7ceaf4b43cc5271.jpg",
+        "payloadSha256": "9e495c9d4fa96a4bd8abb1131346790def1b6e7c4aa2ee64e7ceaf4b43cc5271"
+      }
     },
     {
       "path": "game/assets/outfits/nyxa-pink/normal.webp",
       "sha256": "1997d5116ba9fb4702efe190bae701e6485d8f6a5754d5ab2d9d55f4bc45b419",
-      "bytes": 782722
+      "bytes": 782722,
+      "delivery": {
+        "url": "/api/fighter-media/nyxa-pink-normal.1997d5116ba9fb4702efe190bae701e6485d8f6a5754d5ab2d9d55f4bc45b419.webp",
+        "payloadSha256": "1997d5116ba9fb4702efe190bae701e6485d8f6a5754d5ab2d9d55f4bc45b419"
+      }
     },
     {
       "path": "game/assets/outfits/nyxa-pink/metalness.webp",
       "sha256": "bb2afcb2f592e8a0977c9a4fbf999f32f82abaf04db784fdef224530ba470031",
-      "bytes": 510908
+      "bytes": 510908,
+      "delivery": {
+        "url": "/api/fighter-media/nyxa-pink-metalness.bb2afcb2f592e8a0977c9a4fbf999f32f82abaf04db784fdef224530ba470031.webp",
+        "payloadSha256": "bb2afcb2f592e8a0977c9a4fbf999f32f82abaf04db784fdef224530ba470031"
+      }
     },
     {
       "path": "game/assets/outfits/nyxa-pink/roughness.webp",
       "sha256": "51b35b51737f47a10feb7e61ee25cedad34781ca5debfc32499e507bacef5ec8",
-      "bytes": 331752
+      "bytes": 331752,
+      "delivery": {
+        "url": "/api/fighter-media/nyxa-pink-roughness.51b35b51737f47a10feb7e61ee25cedad34781ca5debfc32499e507bacef5ec8.webp",
+        "payloadSha256": "51b35b51737f47a10feb7e61ee25cedad34781ca5debfc32499e507bacef5ec8"
+      }
     },
     {
       "path": "game/assets/outfits/vexa-purple/config.patch.json",
       "sha256": "93b4c712657af110700c2869b9055721b323f7464ac05399b5d69ac69cd0c71c",
-      "bytes": 502176
+      "bytes": 502176,
+      "delivery": {
+        "url": "/assets/outfits/vexa-purple/config.patch.json.gz",
+        "encoding": "gzip"
+      }
     },
     {
       "path": "game/assets/outfits/vexa-purple/model.json.gz",
       "sha256": "4f10c799bd93aa062d8b5edc6a4d28cf4a8e5f602abbc2f34a53dbdac0d3cb54",
-      "bytes": 3097428
+      "bytes": 3097428,
+      "delivery": {
+        "url": "/api/fighter-media/vexa-purple-model.75831680d608243e1b462f04c612ba8111764792e6331f42490e4fc0c91d3599.json.gz",
+        "payloadSha256": "75831680d608243e1b462f04c612ba8111764792e6331f42490e4fc0c91d3599",
+        "patch": "game/assets/outfits/vexa-purple/retarget.json",
+        "restoredSha256": "f4e7706e32f3acfbb4f0367bdeed85e582e0c7bdda6a02b06e0feda678e3ff64"
+      }
     },
     {
       "path": "game/assets/outfits/vexa-purple/retarget.json",
@@ -787,32 +1219,58 @@
     {
       "path": "game/assets/outfits/vexa-purple/color.webp",
       "sha256": "2a1203199cf20d443d340b41ab74d563a4ef6a3fb2db215a97ad4d9d85a2505e",
-      "bytes": 1264056
+      "bytes": 1264056,
+      "delivery": {
+        "url": "/api/fighter-media/vexa-purple-color.2a1203199cf20d443d340b41ab74d563a4ef6a3fb2db215a97ad4d9d85a2505e.webp",
+        "payloadSha256": "2a1203199cf20d443d340b41ab74d563a4ef6a3fb2db215a97ad4d9d85a2505e"
+      }
     },
     {
       "path": "game/assets/outfits/vexa-purple/normal.webp",
       "sha256": "a8f1a64137d1aa00ceffe25c11a75af47d7441e3cab3188633f3d39a59e25cac",
-      "bytes": 867722
+      "bytes": 867722,
+      "delivery": {
+        "url": "/api/fighter-media/vexa-purple-normal.a8f1a64137d1aa00ceffe25c11a75af47d7441e3cab3188633f3d39a59e25cac.webp",
+        "payloadSha256": "a8f1a64137d1aa00ceffe25c11a75af47d7441e3cab3188633f3d39a59e25cac"
+      }
     },
     {
       "path": "game/assets/outfits/vexa-purple/metalness.webp",
       "sha256": "618456b0adaa4b1860e9b35c817a552885be295e15a4200a505484d7d278b94e",
-      "bytes": 767064
+      "bytes": 767064,
+      "delivery": {
+        "url": "/api/fighter-media/vexa-purple-metalness.618456b0adaa4b1860e9b35c817a552885be295e15a4200a505484d7d278b94e.webp",
+        "payloadSha256": "618456b0adaa4b1860e9b35c817a552885be295e15a4200a505484d7d278b94e"
+      }
     },
     {
       "path": "game/assets/outfits/vexa-purple/roughness.webp",
       "sha256": "f98240d46e5a3f73d1ef03721ce058d5204d5614df9e271a931108deb12a7f56",
-      "bytes": 537616
+      "bytes": 537616,
+      "delivery": {
+        "url": "/api/fighter-media/vexa-purple-roughness.f98240d46e5a3f73d1ef03721ce058d5204d5614df9e271a931108deb12a7f56.webp",
+        "payloadSha256": "f98240d46e5a3f73d1ef03721ce058d5204d5614df9e271a931108deb12a7f56"
+      }
     },
     {
       "path": "game/assets/outfits/vexa-street/config.patch.json",
       "sha256": "06f0851efc00329a4680c2df846f8e848ff160d2b86f59b23b7b5623b983c349",
-      "bytes": 515064
+      "bytes": 515064,
+      "delivery": {
+        "url": "/assets/outfits/vexa-street/config.patch.json.gz",
+        "encoding": "gzip"
+      }
     },
     {
       "path": "game/assets/outfits/vexa-street/model.json.gz",
       "sha256": "b73ba3fbd15d6a8f5eb12a9e862e0ad2b51c6388c5a2c1c2206b5fdf5b783a16",
-      "bytes": 3199653
+      "bytes": 3199653,
+      "delivery": {
+        "url": "/api/fighter-media/vexa-street-model.b3ed681096f99c7cfdccf460871ce2bd7faa28c82a4f0a3913c9f289c2e581f4.json.gz",
+        "payloadSha256": "b3ed681096f99c7cfdccf460871ce2bd7faa28c82a4f0a3913c9f289c2e581f4",
+        "patch": "game/assets/outfits/vexa-street/retarget.json",
+        "restoredSha256": "850f3f42865b334ec72b5aa5dd8be81c41117960e91592e684229d719202f7f6"
+      }
     },
     {
       "path": "game/assets/outfits/vexa-street/retarget.json",
@@ -822,32 +1280,58 @@
     {
       "path": "game/assets/outfits/vexa-street/color.webp",
       "sha256": "2c6abf008d5368e7676e8efef7fa1e84f4a05422994ee974467b5e68ac41fee9",
-      "bytes": 1089966
+      "bytes": 1089966,
+      "delivery": {
+        "url": "/api/fighter-media/vexa-street-color.2c6abf008d5368e7676e8efef7fa1e84f4a05422994ee974467b5e68ac41fee9.webp",
+        "payloadSha256": "2c6abf008d5368e7676e8efef7fa1e84f4a05422994ee974467b5e68ac41fee9"
+      }
     },
     {
       "path": "game/assets/outfits/vexa-street/normal.webp",
       "sha256": "d4d10f52a86ecef358b9ad436a7e782730d353b04f6578432d0e0b115fd96056",
-      "bytes": 855676
+      "bytes": 855676,
+      "delivery": {
+        "url": "/api/fighter-media/vexa-street-normal.d4d10f52a86ecef358b9ad436a7e782730d353b04f6578432d0e0b115fd96056.webp",
+        "payloadSha256": "d4d10f52a86ecef358b9ad436a7e782730d353b04f6578432d0e0b115fd96056"
+      }
     },
     {
       "path": "game/assets/outfits/vexa-street/metalness.webp",
       "sha256": "46f0fa90ba9432f57dff051c18df66da372c2a80cc1b3e7f4e067a1f0fb29d79",
-      "bytes": 581940
+      "bytes": 581940,
+      "delivery": {
+        "url": "/api/fighter-media/vexa-street-metalness.46f0fa90ba9432f57dff051c18df66da372c2a80cc1b3e7f4e067a1f0fb29d79.webp",
+        "payloadSha256": "46f0fa90ba9432f57dff051c18df66da372c2a80cc1b3e7f4e067a1f0fb29d79"
+      }
     },
     {
       "path": "game/assets/outfits/vexa-street/roughness.webp",
       "sha256": "9bd39c5dae4da0c958f4267900e7df0bc6bb5937adb93031a73bd061c2cf9f49",
-      "bytes": 321070
+      "bytes": 321070,
+      "delivery": {
+        "url": "/api/fighter-media/vexa-street-roughness.9bd39c5dae4da0c958f4267900e7df0bc6bb5937adb93031a73bd061c2cf9f49.webp",
+        "payloadSha256": "9bd39c5dae4da0c958f4267900e7df0bc6bb5937adb93031a73bd061c2cf9f49"
+      }
     },
     {
       "path": "game/assets/outfits/krov-tracksuit/config.patch.json",
       "sha256": "02b203e5cd314d5f30bdd705c03343c64dccac06863447f2a45babc3f757c9e9",
-      "bytes": 437006
+      "bytes": 437006,
+      "delivery": {
+        "url": "/assets/outfits/krov-tracksuit/config.patch.json.gz",
+        "encoding": "gzip"
+      }
     },
     {
       "path": "game/assets/outfits/krov-tracksuit/model.json.gz",
       "sha256": "ecafe2e78fb085eed9eb01f27bdd482ca01cecc1444f46281b137c0b226dc9cf",
-      "bytes": 3083361
+      "bytes": 3083361,
+      "delivery": {
+        "url": "/api/fighter-media/krov-tracksuit-model.03c1aec2c4f7d9d2266d8779d63d428f083bf5c691318b9e34142a9b0192bac8.json.gz",
+        "payloadSha256": "03c1aec2c4f7d9d2266d8779d63d428f083bf5c691318b9e34142a9b0192bac8",
+        "patch": "game/assets/outfits/krov-tracksuit/retarget.json",
+        "restoredSha256": "ee7f55b1150bf6efda54007439997c05eaa593fde60d1418919d23eb34b457b4"
+      }
     },
     {
       "path": "game/assets/outfits/krov-tracksuit/retarget.json",
@@ -857,32 +1341,58 @@
     {
       "path": "game/assets/outfits/krov-tracksuit/color.webp",
       "sha256": "e67226cfa6a55bb6b20ce80be9bd6b4c03108cec3c714d606f0f9842c5ee1601",
-      "bytes": 818282
+      "bytes": 818282,
+      "delivery": {
+        "url": "/api/fighter-media/krov-tracksuit-color.e67226cfa6a55bb6b20ce80be9bd6b4c03108cec3c714d606f0f9842c5ee1601.webp",
+        "payloadSha256": "e67226cfa6a55bb6b20ce80be9bd6b4c03108cec3c714d606f0f9842c5ee1601"
+      }
     },
     {
       "path": "game/assets/outfits/krov-tracksuit/normal.webp",
       "sha256": "7e251ef38f1001ed249c808471c428c3377a01484826411f489149cf728ad06d",
-      "bytes": 840520
+      "bytes": 840520,
+      "delivery": {
+        "url": "/api/fighter-media/krov-tracksuit-normal.7e251ef38f1001ed249c808471c428c3377a01484826411f489149cf728ad06d.webp",
+        "payloadSha256": "7e251ef38f1001ed249c808471c428c3377a01484826411f489149cf728ad06d"
+      }
     },
     {
       "path": "game/assets/outfits/krov-tracksuit/metalness.webp",
       "sha256": "dbd24e476d5bd247d27102c1a8dcc1877fbcb4bfe28d3dbb0c0d5cc61c900585",
-      "bytes": 546288
+      "bytes": 546288,
+      "delivery": {
+        "url": "/api/fighter-media/krov-tracksuit-metalness.dbd24e476d5bd247d27102c1a8dcc1877fbcb4bfe28d3dbb0c0d5cc61c900585.webp",
+        "payloadSha256": "dbd24e476d5bd247d27102c1a8dcc1877fbcb4bfe28d3dbb0c0d5cc61c900585"
+      }
     },
     {
       "path": "game/assets/outfits/krov-tracksuit/roughness.webp",
       "sha256": "fcb1bf7a9e9b0017297a8fbee22a68dbea17ebf10e5a7a2bdbb46bdc48050f85",
-      "bytes": 396110
+      "bytes": 396110,
+      "delivery": {
+        "url": "/api/fighter-media/krov-tracksuit-roughness.fcb1bf7a9e9b0017297a8fbee22a68dbea17ebf10e5a7a2bdbb46bdc48050f85.webp",
+        "payloadSha256": "fcb1bf7a9e9b0017297a8fbee22a68dbea17ebf10e5a7a2bdbb46bdc48050f85"
+      }
     },
     {
       "path": "game/assets/outfits/krov-summer/config.patch.json",
       "sha256": "454e50d14dd4667c1228403f19b4d5e6121dc9c1d2d88a8215fdab14efb89a87",
-      "bytes": 572320
+      "bytes": 572320,
+      "delivery": {
+        "url": "/assets/outfits/krov-summer/config.patch.json.gz",
+        "encoding": "gzip"
+      }
     },
     {
       "path": "game/assets/outfits/krov-summer/model.json.gz",
       "sha256": "47bcd11f051a44b544189b2bfcd29b6fe1725278fd3a9e3bf56d53da16a6c4e5",
-      "bytes": 3107370
+      "bytes": 3107370,
+      "delivery": {
+        "url": "/api/fighter-media/krov-summer-model.cea814682a12ce4ed71e0a6da2e55f96a0549c3e69dfb3ce7c7a6dfa722c47b6.json.gz",
+        "payloadSha256": "cea814682a12ce4ed71e0a6da2e55f96a0549c3e69dfb3ce7c7a6dfa722c47b6",
+        "patch": "game/assets/outfits/krov-summer/retarget.json",
+        "restoredSha256": "6ecbdd9b74bac39b7810b09a777614351573e5c7a073f376e8b25cacc665069f"
+      }
     },
     {
       "path": "game/assets/outfits/krov-summer/retarget.json",
@@ -892,22 +1402,38 @@
     {
       "path": "game/assets/outfits/krov-summer/color.webp",
       "sha256": "47115a98af74e10629d11314972b99a9b3c887749c1aecef24eb75b7c7da9391",
-      "bytes": 1196108
+      "bytes": 1196108,
+      "delivery": {
+        "url": "/api/fighter-media/krov-summer-color.47115a98af74e10629d11314972b99a9b3c887749c1aecef24eb75b7c7da9391.webp",
+        "payloadSha256": "47115a98af74e10629d11314972b99a9b3c887749c1aecef24eb75b7c7da9391"
+      }
     },
     {
       "path": "game/assets/outfits/krov-summer/normal.webp",
       "sha256": "4a409cce3b8dd4e13d153566a2607ce3776ccec1a3c6c7537355e14b5d681490",
-      "bytes": 859362
+      "bytes": 859362,
+      "delivery": {
+        "url": "/api/fighter-media/krov-summer-normal.4a409cce3b8dd4e13d153566a2607ce3776ccec1a3c6c7537355e14b5d681490.webp",
+        "payloadSha256": "4a409cce3b8dd4e13d153566a2607ce3776ccec1a3c6c7537355e14b5d681490"
+      }
     },
     {
       "path": "game/assets/outfits/krov-summer/metalness.webp",
       "sha256": "7e987e3dc444d4a2c7139ae3638367e3085070be8d13d0b873f4f8ba551cc9ed",
-      "bytes": 562458
+      "bytes": 562458,
+      "delivery": {
+        "url": "/api/fighter-media/krov-summer-metalness.7e987e3dc444d4a2c7139ae3638367e3085070be8d13d0b873f4f8ba551cc9ed.webp",
+        "payloadSha256": "7e987e3dc444d4a2c7139ae3638367e3085070be8d13d0b873f4f8ba551cc9ed"
+      }
     },
     {
       "path": "game/assets/outfits/krov-summer/roughness.webp",
       "sha256": "15e52fdd54b49fa1c9d8fb6744189ac72fa0f66f9449ac7c5d3b1ed9f63c5150",
-      "bytes": 361288
+      "bytes": 361288,
+      "delivery": {
+        "url": "/api/fighter-media/krov-summer-roughness.15e52fdd54b49fa1c9d8fb6744189ac72fa0f66f9449ac7c5d3b1ed9f63c5150.webp",
+        "payloadSha256": "15e52fdd54b49fa1c9d8fb6744189ac72fa0f66f9449ac7c5d3b1ed9f63c5150"
+      }
     }
   ],
   "partial": false,

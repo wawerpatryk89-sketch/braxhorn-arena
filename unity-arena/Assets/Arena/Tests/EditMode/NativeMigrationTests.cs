@@ -46,6 +46,7 @@ namespace Braxhorn.Arena.Tests
                 Assert.That(bindings.Length, Is.EqualTo(10));
                 var curve = AnimationUtility.GetEditorCurve(clip, EditorCurveBinding.FloatCurve("Model/Hips", typeof(Transform), "m_LocalPosition.z"));
                 Assert.That(curve.Evaluate(.5f), Is.EqualTo(-4).Within(.0001));
+                Assert.That(curve.length, Is.EqualTo(2));
             }
             finally { if (clip) UnityEngine.Object.DestroyImmediate(clip); File.Delete(file); }
         }

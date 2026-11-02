@@ -16,7 +16,7 @@ namespace Braxhorn.Arena.Editor
     public static class NativeFighterImporter
     {
         const string Source = "Assets/Arena/SourceData";
-        const string Imported = "Assets/Arena/Imported";
+        public const string Imported = "Assets/Arena/Resources/Fighters";
         static readonly Matrix4x4 Reflection = Matrix4x4.Scale(new Vector3(1, 1, -1));
 
         [MenuItem("Braxhorn/Migration/Import exported fighters")]
@@ -290,8 +290,13 @@ namespace Braxhorn.Arena.Editor
                         if (component == 2 || component == 3 || component == 4) v = -v;
                         keys[frame] = new Keyframe(times[frame], v);
                     }
+                    // Lossless reduction of constant transform channels. Skeleton
+                    // scale/offset curves otherwise repeat millions of identical
+                    // keys and exhaust a mobile player's animation memory.
+                    if (keys.All(key => key.value == keys[0].value))
+                        keys = new[] { keys[0], keys[keys.Length - 1] };
                     var curve = new AnimationCurve(keys);
-                    for (var frame = 0; frame < frameCount; frame++)
+                    for (var frame = 0; frame < keys.Length; frame++)
                     {
                         AnimationUtility.SetKeyLeftTangentMode(curve, frame, AnimationUtility.TangentMode.Linear);
                         AnimationUtility.SetKeyRightTangentMode(curve, frame, AnimationUtility.TangentMode.Linear);
