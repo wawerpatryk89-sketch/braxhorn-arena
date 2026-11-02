@@ -38,7 +38,7 @@
   "shaderCompilation": "Not run",
   "visualComparison": "Not run",
   "fullCombatParity": "Not implemented",
-  "androidBuild": "Not run",
+  "androidBuild": "Blocked: repository Unity activation inputs missing; job skipped",
   "deviceValidation": "Not run",
   "googlePlayPublication": "Not performed",
   "combatRuleParity": {
@@ -50,8 +50,8 @@
   },
   "cloudActivation": {
     "status": "Blocked",
-    "runId": 41483474470,
-    "jobId": 125407569223,
+    "runId": 41489510857,
+    "jobId": 125428505494,
     "missingRepositorySecrets": [
       "UNITY_LICENSE",
       "UNITY_EMAIL",
@@ -65,5 +65,41 @@
     "builder": "Braxhorn.Arena.Editor.ArenaBuild.AndroidReview",
     "platform": "Android ARM64 IL2CPP development APK",
     "productionGame": false
+  },
+  "cloudAssetExport": {
+    "status": "Passed",
+    "runId": 41489510857,
+    "jobId": 125428505717,
+    "sourceCodeCommit": "f196a428132bf16131c6f25ae69997c13b365e84",
+    "artifactId": 13164641101,
+    "artifactUrl": "https://github.com/wawerpatryk89-sketch/braxhorn-arena/actions/runs/41489510857/artifacts/13164641101",
+    "artifactZipSha256": "b8d63c42781785a48a6ce2884b08702e2f83739aebe4eabf5bc9e7dfed6467d6",
+    "artifactBytes": 834897924,
+    "finishedAtUtc": "2026-11-02T17:24:52Z",
+    "finishedAtZurich": "2026-11-02T18:24:52+01:00"
+  },
+  "cloudRuleParity": {
+    "status": "Passed",
+    "runId": 41489510857,
+    "jobId": 125428505643
+  },
+  "losslessAnimationKeyReduction": {
+    "curves": 2038080,
+    "constantCurves": 1649361,
+    "originalKeys": 185273970,
+    "retainedKeys": 49095070
+  },
+  "restoredPoseComparison": {
+    "status": "Passed",
+    "sampledActions": 10,
+    "comparison": "Decompressed pose payloads from actual public encodings and source supplements exactly equal full-source export"
+  },
+  "sourceSupplements": {
+    "status": "Passed",
+    "clips": [
+      "BEAR/Blocking",
+      "DEMON/Standing Block End"
+    ],
+    "comparison": "Exact original source animation data, hash checked"
   }
 }

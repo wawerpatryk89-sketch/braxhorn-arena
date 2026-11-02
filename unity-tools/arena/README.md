@@ -41,3 +41,9 @@ dotnet run --project unity-tools/arena/tests/Arena.RulesParity.csproj -- unity-t
 Evidence: 192 campaign scenarios / 3,312 states and 26,198 combat-reference comparisons across 18 variants. Extra checks cover mirrored contacts, once-per-group damage, once-per-action energy, regional guard, frame skipping and contact holds. They do not validate the full match orchestrator, paired combos, adventure, multiplayer or native production menus.
 
 See `unity-arena/Docs/AI/UnityProjectContext.md` and `validation.json` for remaining scope. C# compilation does not prove Unity import, APK build, device behavior or completed migration.
+
+## Verified cloud artifact
+
+Run 41489510857 (code f196a428132bf16131c6f25ae69997c13b365e84) successfully exported and validated the full native asset payload and passed the rule comparisons. Artifact 13164641101 is the native asset archive, not an APK. The workflow remains failed because Unity activation is absent, and the Android build was skipped. See validation.json for direct artifact links and checksums.
+
+The two source guard clips omitted from public packaging are preserved verbatim in supplements/. Their hashes are pinned in source-lock.json; source conversion never substitutes another animation.
