@@ -2,7 +2,7 @@
   "schema": 1,
   "sourceSiteVersion": 271,
   "baseUrl": "https://braxhorn-p0-preview.wawerpatryk89.chatgpt.site",
-  "catalogSha256": "2f158d81786907e82a213ae014615866166bbc44797bac65683745e1d3e1f47d",
+  "catalogSha256": "26a71241dd5d207ef32f3770b9e238e17efe55dd89fe9cf2d813316511a118b6",
   "sources": [
     {
       "url": "/assets/arena-rooftop-city-20261018.webp",
@@ -1329,6 +1329,159 @@
       "bytes": 85530,
       "output": "31bb0957569b15fab860.png",
       "conversion": "png"
+    },
+    {
+      "url": "/assets/start-intro-20261007.mp4",
+      "path": "game/assets/start-intro-20261007.mp4",
+      "sha256": "1c300421cfe59f9cf16d70560c19237a36dd339d5fbfb1ff98f942b705ee195a",
+      "bytes": 10446817,
+      "output": "1c300421cfe59f9cf16d.mp4",
+      "conversion": "copy",
+      "deliveryUrl": "/api/arena-media/start-intro-20261007.1c300421cfe5.mp4"
+    },
+    {
+      "url": "/assets/boss-intro-20261026.mp4",
+      "path": "game/assets/boss-intro-20261026.mp4",
+      "sha256": "30e5a397457887b6efe0d58b340383881372bd708d2b6d99636185d38fee212b",
+      "bytes": 10674430,
+      "output": "30e5a397457887b6efe0.mp4",
+      "conversion": "copy",
+      "deliveryUrl": "/api/arena-media/boss-intro-20261026.30e5a3974578.mp4"
+    },
+    {
+      "url": "/assets/brax-intro-20261007.mp4",
+      "path": "game/assets/brax-intro-20261007.mp4",
+      "sha256": "f56cad85fd06b0bfd8ac67dd658de297034187b3c85e61f82d1625a45d3b201e",
+      "bytes": 8025713,
+      "output": "f56cad85fd06b0bfd8ac.mp4",
+      "conversion": "copy",
+      "deliveryUrl": "/api/arena-media/brax-intro-20261007.f56cad85fd06.mp4"
+    },
+    {
+      "url": "/assets/nyxa-intro-20261007.mp4",
+      "path": "game/assets/nyxa-intro-20261007.mp4",
+      "sha256": "35a0b32b4ceea4c5e8ead86126d843d5ed2dc64b6007a6dd3de24f2b35cf9289",
+      "bytes": 8050740,
+      "output": "35a0b32b4ceea4c5e8ea.mp4",
+      "conversion": "copy",
+      "deliveryUrl": "/api/arena-media/nyxa-intro-20261007.35a0b32b4cee.mp4"
+    },
+    {
+      "url": "/assets/danny-intro-20261011.mp4",
+      "path": "game/assets/danny-intro-20261011.mp4",
+      "sha256": "aa20624d615fd299d8a6c4c7583143a113d3f5cf6fb0262883915c0800937a3d",
+      "bytes": 7294291,
+      "output": "aa20624d615fd299d8a6.mp4",
+      "conversion": "copy",
+      "deliveryUrl": "/api/arena-media/danny-intro-20261011.aa20624d615f.mp4"
+    },
+    {
+      "url": "/assets/nina-intro-20261011.mp4",
+      "path": "game/assets/nina-intro-20261011.mp4",
+      "sha256": "049e20e0b2d61607112ccb77fa3674c6b824a481dc1bac24084e6dad78761911",
+      "bytes": 4536720,
+      "output": "049e20e0b2d61607112c.mp4",
+      "conversion": "copy",
+      "deliveryUrl": "/api/arena-media/nina-intro-20261011.049e20e0b2d6.mp4"
+    },
+    {
+      "url": "/assets/krov-intro-20261011.mp4",
+      "path": "game/assets/krov-intro-20261011.mp4",
+      "sha256": "7b811ac83e0c7beef737ed80e9040b696474e2ae1fcf0c93498ce00211a953fa",
+      "bytes": 4396735,
+      "output": "7b811ac83e0c7beef737.mp4",
+      "conversion": "copy",
+      "deliveryUrl": "/api/arena-media/krov-intro-20261011.7b811ac83e0c.mp4"
+    },
+    {
+      "url": "/assets/vexa-intro-20261011.mp4",
+      "path": "game/assets/vexa-intro-20261011.mp4",
+      "sha256": "495813888469a644be465b2f3ba65a0ce1c157f9aea18c05896daac2ce2df465",
+      "bytes": 5197310,
+      "output": "495813888469a644be46.mp4",
+      "conversion": "copy",
+      "deliveryUrl": "/api/arena-media/vexa-intro-20261011.495813888469.mp4"
+    },
+    {
+      "url": "/assets/fighter-intros/bear-intro-adb31d818da5.mp4",
+      "path": "game/assets/fighter-intros/bear-intro-adb31d818da5.mp4",
+      "sha256": "adb31d818da531cf045139d648fdef9b520d994b6c5a4ecab9b98d4fc038f18d",
+      "bytes": 6287268,
+      "output": "adb31d818da531cf0451.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/fighter-intros/demon-intro-15043c74499a.mp4",
+      "path": "game/assets/fighter-intros/demon-intro-15043c74499a.mp4",
+      "sha256": "15043c74499aaea4c7d37233f6ce3e9a94db66cc7a3d7ef5ae7896ac60933dab",
+      "bytes": 6330613,
+      "output": "15043c74499aaea4c7d3.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/victory/brax.mp4",
+      "path": "game/assets/victory/brax.mp4",
+      "sha256": "4787e6957abdf7733b82957b0f3d86ea161959ec22852ee2949843736d9d3985",
+      "bytes": 1934829,
+      "output": "4787e6957abdf7733b82.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/victory/nyxa.mp4",
+      "path": "game/assets/victory/nyxa.mp4",
+      "sha256": "f5cf6297502f6fc78ff8ea6ccfa9251269281ffa3e34afa6b0a4b93b2abde2b8",
+      "bytes": 2306542,
+      "output": "f5cf6297502f6fc78ff8.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/victory/danny.mp4",
+      "path": "game/assets/victory/danny.mp4",
+      "sha256": "d787c41d5270d4fcb1ddb3de9401d5b2a71142e378fc9fb6bb09c76aba246498",
+      "bytes": 2243959,
+      "output": "d787c41d5270d4fcb1dd.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/victory/nina.mp4",
+      "path": "game/assets/victory/nina.mp4",
+      "sha256": "b22711d4a8d44f78109505b60b9f1ce69b4c843c3754a9ae992cf741b7f94907",
+      "bytes": 2337800,
+      "output": "b22711d4a8d44f781095.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/victory/krov.mp4",
+      "path": "game/assets/victory/krov.mp4",
+      "sha256": "5231d3663bb1d62fb875ba404f723731f6403528e353850acd8761ab9bd7931b",
+      "bytes": 2017979,
+      "output": "5231d3663bb1d62fb875.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/victory/vexa.mp4",
+      "path": "game/assets/victory/vexa.mp4",
+      "sha256": "846ce5a4b92a7a0fd52474774208abc2d0f52b1eeedeb87c80b2287843b4f51d",
+      "bytes": 2091118,
+      "output": "846ce5a4b92a7a0fd524.mp4",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/copyright-arena-fighter.png",
+      "path": "game/assets/copyright-arena-fighter.png",
+      "sha256": "7aaef53f740d238572b3777e33900015e29c2d13c7946aab015d6a3c20e8eb76",
+      "bytes": 1169338,
+      "output": "7aaef53f740d238572b3.png",
+      "conversion": "png",
+      "delivery": {
+        "url": "/assets/copyright-arena-fighter.webp",
+        "encoding": "lossless-webp",
+        "sha256": "600f3de1bd9ca99e1a7ad4cf1f4d023dcd5c87167ba797cc783b434fd0c604be",
+        "bytes": 755764,
+        "width": 1672,
+        "height": 941,
+        "rgbaSha256": "ca7e2f720b6ef8da9777c38f467f54cd79fbd40a70a5bd65a1b4bbd2fe954002"
+      }
     }
   ],
   "interfaceSourceCommit": "f355fe6ac6af41518fde420382512d49bd27d51a"

@@ -1438,7 +1438,8 @@
     "portrait-VEXA_PURPLE": "46531703be72d94da510.png",
     "portrait-VEXA_STREET": "715292a4365fcb0c1d3b.png",
     "portrait-KROV_TRACKSUIT": "d0b7a1038adf237eace1.png",
-    "portrait-KROV_SUMMER": "31bb0957569b15fab860.png"
+    "portrait-KROV_SUMMER": "31bb0957569b15fab860.png",
+    "copyright": "7aaef53f740d238572b3.png"
   },
   "outfits": [
     {
@@ -1489,5 +1490,23 @@
       "label": "Letni komplet",
       "price": 600
     }
-  ]
+  ],
+  "cinematics": {
+    "start": "1c300421cfe59f9cf16d.mp4",
+    "boss": "30e5a397457887b6efe0.mp4",
+    "fighter-BRAX": "f56cad85fd06b0bfd8ac.mp4",
+    "fighter-NYXA": "35a0b32b4ceea4c5e8ea.mp4",
+    "fighter-DANNY": "aa20624d615fd299d8a6.mp4",
+    "fighter-NINA": "049e20e0b2d61607112c.mp4",
+    "fighter-KROV": "7b811ac83e0c7beef737.mp4",
+    "fighter-VEXA": "495813888469a644be46.mp4",
+    "fighter-BEAR": "adb31d818da531cf0451.mp4",
+    "fighter-DEMON": "15043c74499aaea4c7d3.mp4",
+    "victory-BRAX": "4787e6957abdf7733b82.mp4",
+    "victory-NYXA": "f5cf6297502f6fc78ff8.mp4",
+    "victory-DANNY": "d787c41d5270d4fcb1dd.mp4",
+    "victory-NINA": "b22711d4a8d44f781095.mp4",
+    "victory-KROV": "5231d3663bb1d62fb875.mp4",
+    "victory-VEXA": "846ce5a4b92a7a0fd524.mp4"
+  }
 }

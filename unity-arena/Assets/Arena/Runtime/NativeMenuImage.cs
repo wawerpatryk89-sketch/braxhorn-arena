@@ -17,6 +17,8 @@ namespace Braxhorn.Arena
         bool cover;
         int generation;
         Vector2 box;
+        public bool Ready => owned;
+        public bool Failed { get; private set; }
         public void Show(string value,bool crop=false)
         {
             if(file==value&&cover==crop)return;
@@ -28,7 +30,7 @@ namespace Braxhorn.Arena
         void OnDestroy(){Clear();}
         void Clear()
         {
-            generation++;StopAllCoroutines();
+            generation++;StopAllCoroutines();Failed=false;
             if(request!=null){request.Abort();request.Dispose();request=null;}
             if(!graphic)graphic=GetComponent<RawImage>();
             graphic.texture=null;graphic.enabled=false;
@@ -47,7 +49,7 @@ namespace Braxhorn.Arena
                 owned=DownloadHandlerTexture.GetContent(request);graphic.texture=owned;
                 Fit();graphic.enabled=true;
             }
-            else Debug.LogWarning("Original menu image unavailable: "+file+" ("+request.result+")");
+            else {Failed=true;Debug.LogWarning("Original menu image unavailable: "+file+" ("+request.result+")");}
             request.Dispose();request=null;
         }
         void Fit()

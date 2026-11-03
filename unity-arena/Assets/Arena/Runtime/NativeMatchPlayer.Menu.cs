@@ -53,7 +53,7 @@ namespace Braxhorn.Arena
             menuTitle=MenuPage("Title");menuRoster=MenuPage("Fighters");menuModes=MenuPage("Modes");menuSetup=MenuPage("Match setup");menuArena=MenuPage("Arena selection");
             menuHub=MenuPage("Challenges and records");menuRecords=MenuPage("Local records");menuProfile=MenuPage("Local profile");
             MenuArt(menuTitle.transform,"title",new Rect(0,0,1024,576));
-            Click(menuTitle.transform,"ROZPOCZNIJ",new Rect(372,488,280,60),()=>ShowMenuPage(menuRoster));
+            Click(menuTitle.transform,"ROZPOCZNIJ",new Rect(372,488,280,60),PlayStartFilm);
             BuildRosterMenu();BuildModesMenu();BuildSetupMenu();BuildArenaMenu();BuildHubMenu();BuildRecordsMenu();BuildProfileMenu();BuildAccountUi();
         }
         void BuildRosterMenu()
@@ -75,10 +75,11 @@ namespace Braxhorn.Arena
             Click(menuRoster.transform,"▶",new Rect(104,452,62,44),()=>scroll.horizontalNormalizedPosition=Mathf.Clamp01(scroll.horizontalNormalizedPosition+.3f));
             rosterChoice=Label(menuRoster.transform,"Duel",new Rect(186,455,620,40),20);
             outfitChoice=Click(menuRoster.transform,"",new Rect(240,510,410,46),CycleOutfit).GetComponentInChildren<Text>();
-            MenuBack(menuRoster,menuTitle);Click(menuRoster.transform,"ZATWIERDŹ →",new Rect(714,510,278,46),()=>ShowMenuPage(menuModes));
+            MenuBack(menuRoster,menuTitle);Click(menuRoster.transform,"ZATWIERDŹ →",new Rect(714,510,278,46),()=>{menuAudio?.Cue(true);ShowMenuPage(menuModes);});
         }
         void SelectRoster(int index)
         {
+            menuAudio?.Cue();
             if(pickingOpponent)opponentIndex=index;else variantIndex=Array.IndexOf(Variants,Roster[index]);
             RefreshSelection();
         }
@@ -115,11 +116,12 @@ namespace Braxhorn.Arena
             MenuHeading(menuArena,"WYBIERZ ARENĘ");arenaPreview=Picture(menuArena.transform,"Arena poster",new Rect(164,88,696,344));
             arenaChoice=Label(menuArena.transform,"Arena",new Rect(110,446,804,42),23);arenaChoice.alignment=TextAnchor.MiddleCenter;
             Click(menuArena.transform,"◀",new Rect(32,226,88,70),()=>ChangeArena(-1));Click(menuArena.transform,"▶",new Rect(904,226,88,70),()=>ChangeArena(1));
-            MenuBack(menuArena,menuSetup);Click(menuArena.transform,"LOSUJ",new Rect(240,510,190,46),()=>ChangeArena(random.Next(1,100)));Click(menuArena.transform,"ROZPOCZNIJ",new Rect(674,510,318,46),BeginSession);
+            MenuBack(menuArena,menuSetup);Click(menuArena.transform,"LOSUJ",new Rect(240,510,190,46),()=>ChangeArena(random.Next(1,100)));Click(menuArena.transform,"ROZPOCZNIJ",new Rect(674,510,318,46),()=>{menuAudio?.Cue(true);BeginSession();});
         }
         void ChangeArena(int offset)
         {
             if(mediaCatalog==null)return;
+            menuAudio?.Cue();
             if(Modes[modeIndex]=="adventure")routeIndex=(routeIndex+offset%mediaCatalog.Routes.Count+mediaCatalog.Routes.Count)%mediaCatalog.Routes.Count;
             else arenaIndex=(arenaIndex+offset%mediaCatalog.Arenas.Length+mediaCatalog.Arenas.Length)%mediaCatalog.Arenas.Length;
             RefreshSelection();
@@ -201,7 +203,7 @@ namespace Braxhorn.Arena
             if(!page||accountBusy)return;if(menuCurrent==menuAccount&&page!=menuAccount)ClearAccountSecrets();foreach(var p in menuPages)p.SetActive(p==page);menuCurrent=page;
             if(EventSystem.current)EventSystem.current.SetSelectedGameObject(null);
             if(page==menuProfile){nickname.SetTextWithoutNotify(progress?.Name??"");profileMessage.text=progressStore?.Error??"Profil lokalny nie jest kontem internetowym.";}
-            RefreshSelection();if(page==menuRecords)RefreshRecords();
+            RefreshSelection();if(page==menuRecords)RefreshRecords();RefreshMenuAudio();
         }
         void RefreshMenuUi()
         {
@@ -232,24 +234,28 @@ namespace Braxhorn.Arena
             pausePanel=Panel("Pause menu",new Rect(240,110,544,324),new Color(.025f,.045f,.03f,.98f));
             Label(pausePanel.transform,"Pause",new Rect(32,22,480,48),32).text="PAUZA";
             Click(pausePanel.transform,"WRÓĆ DO GRY",new Rect(32,94,480,56),()=>Pause(false));
-            Click(pausePanel.transform,"DŹWIĘK",new Rect(32,170,226,56),()=>{if(fightAudio)fightAudio.Mute(!fightAudio.Muted);});
+            Click(pausePanel.transform,"DŹWIĘK",new Rect(32,170,226,56),ToggleSound);
             Click(pausePanel.transform,"MENU",new Rect(278,170,234,56),ShowSelection);
             Label(pausePanel.transform,"Pause hint",new Rect(32,250,480,48),16).text="Powrót do menu kończy bieżącą walkę.";pausePanel.SetActive(false);
         }
         void RefreshPauseUi()
         {
             if(!pausePanel)return;
-            var show=match!=null&&match.Paused&&!loading&&!resultApplied&&!applicationSuspended&&!(trainingPanel&&trainingPanel.activeSelf);
+            var show=match!=null&&match.Paused&&!loading&&!resultApplied&&!applicationSuspended&&cinema?.Active!=true&&!(trainingPanel&&trainingPanel.activeSelf);
             pausePanel.SetActive(show);if(show)pausePanel.transform.SetAsLastSibling();
         }
-        void CloseMenuOverlays(){if(pausePanel)pausePanel.SetActive(false);}
+        void CloseMenuOverlays(){cinema?.Stop();if(pausePanel)pausePanel.SetActive(false);}
         void UpdateMenuInput()
         {
             if(onlineResultStatus&&menuCurrent==menuRecords)onlineResultStatus.text=recordsServiceMessage??rankTracker?.Status??"Wyniki na tym urządzeniu. Zaloguj się, aby zapisywać nowe walki na koncie.";
             if(resultOnlineStatus&&resultPanel.activeSelf)resultOnlineStatus.text=adventure==null?rankTracker?.Status??"Wynik zapisany lokalnie.":"Przejście lokalne.";
             var inGame=!selection.activeSelf&&!loading&&match!=null;
             if(pauseControl&&pauseControl.activeSelf!=inGame)pauseControl.SetActive(inGame);
-            if(soundControl&&soundControl.activeSelf!=inGame)soundControl.SetActive(inGame);
+            if(soundControl)
+            {
+                soundControl.SetActive(!loading);Place(soundControl,uiRoot,inGame?new Rect(708,12,132,36):new Rect(918,0,106,24));
+                soundControl.GetComponentInChildren<Text>().fontSize=inGame?18:12;
+            }
             if(selection.activeSelf&&Input.GetKeyDown(KeyCode.Escape))
             {
                 if(challengesPanel&&challengesPanel.activeSelf){challengesPanel.SetActive(false);return;}

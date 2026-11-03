@@ -115,11 +115,15 @@ def main():
         evidence = list(pool.map(export, lock['sources']))
     catalog = json.loads(catalog_path.read_text())
     ui = catalog.get('interface', {})
-    if len(ui) != 27 or len(catalog.get('outfits', [])) != 8:
+    if len(ui) != 28 or len(catalog.get('outfits', [])) != 8 or len(catalog.get('cinematics', {})) != 16:
         raise ValueError('Incomplete original menu export')
     for key, file in ui.items():
         with Image.open(target / safe(file)) as original:
             original.verify()
+    packaged = {row['file']: row for row in evidence}
+    for key, file in catalog['cinematics'].items():
+        if file not in packaged or not file.endswith('.mp4') or packaged[file].get('duration', 0) <= 0:
+            raise ValueError('Missing original cinematic: ' + key)
     for item in catalog['arenas'] + [c for r in catalog['routes'] for c in r['chapters']]:
         if item.get('poster'):
             with Image.open(target / safe(item['poster'])) as poster:
@@ -133,7 +137,7 @@ def main():
         'catalogSha256': lock['catalogSha256'], 'files': evidence}, indent=2) + '\n')
     # Licensing/attribution from the published game travels with the native copy.
     shutil.copyfile(LOCK_DIR / 'AUDIO-CREDITS.txt', target / 'AUDIO-CREDITS.txt')
-    print(f'PASS {len(evidence)} verified media files / {sum(x["bytes"] for x in evidence)} bytes; 21 arenas, 30 adventure chapters, 31 sounds, {len(ui)} original interface images.')
+    print(f'PASS {len(evidence)} verified media files / {sum(x["bytes"] for x in evidence)} bytes; 21 arenas, 30 adventure chapters, 31 sounds, {len(ui)} original interface images, {len(catalog["cinematics"])} original cinematics.')
     print('Encoding verification only; Unity decoding, color, synchronization and device performance remain untested.')
 
 if __name__ == '__main__':

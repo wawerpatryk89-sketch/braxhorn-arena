@@ -153,3 +153,14 @@ A per-account pending queue stores at most 30 results for one identity, never dr
 25 executable ranking checks pass for durable queue/recovery, ordering, round/timer payloads, idempotent pending entries, transient/permanent rejection, retries, account isolation, authenticated statistics and malformed responses. Further runtime network/IL2CPP verification is required; no live ranking data was written. An additional pause correction keeps arena video frozen when resuming pose-only KO replay.
 
 The account/media checkpoint's GitHub run 41555921861 at c2e12d9 passed the native C# rules and original media jobs, confirming the published WebP restoration fix. Fighter export was still running at the latest read. APK was not requested at this intermediate checkpoint; activation prerequisites still need configuration before a permitted CI build can execute.
+
+
+## Original cinematics and menu audio
+
+The native flow now plays the original start film, the eight fighter entrance films, the BOSS entrance for the authored Survival/tournament encounter, and six winning Arcade/tournament finales. Regular rematches omit the entrance as in source. The startup copyright image receives four foreground seconds after decoding; hiding the app pauses the deadline and video. Retry and skip remain available after preparation/decoding failure. Cancelling a sequence removes its completion callback and releases its decoder; stale decoder callbacks cannot start a replaced match. The match countdown/input and arena sound/video remain paused until the entrance finishes. Results are saved before a finale and each completed campaign is celebrated once. This is playback of authored original films, not a recording of native gameplay.
+
+Menu title and roster music, selection and confirmation cues now use the original recordings and source volumes. Global sound state covers combat, menus and films. Focus and application-pause events are combined so one callback cannot resume audio while the other still reports suspension. Native menu artwork, cinematic decoding, audio focus and Android lifecycle still need runtime validation.
+
+All 16 movie payloads are pinned to the published v271 source SHA-256. Copyright WebP pixels were compared with the original source PNG; the export locks both delivery payload and decoded RGBA hashes. Offline export with published encodings passes 177 files / 420611050 bytes, including 28 original interface images and 16 cinematics. Four managed assemblies and all executable suites pass, including 21 new cinematic transition/deadline/cancellation checks. No Unity Editor process or native gameplay capture was run.
+
+GitHub native source validation for the previous ranking checkpoint (run 41557110279, commit 8b1ba04) completed successfully. The earlier account checkpoint also finished successfully. Neither is an Android application build.

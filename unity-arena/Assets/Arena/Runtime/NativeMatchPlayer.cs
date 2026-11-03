@@ -58,7 +58,7 @@ namespace Braxhorn.Arena
             Screen.sleepTimeout=SleepTimeout.NeverSleep;
             font=Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
             BuildUi();LoadProgress();
-            try{mediaCatalog=ArenaMediaCatalog.Load();arenaMedia=gameObject.AddComponent<NativeArenaMedia>();fightAudio=gameObject.AddComponent<NativeFightAudio>();blood=gameObject.AddComponent<NativeBloodEffects>();blood.Initialize(bloodShader);ShowSelection();ShowMenuPage(menuTitle);}
+            try{mediaCatalog=ArenaMediaCatalog.Load();arenaMedia=gameObject.AddComponent<NativeArenaMedia>();fightAudio=gameObject.AddComponent<NativeFightAudio>();blood=gameObject.AddComponent<NativeBloodEffects>();blood.Initialize(bloodShader);BuildCinematics();ShowSelection();ShowMenuPage(menuTitle);}
             catch(Exception e){Fail(e.Message);}
         }
         static string Display(string id) => id=="BEAR"?"MIŚ":id=="DEMON"?"AZRAK":id.Replace('_',' ');
@@ -89,7 +89,7 @@ namespace Braxhorn.Arena
             comboButton=Tap("COMBO",new Rect(672,0,156,44),FightButton.Combo);energyButton=Tap("ENERGIA",new Rect(844,0,162,44),FightButton.Energy);
             hud=Label(uiRoot,"HUD",new Rect(24,56,976,68),22);
             pauseControl=Click(uiRoot,"PAUZA",new Rect(850,12,150,36),TogglePause);pauseLabel=pauseControl.GetComponentInChildren<Text>();
-            soundControl=Click(uiRoot,"DŹWIĘK",new Rect(708,12,132,36),()=>{if(fightAudio)fightAudio.Mute(!fightAudio.Muted);});
+            soundControl=Click(uiRoot,"DŹWIĘK",new Rect(708,12,132,36),ToggleSound);
             resultPanel=Panel("Result",new Rect(240,150,544,250),new Color(.03f,.04f,.05f,.97f));
             result=Label(resultPanel.transform,"Result text",new Rect(24,20,496,104),26);
             resultOnlineStatus=Label(resultPanel.transform,"Server result",new Rect(24,128,496,30),14);
@@ -129,7 +129,7 @@ namespace Braxhorn.Arena
             campaignOpponent=campaign?.Next()??survival?.Next()??challengeRun?.Definition.Opponent??Roster[opponentIndex];
             StartCoroutine(LoadMatch(Variants[variantIndex],campaignOpponent,survival?.Hp??100));
         }
-        IEnumerator LoadMatch(string player,string opponent,double hp)
+        IEnumerator LoadMatch(string player,string opponent,double hp,bool intro=true)
         {
             loading=true;resultApplied=false;error=null;CloseMenuOverlays();var requestId=++generation;
             ResetReplay();
@@ -159,7 +159,7 @@ namespace Braxhorn.Arena
                 var worldPerPixel=3.25f/640/(float)match.Scale;
                 matchCamera.orthographic=true;matchCamera.orthographicSize=(float)match.Height*worldPerPixel/2;
                 matchCamera.transform.position=new Vector3(0,(float)(match.Floor-match.Height/2)*worldPerPixel,-8);
-                BeginServerMatch();loading=false;controls.SetActive(true);if(applicationSuspended)Pause(true);Present();
+                BeginLoadedMatch(intro);
             }
             catch(Exception e){Debug.LogException(e);Fail(e.Message);}
         }
@@ -168,6 +168,8 @@ namespace Braxhorn.Arena
         {
             if(safeRoot){var r=Screen.safeArea;safeRoot.anchorMin=r.min/new Vector2(Screen.width,Screen.height);safeRoot.anchorMax=r.max/new Vector2(Screen.width,Screen.height);if(uiRoot)uiRoot.localScale=Vector3.one*Mathf.Min(safeRoot.rect.width/1024,safeRoot.rect.height/576);}
             if(arenaMedia&&fightAudio)arenaMedia.Sound(fightAudio.Muted,fightAudio.Duck);
+            RefreshMenuAudio();
+            if(cinema?.Active==true){if(Input.GetKeyDown(KeyCode.Escape))cinema.Skip();return;}
             UpdateMenuInput();
             if(loading||match==null)return;
             if(replay.Active){UpdateReplay();return;}
@@ -256,6 +258,7 @@ namespace Braxhorn.Arena
             SubmitServerMatch();
             SaveMatchProgress();
             CompleteChallengeMatch();
+            PlayVictory();
         }
         void ContinueSession()
         {
@@ -264,7 +267,7 @@ namespace Braxhorn.Arena
             if(campaign!=null){if(campaign.Finished){ShowSelection();return;}campaignOpponent=campaign.Next();}
             else if(survival!=null){if(!survival.Advance()){ShowSelection();return;}campaignOpponent=survival.Next();}
             else {BeginProgressSession();if(challengeRun!=null)challengeRun=new ChallengeRun(challengeRun.Definition,challengeRun.Fighter);}
-            StartCoroutine(LoadMatch(Variants[variantIndex],campaignOpponent??Roster[opponentIndex],survival?.Hp??100));
+            StartCoroutine(LoadMatch(Variants[variantIndex],campaignOpponent??Roster[opponentIndex],survival?.Hp??100,campaign!=null||survival!=null));
         }
         void TogglePause(){if(replay.Active){Pause(!match.Paused);return;}if(trainingPanel&&trainingPanel.activeSelf){CloseTraining();return;}if(match==null||loading||match.Phase==MatchPhase.Complete||adventure?.Phase==AdventurePhase.Complete||adventure?.Phase==AdventurePhase.Dead)return;Pause(match.Paused?false:true);}
         void Pause(bool value){match?.SetPaused(value);arenaMedia?.SetPaused(value||replay.Active);adventureWorld?.SetPaused(value);fightAudio?.SetPaused(value);ReleaseControls();RefreshPauseUi();}
@@ -272,8 +275,8 @@ namespace Braxhorn.Arena
         void ShowSelection()
         {ResetReplay();challengeRun=null;pendingChallenge=null;if(challengesPanel)challengesPanel.SetActive(false);if(trainingPanel)trainingPanel.SetActive(false);if(trainingOpen)trainingOpen.SetActive(false);generation++;StopAllCoroutines();CloseMenuOverlays();ClearAdventure();loading=false;match=null;ClearActors();if(arenaMedia)arenaMedia.Clear();if(fightAudio)fightAudio.Stop();ReleaseControls();selection.SetActive(true);controls.SetActive(false);resultPanel.SetActive(false);hud.text="";RefreshSelection();ShowMenuPage(menuRoster);}
         void ClearActors(){if(blood){blood.Clear();blood.Visible(true);}bloodRound=0;bloodCamera=0;for(var i=0;i<2;i++){if(actors[i])Destroy(actors[i]);actors[i]=null;poses[i]=null;definitions[i]=null;}}
-        void OnApplicationPause(bool pause){applicationSuspended=pause;if(pause)Pause(true);else RefreshPauseUi();}
-        void OnApplicationFocus(bool focus){applicationSuspended=!focus;if(!focus)Pause(true);else RefreshPauseUi();}
-        void OnDestroy(){disposed=true;online?.Dispose();ClearAccountSecrets();generation++;ClearAdventure();ClearActors();if(canvas)Destroy(canvas.gameObject);}
+        void OnApplicationPause(bool pause){applicationPaused=pause;RefreshApplicationState();}
+        void OnApplicationFocus(bool focus){applicationFocused=focus;RefreshApplicationState();}
+        void OnDestroy(){disposed=true;cinema?.Stop();online?.Dispose();ClearAccountSecrets();generation++;ClearAdventure();ClearActors();if(canvas)Destroy(canvas.gameObject);}
     }
 }

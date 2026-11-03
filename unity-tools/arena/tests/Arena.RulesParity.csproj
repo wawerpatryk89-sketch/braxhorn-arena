@@ -28,6 +28,7 @@
     <Compile Include="../../../unity-arena/Assets/Arena/Runtime/ArenaRankTracker.cs" />
     <Compile Include="../../../unity-arena/Assets/Arena/Runtime/PendingArenaResults.cs" />
     <Compile Include="RankingProtocolRunner.cs" />
+    <Compile Include="CinematicParityRunner.cs" />
     <Compile Include="../../../unity-arena/Assets/Arena/Runtime/ProgressFileStore.cs" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
