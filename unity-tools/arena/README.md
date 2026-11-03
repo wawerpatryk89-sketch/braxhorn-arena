@@ -94,3 +94,6 @@ Current local evidence: 18 variants / 2986 actions / 270381 pose frames passed p
 Original rooms, host authority, guest pose interpolation, input acknowledgements, blood/audio replication, explicit double confirmation and HTTP fallback are connected to the native menu. The optional Unity WebRTC 3.0.0 adapter retains original signaling and JSON envelopes; TURN credentials stay in memory. No live duel or phone network test was performed. The frozen validator reference is regenerated with `node unity-tools/arena/tests/duel-wire-reference.mjs`.
 
 Managed-only validation now also requires the verified package directory supplied through `--webrtc-package`; it compiles the real dependency source without loading its native library. `--only-duel --with-assets` limits a rerun to the network/configuration suite. See the project context and validation JSON for the case-sensitive animation fix, legacy browser limitation, upstream dependency status and remaining voice/tournament work.
+
+
+Native voice/tournament checkpoint: managed-only validation also compiles `UNITY_ANDROID` permission paths. `TournamentProtocolRunner` covers the original endpoint without live writes; it is included explicitly in the CI csproj. See project context for voice acoustic/runtime limits, organizer UI and the tournament outfit-handshake fix.

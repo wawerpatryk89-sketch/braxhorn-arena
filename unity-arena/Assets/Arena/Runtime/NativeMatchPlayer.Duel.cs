@@ -22,6 +22,10 @@ namespace Braxhorn.Arena
         Task duelPoll,duelReport;
         Task<ArenaIceServer[]> duelIce;
         NativeDuelPeer duelPeer;
+        NativeDuelVoice duelVoice;
+        GameObject duelVoicePrompt,duelVoiceBar;
+        Text duelVoiceNote,duelVoiceStatus;
+        Button duelVoiceYes,duelVoiceNo,duelVoiceMic,duelVoiceSound,duelVoiceEnd;
         double duelNextDirect;
         bool duelEntryBusy,duelPreparing,duelUserPaused,duelWasConnected;
         long duelSnapshot,duelReceived;
@@ -53,6 +57,19 @@ namespace Braxhorn.Arena
             duelDispute=Click(duelResults.transform,"ZGŁOŚ PROBLEM",new Rect(320,180,276,54),()=>{if(duel!=null)duelReport=duel.Dispute();}).GetComponent<Button>();
             Click(duelResults.transform,"MENU",new Rect(192,254,236,46),ShowSelection);duelResults.SetActive(false);
             Click(menuModes.transform,"WALKA ONLINE",new Rect(450,510,254,46),OpenDuel);
+            duelVoiceBar=Panel("Voice controls",new Rect(192,92,640,72),new Color(.03f,.04f,.05f,.92f));
+            duelVoiceStatus=Label(duelVoiceBar.transform,"Voice state",new Rect(12,0,616,24),14);
+            duelVoiceMic=Click(duelVoiceBar.transform,"WYCISZ MIKROFON",new Rect(10,26,222,40),()=>{}).GetComponent<Button>();
+            duelVoiceSound=Click(duelVoiceBar.transform,"WYCISZ RYWALA",new Rect(240,26,222,40),()=>{}).GetComponent<Button>();
+            duelVoiceEnd=Click(duelVoiceBar.transform,"ZAKOŃCZ",new Rect(470,26,160,40),()=>{}).GetComponent<Button>();
+            duelVoiceBar.SetActive(false);
+            duelVoicePrompt=Panel("Voice consent",new Rect(0,0,1024,576),new Color(.03f,.04f,.05f,.98f));
+            Label(duelVoicePrompt.transform,"Voice question",new Rect(160,140,704,100),30).text="Czy zezwalasz na rozmowę głosową podczas gry?";
+            duelVoiceNote=Label(duelVoicePrompt.transform,"Voice explanation",new Rect(160,250,704,90),22);
+            duelVoiceYes=Click(duelVoicePrompt.transform,"ZEZWALAM",new Rect(160,372,336,62),()=>{}).GetComponent<Button>();
+            duelVoiceNo=Click(duelVoicePrompt.transform,"NIE ZEZWALAM",new Rect(528,372,336,62),()=>{}).GetComponent<Button>();
+            duelVoicePrompt.SetActive(false);
+            BuildTournamentUi();
         }
         void RefreshDuelMenu()
         {duelChoice.text="TWÓJ ZAWODNIK: "+Display(Variants[variantIndex]);duelArena.text="ARENA: "+mediaCatalog.Arenas[arenaIndex].name;}
@@ -81,6 +98,10 @@ namespace Braxhorn.Arena
             if(disposed||attempt!=duelEntry)yield break;
             duelEntryBusy=false;
             if(task.IsFaulted||task.IsCanceled){duelMessage.text=ServiceMessage(task.Exception?.GetBaseException());yield break;}
+            ActivateDuel(lease);
+        }
+        void ActivateDuel(DuelLease lease)
+        {
             duel=new ArenaDuelSession(online,lease,NetworkNow);duelInput=new DuelInputQueue();duelHost=new DuelHostInput();duelSnapshot=duelReceived=0;duelNextPoll=0;duelTerminalAt=-1;duelPreparing=duelUserPaused=duelWasConnected=false;duelView=null;
             duelSounds.Clear();duelSoundId=duelHeard=duelEffectsId=0;duelCallout=null;duelPrefight=true;
             fightAudio.NetworkSound=(key,volume,pitch,channel)=>
@@ -91,13 +112,17 @@ namespace Braxhorn.Arena
         {
             duelEntry++;duelEntryBusy=false;var old=duel;duel=null;
             if(old!=null)_=old.Leave();duelPoll=duelReport=null;duelInput=null;duelHost=null;duelView=null;
+            if(duelVoice){duelVoice.Stop();Destroy(duelVoice);duelVoice=null;}
             duelIce=null;if(duelPeer){duelPeer.Close();Destroy(duelPeer);duelPeer=null;}
             if(fightAudio)fightAudio.NetworkSound=null;duelSounds.Clear();
             if(duelResults)duelResults.SetActive(false);
         }
         void DuelLoaded()
         {
-            duel.Ready=true;loading=false;match.SetPaused(true);duelView=new DuelRemoteView(match.Player.Configuration,match.Opponent.Configuration,match.Width,match.Height);
+            loading=false;match.SetPaused(true);duelView=new DuelRemoteView(match.Player.Configuration,match.Opponent.Configuration,match.Width,match.Height);
+            var owner=duel;duelVoice=gameObject.AddComponent<NativeDuelVoice>();
+            duelVoice.Begin(DuelSide==0,duelVoicePrompt,duelVoiceBar,duelVoiceNote,duelVoiceStatus,duelVoiceYes,duelVoiceNo,duelVoiceMic,duelVoiceSound,duelVoiceEnd,()=>{if(duel==owner)duelNextPoll=0;});
+            duelVoice.Suspend(applicationSuspended);
             duelIce=ReadDuelIce(duel.Lease);duelNextDirect=0;
             controls.SetActive(false);Present();duelNextPoll=0;
         }
@@ -108,15 +133,16 @@ namespace Braxhorn.Arena
         {
             var packet=DuelSide==0?match.NetworkSnapshot(++duelSnapshot,duelHost.Acknowledged,duelHost.Sequence,now):duelInput.Packet();
             if(DuelSide==0){packet["sounds"]=duelSounds.DeepClone();packet["blood"]=blood.NetworkSnapshot(match);}
-            if(signaling&&duelPeer)packet["signal"]=duelPeer.Signal;return packet;
+            if(signaling){if(duelPeer)packet["signal"]=duelPeer.Signal;if(duelVoice)packet["voice"]=duelVoice.Signal;}return packet;
         }
         bool UpdateDuel()
         {
             if(duel==null)return false;
             var now=NetworkNow;
+            if(!duel.Ready&&duelVoice&&duelVoice.Decided){duel.Ready=true;duelNextPoll=0;}
             if(duelIce?.IsCompleted==true)
             {
-                var servers=duelIce.Result;duelIce=null;var owner=duel;duelPeer=gameObject.AddComponent<NativeDuelPeer>();
+                var servers=duelIce.Result;duelIce=null;duelVoice?.SetIce(servers);var owner=duel;duelPeer=gameObject.AddComponent<NativeDuelPeer>();
                 if(!duelPeer.Initialize(DuelSide==0,servers,packet=>
                 {if(duel!=owner)return;if(DuelSide==0)duelHost.Receive(packet);else if(duelView.Receive(packet,NetworkNow))duelInput.Acknowledge((long)packet["ack"]);},()=>{if(duel==owner)duelNextPoll=0;}))
                 {Destroy(duelPeer);duelPeer=null;}
@@ -136,6 +162,7 @@ namespace Braxhorn.Arena
                     }
                     var seq=(long)r["seq"];
                     var remote=(DuelSide==0?r["input"]:r["snapshot"]) as JObject;if(duelPeer&&remote?["signal"] is JObject signal)duelPeer.Accept(signal);
+                    if(duelVoice&&remote?["voice"] is JObject voice)duelVoice.Accept(voice);
                     if(duel.Ready&&seq>duelReceived)
                     {
                         if(DuelSide==0&&r["input"] is JObject input){duelHost.Receive(input);duelReceived=seq;}

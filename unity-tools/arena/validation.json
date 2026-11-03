@@ -1,6 +1,6 @@
 {
   "status": "In progress",
-  "scope": "Native Unity 6 migration of published v271: gameplay, campaigns, adventure, menus, account/shop/rankings and native multiplayer implemented; voice/tournaments and remaining fidelity/runtime work incomplete",
+  "scope": "Native Unity 6 migration of published v271: gameplay, campaigns, adventure, menus, accounts/shop/rankings, native duels/voice and online tournament adapters implemented; remaining fidelity, native avatar/session and runtime work incomplete",
   "sourceSiteVersion": 271,
   "sourceCommit": "f355fe6ac6af41518fde420382512d49bd27d51a",
   "editor": "6000.3.27f2",
@@ -165,7 +165,7 @@
   "nativeMenusAndServices": {
     "status": "Implemented, managed compilation/tests only",
     "cinematicFlowChecks": 21,
-    "accountShopChecks": 40,
+    "accountShopChecks": 42,
     "rankingChecks": 34,
     "cpuChecks": 11,
     "clinchChecks": 20,
@@ -173,7 +173,7 @@
     "mediaBytes": 421358067,
     "interfaceImages": 30,
     "cinematics": 16,
-    "remaining": "Uploaded avatar/camera/crop, secure session persistence, source UI visual parity, owner price screen, live Android validation"
+    "remaining": "Uploaded avatar/camera/crop, secure session persistence, source UI visual parity, legacy owner sign-in handoff and live Android validation"
   },
   "adventureServer": {
     "status": "Implemented; mocked protocol and simulation-event checks pass",
@@ -185,7 +185,7 @@
   },
   "nativeDuel": {
     "status": "Native HTTP and optional WebRTC paths implemented; managed compilation and protocol tests only",
-    "fixtureChecks": 514,
+    "fixtureChecks": 544,
     "frozenSourceValidatorCases": 414,
     "actualConfigurationChecks": 90,
     "actualRunTotalBeforePeerEnvelopeExtension": 589,
@@ -196,13 +196,13 @@
     "credentials": "Room and TURN capabilities memory only",
     "liveRoomWrites": false,
     "runtimeNetworking": "Not run",
-    "remaining": "Voice consent/microphone transport, online tournaments, complete VFX/camera prediction equivalence, browser interoperability and real-device latency/background tests"
+    "remaining": "Complete VFX/camera prediction equivalence, browser paired-action interoperability and real-device RTC/audio/background tests"
   },
   "latestCompletedValidationRun": {
-    "id": 41560788160,
-    "sha": "e2d74397e640797591793d1d8bfa29ad63040133",
+    "id": 41564419113,
+    "sha": "131b5136fab4b920334f0cc99ac4fb111aa1a136",
     "conclusion": "success",
-    "scope": "Previous adventure-server checkpoint, before current multiplayer changes",
+    "scope": "Previous duel/WebRTC checkpoint, before voice and tournament changes; all export/media/rule jobs passed",
     "androidJob": "skipped; no APK"
   },
   "publicBoardRead": {
@@ -210,5 +210,19 @@
     "mode": "multiplayer",
     "rows": 0,
     "scope": "Read-only HTTPS request with native client User-Agent; not Android HttpClient/device validation"
+  },
+  "nativeVoice": {
+    "status": "Implemented and managed/Android-conditional compilation passed; no native microphone or RTC execution",
+    "consentChecks": 22,
+    "scope": "Explicit bilateral consent, Android permission callbacks, bounded permission/start/connect timeouts, independent microphone/receiver mute, background capture stop, no local loopback, room signaling, music duck and deterministic cleanup",
+    "echoCancellation": "No equivalent of browser getUserMedia AEC/noise-suppression constraints established for the Unity Microphone/WebRTC audio-source path; real-device acoustic validation remains required",
+    "liveCapture": false
+  },
+  "nativeTournaments": {
+    "status": "Original server protocol and native menu/forms implemented; managed tests passed, runtime UI untested",
+    "protocolChecks": 51,
+    "scope": "List/detail/bracket/entries/history, participant registration/withdrawal/invitation claim, authoritative room entry, owner create/draw/schedule/add/remove/restart/resolve/cancel/delete with explicit in-app confirmation",
+    "liveWrites": false,
+    "remaining": "Rendered touch/layout and live two-peer lifecycle verification; owner platform sign-in handoff; source champion presentation parity"
   }
 }

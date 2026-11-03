@@ -203,7 +203,9 @@ namespace Braxhorn.Arena
         }
         void ShowMenuPage(GameObject page)
         {
-            if(!page||accountBusy)return;if((menuCurrent==menuAccount||menuCurrent==menuAccountSettings)&&page!=menuCurrent)ClearAccountSecrets();foreach(var p in menuPages)p.SetActive(p==page);menuCurrent=page;
+            if(!page||accountBusy)return;
+            if((menuCurrent==menuTournaments||menuCurrent==menuTournamentForm)&&page!=menuTournaments&&page!=menuTournamentForm)txGeneration++;
+            if((menuCurrent==menuAccount||menuCurrent==menuAccountSettings)&&page!=menuCurrent)ClearAccountSecrets();foreach(var p in menuPages)p.SetActive(p==page);menuCurrent=page;
             if(EventSystem.current)EventSystem.current.SetSelectedGameObject(null);
             if(page==menuProfile){nickname.SetTextWithoutNotify(progress?.Name??"");profileMessage.text=progressStore?.Error??"Profil lokalny nie jest kontem internetowym.";}
             RefreshSelection();if(page==menuRecords)RefreshRecords();RefreshMenuAudio();
@@ -266,7 +268,8 @@ namespace Braxhorn.Arena
                 if(challengesPanel&&challengesPanel.activeSelf){challengesPanel.SetActive(false);return;}
                 if(menuCurrent==menuDuel){ShowSelection();ShowMenuPage(menuModes);return;}
                 if(menuCurrent==menuTitle)return;
-                var destination=menuCurrent==menuRoster?menuTitle:menuCurrent==menuModes?menuRoster:menuCurrent==menuArena?menuSetup:menuCurrent==menuRecords?menuHub:menuCurrent==menuLeaderboard?menuRecords:menuCurrent==menuAccountSettings?menuAccount:menuModes;
+                if(txBusy&&(menuCurrent==menuTournaments||menuCurrent==menuTournamentForm))return;
+                var destination=menuCurrent==menuRoster?menuTitle:menuCurrent==menuModes?menuRoster:menuCurrent==menuArena?menuSetup:menuCurrent==menuRecords?menuHub:menuCurrent==menuLeaderboard?menuRecords:menuCurrent==menuAccountSettings?menuAccount:menuCurrent==menuOwnerPrice?menuShop:menuCurrent==menuTournamentForm?menuTournaments:menuCurrent==menuTournaments?menuDuel:menuModes;
                 ShowMenuPage(destination);
             }
         }

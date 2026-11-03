@@ -51,6 +51,7 @@ static class OnlineProtocolRunner
         handler.Reply(Profile());await Error(()=>client.SetAvatar("male"));Check(client.Avatar=="/assets/avatar-female.jpg","unconfirmed mutation does not overwrite profile");
         handler.Reply(Shop());await client.RefreshShop();var before=handler.Calls;await Error(()=>client.SetPrice("BRAX_WHITE",900),403);Check(handler.Calls==before,"non-owner cannot initiate price change");
         var owner=Shop();owner["canManage"]=true;handler.Reply(owner);await client.RefreshShop();handler.Steps.Enqueue(async(r,t)=>{var body=JObject.Parse(await r.Content.ReadAsStringAsync());Check((string)body["action"]=="price"&&(int)body["price"]==900,"owner edit still goes to server authority");return Response(Shop(price:900).ToString());});await client.SetPrice("BRAX_WHITE",900);
+        handler.Reply(owner);await client.RefreshShop();handler.Reply(Shop(price:400));await Error(()=>client.SetPrice("BRAX_WHITE",900));Check(client.Price("BRAX_WHITE")==400,"2xx with unchanged price is not a confirmed owner edit");
         handler.Steps.Enqueue((r,t)=>Task.FromResult(Response("<html>error</html>",503)));await Error(()=>client.RefreshAccount(),503);
         handler.Steps.Enqueue((r,t)=>Task.FromResult(Response("{} {}")));await Error(()=>client.RefreshAccount());
         handler.Steps.Enqueue((r,t)=>Task.FromResult(Response(new string('x',262145))));await Error(()=>client.RefreshShop());

@@ -28,6 +28,7 @@ compile('Unity.WebRTC',list((webrtc/'Runtime').rglob('*.cs')),unity_refs,'librar
 unity_refs.append(out/'Unity.WebRTC.dll')
 compile('Arena.Domain',list((assets/'Domain').glob('*.cs')),standard+[newtonsoft],'library')
 compile('Arena.Runtime',list((assets/'Runtime').glob('*.cs')),unity_refs+[newtonsoft,ui,out/'Arena.Domain.dll'],'library')
+compile('Arena.Runtime.Android',list((assets/'Runtime').glob('*.cs')),unity_refs+[newtonsoft,ui,out/'Arena.Domain.dll'],'library',['-define:UNITY_ANDROID'])
 compile('Arena.Editor',list((assets/'Editor').glob('*.cs')),unity_refs+[newtonsoft,ui,out/'Arena.Runtime.dll'],'library')
 compile('Arena.Tests',list((assets/'Tests/EditMode').glob('*.cs')),unity_refs+[newtonsoft,nunit,ui,out/'Arena.Domain.dll',out/'Arena.Runtime.dll',out/'Arena.Editor.dll'],'library')
 runners=list(pathlib.Path(__file__).parent.glob('*Runner.cs'))+[assets/'Runtime/ProgressFileStore.cs',assets/'Runtime/ArenaRankTracker.cs',assets/'Runtime/PendingArenaResults.cs',assets/'Runtime/ArenaAdventureTracker.cs',assets/'Runtime/ArenaDuelSession.cs']+list((assets/'Runtime').glob('ArenaOnlineClient*.cs'))

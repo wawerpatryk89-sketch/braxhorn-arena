@@ -36,7 +36,11 @@ namespace Braxhorn.Arena
             {
                 var r=await client.SyncDuel(Lease,Ready,++sequence,Lease.Outfit,Ready?packet:null);if(!active)return;
                 if(hostOutfit!=null&&((string)r["hostOutfit"]!=hostOutfit||(string)r["arena"]!=arena||guestOutfit!=null&&(string)r["guestOutfit"]!=guestOutfit))throw new ArenaServiceException("Zmieniono zawodników rozpoczętego pokoju.",409);
-                hostOutfit=(string)r["hostOutfit"];guestOutfit=(string)r["guestOutfit"];arena=(string)r["arena"];
+                // Tournament rooms initially return base outfits until both
+                // participants have supplied their owned cosmetics. Freeze the
+                // pair only after that handshake, not the server fallback.
+                if((bool)r["cosmeticsReady"]&&r["guestFighter"]?.Type==JTokenType.String)
+                {hostOutfit=(string)r["hostOutfit"];guestOutfit=(string)r["guestOutfit"];arena=(string)r["arena"];}
                 Room=r;lastSuccess=now;peerAge=Math.Max(0,(double)r["now"]-(double)r["peerSeen"]);
                 ResultStatus=(string)r["resultStatus"];Playing=(string)r["status"]=="playing";
                 if((string)r["status"]=="closed"){active=false;Status="Pokój został zamknięty.";return;}

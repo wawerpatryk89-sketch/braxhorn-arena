@@ -75,7 +75,7 @@ namespace Braxhorn.Arena
                     throw new ArenaServiceException("Serwer zwrócił nieprawidłowy profil.");
                 var id=(string)player["id"];if(string.IsNullOrWhiteSpace(id)||id.Length>160)throw new ArenaServiceException("Serwer zwrócił nieprawidłowy profil.");
                 if(editing&&(id!=expectedOwner||(bool?)response.data["saved"]!=true||(bool)player["authenticated"]!=true||action=="password"&&(bool?)player["hasPassword"]!=true||action=="avatar"&&(string)player["avatar"]!="/assets/avatar-"+(string)body["avatar"]+".jpg"))throw new ArenaServiceException("Serwer nie potwierdził zmiany ustawień konta.");
-                if(PlayerId!=id||action=="login"||action=="register"||action=="logout"||action=="guest")ClearInventory();
+                if(PlayerId!=id||action=="login"||action=="register"||action=="logout"||action=="guest"){ClearInventory();TournamentOwner=false;}
                 PlayerId=id;Authenticated=(bool)player["authenticated"];Name=((string)player["name"]).Substring(0,Math.Min(80,((string)player["name"]).Length));
                 HasPassword=player["hasPassword"]?.Type==JTokenType.Boolean&&(bool)player["hasPassword"];
                 Avatar=player["avatar"]?.Type==JTokenType.String&&((string)player["avatar"]).Length<=200?(string)player["avatar"]:null;
@@ -102,10 +102,13 @@ namespace Braxhorn.Arena
         public Task SetPrice(string outfit,int price)
         {
             if(!OutfitIds.Contains(outfit)||price<0||price>1000000)throw new ArgumentException("Invalid outfit price");
+            var owner=PlayerId;
             return Locked(async()=>
             {
+                RequireIdentity(owner);
                 if(!CanManagePrices)throw new ArenaServiceException("Tylko właściciel gry może zmieniać ceny.",403);
                 var response=await Request("api/shop",new JObject{["action"]="price",["outfit"]=outfit,["price"]=price});ThrowError(response);ApplyInventory(response.data);
+                if(Price(outfit)!=price)throw new ArenaServiceException("Serwer nie potwierdził nowej ceny. Odśwież sklep.");
             });
         }
         void ClearInventory(){owned.Clear();prices.Clear();HasInventory=false;Balance=0;CanManagePrices=false;}

@@ -67,7 +67,7 @@ namespace Braxhorn.Arena
         void RefreshApplicationState()
         {
             applicationSuspended=applicationPaused||!applicationFocused;
-            cinema?.Suspend(applicationSuspended);RefreshMenuAudio();
+            cinema?.Suspend(applicationSuspended);duelVoice?.Suspend(applicationSuspended);RefreshMenuAudio();
             if(duel!=null){if(applicationSuspended){duelInput?.Clear();duelHost?.DropPending();ReleaseControls();}RefreshPauseUi();}
             else if(applicationSuspended)Pause(true);else RefreshPauseUi();
         }

@@ -11,7 +11,7 @@ namespace Braxhorn.Arena
         static readonly string[] RankModes={"fight","training","arcade","tournament","survival"};
         static readonly string[] RankLevels={"easy","normal","hard"};
         void RequireIdentity(string expected)
-        {if(!Authenticated||PlayerId!=expected)throw new ArenaServiceException("Konto zostało zmienione lub wylogowane. Wynik pozostaje przypisany do poprzedniego konta.",401);}
+        {if(!Authenticated||PlayerId!=expected)throw new ArenaServiceException("Sesja konta zmieniła się. Zaloguj się ponownie i odśwież dane.",401);}
         public async Task<string> StartRankedMatch(string owner,string mode,string level,string fighter,string runId,string challenge,int targetWins)
         {
             if(!RankModes.Contains(mode)||!RankLevels.Contains(level)||!SurvivalRun.Roster.Contains(fighter)||string.IsNullOrEmpty(runId)||runId.Length>90||challenge!=null&&ChallengeCatalog.Find(challenge)==null)throw new ArgumentException("Invalid ranking setup");

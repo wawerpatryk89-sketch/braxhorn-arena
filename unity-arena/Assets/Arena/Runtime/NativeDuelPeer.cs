@@ -27,20 +27,27 @@ namespace Braxhorn.Arena
         Action changed;
         public bool Open=>!closed&&channel?.ReadyState==RTCDataChannelState.Open;
         public bool Alive=>Open&&Now-lastData<750;
+        public bool Connected=>!closed&&connection?.ConnectionState==RTCPeerConnectionState.Connected;
+        public bool Failed=>closed;
         public double? RoundTripMs {get;private set;}
         static double Now=>Time.realtimeSinceStartupAsDouble*1000;
         public JObject Signal=>description==null?null:new JObject{["type"]=description["type"],["sdp"]=description["sdp"],["candidates"]=candidates.DeepClone()};
-        public bool Initialize(bool isHost,ArenaIceServer[] servers,Action<JObject> onPacket,Action onSignal)
+        public bool Initialize(bool isHost,ArenaIceServer[] servers,Action<JObject> onPacket,Action onSignal,AudioStreamTrack audio=null,Action<AudioStreamTrack> onAudio=null)
         {
             host=isHost;receive=onPacket;changed=onSignal;wire=new DuelPeerWire(host);
             try
             {
                 var config=new RTCConfiguration{iceServers=servers.Select(s=>new RTCIceServer{urls=s.Urls,username=s.Username,credential=s.Credential}).ToArray()};
                 connection=new RTCPeerConnection(ref config);
+                if(audio!=null)
+                {
+                    connection.AddTrack(audio);
+                    connection.OnTrack=e=>{if(closed)return;if(e.Track is AudioStreamTrack remote)onAudio?.Invoke(remote);else e.Track?.Dispose();};
+                }
                 connection.OnIceCandidate=c=>{using(c){if(closed||c==null||candidates.Count>=24)return;candidates.Add(new JObject{["candidate"]=c.Candidate,["sdpMid"]=c.SdpMid,["sdpMLineIndex"]=c.SdpMLineIndex});changed?.Invoke();}};
-                connection.OnDataChannel=Bind;
+                connection.OnDataChannel=c=>{if(audio==null)Bind(c);else{c.Close();c.Dispose();}};
                 connection.OnConnectionStateChange=state=>{if(closed)return;if(state==RTCPeerConnectionState.Connected){restarts=0;restartAt=double.PositiveInfinity;}else if(host&&(state==RTCPeerConnectionState.Failed||state==RTCPeerConnectionState.Disconnected))restartAt=Now+(state==RTCPeerConnectionState.Failed?0:3000);};
-                if(host){Bind(connection.CreateDataChannel("arena",new RTCDataChannelInit{ordered=false,maxRetransmits=0}));StartCoroutine(Publish(true));}
+                if(host){if(audio==null)Bind(connection.CreateDataChannel("arena",new RTCDataChannelInit{ordered=false,maxRetransmits=0}));StartCoroutine(Publish(true));}
                 return true;
             }
             catch(Exception){Close();return false;}
@@ -103,7 +110,7 @@ namespace Braxhorn.Arena
         {
             if(closed)return;closed=true;StopAllCoroutines();receive=null;changed=null;description=pendingSignal=null;candidates.Clear();added.Clear();
             if(channel!=null){channel.OnMessage=null;try{channel.Close();}catch(Exception){}try{channel.Dispose();}catch(Exception){}channel=null;}
-            if(connection!=null){connection.OnIceCandidate=null;connection.OnDataChannel=null;connection.OnConnectionStateChange=null;try{connection.Close();}catch(Exception){}try{connection.Dispose();}catch(Exception){}connection=null;}
+            if(connection!=null){connection.OnIceCandidate=null;connection.OnDataChannel=null;connection.OnConnectionStateChange=null;connection.OnTrack=null;try{connection.Close();}catch(Exception){}try{connection.Dispose();}catch(Exception){}connection=null;}
         }
         void OnDestroy()=>Close();
     }

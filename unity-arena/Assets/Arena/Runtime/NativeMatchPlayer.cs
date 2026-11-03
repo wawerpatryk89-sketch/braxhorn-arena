@@ -172,10 +172,11 @@ namespace Braxhorn.Arena
         void Update()
         {
             if(safeRoot){var r=Screen.safeArea;safeRoot.anchorMin=r.min/new Vector2(Screen.width,Screen.height);safeRoot.anchorMax=r.max/new Vector2(Screen.width,Screen.height);if(uiRoot)uiRoot.localScale=Vector3.one*Mathf.Min(safeRoot.rect.width/1024,safeRoot.rect.height/576);}
-            if(arenaMedia&&fightAudio)arenaMedia.Sound(fightAudio.Muted,fightAudio.Duck);
+            if(arenaMedia&&fightAudio)arenaMedia.Sound(fightAudio.Muted,fightAudio.Duck,duelVoice&&duelVoice.Active);
             RefreshMenuAudio();
             if(cinema?.Active==true){if(Input.GetKeyDown(KeyCode.Escape))cinema.Skip();return;}
             UpdateMenuInput();
+            UpdateTournaments();
             if(UpdateDuel())return;
             if(loading||match==null)return;
             if(replay.Active){UpdateReplay();return;}

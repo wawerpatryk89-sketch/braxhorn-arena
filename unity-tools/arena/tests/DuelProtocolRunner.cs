@@ -77,6 +77,30 @@ static class DuelProtocolRunner
         var count=target.Particles.Count;p["particles"][0]["x"]=1e300;Check(!target.RestoreNetwork(p,512,288)&&target.Particles.Count==count,"unsafe finite effects rejected atomically");
         p=source.NetworkSnapshot(1024,576);p["size"]["height"]=0;Check(!target.RestoreNetwork(p,512,288),"zero size cannot divide particles");
     }
+    static void Voice()
+    {
+        var v=new VoiceConsent();Check(!v.Decided&&!v.Both&&!v.CanCapture,"new room never implies voice consent");
+        v.Peer("yes");Check(!v.CanCapture,"remote consent alone cannot open microphone");
+        Check(!v.Permission(true),"unsolicited permission callback cannot grant consent");
+        Check(v.Request(100)&&!v.Request(101),"only one explicit permission request at a time");
+        Check(!v.Tick(25099),"permission deadline not early");
+        Check(v.Permission(true)&&v.Decided&&v.Both&&v.CanCapture,"both consents and microphone permission enable capture");
+        v.ToggleMic();Check(!v.CanCapture&&v.Both,"mic mute does not revoke peer authorization");v.ToggleMic();Check(v.CanCapture,"explicit unmute restores capture");
+        v.ToggleSound();Check(v.SoundMuted&&v.CanCapture,"receiver mute independent from microphone");
+        v.Suspend(true);Check(!v.CanCapture&&!v.Foreground&&v.MicMuted,"background always mutes microphone");
+        v.Suspend(false);Check(v.Foreground&&!v.CanCapture,"foreground cannot silently unmute microphone");
+        v.ToggleMic();Check(v.CanCapture,"foreground explicit unmute works");
+        v.Peer("no");Check(!v.Both&&!v.CanCapture&&v.Choice=="no","peer revocation ends capture immediately");
+        v.Peer("yes");v.ToggleMic();Check(!v.CanCapture&&!v.Request(100000),"late peer reconsent cannot restart ended call");
+        v=new VoiceConsent();v.Request(10);Check(v.Tick(25010)&&v.Decided&&!v.Permission(true),"timed-out permission rejects late success");
+        v=new VoiceConsent();v.Request(0);v.Stop();Check(!v.Permission(true)&&!v.CanCapture,"leaving rejects delayed permission callback");
+        v=new VoiceConsent();v.Request(0);Check(v.Permission(false)&&v.Decided&&!v.CanCapture,"denied OS permission settles choice for game readiness");
+        v=new VoiceConsent();v.Peer("no");v.Request(0);v.Permission(true);Check(v.Choice=="no"&&!v.CanCapture,"pending peer refusal survives local authorization");
+        v=new VoiceConsent();v.Request(0);v.Permission(true);v.Peer("arbitrary");Check(v.PeerChoice=="pending"&&!v.CanCapture,"invalid remote consent ignored");
+        v.Peer("yes");v.Peer("pending");Check(!v.CanCapture,"remote pending cannot keep recording");
+        var packet=new DuelInputQueue().Packet();packet["voice"]=new JObject{["consent"]="yes",["description"]=null};Check(DuelWire.Input(packet),"voice consent uses original input envelope");
+        var cfg=MatchParityRunner.Config();packet=new ArenaMatch(cfg,cfg,()=>.5).NetworkSnapshot(1,0,0,0);packet["voice"]=new JObject{["consent"]="no",["description"]=null};Check(DuelWire.Snapshot(packet),"voice denial uses original snapshot envelope");
+    }
     static void Peer()
     {
         var sender=new DuelPeerWire(false);var receiver=new DuelPeerWire(true);var input=new DuelInputQueue();input.Press("kick");
@@ -115,7 +139,7 @@ static class DuelProtocolRunner
         Check((string)reference["source"]=="f355fe6ac6af41518fde420382512d49bd27d51a","frozen published validator source");
         foreach(var row in reference["cases"]){var accepted=(string)row["type"]=="input"?DuelWire.Input(row["payload"]):DuelWire.Snapshot(row["payload"]);Check(accepted==(bool)row["valid"],"source validator: "+(string)row["label"]);}
     }
-    internal static void Run(string assets=null,string references=null){checks=0;Wire();Effects();Peer();if(references!=null)Reference(references);if(assets!=null)Actual(assets);Protocol().GetAwaiter().GetResult();Console.WriteLine("PASS "+checks+" duel checks: original room contract, deduplicated input, host authority, remote pose/effect validation, stale responses, disconnection, RTC envelope and explicit score confirmation. No live room created; transport/device latency untested.");}
+    internal static void Run(string assets=null,string references=null){checks=0;Wire();Effects();Peer();Voice();if(references!=null)Reference(references);if(assets!=null)Actual(assets);Protocol().GetAwaiter().GetResult();Console.WriteLine("PASS "+checks+" duel checks: original room contract, deduplicated input, host authority, remote pose/effect validation, stale responses, disconnection, RTC envelope, bilateral voice consent and explicit score confirmation. No live room created; transport/device latency untested.");}
     static async Task Protocol()
     {
         var h=new Handler();using var c=new ArenaOnlineClient("https://arena.invalid",h);
@@ -137,5 +161,8 @@ static class DuelProtocolRunner
         h.Result="confirmed";h.WrongScore=true;await Reject(()=>c.ConfirmDuel(guest,2,1),"mismatched confirmation receipt rejected");
         var ice=await c.ReadIce(guest);Check(ice.Length==1&&ice[0].Urls[0].StartsWith("turns:")&&ice[0].Username=="ephemeral-user","original TURN response retained in memory");
         h.Ice["iceServers"][0]["urls"]=new JArray("https://unrelated.example");await Reject(()=>c.ReadIce(guest),"non-ICE URL rejected");
+        h.Room["status"]="waiting";h.Room["cosmeticsReady"]=false;var cosmetics=new ArenaDuelSession(c,lease,0);await cosmetics.Poll(100);
+        h.Room["guestOutfit"]="BRAX_WHITE";h.Room["cosmeticsReady"]=true;await cosmetics.Poll(200);Check(!cosmetics.Closed&&cosmetics.Room?["guestOutfit"]?.ToString()=="BRAX_WHITE","tournament cosmetic handshake may replace initial base fallback");
+        h.Room["guestOutfit"]="BRAX_STREET";await cosmetics.Poll(300);Check(cosmetics.Closed,"after cosmetic handshake actor pair is immutable");
     }
 }

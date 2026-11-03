@@ -125,7 +125,8 @@ namespace Braxhorn.Arena
             if(video&&video.isPrepared){if(paused)video.Pause();else if(Ready)video.Play();}
             if(ambient&&ambient.clip){if(paused)ambient.Pause();else if(!muted)ambient.UnPause();}
         }
-        public void Sound(bool mute,bool duck){muted=mute;ducked=duck;UpdateAudio();}
+        float voiceGain=1;
+        public void Sound(bool mute,bool duck,bool voice=false){muted=mute;ducked=duck;voiceGain=voice?.3f:1;UpdateAudio();}
         public void SetAdventureSound(float gain,bool audible)
         {adventureVolume=audible?1:0;if(!gainFilter)gainFilter=gameObject.AddComponent<NativeAudioGain>();gainFilter.Gain=gain;UpdateAudio();}
         public void DoorMask(Rect? mask)
@@ -135,7 +136,7 @@ namespace Braxhorn.Arena
             if(!foreground){foreground=new GameObject("Original doorway foreground",typeof(MeshFilter),typeof(MeshRenderer));foreground.transform.SetParent(view.transform,false);foreground.GetComponent<MeshFilter>().sharedMesh=mesh;foregroundMaterial=new Material(material){renderQueue=3100};foreground.GetComponent<MeshRenderer>().sharedMaterial=foregroundMaterial;}
             foreground.SetActive(true);var m=mask.Value;foregroundMaterial.SetVector("_DoorMask",new Vector4(m.x,m.y,m.width,m.height));
         }
-        void UpdateAudio(){if(ambient){ambient.mute=muted;ambient.volume=adventureVolume??(Entry!=null&&!string.IsNullOrEmpty(Entry.audio)?(ducked?.045f:.13f):(ducked?.05f:.16f));}}
+        void UpdateAudio(){if(ambient){ambient.mute=muted;ambient.volume=(adventureVolume??(Entry!=null&&!string.IsNullOrEmpty(Entry.audio)?(ducked?.045f:.13f):(ducked?.05f:.16f)))*voiceGain;}}
         public void Clear()
         {
             generation++;try{pendingRequest?.Abort();}catch(ObjectDisposedException){}pendingRequest=null;

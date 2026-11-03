@@ -31,6 +31,7 @@
     <Compile Include="CinematicParityRunner.cs" />
     <Compile Include="AdventureProtocolRunner.cs" />
     <Compile Include="DuelProtocolRunner.cs" />
+    <Compile Include="TournamentProtocolRunner.cs" />
     <Compile Include="../../../unity-arena/Assets/Arena/Runtime/ArenaDuelSession.cs" />
     <Compile Include="../../../unity-arena/Assets/Arena/Runtime/ArenaAdventureTracker.cs" />
     <Compile Include="../../../unity-arena/Assets/Arena/Runtime/ProgressFileStore.cs" />

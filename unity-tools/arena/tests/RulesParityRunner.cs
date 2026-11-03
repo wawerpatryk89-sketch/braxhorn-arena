@@ -81,6 +81,7 @@ static class RulesParityRunner
         CinematicParityRunner.Run();
         AdventureProtocolRunner.Run();
         DuelProtocolRunner.Run(args.Length>2?args[2]:null,args.Length>1?args[1]:null);
+        TournamentProtocolRunner.Run();
         return 0;
     }
 }

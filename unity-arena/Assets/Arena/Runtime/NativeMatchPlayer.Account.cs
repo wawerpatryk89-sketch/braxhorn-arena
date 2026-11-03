@@ -21,6 +21,11 @@ namespace Braxhorn.Arena
         bool registerAccount,femaleAvatar,accountBusy,confirmPurchase;
         int shopIndex,confirmedPrice;
         string confirmedOutfit;
+        GameObject menuOwnerPrice,ownerPriceOpen;
+        InputField ownerPriceValue;
+        Text ownerPriceInfo,ownerPriceMessage,ownerPriceSave;
+        string ownerPriceOutfit;
+        int? ownerPriceConfirmation;
         void BuildAccountUi()
         {
             menuAccount=MenuPage("Account");menuShop=MenuPage("Outfit shop");
@@ -44,6 +49,13 @@ namespace Braxhorn.Arena
             Click(menuShop.transform,"ODŚWIEŻ",new Rect(244,510,190,46),RefreshShop);
             Click(menuShop.transform,"PODSTAWOWY",new Rect(450,510,190,46),()=>{if(accountBusy)return;variantIndex=Array.IndexOf(Variants,(string)mediaCatalog.Outfits[shopIndex]["base"]);ShowMenuPage(menuRoster);});
             shopAction=Click(menuShop.transform,"ODŚWIEŻ SKLEP",new Rect(674,510,318,46),UseShopChoice).GetComponentInChildren<Text>();MenuBack(menuShop,menuRoster);
+            ownerPriceOpen=Click(menuShop.transform,"ZARZĄDZAJ CENĄ",new Rect(714,24,278,44),OpenOwnerPrice);ownerPriceOpen.SetActive(false);
+            menuOwnerPrice=MenuPage("Owner outfit price");MenuHeading(menuOwnerPrice,"CENA STROJU");
+            ownerPriceInfo=Label(menuOwnerPrice.transform,"Price details",new Rect(200,112,624,108),25);
+            ownerPriceValue=AccountInput("Nowa cena w żetonach (0–1 000 000)",new Rect(200,264,624,58),false,7,menuOwnerPrice.transform);ownerPriceValue.contentType=InputField.ContentType.IntegerNumber;
+            ownerPriceValue.onValueChanged.AddListener(_=>{ownerPriceConfirmation=null;ownerPriceSave.text="ZAPISZ CENĘ";});
+            ownerPriceMessage=Label(menuOwnerPrice.transform,"Price status",new Rect(200,356,624,108),22);
+            ownerPriceSave=Click(menuOwnerPrice.transform,"ZAPISZ CENĘ",new Rect(674,510,318,46),SaveOwnerPrice).GetComponentInChildren<Text>();MenuBack(menuOwnerPrice,menuShop);
             Click(menuAccount.transform,"USTAWIENIA KONTA",new Rect(714,24,278,44),OpenAccountSettings);BuildAccountSettings();AccountMode(false);
         }
         InputField AccountInput(string title,Rect rect,bool secret,int limit,Transform parent=null)
@@ -97,10 +109,10 @@ namespace Braxhorn.Arena
             accountBusy=false;SetAccountBusy(false);RefreshShopUi();RefreshMenuUi();
         }
         static string ServiceMessage(Exception e)=>e is ArenaServiceException?e.Message:"Nie udało się wykonać działania. Odśwież dane i spróbuj ponownie.";
-        void AccountError(string message){accountMessage.text=message;shopMessage.text=message;if(menuCurrent==menuRecords)recordsServiceMessage=message;if(menuCurrent==menuLeaderboard)boardStatus.text=message;if(menuCurrent==menuAccountSettings)settingsMessage.text=message;}
+        void AccountError(string message){accountMessage.text=message;shopMessage.text=message;if(menuCurrent==menuRecords)recordsServiceMessage=message;if(menuCurrent==menuLeaderboard)boardStatus.text=message;if(menuCurrent==menuAccountSettings)settingsMessage.text=message;if(menuCurrent==menuOwnerPrice)ownerPriceMessage.text=message;}
         void SetAccountBusy(bool busy)
         {
-            foreach(var page in new[]{menuAccount,menuShop,menuLeaderboard,menuAccountSettings})foreach(var selectable in page.GetComponentsInChildren<Selectable>(true))selectable.interactable=!busy;
+            foreach(var page in new[]{menuAccount,menuShop,menuLeaderboard,menuAccountSettings,menuOwnerPrice})foreach(var selectable in page.GetComponentsInChildren<Selectable>(true))selectable.interactable=!busy;
             if(!busy&&boardLevelLabel)boardLevelLabel.transform.parent.GetComponent<Button>().interactable=!historyView&&BoardModes[boardMode]!="multiplayer";
         }
         void ResetAccountSelection()
@@ -133,6 +145,22 @@ namespace Braxhorn.Arena
             shopPrice.text=online?.HasInventory==true?"Saldo: "+online.Balance+" ŻETONÓW\n"+(online.Owns(id)?"W TWOJEJ KOLEKCJI":price.HasValue?"Cena: "+price+" ŻETONÓW":"CENA NIEDOSTĘPNA"):"Odśwież sklep, aby sprawdzić cenę i własność stroju.";
             shopAction.text=accountBusy?"ŁĄCZENIE…":online?.Owns(id)==true?"ZAŁÓŻ STRÓJ":confirmPurchase?"POTWIERDŹ: "+confirmedPrice+" ŻETONÓW":price.HasValue?"KUP STRÓJ":"ODŚWIEŻ SKLEP";
             shopAction.transform.parent.GetComponent<Button>().interactable=!accountBusy;
+            if(ownerPriceOpen)ownerPriceOpen.SetActive(online?.Authenticated==true&&online.CanManagePrices);
+        }
+        void OpenOwnerPrice()
+        {
+            if(accountBusy||online?.Authenticated!=true||!online.CanManagePrices)return;
+            ownerPriceOutfit=(string)mediaCatalog.Outfits[shopIndex]["id"];ownerPriceConfirmation=null;
+            ownerPriceInfo.text=Display((string)mediaCatalog.Outfits[shopIndex]["base"])+" · "+mediaCatalog.Outfits[shopIndex]["label"]+"\nAktualna cena: "+online.Price(ownerPriceOutfit)+" żetonów";
+            ownerPriceValue.SetTextWithoutNotify(online.Price(ownerPriceOutfit)?.ToString()??"");ownerPriceSave.text="ZAPISZ CENĘ";ownerPriceMessage.text="Zmiana dotyczy sklepu wszystkich graczy.";ShowMenuPage(menuOwnerPrice);
+        }
+        void SaveOwnerPrice()
+        {
+            if(accountBusy||online?.Authenticated!=true||!online.CanManagePrices)return;
+            if(!int.TryParse(ownerPriceValue.text,out var price)||price<0||price>1000000){ownerPriceMessage.text="Podaj liczbę całkowitą od 0 do 1 000 000.";return;}
+            if(ownerPriceConfirmation!=price){ownerPriceConfirmation=price;ownerPriceSave.text="POTWIERDŹ: "+price;ownerPriceMessage.text="Potwierdź nową cenę: "+price+" żetonów. Dotyczy kolejnych zakupów tego stroju.";return;}
+            var id=ownerPriceOutfit;ownerPriceConfirmation=null;ownerPriceSave.text="ZAPISZ CENĘ";
+            RunAccount(()=>online.SetPrice(id,price),()=>{ownerPriceMessage.text="Serwer potwierdził cenę: "+online.Price(id)+" żetonów.";ownerPriceInfo.text=id+"\nAktualna cena: "+online.Price(id)+" żetonów";});
         }
         void UseShopChoice()
         {
