@@ -67,7 +67,13 @@ namespace Braxhorn.Arena
             field.contentType=secret?InputField.ContentType.Password:InputField.ContentType.Standard;field.lineType=InputField.LineType.SingleLine;return field;
         }
         void EnsureOnline()
-        {if(online==null)online=new ArenaOnlineClient(serviceOrigin);}
+        {if(online==null)online=new ArenaOnlineClient(serviceOrigin,AndroidArenaSessionStore.Create(serviceOrigin));}
+        void RestoreAccountAtLaunch()
+        {
+            try{EnsureOnline();}catch(Exception){accountMessage.text="Nie udało się odczytać zapisanej sesji. Zaloguj się ponownie.";return;}
+            if(online.HasRestoredSession)RunAccount(async()=>{await online.RefreshAccount();if(online.Authenticated)await online.RefreshShop();},()=>{ResetAccountSelection();accountMessage.text=online.Authenticated?"Zalogowano: "+online.Name:"Sesja wygasła. Zaloguj się ponownie.";});
+            else if(online.SessionWarning!=null)accountMessage.text=online.SessionWarning;
+        }
         void AccountMode(bool registering)
         {
             if(accountBusy)return;registerAccount=registering;accountConfirmation.SetActive(registering);accountAvatar.transform.parent.gameObject.SetActive(registering);
@@ -104,7 +110,7 @@ namespace Braxhorn.Arena
                 while(!task.IsCompleted)yield return null;
                 if(task.IsFaulted)AccountError(ServiceMessage(task.Exception?.GetBaseException()));
                 else if(task.IsCanceled)AccountError("Żądanie zostało przerwane. Odśwież dane.");
-                else try{success();}catch(Exception e){AccountError(ServiceMessage(e));}
+                else try{success();if(online.SessionWarning!=null)AccountError(online.SessionWarning);}catch(Exception e){AccountError(ServiceMessage(e));}
             }
             accountBusy=false;SetAccountBusy(false);RefreshShopUi();RefreshMenuUi();
         }

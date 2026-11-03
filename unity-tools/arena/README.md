@@ -97,3 +97,10 @@ Managed-only validation now also requires the verified package directory supplie
 
 
 Native voice/tournament checkpoint: managed-only validation also compiles `UNITY_ANDROID` permission paths. `TournamentProtocolRunner` covers the original endpoint without live writes; it is included explicitly in the CI csproj. See project context for voice acoustic/runtime limits, organizer UI and the tournament outfit-handshake fix.
+
+
+### Resuming the stopped migration (2026-11-03)
+
+Saved source work is intact; source CI success is not an Android build. The recovery audit and remaining scope are recorded in `unity-arena/Docs/AI/UnityProjectContext.md` and `validation.json`. Replay now retains blood/wound/contact samples and Android can securely restore the original server session. Both changes have managed tests; Android runtime behavior has not been exercised.
+
+To request APK explicitly, run this workflow on the migration branch with `build_apk=true`, or push an intentional commit containing `[build-apk]` in its message. The latter is supported for clients without a workflow-dispatch API. It only applies to the migration branch already listed under `push`. Configure `UNITY_EMAIL`, `UNITY_PASSWORD` and either `UNITY_LICENSE` or `UNITY_SERIAL` in this Arena repository's Actions secrets. Do not put secret values in code, reports or chat. A missing activation now fails the requested build visibly; it does not produce an APK or prove the user's license entitlement is missing. Local Editor execution remains prohibited by the user.

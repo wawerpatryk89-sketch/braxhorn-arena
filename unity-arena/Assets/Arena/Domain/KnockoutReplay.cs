@@ -26,9 +26,11 @@ namespace Braxhorn.Arena.Domain
         public double Time {get;}
         public ReplayActor First {get;}
         public ReplayActor Second {get;}
+        public BloodEffects.ReplaySnapshot Blood {get;}
+        public bool Clinch {get;}
         internal readonly MatchEvent[] Sounds;
-        internal ReplayFrame(double time,ReplayActor first,ReplayActor second,MatchEvent[] sounds)
-        {Time=time;First=first;Second=second;Sounds=sounds;}
+        internal ReplayFrame(double time,ReplayActor first,ReplayActor second,MatchEvent[] sounds,BloodEffects.ReplaySnapshot blood=null,bool clinch=false)
+        {Time=time;First=first;Second=second;Sounds=sounds;Blood=blood;Clinch=clinch;}
     }
     // Source ko-replay.js timing and bounded pose history; never advances gameplay.
     public sealed class KnockoutReplay
@@ -46,11 +48,11 @@ namespace Braxhorn.Arena.Domain
         static bool Finite(double n)=>!double.IsNaN(n)&&!double.IsInfinity(n);
         public void Sound(MatchEvent e)
         {if(Active)return;pending.Enqueue(e);while(pending.Count>32)pending.Dequeue();}
-        public void Capture(double time,ReplayActor first,ReplayActor second)
+        public void Capture(double time,ReplayActor first,ReplayActor second,BloodEffects blood=null,bool clinch=false)
         {
             if(Active||!Finite(time)||time<last||marked.HasValue&&time>marked.Value+1200)return;
             if(time-last<15)return;
-            last=time;history.Enqueue(new ReplayFrame(time,first,second,pending.ToArray()));pending.Clear();
+            last=time;history.Enqueue(new ReplayFrame(time,first,second,pending.ToArray(),blood?.CaptureReplay(),clinch));pending.Clear();
             while(history.Count>240||history.Count>0&&history.Peek().Time<time-3600)history.Dequeue();
         }
         public bool Play()
@@ -73,7 +75,7 @@ namespace Braxhorn.Arena.Domain
             while(soundIndex<index){soundIndex++;foreach(var e in clip[soundIndex].Sounds)playbackSounds.Enqueue(e);}
             var a=clip[index];if(index==clip.Length-1){Current=a;Active=false;return;}
             var b=clip[index+1];var u=Math.Max(0,Math.Min(1,(time-a.Time)/(b.Time-a.Time)));
-            Current=new ReplayFrame(time,ReplayActor.Mix(a.First,b.First,u),ReplayActor.Mix(a.Second,b.Second,u),Array.Empty<MatchEvent>());
+            Current=new ReplayFrame(time,ReplayActor.Mix(a.First,b.First,u),ReplayActor.Mix(a.Second,b.Second,u),Array.Empty<MatchEvent>(),a.Blood,a.Clinch);
         }
         public bool TrySound(out MatchEvent e){if(playbackSounds.Count==0){e=default;return false;}e=playbackSounds.Dequeue();return true;}
         public void Clear(){Active=false;history.Clear();pending.Clear();playbackSounds.Clear();clip=Array.Empty<ReplayFrame>();Current=null;marked=null;last=double.NegativeInfinity;elapsed=0;soundIndex=-1;}

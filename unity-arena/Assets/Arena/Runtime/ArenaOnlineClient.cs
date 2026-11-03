@@ -17,8 +17,8 @@ namespace Braxhorn.Arena
         public ArenaServiceException(string message,int status=0):base(message){Status=status;}
     }
     // Native adapter to the existing v271 backend. Only the server grants an
-    // identity, inventory or balance. Cookies stay in this client's memory;
-    // credentials/tokens are never put in PlayerPrefs, logs or progress JSON.
+    // identity, inventory or balance. Android session cookies may be persisted
+    // through the platform keystore; passwords never enter persistent storage.
     public sealed partial class ArenaOnlineClient : IDisposable
     {
         static readonly HashSet<string> OutfitIds=new HashSet<string>{"BRAX_WHITE","BRAX_STREET","NYXA_SPORT","NYXA_PINK","VEXA_PURPLE","VEXA_STREET","KROV_TRACKSUIT","KROV_SUMMER"};
@@ -39,15 +39,18 @@ namespace Braxhorn.Arena
         public bool Owns(string id)=>OutfitIds.Contains(id)&&HasInventory&&owned.Contains(id);
         public int? Price(string id)=>HasInventory&&prices.TryGetValue(id,out var price)?price:(int?)null;
         public ArenaOnlineClient(string origin):this(origin,new HttpClientHandler{UseCookies=true,CookieContainer=new CookieContainer(),AllowAutoRedirect=false}){}
+        public ArenaOnlineClient(string origin,IArenaSessionStore sessions):this(origin,new HttpClientHandler{UseCookies=true,CookieContainer=new CookieContainer(),AllowAutoRedirect=false},sessions){}
         // Handler injection is only for protocol tests; the runtime uses TLS and
         // the standard certificate verifier. No certificate bypass is provided.
-        public ArenaOnlineClient(string origin,HttpMessageHandler handler)
+        public ArenaOnlineClient(string origin,HttpMessageHandler handler,IArenaSessionStore sessions=null,CookieContainer cookies=null)
         {
             if(!Uri.TryCreate(origin,UriKind.Absolute,out var uri)||uri.Scheme!="https"||uri.AbsolutePath!="/"||uri.UserInfo.Length>0||uri.Query.Length>0||uri.Fragment.Length>0)
             {handler.Dispose();throw new ArgumentException("Expected an HTTPS service origin",nameof(origin));}
             client=new HttpClient(handler,true){BaseAddress=uri,Timeout=TimeSpan.FromSeconds(20)};
             client.DefaultRequestHeaders.Accept.ParseAdd("application/json");
             client.DefaultRequestHeaders.UserAgent.ParseAdd("Braxhorn-Arena-Unity/1.0");
+            sessionStore=sessions;sessionCookies=cookies??(handler as HttpClientHandler)?.CookieContainer;
+            RestoreSession();
         }
         public Task RefreshAccount()=>Account("me",null);
         public Task Login(string nick,string password)=>Account("login",new JObject{["nick"]=nick,["password"]=password});
@@ -68,6 +71,9 @@ namespace Braxhorn.Arena
         {
             await Locked(async()=>
             {
+                var ending=action=="logout"||action=="guest";var applied=false;
+                try
+                {
                 var editing=action=="password"||action=="avatar";if(editing)RequireIdentity(expectedOwner);
                 var response=await Request("api/account?action="+action,body);
                 ThrowError(response);
@@ -79,6 +85,10 @@ namespace Braxhorn.Arena
                 PlayerId=id;Authenticated=(bool)player["authenticated"];Name=((string)player["name"]).Substring(0,Math.Min(80,((string)player["name"]).Length));
                 HasPassword=player["hasPassword"]?.Type==JTokenType.Boolean&&(bool)player["hasPassword"];
                 Avatar=player["avatar"]?.Type==JTokenType.String&&((string)player["avatar"]).Length<=200?(string)player["avatar"]:null;
+                if(ending&&Authenticated)throw new ArenaServiceException("Serwer nie potwierdził wylogowania.");
+                applied=true;if(!ending)PersistSession();
+                }
+                finally{if(ending)EndLocalSession(applied);}
             });
         }
         public Task RefreshShop()=>Locked(async()=>
@@ -145,6 +155,7 @@ namespace Braxhorn.Arena
             using var timeout=CancellationTokenSource.CreateLinkedTokenSource(lifetime.Token);timeout.CancelAfter(TimeSpan.FromSeconds(timeoutSeconds));
             using var response=await client.SendAsync(request,HttpCompletionOption.ResponseHeadersRead,timeout.Token);
             var status=(int)response.StatusCode;
+            if(status==401&&(path=="api/shop"||path=="api/account?action=me"))EndLocalSession();
             if(status>=300&&status<400)throw new ArenaServiceException("Serwer przekierował żądanie. Sprawdź adres usługi.",status);
             const int maximum=262144;
             if(response.Content.Headers.ContentLength>maximum)throw new ArenaServiceException("Odpowiedź serwera jest zbyt duża.");
@@ -165,6 +176,6 @@ namespace Braxhorn.Arena
             if(string.IsNullOrWhiteSpace(message)||message.Length>300)message="Serwer nie przyjął żądania. Spróbuj ponownie.";
             throw new ArenaServiceException(message,response.status);
         }
-        public void Dispose(){if(disposed)return;disposed=true;lifetime.Cancel();client.Dispose();ClearInventory();Authenticated=false;HasPassword=false;Avatar=null;PlayerId=null;Name="GRACZ";}
+        public void Dispose(){if(disposed)return;disposed=true;lifetime.Cancel();client.Dispose();(sessionStore as IDisposable)?.Dispose();ClearInventory();Authenticated=false;HasPassword=false;Avatar=null;PlayerId=null;Name="GRACZ";}
     }
 }

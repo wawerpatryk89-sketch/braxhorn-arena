@@ -24,6 +24,22 @@ static class ReplayParityRunner
         replay.Clear();replay.Mark(100);for(var i=0;i<20;i++)replay.Capture(i*20,new ReplayActor(m.Presentation(0)),new ReplayActor(m.Presentation(1)));replay.Play();while(replay.Active)replay.Step(16);
         Check(m.Player.Hp==hp&&m.SimulationMs==time&&m.PlayerWins==wins,"replay never advances match or awards score");
         var rejected=false;try{replay.Step(double.NaN);}catch(ArgumentOutOfRangeException){rejected=true;}Check(rejected,"invalid clock rejected");
+        var blood=new BloodEffects(()=>.5);var playback=new BloodEffects(()=>.5);
+        blood.Hit(1,12,"head",new Point2(500,200),1,1024,576,500);
+        blood.Hit(1,12,"head",new Point2(500,200),1,1024,576,500);
+        var snapshot=blood.CaptureReplay();var initial=blood.NetworkSnapshot(1024,576).ToString();
+        blood.Step(40,1024,576);var live=blood.NetworkSnapshot(1024,576).ToString();playback.RestoreReplay(snapshot);
+        Check(playback.NetworkSnapshot(1024,576).ToString()==initial,"snapshot owns particle positions, trails and wound levels");
+        playback.Step(50,1024,576);playback.Clear();playback.RestoreReplay(snapshot);
+        Check(playback.NetworkSnapshot(1024,576).ToString()==initial,"playing or clearing an effect cannot mutate recorded state");
+        Check(blood.NetworkSnapshot(1024,576).ToString()==live,"replay effects cannot change live match effects");
+        for(var i=0;i<60;i++)blood.Step(50,1024,576);Check(blood.Stains.Count>0,"test contact produces floor stains");
+        var stains=blood.CaptureReplay();blood.Clear();playback.RestoreReplay(stains);Check(playback.Stains.Count>0&&playback.WoundLevel(1)==1,"floor marks and wounds survive live cleanup");
+        replay.Clear();replay.Mark(100);replay.Capture(0,a,a,blood,true);blood.Hit(1,12,"head",new Point2(500,200),1,1024,576,500);
+        replay.Capture(20,a,a,blood,false);replay.Capture(40,a,a,blood,false);Check(replay.Play()&&replay.Current.Clinch,"recorded contact IK begins at captured clinch state");
+        replay.Step(8);playback.RestoreReplay(replay.Current.Blood);Check(playback.Particles.Count==0&&replay.Current.Clinch,"blood and clinch hold discrete source sample before next contact");
+        while(replay.Active)replay.Step(16);playback.RestoreReplay(replay.Current.Blood);Check(playback.Particles.Count>0&&!replay.Current.Clinch,"final sample includes captured effects and contact exit");
+        playback.RestoreReplay(null);Check(playback.Particles.Count==0&&playback.Stains.Count==0&&playback.WoundLevel(1)==0,"missing replay effects cannot leak previous playback");
         Console.WriteLine("PASS "+checks+" replay checks: bounded history, KO window, source speed ramps, clip/side boundaries, once-only audio and no gameplay mutations. Rendered replay remains untested.");
     }
 }

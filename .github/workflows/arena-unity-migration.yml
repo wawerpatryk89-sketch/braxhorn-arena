@@ -25,7 +25,13 @@ jobs:
     outputs:
       activation: ${{ steps.check.outputs.activation }}
       source: ${{ steps.check.outputs.source }}
+      build_requested: ${{ steps.request.outputs.build }}
     steps:
+      - name: Record explicit APK request
+        id: request
+        env:
+          REQUEST_ANDROID: ${{ (github.event_name == 'workflow_dispatch' && inputs.build_apk) || (github.event_name == 'push' && contains(github.event.head_commit.message, '[build-apk]')) }}
+        run: echo "build=$REQUEST_ANDROID" >> "$GITHUB_OUTPUT"
       - uses: actions/checkout@v4
       - name: Check activation inputs and pinned source availability
         id: check
@@ -155,7 +161,7 @@ jobs:
   unity-activation-required:
     name: Report missing Unity activation for Arena
     needs: ci-preflight
-    if: github.event_name == 'workflow_dispatch' && inputs.build_apk && needs.ci-preflight.outputs.activation != 'true'
+    if: needs.ci-preflight.outputs.build_requested == 'true' && needs.ci-preflight.outputs.activation != 'true'
     runs-on: ubuntu-latest
     steps:
       - run: |
@@ -165,7 +171,7 @@ jobs:
   android-native-review:
     name: Build native Unity combat integration APK (ARM64)
     needs: [ci-preflight, campaign-parity, native-assets, native-media]
-    if: github.event_name == 'workflow_dispatch' && inputs.build_apk && needs.ci-preflight.outputs.activation == 'true'
+    if: needs.ci-preflight.outputs.build_requested == 'true' && needs.ci-preflight.outputs.activation == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 120
     steps:

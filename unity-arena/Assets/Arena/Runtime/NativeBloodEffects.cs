@@ -10,6 +10,16 @@ namespace Braxhorn.Arena
     public sealed class NativeBloodEffects : MonoBehaviour
     {
         readonly BloodEffects state=new BloodEffects(new System.Random().NextDouble);
+        readonly BloodEffects playback=new BloodEffects(()=>.5);
+        readonly FighterPresentation[] replayPoses=new FighterPresentation[2];
+        public void CaptureReplay(KnockoutReplay replay,double time,ReplayActor first,ReplayActor second,bool clinch)
+            =>replay.Capture(time,first,second,state,clinch);
+        public void PresentReplay(ArenaMatch match,ReplayFrame frame)
+        {
+            if(frame==null)return;
+            playback.RestoreReplay(frame.Blood);replayPoses[0]=frame.First.Pose;replayPoses[1]=frame.Second.Pose;
+            PresentState(match,playback,replayPoses,false);
+        }
         readonly List<Vector3> vertices=new List<Vector3>(12000);
         readonly List<Color32> colours=new List<Color32>(12000);
         readonly List<int> triangles=new List<int>(30000);
@@ -57,9 +67,13 @@ namespace Braxhorn.Arena
         void Upload(Mesh mesh){mesh.Clear();mesh.SetVertices(vertices);mesh.SetColors(colours);mesh.SetTriangles(triangles,0);mesh.RecalculateBounds();}
         public void Present(ArenaMatch match,double milliseconds,FighterPresentation[] remote=null)
         {
+            if(!match.Paused||remote!=null)state.Step(milliseconds,match.Width,match.Height);
+            PresentState(match,state,remote,true);
+        }
+        void PresentState(ArenaMatch match,BloodEffects source,FighterPresentation[] remote,bool rememberPose)
+        {
             if(!foreground)return;width=match.Width;height=match.Height;ground=match.Floor;world=3.25/640/match.Scale;
-            if(!match.Paused||remote!=null)state.Step(milliseconds,width,height);
-            Begin();foreach(var stain in state.Stains)
+            Begin();foreach(var stain in source.Stains)
             {
                 var x=stain.X*width;var y=stain.Y*height;var r=Math.Max(2,stain.Radius*height);
                 Ellipse(x,y,r,r*.28,Colour(101,13,25,.86));Ellipse(x-r*.12,y-r*.04,r*.68,r*.16,Colour(177,34,48,.72));
@@ -68,29 +82,30 @@ namespace Braxhorn.Arena
             Upload(floor);Begin();
             for(var side=0;side<2;side++)
             {
-                var f=remote==null?match.Presentation(side):remote[side];previousPoses[side]=new CombatPose(f.Action,f.Frame,f.Face,f.X,match.Floor-f.Height,match.Scale);
-                BodyWounds(previousPoses[side].Value,side);HeadWounds(match,side,f);
+                var f=remote==null?match.Presentation(side):remote[side];var pose=new CombatPose(f.Action,f.Frame,f.Face,f.X,match.Floor-f.Height,match.Scale);
+                if(rememberPose)previousPoses[side]=pose;
+                BodyWounds(pose,side,source);HeadWounds(match,side,f,source);
             }
-            foreach(var p in state.Particles)
+            foreach(var p in source.Particles)
             {
                 var alpha=Math.Max(0,Math.Min(.95,p.Life/180));Line(p.PreviousX,p.PreviousY,p.X,p.Y,p.Radius*1.5,Colour(99,11,24,alpha));
                 Ellipse(p.X,p.Y,p.Radius,p.Radius,p.Bright?Colour(213,72,69,alpha):Colour(169,29,39,alpha),8);
             }
             Upload(foreground);
         }
-        void BodyWounds(CombatPose pose,int side)
+        void BodyWounds(CombatPose pose,int side,BloodEffects source)
         {
             var capsules=pose.Action.Capsules;if(capsules==null||pose.Frame>=capsules.Length)return;
-            foreach(var mark in state.Injuries(side))
+            foreach(var mark in source.Injuries(side))
             {
                 if(mark.Capsule>=capsules[pose.Frame].Length)continue;var cap=capsules[pose.Frame][mark.Capsule];if(cap.Region!=mark.Region)continue;
                 var point=pose.Transform(new Point2(cap.A.X+(cap.B.X-cap.A.X)*mark.U,cap.A.Y+(cap.B.Y-cap.A.Y)*mark.U),pose.Action.AnchorY);var r=Math.Max(2,cap.Radius*pose.Scale*.52);
                 Ellipse(point.X,point.Y,r,r,Colour(64,51,70,.30+.07*mark.Severity));Ellipse(point.X+r*.18,point.Y,r*.67,r*.67,Colour(148,54,63,.22));
             }
         }
-        void HeadWounds(ArenaMatch match,int side,FighterPresentation f)
+        void HeadWounds(ArenaMatch match,int side,FighterPresentation f,BloodEffects source)
         {
-            var level=state.WoundLevel(side);if(level==0)return;var caps=f.Action.Capsules;if(caps==null||f.Frame>=caps.Length)return;
+            var level=source.WoundLevel(side);if(level==0)return;var caps=f.Action.Capsules;if(caps==null||f.Frame>=caps.Length)return;
             if(f.Action.Id=="BLOCK"||f.Action.Id=="BLOCK_LOW"||f.Action.Id=="CONTACT_PUSH"||f.Action.Id=="CONTACT_RECEIVE"||f.Action.Id=="THROW_ATTACKER"||f.Action.Id=="THROW_VICTIM")return;
             foreach(var cap in caps[f.Frame])
             {

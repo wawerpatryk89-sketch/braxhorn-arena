@@ -20,12 +20,13 @@ namespace Braxhorn.Arena
             if(match.Phase==MatchPhase.Countdown)return;
             if(match.Player.Hp<=0||match.Opponent.Hp<=0)replay.Mark(match.SimulationMs);
             ReplayActor Actor(int i){var f=match.Fighter(i);return new ReplayActor(match.Presentation(i),f.MovingGait,f.MovingGaitSeconds,f.MovingGaitWeight);}
-            replay.Capture(match.SimulationMs,Actor(0),Actor(1));
+            if(blood)blood.CaptureReplay(replay,match.SimulationMs,Actor(0),Actor(1),match.ClinchActive);
+            else replay.Capture(match.SimulationMs,Actor(0),Actor(1),null,match.ClinchActive);
         }
         bool BeginReplay()
         {
             if(replayAttempted)return false;replayAttempted=true;
-            if(!replay.Play())return false;ReleaseControls();controls.SetActive(false);arenaMedia.SetPaused(true);fightAudio.Stop();blood?.Visible(false);
+            if(!replay.Play())return false;ReleaseControls();controls.SetActive(false);arenaMedia.SetPaused(true);fightAudio.Stop();
             hud.text="DECYDUJĄCY CIOS";replaySkip.SetActive(true);replaySkip.transform.SetAsLastSibling();RenderReplay();return true;
         }
         void UpdateReplay()
@@ -47,12 +48,19 @@ namespace Braxhorn.Arena
                 // Replay owns pose time; bypass transition blending against the completed match clock.
                 poses[i].ApplyMovingGait(f.Gait,f.GaitSeconds,f.GaitWeight);
             }
+            if(replay.Current.Clinch)for(var i=0;i<2;i++)
+            {
+                var self=samples[i].Pose;var other=samples[1-i].Pose;
+                var gap=Math.Abs(self.X-other.X)/match.Scale/self.Action.Scale*3.25/640;
+                poses[i].ApplyClinchContact(self.Action,other.Action,gap,self.Seconds);
+            }
+            blood?.PresentReplay(match,replay.Current);
         }
         void FinishReplay()
         {
             if(!replaySkip||!replaySkip.activeSelf)return;
             replay.Clear();replaySkip.SetActive(false);fightAudio.Stop();blood?.Visible(true);
-            if(match!=null){for(var i=0;i<2;i++)RenderFighter(i,match.Presentation(i));if(!resultApplied)CompleteMatch();}
+            if(match!=null){for(var i=0;i<2;i++)RenderFighter(i,match.Presentation(i));blood?.Present(match,0);if(!resultApplied)CompleteMatch();}
         }
     }
 }

@@ -1,6 +1,6 @@
 {
   "status": "In progress",
-  "scope": "Native Unity 6 migration of published v271: gameplay, campaigns, adventure, menus, accounts/shop/rankings, native duels/voice and online tournament adapters implemented; remaining fidelity, native avatar/session and runtime work incomplete",
+  "scope": "Native Unity 6 migration of published v271: source implementation in progress; APK and runtime verification blocked; uploaded avatar/camera/crop, owner sign-in handoff and presentation parity incomplete",
   "sourceSiteVersion": 271,
   "sourceCommit": "f355fe6ac6af41518fde420382512d49bd27d51a",
   "editor": "6000.3.27f2",
@@ -13,7 +13,7 @@
   },
   "managedCompilation": {
     "status": "Passed",
-    "files": 75,
+    "files": 82,
     "method": "Separate Domain, Runtime, Editor and EditMode assemblies, plus official WebRTC 3.0.0 managed sources, compiled against Unity 6000.3.27f2 references without Editor execution",
     "warnings": [
       "CS1701: Newtonsoft.Json netstandard 2.0 reference resolves against netstandard 2.1 in standalone compiler invocation. UPM runtime resolution not verified.",
@@ -51,8 +51,8 @@
   },
   "cloudActivation": {
     "status": "Blocked",
-    "runId": 41510507631,
-    "jobId": 125500840129,
+    "runId": 41566861132,
+    "jobId": 125690366854,
     "missingRepositorySecrets": [
       "UNITY_LICENSE",
       "UNITY_EMAIL",
@@ -165,7 +165,7 @@
   "nativeMenusAndServices": {
     "status": "Implemented, managed compilation/tests only",
     "cinematicFlowChecks": 21,
-    "accountShopChecks": 42,
+    "accountShopChecks": 61,
     "rankingChecks": 34,
     "cpuChecks": 11,
     "clinchChecks": 20,
@@ -173,7 +173,7 @@
     "mediaBytes": 421358067,
     "interfaceImages": 30,
     "cinematics": 16,
-    "remaining": "Uploaded avatar/camera/crop, secure session persistence, source UI visual parity, legacy owner sign-in handoff and live Android validation"
+    "remaining": "Uploaded avatar/camera/crop, source UI visual parity, legacy owner sign-in handoff and live Android validation"
   },
   "adventureServer": {
     "status": "Implemented; mocked protocol and simulation-event checks pass",
@@ -199,10 +199,10 @@
     "remaining": "Complete VFX/camera prediction equivalence, browser paired-action interoperability and real-device RTC/audio/background tests"
   },
   "latestCompletedValidationRun": {
-    "id": 41564419113,
-    "sha": "131b5136fab4b920334f0cc99ac4fb111aa1a136",
+    "id": 41566861132,
+    "sha": "9de8b1d18829b8efd1c0898970f64d328efc2a9e",
     "conclusion": "success",
-    "scope": "Previous duel/WebRTC checkpoint, before voice and tournament changes; all export/media/rule jobs passed",
+    "scope": "Prior saved voice/tournament checkpoint: exports/media/native rule jobs passed. Re-inspected on 2026-11-03. Android was never requested in that push.",
     "androidJob": "skipped; no APK"
   },
   "publicBoardRead": {
@@ -224,5 +224,37 @@
     "scope": "List/detail/bracket/entries/history, participant registration/withdrawal/invitation claim, authoritative room entry, owner create/draw/schedule/add/remove/restart/resolve/cancel/delete with explicit in-app confirmation",
     "liveWrites": false,
     "remaining": "Rendered touch/layout and live two-peer lifecycle verification; owner platform sign-in handoff; source champion presentation parity"
+  },
+  "recoveryAudit": {
+    "date": "2026-11-03",
+    "baselineLocalCommit": "27e9bbc",
+    "baselineRemoteCommit": "9de8b1d18829b8efd1c0898970f64d328efc2a9e",
+    "baselineTreesMatch": true,
+    "baselineActualAssetChecks": {
+      "match": 200,
+      "adventure": 548,
+      "duel": 634
+    },
+    "latestFixtureChecks": {
+      "replay": 26,
+      "accountShopSession": 61,
+      "duel": 544
+    },
+    "newCompile": "Domain, Runtime, Android-conditional Runtime, Editor, EditMode and pinned WebRTC managed code; no local Editor execution",
+    "newErrors": 0,
+    "warnings": "Same standalone Newtonsoft netstandard binding and obsolete OpenGLES2 branches in upstream WebRTC as baseline",
+    "apkTrigger": "Explicit [build-apk] commit or workflow_dispatch build_apk=true; missing activation is a failing job, not silent skipped success"
+  },
+  "nativeReplay": {
+    "status": "Recorded blood particles, floor stains, wounds and clinch IK wired into replay; 26 managed tests passed",
+    "liveState": "Separate playback effect state; no damage, awards or live particle mutation",
+    "unverified": "Rendered replay, allocation budget and frame time on Android; complete world/camera/VFX parity"
+  },
+  "nativeSession": {
+    "status": "Android keystore-backed cookie persistence implemented; 19 new protocol/lifecycle checks passed",
+    "storage": "AES-256-GCM, AndroidKeyStore non-exportable key, origin-bound authenticated data, AtomicFile in noBackupFilesDir; no password persistence",
+    "authority": "Restored cookie grants no local identity or entitlements; refresh from original server required",
+    "logout": "Clear disk capability and live cookies on explicit logout even after network failure; password change saves rotated token",
+    "limitations": "Android JNI, keystore, IL2CPP, reinstall/backup and device restart not executed; other platforms retain memory-only sessions"
   }
 }

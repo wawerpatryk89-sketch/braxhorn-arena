@@ -59,7 +59,7 @@ namespace Braxhorn.Arena
             Screen.sleepTimeout=SleepTimeout.NeverSleep;
             font=Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
             BuildUi();LoadProgress();
-            try{mediaCatalog=ArenaMediaCatalog.Load();arenaMedia=gameObject.AddComponent<NativeArenaMedia>();fightAudio=gameObject.AddComponent<NativeFightAudio>();blood=gameObject.AddComponent<NativeBloodEffects>();blood.Initialize(bloodShader);BuildCinematics();ShowSelection();ShowMenuPage(menuTitle);}
+            try{mediaCatalog=ArenaMediaCatalog.Load();arenaMedia=gameObject.AddComponent<NativeArenaMedia>();fightAudio=gameObject.AddComponent<NativeFightAudio>();blood=gameObject.AddComponent<NativeBloodEffects>();blood.Initialize(bloodShader);BuildCinematics();ShowSelection();ShowMenuPage(menuTitle);RestoreAccountAtLaunch();}
             catch(Exception e){Fail(e.Message);}
         }
         static string Display(string id) => id=="BEAR"?"MIŚ":id=="DEMON"?"AZRAK":id.Replace('_',' ');
@@ -245,8 +245,8 @@ namespace Braxhorn.Arena
                 if(e.Kind=="hit"||e.Kind=="slam")status.text="TRAFIENIE · "+Display(match.Fighter(e.Actor).Configuration.Character)+" · "+e.Region+" · "+e.Damage;
             }
             if(challengeRun!=null)hud.text+="\n"+(challengeRun.Done?"✓ ":"")+challengeRun.Definition.Title+" "+challengeRun.Count+"/"+challengeRun.Definition.Goal;
-            if(duel==null)CaptureReplay();
             blood?.Present(match,Math.Min(50,Time.unscaledDeltaTime*1000));
+            if(duel==null)CaptureReplay();
         }
         void RefreshFightControls(CombatConfiguration config)
         {

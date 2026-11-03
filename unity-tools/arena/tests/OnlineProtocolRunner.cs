@@ -21,6 +21,69 @@ static class OnlineProtocolRunner
         {Calls++;if(Steps.Count==0)throw new Exception("Unexpected request");return Steps.Dequeue()(request,token);}
         internal void Reply(JObject data,int status=200)=>Steps.Enqueue((r,t)=>Task.FromResult(Response(data.ToString(),status)));
     }
+    sealed class SessionStore : IArenaSessionStore
+    {
+        internal string Value;internal int Clears;internal bool Fails;
+        public string Load()=>Value;
+        public void Save(string value){if(Fails)throw new System.IO.IOException("Test secure store unavailable");Value=value;}
+        public void Clear(){Value=null;Clears++;}
+    }
+    static void IssueCookie(CookieContainer jar,string token=null)
+    {
+        var uri=new Uri("https://arena.invalid");var expiry=DateTime.UtcNow.AddDays(30);
+        jar.Add(uri,new Cookie("brax_session",token??new string('a',64),"/"){Secure=true,HttpOnly=true,Expires=expiry});
+        jar.Add(uri,new Cookie("brax_entry","local","/"){Secure=true,HttpOnly=true,Expires=expiry});
+    }
+    static async Task Sessions()
+    {
+        var store=new SessionStore();var jar=new CookieContainer();var handler=new Handler();
+        using(var client=new ArenaOnlineClient("https://arena.invalid",handler,store,jar))
+        {
+            handler.Steps.Enqueue((r,t)=>{IssueCookie(jar);return Task.FromResult(Response(Profile().ToString()));});
+            await client.Login("Tester","test-only-password");
+            Check(store.Value!=null&&!store.Value.Contains("test-only-password")&&!store.Value.Contains("Tester"),"session save contains no password or cached identity");
+        }
+        var encryptedPayload=store.Value;var restoredJar=new CookieContainer();var nextHandler=new Handler();
+        using(var restored=new ArenaOnlineClient("https://arena.invalid",nextHandler,store,restoredJar))
+        {
+            Check(!restored.Authenticated&&restored.PlayerId==null&&!restored.HasInventory,"restored cookie grants no local authority");
+            Check(restoredJar.GetCookies(new Uri("https://arena.invalid"))["brax_session"].Value==new string('a',64),"session cookie survives client restart through secure store");
+            Check(restoredJar.GetCookies(new Uri("https://other.invalid")).Count==0,"cookie is scoped to service origin");
+            nextHandler.Reply(Profile());await restored.RefreshAccount();Check(restored.Authenticated,"server confirms restored session");
+            nextHandler.Steps.Enqueue((r,t)=>throw new HttpRequestException());await Error(()=>restored.Logout());
+            Check(!restored.Authenticated&&restored.PlayerId==null&&store.Value==null&&restoredJar.GetCookieHeader(new Uri("https://arena.invalid"))=="","offline logout clears saved and in-memory capability");
+        }
+        foreach(var kind in new[]{"expired","wrong-origin","invalid-token","future","version","malformed","too-large"})
+        {
+            var data=JObject.Parse(encryptedPayload);
+            if(kind=="expired")data["expires"]=DateTimeOffset.UtcNow.AddSeconds(-1).ToUnixTimeSeconds();
+            if(kind=="wrong-origin")data["origin"]="https://other.invalid/";
+            if(kind=="invalid-token")data["token"]="not-a-token";
+            if(kind=="future")data["expires"]=DateTimeOffset.UtcNow.AddDays(40).ToUnixTimeSeconds();
+            if(kind=="version")data["version"]=99;
+            var invalid=new SessionStore{Value=kind=="malformed"?"invalid":kind=="too-large"?new string('x',2049):data.ToString()};var cookies=new CookieContainer();
+            using var client=new ArenaOnlineClient("https://arena.invalid",new Handler(),invalid,cookies);
+            Check(invalid.Value==null&&!client.Authenticated&&cookies.Count==0&&client.SessionWarning!=null,"unusable session rejected: "+kind);
+        }
+        var failStore=new SessionStore{Fails=true};var failJar=new CookieContainer();var failHandler=new Handler();
+        using(var client=new ArenaOnlineClient("https://arena.invalid",failHandler,failStore,failJar))
+        {
+            failHandler.Steps.Enqueue((r,t)=>{IssueCookie(failJar);return Task.FromResult(Response(Profile().ToString()));});await client.Login("Tester","test-only-password");
+            Check(client.Authenticated&&client.SessionWarning!=null&&failStore.Value==null,"secure storage failure permits memory-only login with warning");
+            failHandler.Reply(new JObject{["error"]="Sesja wygasła"},401);await Error(()=>client.RefreshShop(),401);
+            Check(!client.Authenticated&&client.PlayerId==null&&failJar.GetCookieHeader(new Uri("https://arena.invalid"))=="","server revocation clears local session and identity");
+        }
+        var rotated=new SessionStore{Value=encryptedPayload};var rotateJar=new CookieContainer();var rotateHandler=new Handler();
+        using(var client=new ArenaOnlineClient("https://arena.invalid",rotateHandler,rotated,rotateJar))
+        {
+            rotateHandler.Reply(Profile());await client.RefreshAccount();
+            rotateHandler.Steps.Enqueue((r,t)=>{IssueCookie(rotateJar,new string('b',64));var profile=Profile();profile["saved"]=true;profile["player"]["hasPassword"]=true;return Task.FromResult(Response(profile.ToString()));});
+            await client.ChangePassword("test-only-old","test-only-new");
+            Check((string)JObject.Parse(rotated.Value)["token"]==new string('b',64),"password change persists server-rotated session");
+            rotateHandler.Reply(Profile("g:guest",false));await client.Logout();
+            Check(rotated.Value==null&&client.PlayerId=="g:guest"&&!client.Authenticated,"confirmed logout keeps guest profile only");
+        }
+    }
     static HttpResponseMessage Response(string json,int status=200)=>new HttpResponseMessage((HttpStatusCode)status){Content=new StringContent(json,Encoding.UTF8,"application/json")};
     static JObject Profile(string id="a:first",bool authenticated=true)=>new JObject{["player"]=new JObject{["id"]=id,["name"]="Tester",["authenticated"]=authenticated},["authenticated"]=authenticated};
     static readonly string[] Ids={"BRAX_WHITE","BRAX_STREET","NYXA_SPORT","NYXA_PINK","VEXA_PURPLE","VEXA_STREET","KROV_TRACKSUIT","KROV_SUMMER"};
@@ -63,6 +126,7 @@ static class OnlineProtocolRunner
         var first=client.RefreshAccount();var second=client.RefreshShop();Check(handler.Calls==before+1&&!second.IsCompleted,"identity and inventory requests serialize");gate.SetResult(Response(Profile().ToString()));await Task.WhenAll(first,second);Check(handler.Calls==before+2,"queued inventory runs after identity");
         var cancelHandler=new Handler();var cancelled=new ArenaOnlineClient("https://arena.invalid",cancelHandler);cancelHandler.Steps.Enqueue(async(r,t)=>{await Task.Delay(Timeout.Infinite,t);return Response(Profile().ToString());});
         var pending=cancelled.RefreshAccount();cancelled.Dispose();try{await pending;throw new Exception("Disposed request applied");}catch(OperationCanceledException){Check(!cancelled.Authenticated,"dispose cancels request without accepting identity");}
+        await Sessions();
         Console.WriteLine("PASS "+checks+" native account/shop protocol checks: source requests, server authority, price conflicts, account isolation, malformed responses, limits, serialization and cancellation. No live account, purchase, Android HTTP or TLS test was performed.");
     }
 }
