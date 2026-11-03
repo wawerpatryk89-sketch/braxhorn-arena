@@ -58,7 +58,7 @@ namespace Braxhorn.Arena
             Screen.sleepTimeout=SleepTimeout.NeverSleep;
             font=Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
             BuildUi();LoadProgress();
-            try{mediaCatalog=ArenaMediaCatalog.Load();arenaMedia=gameObject.AddComponent<NativeArenaMedia>();fightAudio=gameObject.AddComponent<NativeFightAudio>();blood=gameObject.AddComponent<NativeBloodEffects>();blood.Initialize(bloodShader);ShowSelection();}
+            try{mediaCatalog=ArenaMediaCatalog.Load();arenaMedia=gameObject.AddComponent<NativeArenaMedia>();fightAudio=gameObject.AddComponent<NativeFightAudio>();blood=gameObject.AddComponent<NativeBloodEffects>();blood.Initialize(bloodShader);ShowSelection();ShowMenuPage(menuTitle);}
             catch(Exception e){Fail(e.Message);}
         }
         static string Display(string id) => id=="BEAR"?"MIŚ":id=="DEMON"?"AZRAK":id.Replace('_',' ');
@@ -73,17 +73,7 @@ namespace Braxhorn.Arena
             uiRoot=new GameObject("Mobile interface fit",typeof(RectTransform)).GetComponent<RectTransform>();uiRoot.SetParent(safeRoot,false);uiRoot.anchorMin=uiRoot.anchorMax=uiRoot.pivot=new Vector2(.5f,.5f);uiRoot.sizeDelta=new Vector2(1024,576);uiRoot.anchoredPosition=Vector2.zero;
             status=Label(uiRoot,"Status",new Rect(20,16,984,28),16);
             status.text="BRAXHORN ARENA · UNITY · TEST MIGRACJI WALKI";
-            selection=Panel("Selection",new Rect(100,76,824,420),new Color(.04f,.05f,.07f,.97f));
-            Label(selection.transform,"Title",new Rect(24,20,776,50),30).text="BRAXHORN ARENA";
-            chosen=Label(selection.transform,"Selection details",new Rect(24,68,776,126),21);
-            Click(selection.transform,"Postać ◀",new Rect(24,204,184,48),()=>{variantIndex=(variantIndex+Variants.Length-1)%Variants.Length;RefreshSelection();});
-            Click(selection.transform,"Postać ▶",new Rect(220,204,184,48),()=>{variantIndex=(variantIndex+1)%Variants.Length;RefreshSelection();});
-            Click(selection.transform,"Przeciwnik",new Rect(416,204,184,48),()=>{opponentIndex=(opponentIndex+1)%Roster.Length;RefreshSelection();});
-            Click(selection.transform,"Trudność",new Rect(612,204,184,48),()=>{difficulty=(difficulty+1)%3;RefreshSelection();});
-            Click(selection.transform,"Tryb",new Rect(24,274,232,58),()=>{modeIndex=(modeIndex+1)%Modes.Length;RefreshSelection();});
-            Click(selection.transform,"Arena",new Rect(280,274,232,58),()=>{if(mediaCatalog!=null){if(Modes[modeIndex]=="adventure")routeIndex=(routeIndex+1)%mediaCatalog.Routes.Count;else arenaIndex=(arenaIndex+1)%mediaCatalog.Arenas.Length;RefreshSelection();}});
-            Click(selection.transform,"ROZPOCZNIJ",new Rect(536,274,260,58),BeginSession);
-            selectionScope=Label(selection.transform,"Scope",new Rect(24,348,776,56),16);selectionScope.text="Natywna walka i kampanie. Przygoda lokalna bez rankingu online. Wersja nieprzeznaczona do sprzedaży.";
+            BuildMenuUi();
             controls=Panel("Controls",new Rect(0,440,1024,136),Color.clear);
             left=Hold("◀",new Rect(16,54,74,62));right=Hold("▶",new Rect(98,54,74,62));
             left.Pressed=()=>DirectionPressed(-1);right.Pressed=()=>DirectionPressed(1);left.Released=()=>directionTap.Release(-1);right.Released=()=>directionTap.Release(1);
@@ -98,20 +88,20 @@ namespace Braxhorn.Arena
             Tap("K1",new Rect(844,54,76,62),FightButton.Kick);Tap("K2",new Rect(930,54,76,62),FightButton.HeavyKick);
             comboButton=Tap("COMBO",new Rect(672,0,156,44),FightButton.Combo);energyButton=Tap("ENERGIA",new Rect(844,0,162,44),FightButton.Energy);
             hud=Label(uiRoot,"HUD",new Rect(24,56,976,68),22);
-            var pause=Click(uiRoot,"PAUZA",new Rect(850,12,150,36),TogglePause);pauseLabel=pause.GetComponentInChildren<Text>();
-            Click(uiRoot,"DŹWIĘK",new Rect(708,12,132,36),()=>{if(fightAudio)fightAudio.Mute(!fightAudio.Muted);});
+            pauseControl=Click(uiRoot,"PAUZA",new Rect(850,12,150,36),TogglePause);pauseLabel=pauseControl.GetComponentInChildren<Text>();
+            soundControl=Click(uiRoot,"DŹWIĘK",new Rect(708,12,132,36),()=>{if(fightAudio)fightAudio.Mute(!fightAudio.Muted);});
             resultPanel=Panel("Result",new Rect(240,150,544,250),new Color(.03f,.04f,.05f,.97f));
             result=Label(resultPanel.transform,"Result text",new Rect(24,20,496,104),26);
             Click(resultPanel.transform,"DALEJ",new Rect(24,160,230,60),ContinueSession);
             Click(resultPanel.transform,"MENU",new Rect(278,160,242,60),ShowSelection);
-            resultPanel.SetActive(false);controls.SetActive(false);BuildTrainingUi();BuildChallengeUi();BuildReplayUi();
+            resultPanel.SetActive(false);controls.SetActive(false);BuildTrainingUi();BuildChallengeUi();BuildReplayUi();BuildPauseUi();
         }
         GameObject Panel(string name,Rect rect,Color color)
         {var obj=new GameObject(name,typeof(RectTransform),typeof(Image));Place(obj,uiRoot,rect);obj.GetComponent<Image>().color=color;obj.GetComponent<Image>().raycastTarget=color.a>0;return obj;}
         void Place(GameObject obj,Transform parent,Rect rect)
         {var t=obj.GetComponent<RectTransform>();t.SetParent(parent,false);t.anchorMin=t.anchorMax=new Vector2(0,1);t.pivot=new Vector2(0,1);t.anchoredPosition=new Vector2(rect.x,-rect.y);t.sizeDelta=rect.size;}
         Text Label(Transform parent,string name,Rect rect,int size)
-        {var obj=new GameObject(name,typeof(RectTransform),typeof(Text));Place(obj,parent,rect);var text=obj.GetComponent<Text>();text.font=font;text.fontSize=size;text.color=Color.white;text.raycastTarget=false;text.verticalOverflow=VerticalWrapMode.Overflow;return text;}
+        {var obj=new GameObject(name,typeof(RectTransform),typeof(Text));Place(obj,parent,rect);var text=obj.GetComponent<Text>();text.font=font;text.fontSize=size;text.color=Color.white;text.raycastTarget=false;text.supportRichText=false;text.verticalOverflow=VerticalWrapMode.Overflow;return text;}
         GameObject Click(Transform parent,string text,Rect rect,Action action)
         {
             var obj=new GameObject(text,typeof(RectTransform),typeof(Image),typeof(Button));Place(obj,parent,rect);obj.GetComponent<Image>().color=new Color(.18f,.20f,.23f,.96f);
@@ -124,7 +114,7 @@ namespace Braxhorn.Arena
         {var button=Hold(text,rect);button.Pressed=()=>{ReadInput();match?.Press(0,action);};return button;}
         void DirectionPressed(int direction)
         {if(match==null||match.Paused||match.Phase!=MatchPhase.Fighting){directionTap.Reset();return;}if(directionTap.Press(direction,Time.realtimeSinceStartupAsDouble*1000,match.Player.Face))match.Press(0,FightButton.Retreat);}
-        void RefreshSelection() {RefreshTrainingLabels();chosen.text="POSTAĆ: "+Display(Variants[variantIndex])+"\nPRZECIWNIK: "+Display(Roster[opponentIndex])+"\n"+ModeNames[modeIndex]+" · "+new[]{"ŁATWY","ŚREDNI","TRUDNY"}[difficulty]+"\n"+(Modes[modeIndex]=="adventure"?(string)mediaCatalog?.Routes[routeIndex]["title"]:(mediaCatalog?.Arenas[arenaIndex].name??"BRAK KATALOGU AREN"));}
+        void RefreshSelection() {RefreshTrainingLabels();RefreshMenuUi();chosen.text="POSTAĆ: "+Display(Variants[variantIndex])+"\nPRZECIWNIK: "+Display(Roster[opponentIndex])+"\n"+ModeNames[modeIndex]+" · "+new[]{"ŁATWY","ŚREDNI","TRUDNY"}[difficulty]+"\n"+(Modes[modeIndex]=="adventure"?(string)mediaCatalog?.Routes[routeIndex]["title"]:(mediaCatalog?.Arenas[arenaIndex].name??"BRAK KATALOGU AREN"));}
         void BeginSession()
         {
             if(loading||mediaCatalog==null)return;
@@ -139,7 +129,7 @@ namespace Braxhorn.Arena
         }
         IEnumerator LoadMatch(string player,string opponent,double hp)
         {
-            loading=true;resultApplied=false;error=null;var requestId=++generation;
+            loading=true;resultApplied=false;error=null;CloseMenuOverlays();var requestId=++generation;
             ResetReplay();
             matchRecordId=Guid.NewGuid().ToString("N");
             ReleaseControls();match=null;selection.SetActive(false);controls.SetActive(false);resultPanel.SetActive(false);hud.text="WCZYTYWANIE…";
@@ -171,11 +161,12 @@ namespace Braxhorn.Arena
             }
             catch(Exception e){Debug.LogException(e);Fail(e.Message);}
         }
-        void Fail(string message){ResetReplay();if(trainingPanel)trainingPanel.SetActive(false);if(trainingOpen)trainingOpen.SetActive(false);generation++;ReleaseControls();ClearAdventure();ClearActors();match=null;controls.SetActive(false);loading=false;error=message;hud.text="Nie udało się wczytać meczu: "+message;selection.SetActive(true);if(arenaMedia)arenaMedia.Clear();if(fightAudio)fightAudio.Stop();}
+        void Fail(string message){ResetReplay();CloseMenuOverlays();if(trainingPanel)trainingPanel.SetActive(false);if(trainingOpen)trainingOpen.SetActive(false);generation++;ReleaseControls();ClearAdventure();ClearActors();match=null;controls.SetActive(false);loading=false;error=message;hud.text="Nie udało się wczytać meczu: "+message;selection.SetActive(true);ShowMenuPage(menuRoster);status.text=message;if(arenaMedia)arenaMedia.Clear();if(fightAudio)fightAudio.Stop();}
         void Update()
         {
             if(safeRoot){var r=Screen.safeArea;safeRoot.anchorMin=r.min/new Vector2(Screen.width,Screen.height);safeRoot.anchorMax=r.max/new Vector2(Screen.width,Screen.height);if(uiRoot)uiRoot.localScale=Vector3.one*Mathf.Min(safeRoot.rect.width/1024,safeRoot.rect.height/576);}
             if(arenaMedia&&fightAudio)arenaMedia.Sound(fightAudio.Muted,fightAudio.Duck);
+            UpdateMenuInput();
             if(loading||match==null)return;
             if(replay.Active){UpdateReplay();return;}
             if(adventure!=null){UpdateAdventure();return;}
@@ -273,13 +264,13 @@ namespace Braxhorn.Arena
             StartCoroutine(LoadMatch(Variants[variantIndex],campaignOpponent??Roster[opponentIndex],survival?.Hp??100));
         }
         void TogglePause(){if(replay.Active){Pause(!match.Paused);return;}if(trainingPanel&&trainingPanel.activeSelf){CloseTraining();return;}if(match==null||loading||match.Phase==MatchPhase.Complete||adventure?.Phase==AdventurePhase.Complete||adventure?.Phase==AdventurePhase.Dead)return;Pause(match.Paused?false:true);}
-        void Pause(bool value){match?.SetPaused(value);arenaMedia?.SetPaused(value);adventureWorld?.SetPaused(value);fightAudio?.SetPaused(value);ReleaseControls();}
+        void Pause(bool value){match?.SetPaused(value);arenaMedia?.SetPaused(value);adventureWorld?.SetPaused(value);fightAudio?.SetPaused(value);ReleaseControls();RefreshPauseUi();}
         void ReleaseControls(){directionTap.Reset();foreach(var button in buttons)button.Release();match?.ReleaseInputs();}
         void ShowSelection()
-        {ResetReplay();challengeRun=null;pendingChallenge=null;if(challengesPanel)challengesPanel.SetActive(false);if(trainingPanel)trainingPanel.SetActive(false);if(trainingOpen)trainingOpen.SetActive(false);generation++;StopAllCoroutines();ClearAdventure();loading=false;match=null;ClearActors();if(arenaMedia)arenaMedia.Clear();if(fightAudio)fightAudio.Stop();ReleaseControls();selection.SetActive(true);controls.SetActive(false);resultPanel.SetActive(false);hud.text="";RefreshSelection();}
+        {ResetReplay();challengeRun=null;pendingChallenge=null;if(challengesPanel)challengesPanel.SetActive(false);if(trainingPanel)trainingPanel.SetActive(false);if(trainingOpen)trainingOpen.SetActive(false);generation++;StopAllCoroutines();CloseMenuOverlays();ClearAdventure();loading=false;match=null;ClearActors();if(arenaMedia)arenaMedia.Clear();if(fightAudio)fightAudio.Stop();ReleaseControls();selection.SetActive(true);controls.SetActive(false);resultPanel.SetActive(false);hud.text="";RefreshSelection();ShowMenuPage(menuRoster);}
         void ClearActors(){if(blood){blood.Clear();blood.Visible(true);}bloodRound=0;bloodCamera=0;for(var i=0;i<2;i++){if(actors[i])Destroy(actors[i]);actors[i]=null;poses[i]=null;definitions[i]=null;}}
-        void OnApplicationPause(bool pause){applicationSuspended=pause;if(pause)Pause(true);}
-        void OnApplicationFocus(bool focus){applicationSuspended=!focus;if(!focus)Pause(true);}
+        void OnApplicationPause(bool pause){applicationSuspended=pause;if(pause)Pause(true);else RefreshPauseUi();}
+        void OnApplicationFocus(bool focus){applicationSuspended=!focus;if(!focus)Pause(true);else RefreshPauseUi();}
         void OnDestroy(){disposed=true;generation++;ClearAdventure();ClearActors();if(canvas)Destroy(canvas.gameObject);}
     }
 }

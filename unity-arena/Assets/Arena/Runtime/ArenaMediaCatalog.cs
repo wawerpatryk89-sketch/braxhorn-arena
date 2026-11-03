@@ -18,6 +18,8 @@ namespace Braxhorn.Arena
         public readonly ArenaMediaEntry[] Arenas;
         public readonly Dictionary<string,string> Sounds;
         public readonly JArray Routes;
+        public readonly Dictionary<string,string> Interface;
+        public readonly JArray Outfits;
         public ArenaMediaCatalog(string json)
         {
             var data=JObject.Parse(json);
@@ -25,7 +27,10 @@ namespace Braxhorn.Arena
             Arenas=data["arenas"].ToObject<ArenaMediaEntry[]>();
             Sounds=data["sounds"].ToDictionary(s=>(string)s["id"],s=>(string)s["file"]);
             Routes=(JArray)data["routes"];
+            Interface=((JObject)data["interface"]).Properties().ToDictionary(p=>p.Name,p=>(string)p.Value);
+            Outfits=(JArray)data["outfits"];
             if(Arenas.Length!=21||Routes.Count!=5)throw new FormatException("Incomplete original Arena catalog");
+            if(Interface.Count!=27||Outfits.Count!=8)throw new FormatException("Incomplete original Arena interface");
         }
         public static ArenaMediaCatalog Load()
         {

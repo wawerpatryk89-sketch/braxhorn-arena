@@ -21,7 +21,7 @@ namespace Braxhorn.Arena
             "CRESCENT_KICK"=>"KOPNIĘCIE OKRĘŻNE","MEIA_LUA"=>"MEIA LUA","GROUND_KICK"=>"KOPNIĘCIE Z ZIEMI",_=>id};
         void BuildTrainingUi()
         {
-            trainingSelection=Panel("Training selection",new Rect(24,348,776,56),Color.clear);Place(trainingSelection,selection.transform,new Rect(24,348,776,56));
+            trainingSelection=Panel("Training selection",new Rect(24,348,776,56),Color.clear);Place(trainingSelection,menuSetup.transform,new Rect(124,364,776,56));
             trainingModeLabel=Click(trainingSelection.transform,"",new Rect(0,0,380,48),()=>ChangeTraining(false)).GetComponentInChildren<Text>();
             trainingAttackLabel=Click(trainingSelection.transform,"",new Rect(396,0,380,48),()=>ChangeTraining(true)).GetComponentInChildren<Text>();
             trainingOpen=Click(uiRoot,"TRENING",new Rect(550,12,144,36),OpenTraining);
@@ -54,7 +54,7 @@ namespace Braxhorn.Arena
         void OpenTraining()
         {
             if(match?.Training!=true||loading||error!=null||trainingPanel.activeSelf)return;
-            trainingWasPaused=match.Paused;Pause(true);RefreshTrainingLabels();trainingPanel.SetActive(true);trainingPanel.transform.SetAsLastSibling();controls.SetActive(false);
+            trainingWasPaused=match.Paused;Pause(true);RefreshTrainingLabels();trainingPanel.SetActive(true);RefreshPauseUi();trainingPanel.transform.SetAsLastSibling();controls.SetActive(false);
         }
         void CloseTraining()
         {

@@ -10,18 +10,28 @@ namespace Braxhorn.Arena
     {
         GameObject challengesPanel,challengeStart;
         Text challengeDescription;
+        readonly System.Collections.Generic.List<Button> challengeButtons=new System.Collections.Generic.List<Button>();
         int challengeIndex;
         ArenaChallenge pendingChallenge;
         ChallengeRun challengeRun;
         void BuildChallengeUi()
         {
-            Click(selection.transform,"WYZWANIA",new Rect(600,20,196,42),()=>{RefreshChallenge();challengesPanel.SetActive(true);challengesPanel.transform.SetAsLastSibling();});
-            challengesPanel=Panel("Challenges",new Rect(100,76,824,420),new Color(.04f,.05f,.07f,.99f));
-            challengeDescription=Label(challengesPanel.transform,"Challenge",new Rect(24,24,776,230),23);
-            Click(challengesPanel.transform,"◀",new Rect(24,274,80,58),()=>{challengeIndex=(challengeIndex+ChallengeCatalog.All.Count-1)%ChallengeCatalog.All.Count;RefreshChallenge();});
-            Click(challengesPanel.transform,"▶",new Rect(116,274,80,58),()=>{challengeIndex=(challengeIndex+1)%ChallengeCatalog.All.Count;RefreshChallenge();});
-            Click(challengesPanel.transform,"WRÓĆ",new Rect(220,274,240,58),()=>challengesPanel.SetActive(false));
-            challengeStart=Click(challengesPanel.transform,"ROZPOCZNIJ",new Rect(484,274,312,58),LaunchChallenge);
+
+            challengesPanel=Panel("Challenges",new Rect(0,0,1024,576),MenuInk);
+            MenuArt(challengesPanel.transform,"background",new Rect(0,0,1024,576),true).GetComponent<UnityEngine.UI.RawImage>().color=new Color(.3f,.35f,.28f,1);
+            MenuHeading(challengesPanel,"WYZWANIA — ROZWÓJ TECHNIKI");
+            var viewport=new GameObject("Challenge list",typeof(RectTransform),typeof(Image),typeof(RectMask2D),typeof(ScrollRect));Place(viewport,challengesPanel.transform,new Rect(32,90,366,394));viewport.GetComponent<Image>().color=new Color(0,0,0,.25f);
+            var content=new GameObject("Challenges",typeof(RectTransform));Place(content,viewport.transform,new Rect(0,0,366,ChallengeCatalog.All.Count*66));
+            var scroll=viewport.GetComponent<ScrollRect>();scroll.viewport=(RectTransform)viewport.transform;scroll.content=(RectTransform)content.transform;scroll.horizontal=false;scroll.vertical=true;scroll.movementType=ScrollRect.MovementType.Clamped;
+            for(var i=0;i<ChallengeCatalog.All.Count;i++)
+            {
+                var index=i;var button=Click(content.transform,(i+1)+". "+ChallengeCatalog.All[i].Title,new Rect(0,i*66,350,58),()=>{challengeIndex=index;RefreshChallenge();});
+                button.GetComponentInChildren<Text>().fontSize=17;challengeButtons.Add(button.GetComponent<Button>());
+            }
+            MenuArt(challengesPanel.transform,"mode-challenges",new Rect(446,86,500,142),true);
+            challengeDescription=Label(challengesPanel.transform,"Challenge",new Rect(434,246,558,244),21);
+            Click(challengesPanel.transform,"WRÓĆ",new Rect(32,510,170,46),()=>challengesPanel.SetActive(false));
+            challengeStart=Click(challengesPanel.transform,"ROZPOCZNIJ",new Rect(674,510,318,46),LaunchChallenge);
             challengesPanel.SetActive(false);
         }
         void RefreshChallenge()
@@ -30,6 +40,12 @@ namespace Braxhorn.Arena
             var done=progress!=null&&((Newtonsoft.Json.Linq.JArray)progress.Fighter(fighter)["challenges"]).Values<string>().Contains(c.Id);
             challengeDescription.text=(challengeIndex+1)+" / "+ChallengeCatalog.All.Count+" · "+Display(fighter)+"\n"+c.Title+"\n\n"+c.Description+"\n"+(allowed?(done?"UKOŃCZONE — MOŻESZ POWTÓRZYĆ":"CEL: "+c.Goal):"Ta postać nie ma gardy. Wybierz inną postać.");
             challengeStart.GetComponent<Button>().interactable=allowed;
+            for(var i=0;i<challengeButtons.Count;i++)
+            {
+                var item=ChallengeCatalog.All[i];var available=item.Allows(fighter);
+                challengeButtons[i].GetComponent<Image>().color=i==challengeIndex?new Color(.22f,.36f,.14f,1):new Color(.06f,.1f,.07f,1);
+                challengeButtons[i].GetComponentInChildren<Text>().text=(i+1)+". "+item.Title+(available?"":" · NIEDOSTĘPNE");
+            }
         }
         void LaunchChallenge()
         {

@@ -1410,5 +1410,84 @@
       "id": "vocal-female-hurt-3",
       "file": "61e98289d93a0dce118e.mp3"
     }
+  ],
+  "interface": {
+    "title": "64b3ca70684aba5ea7ce.png",
+    "background": "18373161cfe8be7788c3.jpeg",
+    "training": "b03daaf3f0427448cd94.png",
+    "account": "9446fe193d1596889eeb.jpg",
+    "mode-adventure": "0b76890a893b69edbb3d.png",
+    "mode-challenges": "23a17a8589e51ee72ce3.png",
+    "mode-ranking": "d37338f70469a1e87689.png",
+    "mode-shop": "506dbc7dae20fb351c31.png",
+    "mode-survival": "0ade378d48acfb481247.png",
+    "portrait-BRAX": "40db25138831b5c3796c.png",
+    "portrait-NYXA": "6cbf264a7a4f88ac20b3.png",
+    "portrait-VEXA": "38bcfa905ee553ccd9c1.png",
+    "portrait-KROV": "ecf6583d950662a045a1.png",
+    "portrait-NINA": "b87b893766690b822d7b.png",
+    "portrait-DANNY": "bba4e1eac4dab9016d06.png",
+    "portrait-BEAR": "63b23d0979662b5d9020.png",
+    "portrait-DEMON": "427b23dcd7471959c3ba.png",
+    "portrait-BOSS": "23195325edcf8e427bab.png",
+    "portrait-ZOMBIE": "cce1fae92942dad1278a.png",
+    "portrait-BRAX_WHITE": "6e48bb3d1a6c2b17a550.png",
+    "portrait-BRAX_STREET": "3b0363fb87d56655b6b3.png",
+    "portrait-NYXA_SPORT": "7bca47f662af35907347.png",
+    "portrait-NYXA_PINK": "b089d346f2b9f98345a1.png",
+    "portrait-VEXA_PURPLE": "46531703be72d94da510.png",
+    "portrait-VEXA_STREET": "715292a4365fcb0c1d3b.png",
+    "portrait-KROV_TRACKSUIT": "d0b7a1038adf237eace1.png",
+    "portrait-KROV_SUMMER": "31bb0957569b15fab860.png"
+  },
+  "outfits": [
+    {
+      "id": "BRAX_WHITE",
+      "base": "BRAX",
+      "label": "Biały tank",
+      "price": 400
+    },
+    {
+      "id": "BRAX_STREET",
+      "base": "BRAX",
+      "label": "Zielone szorty",
+      "price": 600
+    },
+    {
+      "id": "NYXA_SPORT",
+      "base": "NYXA",
+      "label": "Czarny sport",
+      "price": 400
+    },
+    {
+      "id": "NYXA_PINK",
+      "base": "NYXA",
+      "label": "Różowy komplet",
+      "price": 600
+    },
+    {
+      "id": "VEXA_PURPLE",
+      "base": "VEXA",
+      "label": "Fioletowy komplet",
+      "price": 600
+    },
+    {
+      "id": "VEXA_STREET",
+      "base": "VEXA",
+      "label": "Czarny kombinezon",
+      "price": 400
+    },
+    {
+      "id": "KROV_TRACKSUIT",
+      "base": "KROV",
+      "label": "Czarny dres",
+      "price": 600
+    },
+    {
+      "id": "KROV_SUMMER",
+      "base": "KROV",
+      "label": "Letni komplet",
+      "price": 600
+    }
   ]
 }

@@ -55,7 +55,7 @@ namespace Braxhorn.Arena
         }
         IEnumerator LoadAdventure()
         {
-            ResetReplay();
+            ResetReplay();CloseMenuOverlays();
             loading=true;error=null;adventureResult=false;var token=++generation;ReleaseControls();ClearAdventure();match=null;campaign=null;survival=null;
             selection.SetActive(false);controls.SetActive(false);resultPanel.SetActive(false);hud.text="WCZYTYWANIE TRASY…";arenaMedia.Clear();ClearActors();
             yield return null;yield return Resources.UnloadUnusedAssets();

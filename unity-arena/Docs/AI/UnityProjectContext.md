@@ -122,3 +122,12 @@ Validation: all four managed assembly boundaries compile. Dedicated tests now in
 Latest inspected Arena CI preflight (job 125627200823, code 5b12899) reported activationInputsAvailable=false and all four Unity activation inputs absent. This blocks a requested APK job but not further source implementation. No credential values were read or copied from City.
 
 Final regression for the blood/input checkpoint passed all 18 native exported configurations: 200 match checks and 542 adventure checks, plus every dedicated suite listed above. The final UI control-cache change also passed separate four-assembly compilation and executable regressions. This remains managed-only evidence.
+
+
+## Original-art native menus and local records
+
+The native entry now has title, eight-fighter scrolling roster, per-character outfit selection, six modes, setup/difficulty/drills, 21 arena posters and five adventure routes, challenge hub/list, local profile and TOP 5 screens. All 25 challenge descriptions remain the source definitions; unavailable Nina guard challenges cannot start. Records retain source score/round/time/completion formats and filter by mode/challenge and difficulty. Name entry validates the existing local v2 contract and commits the in-memory profile only after disk save succeeds. This is explicitly a local profile, not authenticated online identity.
+
+27 original UI images and eight original outfit labels/prices are pinned to the v271 commit and SHA-256 in the media catalog. Export now packages 160 verified files / 334967409 bytes. Decoding WebP to PNG does not redraw or replace the artwork. Each visible native image owns its request/decoded texture, cancels requests and frees textures when hidden, and uses the Android-compatible StreamingAssets URL. Screens use the existing safe-area fitted uGUI root; code does not embed HTML or run JS. Layout/typography is native and has not been visually compared with source. Outfit selection remains review access, pending server-owned inventory integration; it is not a working shop or proof of ownership.
+
+Pause now provides resume and return to menu; opening training hides the general pause panel, and returning from application suspension retains an explicit pause. Four managed assembly boundaries and all executable rule suites passed. Media hashes/encoding passed. Actual keyboard/touch focus, async image cancellation, rendered layout, shaders, Unity import and Android execution remain unverified. Prior GitHub run 41552921286 at 2ca6a0 completed successfully for source validation, not APK.

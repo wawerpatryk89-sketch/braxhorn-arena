@@ -2,7 +2,7 @@
   "schema": 1,
   "sourceSiteVersion": 271,
   "baseUrl": "https://braxhorn-p0-preview.wawerpatryk89.chatgpt.site",
-  "catalogSha256": "2a0e66301680c67346862c593c8a5b32936bdf4df81952d60a9fd6a672fcd5a5",
+  "catalogSha256": "2f158d81786907e82a213ae014615866166bbc44797bac65683745e1d3e1f47d",
   "sources": [
     {
       "url": "/assets/arena-rooftop-city-20261018.webp",
@@ -1095,6 +1095,223 @@
       "bytes": 6314,
       "output": "61e98289d93a0dce118e.mp3",
       "conversion": "copy"
+    },
+    {
+      "url": "/assets/title-phone-safe-20261007.png",
+      "path": "game/assets/title-phone-safe-20261007.png",
+      "sha256": "64b3ca70684aba5ea7ceeee2f0ca019eb9aa76d7ea993c1036afbc79b34d59f4",
+      "bytes": 3271904,
+      "output": "64b3ca70684aba5ea7ce.png",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/shared-menu-background.jpeg",
+      "path": "game/assets/shared-menu-background.jpeg",
+      "sha256": "18373161cfe8be7788c3094efd0ac0ff565a8ad7b82696ddb03129f7180296dd",
+      "bytes": 301882,
+      "output": "18373161cfe8be7788c3.jpeg",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/training-card-pro.png",
+      "path": "game/assets/training-card-pro.png",
+      "sha256": "b03daaf3f0427448cd940957c2004a29ac55c4b33150418cae264db63e18c19d",
+      "bytes": 2469860,
+      "output": "b03daaf3f0427448cd94.png",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/account-login-reference.jpg",
+      "path": "game/assets/account-login-reference.jpg",
+      "sha256": "9446fe193d1596889eeb8c5924f006e30ceda4e69cdacc49b826b523a37db75b",
+      "bytes": 220330,
+      "output": "9446fe193d1596889eeb.jpg",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/mode-art/adventure.webp",
+      "path": "game/assets/mode-art/adventure.webp",
+      "sha256": "0b76890a893b69edbb3dfa53cfeef68266fabb455facff95adfc7d21e32781e6",
+      "bytes": 368460,
+      "output": "0b76890a893b69edbb3d.png",
+      "conversion": "png"
+    },
+    {
+      "url": "/assets/mode-art/challenges.webp",
+      "path": "game/assets/mode-art/challenges.webp",
+      "sha256": "23a17a8589e51ee72ce3393175aeab8accfd044ab7f1708fcdf249f63fd53247",
+      "bytes": 237074,
+      "output": "23a17a8589e51ee72ce3.png",
+      "conversion": "png"
+    },
+    {
+      "url": "/assets/mode-art/ranking.webp",
+      "path": "game/assets/mode-art/ranking.webp",
+      "sha256": "d37338f70469a1e87689a4c0987671946a5abe2144179788653c98a8596abc55",
+      "bytes": 222252,
+      "output": "d37338f70469a1e87689.png",
+      "conversion": "png"
+    },
+    {
+      "url": "/assets/mode-art/shop.webp",
+      "path": "game/assets/mode-art/shop.webp",
+      "sha256": "506dbc7dae20fb351c31d96109853087a91af9962016cbd4eea092ecef5c16fc",
+      "bytes": 240170,
+      "output": "506dbc7dae20fb351c31.png",
+      "conversion": "png"
+    },
+    {
+      "url": "/assets/mode-art/survival.webp",
+      "path": "game/assets/mode-art/survival.webp",
+      "sha256": "0ade378d48acfb4812471734ebf6811449c067eaa9798cbd0ef186a00066c859",
+      "bytes": 270796,
+      "output": "0ade378d48acfb481247.png",
+      "conversion": "png"
+    },
+    {
+      "url": "/assets/portraits/brax.webp",
+      "path": "game/assets/portraits/brax.webp",
+      "sha256": "40db25138831b5c3796c598e9eccfdabeb5b5278447c26970ecfa690e2a6dcc0",
+      "bytes": 66770,
+      "output": "40db25138831b5c3796c.png",
+      "conversion": "png"
+    },
+    {
+      "url": "/assets/portraits/nyxa.webp",
+      "path": "game/assets/portraits/nyxa.webp",
+      "sha256": "6cbf264a7a4f88ac20b368aab2966d63ed4d7831d90d0dc5cb8a209fa37433c5",
+      "bytes": 51110,
+      "output": "6cbf264a7a4f88ac20b3.png",
+      "conversion": "png"
+    },
+    {
+      "url": "/assets/portraits/vexa.webp",
+      "path": "game/assets/portraits/vexa.webp",
+      "sha256": "38bcfa905ee553ccd9c14b84933607797eed369cf108eb1cf376ba63e0a6f231",
+      "bytes": 73894,
+      "output": "38bcfa905ee553ccd9c1.png",
+      "conversion": "png"
+    },
+    {
+      "url": "/assets/portraits/krov.webp",
+      "path": "game/assets/portraits/krov.webp",
+      "sha256": "ecf6583d950662a045a19d00f20575d211f6a56d3fa3f4a2e1b6e05ca4b740db",
+      "bytes": 66304,
+      "output": "ecf6583d950662a045a1.png",
+      "conversion": "png"
+    },
+    {
+      "url": "/assets/portraits/nina.webp",
+      "path": "game/assets/portraits/nina.webp",
+      "sha256": "b87b893766690b822d7bb225bf0a35b24d13d9f03f4b5e6be1fa228b1cafc310",
+      "bytes": 55296,
+      "output": "b87b893766690b822d7b.png",
+      "conversion": "png"
+    },
+    {
+      "url": "/assets/portraits/danny.webp",
+      "path": "game/assets/portraits/danny.webp",
+      "sha256": "bba4e1eac4dab9016d06ffc501b22159ddf52d04f239e95c3a985cf543ed8d0d",
+      "bytes": 65256,
+      "output": "bba4e1eac4dab9016d06.png",
+      "conversion": "png"
+    },
+    {
+      "url": "/assets/portraits/bear.webp",
+      "path": "game/assets/portraits/bear.webp",
+      "sha256": "63b23d0979662b5d90209da1b3419b641a6ad8e7ffd69a4c5872def836198e27",
+      "bytes": 89932,
+      "output": "63b23d0979662b5d9020.png",
+      "conversion": "png"
+    },
+    {
+      "url": "/assets/portraits/demon.webp",
+      "path": "game/assets/portraits/demon.webp",
+      "sha256": "427b23dcd7471959c3ba846b20722e7ae6fdd663d31c8e63ca7983e2c3779198",
+      "bytes": 88904,
+      "output": "427b23dcd7471959c3ba.png",
+      "conversion": "png"
+    },
+    {
+      "url": "/assets/portraits/boss.webp",
+      "path": "game/assets/portraits/boss.webp",
+      "sha256": "23195325edcf8e427baba00e470a14e1434ee547587a0eb4c27428b432ec4098",
+      "bytes": 74736,
+      "output": "23195325edcf8e427bab.png",
+      "conversion": "png"
+    },
+    {
+      "url": "/assets/portraits/zombie.webp",
+      "path": "game/assets/portraits/zombie.webp",
+      "sha256": "cce1fae92942dad1278a24ecfd14591ebf0eb1dac7455628b36093a8874b7c82",
+      "bytes": 76698,
+      "output": "cce1fae92942dad1278a.png",
+      "conversion": "png"
+    },
+    {
+      "url": "/assets/outfits/brax-white/portrait.webp",
+      "path": "game/assets/outfits/brax-white/portrait.webp",
+      "sha256": "6e48bb3d1a6c2b17a55097275e4c64f7b31fd7c1623953210992c4ccb3fc6225",
+      "bytes": 66956,
+      "output": "6e48bb3d1a6c2b17a550.png",
+      "conversion": "png"
+    },
+    {
+      "url": "/assets/outfits/brax-street/portrait.webp",
+      "path": "game/assets/outfits/brax-street/portrait.webp",
+      "sha256": "3b0363fb87d56655b6b31a651a36ff8509fed94262e64dafa0237126df617556",
+      "bytes": 94038,
+      "output": "3b0363fb87d56655b6b3.png",
+      "conversion": "png"
+    },
+    {
+      "url": "/assets/outfits/nyxa-sport/portrait.webp",
+      "path": "game/assets/outfits/nyxa-sport/portrait.webp",
+      "sha256": "7bca47f662af35907347ab2c9ea38d8efe468cbdb9e07957724ae4502de7fe0d",
+      "bytes": 66220,
+      "output": "7bca47f662af35907347.png",
+      "conversion": "png"
+    },
+    {
+      "url": "/assets/outfits/nyxa-pink/portrait.webp",
+      "path": "game/assets/outfits/nyxa-pink/portrait.webp",
+      "sha256": "b089d346f2b9f98345a1eca768b8c7d6732a9afe080fc8fc4effb875fd891bc3",
+      "bytes": 51156,
+      "output": "b089d346f2b9f98345a1.png",
+      "conversion": "png"
+    },
+    {
+      "url": "/assets/outfits/vexa-purple/portrait.webp",
+      "path": "game/assets/outfits/vexa-purple/portrait.webp",
+      "sha256": "46531703be72d94da510cc23abec0c446424d83040d17962a9e6642db5048b82",
+      "bytes": 74292,
+      "output": "46531703be72d94da510.png",
+      "conversion": "png"
+    },
+    {
+      "url": "/assets/outfits/vexa-street/portrait.webp",
+      "path": "game/assets/outfits/vexa-street/portrait.webp",
+      "sha256": "715292a4365fcb0c1d3bc12a766a02760b1a85b7de00e6ce8f9e0847bf6fc01c",
+      "bytes": 59596,
+      "output": "715292a4365fcb0c1d3b.png",
+      "conversion": "png"
+    },
+    {
+      "url": "/assets/outfits/krov-tracksuit/portrait.webp",
+      "path": "game/assets/outfits/krov-tracksuit/portrait.webp",
+      "sha256": "d0b7a1038adf237eace1202b70c4c1062424f6c4529c714917165a59e2e70f79",
+      "bytes": 52842,
+      "output": "d0b7a1038adf237eace1.png",
+      "conversion": "png"
+    },
+    {
+      "url": "/assets/outfits/krov-summer/portrait.webp",
+      "path": "game/assets/outfits/krov-summer/portrait.webp",
+      "sha256": "31bb0957569b15fab860452d6dbcd42a9fdd05d78d60589bb9927dd9993b2912",
+      "bytes": 85530,
+      "output": "31bb0957569b15fab860.png",
+      "conversion": "png"
     }
-  ]
+  ],
+  "interfaceSourceCommit": "f355fe6ac6af41518fde420382512d49bd27d51a"
 }
