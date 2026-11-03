@@ -38,8 +38,39 @@ namespace Braxhorn.Arena
             JObject board=null;await Locked(async()=>
             {
                 var response=await Request("api/arena?action=board&mode="+Uri.EscapeDataString(mode)+"&difficulty="+level,null);ThrowError(response);
-                if(!(response.data["rows"] is JArray rows)||rows.Count>100)throw new ArenaServiceException("Serwer zwrócił nieprawidłowy ranking.");board=response.data;
+                if(!(response.data["rows"] is JArray rows)||rows.Count>100)throw InvalidBoard();
+                foreach(var row in rows)ValidateBoardRow(row,mode);
+                if(response.data["own"]!=null&&response.data["own"].Type!=JTokenType.Null)ValidateBoardRow(response.data["own"],mode);
+                if(rows.Any(r=>(long)r["rank"]>100)||rows.Select(r=>(long)r["rank"]).Distinct().Count()!=rows.Count)throw InvalidBoard();
+                board=response.data;
             });return board;
+        }
+        static ArenaServiceException InvalidBoard()=>new ArenaServiceException("Serwer zwrócił nieprawidłowy ranking lub historię.");
+        static bool TextValue(JToken value,int max)=>value?.Type==JTokenType.String&&((string)value).Length<=max;
+        static bool Whole(JToken value,long min=0,long max=long.MaxValue)=>value?.Type==JTokenType.Integer&&long.TryParse((string)value,out var number)&&number>=min&&number<=max;
+        static bool Flag(JToken value)=>value?.Type==JTokenType.Boolean||Whole(value,0,1);
+        static void ValidateBoardRow(JToken row,string mode)
+        {
+            if(!(row is JObject)||!Whole(row["rank"],1)||!TextValue(row["name"],80)||!TextValue(row["playerId"],160)||!Whole(row["score"])||!Flag(row["own"]))throw InvalidBoard();
+            if(mode=="multiplayer")
+            {if(!Whole(row["matches"])||!Whole(row["wins"])||!TextValue(row["verification"],40)||(string)row["verification"]!="both_players_confirmed")throw InvalidBoard();}
+            else if(!Whole(row["elapsed"])||!Flag(row["completed"])||!TextValue(row["fighter"],30)||!SurvivalRun.Roster.Contains((string)row["fighter"])||row["targetWins"]!=null&&row["targetWins"].Type!=JTokenType.Null&&!Whole(row["targetWins"],1,100))throw InvalidBoard();
+        }
+        public async Task<JArray> ReadHistory(string owner)
+        {
+            JArray history=null;await Locked(async()=>
+            {
+                RequireIdentity(owner);var response=await Request("api/arena?action=history",null);ThrowError(response);
+                if(!(response.data["rows"] is JArray rows)||rows.Count>50)throw InvalidBoard();
+                foreach(var row in rows)
+                {
+                    if(!(row is JObject)||!TextValue(row["playerId"],160)||(string)row["playerId"]!=owner||!TextValue(row["name"],80)||!TextValue(row["kind"],20)||!TextValue(row["verification"],40)||!Whole(row["created"],0,253402300799999))throw InvalidBoard();
+                    if((string)row["kind"]=="online")
+                    {if(!TextValue(row["opponentName"],80)||!TextValue(row["ownRole"],10)||!((string)row["ownRole"]=="host"||(string)row["ownRole"]=="guest")||!(row["score"] is JArray score)||score.Count!=2||score.Any(s=>!Whole(s,0,2))||!new[]{"both_players_confirmed","legacy"}.Contains((string)row["verification"]))throw InvalidBoard();}
+                    else if((string)row["kind"]!="local"||!TextValue(row["mode"],90)||!Whole(row["score"])||!TextValue(row["fighter"],30)||!new[]{"verified","client_reported"}.Contains((string)row["verification"]))throw InvalidBoard();
+                }
+                history=rows;
+            });return history;
         }
         public async Task<JObject> ReadServerProgress(string owner)
         {

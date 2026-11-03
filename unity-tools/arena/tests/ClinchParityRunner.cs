@@ -7,11 +7,11 @@ static class ClinchParityRunner
 {
     static int count;
     static void Check(bool condition,string label){count++;if(!condition)throw new Exception("Clinch: "+label);}
-    static ArenaMatch Match(bool training=true)
+    static ArenaMatch Match(bool training=true,Func<double> random=null)
     {
         var root=new JObject(MatchParityRunner.Config().Actions.Select(p=>new JProperty(p.Key,p.Value.Source.DeepClone())));
         var hold=MatchParityRunner.Action("CLINCH_HOLD");hold["durations"]=new JArray(100,100,100,100);root["CLINCH_HOLD"]=hold;
-        var cfg=new CombatConfiguration("BRAX",root);var m=new ArenaMatch(cfg,cfg,()=>.2,training:training);
+        var cfg=new CombatConfiguration("BRAX",root);var m=new ArenaMatch(cfg,cfg,random??(()=>.2),training:training);
         m.Advance(3000);m.Player.X=500;m.Opponent.X=520;m.SetInput(0,new FightInput(1));m.Advance(100);return m;
     }
     internal static void Run()
@@ -29,6 +29,12 @@ static class ClinchParityRunner
         m=Match();m.UseCpu(1,CpuLevel.Normal);m.Advance(700);Check(!m.ClinchActive,"CPU uses normal break command after reaction window");
         m=Match(false);m.Advance(61000);Check(m.Phase==MatchPhase.RoundOver||m.Phase==MatchPhase.Countdown||m.Phase==MatchPhase.Complete,"round timer cannot be blocked by clinch");Check(!m.ClinchActive,"round end clears clinch");
         m=Match();m.EnableAdventure();Check(!m.ClinchActive,"exploration clears hold state");
+        for(var side=0;side<2;side++)
+        {
+            var pick=side;var calls=0;m=Match(random:()=>++calls==1?(pick==0?.2:.8):calls==2?.8:.2);m.UseCpu(0);m.UseCpu(1);m.Advance(700);
+            var actor=-1;while(m.TryDequeue(out var e))if(e.Kind=="grab")actor=e.Actor;
+            Check(actor==side,"spectator clinch can choose CPU side "+side+" (actual "+actor+")");
+        }
         Console.WriteLine("PASS "+count+" clinch checks: non-damaging contact, source pose time, break/throw inputs, pause, timeout, CPU and adventure reset. Dynamic hand IK remains unvalidated.");
     }
 }

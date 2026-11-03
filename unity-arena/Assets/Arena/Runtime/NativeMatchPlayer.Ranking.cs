@@ -29,13 +29,13 @@ namespace Braxhorn.Arena
         }
         void BeginServerMatch()
         {
-            if(adventure!=null)return;
+            if(adventure!=null||spectating)return;
             try{EnsureRanking();rankTracker.Begin(Modes[modeIndex],new[]{"easy","normal","hard"}[difficulty],match.Player.Configuration.Character,sessionRecordId,challengeRun?.Definition.Id,3);}
             catch(Exception){status.text="Nie udało się połączyć zapisu online. Walka pozostaje lokalna.";}
         }
         void SubmitServerMatch()
         {
-            if(match==null||match.Training||adventure!=null)return;
+            if(match==null||match.Training||adventure!=null||spectating)return;
             rankTracker?.Finish(match.PlayerWins,match.OpponentWins,match.Round,match.ActiveMs,match.Player.Hp,match.PlayerComboUses);
         }
         void RetryServerResults()

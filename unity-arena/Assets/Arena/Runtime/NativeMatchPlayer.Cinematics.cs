@@ -50,7 +50,7 @@ namespace Braxhorn.Arena
             void Ready()
             {
                 if(disposed||token!=generation||match!=loaded)return;
-                BeginServerMatch();loading=false;controls.SetActive(true);Pause(applicationSuspended);Present();
+                BeginServerMatch();loading=false;controls.SetActive(!spectating);Pause(applicationSuspended);Present();
             }
             if(!intro){Ready();return;}
             match.SetPaused(true);arenaMedia.SetPaused(true);fightAudio.SetPaused(true);Present();

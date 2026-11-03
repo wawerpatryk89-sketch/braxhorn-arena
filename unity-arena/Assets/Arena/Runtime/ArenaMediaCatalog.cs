@@ -32,7 +32,7 @@ namespace Braxhorn.Arena
             Cinematics=((JObject)data["cinematics"]).Properties().ToDictionary(p=>p.Name,p=>(string)p.Value);
             Outfits=(JArray)data["outfits"];
             if(Arenas.Length!=21||Routes.Count!=5)throw new FormatException("Incomplete original Arena catalog");
-            if(Interface.Count!=28||Outfits.Count!=8||Cinematics.Count!=16)throw new FormatException("Incomplete original Arena interface");
+            if(Interface.Count!=30||Outfits.Count!=8||Cinematics.Count!=16)throw new FormatException("Incomplete original Arena interface");
         }
         public static ArenaMediaCatalog Load()
         {

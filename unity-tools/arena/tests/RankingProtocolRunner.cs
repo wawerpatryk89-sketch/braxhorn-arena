@@ -19,12 +19,15 @@ static class RankingProtocolRunner
         internal readonly List<(string action,JObject body)> Calls=new List<(string,JObject)>();
         internal bool NetworkFailure,Reject,RateLimit;
         internal bool ProgressAuthenticated=true,MalformedProgress;
+        internal JObject Board,History;
         internal TaskCompletionSource<bool> StartGate;
         internal int matches;
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage r,CancellationToken token)
         {
             if(r.RequestUri.AbsolutePath=="/api/account")return Reply(new JObject{["player"]=new JObject{["id"]=Identity,["name"]="Tester",["authenticated"]=true}});
             var action=r.RequestUri.Query.Substring("?action=".Length);var body=r.Content==null?null:JObject.Parse(await r.Content.ReadAsStringAsync());Calls.Add((action,body));
+            if(action.StartsWith("board&"))return Reply(Board??new JObject{["rows"]=new JArray(),["own"]=null});
+            if(action=="history")return Reply(History??new JObject{["rows"]=new JArray()});
             if(action=="me")
             {
                 var fighters=new JObject(Braxhorn.Arena.Domain.SurvivalRun.Roster.Select(id=>new JProperty(id,new JObject{["wins"]=3,["bestSurvival"]=2,["challenges"]=new JArray("cleanwin")})));
@@ -75,6 +78,17 @@ static class RankingProtocolRunner
             handler.MalformedProgress=true;try{await client.ReadServerProgress("a:first");throw new Exception("Malformed stats accepted");}catch(ArenaServiceException){Check(true,"malformed server fighter rejected");}handler.MalformedProgress=false;
             handler.ProgressAuthenticated=false;try{await client.ReadServerProgress("a:first");throw new Exception("Expired account accepted");}catch(ArenaServiceException e){Check(e.Status==401,"expired cookie cannot masquerade as authenticated progress");}
             using var guestClient=new ArenaOnlineClient("https://arena.invalid",new Handler());var guest=new ArenaRankTracker(guestClient,new PendingArenaResults(Path.Combine(dir,"guest.json")));guest.Begin("fight","normal","BRAX","guest",null,3);guest.Finish(2,0,2,20000,90,0);await guest.Idle;Check(guest.Status.Contains("gościa")&&!File.Exists(Path.Combine(dir,"guest.json")),"guest fight stays local");
+            var row=new JObject{["rank"]=1,["name"]="Tester",["playerId"]="a:first",["score"]=6,["own"]=1,["matches"]=3,["wins"]=2,["verification"]="both_players_confirmed"};
+            handler.Board=new JObject{["rows"]=new JArray(row),["own"]=row.DeepClone()};var board=await client.ReadRankings("multiplayer","normal");Check(((JArray)board["rows"]).Count==1,"public PvP board reads confirmed server rows");
+            handler.Board["own"]["rank"]=150;board=await client.ReadRankings("multiplayer","normal");Check((int)board["own"]["rank"]==150,"own rank outside top 100 preserved");
+            handler.Board["rows"][0]["verification"]="client_reported";try{await client.ReadRankings("multiplayer","normal");throw new Exception("Unconfirmed PvP accepted");}catch(ArenaServiceException){Check(true,"unconfirmed row cannot be presented as public PvP");}
+            row.Remove("matches");row.Remove("wins");row.Remove("verification");row["elapsed"]=12345;row["completed"]=1;row["fighter"]="BRAX";row["targetWins"]=7;handler.Board=new JObject{["rows"]=new JArray(row),["own"]=null};board=await client.ReadRankings("arcade","hard");Check((long)board["rows"][0]["elapsed"]==12345,"CPU board retains source numeric flags and time");
+            handler.Board["rows"][0]["elapsed"]=-1;try{await client.ReadRankings("arcade","hard");throw new Exception("Bad elapsed accepted");}catch(ArenaServiceException){Check(true,"negative board elapsed rejected");}
+            var historyRow=new JObject{["kind"]="online",["playerId"]="a:first",["name"]="Tester",["opponentName"]="Rival",["ownRole"]="guest",["score"]=new JArray(2,1),["created"]=1793664000000L,["verification"]="both_players_confirmed"};
+            handler.History=new JObject{["rows"]=new JArray(historyRow)};var history=await client.ReadHistory("a:first");Check((string)history[0]["ownRole"]=="guest"&&(int)history[0]["score"][1]==1,"history retains host/guest score orientation");
+            handler.History["rows"][0]["playerId"]="a:second";try{await client.ReadHistory("a:first");throw new Exception("Foreign history accepted");}catch(ArenaServiceException){Check(true,"history from different identity rejected");}
+            calls=handler.Calls.Count;try{await client.ReadHistory("a:second");throw new Exception("Wrong account queried");}catch(ArenaServiceException e){Check(e.Status==401&&handler.Calls.Count==calls,"wrong expected owner blocked before history request");}
+            handler.History=new JObject{["rows"]=new JArray(Enumerable.Range(0,51).Select(_=>historyRow.DeepClone()))};try{await client.ReadHistory("a:first");throw new Exception("Oversize history accepted");}catch(ArenaServiceException){Check(true,"history bounded to original fifty records");}
             Console.WriteLine("PASS "+checks+" ranking checks: durable per-account queue, backup recovery, source payloads, result ordering, retries, rejection, account switching and guest isolation. No live ranking was written.");
         }
         finally{Directory.Delete(dir,true);}

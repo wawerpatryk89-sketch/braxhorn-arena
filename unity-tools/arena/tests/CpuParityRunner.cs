@@ -25,6 +25,12 @@ static class CpuParityRunner
         foreach(var hit in ((JObject)root["HEAVY_PUNCH"]["hits"]).Properties())hit.Value["box"][1]=-150;
         m=Match(new CombatConfiguration("BRAX",root),CpuLevel.Hard,()=>.1);m.Press(0,FightButton.Heavy);m.Advance(1000);Check(m.Opponent.ActionId=="BLOCK","guard duration tracks long incoming attack, not fixed 700 ms: "+m.Opponent.ActionId);
         var serial=m.Opponent.Serial;m.SetPaused(true);m.Advance(20000);Check(m.Opponent.Serial==serial,"pause prevents CPU actions and timer consumption");
+        uint seed=24;double Next(){seed=unchecked(seed*1664525+1013904223);return seed/4294967296.0;}
+        m=new ArenaMatch(MatchParityRunner.Config(),MatchParityRunner.Config(),Next);m.UseCpu(0,CpuLevel.Normal);m.UseCpu(1,CpuLevel.Normal);m.Advance(3000);m.Player.X=500;m.Opponent.X=520;
+        var swung=new bool[2];for(var i=0;i<300;i++){m.Advance(20);while(m.TryDequeue(out var hit))if(hit.Kind=="swing")swung[hit.Actor]=true;}
+        Check(swung.All(x=>x),"both sides fight under CPU control without player input");
+        var playerSerial=m.Player.Serial;serial=m.Opponent.Serial;var active=m.ActiveMs;m.SetPaused(true);m.Advance(30000);
+        Check(m.Player.Serial==playerSerial&&m.Opponent.Serial==serial&&m.ActiveMs==active,"spectator pause suspends both CPUs and match clock");
         Console.WriteLine("PASS "+count+" CPU checks: independent combo timer, complete source move sets, reaction delay, adaptive guard and pause.");
     }
 }

@@ -49,6 +49,7 @@ namespace Braxhorn.Arena
         int directionInputFrame=-1;
         int variantIndex,opponentIndex=1,modeIndex,difficulty=1,generation;
         bool loading, resultApplied, disposed, applicationSuspended;
+        bool spectatorRequested,spectating;
         string error, campaignOpponent;
         RectTransform safeRoot,uiRoot;
 
@@ -119,6 +120,7 @@ namespace Braxhorn.Arena
         void BeginSession()
         {
             if(loading||mediaCatalog==null)return;
+            spectating=Modes[modeIndex]=="fight"&&spectatorRequested&&pendingChallenge==null;
             if(Variants[variantIndex].Contains("_")&&online?.Owns(Variants[variantIndex])!=true)variantIndex=Array.IndexOf(Variants,Base(Variants[variantIndex]));
             BeginProgressSession();
             challengeRun=pendingChallenge==null?null:new ChallengeRun(pendingChallenge,Base(Variants[variantIndex]));pendingChallenge=null;
@@ -127,7 +129,7 @@ namespace Braxhorn.Arena
             if(mode=="arcade"||mode=="tournament")campaign=new CampaignRun(mode,player,Roster,random.NextDouble);
             if(mode=="survival")survival=new SurvivalRun(player,random.NextDouble,challengeRun?.Definition.Goal??10);
             campaignOpponent=campaign?.Next()??survival?.Next()??challengeRun?.Definition.Opponent??Roster[opponentIndex];
-            StartCoroutine(LoadMatch(Variants[variantIndex],campaignOpponent,survival?.Hp??100));
+            StartCoroutine(LoadMatch(spectating?Base(Variants[variantIndex]):Variants[variantIndex],campaignOpponent,survival?.Hp??100));
         }
         IEnumerator LoadMatch(string player,string opponent,double hp,bool intro=true)
         {
@@ -156,6 +158,7 @@ namespace Braxhorn.Arena
                 var geometry=new MediaGeometry(logicalWidth,576,arena.aspect,arena.ground,arena.fit=="contain");
                 match=new ArenaMatch(configs[0],configs[1],random.NextDouble,training:Modes[modeIndex]=="training",singleRound:survival!=null,playerHp:hp,width:logicalWidth,groundRatio:geometry.Floor/576);
                 match.UseCpu(1,(CpuLevel)difficulty,match.Training?TrainingModes[trainingMode]:TrainingBehavior.Spar,DrillMove);
+                if(spectating)match.UseCpu(0,(CpuLevel)difficulty);
                 var worldPerPixel=3.25f/640/(float)match.Scale;
                 matchCamera.orthographic=true;matchCamera.orthographicSize=(float)match.Height*worldPerPixel/2;
                 matchCamera.transform.position=new Vector3(0,(float)(match.Floor-match.Height/2)*worldPerPixel,-8);
@@ -177,13 +180,13 @@ namespace Braxhorn.Arena
             if(arenaMedia.Error!=null&&error!=arenaMedia.Error){error=arenaMedia.Error;Pause(true);status.text=error;}
             if(Input.GetKeyDown(KeyCode.Escape))TogglePause();ReadInput();
             var keys=new[]{KeyCode.J,KeyCode.K,KeyCode.U,KeyCode.I,KeyCode.L,KeyCode.Space,KeyCode.O,KeyCode.P};
-            for(var i=0;i<keys.Length;i++)if(Input.GetKeyDown(keys[i]))match.Press(0,(FightButton)i);
+            if(!spectating)for(var i=0;i<keys.Length;i++)if(Input.GetKeyDown(keys[i]))match.Press(0,(FightButton)i);
             match.Advance(Math.Min(100,Time.unscaledDeltaTime*1000));Present();
             if(match.Phase==MatchPhase.Complete&&!resultApplied&&!BeginReplay())CompleteMatch();
         }
         void ReadInput()
         {
-            if(match==null)return;
+            if(match==null||spectating)return;
             if(directionInputFrame!=Time.frameCount)
             {
                 directionInputFrame=Time.frameCount;
@@ -232,6 +235,7 @@ namespace Braxhorn.Arena
                 }
             hud.text=Display(definitions[0].id)+"  "+Math.Ceiling(match.Player.Hp)+" HP · "+(int)match.Player.Energy+" EN     "+Math.Ceiling(match.RemainingSeconds)+"     "+Display(definitions[1].id)+"  "+Math.Ceiling(match.Opponent.Hp)+" HP\n"+
                 "RUNDA "+match.Round+" · "+match.PlayerWins+" : "+match.OpponentWins+(match.Paused?" · PAUZA":match.Phase==MatchPhase.Countdown?" · "+match.Countdown:"");
+            if(spectating)hud.text+=" · KOMPUTER KONTRA KOMPUTER";
             if(adventure!=null)hud.text=Display(definitions[0].id)+" · "+Math.Ceiling(match.Player.Hp)+" HP · "+(int)match.Player.Energy+" EN     "+(int)(adventure.ElapsedMs/60000)+":"+((int)(adventure.ElapsedMs/1000)%60).ToString("00")+"\nSZLAK "+adventure.Defeated+"/6 · "+adventure.Score+" PKT · "+(string)adventure.Route["chapters"][adventure.Chapter]["name"];
             pauseLabel.text=match.Paused?"WZNÓW":"PAUZA";
             while(match.TryDequeue(out var e))
@@ -253,6 +257,7 @@ namespace Braxhorn.Arena
             var outcome=match.Winner<0?BoutOutcome.Draw:match.Winner==0?BoutOutcome.Win:BoutOutcome.Loss;
             campaign?.Result(outcome);survival?.Result(outcome,match.Player.Hp);
             result.text=(outcome==BoutOutcome.Draw?"REMIS":outcome==BoutOutcome.Win?"WYGRYWASZ":"WYGRYWA PRZECIWNIK")+"\n"+match.PlayerWins+" : "+match.OpponentWins;
+            if(spectating)result.text=(outcome==BoutOutcome.Draw?"REMIS":"ZWYCIĘZCA: "+Display(definitions[match.Winner].id))+"\n"+match.PlayerWins+" : "+match.OpponentWins+"\nPOKAZ — BEZ ZAPISU WYNIKU";
             if(campaign?.Finished==true)result.text+="\n"+(campaign.Champion==campaign.Player?"KAMPANIA UKOŃCZONA":"KONIEC KAMPANII");
             if(survival!=null)result.text+="\nSURVIVAL: "+survival.Score;
             SubmitServerMatch();
@@ -267,7 +272,7 @@ namespace Braxhorn.Arena
             if(campaign!=null){if(campaign.Finished){ShowSelection();return;}campaignOpponent=campaign.Next();}
             else if(survival!=null){if(!survival.Advance()){ShowSelection();return;}campaignOpponent=survival.Next();}
             else {BeginProgressSession();if(challengeRun!=null)challengeRun=new ChallengeRun(challengeRun.Definition,challengeRun.Fighter);}
-            StartCoroutine(LoadMatch(Variants[variantIndex],campaignOpponent??Roster[opponentIndex],survival?.Hp??100,campaign!=null||survival!=null));
+            StartCoroutine(LoadMatch(spectating?Base(Variants[variantIndex]):Variants[variantIndex],campaignOpponent??Roster[opponentIndex],survival?.Hp??100,campaign!=null||survival!=null));
         }
         void TogglePause(){if(replay.Active){Pause(!match.Paused);return;}if(trainingPanel&&trainingPanel.activeSelf){CloseTraining();return;}if(match==null||loading||match.Phase==MatchPhase.Complete||adventure?.Phase==AdventurePhase.Complete||adventure?.Phase==AdventurePhase.Dead)return;Pause(match.Paused?false:true);}
         void Pause(bool value){match?.SetPaused(value);arenaMedia?.SetPaused(value||replay.Active);adventureWorld?.SetPaused(value);fightAudio?.SetPaused(value);ReleaseControls();RefreshPauseUi();}

@@ -115,7 +115,7 @@ def main():
         evidence = list(pool.map(export, lock['sources']))
     catalog = json.loads(catalog_path.read_text())
     ui = catalog.get('interface', {})
-    if len(ui) != 28 or len(catalog.get('outfits', [])) != 8 or len(catalog.get('cinematics', {})) != 16:
+    if len(ui) != 30 or len(catalog.get('outfits', [])) != 8 or len(catalog.get('cinematics', {})) != 16:
         raise ValueError('Incomplete original menu export')
     for key, file in ui.items():
         with Image.open(target / safe(file)) as original:

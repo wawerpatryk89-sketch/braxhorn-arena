@@ -23,6 +23,7 @@ namespace Braxhorn.Arena
         GameObject pauseControl,soundControl;
         Text rosterRole,rosterChoice,outfitChoice,menuIdentity,arenaChoice,recordsCategory,recordSummary,profileMessage;
         Text difficultyChoice,recordsNote,recordFighter,onlineResultStatus;
+        Text spectatorChoice;
         NativeMenuImage arenaPreview,setupPlayer,setupOpponent,recordPortrait;
         InputField nickname;
         bool pickingOpponent;
@@ -91,7 +92,7 @@ namespace Braxhorn.Arena
             var art=new[]{"portrait-BRAX","training","portrait-VEXA","portrait-KROV","mode-survival","mode-adventure"};
             for(var i=0;i<Modes.Length;i++)
             {
-                var index=i;var card=Click(menuModes.transform,"",new Rect(32+i*162,108,150,314),()=>{modeIndex=index;ShowMenuPage(menuSetup);});
+                var index=i;var card=Click(menuModes.transform,"",new Rect(32+i*162,108,150,314),()=>{modeIndex=index;spectatorRequested=false;ShowMenuPage(menuSetup);});
                 MenuArt(card.transform,art[i],new Rect(4,4,142,240));
                 var title=Label(card.transform,"Mode",new Rect(8,258,134,42),19);title.alignment=TextAnchor.MiddleCenter;title.fontStyle=FontStyle.Bold;title.text=ModeNames[i];
             }
@@ -107,7 +108,8 @@ namespace Braxhorn.Arena
             setupPlayer=Picture(menuSetup.transform,"Player",new Rect(40,90,230,250));setupOpponent=Picture(menuSetup.transform,"Opponent",new Rect(754,90,230,250));
             chosen=Label(menuSetup.transform,"Selection details",new Rect(292,102,440,150),21);chosen.alignment=TextAnchor.UpperCenter;
             difficultyChoice=Click(menuSetup.transform,"",new Rect(328,274,368,52),()=>{difficulty=(difficulty+1)%3;RefreshSelection();}).GetComponentInChildren<Text>();
-            selectionScope=Label(menuSetup.transform,"Scope",new Rect(124,364,776,58),18);selectionScope.alignment=TextAnchor.MiddleCenter;
+            spectatorChoice=Click(menuSetup.transform,"",new Rect(328,338,368,44),()=>{spectatorRequested=!spectatorRequested;RefreshSelection();}).GetComponentInChildren<Text>();spectatorChoice.fontSize=15;
+            selectionScope=Label(menuSetup.transform,"Scope",new Rect(124,400,776,58),18);selectionScope.alignment=TextAnchor.MiddleCenter;
             selectionScope.text="Wybierz arenę, aby rozpocząć rozgrywkę.";
             MenuBack(menuSetup,menuModes);Click(menuSetup.transform,"WYBIERZ ARENĘ →",new Rect(674,510,318,46),()=>ShowMenuPage(menuArena));
         }
@@ -155,6 +157,7 @@ namespace Braxhorn.Arena
             Click(menuRecords.transform,"POSTĘP KONTA",new Rect(518,510,180,46),LoadServerProgress);
             onlineResultStatus=Label(menuRecords.transform,"Online result status",new Rect(32,478,960,30),14);
             Click(menuRecords.transform,"PROFIL LOKALNY",new Rect(714,510,278,46),()=>ShowMenuPage(menuProfile));
+            Click(menuRecords.transform,"RANKING ONLINE",new Rect(714,24,278,44),OpenLeaderboard);BuildLeaderboardUi();
         }
         void BuildProfileMenu()
         {
@@ -200,7 +203,7 @@ namespace Braxhorn.Arena
         }
         void ShowMenuPage(GameObject page)
         {
-            if(!page||accountBusy)return;if(menuCurrent==menuAccount&&page!=menuAccount)ClearAccountSecrets();foreach(var p in menuPages)p.SetActive(p==page);menuCurrent=page;
+            if(!page||accountBusy)return;if((menuCurrent==menuAccount||menuCurrent==menuAccountSettings)&&page!=menuCurrent)ClearAccountSecrets();foreach(var p in menuPages)p.SetActive(p==page);menuCurrent=page;
             if(EventSystem.current)EventSystem.current.SetSelectedGameObject(null);
             if(page==menuProfile){nickname.SetTextWithoutNotify(progress?.Name??"");profileMessage.text=progressStore?.Error??"Profil lokalny nie jest kontem internetowym.";}
             RefreshSelection();if(page==menuRecords)RefreshRecords();RefreshMenuAudio();
@@ -221,6 +224,8 @@ namespace Braxhorn.Arena
             menuIdentity.text="PROFIL: "+(string.IsNullOrEmpty(progress?.Name)?"GRACZ":progress.Name);
             setupPlayer.Show(mediaCatalog.Interface["portrait-"+Variants[variantIndex]]);setupOpponent.Show(mediaCatalog.Interface["portrait-"+Roster[opponentIndex]]);
             difficultyChoice.text="TRUDNOŚĆ: "+new[]{"ŁATWY","ŚREDNI","TRUDNY"}[difficulty];
+            spectatorChoice.transform.parent.gameObject.SetActive(Modes[modeIndex]=="fight");spectatorChoice.text=spectatorRequested?"POKAZ: KOMPUTER KONTRA KOMPUTER":"GRACZ KONTRA KOMPUTER";
+            if(Modes[modeIndex]=="fight")selectionScope.text=spectatorRequested?"Obaj zawodnicy walczą automatycznie. Pokaz nie zapisuje wyników ani osiągnięć.":"Wybierz arenę, aby rozpocząć rozgrywkę.";
             if(Modes[modeIndex]=="adventure")
             {
                 var route=mediaCatalog.Routes[routeIndex];arenaChoice.text=(routeIndex+1)+" / "+mediaCatalog.Routes.Count+" · "+route["title"];
@@ -248,7 +253,7 @@ namespace Braxhorn.Arena
         void UpdateMenuInput()
         {
             if(onlineResultStatus&&menuCurrent==menuRecords)onlineResultStatus.text=recordsServiceMessage??rankTracker?.Status??"Wyniki na tym urządzeniu. Zaloguj się, aby zapisywać nowe walki na koncie.";
-            if(resultOnlineStatus&&resultPanel.activeSelf)resultOnlineStatus.text=adventure==null?rankTracker?.Status??"Wynik zapisany lokalnie.":"Przejście lokalne.";
+            if(resultOnlineStatus&&resultPanel.activeSelf)resultOnlineStatus.text=spectating?"Pokaz — bez zapisu postępu.":adventure==null?rankTracker?.Status??"Wynik zapisany lokalnie.":"Przejście lokalne.";
             var inGame=!selection.activeSelf&&!loading&&match!=null;
             if(pauseControl&&pauseControl.activeSelf!=inGame)pauseControl.SetActive(inGame);
             if(soundControl)
@@ -260,7 +265,7 @@ namespace Braxhorn.Arena
             {
                 if(challengesPanel&&challengesPanel.activeSelf){challengesPanel.SetActive(false);return;}
                 if(menuCurrent==menuTitle)return;
-                var destination=menuCurrent==menuRoster?menuTitle:menuCurrent==menuModes?menuRoster:menuCurrent==menuArena?menuSetup:menuCurrent==menuRecords?menuHub:menuModes;
+                var destination=menuCurrent==menuRoster?menuTitle:menuCurrent==menuModes?menuRoster:menuCurrent==menuArena?menuSetup:menuCurrent==menuRecords?menuHub:menuCurrent==menuLeaderboard?menuRecords:menuCurrent==menuAccountSettings?menuAccount:menuModes;
                 ShowMenuPage(destination);
             }
         }

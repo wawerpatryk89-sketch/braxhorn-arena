@@ -31,6 +31,8 @@ namespace Braxhorn.Arena
         public bool Authenticated {get;private set;}
         public string PlayerId {get;private set;}
         public string Name {get;private set;}="GRACZ";
+        public bool HasPassword {get;private set;}
+        public string Avatar {get;private set;}
         public bool HasInventory {get;private set;}
         public int Balance {get;private set;}
         public bool CanManagePrices {get;private set;}
@@ -51,19 +53,31 @@ namespace Braxhorn.Arena
         public Task Register(string nick,string password,string avatar)=>Account("register",new JObject{["nick"]=nick,["password"]=password,["avatar"]=avatar,["language"]="pl"});
         public Task Logout()=>Account("logout",new JObject());
         public Task Guest()=>Account("guest",new JObject());
-        public Task ChangePassword(string current,string password)=>Account("password",new JObject{["currentPassword"]=current,["password"]=password});
-        public Task SetAvatar(string avatar)=>Account("avatar",new JObject{["avatar"]=avatar});
-        async Task Account(string action,JObject body)
+        public Task ChangePassword(string current,string password)
+        {
+            if(password==null||password.Length<8||password.Length>128||current?.Length>128)throw new ArgumentException("Invalid password length");
+            return Account("password",new JObject{["currentPassword"]=current,["password"]=password},PlayerId);
+        }
+        public Task SetAvatar(string avatar)
+        {
+            if(avatar!="male"&&avatar!="female")throw new ArgumentException("Invalid avatar preset");
+            return Account("avatar",new JObject{["avatar"]=avatar},PlayerId);
+        }
+        async Task Account(string action,JObject body,string expectedOwner=null)
         {
             await Locked(async()=>
             {
+                var editing=action=="password"||action=="avatar";if(editing)RequireIdentity(expectedOwner);
                 var response=await Request("api/account?action="+action,body);
                 ThrowError(response);
                 if(!(response.data["player"] is JObject player)||player["authenticated"]?.Type!=JTokenType.Boolean||player["id"]?.Type!=JTokenType.String||player["name"]?.Type!=JTokenType.String)
                     throw new ArenaServiceException("Serwer zwrócił nieprawidłowy profil.");
                 var id=(string)player["id"];if(string.IsNullOrWhiteSpace(id)||id.Length>160)throw new ArenaServiceException("Serwer zwrócił nieprawidłowy profil.");
+                if(editing&&(id!=expectedOwner||(bool?)response.data["saved"]!=true||(bool)player["authenticated"]!=true||action=="password"&&(bool?)player["hasPassword"]!=true||action=="avatar"&&(string)player["avatar"]!="/assets/avatar-"+(string)body["avatar"]+".jpg"))throw new ArenaServiceException("Serwer nie potwierdził zmiany ustawień konta.");
                 if(PlayerId!=id||action=="login"||action=="register"||action=="logout"||action=="guest")ClearInventory();
                 PlayerId=id;Authenticated=(bool)player["authenticated"];Name=((string)player["name"]).Substring(0,Math.Min(80,((string)player["name"]).Length));
+                HasPassword=player["hasPassword"]?.Type==JTokenType.Boolean&&(bool)player["hasPassword"];
+                Avatar=player["avatar"]?.Type==JTokenType.String&&((string)player["avatar"]).Length<=200?(string)player["avatar"]:null;
             });
         }
         public Task RefreshShop()=>Locked(async()=>
@@ -147,6 +161,6 @@ namespace Braxhorn.Arena
             if(string.IsNullOrWhiteSpace(message)||message.Length>300)message="Serwer nie przyjął żądania. Spróbuj ponownie.";
             throw new ArenaServiceException(message,response.status);
         }
-        public void Dispose(){if(disposed)return;disposed=true;lifetime.Cancel();client.Dispose();ClearInventory();Authenticated=false;PlayerId=null;Name="GRACZ";}
+        public void Dispose(){if(disposed)return;disposed=true;lifetime.Cancel();client.Dispose();ClearInventory();Authenticated=false;HasPassword=false;Avatar=null;PlayerId=null;Name="GRACZ";}
     }
 }

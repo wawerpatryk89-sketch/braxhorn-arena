@@ -44,11 +44,11 @@ namespace Braxhorn.Arena
             Click(menuShop.transform,"ODŚWIEŻ",new Rect(244,510,190,46),RefreshShop);
             Click(menuShop.transform,"PODSTAWOWY",new Rect(450,510,190,46),()=>{if(accountBusy)return;variantIndex=Array.IndexOf(Variants,(string)mediaCatalog.Outfits[shopIndex]["base"]);ShowMenuPage(menuRoster);});
             shopAction=Click(menuShop.transform,"ODŚWIEŻ SKLEP",new Rect(674,510,318,46),UseShopChoice).GetComponentInChildren<Text>();MenuBack(menuShop,menuRoster);
-            AccountMode(false);
+            Click(menuAccount.transform,"USTAWIENIA KONTA",new Rect(714,24,278,44),OpenAccountSettings);BuildAccountSettings();AccountMode(false);
         }
-        InputField AccountInput(string title,Rect rect,bool secret,int limit)
+        InputField AccountInput(string title,Rect rect,bool secret,int limit,Transform parent=null)
         {
-            var group=new GameObject(title+" field",typeof(RectTransform));Place(group,menuAccount.transform,new Rect(rect.x,rect.y-24,rect.width,rect.height+24));
+            var group=new GameObject(title+" field",typeof(RectTransform));Place(group,parent?parent:menuAccount.transform,new Rect(rect.x,rect.y-24,rect.width,rect.height+24));
             Label(group.transform,"Label",new Rect(0,0,rect.width,24),17).text=title;
             var obj=new GameObject(title,typeof(RectTransform),typeof(Image),typeof(InputField));Place(obj,group.transform,new Rect(0,24,rect.width,rect.height));obj.GetComponent<Image>().color=new Color(.07f,.12f,.08f,1);
             var field=obj.GetComponent<InputField>();field.textComponent=Label(obj.transform,"Value",new Rect(12,5,rect.width-24,rect.height-10),23);field.textComponent.alignment=TextAnchor.MiddleLeft;field.characterLimit=limit;
@@ -92,15 +92,16 @@ namespace Braxhorn.Arena
                 while(!task.IsCompleted)yield return null;
                 if(task.IsFaulted)AccountError(ServiceMessage(task.Exception?.GetBaseException()));
                 else if(task.IsCanceled)AccountError("Żądanie zostało przerwane. Odśwież dane.");
-                else success();
+                else try{success();}catch(Exception e){AccountError(ServiceMessage(e));}
             }
             accountBusy=false;SetAccountBusy(false);RefreshShopUi();RefreshMenuUi();
         }
         static string ServiceMessage(Exception e)=>e is ArenaServiceException?e.Message:"Nie udało się wykonać działania. Odśwież dane i spróbuj ponownie.";
-        void AccountError(string message){accountMessage.text=message;shopMessage.text=message;if(menuCurrent==menuRecords)recordsServiceMessage=message;}
+        void AccountError(string message){accountMessage.text=message;shopMessage.text=message;if(menuCurrent==menuRecords)recordsServiceMessage=message;if(menuCurrent==menuLeaderboard)boardStatus.text=message;if(menuCurrent==menuAccountSettings)settingsMessage.text=message;}
         void SetAccountBusy(bool busy)
         {
-            foreach(var page in new[]{menuAccount,menuShop})foreach(var selectable in page.GetComponentsInChildren<Selectable>(true))selectable.interactable=!busy;
+            foreach(var page in new[]{menuAccount,menuShop,menuLeaderboard,menuAccountSettings})foreach(var selectable in page.GetComponentsInChildren<Selectable>(true))selectable.interactable=!busy;
+            if(!busy&&boardLevelLabel)boardLevelLabel.transform.parent.GetComponent<Button>().interactable=!historyView&&BoardModes[boardMode]!="multiplayer";
         }
         void ResetAccountSelection()
         {
@@ -108,6 +109,7 @@ namespace Braxhorn.Arena
             // never inherit a previously selected paid outfit from local state.
             if(Variants[variantIndex].Contains("_")&&online?.Owns(Variants[variantIndex])!=true)variantIndex=Array.IndexOf(Variants,Base(Variants[variantIndex]));
             confirmPurchase=false;RetryServerResults();
+            if(menuLeaderboard)ClearBoard();
         }
         void OpenShop()
         {
@@ -143,6 +145,6 @@ namespace Braxhorn.Arena
             confirmPurchase=false;var expected=confirmedPrice;
             RunAccount(()=>online.Buy(id,expected),()=>{shopMessage.text="Zakup potwierdzony. Możesz założyć strój.";});
         }
-        void ClearAccountSecrets(){accountPassword?.SetTextWithoutNotify("");accountRepeat?.SetTextWithoutNotify("");}
+        void ClearAccountSecrets(){accountPassword?.SetTextWithoutNotify("");accountRepeat?.SetTextWithoutNotify("");currentPassword?.SetTextWithoutNotify("");newPassword?.SetTextWithoutNotify("");repeatNewPassword?.SetTextWithoutNotify("");}
     }
 }

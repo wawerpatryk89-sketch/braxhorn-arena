@@ -54,8 +54,17 @@ namespace Braxhorn.Arena.Domain
             clinchElapsed+=dt;
             foreach(var f in fighters)f.Clock.Seek(Math.Min(Math.Min(280,clinchElapsed),f.Action.DurationMs));
             if(!clinchCpuDecided)
-                for(var i=0;i<cpu.Length;i++)if(cpu[i]!=null&&cpu[i].CanDecideClinch&&clinchElapsed>=cpu[i].ClinchReactionMs)
-                {clinchCpuDecided=true;ClinchInput(fighters[i],NextRandom()<.45?FightButton.Evade:NextRandom()<.5?FightButton.Punch:FightButton.Heavy);break;}
+            {
+                var first=cpu[0]!=null&&cpu[0].CanDecideClinch&&clinchElapsed>=cpu[0].ClinchReactionMs;
+                var second=cpu[1]!=null&&cpu[1].CanDecideClinch&&clinchElapsed>=cpu[1].ClinchReactionMs;
+                if(first||second)
+                {
+                    // Source spectator mode chooses either actor, rather than
+                    // always giving the left-hand CPU the first throw.
+                    var side=first&&second?(NextRandom()<.5?0:1):first?0:1;
+                    clinchCpuDecided=true;ClinchInput(fighters[side],NextRandom()<.45?FightButton.Evade:NextRandom()<.5?FightButton.Punch:FightButton.Heavy);
+                }
+            }
             if(clinch&&clinchElapsed>=1800)ReleaseClinch();
         }
     }

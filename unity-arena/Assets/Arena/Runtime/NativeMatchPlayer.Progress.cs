@@ -21,7 +21,7 @@ namespace Braxhorn.Arena
         void BeginProgressSession(){sessionRecordId=Guid.NewGuid().ToString("N");sessionActiveMs=0;sessionPlayed=0;}
         void SaveMatchProgress()
         {
-            if(progress==null||match.Training||adventure!=null)return;
+            if(progress==null||match.Training||adventure!=null||spectating)return;
             var fighter=match.Player.Configuration.Character;var level=new[]{"easy","normal","hard"}[difficulty];
             sessionActiveMs+=match.ActiveMs;sessionPlayed++;
             if(match.Winner==0)

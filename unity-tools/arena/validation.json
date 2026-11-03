@@ -13,7 +13,7 @@
   },
   "managedCompilation": {
     "status": "Passed",
-    "files": 30,
+    "files": 62,
     "method": "Separate Domain, Runtime, Editor and EditMode-test assemblies compiled with Roslyn and actual Unity 6000.3.27f2 references; no Editor execution",
     "warnings": [
       "CS1701: Newtonsoft.Json netstandard 2.0 reference resolves against netstandard 2.1 in standalone compiler invocation. UPM runtime resolution not verified."
@@ -38,7 +38,7 @@
   "shaderCompilation": "Not run",
   "visualComparison": "Not run",
   "fullCombatParity": "Partial implementation: native match/paired combos tested; complete browser-versus-Unity equivalence not established",
-  "androidBuild": "Deferred by user: only manual workflow_dispatch build_apk=true requests a build; none produced",
+  "androidBuild": "Requested at completion by user; no APK produced. CI activation inputs missing in last preflight; local Editor execution not authorized.",
   "deviceValidation": "Not run",
   "googlePlayPublication": "Not performed",
   "combatRuleParity": {
@@ -160,5 +160,18 @@
     "ranking": "Offline only; native backend protocol still required",
     "scope": "Original entry/walk motion, continuous camera, gates, opponent preloading/incoming, persistent player HP/energy/action, KO settlement, corpses, scoring, healing, completion/death, chapter seams and foreground masks",
     "notValidated": "Unity import/shader execution, audiovisual rendering, mobile memory/touch/performance"
+  },
+  "nativeMenusAndServices": {
+    "status": "Implemented, managed compilation/tests only",
+    "cinematicFlowChecks": 21,
+    "accountShopChecks": 40,
+    "rankingChecks": 34,
+    "cpuChecks": 11,
+    "clinchChecks": 20,
+    "mediaFiles": 179,
+    "mediaBytes": 421358067,
+    "interfaceImages": 30,
+    "cinematics": 16,
+    "remaining": "Uploaded avatar/camera/crop, secure session persistence, source UI visual parity, owner price screen, live Android validation"
   }
 }

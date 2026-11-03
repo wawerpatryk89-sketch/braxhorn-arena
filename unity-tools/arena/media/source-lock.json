@@ -2,7 +2,7 @@
   "schema": 1,
   "sourceSiteVersion": 271,
   "baseUrl": "https://braxhorn-p0-preview.wawerpatryk89.chatgpt.site",
-  "catalogSha256": "26a71241dd5d207ef32f3770b9e238e17efe55dd89fe9cf2d813316511a118b6",
+  "catalogSha256": "bdee8e8384d8d332968a53afa0a7a461b443cd55b35c24173b177c7f6cca0b3c",
   "sources": [
     {
       "url": "/assets/arena-rooftop-city-20261018.webp",
@@ -1482,6 +1482,22 @@
         "height": 941,
         "rgbaSha256": "ca7e2f720b6ef8da9777c38f467f54cd79fbd40a70a5bd65a1b4bbd2fe954002"
       }
+    },
+    {
+      "url": "/assets/avatar-male.jpg",
+      "path": "game/assets/avatar-male.jpg",
+      "sha256": "ff76ba67a66d5e3aba4e19857c0f8f87730a5cb0aa1ca0c7d9dd67b98618dd81",
+      "bytes": 383628,
+      "output": "ff76ba67a66d5e3aba4e.jpg",
+      "conversion": "copy"
+    },
+    {
+      "url": "/assets/avatar-female.jpg",
+      "path": "game/assets/avatar-female.jpg",
+      "sha256": "84398d2088a56dc9c08423ec4ac22568d529ae6a069d126903486e368467bde9",
+      "bytes": 363389,
+      "output": "84398d2088a56dc9c084.jpg",
+      "conversion": "copy"
     }
   ],
   "interfaceSourceCommit": "f355fe6ac6af41518fde420382512d49bd27d51a"

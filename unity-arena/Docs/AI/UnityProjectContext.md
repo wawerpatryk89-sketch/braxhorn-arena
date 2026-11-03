@@ -58,8 +58,8 @@ Previous preflight found no configured Arena UNITY_LICENSE/EMAIL/PASSWORD/SERIAL
 ## Required before claiming the whole migration is finished
 
 1. Complete remaining source gameplay/presentation parity: runtime verification of moving-strike leg layers, remaining CPU parity and runtime drill verification, runtime verification of clinch hand IK, combo-aftermath gestures, recoil/lift/travel details, rendered KO replay parity, all authored VFX/audio and procedural night-market overlays. Expand matchup/direction reference coverage.
-2. Implement the original production menus/art, account entry, portraits, outfit shop, production challenge/ranking UI and browser-to-app save transfer. The present integration selector is not a finished UI.
-3. Implement native backend account/session/shop authority, adventure ranking protocol, online rooms/signaling, input/snapshots and voice; verify two peers. Do not fake successful online results.
+2. Finish native UI parity and validate touch/layout against the original: account entry, original art, outfit shop, challenges, rankings/history and preset/password settings now exist. Uploaded-avatar crop/camera, owner price editing, session persistence and browser-to-app save transfer remain.
+3. Complete native adventure ranking, online rooms/signaling, input/snapshots and voice; verify two peers. Account/shop/private CPU-result protocols now have native adapters and mocked contract coverage; Android/live-service validation remains. Do not fake successful online results.
 4. Execute native import and visual/runtime checks when a permitted Unity execution path is available. Validate rig deformation, facing, entrance masks, unlit/PBR output, actual video orientation/loop seams, audio synchronization and corpse capture.
 5. Measure mobile CPU/GPU/memory and touch usability; then build/test the app. Store signing, product identity, pricing and publication remain later explicit steps.
 
@@ -164,3 +164,14 @@ Menu title and roster music, selection and confirmation cues now use the origina
 All 16 movie payloads are pinned to the published v271 source SHA-256. Copyright WebP pixels were compared with the original source PNG; the export locks both delivery payload and decoded RGBA hashes. Offline export with published encodings passes 177 files / 420611050 bytes, including 28 original interface images and 16 cinematics. Four managed assemblies and all executable suites pass, including 21 new cinematic transition/deadline/cancellation checks. No Unity Editor process or native gameplay capture was run.
 
 GitHub native source validation for the previous ranking checkpoint (run 41557110279, commit 8b1ba04) completed successfully. The earlier account checkpoint also finished successfully. Neither is an Android application build.
+
+
+## Spectator mode, server rankings/history and account settings
+
+The native fight setup now includes the source CPU-versus-CPU spectator option. Both sides receive CPU controllers; keyboard/touch input, local wins/challenges and online match/result submission are excluded. Rematches preserve the option, while launching another mode or a challenge restores player control. Neutral clinch chooses either CPU as in source rather than always selecting side zero. Managed coverage now includes 11 CPU and 20 clinch checks.
+
+A separate server ranking page reads up to 100 source rows and retains the player's row outside the top 100. Multiplayer rows must carry both_players_confirmed; CPU categories remain labelled private-progress categories, not verified public competition. The account history reads the original last 50 results, displays the user's host/guest score order, and distinguishes legacy/client-reported results. Identity, field/size/rank bounds and ownership are validated before rendering; names remain plain text. Public avatars and exact production podium styling are still unported. 34 ranking protocol checks pass, including malformed boards, ownership and history limits. No live rankings were written.
+
+Native account settings now wire the original male/female presets and change/add password. They validate input, clear secret fields on submission/navigation, and require an authenticated, same-identity server saved receipt before displaying success. Password capability and preset selection come from the server. No credentials or cookies are persisted to ordinary files. 40 account/shop protocol checks pass; no real password or avatar was changed during implementation.
+
+Both preset artwork payloads were restored from pinned v271 and downloaded/hash-compared with the published original. Media export now passes 179 files / 421358067 bytes, including 30 original interface images. Four separate managed assemblies and every executable fixture suite pass after these changes. This does not validate Unity UI, native decoding, Android networking or touch interaction.

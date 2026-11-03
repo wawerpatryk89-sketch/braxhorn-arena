@@ -56,7 +56,7 @@ namespace Braxhorn.Arena
         }
         void NoteChallenge(string kind)
         {
-            if(challengeRun==null||!challengeRun.Note(kind))return;
+            if(spectating||challengeRun==null||!challengeRun.Note(kind))return;
             var c=challengeRun.Definition;
             rankTracker?.Challenge(c.Id,match.ActiveMs,challengeRun.Count);
             progress.Complete(challengeRun.Fighter,c.Id);
