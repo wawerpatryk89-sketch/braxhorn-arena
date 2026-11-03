@@ -19,7 +19,7 @@ namespace Braxhorn.Arena
     // Native adapter to the existing v271 backend. Only the server grants an
     // identity, inventory or balance. Cookies stay in this client's memory;
     // credentials/tokens are never put in PlayerPrefs, logs or progress JSON.
-    public sealed class ArenaOnlineClient : IDisposable
+    public sealed partial class ArenaOnlineClient : IDisposable
     {
         static readonly HashSet<string> OutfitIds=new HashSet<string>{"BRAX_WHITE","BRAX_STREET","NYXA_SPORT","NYXA_PINK","VEXA_PURPLE","VEXA_STREET","KROV_TRACKSUIT","KROV_SUMMER"};
         readonly HttpClient client;

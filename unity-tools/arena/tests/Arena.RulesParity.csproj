@@ -24,7 +24,10 @@
     <Compile Include="BloodParityRunner.cs" />
     <Compile Include="InputParityRunner.cs" />
     <Compile Include="OnlineProtocolRunner.cs" />
-    <Compile Include="../../../unity-arena/Assets/Arena/Runtime/ArenaOnlineClient.cs" />
+    <Compile Include="../../../unity-arena/Assets/Arena/Runtime/ArenaOnlineClient*.cs" />
+    <Compile Include="../../../unity-arena/Assets/Arena/Runtime/ArenaRankTracker.cs" />
+    <Compile Include="../../../unity-arena/Assets/Arena/Runtime/PendingArenaResults.cs" />
+    <Compile Include="RankingProtocolRunner.cs" />
     <Compile Include="../../../unity-arena/Assets/Arena/Runtime/ProgressFileStore.cs" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>

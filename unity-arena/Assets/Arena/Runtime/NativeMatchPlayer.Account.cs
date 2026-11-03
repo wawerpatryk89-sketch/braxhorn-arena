@@ -97,7 +97,7 @@ namespace Braxhorn.Arena
             accountBusy=false;SetAccountBusy(false);RefreshShopUi();RefreshMenuUi();
         }
         static string ServiceMessage(Exception e)=>e is ArenaServiceException?e.Message:"Nie udało się wykonać działania. Odśwież dane i spróbuj ponownie.";
-        void AccountError(string message){accountMessage.text=message;shopMessage.text=message;}
+        void AccountError(string message){accountMessage.text=message;shopMessage.text=message;if(menuCurrent==menuRecords)recordsServiceMessage=message;}
         void SetAccountBusy(bool busy)
         {
             foreach(var page in new[]{menuAccount,menuShop})foreach(var selectable in page.GetComponentsInChildren<Selectable>(true))selectable.interactable=!busy;
@@ -107,7 +107,7 @@ namespace Braxhorn.Arena
             // Inventory is tied to the server session. A different account may
             // never inherit a previously selected paid outfit from local state.
             if(Variants[variantIndex].Contains("_")&&online?.Owns(Variants[variantIndex])!=true)variantIndex=Array.IndexOf(Variants,Base(Variants[variantIndex]));
-            confirmPurchase=false;
+            confirmPurchase=false;RetryServerResults();
         }
         void OpenShop()
         {

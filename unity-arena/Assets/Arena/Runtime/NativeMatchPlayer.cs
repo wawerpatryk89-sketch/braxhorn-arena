@@ -92,6 +92,7 @@ namespace Braxhorn.Arena
             soundControl=Click(uiRoot,"DŹWIĘK",new Rect(708,12,132,36),()=>{if(fightAudio)fightAudio.Mute(!fightAudio.Muted);});
             resultPanel=Panel("Result",new Rect(240,150,544,250),new Color(.03f,.04f,.05f,.97f));
             result=Label(resultPanel.transform,"Result text",new Rect(24,20,496,104),26);
+            resultOnlineStatus=Label(resultPanel.transform,"Server result",new Rect(24,128,496,30),14);
             Click(resultPanel.transform,"DALEJ",new Rect(24,160,230,60),ContinueSession);
             Click(resultPanel.transform,"MENU",new Rect(278,160,242,60),ShowSelection);
             resultPanel.SetActive(false);controls.SetActive(false);BuildTrainingUi();BuildChallengeUi();BuildReplayUi();BuildPauseUi();
@@ -118,6 +119,7 @@ namespace Braxhorn.Arena
         void BeginSession()
         {
             if(loading||mediaCatalog==null)return;
+            if(Variants[variantIndex].Contains("_")&&online?.Owns(Variants[variantIndex])!=true)variantIndex=Array.IndexOf(Variants,Base(Variants[variantIndex]));
             BeginProgressSession();
             challengeRun=pendingChallenge==null?null:new ChallengeRun(pendingChallenge,Base(Variants[variantIndex]));pendingChallenge=null;
             if(Modes[modeIndex]=="adventure"){StartCoroutine(LoadAdventure());return;}
@@ -157,7 +159,7 @@ namespace Braxhorn.Arena
                 var worldPerPixel=3.25f/640/(float)match.Scale;
                 matchCamera.orthographic=true;matchCamera.orthographicSize=(float)match.Height*worldPerPixel/2;
                 matchCamera.transform.position=new Vector3(0,(float)(match.Floor-match.Height/2)*worldPerPixel,-8);
-                loading=false;controls.SetActive(true);if(applicationSuspended)Pause(true);Present();
+                BeginServerMatch();loading=false;controls.SetActive(true);if(applicationSuspended)Pause(true);Present();
             }
             catch(Exception e){Debug.LogException(e);Fail(e.Message);}
         }
@@ -251,6 +253,7 @@ namespace Braxhorn.Arena
             result.text=(outcome==BoutOutcome.Draw?"REMIS":outcome==BoutOutcome.Win?"WYGRYWASZ":"WYGRYWA PRZECIWNIK")+"\n"+match.PlayerWins+" : "+match.OpponentWins;
             if(campaign?.Finished==true)result.text+="\n"+(campaign.Champion==campaign.Player?"KAMPANIA UKOŃCZONA":"KONIEC KAMPANII");
             if(survival!=null)result.text+="\nSURVIVAL: "+survival.Score;
+            SubmitServerMatch();
             SaveMatchProgress();
             CompleteChallengeMatch();
         }
@@ -264,7 +267,7 @@ namespace Braxhorn.Arena
             StartCoroutine(LoadMatch(Variants[variantIndex],campaignOpponent??Roster[opponentIndex],survival?.Hp??100));
         }
         void TogglePause(){if(replay.Active){Pause(!match.Paused);return;}if(trainingPanel&&trainingPanel.activeSelf){CloseTraining();return;}if(match==null||loading||match.Phase==MatchPhase.Complete||adventure?.Phase==AdventurePhase.Complete||adventure?.Phase==AdventurePhase.Dead)return;Pause(match.Paused?false:true);}
-        void Pause(bool value){match?.SetPaused(value);arenaMedia?.SetPaused(value);adventureWorld?.SetPaused(value);fightAudio?.SetPaused(value);ReleaseControls();RefreshPauseUi();}
+        void Pause(bool value){match?.SetPaused(value);arenaMedia?.SetPaused(value||replay.Active);adventureWorld?.SetPaused(value);fightAudio?.SetPaused(value);ReleaseControls();RefreshPauseUi();}
         void ReleaseControls(){directionTap.Reset();foreach(var button in buttons)button.Release();match?.ReleaseInputs();}
         void ShowSelection()
         {ResetReplay();challengeRun=null;pendingChallenge=null;if(challengesPanel)challengesPanel.SetActive(false);if(trainingPanel)trainingPanel.SetActive(false);if(trainingOpen)trainingOpen.SetActive(false);generation++;StopAllCoroutines();CloseMenuOverlays();ClearAdventure();loading=false;match=null;ClearActors();if(arenaMedia)arenaMedia.Clear();if(fightAudio)fightAudio.Stop();ReleaseControls();selection.SetActive(true);controls.SetActive(false);resultPanel.SetActive(false);hud.text="";RefreshSelection();ShowMenuPage(menuRoster);}

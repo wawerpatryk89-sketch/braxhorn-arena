@@ -22,7 +22,7 @@ namespace Braxhorn.Arena
         GameObject menuTitle,menuRoster,menuModes,menuSetup,menuArena,menuHub,menuRecords,menuProfile,menuCurrent,pausePanel;
         GameObject pauseControl,soundControl;
         Text rosterRole,rosterChoice,outfitChoice,menuIdentity,arenaChoice,recordsCategory,recordSummary,profileMessage;
-        Text difficultyChoice,recordsNote,recordFighter;
+        Text difficultyChoice,recordsNote,recordFighter,onlineResultStatus;
         NativeMenuImage arenaPreview,setupPlayer,setupOpponent,recordPortrait;
         InputField nickname;
         bool pickingOpponent;
@@ -148,7 +148,11 @@ namespace Braxhorn.Arena
             recordSummary=Label(menuRecords.transform,"Progress",new Rect(712,360,280,114),18);recordSummary.alignment=TextAnchor.UpperCenter;
             Click(menuRecords.transform,"◀",new Rect(684,306,50,44),()=>{recordsFighter=(recordsFighter+7)%8;RefreshRecords();});
             Click(menuRecords.transform,"▶",new Rect(950,306,50,44),()=>{recordsFighter=(recordsFighter+1)%8;RefreshRecords();});
-            MenuBack(menuRecords,menuHub);Click(menuRecords.transform,"PROFIL LOKALNY",new Rect(714,510,278,46),()=>ShowMenuPage(menuProfile));
+            MenuBack(menuRecords,menuHub);
+            Click(menuRecords.transform,"PONÓW ZAPIS ONLINE",new Rect(224,510,278,46),RetryServerResults);
+            Click(menuRecords.transform,"POSTĘP KONTA",new Rect(518,510,180,46),LoadServerProgress);
+            onlineResultStatus=Label(menuRecords.transform,"Online result status",new Rect(32,478,960,30),14);
+            Click(menuRecords.transform,"PROFIL LOKALNY",new Rect(714,510,278,46),()=>ShowMenuPage(menuProfile));
         }
         void BuildProfileMenu()
         {
@@ -188,9 +192,9 @@ namespace Braxhorn.Arena
                 else score=r["rounds"] is JArray rounds?string.Join(" : ",rounds.Values<int>()):"Wygrana · przewaga "+r["score"]+" rund";
                 recordRows[i].text=(i+1)+". "+r["name"]+" · "+Display((string)r["fighter"])+"\n    "+score+" · "+seconds/60+":"+(seconds%60).ToString("D2");
             }
-            var fighter=Roster[recordsFighter];var f=progress.Fighter(fighter);var available=ChallengeCatalog.All.Where(c=>c.Allows(fighter)).ToArray();var done=((JArray)f["challenges"]).Values<string>().ToHashSet();
+            var fighter=Roster[recordsFighter];var fromServer=online?.Authenticated==true&&online.PlayerId==serverFightersOwner&&serverFighters?[fighter] is JObject;var f=fromServer?(JObject)serverFighters[fighter]:progress.Fighter(fighter);var available=ChallengeCatalog.All.Where(c=>c.Allows(fighter)).ToArray();var done=((JArray)f["challenges"]).Values<string>().ToHashSet();
             recordPortrait.Show(mediaCatalog.Interface["portrait-"+fighter]);recordFighter.text=Display(fighter);
-            recordSummary.text="Zwycięstwa: "+f["wins"]+"\nRekord Survival: "+f["bestSurvival"]+"\nWyzwania: "+available.Count(c=>done.Contains(c.Id))+" / "+available.Length;
+            recordSummary.text=(fromServer?"POSTĘP KONTA\n":"PROFIL LOKALNY\n")+"Zwycięstwa: "+f["wins"]+"\nRekord Survival: "+f["bestSurvival"]+"\nWyzwania: "+available.Count(c=>done.Contains(c.Id))+" / "+available.Length;
         }
         void ShowMenuPage(GameObject page)
         {
@@ -241,6 +245,8 @@ namespace Braxhorn.Arena
         void CloseMenuOverlays(){if(pausePanel)pausePanel.SetActive(false);}
         void UpdateMenuInput()
         {
+            if(onlineResultStatus&&menuCurrent==menuRecords)onlineResultStatus.text=recordsServiceMessage??rankTracker?.Status??"Wyniki na tym urządzeniu. Zaloguj się, aby zapisywać nowe walki na koncie.";
+            if(resultOnlineStatus&&resultPanel.activeSelf)resultOnlineStatus.text=adventure==null?rankTracker?.Status??"Wynik zapisany lokalnie.":"Przejście lokalne.";
             var inGame=!selection.activeSelf&&!loading&&match!=null;
             if(pauseControl&&pauseControl.activeSelf!=inGame)pauseControl.SetActive(inGame);
             if(soundControl&&soundControl.activeSelf!=inGame)soundControl.SetActive(inGame);

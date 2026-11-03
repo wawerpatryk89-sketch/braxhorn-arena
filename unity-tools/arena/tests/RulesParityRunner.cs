@@ -76,6 +76,7 @@ static class RulesParityRunner
         BloodParityRunner.Run();
         InputParityRunner.Run();
         OnlineProtocolRunner.Run();
+        RankingProtocolRunner.Run();
         return 0;
     }
 }

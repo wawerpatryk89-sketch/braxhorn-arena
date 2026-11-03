@@ -58,6 +58,7 @@ namespace Braxhorn.Arena
         {
             if(challengeRun==null||!challengeRun.Note(kind))return;
             var c=challengeRun.Definition;
+            rankTracker?.Challenge(c.Id,match.ActiveMs,challengeRun.Count);
             progress.Complete(challengeRun.Fighter,c.Id);
             progress.Record("challenge:"+c.Id,c.Difficulty,sessionRecordId+"-"+c.Id,challengeRun.Fighter,1,match.ActiveMs,true);
             if(!progressStore.Save(progress))status.text=progressStore.Error;
