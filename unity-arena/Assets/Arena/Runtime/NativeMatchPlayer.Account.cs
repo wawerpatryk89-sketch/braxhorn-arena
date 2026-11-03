@@ -37,7 +37,7 @@ namespace Braxhorn.Arena
             accountAvatar=Click(menuAccount.transform,"AWATAR: MĘSKI",new Rect(496,372,496,40),()=>{if(accountBusy)return;femaleAvatar=!femaleAvatar;accountAvatar.text=femaleAvatar?"AWATAR: ŻEŃSKI":"AWATAR: MĘSKI";}).GetComponentInChildren<Text>();
             accountMessage=Label(menuAccount.transform,"Account status",new Rect(496,428,496,70),17);
             accountSubmit=Click(menuAccount.transform,"ZALOGUJ",new Rect(674,510,318,46),SubmitAccount).GetComponentInChildren<Text>();
-            Click(menuAccount.transform,"WYLOGUJ",new Rect(244,510,190,46),()=>RunAccount(()=>online.Logout(),()=>{ResetAccountSelection();accountMessage.text="Wylogowano z konta.";}));
+            Click(menuAccount.transform,"WYLOGUJ",new Rect(244,510,190,46),LogoutAccount);
             MenuBack(menuAccount,menuModes);
             MenuHeading(menuShop,"STROJE ZAWODNIKÓW");
             MenuArt(menuShop.transform,"mode-shop",new Rect(32,90,310,370),true);
@@ -95,6 +95,15 @@ namespace Braxhorn.Arena
             accountPassword.SetTextWithoutNotify("");accountRepeat.SetTextWithoutNotify("");
             RunAccount(()=>create?online.Register(nick,password,avatar):online.Login(nick,password),()=>{ResetAccountSelection();accountMessage.text="Zalogowano: "+online.Name;});
         }
+        void LogoutAccount()
+        {
+            if(accountBusy)return;ClearAccountSecrets();var confirmed=false;
+            RunAccount(async()=>
+            {
+                try{await online.Logout();confirmed=true;}
+                catch(ArenaServiceException){if(online.Authenticated)throw;}
+            },()=>{ResetAccountSelection();accountMessage.text=confirmed?"Wylogowano z konta.":"Wylogowano na tym urządzeniu. Serwer nie potwierdził zakończenia sesji.";});
+        }
         void RunAccount(Func<Task> action,Action success)
         {
             if(accountBusy)return;
@@ -103,6 +112,7 @@ namespace Braxhorn.Arena
         }
         IEnumerator AccountRequest(Func<Task> action,Action success)
         {
+            var previousIdentity=online.PlayerId;
             accountBusy=true;SetAccountBusy(true);AccountError("Łączenie z serwerem…");Task task=null;
             try{task=action();}catch(Exception e){AccountError(ServiceMessage(e));}
             if(task!=null)
@@ -112,7 +122,8 @@ namespace Braxhorn.Arena
                 else if(task.IsCanceled)AccountError("Żądanie zostało przerwane. Odśwież dane.");
                 else try{success();if(online.SessionWarning!=null)AccountError(online.SessionWarning);}catch(Exception e){AccountError(ServiceMessage(e));}
             }
-            accountBusy=false;SetAccountBusy(false);RefreshShopUi();RefreshMenuUi();
+            if(previousIdentity!=online.PlayerId)ResetAccountSelection();
+            accountBusy=false;SetAccountBusy(false);RefreshAccountSettings();RefreshShopUi();RefreshMenuUi();
         }
         static string ServiceMessage(Exception e)=>e is ArenaServiceException?e.Message:"Nie udało się wykonać działania. Odśwież dane i spróbuj ponownie.";
         void AccountError(string message){accountMessage.text=message;shopMessage.text=message;if(menuCurrent==menuRecords)recordsServiceMessage=message;if(menuCurrent==menuLeaderboard)boardStatus.text=message;if(menuCurrent==menuAccountSettings)settingsMessage.text=message;if(menuCurrent==menuOwnerPrice)ownerPriceMessage.text=message;}

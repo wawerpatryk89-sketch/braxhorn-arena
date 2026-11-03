@@ -51,8 +51,8 @@
   },
   "cloudActivation": {
     "status": "Blocked",
-    "runId": 41566861132,
-    "jobId": 125690366854,
+    "runId": 41627338687,
+    "jobId": 125887876084,
     "missingRepositorySecrets": [
       "UNITY_LICENSE",
       "UNITY_EMAIL",
@@ -256,5 +256,16 @@
     "authority": "Restored cookie grants no local identity or entitlements; refresh from original server required",
     "logout": "Clear disk capability and live cookies on explicit logout even after network failure; password change saves rotated token",
     "limitations": "Android JNI, keystore, IL2CPP, reinstall/backup and device restart not executed; other platforms retain memory-only sessions"
+  },
+  "requestedApkAttempt": {
+    "runId": 41627338687,
+    "sourceCommit": "2f29a4815b4364b82cdba7e4639aa5e92e085775",
+    "activationJobId": 125888005855,
+    "status": "Blocked before Unity invocation",
+    "error": "No complete activation inputs: UNITY_EMAIL, UNITY_PASSWORD and UNITY_LICENSE or UNITY_SERIAL",
+    "apkProduced": false,
+    "nativeFixtureJob": "Passed",
+    "mediaJob": "Passed",
+    "assetsJob": "In progress when this checkpoint was recorded"
   }
 }

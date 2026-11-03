@@ -56,7 +56,7 @@ namespace Braxhorn.Arena
         void ClearStoredSession()
         {
             HasRestoredSession=false;
-            try{sessionStore?.Clear();}catch(Exception){SessionWarning=SessionFailure;}
+            try{sessionStore?.Clear();}catch(Exception){SessionWarning="Nie udało się usunąć zapisu sesji na tym urządzeniu.";}
         }
         void EndLocalSession(bool keepGuest=false)
         {
