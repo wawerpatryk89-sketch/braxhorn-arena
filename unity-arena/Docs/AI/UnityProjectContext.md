@@ -17,7 +17,7 @@ The user authorized continuing the entire **Arena** migration to native Unity, p
 
 `Arena.Runtime` owns original rig definitions, Playables, native audio/video, touch controls and scene presentation. `Arena.Editor` imports meshes, full 8/12-weight skinning, textures, clips and generates integration scenes. C# assemblies must compile separately: a monolithic compile can conceal forbidden access to internal Domain members.
 
-`NativeMatchPlayer` connects all 16 playable variants, 21 original arenas, fight/training/Arcade/tournament/Survival and five adventure routes. It uses async resource/configuration loading with generation guards; backgrounding pauses and releases input. The touch interface has a jump button and fits a 1024×576 layout inside the device safe area. It is still an integration menu, not the original production UI.
+`NativeMatchPlayer` connects all 16 playable variants, 21 original arenas, fight/training/Arcade/tournament/Survival and five adventure routes. It uses async resource/configuration loading with generation guards; backgrounding pauses and releases input. The touch interface shows only supported special/jump buttons and fits a 1024×576 layout inside the device safe area. It is still an integration menu, not the original production UI.
 
 ## Asset fidelity
 
@@ -108,3 +108,17 @@ CPU uses the original full move order (including all eight Nina moves and five B
 `KnockoutReplay` stores up to 240 pose samples within 3.6 seconds, retains the source KO window (-850/+1200 ms), and uses the original speed curve (0.9 to 0.28 to 1). Only pose, gait and captured combat-event playback occurs; simulation/damage/progression do not advance. Actions, facing flips and loop wraps remain discrete. Native playback is final-match KO only, supports skip/pause/background suspension, then applies the result exactly once. It is not an MP4 recording or a screenshot artifact. Video/world effects, blood and dynamic contact-IK fidelity in replay remain unverified/incomplete.
 
 Validation before replay integration: all 18 native configs, 200 match and 542 adventure checks passed with the CPU corrections. Four managed assembly boundaries compile after replay integration. Dedicated checks: 201 challenges, 9 CPU, 17 replay, plus local progress/recovery checks. No Unity process, native render, Android APK or real-device test was executed.
+
+## Native blood and original direction gestures
+
+The source blood burst/gravity formula, colours, particle limit 96, floor-stain limit 100 and head/body wound limits are ported into a plain C# cosmetic state and two reusable Unity meshes. Floor stains render behind fighters; particles and capsule-attached marks render in front. Source head marks begin on every second head hit; body marks use the nearest authored capsule and saturate at severity 3. Camera scrolling shifts the effects in adventure; replacing an opponent clears only that opponent's wounds. Round reset keeps marks/stains while a new match clears everything. No damage authority is in the effect renderer.
+
+`ArenaBuild` now binds `OriginalBlood.shader` explicitly into the generated native scene. Managed compilation does not compile this shader. GPU occlusion, gamma, skin placement, mobile overdraw/performance and source visual equivalence remain unverified. Blood is deliberately hidden during pose replay until replay effect snapshots are implemented, so replay visual parity is incomplete; corpse-captured wound fidelity also remains to validate.
+
+Direction gestures now retain the source released-double-tap window (<300 ms): forward sprints, backward selects existing BACKFLIP/BACK_ROLL/QUICK_BACK metadata and authored retreat motion. Pause releases/reset the input latch. Pointer ownership remains per finger. Grab presses can escape a paired move during the existing 200 ms window; held grab continues to modify attack buttons. Brax guard+COMBO selects ENERGY_SPECIAL; Nina's guard input triggers her authored evade. Unsupported jump/special buttons are hidden rather than shown as nonfunctional controls. This does not implement the final original production control artwork.
+
+Validation: all four managed assembly boundaries compile. Dedicated tests now include 33 progress, 201 challenge, 9 CPU, 17 replay, 14 blood and 14 input checks, supplementing the existing campaign/combat/adventure/geometry suites. Native shader, touch hardware, images/video and APK still require an actual Unity/device run.
+
+Latest inspected Arena CI preflight (job 125627200823, code 5b12899) reported activationInputsAvailable=false and all four Unity activation inputs absent. This blocks a requested APK job but not further source implementation. No credential values were read or copied from City.
+
+Final regression for the blood/input checkpoint passed all 18 native exported configurations: 200 match checks and 542 adventure checks, plus every dedicated suite listed above. The final UI control-cache change also passed separate four-assembly compilation and executable regressions. This remains managed-only evidence.

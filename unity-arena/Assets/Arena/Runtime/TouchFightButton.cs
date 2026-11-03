@@ -10,10 +10,12 @@ namespace Braxhorn.Arena
     {
         readonly HashSet<int> pointers = new HashSet<int>();
         public Action Pressed;
+        public Action Released;
         public bool Held => pointers.Count != 0;
         public void OnPointerDown(PointerEventData e) { if (pointers.Add(e.pointerId)) Pressed?.Invoke(); }
-        public void OnPointerUp(PointerEventData e) => pointers.Remove(e.pointerId);
-        public void OnPointerExit(PointerEventData e) => pointers.Remove(e.pointerId);
+        void Remove(int id){if(pointers.Remove(id)&&pointers.Count==0)Released?.Invoke();}
+        public void OnPointerUp(PointerEventData e) => Remove(e.pointerId);
+        public void OnPointerExit(PointerEventData e) => Remove(e.pointerId);
         public void Release() => pointers.Clear();
         void OnDisable() => Release();
         void OnApplicationFocus(bool focus) { if (!focus) Release(); }

@@ -6,7 +6,7 @@ using Newtonsoft.Json.Linq;
 namespace Braxhorn.Arena.Domain
 {
     public enum MatchPhase { Countdown, Fighting, RoundOver, Complete }
-    public enum FightButton { Punch, Heavy, Kick, HeavyKick, Evade, Jump, Combo, Energy }
+    public enum FightButton { Punch, Heavy, Kick, HeavyKick, Evade, Jump, Combo, Energy, Retreat, Grab }
 
     public readonly struct FightInput
     {
@@ -173,10 +173,17 @@ namespace Braxhorn.Arena.Domain
             var f = Fighter(side);
             if (Paused || Phase != MatchPhase.Fighting || f.Hp <= 0 || recovery != null) return false;
             if(Adventure&&!AdventureCombat&&(side!=0||button==FightButton.Combo||f.Input.Grab))return false;
-            if(clinch)return ClinchInput(f,button);
-            if (pair != null) return button == FightButton.Evade && BreakPair(f);
+            if(clinch){if(button==FightButton.Grab){ReleaseClinch();return true;}return ClinchInput(f,button);}
+            if (pair != null) return (button == FightButton.Evade||button==FightButton.Grab) && BreakPair(f);
             if (f.DownPhase != null || f.StunMs > 0) return false;
             CancelGesture(f);
+            if(button==FightButton.Combo&&f.Input.Block&&f.Configuration.Character=="BRAX"&&f.Configuration.Has("ENERGY_SPECIAL"))button=FightButton.Energy;
+            if(button==FightButton.Retreat)
+            {
+                if(f.Locked||f.PushMs>0||f.Height>0||f.ApproachingCombo)return false;
+                var retreat=new[]{"BACKFLIP","BACK_ROLL","QUICK_BACK"}.FirstOrDefault(f.Configuration.Has);
+                if(retreat==null)return false;Start(f,retreat,true);return true;
+            }
             var kind = button switch { FightButton.Punch => "punch", FightButton.Heavy => "heavy", FightButton.Kick => "kick", FightButton.HeavyKick => "kick2", _ => null };
             if (f.Input.Grab && kind != null)
                 return TryPair(f, (string)f.Configuration["IDLE"].Source["pairedCombat"]?["buttons"]?[kind], false);

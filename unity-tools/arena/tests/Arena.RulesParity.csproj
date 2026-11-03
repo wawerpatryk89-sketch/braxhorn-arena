@@ -21,6 +21,8 @@
     <Compile Include="ChallengeParityRunner.cs" />
     <Compile Include="CpuParityRunner.cs" />
     <Compile Include="ReplayParityRunner.cs" />
+    <Compile Include="BloodParityRunner.cs" />
+    <Compile Include="InputParityRunner.cs" />
     <Compile Include="../../../unity-arena/Assets/Arena/Runtime/ProgressFileStore.cs" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>

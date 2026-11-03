@@ -25,7 +25,7 @@ namespace Braxhorn.Arena
         bool BeginReplay()
         {
             if(replayAttempted)return false;replayAttempted=true;
-            if(!replay.Play())return false;ReleaseControls();controls.SetActive(false);arenaMedia.SetPaused(true);fightAudio.Stop();
+            if(!replay.Play())return false;ReleaseControls();controls.SetActive(false);arenaMedia.SetPaused(true);fightAudio.Stop();blood?.Visible(false);
             hud.text="DECYDUJĄCY CIOS";replaySkip.SetActive(true);replaySkip.transform.SetAsLastSibling();RenderReplay();return true;
         }
         void UpdateReplay()
@@ -51,7 +51,7 @@ namespace Braxhorn.Arena
         void FinishReplay()
         {
             if(!replaySkip||!replaySkip.activeSelf)return;
-            replay.Clear();replaySkip.SetActive(false);fightAudio.Stop();
+            replay.Clear();replaySkip.SetActive(false);fightAudio.Stop();blood?.Visible(true);
             if(match!=null){for(var i=0;i<2;i++)RenderFighter(i,match.Presentation(i));if(!resultApplied)CompleteMatch();}
         }
     }

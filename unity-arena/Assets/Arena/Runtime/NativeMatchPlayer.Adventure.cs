@@ -109,7 +109,7 @@ namespace Braxhorn.Arena
             {
                 if(incomingActor){if(actors[1])Destroy(actors[1]);actors[1]=incomingActor;poses[1]=incomingPose;definitions[1]=pendingDefinition;incomingActor=null;incomingPose=null;}
                 else SpawnFighter(1,pendingDefinition);
-                adventure.InstallOpponent(ready,pendingConfiguration);pendingDefinition=null;pendingConfiguration=null;pendingId=null;
+                adventure.InstallOpponent(ready,pendingConfiguration);blood?.ClearFighter(1);pendingDefinition=null;pendingConfiguration=null;pendingId=null;
             }
             var needed=adventure.PendingOpponentId??(adventure.Phase==AdventurePhase.Combat||adventure.Phase==AdventurePhase.Aftermath?adventure.PreloadOpponentId:null);
             if(needed!=null&&pendingId!=needed&&loadingOpponentId==null)StartCoroutine(PreloadAdventureOpponent(needed,generation));

@@ -73,6 +73,8 @@ static class RulesParityRunner
         ChallengeParityRunner.Run();
         CpuParityRunner.Run();
         ReplayParityRunner.Run();
+        BloodParityRunner.Run();
+        InputParityRunner.Run();
         return 0;
     }
 }
