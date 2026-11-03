@@ -253,7 +253,7 @@ namespace Braxhorn.Arena
         void UpdateMenuInput()
         {
             if(onlineResultStatus&&menuCurrent==menuRecords)onlineResultStatus.text=recordsServiceMessage??rankTracker?.Status??"Wyniki na tym urządzeniu. Zaloguj się, aby zapisywać nowe walki na koncie.";
-            if(resultOnlineStatus&&resultPanel.activeSelf)resultOnlineStatus.text=spectating?"Pokaz — bez zapisu postępu.":adventure==null?rankTracker?.Status??"Wynik zapisany lokalnie.":"Przejście lokalne.";
+            if(resultOnlineStatus&&resultPanel.activeSelf)resultOnlineStatus.text=spectating?"Pokaz — bez zapisu postępu.":adventure==null?rankTracker?.Status??"Wynik zapisany lokalnie.":adventureTracker?.Status??"Przejście lokalne — poza rankingiem.";
             var inGame=!selection.activeSelf&&!loading&&match!=null;
             if(pauseControl&&pauseControl.activeSelf!=inGame)pauseControl.SetActive(inGame);
             if(soundControl)

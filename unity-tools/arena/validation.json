@@ -173,5 +173,13 @@
     "interfaceImages": 30,
     "cinematics": 16,
     "remaining": "Uploaded avatar/camera/crop, secure session persistence, source UI visual parity, owner price screen, live Android validation"
+  },
+  "adventureServer": {
+    "status": "Implemented; mocked protocol and simulation-event checks pass",
+    "protocolChecks": 28,
+    "additionalSimulationChecks": 6,
+    "routes": 5,
+    "liveWritesPerformed": false,
+    "tokenStorage": "Memory only"
   }
 }

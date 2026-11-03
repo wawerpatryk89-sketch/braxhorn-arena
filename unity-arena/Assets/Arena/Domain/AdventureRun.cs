@@ -47,6 +47,11 @@ namespace Braxhorn.Arena.Domain
         bool installed,corpseReady;
         FighterPresentation corpsePose;
         double corpseCamera;
+        readonly Queue<AdventureProgressEvent> progressEvents=new Queue<AdventureProgressEvent>();
+        public bool TryDequeueProgress(out AdventureProgressEvent value)
+        {if(progressEvents.Count==0){value=default;return false;}value=progressEvents.Dequeue();return true;}
+        void ProgressEvent(string action,int next,string status)
+        {progressEvents.Enqueue(new AdventureProgressEvent(action,Defeated,next,Score,status,Match.Player.Hp,Match.Opponent.Hp,ElapsedMs));}
         public AdventureRun(JObject route,string playerId,CombatConfiguration player,CombatConfiguration firstOpponent,string[] opponents,CpuLevel difficulty,double width,double height,Func<double> random)
         {
             Route=route??throw new ArgumentNullException(nameof(route));chapters=(JArray)route["chapters"];
@@ -117,7 +122,7 @@ namespace Braxhorn.Arena.Domain
             {
                 var limit=Math.Min(length-Span,(double)chapters[Defeated]["trigger"]+22-Span*.38);
                 FollowCamera(Math.Max(0,limit),dt);
-                if(Match.Player.Hp<=0){SetPhase(AdventurePhase.Dead);Match.SetPaused(true);return;}
+                if(Match.Player.Hp<=0){ProgressEvent("result",Defeated,"dead");SetPhase(AdventurePhase.Dead);Match.SetPaused(true);return;}
                 if(Match.Opponent.Hp<=enemyMaxHp*.20||Phase==AdventurePhase.Aftermath)RevealIncoming();
                 if(Match.Opponent.Hp<=0&&Phase==AdventurePhase.Combat)SetPhase(AdventurePhase.Aftermath);
                 if(Phase==AdventurePhase.Aftermath)
@@ -130,7 +135,7 @@ namespace Braxhorn.Arena.Domain
             }
             var trigger=(double)chapters[Defeated]["trigger"];var maximum=Math.Max(beforeWorld,Math.Min(length-5,trigger+25));X=Clamp(X,8,maximum);FollowCamera(length-Span,dt);Place();
             var heal=Route["heal"] as JObject;
-            if(heal!=null&&!Healed&&Defeated>=(int)heal["index"]&&X>=(double)heal["x"]){Healed=true;Match.HealAdventure(30);}
+            if(heal!=null&&!Healed&&Defeated>=(int)heal["index"]&&X>=(double)heal["x"]){Healed=true;Match.HealAdventure(30);ProgressEvent("heal",Defeated,"explore");}
             if(installed&&X>=trigger-.001)EnemyEntering=true;
             if(EnemyEntering)
             {
@@ -138,7 +143,7 @@ namespace Braxhorn.Arena.Domain
                 var approaching=X>=trigger-32;
                 if(approaching)Match.PlaceAdventureFighter(1,Match.Opponent.X-delta*640/3.25*Match.Scale*run.Scale);
                 Match.SampleAdventurePose(1,approaching?"ENTRY_RUN":"IDLE",enemyClock/1000);
-                if(Match.Opponent.X-Match.Player.X<=Match.Width*.35){EnemyEntering=false;entryHp=Match.Player.Hp;settledMs=0;Match.BeginAdventureEncounter(level);SetPhase(AdventurePhase.Combat);}
+                if(Match.Opponent.X-Match.Player.X<=Match.Width*.35){EnemyEntering=false;entryHp=Match.Player.Hp;settledMs=0;Match.BeginAdventureEncounter(level);SetPhase(AdventurePhase.Combat);ProgressEvent("encounter",Defeated,"combat");}
             }
         }
         void Entrance(double dt)
@@ -160,8 +165,9 @@ namespace Braxhorn.Arena.Domain
             if(Phase!=AdventurePhase.Aftermath||Match.Player.Hp<=0||Match.Opponent.Hp>0)return;
             corpsePose=Match.Presentation(1);corpseCamera=Camera;corpseReady=true;
             Score+=(Defeated==5?1000:200)+(Match.Player.Hp>=entryHp-.001?100:0);
+            ProgressEvent("result",Defeated+1,"explore");
             Match.EndAdventureEncounter();Defeated++;installed=false;EnemyEntering=false;
-            if(Defeated==6){Score+=500;SetPhase(AdventurePhase.Complete);Match.SetPaused(true);}else SetPhase(AdventurePhase.Explore);
+            if(Defeated==6){Score+=500;SetPhase(AdventurePhase.Complete);Match.SetPaused(true);ProgressEvent("complete",Defeated,"complete");}else SetPhase(AdventurePhase.Explore);
         }
         public bool TryTakeCorpse(out FighterPresentation pose,out double camera)
         {pose=corpsePose;camera=corpseCamera;if(!corpseReady)return false;corpseReady=false;return true;}

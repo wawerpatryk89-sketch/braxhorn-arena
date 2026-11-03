@@ -16,6 +16,7 @@ namespace Braxhorn.Arena
         CombatConfiguration pendingConfiguration;
         string pendingId,loadingOpponentId;
         bool adventureResult;
+        ArenaAdventureTracker adventureTracker;
         GameObject incomingActor;
         FighterPosePlayer incomingPose;
         IEnumerator LoadFighter(string id,int side,int requestId,Action<CombatConfiguration> ready)
@@ -57,6 +58,8 @@ namespace Braxhorn.Arena
         {
             ResetReplay();CloseMenuOverlays();
             loading=true;error=null;adventureResult=false;var token=++generation;ReleaseControls();ClearAdventure();match=null;campaign=null;survival=null;
+            try{EnsureOnline();adventureTracker=new ArenaAdventureTracker(online);adventureTracker.Begin((string)mediaCatalog.Routes[routeIndex]["id"],new[]{"easy","normal","hard"}[difficulty],Base(Variants[variantIndex]),online.Authenticated?online.Name:progress?.Name);}
+            catch(Exception){adventureTracker=null;}
             selection.SetActive(false);controls.SetActive(false);resultPanel.SetActive(false);hud.text="WCZYTYWANIE TRASY…";arenaMedia.Clear();ClearActors();
             yield return null;yield return Resources.UnloadUnusedAssets();
             var player=Variants[variantIndex];var opponents=AdventureRun.ChooseOpponents(player,Variants,random.NextDouble);
@@ -117,6 +120,7 @@ namespace Braxhorn.Arena
             controls.SetActive(playable&&!adventureResult);
             if(playable){ReadInput();var keys=new[]{KeyCode.J,KeyCode.K,KeyCode.U,KeyCode.I,KeyCode.L,KeyCode.Space,KeyCode.O,KeyCode.P};for(var i=0;i<keys.Length;i++)if(Input.GetKeyDown(keys[i]))match.Press(0,(FightButton)i);}
             adventure.Step(Math.Min(100,Time.unscaledDeltaTime*1000));
+            while(adventure.TryDequeueProgress(out var progressEvent))adventureTracker?.Submit(progressEvent);
             if(adventure.TryTakeCorpse(out var pose,out var camera)){RenderFighter(1,pose);adventureWorld.FreezeCorpse(actors[1],camera,match.Width,match.Height);}
             Present();adventureWorld.Present(adventure,fightAudio.Muted);
             if(incomingActor)
@@ -130,11 +134,12 @@ namespace Braxhorn.Arena
             if(!adventureResult&&(adventure.Phase==AdventurePhase.Complete||adventure.Phase==AdventurePhase.Dead))
             {
                 adventureResult=true;ReleaseControls();controls.SetActive(false);resultPanel.SetActive(true);fightAudio.Stop();
-                result.text=(adventure.Phase==AdventurePhase.Complete?"ARENA OSIĄGNIĘTA":"KONIEC WYPRAWY")+"\n"+adventure.Defeated+"/6 RYWALI · "+adventure.Score+" PKT\nPRZEJŚCIE LOKALNE · POZA RANKINGIEM";
+                result.text=(adventure.Phase==AdventurePhase.Complete?"ARENA OSIĄGNIĘTA":"KONIEC WYPRAWY")+"\n"+adventure.Defeated+"/6 RYWALI · "+adventure.Score+" PKT\nCZAS: "+TimeText((long)adventure.ElapsedMs);
             }
         }
         void ClearAdventure()
         {
+            adventureTracker?.Cancel();adventureTracker=null;
             if(adventureWorld){adventureWorld.Clear();Destroy(adventureWorld.gameObject);}adventureWorld=null;adventure=null;
             if(incomingActor)Destroy(incomingActor);incomingActor=null;incomingPose=null;
             pendingDefinition=null;pendingConfiguration=null;pendingId=loadingOpponentId=null;adventureResult=false;

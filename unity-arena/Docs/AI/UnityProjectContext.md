@@ -175,3 +175,12 @@ A separate server ranking page reads up to 100 source rows and retains the playe
 Native account settings now wire the original male/female presets and change/add password. They validate input, clear secret fields on submission/navigation, and require an authenticated, same-identity server saved receipt before displaying success. Password capability and preset selection come from the server. No credentials or cookies are persisted to ordinary files. 40 account/shop protocol checks pass; no real password or avatar was changed during implementation.
 
 Both preset artwork payloads were restored from pinned v271 and downloaded/hash-compared with the published original. Media export now passes 179 files / 421358067 bytes, including 30 original interface images. Four separate managed assemblies and every executable fixture suite pass after these changes. This does not validate Unity UI, native decoding, Android networking or touch interaction.
+
+
+## Adventure server sequence and original route boards
+
+The domain now emits ordered immutable encounter/result/heal/complete events directly at the original state transitions, including HP before the twenty-point post-encounter recovery and the final bonus before completion. The native adapter starts the existing `/api/adventure/runs` protocol, retains the returned capability only in memory, serializes events behind start, and requires matching score/next/status receipts. The source adventure service checks sequence and score, not full server-authoritative combat; this is stated in the route leaderboard UI.
+
+A failed or mismatched write disables subsequent ranking writes for that run while gameplay continues locally. A new run or leaving the route invalidates queued old writes; late replies cannot replace a new run's status. No token is written to disk or logs. The results screen shows actual pending/acknowledged/failure status, and the server ranking page includes each of the five original routes, each difficulty and up to 25 completed runs.
+
+28 mocked adventure protocol checks and six additional simulation-event checks pass, covering queue order, server capability, source rounding, pre-heal HP capture, all six encounters, heal, final score, cancellation and failed/mismatched receipts. Four managed assemblies compile and every existing executable fixture suite passes. No real adventure run or score was submitted, and Android transport/UI/runtime behavior remains unverified.

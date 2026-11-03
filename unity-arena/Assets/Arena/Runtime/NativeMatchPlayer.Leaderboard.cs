@@ -16,7 +16,7 @@ namespace Braxhorn.Arena
         readonly List<Text> boardRows=new List<Text>();
         int boardMode,boardLevel=1;
         bool historyView;
-        string[] BoardModes=>new[]{"multiplayer"}.Concat(recordModes).ToArray();
+        string[] BoardModes=>new[]{"multiplayer"}.Concat(recordModes).Concat(mediaCatalog.Routes.Select(r=>"adventure:"+(string)r["id"])).ToArray();
         void BuildLeaderboardUi()
         {
             menuLeaderboard=MenuPage("Server rankings and history");MenuHeading(menuLeaderboard,"RANKING I HISTORIA KONTA");
@@ -68,14 +68,16 @@ namespace Braxhorn.Arena
         void ReadBoard()
         {
             if(accountBusy)return;ClearBoard();var mode=BoardModes[boardMode];var level=new[]{"easy","normal","hard"}[boardLevel];var history=historyView;
-            var title=mode=="multiplayer"?"MULTIPLAYER":mode.StartsWith("challenge:")?Braxhorn.Arena.Domain.ChallengeCatalog.Find(mode.Substring(10)).Title:ModeNames[Array.IndexOf(Modes,mode)];
+            var adventureBoard=mode.StartsWith("adventure:");var route=adventureBoard?mode.Substring(10):null;
+            var title=adventureBoard?(string)mediaCatalog.Routes.First(r=>(string)r["id"]==route)["title"]:mode=="multiplayer"?"MULTIPLAYER":mode.StartsWith("challenge:")?Braxhorn.Arena.Domain.ChallengeCatalog.Find(mode.Substring(10)).Title:ModeNames[Array.IndexOf(Modes,mode)];
             boardCategory.text=history?"HISTORIA TWOJEGO KONTA":title;boardLevelLabel.text=new[]{"ŁATWY","ŚREDNI","TRUDNY"}[boardLevel];
-            boardNote.text=history?"Ostatnie 50 wyników konta. Historia jest prywatna.":mode=="multiplayer"?"Publiczny ranking wyników potwierdzonych przez obu graczy. 3 pkt za wygraną, 1 za remis.":"Wyniki CPU są prywatnym postępem. Publiczna rywalizacja jest w kategorii MULTIPLAYER.";
+            boardNote.text=history?"Ostatnie 50 wyników konta. Historia jest prywatna.":adventureBoard?"25 ukończonych tras. Serwer sprawdza kolejność zdarzeń i punktację; wynik zgłasza gra.":mode=="multiplayer"?"Publiczny ranking wyników potwierdzonych przez obu graczy. 3 pkt za wygraną, 1 za remis.":"Wyniki CPU są prywatnym postępem. Publiczna rywalizacja jest w kategorii MULTIPLAYER.";
             JObject board=null;JArray rows=null;string owner=null;
-            RunAccount(async()=>{await online.RefreshAccount();owner=online.PlayerId;if(history)rows=await online.ReadHistory(owner);else board=await online.ReadRankings(mode,level);},()=>
+            RunAccount(async()=>{await online.RefreshAccount();owner=online.PlayerId;if(history)rows=await online.ReadHistory(owner);else if(adventureBoard)rows=await online.ReadAdventureBoard(route,level);else board=await online.ReadRankings(mode,level);},()=>
             {
                 if(owner!=online.PlayerId)return;
                 if(history)BoardLines(rows.Select(HistoryLine));
+                else if(adventureBoard)BoardLines(rows.Select((r,i)=>(i+1)+". "+r["name"]+" · "+Display((string)r["fighter"])+"\n    "+r["score"]+" PKT · "+TimeText((long)r["elapsed"])));
                 else
                 {
                     rows=(JArray)board["rows"];var shown=rows.ToList();var own=board["own"] as JObject;

@@ -78,6 +78,7 @@ static class RulesParityRunner
         OnlineProtocolRunner.Run();
         RankingProtocolRunner.Run();
         CinematicParityRunner.Run();
+        AdventureProtocolRunner.Run();
         return 0;
     }
 }

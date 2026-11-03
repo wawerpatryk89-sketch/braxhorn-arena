@@ -72,9 +72,17 @@ static class AdventureParityRunner
             if(encounter==4)Check(a.Healed,"city medical pickup reached once after four victories");
         }
         Check(a.Score==3000&&a.Defeated==6&&a.Match.Paused,"six victories plus perfect and completion bonuses");
+        var progress=new System.Collections.Generic.List<AdventureProgressEvent>();while(a.TryDequeueProgress(out var message))progress.Add(message);
+        Check(progress.Count==14&&progress.Count(p=>p.Action=="encounter")==6&&progress.Count(p=>p.Action=="result")==6,"six encounters and results emit once with heal/finale");
+        Check(progress.First(p=>p.Action=="result").Hp==39,"settlement captures HP before twenty-point recovery");
+        Check(progress.Last().Action=="complete"&&progress.Last().Score==3000&&progress.Last().Next==6,"completion emitted after final score");
+        Check(progress.Where(p=>p.Action=="encounter").Select(p=>p.Index).SequenceEqual(Enumerable.Range(0,6)),"encounter sequence matches original server indices");
+        Check(progress.First(p=>p.Action=="heal").Next==4,"heal emitted at source progression point");
         var score=a.Score;var elapsed=a.ElapsedMs;a.Step(999999);Check(a.Score==score&&a.ElapsedMs==elapsed,"completed route is idempotent");
         var dead=New();Until(dead,AdventurePhase.Explore);Enter(dead);dead.Match.Player.Hp=0;dead.Match.Opponent.Hp=0;dead.Step(1000);
         Check(dead.Phase==AdventurePhase.Dead&&dead.Score==0&&dead.Defeated==0&&dead.Match.Paused,"simultaneous KO is adventure loss without reward");
+        var loss=new System.Collections.Generic.List<AdventureProgressEvent>();while(dead.TryDequeueProgress(out var message))loss.Add(message);
+        Check(loss.Count==2&&loss[1].Action=="result"&&loss[1].Status=="dead"&&loss[1].Next==0,"loss emits result without victory or completion");
     }
     static void Actual(string root,string fixtures)
     {
