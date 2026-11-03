@@ -68,6 +68,8 @@ static class RulesParityRunner
         ClinchParityRunner.Run();
         ArmContactParityRunner.Run();
         MovingStrikeParityRunner.Run();
+        TrainingParityRunner.Run();
+        ProgressParityRunner.Run();
         return 0;
     }
 }

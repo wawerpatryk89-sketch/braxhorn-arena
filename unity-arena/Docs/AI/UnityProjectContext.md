@@ -57,8 +57,8 @@ Previous preflight found no configured Arena UNITY_LICENSE/EMAIL/PASSWORD/SERIAL
 
 ## Required before claiming the whole migration is finished
 
-1. Complete remaining source gameplay/presentation parity: runtime verification of moving-strike leg layers, full CPU/drill variants, runtime verification of clinch hand IK, combo-aftermath gestures, recoil/lift/travel details, KO replay, all authored VFX/audio and procedural night-market overlays. Expand matchup/direction reference coverage.
-2. Implement the original production menus/art, account entry, portraits, outfit shop, challenges, rankings and save migration. The present integration selector is not a finished UI.
+1. Complete remaining source gameplay/presentation parity: runtime verification of moving-strike leg layers, remaining CPU parity and runtime drill verification, runtime verification of clinch hand IK, combo-aftermath gestures, recoil/lift/travel details, KO replay, all authored VFX/audio and procedural night-market overlays. Expand matchup/direction reference coverage.
+2. Implement the original production menus/art, account entry, portraits, outfit shop, challenges, ranking UI and browser-to-app save transfer. The present integration selector is not a finished UI.
 3. Implement native backend account/session/shop authority, adventure ranking protocol, online rooms/signaling, input/snapshots and voice; verify two peers. Do not fake successful online results.
 4. Execute native import and visual/runtime checks when a permitted Unity execution path is available. Validate rig deformation, facing, entrance masks, unlit/PBR output, actual video orientation/loop seams, audio synchronization and corpse capture.
 5. Measure mobile CPU/GPU/memory and touch usability; then build/test the app. Store signing, product identity, pricing and publication remain later explicit steps.
@@ -88,3 +88,13 @@ Native basic attacks now retain source forward travel, minimum opponent distance
 The owner requested lit fighters closer to Tripo and improved adventure exits on 2026-11-03. The previous unlit override is removed; original PBR colour/normal/metallic-roughness textures remain. Generated combat and review scenes share enabled key/fill/rim lights and hemispheric ambient light. Values are initial studio settings, not a measured Tripo match. Visual calibration and mobile GPU cost remain to validate.
 
 Adventure chapter loading now freezes ready films while another visible chapter is buffering, hides/relinquishes controls while waiting and clears the loading message after recovery. This addresses stream-boundary behavior, not a claim that doorway geometry or every exit is visually corrected. Original entrance masks/projections stay unchanged pending visual evidence.
+
+## Native training and local progress
+
+Seven source training modes now run natively: movement/distance, repeat, counter, grabs, bag, block and spar. Repeat/grab use the source 1000 ms idle interval; counter uses 1300 ms (it is a timed exercise, not reactive counter AI). Selected source basic moves are validated against the fighter configuration. Movement respects combo approach, calibrated gap and source rest cycles. Live settings pause the match and restore its previous pause state. Reopening the panel cannot overwrite that state. The present menu remains integration UI.
+
+`ArenaProgress` implements local v2 profiles, wins, best Survival, challenge completion storage and per-mode/per-difficulty TOP 5. Source v1 JSON can be migrated when supplied; the app does not automatically read browser localStorage. The runtime saves completed fights and campaign/Survival scores to `Application.persistentDataPath/braxhorn.progress.v2.json`, using the source score/completion/time ordering and tournament average duration. Training/adventure results do not enter ordinary fight records. The new active clock excludes countdown, celebration and pause, includes combat hitstop. No online authentication, account ownership, shop authority or cloud ranking is implemented by this local save.
+
+The disk adapter writes/flushed temporary data, retains a previous-generation backup and can recover after interrupted replacement. Corrupt files are preserved; unrecoverable data or unsupported schema blocks overwriting and displays an error. Unknown extension fields in supported data remain preserved. A valid prior backup is not replaced by a corrupt main file.
+
+Evidence: four managed assembly boundaries compile; 27 training and 32 progress checks pass. The full exported-asset regression before adding progress passed 200 match and 542 adventure checks across 18 configurations. Progress tests cover profiles, migration, ranking, save/reload, broken primary/backup, future schema, write errors and pause/countdown exclusion. Android filesystem behavior and rendered training UI remain unverified.

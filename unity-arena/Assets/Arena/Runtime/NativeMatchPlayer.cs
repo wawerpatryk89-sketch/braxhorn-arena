@@ -49,7 +49,7 @@ namespace Braxhorn.Arena
             Application.targetFrameRate=60;QualitySettings.skinWeights=SkinWeights.Unlimited;
             Screen.sleepTimeout=SleepTimeout.NeverSleep;
             font=Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
-            BuildUi();
+            BuildUi();LoadProgress();
             try{mediaCatalog=ArenaMediaCatalog.Load();arenaMedia=gameObject.AddComponent<NativeArenaMedia>();fightAudio=gameObject.AddComponent<NativeFightAudio>();ShowSelection();}
             catch(Exception e){Fail(e.Message);}
         }
@@ -75,7 +75,7 @@ namespace Braxhorn.Arena
             Click(selection.transform,"Tryb",new Rect(24,274,232,58),()=>{modeIndex=(modeIndex+1)%Modes.Length;RefreshSelection();});
             Click(selection.transform,"Arena",new Rect(280,274,232,58),()=>{if(mediaCatalog!=null){if(Modes[modeIndex]=="adventure")routeIndex=(routeIndex+1)%mediaCatalog.Routes.Count;else arenaIndex=(arenaIndex+1)%mediaCatalog.Arenas.Length;RefreshSelection();}});
             Click(selection.transform,"ROZPOCZNIJ",new Rect(536,274,260,58),BeginSession);
-            Label(selection.transform,"Scope",new Rect(24,348,776,56),16).text="Natywna walka i kampanie. Przygoda lokalna bez rankingu online. Wersja nieprzeznaczona do sprzedaży.";
+            selectionScope=Label(selection.transform,"Scope",new Rect(24,348,776,56),16);selectionScope.text="Natywna walka i kampanie. Przygoda lokalna bez rankingu online. Wersja nieprzeznaczona do sprzedaży.";
             controls=Panel("Controls",new Rect(0,440,1024,136),Color.clear);
             left=Hold("◀",new Rect(16,54,74,62));right=Hold("▶",new Rect(98,54,74,62));
             down=Hold("DÓŁ",new Rect(180,54,74,62));sprint=Hold("BIEG",new Rect(16,0,96,44));
@@ -92,7 +92,7 @@ namespace Braxhorn.Arena
             result=Label(resultPanel.transform,"Result text",new Rect(24,20,496,104),26);
             Click(resultPanel.transform,"DALEJ",new Rect(24,160,230,60),ContinueSession);
             Click(resultPanel.transform,"MENU",new Rect(278,160,242,60),ShowSelection);
-            resultPanel.SetActive(false);controls.SetActive(false);
+            resultPanel.SetActive(false);controls.SetActive(false);BuildTrainingUi();
         }
         GameObject Panel(string name,Rect rect,Color color)
         {var obj=new GameObject(name,typeof(RectTransform),typeof(Image));Place(obj,uiRoot,rect);obj.GetComponent<Image>().color=color;obj.GetComponent<Image>().raycastTarget=color.a>0;return obj;}
@@ -110,10 +110,11 @@ namespace Braxhorn.Arena
         {var obj=Click(controls.transform,text,rect,()=>{});var button=obj.AddComponent<TouchFightButton>();buttons.Add(button);return button;}
         void Tap(string text,Rect rect,FightButton action)
         {var button=Hold(text,rect);button.Pressed=()=>{ReadInput();match?.Press(0,action);};}
-        void RefreshSelection() => chosen.text="POSTAĆ: "+Display(Variants[variantIndex])+"\nPRZECIWNIK: "+Display(Roster[opponentIndex])+"\n"+ModeNames[modeIndex]+" · "+new[]{"ŁATWY","ŚREDNI","TRUDNY"}[difficulty]+"\n"+(Modes[modeIndex]=="adventure"?(string)mediaCatalog?.Routes[routeIndex]["title"]:(mediaCatalog?.Arenas[arenaIndex].name??"BRAK KATALOGU AREN"));
+        void RefreshSelection() {RefreshTrainingLabels();chosen.text="POSTAĆ: "+Display(Variants[variantIndex])+"\nPRZECIWNIK: "+Display(Roster[opponentIndex])+"\n"+ModeNames[modeIndex]+" · "+new[]{"ŁATWY","ŚREDNI","TRUDNY"}[difficulty]+"\n"+(Modes[modeIndex]=="adventure"?(string)mediaCatalog?.Routes[routeIndex]["title"]:(mediaCatalog?.Arenas[arenaIndex].name??"BRAK KATALOGU AREN"));}
         void BeginSession()
         {
             if(loading||mediaCatalog==null)return;
+            BeginProgressSession();
             if(Modes[modeIndex]=="adventure"){StartCoroutine(LoadAdventure());return;}
             campaign=null;survival=null;var mode=Modes[modeIndex];var player=Base(Variants[variantIndex]);
             if(mode=="arcade"||mode=="tournament")campaign=new CampaignRun(mode,player,Roster,random.NextDouble);
@@ -124,6 +125,7 @@ namespace Braxhorn.Arena
         IEnumerator LoadMatch(string player,string opponent,double hp)
         {
             loading=true;resultApplied=false;error=null;var requestId=++generation;
+            matchRecordId=Guid.NewGuid().ToString("N");
             ReleaseControls();match=null;selection.SetActive(false);controls.SetActive(false);resultPanel.SetActive(false);hud.text="WCZYTYWANIE…";
             ClearActors();yield return null;yield return Resources.UnloadUnusedAssets();
             yield return arenaMedia.Load(mediaCatalog.Arenas[arenaIndex],matchCamera,arenaMediaShader);
@@ -145,7 +147,7 @@ namespace Braxhorn.Arena
                 var logicalWidth=Math.Max(320,576.0*matchCamera.aspect);var arena=mediaCatalog.Arenas[arenaIndex];
                 var geometry=new MediaGeometry(logicalWidth,576,arena.aspect,arena.ground,arena.fit=="contain");
                 match=new ArenaMatch(configs[0],configs[1],random.NextDouble,training:Modes[modeIndex]=="training",singleRound:survival!=null,playerHp:hp,width:logicalWidth,groundRatio:geometry.Floor/576);
-                match.UseCpu(1,(CpuLevel)difficulty,TrainingBehavior.Spar);
+                match.UseCpu(1,(CpuLevel)difficulty,match.Training?TrainingModes[trainingMode]:TrainingBehavior.Spar,DrillMove);
                 var worldPerPixel=3.25f/640/(float)match.Scale;
                 matchCamera.orthographic=true;matchCamera.orthographicSize=(float)match.Height*worldPerPixel/2;
                 matchCamera.transform.position=new Vector3(0,(float)(match.Floor-match.Height/2)*worldPerPixel,-8);
@@ -153,7 +155,7 @@ namespace Braxhorn.Arena
             }
             catch(Exception e){Debug.LogException(e);Fail(e.Message);}
         }
-        void Fail(string message){generation++;ReleaseControls();ClearAdventure();ClearActors();match=null;controls.SetActive(false);loading=false;error=message;hud.text="Nie udało się wczytać meczu: "+message;selection.SetActive(true);if(arenaMedia)arenaMedia.Clear();if(fightAudio)fightAudio.Stop();}
+        void Fail(string message){if(trainingPanel)trainingPanel.SetActive(false);if(trainingOpen)trainingOpen.SetActive(false);generation++;ReleaseControls();ClearAdventure();ClearActors();match=null;controls.SetActive(false);loading=false;error=message;hud.text="Nie udało się wczytać meczu: "+message;selection.SetActive(true);if(arenaMedia)arenaMedia.Clear();if(fightAudio)fightAudio.Stop();}
         void Update()
         {
             if(safeRoot){var r=Screen.safeArea;safeRoot.anchorMin=r.min/new Vector2(Screen.width,Screen.height);safeRoot.anchorMax=r.max/new Vector2(Screen.width,Screen.height);if(uiRoot)uiRoot.localScale=Vector3.one*Mathf.Min(safeRoot.rect.width/1024,safeRoot.rect.height/576);}
@@ -175,6 +177,7 @@ namespace Braxhorn.Arena
         }
         void Present()
         {
+            trainingOpen.SetActive(match.Training);
             for(var i=0;i<2;i++)
             {
                 RenderFighter(i,match.Presentation(i));
@@ -211,6 +214,7 @@ namespace Braxhorn.Arena
             result.text=(outcome==BoutOutcome.Draw?"REMIS":outcome==BoutOutcome.Win?"WYGRYWASZ":"WYGRYWA PRZECIWNIK")+"\n"+match.PlayerWins+" : "+match.OpponentWins;
             if(campaign?.Finished==true)result.text+="\n"+(campaign.Champion==campaign.Player?"KAMPANIA UKOŃCZONA":"KONIEC KAMPANII");
             if(survival!=null)result.text+="\nSURVIVAL: "+survival.Score;
+            SaveMatchProgress();
         }
         void ContinueSession()
         {
@@ -220,11 +224,11 @@ namespace Braxhorn.Arena
             else if(survival!=null){if(!survival.Advance()){ShowSelection();return;}campaignOpponent=survival.Next();}
             StartCoroutine(LoadMatch(Variants[variantIndex],campaignOpponent??Roster[opponentIndex],survival?.Hp??100));
         }
-        void TogglePause(){if(match==null||loading||match.Phase==MatchPhase.Complete||adventure?.Phase==AdventurePhase.Complete||adventure?.Phase==AdventurePhase.Dead)return;Pause(match.Paused?false:true);}
+        void TogglePause(){if(trainingPanel&&trainingPanel.activeSelf){CloseTraining();return;}if(match==null||loading||match.Phase==MatchPhase.Complete||adventure?.Phase==AdventurePhase.Complete||adventure?.Phase==AdventurePhase.Dead)return;Pause(match.Paused?false:true);}
         void Pause(bool value){match?.SetPaused(value);arenaMedia?.SetPaused(value);adventureWorld?.SetPaused(value);fightAudio?.SetPaused(value);ReleaseControls();}
         void ReleaseControls(){foreach(var button in buttons)button.Release();match?.ReleaseInputs();}
         void ShowSelection()
-        {generation++;StopAllCoroutines();ClearAdventure();loading=false;match=null;ClearActors();if(arenaMedia)arenaMedia.Clear();if(fightAudio)fightAudio.Stop();ReleaseControls();selection.SetActive(true);controls.SetActive(false);resultPanel.SetActive(false);hud.text="";RefreshSelection();}
+        {if(trainingPanel)trainingPanel.SetActive(false);if(trainingOpen)trainingOpen.SetActive(false);generation++;StopAllCoroutines();ClearAdventure();loading=false;match=null;ClearActors();if(arenaMedia)arenaMedia.Clear();if(fightAudio)fightAudio.Stop();ReleaseControls();selection.SetActive(true);controls.SetActive(false);resultPanel.SetActive(false);hud.text="";RefreshSelection();}
         void ClearActors(){for(var i=0;i<2;i++){if(actors[i])Destroy(actors[i]);actors[i]=null;poses[i]=null;definitions[i]=null;}}
         void OnApplicationPause(bool pause){applicationSuspended=pause;if(pause)Pause(true);}
         void OnApplicationFocus(bool focus){applicationSuspended=!focus;if(!focus)Pause(true);}

@@ -112,6 +112,7 @@ namespace Braxhorn.Arena.Domain
         public double ReferenceHeight => 640 / 3.25 * 1.7 * Scale;
         internal double WorldHeight => 640 / 3.05 * 1.7 * Scale;
         public double SimulationMs { get; private set; }
+        public double ActiveMs { get; private set; }
         public double RemainingSeconds { get; private set; } = 60;
         public MatchPhase Phase { get; private set; }
         public bool Paused { get; private set; }
@@ -146,8 +147,8 @@ namespace Braxhorn.Arena.Domain
         internal double NextRandom()
         { var v = random(); if (!Finite(v) || v < 0 || v >= 1) throw new InvalidOperationException("Random must return [0,1)."); return v; }
         public MatchFighter Fighter(int side) => side == 0 ? Player : side == 1 ? Opponent : throw new ArgumentOutOfRangeException(nameof(side));
-        public void UseCpu(int side, CpuLevel level = CpuLevel.Normal, TrainingBehavior behavior = TrainingBehavior.Spar)
-        { Fighter(side); cpu[side] = new CpuOpponent(this, side, level, behavior); }
+        public void UseCpu(int side, CpuLevel level = CpuLevel.Normal, TrainingBehavior behavior = TrainingBehavior.Spar, string drillAttack = "LIGHT_PUNCH")
+        { Fighter(side); cpu[side] = new CpuOpponent(this, side, level, behavior,drillAttack); }
         internal MatchFighter Other(MatchFighter f) => f == Player ? Opponent : Player;
         int Side(MatchFighter f) => f == Player ? 0 : 1;
         public bool TryDequeue(out MatchEvent value) { if (events.Count == 0) { value = default; return false; } value = events.Dequeue(); return true; }
@@ -254,6 +255,7 @@ namespace Braxhorn.Arena.Domain
         void Tick(double dt)
         {
             SimulationMs += dt;
+            if(Phase==MatchPhase.Fighting&&(!Adventure||AdventureCombat))ActiveMs+=dt;
             if(Adventure&&!AdventureCombat){AdvanceAdventureExplore(dt);return;}
             if (holdMs > 0) { holdMs = Math.Max(0, holdMs - dt); return; }
             if (Phase == MatchPhase.Countdown)

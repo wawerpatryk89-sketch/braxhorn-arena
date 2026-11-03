@@ -5,16 +5,16 @@ using System.Linq;
 namespace Braxhorn.Arena.Domain
 {
     public enum CpuLevel { Easy, Normal, Hard }
-    public enum TrainingBehavior { Spar, Bag, Block, Move }
+    public enum TrainingBehavior { Spar, Bag, Block, Move, Repeat, Counter, Grab }
 
     // Native decision policy retains the authored roster identities, reaction
     // delay, weighted attacks and measured reach. It submits ordinary commands.
-    public sealed class CpuOpponent
+    public sealed partial class CpuOpponent
     {
         readonly ArenaMatch match;
         readonly int side;
         readonly CpuLevel level;
-        readonly TrainingBehavior training;
+        TrainingBehavior training;
         readonly MatchFighter self, enemy;
         readonly string[] repertoire, preferred;
         readonly double reaction, cooldownDuration, approach, blockChance, range, pressure, retreatDuration;
@@ -22,10 +22,11 @@ namespace Braxhorn.Arena.Domain
         int observedSerial = -1, previousRound;
         bool responded, wasLocked;
         string lastAttack;
-        public CpuOpponent(ArenaMatch match, int side, CpuLevel level = CpuLevel.Normal, TrainingBehavior training = TrainingBehavior.Spar)
+        public CpuOpponent(ArenaMatch match, int side, CpuLevel level = CpuLevel.Normal, TrainingBehavior training = TrainingBehavior.Spar, string drillAttack = "LIGHT_PUNCH")
         {
             this.match = match; this.side = side; this.level = level; this.training = training;
             self = match.Fighter(side); enemy = match.Fighter(1-side);
+            ConfigureTraining(training,drillAttack);
             (reaction,cooldownDuration,approach,blockChance) = level switch {
                 CpuLevel.Easy => (380d,900d,.78,.22), CpuLevel.Hard => (130d,100d,1d,.86), _ => (180d,280d,.90,.60) };
             var style = self.Configuration.Character switch {
@@ -62,10 +63,7 @@ namespace Braxhorn.Arena.Domain
             var distance=Math.Abs(self.X-enemy.X);var toward=Math.Sign(enemy.X-self.X);
             if(match.Training&&training!=TrainingBehavior.Spar)
             {
-                if(training==TrainingBehavior.Block)
-                { if(self.Configuration.Character=="NINA"){if(enemy.Action.Attack&&!responded){responded=true;match.Press(side,FightButton.Evade);}}else match.SetInput(side,new FightInput(0,block:true)); }
-                else if(training==TrainingBehavior.Move)
-                { var goal=match.ReferenceHeight*.6;match.SetInput(side,new FightInput(distance>goal*1.08?toward:distance<goal*.8?-toward:0)); }
+                TrainingTick(dt,distance,toward);
                 return;
             }
             cooldown-=dt;
