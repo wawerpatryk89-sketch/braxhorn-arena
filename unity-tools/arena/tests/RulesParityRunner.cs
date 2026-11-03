@@ -70,6 +70,9 @@ static class RulesParityRunner
         MovingStrikeParityRunner.Run();
         TrainingParityRunner.Run();
         ProgressParityRunner.Run();
+        ChallengeParityRunner.Run();
+        CpuParityRunner.Run();
+        ReplayParityRunner.Run();
         return 0;
     }
 }

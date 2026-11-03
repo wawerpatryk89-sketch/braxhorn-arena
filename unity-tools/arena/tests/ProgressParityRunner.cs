@@ -35,6 +35,7 @@ static class ProgressParityRunner
             p.Win("BRAX");Check(store.Save(p)&&File.Exists(path+".bak"),"previous generation backed up");
             File.WriteAllText(path,"{broken");store=new ProgressFileStore(path);var recovered=store.Load();Check(recovered.Name==p.Name&&store.Error!=null,"corrupt main recovered from backup");Check(store.Save(recovered)&&File.ReadAllText(path+".corrupt")=="{broken","recovery preserves corrupt evidence");
             File.Delete(path);store=new ProgressFileStore(path);Check(store.Load().Name==p.Name,"interrupted replacement recovers backup");
+            File.WriteAllText(path,"");store=new ProgressFileStore(path);Check(store.Load().Name==p.Name,"empty interrupted primary recovers valid backup");
             File.WriteAllText(path,"{bad-main");File.WriteAllText(path+".bak","{bad-backup");store=new ProgressFileStore(path);store.Load();Check(!store.Save(p)&&File.ReadAllText(path)=="{bad-main"&&File.ReadAllText(path+".bak")=="{bad-backup","unrecoverable data never overwritten");
             File.WriteAllText(path,"{\"version\":3}");File.WriteAllText(path+".bak",p.Serialize());store=new ProgressFileStore(path);store.Load();Check(!store.Save(p)&&File.ReadAllText(path)=="{\"version\":3}","newer schema never replaced by old backup");
             var blocked=Path.Combine(dir,"is-directory");Directory.CreateDirectory(blocked);store=new ProgressFileStore(blocked);store.Load();Check(!store.Save(p)&&store.Error!=null,"write errors surfaced without throwing");

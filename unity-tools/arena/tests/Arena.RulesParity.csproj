@@ -18,6 +18,9 @@
     <Compile Include="MovingStrikeParityRunner.cs" />
     <Compile Include="TrainingParityRunner.cs" />
     <Compile Include="ProgressParityRunner.cs" />
+    <Compile Include="ChallengeParityRunner.cs" />
+    <Compile Include="CpuParityRunner.cs" />
+    <Compile Include="ReplayParityRunner.cs" />
     <Compile Include="../../../unity-arena/Assets/Arena/Runtime/ProgressFileStore.cs" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>

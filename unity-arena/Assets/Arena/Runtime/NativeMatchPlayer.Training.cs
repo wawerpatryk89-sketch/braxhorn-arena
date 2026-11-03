@@ -29,7 +29,8 @@ namespace Braxhorn.Arena
             Label(trainingPanel.transform,"Title",new Rect(24,16,632,40),24).text="USTAWIENIA TRENINGU";
             liveTrainingModeLabel=Click(trainingPanel.transform,"",new Rect(24,68,308,60),()=>ChangeTraining(false)).GetComponentInChildren<Text>();
             liveTrainingAttackLabel=Click(trainingPanel.transform,"",new Rect(348,68,308,60),()=>ChangeTraining(true)).GetComponentInChildren<Text>();
-            Click(trainingPanel.transform,"WRÓĆ",new Rect(180,152,320,60),CloseTraining);
+            Click(trainingPanel.transform,"WRÓĆ",new Rect(24,152,308,60),CloseTraining);
+            Click(trainingPanel.transform,"MENU",new Rect(348,152,308,60),ShowSelection);
             trainingPanel.SetActive(false);trainingOpen.SetActive(false);RefreshTrainingLabels();
         }
         void RefreshTrainingLabels()
@@ -41,9 +42,11 @@ namespace Braxhorn.Arena
             var usesAttack=TrainingModes[trainingMode]==TrainingBehavior.Repeat||TrainingModes[trainingMode]==TrainingBehavior.Counter;
             trainingAttackLabel.transform.parent.GetComponent<Button>().interactable=usesAttack;
             liveTrainingAttackLabel.transform.parent.GetComponent<Button>().interactable=usesAttack;
+            liveTrainingModeLabel.transform.parent.GetComponent<Button>().interactable=challengeRun==null;
         }
         void ChangeTraining(bool attack)
         {
+            if(!attack&&challengeRun!=null)return;
             if(attack)trainingAttack=(trainingAttack+1)%System.Math.Max(1,DrillMoves.Length);else trainingMode=(trainingMode+1)%TrainingModes.Length;
             if(match?.Training==true)match.ConfigureTraining(TrainingModes[trainingMode],DrillMove);
             RefreshTrainingLabels();

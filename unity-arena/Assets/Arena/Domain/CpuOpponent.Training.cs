@@ -61,7 +61,14 @@ namespace Braxhorn.Arena.Domain
     }
     public sealed partial class ArenaMatch
     {
-        public static string[] BasicMoves(string character)=>new[]{"LIGHT_PUNCH","HEAVY_PUNCH","LIGHT_KICK","HEAVY_KICK","DOUBLE_PUNCH","UPPERCUT","ELBOW","CLINCH_KNEE","SPIN_KICK","FLYING_KICK","CRESCENT_KICK","MEIA_LUA","GROUND_KICK","HOOK","SIDE_KICK","SHOULDER"}.Where(n=>BasicStrike(character,n)).ToArray();
+        public static string[] BasicMoves(string character)
+        {
+            var extra=character switch{
+                "BRAX"=>new[]{"DOUBLE_PUNCH","UPPERCUT"},"NYXA"=>new[]{"ELBOW","CLINCH_KNEE"},"KROV"=>new[]{"ELBOW","UPPERCUT"},
+                "VEXA"=>new[]{"SPIN_KICK","FLYING_KICK"},"NINA"=>new[]{"CRESCENT_KICK","SPIN_KICK","MEIA_LUA","GROUND_KICK"},"DANNY"=>new[]{"HOOK","SIDE_KICK"},
+                "BEAR" or "DEMON"=>new[]{"SHOULDER","UPPERCUT"},"BOSS" or "ZOMBIE"=>new[]{"UPPERCUT"},_=>null};
+            return extra==null?Array.Empty<string>():new[]{"LIGHT_PUNCH","HEAVY_PUNCH","LIGHT_KICK","HEAVY_KICK"}.Concat(extra).ToArray();
+        }
         internal double TrainingTorsoGap=>ClinchGap();
         internal double TrainingBodyRadii=>Body(Player).radius+Body(Opponent).radius;
         public void ConfigureTraining(TrainingBehavior behavior,string move)

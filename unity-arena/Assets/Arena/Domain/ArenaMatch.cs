@@ -43,6 +43,10 @@ namespace Braxhorn.Arena.Domain
         internal AttackLedger Ledger = new AttackLedger();
         internal readonly HashSet<int> CleanComboGroups = new HashSet<int>();
         internal readonly HashSet<int> SoundGroups = new HashSet<int>();
+        internal readonly HashSet<int> EvadedGroups = new HashSet<int>();
+        internal CombatPose? EvadeOrigin;
+        internal string LastAttackName;
+        internal int RepeatedAttackCount;
         internal readonly HitPressure Pressure = new HitPressure();
         internal int HeadReactions, BodyReactions;
         internal ArenaMatch.StrikeMotion Motion;
@@ -113,6 +117,7 @@ namespace Braxhorn.Arena.Domain
         internal double WorldHeight => 640 / 3.05 * 1.7 * Scale;
         public double SimulationMs { get; private set; }
         public double ActiveMs { get; private set; }
+        public int PlayerComboUses { get; private set; }
         public double RemainingSeconds { get; private set; } = 60;
         public MatchPhase Phase { get; private set; }
         public bool Paused { get; private set; }
@@ -189,6 +194,7 @@ namespace Braxhorn.Arena.Domain
             {
                 if ((!Training && (f.Energy < 100 || f.ComboUses >= 2)) || f.ApproachingCombo) return false;
                 if (!Training) { f.Energy = 0; f.ComboUses++; }
+                if(f==Player)PlayerComboUses++;
                 f.ApproachingCombo = true; f.Input = default; return true;
             }
             if (action == "ENERGY_SPECIAL")
@@ -218,11 +224,13 @@ namespace Braxhorn.Arena.Domain
         {
             if (!f.Configuration.Has(id)) throw new InvalidOperationException(f.Configuration.Character + ": missing required action " + id);
             f.Motion=CreateStrikeMotion(f,id,locked);f.MovingGait=null;f.MovingGaitWeight=0;
+            f.EvadeOrigin=id=="LEAN"?(CombatPose?)Pose(f):null;
             f.Clock.Start(f.Configuration[id], f.Configuration[id].StartFrame); f.Locked = locked; f.ReactionRate = null;
             f.SoundGroups.Clear();
+            f.EvadedGroups.Clear();
             f.Ledger = new AttackLedger(); f.PendingPair = null;
             if(!id.StartsWith("HIT_COMBO_",StringComparison.Ordinal)){f.ComboReactionKey=null;f.ComboOwner=null;}
-            if (f.Action.Attack) { f.Serial++; f.ProtectionMs = 0; f.CleanComboGroups.Clear(); }
+            if (f.Action.Attack) {var name=(string)f.Action.Source["shortRangeOf"]??id;f.RepeatedAttackCount=f.LastAttackName==name?f.RepeatedAttackCount+1:1;f.LastAttackName=name; f.Serial++; f.ProtectionMs = 0; f.CleanComboGroups.Clear(); }
         }
         internal void Idle(MatchFighter f) { f.Locked = false; Start(f, "IDLE", false); }
         double Tempo(MatchFighter f, int frame) => f.ActionId=="ADVENTURE_WALK"||f.ActionId=="ENTRY_RUN"?1:IsGait(f.ActionId) ? CombatRules.LocomotionTempo(f.Configuration.Character, f.Action)
@@ -237,6 +245,7 @@ namespace Braxhorn.Arena.Domain
             for (var i = 0; i < 2; i++)
             {
                 var f = fighters[i]; f.X = Width * (i == 0 ? .28 : .72); f.Face = i == 0 ? 1 : -1;
+                f.LastAttackName=null;f.RepeatedAttackCount=0;
                 f.Hp = i == 0 && Round == 1 ? initialHp : 100; f.Energy = Training ? 100 : 0;
                 f.DownPhase = null; f.Height = f.StunMs = f.ProtectionMs = f.PushMs = f.PushSpeed = f.RecoilCooldown = f.KnockdownCooldown = f.RecoverMs = f.GrabProtection = 0;
                 f.ComboUses = f.HeadReactions = f.BodyReactions = 0; f.ApproachingCombo = false; f.Pressure.Reset(); ResetGestures(f,18000);f.TauntVariant=f.AngerVariant=0; Idle(f);
@@ -256,6 +265,7 @@ namespace Braxhorn.Arena.Domain
         {
             SimulationMs += dt;
             if(Phase==MatchPhase.Fighting&&(!Adventure||AdventureCombat))ActiveMs+=dt;
+            if(Phase==MatchPhase.Fighting)foreach(var controller in cpu)controller?.AdvanceTimers(dt);
             if(Adventure&&!AdventureCombat){AdvanceAdventureExplore(dt);return;}
             if (holdMs > 0) { holdMs = Math.Max(0, holdMs - dt); return; }
             if (Phase == MatchPhase.Countdown)
@@ -385,20 +395,35 @@ namespace Braxhorn.Arena.Domain
             foreach (var p in pending) if (p.Actor == f && p.Serial == f.Serial && p.Hit.Group == hit.Group) return;
             var defense = defenses[1 - Side(f)]; var contact = CombatContacts.Find(Pose(f), hit, defense.Pose);
             if (contact.Hit) pending.Add(new PendingHit(f, Other(f), f.Action, hit, contact, defense, Pose(f)));
+            else if(f==Opponent&&Player.EvadeOrigin.HasValue&&Player.ActionId=="LEAN")
+            {
+                var range=Player.Action.EvadeFrames;
+                if(range!=null&&range.Length==2&&Player.Clock.Frame>=range[0]&&Player.Clock.Frame<=range[1]&&CombatContacts.Find(Pose(f),hit,Player.EvadeOrigin.Value).Hit&&f.EvadedGroups.Add(hit.Group))Emit("objective:evade",Player);
+            }
         }
         void Apply(PendingHit e)
         {
             var a = e.Actor; var z = e.Target; var d = e.Defense;
-            if (d.Down || d.Pose.Action.Id == "GETUP" || d.Protection > 0 || CombatRules.Evades(d.Pose.Action, d.Pose.Frame, e.Contact.Region, false)) return;
+            if (d.Down || d.Pose.Action.Id == "GETUP" || d.Protection > 0) return;
+            if(CombatRules.Evades(d.Pose.Action,d.Pose.Frame,e.Contact.Region,false))
+            {if(z==Player&&a.EvadedGroups.Add(e.Hit.Group))Emit("objective:evade",Player);return;}
             var blocked = CombatRules.Blocks(d.Guard, d.Low, e.Contact.Region);
             if (!e.Ledger.Register(e.Hit, blocked, e.Action, a.ComboUses < 2, out var energy)) return;
             a.Energy = Math.Min(100, a.Energy + energy);
-            if (blocked) { z.Pressure.Reset(); Emit("block", a, z, e.Hit, e.Contact,e.Action.Id); return; }
+            if (blocked) { z.Pressure.Reset(); Emit("block", a, z, e.Hit, e.Contact,e.Action.Id);if(z==Player)Emit("objective:block",Player);return; }
             z.Hp = Math.Max(Training ? 1 : 0, z.Hp - e.Hit.Damage); z.Buffered = null; z.ApproachingCombo = false;
             z.Pressure.Add(e.Serial, e.Hit.Damage);
             var combo = e.Action.Id == "COMBO"; var finisher = (int?)e.Action.Source["finisherGroup"] == e.Hit.Group;
             var launch = (!combo || finisher) && (finisher || z.KnockdownCooldown <= 0 && z.Pressure.Value >= 36 && z.Pressure.Count >= 3);
             var push = (!combo || finisher) && z.RecoilCooldown <= 0 && z.Pressure.Value >= 20 && z.Pressure.Count >= 2;
+            if(a==Player)
+            {
+                Emit("objective:hit",Player);
+                if(e.Action.Id.Contains("KICK")||e.Action.Id=="MEIA_LUA")Emit("objective:kick",Player);
+                if(combo)Emit("objective:combohit",Player);
+                if(d.Pose.Action.Attack&&d.Pose.Frame>d.Pose.Action.LastHit&&!d.Connected)Emit("objective:counter",Player);
+                if(push)Emit("objective:push",Player);
+            }
             if (combo) a.CleanComboGroups.Add(e.Hit.Group);
             if (z.Hp <= 0) Down(z, "KO");
             else if (launch && z.Configuration.Has("FLY") && e.Action.Source["pairedFinisher"] == null) Launch(z);
@@ -561,11 +586,11 @@ namespace Braxhorn.Arena.Domain
         readonly struct Defense
         {
             internal readonly CombatPose Pose;
-            internal readonly bool Down, Guard, Low;
+            internal readonly bool Down, Guard, Low, Connected;
             internal readonly double Protection;
             internal readonly double Seconds;
             internal Defense(MatchFighter f, CombatPose pose)
-            { Pose = pose; Seconds=f.Clock.PoseSeconds; Down = f.DownPhase != null; Protection = f.ProtectionMs; Guard = f.ActionId == "BLOCK" || f.ActionId == "BLOCK_LOW"; Low = f.ActionId == "BLOCK_LOW"; }
+            { Pose = pose; Connected=f.Ledger.HasContact;Seconds=f.Clock.PoseSeconds; Down = f.DownPhase != null; Protection = f.ProtectionMs; Guard = f.ActionId == "BLOCK" || f.ActionId == "BLOCK_LOW"; Low = f.ActionId == "BLOCK_LOW"; }
         }
         readonly struct PendingHit
         {

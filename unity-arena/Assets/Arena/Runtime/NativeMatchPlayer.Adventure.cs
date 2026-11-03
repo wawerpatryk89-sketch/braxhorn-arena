@@ -36,15 +36,15 @@ namespace Braxhorn.Arena
             var rig=Instantiate(definition.prefab,actors[side].transform);poses[side]=rig.GetComponent<FighterPosePlayer>();poses[side].Initialize(definition);
             rig.AddComponent<NativeFighterAppearance>().Apply(definition,Modes[modeIndex]=="adventure",adventureColourShader);
         }
-        void RenderFighter(int side,FighterPresentation f)
+        void RenderFighter(int side,FighterPresentation f,double? clock=null,bool replayPose=false)
         {
             if(!actors[side]||!poses[side])return;
-            RenderActor(actors[side],poses[side],f,side==0);
+            RenderActor(actors[side],poses[side],f,side==0,clock,replayPose);
         }
-        void RenderActor(GameObject actor,FighterPosePlayer pose,FighterPresentation f,bool player)
+        void RenderActor(GameObject actor,FighterPosePlayer pose,FighterPresentation f,bool player,double? clock=null,bool replayPose=false)
         {
             var c=f.Action;var depth=adventure!=null&&player?(float)adventure.Depth:1;
-            pose.Sample(c.Id,f.Seconds,match.SimulationMs/1000,match.HoldingContact?0:(float)c.TransitionMs/1000);
+            pose.Sample(c.Id,f.Seconds,clock??match.SimulationMs/1000,replayPose||match.HoldingContact?0:(float)c.TransitionMs/1000);
             actor.transform.localScale=Vector3.one*(float)c.Scale*depth;
             var angle=(bool?)c.Source["faceCamera"]==true?0:(bool?)c.Source["opponentQuarter"]==true?2*((double?)c.Source["stageYaw"]??.95)*180/Math.PI:180;
             var rotation=f.Face<0?angle:0;
@@ -55,6 +55,7 @@ namespace Braxhorn.Arena
         }
         IEnumerator LoadAdventure()
         {
+            ResetReplay();
             loading=true;error=null;adventureResult=false;var token=++generation;ReleaseControls();ClearAdventure();match=null;campaign=null;survival=null;
             selection.SetActive(false);controls.SetActive(false);resultPanel.SetActive(false);hud.text="WCZYTYWANIE TRASY…";arenaMedia.Clear();ClearActors();
             yield return null;yield return Resources.UnloadUnusedAssets();

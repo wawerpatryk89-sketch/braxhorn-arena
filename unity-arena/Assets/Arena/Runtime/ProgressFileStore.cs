@@ -12,15 +12,17 @@ namespace Braxhorn.Arena
         bool blocked,recovered;
         public string Error {get;private set;}
         public ProgressFileStore(string path){this.path=path??throw new ArgumentNullException(nameof(path));}
+        static ArenaProgress Read(string source)
+        {var json=File.ReadAllText(source);if(string.IsNullOrWhiteSpace(json))throw new FormatException("Empty progress file");return new ArenaProgress(json);}
         public ArenaProgress Load()
         {
             blocked=false;recovered=false;Error=null;
             if(!File.Exists(path)&&!File.Exists(path+".bak"))return new ArenaProgress();
-            try{return new ArenaProgress(File.ReadAllText(path));}
+            try{return Read(path);}
             catch(NotSupportedException){blocked=true;Error="Zapis pochodzi z innej wersji gry. Zachowano go bez zmian.";return new ArenaProgress();}
             catch(Exception e) when(e is IOException||e is UnauthorizedAccessException||e is Newtonsoft.Json.JsonException||e is FormatException||e is InvalidCastException||e is ArgumentException)
             {
-                try{var saved=new ArenaProgress(File.ReadAllText(path+".bak"));recovered=true;Error="Odzyskano kopię zapisu.";return saved;}
+                try{var saved=Read(path+".bak");recovered=true;Error="Odzyskano kopię zapisu.";return saved;}
                 catch(NotSupportedException){blocked=true;Error="Kopia zapisu pochodzi z innej wersji gry. Zachowano pliki bez zmian.";return new ArenaProgress();}
                 catch(Exception backup) when(backup is IOException||backup is UnauthorizedAccessException||backup is Newtonsoft.Json.JsonException||backup is FormatException||backup is InvalidCastException||backup is ArgumentException)
                 {blocked=true;Error="Nie można odczytać zapisu. Oryginalne pliki zachowano; nowe wyniki pozostaną tylko w pamięci.";return new ArenaProgress();}

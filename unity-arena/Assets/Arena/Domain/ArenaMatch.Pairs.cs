@@ -53,6 +53,7 @@ namespace Braxhorn.Arena.Domain
         {
             if (pair == null || pair.Elapsed > 200 || pair.Events.Count > 0) return false;
             var a = pair.Attacker; var z = pair.Target; pair = null;
+            if(requester==Player&&z==Player)Emit("objective:break",Player);
             foreach (var f in new[] { a, z }) { f.GrabProtection = 600; Idle(f); }
             ReleaseInputs(); Emit("break", requester, Other(requester)); return true;
         }

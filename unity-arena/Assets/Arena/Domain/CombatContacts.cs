@@ -65,6 +65,7 @@ namespace Braxhorn.Arena.Domain
         bool energyAwarded;
         public void Reset() { groups.Clear(); energyAwarded = false; }
         public bool Contains(int group) => groups.Contains(group);
+        public bool HasContact => groups.Count>0;
         public bool Register(CombatHit hit, bool blocked, CombatAction action, bool energyAllowed, out double energy)
         {
             energy = 0;
