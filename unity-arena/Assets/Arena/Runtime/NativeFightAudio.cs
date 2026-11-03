@@ -24,6 +24,7 @@ namespace Braxhorn.Arena
         public string Error { get; private set; }
         public bool Duck => !muted&&announcer&&announcer.isPlaying;
         public bool Muted => muted;
+        public Action<string,float,float,string> NetworkSound;
 
         AudioSource Source(string label)
         {var obj=new GameObject(label);obj.transform.SetParent(transform,false);var s=obj.AddComponent<AudioSource>();s.playOnAwake=false;s.spatialBlend=0;return s;}
@@ -45,7 +46,7 @@ namespace Braxhorn.Arena
         }
         public void Consume(MatchEvent e,ArenaMatch match,ArenaMediaEntry arena)
         {
-            if(paused||muted||!Ready)return;
+            if(paused||!Ready)return;
             if(e.Kind=="three"||e.Kind=="two"||e.Kind=="one"||e.Kind=="fight")
             {Play(e.Kind,.94f,1,announcer);if(e.Kind=="fight")Play("gong",.5f);return;}
             if(e.Kind=="step"){Play("step",.17f,UnityEngine.Random.Range(.98f,1.02f));return;}
@@ -74,12 +75,20 @@ namespace Braxhorn.Arena
             var pitch=character switch {"BRAX"=>.97f,"NYXA"=>.92f,"VEXA"=>1.02f,"KROV"=>.86f,"NINA"=>1.06f,"DANNY"=>1.08f,"BEAR"=>.82f,"DEMON"=>.89f,_=>.97f};
             var kind=fall?1:0;var n=hurtCount[side,kind];if(Play("vocal-"+(female?"female":"male")+"-hurt-"+(n%3+1),fall?.8f:.76f,pitch+(n%3-1)*.015f,fighterVoices[side])){hurtCount[side,kind]++;hurtTime[side]=time;}
         }
-        bool Play(string key,float volume,float pitch=1,AudioSource channel=null)
+        bool Play(string key,float volume,float pitch=1,AudioSource channel=null,bool remote=false)
         {
-            if(paused||muted||key==null||!clips.TryGetValue(key,out var clip))return false;
+            if(paused||key==null||!clips.TryGetValue(key,out var clip))return false;
+            if(!remote&&key!="three"&&key!="two"&&key!="one"&&key!="fight"&&key!="gong")NetworkSound?.Invoke(key,Mathf.Clamp01(volume),Mathf.Clamp(pitch,.75f,1.25f),channel&&channel==fighterVoices[0]?"fighter-0":channel&&channel==fighterVoices[1]?"fighter-1":null);
+            if(muted)return NetworkSound!=null&&!remote;
             var source=channel?channel:pool.FirstOrDefault(s=>!s.isPlaying);
             // Limit simultaneous effects instead of allocating AudioSources per hit.
             if(!source)return false;source.Stop();source.clip=clip;source.volume=Mathf.Clamp01(volume)*.8f;source.pitch=Mathf.Clamp(pitch,.75f,1.25f);source.Play();return true;
+        }
+        public void RemoteSound(string key,float volume,float pitch,string channel=null)
+        {
+            if(key=="title"||key=="roster-premium"||key=="roster-select"||key=="roster-confirm")return;
+            var source=channel=="fighter-0"?fighterVoices[0]:channel=="fighter-1"?fighterVoices[1]:key=="three"||key=="two"||key=="one"||key=="fight"?announcer:null;
+            Play(key,volume,pitch,source,true);
         }
         public void Stop()
         {if(announcer)announcer.Stop();foreach(var s in fighterVoices)if(s)s.Stop();foreach(var s in pool)if(s)s.Stop();}

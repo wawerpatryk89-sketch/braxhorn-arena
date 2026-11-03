@@ -246,7 +246,7 @@ namespace Braxhorn.Arena
         void RefreshPauseUi()
         {
             if(!pausePanel)return;
-            var show=match!=null&&match.Paused&&!loading&&!resultApplied&&!applicationSuspended&&cinema?.Active!=true&&!(trainingPanel&&trainingPanel.activeSelf);
+            var show=match!=null&&(duel!=null?duelUserPaused:match.Paused)&&!loading&&!resultApplied&&!applicationSuspended&&cinema?.Active!=true&&!(trainingPanel&&trainingPanel.activeSelf);
             pausePanel.SetActive(show);if(show)pausePanel.transform.SetAsLastSibling();
         }
         void CloseMenuOverlays(){cinema?.Stop();if(pausePanel)pausePanel.SetActive(false);}
@@ -264,6 +264,7 @@ namespace Braxhorn.Arena
             if(selection.activeSelf&&Input.GetKeyDown(KeyCode.Escape))
             {
                 if(challengesPanel&&challengesPanel.activeSelf){challengesPanel.SetActive(false);return;}
+                if(menuCurrent==menuDuel){ShowSelection();ShowMenuPage(menuModes);return;}
                 if(menuCurrent==menuTitle)return;
                 var destination=menuCurrent==menuRoster?menuTitle:menuCurrent==menuModes?menuRoster:menuCurrent==menuArena?menuSetup:menuCurrent==menuRecords?menuHub:menuCurrent==menuLeaderboard?menuRecords:menuCurrent==menuAccountSettings?menuAccount:menuModes;
                 ShowMenuPage(destination);

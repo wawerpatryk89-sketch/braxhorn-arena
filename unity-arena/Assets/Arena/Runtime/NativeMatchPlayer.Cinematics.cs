@@ -50,6 +50,7 @@ namespace Braxhorn.Arena
             void Ready()
             {
                 if(disposed||token!=generation||match!=loaded)return;
+                if(duel!=null){DuelLoaded();return;}
                 BeginServerMatch();loading=false;controls.SetActive(!spectating);Pause(applicationSuspended);Present();
             }
             if(!intro){Ready();return;}
@@ -67,7 +68,8 @@ namespace Braxhorn.Arena
         {
             applicationSuspended=applicationPaused||!applicationFocused;
             cinema?.Suspend(applicationSuspended);RefreshMenuAudio();
-            if(applicationSuspended)Pause(true);else RefreshPauseUi();
+            if(duel!=null){if(applicationSuspended){duelInput?.Clear();duelHost?.DropPending();ReleaseControls();}RefreshPauseUi();}
+            else if(applicationSuspended)Pause(true);else RefreshPauseUi();
         }
     }
 }

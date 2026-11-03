@@ -28,6 +28,7 @@ static class RulesParityRunner
     }
     static int Main(string[] args)
     {
+        if(args.Length>1&&args[0]=="--duel"){DuelProtocolRunner.Run(args.Length>2?args[2]:null,args[1]);return 0;}
         using var input=File.OpenRead(args[0]);using var gzip=new GZipStream(input,CompressionMode.Decompress);using var reader=new StreamReader(gzip);
         var cases=JArray.Parse(reader.ReadToEnd());int states=0;
         foreach(var entry in cases)
@@ -79,6 +80,7 @@ static class RulesParityRunner
         RankingProtocolRunner.Run();
         CinematicParityRunner.Run();
         AdventureProtocolRunner.Run();
+        DuelProtocolRunner.Run(args.Length>2?args[2]:null,args.Length>1?args[1]:null);
         return 0;
     }
 }

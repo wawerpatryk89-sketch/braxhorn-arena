@@ -20,7 +20,7 @@ namespace Braxhorn.Arena.Domain
         public double U;
         public string Region;
     }
-    public sealed class BloodEffects
+    public sealed partial class BloodEffects
     {
         readonly Func<double> random;
         readonly List<BloodParticle> particles=new List<BloodParticle>(96);

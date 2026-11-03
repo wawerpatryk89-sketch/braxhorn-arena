@@ -1,6 +1,6 @@
 {
   "status": "In progress",
-  "scope": "Native Unity project for a later app build; match, offline campaigns, original media and adventure integration implemented; full game migration incomplete",
+  "scope": "Native Unity 6 migration of published v271: gameplay, campaigns, adventure, menus, account/shop/rankings and native multiplayer implemented; voice/tournaments and remaining fidelity/runtime work incomplete",
   "sourceSiteVersion": 271,
   "sourceCommit": "f355fe6ac6af41518fde420382512d49bd27d51a",
   "editor": "6000.3.27f2",
@@ -13,10 +13,11 @@
   },
   "managedCompilation": {
     "status": "Passed",
-    "files": 62,
-    "method": "Separate Domain, Runtime, Editor and EditMode-test assemblies compiled with Roslyn and actual Unity 6000.3.27f2 references; no Editor execution",
+    "files": 75,
+    "method": "Separate Domain, Runtime, Editor and EditMode assemblies, plus official WebRTC 3.0.0 managed sources, compiled against Unity 6000.3.27f2 references without Editor execution",
     "warnings": [
-      "CS1701: Newtonsoft.Json netstandard 2.0 reference resolves against netstandard 2.1 in standalone compiler invocation. UPM runtime resolution not verified."
+      "CS1701: Newtonsoft.Json netstandard 2.0 reference resolves against netstandard 2.1 in standalone compiler invocation. UPM runtime resolution not verified.",
+      "Official WebRTC package references obsolete OpenGLES2 in unused platform branches (CS0618); project selects OpenGLES3."
     ]
   },
   "ruleParity": {
@@ -154,10 +155,10 @@
     "chaptersPerRoute": 6,
     "playableVariants": 16,
     "additionalMotionActions": 34,
-    "syntheticChecks": 71,
-    "checksWithActualAssets": 542,
+    "syntheticChecks": 77,
+    "checksWithActualAssets": 548,
     "npcPairCombinations": 98,
-    "ranking": "Offline only; native backend protocol still required",
+    "ranking": "Original backend start/encounter/result/heal/complete protocol and public route boards implemented; mocked and simulation-event tests passed, no live run submitted",
     "scope": "Original entry/walk motion, continuous camera, gates, opponent preloading/incoming, persistent player HP/energy/action, KO settlement, corpses, scoring, healing, completion/death, chapter seams and foreground masks",
     "notValidated": "Unity import/shader execution, audiovisual rendering, mobile memory/touch/performance"
   },
@@ -181,5 +182,33 @@
     "routes": 5,
     "liveWritesPerformed": false,
     "tokenStorage": "Memory only"
+  },
+  "nativeDuel": {
+    "status": "Native HTTP and optional WebRTC paths implemented; managed compilation and protocol tests only",
+    "fixtureChecks": 514,
+    "frozenSourceValidatorCases": 414,
+    "actualConfigurationChecks": 90,
+    "actualRunTotalBeforePeerEnvelopeExtension": 589,
+    "actualConfigurations": 18,
+    "transport": "Unity.WebRTC 3.0.0 unordered arena channel, 30Hz host/50Hz guest, original JSON envelope, HTTPS fallback and signaling",
+    "scoreAuthority": "Host simulates; guest renders and sends inputs; independent explicit confirmations required by original server",
+    "caseFix": "Mixed-case authored pair IDs use unique uppercase wire aliases and resolve to exact original clips in native receiver. Legacy browser pair-alias interoperability is not established.",
+    "credentials": "Room and TURN capabilities memory only",
+    "liveRoomWrites": false,
+    "runtimeNetworking": "Not run",
+    "remaining": "Voice consent/microphone transport, online tournaments, complete VFX/camera prediction equivalence, browser interoperability and real-device latency/background tests"
+  },
+  "latestCompletedValidationRun": {
+    "id": 41560788160,
+    "sha": "e2d74397e640797591793d1d8bfa29ad63040133",
+    "conclusion": "success",
+    "scope": "Previous adventure-server checkpoint, before current multiplayer changes",
+    "androidJob": "skipped; no APK"
+  },
+  "publicBoardRead": {
+    "status": 200,
+    "mode": "multiplayer",
+    "rows": 0,
+    "scope": "Read-only HTTPS request with native client User-Agent; not Android HttpClient/device validation"
   }
 }

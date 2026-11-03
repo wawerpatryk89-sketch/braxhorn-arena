@@ -35,6 +35,8 @@ namespace Braxhorn.Arena
         public void Clear(bool keepMarks=false){state.Clear(keepMarks);previousPoses[0]=previousPoses[1]=null;if(foreground)foreground.Clear();if(floor)floor.Clear();}
         public void ClearFighter(int side){state.ClearFighter(side);previousPoses[side]=null;}
         public void Shift(double fraction,double width)=>state.Shift(fraction,width);
+        public Newtonsoft.Json.Linq.JObject NetworkSnapshot(ArenaMatch match)=>state.NetworkSnapshot(match.Width,match.Height);
+        public bool RestoreNetwork(Newtonsoft.Json.Linq.JObject data,ArenaMatch match)=>state.RestoreNetwork(data,match.Width,match.Height);
         public void Visible(bool value){if(frontObject)frontObject.SetActive(value);if(floorObject)floorObject.SetActive(value);}
         static Color Colour(byte r,byte g,byte b,double alpha)=>new Color32(r,g,b,(byte)Math.Max(0,Math.Min(255,Math.Round(alpha*255))));
         void Vertex(double x,double y,Color colour){vertices.Add(new Vector3((float)((x-width/2)*world),(float)((ground-y)*world),0));colours.Add(colour);}
@@ -53,10 +55,10 @@ namespace Braxhorn.Arena
         }
         void Begin(){vertices.Clear();colours.Clear();triangles.Clear();}
         void Upload(Mesh mesh){mesh.Clear();mesh.SetVertices(vertices);mesh.SetColors(colours);mesh.SetTriangles(triangles,0);mesh.RecalculateBounds();}
-        public void Present(ArenaMatch match,double milliseconds)
+        public void Present(ArenaMatch match,double milliseconds,FighterPresentation[] remote=null)
         {
             if(!foreground)return;width=match.Width;height=match.Height;ground=match.Floor;world=3.25/640/match.Scale;
-            if(!match.Paused)state.Step(milliseconds,width,height);
+            if(!match.Paused||remote!=null)state.Step(milliseconds,width,height);
             Begin();foreach(var stain in state.Stains)
             {
                 var x=stain.X*width;var y=stain.Y*height;var r=Math.Max(2,stain.Radius*height);
@@ -66,8 +68,8 @@ namespace Braxhorn.Arena
             Upload(floor);Begin();
             for(var side=0;side<2;side++)
             {
-                var f=match.Presentation(side);previousPoses[side]=new CombatPose(f.Action,f.Frame,f.Face,f.X,match.Floor-f.Height,match.Scale);
-                BodyWounds(previousPoses[side].Value,side);HeadWounds(match,side);
+                var f=remote==null?match.Presentation(side):remote[side];previousPoses[side]=new CombatPose(f.Action,f.Frame,f.Face,f.X,match.Floor-f.Height,match.Scale);
+                BodyWounds(previousPoses[side].Value,side);HeadWounds(match,side,f);
             }
             foreach(var p in state.Particles)
             {
@@ -86,9 +88,10 @@ namespace Braxhorn.Arena
                 Ellipse(point.X,point.Y,r,r,Colour(64,51,70,.30+.07*mark.Severity));Ellipse(point.X+r*.18,point.Y,r*.67,r*.67,Colour(148,54,63,.22));
             }
         }
-        void HeadWounds(ArenaMatch match,int side)
+        void HeadWounds(ArenaMatch match,int side,FighterPresentation f)
         {
-            var level=state.WoundLevel(side);if(level==0)return;var f=match.Presentation(side);var caps=f.Action.Capsules;if(caps==null||f.Frame>=caps.Length)return;
+            var level=state.WoundLevel(side);if(level==0)return;var caps=f.Action.Capsules;if(caps==null||f.Frame>=caps.Length)return;
+            if(f.Action.Id=="BLOCK"||f.Action.Id=="BLOCK_LOW"||f.Action.Id=="CONTACT_PUSH"||f.Action.Id=="CONTACT_RECEIVE"||f.Action.Id=="THROW_ATTACKER"||f.Action.Id=="THROW_VICTIM")return;
             foreach(var cap in caps[f.Frame])
             {
                 if(cap.Region!="head")continue;

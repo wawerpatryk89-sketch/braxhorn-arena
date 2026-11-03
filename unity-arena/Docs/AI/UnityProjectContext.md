@@ -2,7 +2,7 @@
 
 ## Scope and authority
 
-The user authorized continuing the entire **Arena** migration to native Unity, preserving the original models, animations and artwork. This is separate from the City/osiedle repository. On 2026-11-02 they clarified that the current deliverable is the Unity project **for an app they will build later**. Continue source work without treating Android activation as a blocker. Do not run the local Editor, publish a site/store release, merge main, or present a partial integration scene as the finished game.
+The user authorized continuing the entire **Arena** migration to native Unity, preserving the original models, animations and artwork. This is separate from the City/osiedle repository. The user later requested an Android build at the end of the migration. Continue source work without treating Android activation as a blocker. Do not run the local Editor, publish a site/store release, merge main, or present a partial integration scene as the finished game.
 
 - Source: published Site v271, commit `f355fe6ac6af41518fde420382512d49bd27d51a` (2026-10-28).
 - GitHub repository: `wawerpatryk89-sketch/braxhorn-arena`.
@@ -33,7 +33,7 @@ The complete current local export passed validation: **18 models/outfits, 2986 a
 
 Exploration gates at the current encounter, follows the source camera, and preserves HP, energy and move state. The next opponent is preloaded during combat, revealed at 20% enemy HP, walks to its authored staging position, and transfers its position/clock when promoted. Final corpses wait for a grounded settled KO pose. Win scores, no-damage bonuses, post-win healing, the city pickup, boss completion, death and result idempotence are domain-owned. Source KROV receiver metadata is extended to BOSS/ZOMBIE exactly like the browser loader.
 
-`NativeAdventureWorld` uses at most two video decoders and retains the previous decoded edge for narrow chapter blending. Doorway foreground masks use the actual film. Corpses are snapshots of the rendered original Unity rig, not generated artwork. The original AAC gain uses an audio-thread filter. Following the owner’s later lighting instruction, all fighters retain imported PBR materials in adventure, including BRAX and the three NYXA variants that previously used an unlit override. Original textures remain unchanged. Overall PBR/studio/tone-map equivalence is still unvalidated. Rankings are explicitly local/offline.
+`NativeAdventureWorld` uses at most two video decoders and retains the previous decoded edge for narrow chapter blending. Doorway foreground masks use the actual film. Corpses are snapshots of the rendered original Unity rig, not generated artwork. The original AAC gain uses an audio-thread filter. Following the owner’s later lighting instruction, all fighters retain imported PBR materials in adventure, including BRAX and the three NYXA variants that previously used an unlit override. Original textures remain unchanged. Overall PBR/studio/tone-map equivalence is still unvalidated. Adventure server settlement and route boards are now implemented; see the later protocol checkpoint.
 
 ## Current evidence
 
@@ -42,7 +42,7 @@ Exploration gates at the current encounter, follows the source camera, and prese
 - 26198 source combat-helper comparisons across 18 variants / the original 2952 combat actions.
 - 210 original arena floor/crop cases, 90 entrance projections / 810 source samples.
 - 200 native match checks using all 18 actual exported configurations.
-- 542 adventure checks: lifecycle, gates, pause, root travel, incoming rivals, persistent state, KO settlement, healing/scoring, simultaneous KO, all 16 playable variants on five entrances, and 98 paired action/receiver combinations against BOSS/ZOMBIE.
+- 548 adventure checks: lifecycle, gates, pause, root travel, incoming rivals, persistent state, KO settlement, healing/scoring, simultaneous KO, all 16 playable variants on five entrances, and 98 paired action/receiver combinations against BOSS/ZOMBIE.
 - Full native payload validation: 18 / 2986 / 270381 / 1083207 as above.
 - Known standalone compiler warning: Newtonsoft netstandard2.0 resolves against netstandard2.1. UPM resolution requires Unity import.
 - No Unity import, shader compilation, Play Mode, screenshots/recordings, Android package or phone validation has been performed for this checkpoint.
@@ -146,7 +146,7 @@ The first menu CI run 41554689223 found a real export error: the published title
 
 ## Private server progress and durable result settlement
 
-Native matches now start a server session before reporting results when an account is authenticated; guest fights remain local. `ArenaOnlineClient.Ranking` retains the original start/finish/challenge fields, original rounding and server-issued match IDs. `ArenaRankTracker` serializes the match start, settlement and win challenge, and flushes the prior bout before starting the next campaign bout. Results are client-reported private progress; this does not make CPU scores verified public competition. Adventure and multiplayer settlement are still separate/unported.
+Native matches now start a server session before reporting results when an account is authenticated; guest fights remain local. `ArenaOnlineClient.Ranking` retains the original start/finish/challenge fields, original rounding and server-issued match IDs. `ArenaRankTracker` serializes the match start, settlement and win challenge, and flushes the prior bout before starting the next campaign bout. Results are client-reported private progress; this does not make CPU scores verified public competition. Adventure and multiplayer settlement are covered by the later dedicated protocol checkpoints.
 
 A per-account pending queue stores at most 30 results for one identity, never drops older pending results to make room, and uses flush/temporary replacement plus backup recovery. Unsupported/corrupt saves are preserved. Temporary failures and 429 remain queued; permanent 4xx rejection is surfaced; 401 waits for the same account to authenticate. Expected-identity checks run inside the HTTP serialization gate so an account switch cannot send old results under a new account. No tokens/passwords are stored with results. Results display their actual server status, and the records screen supports retry and separately labelled server-owned fighter progress. Local TOP 5 remains local; this is not a migrated public leaderboard UI.
 
@@ -184,3 +184,20 @@ The domain now emits ordered immutable encounter/result/heal/complete events dir
 A failed or mismatched write disables subsequent ranking writes for that run while gameplay continues locally. A new run or leaving the route invalidates queued old writes; late replies cannot replace a new run's status. No token is written to disk or logs. The results screen shows actual pending/acknowledged/failure status, and the server ranking page includes each of the five original routes, each difficulty and up to 25 completed runs.
 
 28 mocked adventure protocol checks and six additional simulation-event checks pass, covering queue order, server capability, source rounding, pre-heal HP capture, all six encounters, heal, final score, cancellation and failed/mismatched receipts. Four managed assemblies compile and every existing executable fixture suite passes. No real adventure run or score was submitted, and Android transport/UI/runtime behavior remains unverified.
+
+
+## Native multiplayer and WebRTC checkpoint
+
+`ArenaOnlineClient.Duel`, `ArenaDuelSession` and `NativeMatchPlayer.Duel` now create/join original rooms, prepare both fighters/outfits and the original selected arena, mark ready, run an authoritative host and a read-only remote renderer, and show explicit score confirmation/dispute controls. The native guest never advances local health or awards. Room capabilities and TURN credentials remain only in memory. Lobby cancellation, stale HTTP responses, room identity changes, input acknowledgement, bounded resends, duplicate events, background visibility and 2.5s/20s connection timeouts are guarded. CPU progression and KO replay are excluded from network settlement.
+
+`NativeDuelPeer` uses the original unordered `arena` channel with zero retransmits, original SDP/ICE envelopes and 24-candidate bounds. Host states target 30 Hz and guest input 50 Hz; HTTPS remains the fallback and carries signaling/terminal state/result confirmation. Direct packet freshness is 750 ms. The JSON wire is used without advertising the optional binary codec. WebRTC initialization/negotiation failure retains the HTTP path. Neither this implementation nor managed compilation proves NAT traversal, Android audio routing, mobile latency or cross-client compatibility.
+
+A real-configuration regression found mixed-case pair IDs (for example `PAIR227_VEXA_TumbleLaunch`) conflicting with the original backend's uppercase-only action validator. Native snapshots now use a unique uppercase alias; native receivers resolve it to the exact unchanged authored action/frame. Alias uniqueness and action bounds pass for all 18 exported configurations. The unmodified legacy browser does not implement this new alias lookup; paired-action interoperability with that client must be treated as unsupported until explicitly addressed, rather than silently replacing animations.
+
+Remote interpolation/extrapolation is bounded to 100 ms and cannot change simulation. Original moving gait, neutral clinch contact, blood/stains/wounds and recorded sound IDs are transferred; repeated sound IDs are ignored. Incoming cosmetic coordinates are checked before entering float meshes. Initial countdown events now remain queued through loading/intro/pause until the simulation resumes.
+
+Evidence: 514 fixture/protocol checks, including 414 cases executed against the frozen original JS validator; a separate full-configuration run passed 589 checks before the 15 peer-envelope/ICE checks were added. The 90 actual-config checks cover 18 alias maps and four sampled strike/combo paths per variant. Separate full regressions passed 200 match and 548 adventure checks. Official WebRTC 3.0.0 managed source and all four project assemblies compile against real Unity 6000.3.27f2 references. No native WebRTC library, Editor, renderer, phone or live duel was run.
+
+The dependency is pinned in `Packages/manifest.json` and its registry SHA1/SHA256 in `webrtc-package-lock.json`. Unity marks this upstream package deprecated. Its official requirements name Unity 6000.3 / Android ARM64 IL2CPP; Android optimized frame pacing is disabled as documented. Review native package compatibility and long-term maintenance before a store release. Primary references: https://github.com/Unity-Technologies/com.unity.webrtc/blob/main/Documentation~/requirements.md and https://github.com/Unity-Technologies/com.unity.webrtc/blob/main/CHANGELOG.md .
+
+Remaining online work: voice consent/microphone transport, online tournament list/bracket/owner operations, secure session persistence, uploaded-avatar/camera/crop flow and owner price UI. Remaining presentation work includes complete camera/VFX/replay parity and runtime comparison. Local Editor execution remains prohibited by the user; CI APK is authorized at completion but activation inputs were missing at the last preflight.

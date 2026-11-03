@@ -34,6 +34,7 @@ namespace Braxhorn.Arena.Editor
             PlayerSettings.Android.minSdkVersion = AndroidSdkVersions.AndroidApiLevel26;
             PlayerSettings.Android.targetSdkVersion = AndroidSdkVersions.AndroidApiLevelAuto;
             PlayerSettings.Android.forceInternetPermission = true;
+            PlayerSettings.Android.optimizedFramePacing = false;
             PlayerSettings.SetScriptingBackend(NamedBuildTarget.Android,ScriptingImplementation.IL2CPP);
             PlayerSettings.SetManagedStrippingLevel(NamedBuildTarget.Android,ManagedStrippingLevel.Low);
             PlayerSettings.Android.targetArchitectures = AndroidArchitecture.ARM64;

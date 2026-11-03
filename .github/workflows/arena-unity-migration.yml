@@ -59,6 +59,7 @@ jobs:
           node unity-tools/arena/tests/campaign-reference.mjs
           node unity-tools/arena/tests/combat-reference.mjs
           node unity-tools/arena/tests/media-reference.mjs
+          node unity-tools/arena/tests/duel-wire-reference.mjs
       - name: Compare native rules with every reference state
         run: dotnet run --project unity-tools/arena/tests/Arena.RulesParity.csproj -- unity-tools/arena/tests/campaign-reference.json.gz unity-tools/arena/tests
       - name: Report scope
@@ -102,6 +103,7 @@ jobs:
           node unity-tools/arena/tests/campaign-reference.mjs
           node unity-tools/arena/tests/combat-reference.mjs
           node unity-tools/arena/tests/media-reference.mjs
+          node unity-tools/arena/tests/duel-wire-reference.mjs
           dotnet run --project unity-tools/arena/tests/Arena.RulesParity.csproj -- unity-tools/arena/tests/campaign-reference.json.gz unity-tools/arena/tests native-source/unity-arena/Assets/Arena/SourceData
       - name: Package native source data and provenance
         run: |

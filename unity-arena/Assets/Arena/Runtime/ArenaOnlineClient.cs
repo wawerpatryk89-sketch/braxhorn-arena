@@ -47,6 +47,7 @@ namespace Braxhorn.Arena
             {handler.Dispose();throw new ArgumentException("Expected an HTTPS service origin",nameof(origin));}
             client=new HttpClient(handler,true){BaseAddress=uri,Timeout=TimeSpan.FromSeconds(20)};
             client.DefaultRequestHeaders.Accept.ParseAdd("application/json");
+            client.DefaultRequestHeaders.UserAgent.ParseAdd("Braxhorn-Arena-Unity/1.0");
         }
         public Task RefreshAccount()=>Account("me",null);
         public Task Login(string nick,string password)=>Account("login",new JObject{["nick"]=nick,["password"]=password});
@@ -133,12 +134,12 @@ namespace Braxhorn.Arena
             catch(IOException){throw new ArenaServiceException("Połączenie zostało przerwane. Odśwież dane przed ponowną próbą.");}
             finally{serial.Release();}
         }
-        async Task<(int status,JObject data)> Request(string path,JObject body)
+        async Task<(int status,JObject data)> Request(string path,JObject body,int timeoutSeconds=20)
         {
             using var request=new HttpRequestMessage(body==null?HttpMethod.Get:HttpMethod.Post,path);
             if(body!=null)request.Content=new StringContent(body.ToString(Formatting.None),Encoding.UTF8,"application/json");
             // HttpClient's timeout also bounds streamed body reads via our CTS.
-            using var timeout=CancellationTokenSource.CreateLinkedTokenSource(lifetime.Token);timeout.CancelAfter(TimeSpan.FromSeconds(20));
+            using var timeout=CancellationTokenSource.CreateLinkedTokenSource(lifetime.Token);timeout.CancelAfter(TimeSpan.FromSeconds(timeoutSeconds));
             using var response=await client.SendAsync(request,HttpCompletionOption.ResponseHeadersRead,timeout.Token);
             var status=(int)response.StatusCode;
             if(status>=300&&status<400)throw new ArenaServiceException("Serwer przekierował żądanie. Sprawdź adres usługi.",status);

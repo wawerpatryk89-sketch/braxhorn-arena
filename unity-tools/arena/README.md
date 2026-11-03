@@ -60,7 +60,7 @@ Keyboard: A/D or arrows to move, Ctrl guard, S low guard, Shift sprint, G grab m
 Fallback verification without running the Editor:
 
 ```bash
-python unity-tools/arena/tests/compile-with-editor.py --editor-data /path/to/Editor/Data --out-dir /tmp/arena-rule-tests --with-assets
+python unity-tools/arena/tests/compile-with-editor.py --editor-data /path/to/Editor/Data --out-dir /tmp/arena-rule-tests --webrtc-package /path/to/com.unity.webrtc-3.0.0 --with-assets
 ```
 
 This compiles Domain, Runtime, Editor and EditMode test assemblies separately against real Unity references and executes plain C# tests; it cannot validate imported animation/materials, Play Mode, IL2CPP or phone behavior.
@@ -82,8 +82,15 @@ Unity API basis: [StreamingAssets](https://docs.unity.com/en-us/engine/6000.3/ma
 
 Exploration keeps the original chapter gates/camera follow. The player object, HP, energy and move state survive opponent replacement. Incoming rivals are prepared during combat, revealed at 20% enemy HP, and promoted without resetting their world position/clock. Final grounded KO poses are captured from the Unity rig once; source scoring, post-win healing, the city pickup, boss finale, defeat and local result are handled by the domain. NPC receiver compatibility extends the source KROV mappings exactly as the browser loader does.
 
-`NativeAdventureWorld` bounds decoding to the current and next film, retains the preceding decoded edge, and uses the original narrow crossfade between chapters. Door masks and frozen bodies use explicitly referenced shaders. The original chapter AAC gain is applied through an audio-thread filter without modifying the media files. Backgrounding pauses films, combat and inputs. Rankings remain explicitly offline; account/backend/leaderboard integration is still required.
+`NativeAdventureWorld` bounds decoding to the current and next film, retains the preceding decoded edge, and uses the original narrow crossfade between chapters. Door masks and frozen bodies use explicitly referenced shaders. The original chapter AAC gain is applied through an audio-thread filter without modifying the media files. Backgrounding pauses films, combat and inputs. Adventure settlement now uses the original backend protocol and route boards; mocked protocol tests are separate from live/device verification.
 
 These are implemented and managed-code-tested paths. Unity shader import, video orientation, actual entrance rendering, corpse capture, mobile memory and touch ergonomics need runtime validation; no screenshot, recording or device result is implied.
 
 Current local evidence: 18 variants / 2986 actions / 270381 pose frames passed payload validation; 200 match checks and 542 adventure checks passed with actual configurations. The BRAX/NYXA adventure unlit material profile is implemented separately from the original PBR variants. Overall lighting/tone-map equivalence still needs rendered comparison.
+
+
+### Native multiplayer
+
+Original rooms, host authority, guest pose interpolation, input acknowledgements, blood/audio replication, explicit double confirmation and HTTP fallback are connected to the native menu. The optional Unity WebRTC 3.0.0 adapter retains original signaling and JSON envelopes; TURN credentials stay in memory. No live duel or phone network test was performed. The frozen validator reference is regenerated with `node unity-tools/arena/tests/duel-wire-reference.mjs`.
+
+Managed-only validation now also requires the verified package directory supplied through `--webrtc-package`; it compiles the real dependency source without loading its native library. `--only-duel --with-assets` limits a rerun to the network/configuration suite. See the project context and validation JSON for the case-sensitive animation fix, legacy browser limitation, upstream dependency status and remaining voice/tournament work.
