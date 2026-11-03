@@ -1102,7 +1102,16 @@
       "sha256": "64b3ca70684aba5ea7ceeee2f0ca019eb9aa76d7ea993c1036afbc79b34d59f4",
       "bytes": 3271904,
       "output": "64b3ca70684aba5ea7ce.png",
-      "conversion": "copy"
+      "conversion": "png",
+      "delivery": {
+        "url": "/assets/title-phone-safe-20261007.webp",
+        "encoding": "lossless-webp",
+        "sha256": "f8bd8d3758f335c99f6cc041ba955e58bee50580888d9be37854db60090a4413",
+        "bytes": 2228396,
+        "width": 1846,
+        "height": 852,
+        "rgbaSha256": "998f924d05d08ac6d6df6be097e9e44b13b6b063b3fca2a48ab3a98d38b239a2"
+      }
     },
     {
       "url": "/assets/shared-menu-background.jpeg",
@@ -1118,7 +1127,16 @@
       "sha256": "b03daaf3f0427448cd940957c2004a29ac55c4b33150418cae264db63e18c19d",
       "bytes": 2469860,
       "output": "b03daaf3f0427448cd94.png",
-      "conversion": "copy"
+      "conversion": "png",
+      "delivery": {
+        "url": "/assets/training-card-pro.webp",
+        "encoding": "lossless-webp",
+        "sha256": "fccb9067b89d006cff2f2829cd0c4c622784bed2edb78bd0b98bf15682f13701",
+        "bytes": 1709368,
+        "width": 1095,
+        "height": 1437,
+        "rgbaSha256": "44ae3f7a2e8f8546ac308bc165ce1b2f2c5613a5ae4dfd5a69b61b19c9a3a6ee"
+      }
     },
     {
       "url": "/assets/account-login-reference.jpg",

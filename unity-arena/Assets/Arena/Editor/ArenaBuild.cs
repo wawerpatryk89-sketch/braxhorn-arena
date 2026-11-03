@@ -33,6 +33,7 @@ namespace Braxhorn.Arena.Editor
             PlayerSettings.Android.bundleVersionCode = 1;
             PlayerSettings.Android.minSdkVersion = AndroidSdkVersions.AndroidApiLevel26;
             PlayerSettings.Android.targetSdkVersion = AndroidSdkVersions.AndroidApiLevelAuto;
+            PlayerSettings.Android.forceInternetPermission = true;
             PlayerSettings.SetScriptingBackend(NamedBuildTarget.Android,ScriptingImplementation.IL2CPP);
             PlayerSettings.SetManagedStrippingLevel(NamedBuildTarget.Android,ManagedStrippingLevel.Low);
             PlayerSettings.Android.targetArchitectures = AndroidArchitecture.ARM64;
@@ -52,7 +53,7 @@ namespace Braxhorn.Arena.Editor
             {
                 result = report.summary.result.ToString(), errors = report.summary.totalErrors,
                 warnings = report.summary.totalWarnings, unityVersion = Application.unityVersion,
-                sourceVersion = 271, scope = combat ? "Native combat/campaign integration; production UI, audiovisual, adventure, online and device validation incomplete" : "Native model/animation review scene; full game migration and device validation incomplete"
+                sourceVersion = 271, scope = combat ? "Native gameplay, menus and account/shop integration; networking, audiovisual and device validation incomplete" : "Native model/animation review scene; full game migration and device validation incomplete"
             },true));
             if (report.summary.result != BuildResult.Succeeded || !File.Exists(output))
                 throw new BuildFailedException("Native Android review build failed: " + report.summary.result);

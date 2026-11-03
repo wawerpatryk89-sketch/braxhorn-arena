@@ -25,7 +25,7 @@ compile('Arena.Domain',list((assets/'Domain').glob('*.cs')),standard+[newtonsoft
 compile('Arena.Runtime',list((assets/'Runtime').glob('*.cs')),unity_refs+[newtonsoft,ui,out/'Arena.Domain.dll'],'library')
 compile('Arena.Editor',list((assets/'Editor').glob('*.cs')),unity_refs+[newtonsoft,ui,out/'Arena.Runtime.dll'],'library')
 compile('Arena.Tests',list((assets/'Tests/EditMode').glob('*.cs')),unity_refs+[newtonsoft,nunit,ui,out/'Arena.Domain.dll',out/'Arena.Runtime.dll',out/'Arena.Editor.dll'],'library')
-runners=list(pathlib.Path(__file__).parent.glob('*Runner.cs'))+[assets/'Runtime/ProgressFileStore.cs']
+runners=list(pathlib.Path(__file__).parent.glob('*Runner.cs'))+[assets/'Runtime/ProgressFileStore.cs',assets/'Runtime/ArenaOnlineClient.cs']
 compile('RulesParity',list((repo/'unity-arena/Assets/Arena/Domain').glob('*.cs'))+runners,standard+[newtonsoft],'exe')
 shutil.copy2(newtonsoft,out/newtonsoft.name)
 (out/'RulesParity.runtimeconfig.json').write_text(json.dumps({'runtimeOptions':{'tfm':'net6.0','framework':{'name':'Microsoft.NETCore.App','version':'6.0.0'},'rollForward':'LatestMinor'}}))

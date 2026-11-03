@@ -271,6 +271,6 @@ namespace Braxhorn.Arena
         void ClearActors(){if(blood){blood.Clear();blood.Visible(true);}bloodRound=0;bloodCamera=0;for(var i=0;i<2;i++){if(actors[i])Destroy(actors[i]);actors[i]=null;poses[i]=null;definitions[i]=null;}}
         void OnApplicationPause(bool pause){applicationSuspended=pause;if(pause)Pause(true);else RefreshPauseUi();}
         void OnApplicationFocus(bool focus){applicationSuspended=!focus;if(!focus)Pause(true);else RefreshPauseUi();}
-        void OnDestroy(){disposed=true;generation++;ClearAdventure();ClearActors();if(canvas)Destroy(canvas.gameObject);}
+        void OnDestroy(){disposed=true;online?.Dispose();ClearAccountSecrets();generation++;ClearAdventure();ClearActors();if(canvas)Destroy(canvas.gameObject);}
     }
 }

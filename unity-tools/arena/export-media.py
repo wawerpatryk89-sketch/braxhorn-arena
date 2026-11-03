@@ -27,6 +27,7 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument('--project', type=Path, default=ROOT / 'unity-arena')
     p.add_argument('--offline', action='store_true')
+    p.add_argument('--prefer-delivery', action='store_true', help='Verify locked published encodings even when source PNGs are present')
     args = p.parse_args()
     lock = json.loads((LOCK_DIR / 'source-lock.json').read_text())
     catalog_path = LOCK_DIR / 'catalog.json'
@@ -47,25 +48,28 @@ def main():
 
     def export(entry):
         original = ROOT / safe(entry['path'])
-        cached = cache / entry['sha256']
-        if original.is_file() and digest(original) == entry['sha256']:
+        delivery = entry.get('delivery', {})
+        expected_hash = delivery.get('sha256', entry['sha256'])
+        expected_bytes = delivery.get('bytes', entry['bytes'])
+        cached = cache / expected_hash
+        if not (args.prefer_delivery and delivery) and original.is_file() and digest(original) == entry['sha256']:
             source = original
-        elif cached.is_file() and digest(cached) == entry['sha256']:
+        elif cached.is_file() and digest(cached) == expected_hash:
             source = cached
         else:
             if args.offline:
                 raise ValueError('Missing verified local media: ' + entry['path'])
             # package-arena-assets.mjs moves selected original files to immutable
             # R2 addresses before publishing. Keep original identity AND delivery.
-            url = entry.get('deliveryUrl', entry['url'])
+            url = delivery.get('url', entry.get('deliveryUrl', entry['url']))
             if not url.startswith(('/assets/', '/api/arena-media/', '/adventure-media/')) or '..' in url:
                 raise ValueError('Unsafe media URL')
             for attempt in range(3):
                 try:
                     req = urllib.request.Request(lock['baseUrl'] + url, headers={'User-Agent': 'Braxhorn-Arena-Migration/1.0'})
                     with urllib.request.urlopen(req, timeout=90) as response:
-                        data = response.read(entry['bytes'] + 1)
-                    if len(data) != entry['bytes'] or hashlib.sha256(data).hexdigest() != entry['sha256']:
+                        data = response.read(expected_bytes + 1)
+                    if len(data) != expected_bytes or hashlib.sha256(data).hexdigest() != expected_hash:
                         raise ValueError('Published media hash mismatch: ' + entry['path'])
                     temporary = cached.with_suffix('.download')
                     temporary.write_bytes(data)
@@ -77,6 +81,12 @@ def main():
                     time.sleep(2 ** attempt)
             source = cached
         output = target / safe(entry['output'])
+        if delivery:
+            if delivery['encoding'] != 'lossless-webp' or entry['conversion'] != 'png':
+                raise ValueError('Unsupported published image encoding')
+            with Image.open(source) as image:
+                if image.size != (delivery['width'], delivery['height']) or hashlib.sha256(image.convert('RGBA').tobytes()).hexdigest() != delivery['rgbaSha256']:
+                    raise ValueError('Published image pixels differ from original: ' + entry['path'])
         if entry['conversion'] == 'copy':
             shutil.copyfile(source, output)
         elif entry['conversion'] == 'png':
@@ -90,6 +100,8 @@ def main():
             raise ValueError('Unknown conversion')
         row = {'file': entry['output'], 'sourceSha256': entry['sha256'],
             'sha256': digest(output), 'bytes': output.stat().st_size, 'conversion': entry['conversion']}
+        if delivery:
+            row.update(inputSha256=digest(source), rgbaSha256=delivery['rgbaSha256'])
         if output.suffix == '.mp4':
             probe = json.loads(subprocess.check_output(['ffprobe', '-v', 'error', '-show_streams', '-of', 'json', str(output)]))
             video = next(s for s in probe['streams'] if s['codec_type'] == 'video')

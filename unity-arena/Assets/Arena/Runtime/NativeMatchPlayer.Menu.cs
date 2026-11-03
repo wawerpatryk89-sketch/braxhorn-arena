@@ -54,7 +54,7 @@ namespace Braxhorn.Arena
             menuHub=MenuPage("Challenges and records");menuRecords=MenuPage("Local records");menuProfile=MenuPage("Local profile");
             MenuArt(menuTitle.transform,"title",new Rect(0,0,1024,576));
             Click(menuTitle.transform,"ROZPOCZNIJ",new Rect(372,488,280,60),()=>ShowMenuPage(menuRoster));
-            BuildRosterMenu();BuildModesMenu();BuildSetupMenu();BuildArenaMenu();BuildHubMenu();BuildRecordsMenu();BuildProfileMenu();
+            BuildRosterMenu();BuildModesMenu();BuildSetupMenu();BuildArenaMenu();BuildHubMenu();BuildRecordsMenu();BuildProfileMenu();BuildAccountUi();
         }
         void BuildRosterMenu()
         {
@@ -83,10 +83,7 @@ namespace Braxhorn.Arena
             RefreshSelection();
         }
         void CycleOutfit()
-        {
-            var variants=Variants.Where(v=>Base(v)==Base(Variants[variantIndex])).ToArray();var index=Array.IndexOf(variants,Variants[variantIndex]);
-            variantIndex=Array.IndexOf(Variants,variants[(index+1)%variants.Length]);RefreshSelection();
-        }
+        {OpenShop();}
         void BuildModesMenu()
         {
             MenuHeading(menuModes,"WYBIERZ TRYB GRY");
@@ -98,8 +95,10 @@ namespace Braxhorn.Arena
                 var title=Label(card.transform,"Mode",new Rect(8,258,134,42),19);title.alignment=TextAnchor.MiddleCenter;title.fontStyle=FontStyle.Bold;title.text=ModeNames[i];
             }
             menuIdentity=Click(menuModes.transform,"",new Rect(32,444,300,46),()=>ShowMenuPage(menuProfile)).GetComponentInChildren<Text>();
+            Click(menuModes.transform,"KONTO",new Rect(348,444,190,46),OpenAccount);
             Click(menuModes.transform,"WYZWANIA I REKORDY",new Rect(562,444,430,46),()=>ShowMenuPage(menuHub));MenuBack(menuModes,menuRoster);
-            Label(menuModes.transform,"Local mode",new Rect(240,520,752,26),15).text="Rozgrywka i wyniki na tym urządzeniu";
+            Click(menuModes.transform,"SKLEP",new Rect(240,510,190,46),OpenShop);
+            Label(menuModes.transform,"Local mode",new Rect(460,520,532,26),15).text="Rozgrywka i wyniki na tym urządzeniu";
         }
         void BuildSetupMenu()
         {
@@ -195,7 +194,7 @@ namespace Braxhorn.Arena
         }
         void ShowMenuPage(GameObject page)
         {
-            if(!page)return;foreach(var p in menuPages)p.SetActive(p==page);menuCurrent=page;
+            if(!page||accountBusy)return;if(menuCurrent==menuAccount&&page!=menuAccount)ClearAccountSecrets();foreach(var p in menuPages)p.SetActive(p==page);menuCurrent=page;
             if(EventSystem.current)EventSystem.current.SetSelectedGameObject(null);
             if(page==menuProfile){nickname.SetTextWithoutNotify(progress?.Name??"");profileMessage.text=progressStore?.Error??"Profil lokalny nie jest kontem internetowym.";}
             RefreshSelection();if(page==menuRecords)RefreshRecords();
