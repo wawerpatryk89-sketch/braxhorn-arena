@@ -1,0 +1,231 @@
+# Braxhorn Arena — Unity project context
+
+## Scope and authority
+
+The user authorized continuing the entire **Arena** migration to native Unity, preserving the original models, animations and artwork. This is separate from the City/osiedle repository. The user later requested an Android build at the end of the migration. Continue source work without treating Android activation as a blocker. Do not run the local Editor, publish a site/store release, merge main, or present a partial integration scene as the finished game.
+
+- Source: published Site v271, commit `f355fe6ac6af41518fde420382512d49bd27d51a` (2026-10-28).
+- GitHub repository: `wawerpatryk89-sketch/braxhorn-arena`.
+- Dedicated branch in both source and GitHub repositories: `codex/arena-unity6-migration-20261102`.
+- GitHub main was the older 2026-10-20 baseline. Never silently substitute its assets.
+- Unity project: `unity-arena`, version `6000.3.27f2`, built-in pipeline.
+- Generated imports, source caches and original offline media are reproducible/ignored. Preserve unrelated source-restoration temporary files. Stage migration files explicitly.
+
+## Implemented native code
+
+`Arena.Domain` is plain C# with no Unity reference. It owns campaign progression, capsule contact geometry, authored action clocks, input mapping, guards/evasion, damage/energy ledgers and the 60 Hz `ArenaMatch`. Match partials implement pressure/fall/getup, paired action clocks/root movement, source combo reaction selection, first-contact pose hold, paired finishers/recovery, countdown, timed/best-of-three rounds, CPU commands and training recovery. Original v271 `middleGrab`, `airCombo` and `groundContinuation` settings remain authoritative.
+
+`Arena.Runtime` owns original rig definitions, Playables, native audio/video, touch controls and scene presentation. `Arena.Editor` imports meshes, full 8/12-weight skinning, textures, clips and generates integration scenes. C# assemblies must compile separately: a monolithic compile can conceal forbidden access to internal Domain members.
+
+`NativeMatchPlayer` connects all 16 playable variants, 21 original arenas, fight/training/Arcade/tournament/Survival and five adventure routes. It uses async resource/configuration loading with generation guards; backgrounding pauses and releases input. The touch interface shows only supported special/jump buttons and fits a 1024×576 layout inside the device safe area. It is still an integration menu, not the original production UI.
+
+## Asset fidelity
+
+`unity-tools/arena/export-source.mjs` uses the original Three.js rig **only offline** to bake authored transforms, IK, tail and prefight foot-grounding corrections. The player does not run JavaScript, Three.js, WebView or browser canvas. Reflecting Z, winding, bind poses and quaternions are converted together. Constant animation channels retain endpoints without losing changing samples.
+
+The complete current local export passed validation: **18 models/outfits, 2986 actions, 270381 sampled frames, 1083207 vertices**. The 34 new actions are 16 outfit-specific adventure walks and 18 entry runs. Their source files are hash-pinned. The two previously omitted BEAR/Blocking and DEMON/Standing Block End clips remain exact original supplements. Adventure walk clip names do not overwrite combat/prefight clips.
+
+`export-media.py` packages 133 locked source files: 21 arenas, 30 chapter films on five routes, and 31 retained audio keys. Output is 312704687 bytes with 50 H.264/yuv420p streams. Original MP4/audio/JPEG bytes stay unchanged; WebP posters become PNG; Harbor GIF is explicitly transcoded to H.264 CRF16. Immutable delivery URLs reproduce published packaging without weakening source hashes.
+
+## Adventure implementation
+
+`AdventureRun` owns the six-encounter route and keeps the same player instance across encounters. `AuthoredTravel` follows original root-distance samples. Entry includes the 450 ms establishing shot, source door/edge projection, reciprocal depth, braking and 420 ms yaw turn. `ADVENTURE_WALK` is distinct from normal prefight motion.
+
+Exploration gates at the current encounter, follows the source camera, and preserves HP, energy and move state. The next opponent is preloaded during combat, revealed at 20% enemy HP, walks to its authored staging position, and transfers its position/clock when promoted. Final corpses wait for a grounded settled KO pose. Win scores, no-damage bonuses, post-win healing, the city pickup, boss completion, death and result idempotence are domain-owned. Source KROV receiver metadata is extended to BOSS/ZOMBIE exactly like the browser loader.
+
+`NativeAdventureWorld` uses at most two video decoders and retains the previous decoded edge for narrow chapter blending. Doorway foreground masks use the actual film. Corpses are snapshots of the rendered original Unity rig, not generated artwork. The original AAC gain uses an audio-thread filter. Following the owner’s later lighting instruction, all fighters retain imported PBR materials in adventure, including BRAX and the three NYXA variants that previously used an unlit override. Original textures remain unchanged. Overall PBR/studio/tone-map equivalence is still unvalidated. Adventure server settlement and route boards are now implemented; see the later protocol checkpoint.
+
+## Current evidence
+
+- All four managed asmdef boundaries (Domain, Runtime, Editor, EditMode tests) compile against actual Unity 6000.3.27f2 assemblies. This does not execute Unity.
+- 192 campaign scenarios / 3312 reference states / 3 contact edge cases.
+- 26198 source combat-helper comparisons across 18 variants / the original 2952 combat actions.
+- 210 original arena floor/crop cases, 90 entrance projections / 810 source samples.
+- 200 native match checks using all 18 actual exported configurations.
+- 548 adventure checks: lifecycle, gates, pause, root travel, incoming rivals, persistent state, KO settlement, healing/scoring, simultaneous KO, all 16 playable variants on five entrances, and 98 paired action/receiver combinations against BOSS/ZOMBIE.
+- Full native payload validation: 18 / 2986 / 270381 / 1083207 as above.
+- Known standalone compiler warning: Newtonsoft netstandard2.0 resolves against netstandard2.1. UPM resolution requires Unity import.
+- No Unity import, shader compilation, Play Mode, screenshots/recordings, Android package or phone validation has been performed for this checkpoint.
+
+The previous media/match cloud run `41510507631`, code `c5bbfb76fbccaf190a7d3f3fa3ba0b17ec7e2f45`, passed all native asset/media/rule jobs, including 200 match checks. Fighter artifact `13172433665` is 834897395 bytes (ZIP SHA256 `9d15dabee6d05a016ec8a1cf2ba9a53a78130b2a7cbaa32d491425caa64b6863`). Media artifact `13171983537` is 312286395 bytes (ZIP SHA256 `abe9f43c6fd382026c438d9c5d71316c8c28ece943d5e9369b3e43f8cbb31080`). These are previous-checkpoint data archives, not APKs or the newly expanded adventure export.
+
+## App build workflow
+
+Push CI restores/validates source, exports native assets/media, and runs domain regressions. APK execution is now opt-in through workflow_dispatch `build_apk=true`. `ArenaBuild.AndroidCombat` generates native scenes/imports and an ARM64 IL2CPP development package; `AndroidReview` remains the single-model inspection entry point. Both are review builds using `com.braxhorn.arena.unityreview`, not a paid-release identity.
+
+Previous preflight found no configured Arena UNITY_LICENSE/EMAIL/PASSWORD/SERIAL. The previous run failed its explicit activation prerequisite and skipped Android. This is not evidence about the user's license entitlement. Current source-only validation does not fail merely because no APK was requested. Do not copy secrets from City or expose credentials. Local Editor invocation previously failed licensing IPC and Package Manager; do not retry it against the user's instruction.
+
+## Required before claiming the whole migration is finished
+
+1. Complete remaining source gameplay/presentation parity: runtime verification of moving-strike leg layers, remaining CPU parity and runtime drill verification, runtime verification of clinch hand IK, combo-aftermath gestures, recoil/lift/travel details, rendered KO replay parity, all authored VFX/audio and procedural night-market overlays. Expand matchup/direction reference coverage.
+2. Finish native UI parity and validate touch/layout against the original: account entry, original art, outfit shop, challenges, rankings/history and preset/password settings now exist. Uploaded-avatar crop/camera, owner price editing, session persistence and browser-to-app save transfer remain.
+3. Complete native adventure ranking, online rooms/signaling, input/snapshots and voice; verify two peers. Account/shop/private CPU-result protocols now have native adapters and mocked contract coverage; Android/live-service validation remains. Do not fake successful online results.
+4. Execute native import and visual/runtime checks when a permitted Unity execution path is available. Validate rig deformation, facing, entrance masks, unlit/PBR output, actual video orientation/loop seams, audio synchronization and corpse capture.
+5. Measure mobile CPU/GPU/memory and touch usability; then build/test the app. Store signing, product identity, pricing and publication remain later explicit steps.
+
+Never describe managed compilation or source export as a verified working phone game or as full migration completion. Missing later build credentials do not prevent continuing the remaining source implementation.
+
+## Native gesture and clinch checkpoint
+
+Automatic taunts, queued joy/anger, alternating variants and authored cooldowns now run in C#. Movement, guard and strikes interrupt a gesture immediately. Exploration suppresses combat gestures. Normal throw completion, fall and get-up queue original actions. Combo-specific aftermath presentation remains incomplete.
+
+Neutral clinch detects original torso/push-capsule proximity and forward pressure, uses CLINCH_HOLD, freezes its pose at 280 ms, and supports break or original paired-move selection. Contact itself causes no damage. Release restores separation/protection/cooldown; pause freezes the timeout. CPU waits for its reaction window; passive training does not act. Round/adventure transitions reset the state. Dynamic hand-to-opponent IK is now implemented after both Unity poses have been sampled; visual placement still requires runtime verification across different sizes.
+
+Validation: 15 dedicated gesture checks and 18 dedicated clinch checks supplement the existing match/adventure suite. Managed compilation is performed without running the Unity Editor. No new APK or runtime images are produced by this checkpoint.
+
+## Native clinch contact IK
+
+`FighterPosePlayer.Contact` consumes the original contactShoulders/contactClavicles metadata and scale ratio. It uses the original 0.07 horizontal / 0.06 vertical offsets, reachable-height fallback, 75% clavicle fallback and 180 ms smoothstep. Source Z is reflected consistently with the imported rig. Actor-facing/scale transforms are applied outside the solver. Both base poses are sampled before contact correction; rotations are corrected without changing bone translations or scale. Hand world orientation is retained at full blend. No generated replacement animation is introduced.
+
+`ArmContactGeometry` has 4019 executable geometry checks over 1000 varied chains/targets plus vertical, unreachable, degenerate and invalid inputs. All four Unity assembly boundaries compile. These checks validate geometry and compilation, not rendered skin deformation or touch-device behavior.
+
+## Moving strikes and requested lighting improvements
+
+Raw RUN/WALK_FORWARD/ADVENTURE_WALK quaternion layers are now exported separately from baked poses. Full export includes 52 layers across 18 variants, with eight leg bones each. Original retargeted samples remain intact apart from the same Z reflection as all imported animation. Export input is not mutated; metadata hashes are checked by the importer and payload validator. `prepare-source.py` copies both new exporter and its test into the pinned export workspace. Old serialized definitions can load without layers, but new imports reject incomplete/mismatched gait payloads.
+
+Native basic attacks now retain source forward travel, minimum opponent distance, sprint/walk gait clocks and 100 ms combat blending. Adventure allows free direction changes with 70 ms blending and authored walk speed. Foot/leg attacks retain their own leg pose. Stun, push, pause and action changes stop/freeze the layer appropriately. Run/adventure stride time is retained when an attack finishes. The runtime changes leg rotations only, then applies the source floor-leg IK with preserved foot world orientation. Fourteen focused simulation checks pass; source gait conversion tests check reflection, original timing and immutable input. Rendered floor contact/skin deformation remains unverified.
+
+The owner requested lit fighters closer to Tripo and improved adventure exits on 2026-11-03. The previous unlit override is removed; original PBR colour/normal/metallic-roughness textures remain. Generated combat and review scenes share enabled key/fill/rim lights and hemispheric ambient light. Values are initial studio settings, not a measured Tripo match. Visual calibration and mobile GPU cost remain to validate.
+
+Adventure chapter loading now freezes ready films while another visible chapter is buffering, hides/relinquishes controls while waiting and clears the loading message after recovery. This addresses stream-boundary behavior, not a claim that doorway geometry or every exit is visually corrected. Original entrance masks/projections stay unchanged pending visual evidence.
+
+## Native training and local progress
+
+Seven source training modes now run natively: movement/distance, repeat, counter, grabs, bag, block and spar. Repeat/grab use the source 1000 ms idle interval; counter uses 1300 ms (it is a timed exercise, not reactive counter AI). Selected source basic moves are validated against the fighter configuration. Movement respects combo approach, calibrated gap and source rest cycles. Live settings pause the match and restore its previous pause state. Reopening the panel cannot overwrite that state. The present menu remains integration UI.
+
+`ArenaProgress` implements local v2 profiles, wins, best Survival, challenge completion storage and per-mode/per-difficulty TOP 5. Source v1 JSON can be migrated when supplied; the app does not automatically read browser localStorage. The runtime saves completed fights and campaign/Survival scores to `Application.persistentDataPath/braxhorn.progress.v2.json`, using the source score/completion/time ordering and tournament average duration. Training/adventure results do not enter ordinary fight records. The new active clock excludes countdown, celebration and pause, includes combat hitstop. No online authentication, account ownership, shop authority or cloud ranking is implemented by this local save.
+
+The disk adapter writes/flushed temporary data, retains a previous-generation backup and can recover after interrupted replacement. Corrupt files are preserved; unrecoverable data or unsupported schema blocks overwriting and displays an error. Unknown extension fields in supported data remain preserved. A valid prior backup is not replaced by a corrupt main file.
+
+Evidence: four managed assembly boundaries compile; 27 training and 32 progress checks pass. The full exported-asset regression before adding progress passed 200 match and 542 adventure checks across 18 configurations. Progress tests cover profiles, migration, ranking, save/reload, broken primary/backup, future schema, write errors and pause/countdown exclusion. Android filesystem behavior and rendered training UI remain unverified.
+
+## Challenges, CPU corrections and KO replay
+
+All 25 original challenge definitions and Polish descriptions are carried into `ChallengeCatalog` from the pinned v271 source. Native selection applies drill/mode/difficulty/boss target and Nina's guard exclusions. The active drill mode cannot be changed during a challenge. Hit, kick, block, evade, counter, pressure-push and pair-break objectives originate in the simulation; events are emitted once per contact group. Geometry-only dodges compare against the original standing pose. Cancelling one's own throw or get-up immunity never earns a break/dodge. Survival goals persist across opponents; ordinary rematches reset the challenge. Completion saves the source achievement and local challenge record. The selector is integration UI, not the production challenge hub.
+
+CPU uses the original full move order (including all eight Nina moves and five BOSS/ZOMBIE moves), source reaction wait, adaptive guard duration, repeat-attack response, bounded approach, tactical retreat and authored paired grabs. The 18-second COMBO cooldown is now separate from ordinary attack cooldown; the previous native policy could suppress basic attacks during this interval. Combo approach cannot be overwritten by ordinary CPU decisions. Remaining deep source AI/matchup parity and all rendered behavior still need review.
+
+`KnockoutReplay` stores up to 240 pose samples within 3.6 seconds, retains the source KO window (-850/+1200 ms), and uses the original speed curve (0.9 to 0.28 to 1). Only pose, gait and captured combat-event playback occurs; simulation/damage/progression do not advance. Actions, facing flips and loop wraps remain discrete. Native playback is final-match KO only, supports skip/pause/background suspension, then applies the result exactly once. It is not an MP4 recording or a screenshot artifact. Video/world effects, blood and dynamic contact-IK fidelity in replay remain unverified/incomplete.
+
+Validation before replay integration: all 18 native configs, 200 match and 542 adventure checks passed with the CPU corrections. Four managed assembly boundaries compile after replay integration. Dedicated checks: 201 challenges, 9 CPU, 17 replay, plus local progress/recovery checks. No Unity process, native render, Android APK or real-device test was executed.
+
+## Native blood and original direction gestures
+
+The source blood burst/gravity formula, colours, particle limit 96, floor-stain limit 100 and head/body wound limits are ported into a plain C# cosmetic state and two reusable Unity meshes. Floor stains render behind fighters; particles and capsule-attached marks render in front. Source head marks begin on every second head hit; body marks use the nearest authored capsule and saturate at severity 3. Camera scrolling shifts the effects in adventure; replacing an opponent clears only that opponent's wounds. Round reset keeps marks/stains while a new match clears everything. No damage authority is in the effect renderer.
+
+`ArenaBuild` now binds `OriginalBlood.shader` explicitly into the generated native scene. Managed compilation does not compile this shader. GPU occlusion, gamma, skin placement, mobile overdraw/performance and source visual equivalence remain unverified. Blood is deliberately hidden during pose replay until replay effect snapshots are implemented, so replay visual parity is incomplete; corpse-captured wound fidelity also remains to validate.
+
+Direction gestures now retain the source released-double-tap window (<300 ms): forward sprints, backward selects existing BACKFLIP/BACK_ROLL/QUICK_BACK metadata and authored retreat motion. Pause releases/reset the input latch. Pointer ownership remains per finger. Grab presses can escape a paired move during the existing 200 ms window; held grab continues to modify attack buttons. Brax guard+COMBO selects ENERGY_SPECIAL; Nina's guard input triggers her authored evade. Unsupported jump/special buttons are hidden rather than shown as nonfunctional controls. This does not implement the final original production control artwork.
+
+Validation: all four managed assembly boundaries compile. Dedicated tests now include 33 progress, 201 challenge, 9 CPU, 17 replay, 14 blood and 14 input checks, supplementing the existing campaign/combat/adventure/geometry suites. Native shader, touch hardware, images/video and APK still require an actual Unity/device run.
+
+Latest inspected Arena CI preflight (job 125627200823, code 5b12899) reported activationInputsAvailable=false and all four Unity activation inputs absent. This blocks a requested APK job but not further source implementation. No credential values were read or copied from City.
+
+Final regression for the blood/input checkpoint passed all 18 native exported configurations: 200 match checks and 542 adventure checks, plus every dedicated suite listed above. The final UI control-cache change also passed separate four-assembly compilation and executable regressions. This remains managed-only evidence.
+
+
+## Original-art native menus and local records
+
+The native entry now has title, eight-fighter scrolling roster, per-character outfit selection, six modes, setup/difficulty/drills, 21 arena posters and five adventure routes, challenge hub/list, local profile and TOP 5 screens. All 25 challenge descriptions remain the source definitions; unavailable Nina guard challenges cannot start. Records retain source score/round/time/completion formats and filter by mode/challenge and difficulty. Name entry validates the existing local v2 contract and commits the in-memory profile only after disk save succeeds. This is explicitly a local profile, not authenticated online identity.
+
+27 original UI images and eight original outfit labels/prices are pinned to the v271 commit and SHA-256 in the media catalog. Export now packages 160 verified files / 334967409 bytes. Decoding WebP to PNG does not redraw or replace the artwork. Each visible native image owns its request/decoded texture, cancels requests and frees textures when hidden, and uses the Android-compatible StreamingAssets URL. Screens use the existing safe-area fitted uGUI root; code does not embed HTML or run JS. Layout/typography is native and has not been visually compared with source. Outfit selection remains review access, pending server-owned inventory integration; it is not a working shop or proof of ownership.
+
+Pause now provides resume and return to menu; opening training hides the general pause panel, and returning from application suspension retains an explicit pause. Four managed assembly boundaries and all executable rule suites passed. Media hashes/encoding passed. Actual keyboard/touch focus, async image cancellation, rendered layout, shaders, Unity import and Android execution remain unverified. Prior GitHub run 41552921286 at 2ca6a0 completed successfully for source validation, not APK.
+
+
+## Native account and server-owned outfit shop
+
+`ArenaOnlineClient` is a plain C# HttpClient adapter to the original v271 `/api/account` and `/api/shop` contracts. It provides account refresh/login/registration/logout/guest, preset avatar/password calls, inventory refresh, purchases with expectedPrice, and server-authorized price calls. Native account and shop pages wire login/registration/logout, preset selection during registration, inventory browsing, explicit price confirmation, purchase and equip. Local profile remains separate. Owner price editing and password/avatar management currently have adapter methods but no native management screen. Camera/upload/crop, durable secure session storage and legacy platform owner login are still unported.
+
+The server is the only authority for player identity, prices, balance and owned outfits. Requests serialize; changing account clears prior inventory. Confirmed ownership replaces the previous review-wide outfit access. Roster returns to a base outfit when the active server identity no longer owns the selected variant. No local wins grant virtual currency; ranking settlement integration remains necessary. On a price conflict the returned inventory is updated, then the error is shown and fresh confirmation is required. A timeout does not automatically retry a purchase. The UI clears password fields on submit/exit and disables repeated requests while waiting. CookieContainer stays in memory; no tokens/passwords are saved to progress/PlayerPrefs or exposed in logs. HTTPS origin validation, normal TLS certificate checks, redirect rejection, 20-second deadline and 256 KiB response limit apply. Android builder explicitly requests Internet permission.
+
+34 executable mocked-transport tests passed for source request fields, authoritative identity/inventory, account isolation, changed prices, malformed/oversized responses, timeouts, serial requests and cancellation. Four managed assembly boundaries compile. No real account was registered/logged in, no purchase was made, and Android HttpClient/cookies/TLS/IL2CPP remain unvalidated.
+
+The first menu CI run 41554689223 found a real export error: the published title PNG URL returned 404 because deployment converts source PNGs losslessly to WebP. Both title/training published WebP payload hashes are now locked, and their dimensions and every decoded RGBA byte were verified against pinned source PNGs. Export verifies both payload and pixels; it never accepts a changed image. All 27 published UI URLs were independently downloaded and hash-verified. `--prefer-delivery --offline` passed the full 160-file export, now 335269305 bytes after canonical PNG re-encoding. The next push must confirm this fix in CI; the failed menu run was not restarted or cancelled.
+
+
+## Private server progress and durable result settlement
+
+Native matches now start a server session before reporting results when an account is authenticated; guest fights remain local. `ArenaOnlineClient.Ranking` retains the original start/finish/challenge fields, original rounding and server-issued match IDs. `ArenaRankTracker` serializes the match start, settlement and win challenge, and flushes the prior bout before starting the next campaign bout. Results are client-reported private progress; this does not make CPU scores verified public competition. Adventure and multiplayer settlement are covered by the later dedicated protocol checkpoints.
+
+A per-account pending queue stores at most 30 results for one identity, never drops older pending results to make room, and uses flush/temporary replacement plus backup recovery. Unsupported/corrupt saves are preserved. Temporary failures and 429 remain queued; permanent 4xx rejection is surfaced; 401 waits for the same account to authenticate. Expected-identity checks run inside the HTTP serialization gate so an account switch cannot send old results under a new account. No tokens/passwords are stored with results. Results display their actual server status, and the records screen supports retry and separately labelled server-owned fighter progress. Local TOP 5 remains local; this is not a migrated public leaderboard UI.
+
+25 executable ranking checks pass for durable queue/recovery, ordering, round/timer payloads, idempotent pending entries, transient/permanent rejection, retries, account isolation, authenticated statistics and malformed responses. Further runtime network/IL2CPP verification is required; no live ranking data was written. An additional pause correction keeps arena video frozen when resuming pose-only KO replay.
+
+The account/media checkpoint's GitHub run 41555921861 at c2e12d9 passed the native C# rules and original media jobs, confirming the published WebP restoration fix. Fighter export was still running at the latest read. APK was not requested at this intermediate checkpoint; activation prerequisites still need configuration before a permitted CI build can execute.
+
+
+## Original cinematics and menu audio
+
+The native flow now plays the original start film, the eight fighter entrance films, the BOSS entrance for the authored Survival/tournament encounter, and six winning Arcade/tournament finales. Regular rematches omit the entrance as in source. The startup copyright image receives four foreground seconds after decoding; hiding the app pauses the deadline and video. Retry and skip remain available after preparation/decoding failure. Cancelling a sequence removes its completion callback and releases its decoder; stale decoder callbacks cannot start a replaced match. The match countdown/input and arena sound/video remain paused until the entrance finishes. Results are saved before a finale and each completed campaign is celebrated once. This is playback of authored original films, not a recording of native gameplay.
+
+Menu title and roster music, selection and confirmation cues now use the original recordings and source volumes. Global sound state covers combat, menus and films. Focus and application-pause events are combined so one callback cannot resume audio while the other still reports suspension. Native menu artwork, cinematic decoding, audio focus and Android lifecycle still need runtime validation.
+
+All 16 movie payloads are pinned to the published v271 source SHA-256. Copyright WebP pixels were compared with the original source PNG; the export locks both delivery payload and decoded RGBA hashes. Offline export with published encodings passes 177 files / 420611050 bytes, including 28 original interface images and 16 cinematics. Four managed assemblies and all executable suites pass, including 21 new cinematic transition/deadline/cancellation checks. No Unity Editor process or native gameplay capture was run.
+
+GitHub native source validation for the previous ranking checkpoint (run 41557110279, commit 8b1ba04) completed successfully. The earlier account checkpoint also finished successfully. Neither is an Android application build.
+
+
+## Spectator mode, server rankings/history and account settings
+
+The native fight setup now includes the source CPU-versus-CPU spectator option. Both sides receive CPU controllers; keyboard/touch input, local wins/challenges and online match/result submission are excluded. Rematches preserve the option, while launching another mode or a challenge restores player control. Neutral clinch chooses either CPU as in source rather than always selecting side zero. Managed coverage now includes 11 CPU and 20 clinch checks.
+
+A separate server ranking page reads up to 100 source rows and retains the player's row outside the top 100. Multiplayer rows must carry both_players_confirmed; CPU categories remain labelled private-progress categories, not verified public competition. The account history reads the original last 50 results, displays the user's host/guest score order, and distinguishes legacy/client-reported results. Identity, field/size/rank bounds and ownership are validated before rendering; names remain plain text. Public avatars and exact production podium styling are still unported. 34 ranking protocol checks pass, including malformed boards, ownership and history limits. No live rankings were written.
+
+Native account settings now wire the original male/female presets and change/add password. They validate input, clear secret fields on submission/navigation, and require an authenticated, same-identity server saved receipt before displaying success. Password capability and preset selection come from the server. No credentials or cookies are persisted to ordinary files. 40 account/shop protocol checks pass; no real password or avatar was changed during implementation.
+
+Both preset artwork payloads were restored from pinned v271 and downloaded/hash-compared with the published original. Media export now passes 179 files / 421358067 bytes, including 30 original interface images. Four separate managed assemblies and every executable fixture suite pass after these changes. This does not validate Unity UI, native decoding, Android networking or touch interaction.
+
+
+## Adventure server sequence and original route boards
+
+The domain now emits ordered immutable encounter/result/heal/complete events directly at the original state transitions, including HP before the twenty-point post-encounter recovery and the final bonus before completion. The native adapter starts the existing `/api/adventure/runs` protocol, retains the returned capability only in memory, serializes events behind start, and requires matching score/next/status receipts. The source adventure service checks sequence and score, not full server-authoritative combat; this is stated in the route leaderboard UI.
+
+A failed or mismatched write disables subsequent ranking writes for that run while gameplay continues locally. A new run or leaving the route invalidates queued old writes; late replies cannot replace a new run's status. No token is written to disk or logs. The results screen shows actual pending/acknowledged/failure status, and the server ranking page includes each of the five original routes, each difficulty and up to 25 completed runs.
+
+28 mocked adventure protocol checks and six additional simulation-event checks pass, covering queue order, server capability, source rounding, pre-heal HP capture, all six encounters, heal, final score, cancellation and failed/mismatched receipts. Four managed assemblies compile and every existing executable fixture suite passes. No real adventure run or score was submitted, and Android transport/UI/runtime behavior remains unverified.
+
+
+## Native multiplayer and WebRTC checkpoint
+
+`ArenaOnlineClient.Duel`, `ArenaDuelSession` and `NativeMatchPlayer.Duel` now create/join original rooms, prepare both fighters/outfits and the original selected arena, mark ready, run an authoritative host and a read-only remote renderer, and show explicit score confirmation/dispute controls. The native guest never advances local health or awards. Room capabilities and TURN credentials remain only in memory. Lobby cancellation, stale HTTP responses, room identity changes, input acknowledgement, bounded resends, duplicate events, background visibility and 2.5s/20s connection timeouts are guarded. CPU progression and KO replay are excluded from network settlement.
+
+`NativeDuelPeer` uses the original unordered `arena` channel with zero retransmits, original SDP/ICE envelopes and 24-candidate bounds. Host states target 30 Hz and guest input 50 Hz; HTTPS remains the fallback and carries signaling/terminal state/result confirmation. Direct packet freshness is 750 ms. The JSON wire is used without advertising the optional binary codec. WebRTC initialization/negotiation failure retains the HTTP path. Neither this implementation nor managed compilation proves NAT traversal, Android audio routing, mobile latency or cross-client compatibility.
+
+A real-configuration regression found mixed-case pair IDs (for example `PAIR227_VEXA_TumbleLaunch`) conflicting with the original backend's uppercase-only action validator. Native snapshots now use a unique uppercase alias; native receivers resolve it to the exact unchanged authored action/frame. Alias uniqueness and action bounds pass for all 18 exported configurations. The unmodified legacy browser does not implement this new alias lookup; paired-action interoperability with that client must be treated as unsupported until explicitly addressed, rather than silently replacing animations.
+
+Remote interpolation/extrapolation is bounded to 100 ms and cannot change simulation. Original moving gait, neutral clinch contact, blood/stains/wounds and recorded sound IDs are transferred; repeated sound IDs are ignored. Incoming cosmetic coordinates are checked before entering float meshes. Initial countdown events now remain queued through loading/intro/pause until the simulation resumes.
+
+Evidence: 514 fixture/protocol checks, including 414 cases executed against the frozen original JS validator; a separate full-configuration run passed 589 checks before the 15 peer-envelope/ICE checks were added. The 90 actual-config checks cover 18 alias maps and four sampled strike/combo paths per variant. Separate full regressions passed 200 match and 548 adventure checks. Official WebRTC 3.0.0 managed source and all four project assemblies compile against real Unity 6000.3.27f2 references. No native WebRTC library, Editor, renderer, phone or live duel was run.
+
+The dependency is pinned in `Packages/manifest.json` and its registry SHA1/SHA256 in `webrtc-package-lock.json`. Unity marks this upstream package deprecated. Its official requirements name Unity 6000.3 / Android ARM64 IL2CPP; Android optimized frame pacing is disabled as documented. Review native package compatibility and long-term maintenance before a store release. Primary references: https://github.com/Unity-Technologies/com.unity.webrtc/blob/main/Documentation~/requirements.md and https://github.com/Unity-Technologies/com.unity.webrtc/blob/main/CHANGELOG.md .
+
+Remaining online work: voice consent/microphone transport, online tournament list/bracket/owner operations, secure session persistence, uploaded-avatar/camera/crop flow and owner price UI. Remaining presentation work includes complete camera/VFX/replay parity and runtime comparison. Local Editor execution remains prohibited by the user; CI APK is authorized at completion but activation inputs were missing at the last preflight.
+
+
+## Native voice, tournament and owner-price checkpoint
+
+`NativeDuelVoice` uses a separate audio-only Unity.WebRTC peer with the original `voice.consent/description` room envelope. The match readiness gate waits for a yes/no decision; refusal and timeout continue the game without voice. Capture starts only with both consents and granted OS permission. Microphone and received sound mute independently. Backgrounding stops capture and requires explicit microphone unmute on return. Late permission callbacks cannot revive a closed call. Local microphone output is suppressed by the package audio filter before playback, and arena music ducks during received voice. Permission, microphone startup, connection and disconnection have bounded deadlines. No native microphone/RTC execution has occurred. Browser acoustic echo cancellation/noise suppression equivalence is not established on this audio-source capture path.
+
+Native tournament screens connect list/detail/entries/bracket/history, registration/withdrawal, personal invitation claims and server-assigned duel entry to the existing v271 endpoint. Organizer forms implement create/draw/schedule/invite/remove/restart/resolve/cancel/delete with explicit final in-app confirmation. Displayed dates use the phone timezone; organizer text input explicitly uses UTC. Server-owned authorization, fighter assignment and room role remain authoritative; no room can be entered through an invented general-duel join. Account changes clear cached organizer capability. A tournament-room bug was fixed: base outfit fallbacks are not frozen before both cosmetic handshakes complete. Once ready, actor/outfit changes still close the room. Touch layout and complete live tournament lifecycle have not been run. Legacy platform owner sign-in handoff and champion presentation parity remain.
+
+The outfit shop now exposes owner price editing only after the server grants that capability, with a second explicit price confirmation, account identity guard and matching response receipt. No production price or tournament was modified.
+
+Managed validation compiles Domain, Runtime, Android-conditional Runtime, Editor, EditMode tests and the pinned WebRTC package. Executable suites passed: 42 account/shop, 544 duel (including 22 voice policy checks and tournament cosmetic handshake), 51 tournament contract checks, plus all prior fixture suites. Actual-asset match/adventure coverage remains the previously recorded 200/548 checks; no new full asset rerun was needed for these service changes. Current prior-checkpoint cloud run 41564419113 at 131b5136 passed fighter/media/rule/preflight jobs; APK was skipped. Source implementation is not a completed/verified phone migration.
+
+
+## Recovery audit, replay effects and native session persistence — 2026-11-03
+
+The stopped work was recovered from local `27e9bbc` and remote `9de8b1d18829b8efd1c0898970f64d328efc2a9e`. Every tracked Unity project/tool/workflow blob matched between them. Remote run `41566861132` passed the four validation/export jobs but skipped the Android job. Its preflight job `125690366854` reports all four activation secret names absent. This is a repository configuration result, not a statement about the user's Unity license entitlement. No APK exists from this run.
+
+The pre-change full managed/actual-asset baseline was executed again: 18 variants, 200 match checks, 548 adventure checks and 634 duel checks passed, with all other suites. The final changed-source managed run passes all fixture suites, including 26 replay checks and 61 account/shop/session checks; Domain, Runtime, Android-conditional Runtime, Editor and EditMode boundaries plus upstream WebRTC compile. This remains fallback managed evidence, not Editor import or Android execution.
+
+KO replay now records immutable effect samples after live presentation: particles/trails, floor stains, both fighters' head/body wounds and the discrete neutral-clinch flag. Playback uses a separate reusable blood state and recorded poses, including contact IK. Skipping/finishing restores the live match visuals. No replay action steps gameplay, damage or progression. The original 240-sample/3.6-second bounds and discrete effect sampling are retained. New tests check snapshot ownership, source-time effect boundaries, contact entry/exit and isolation from live state. GPU rendering and mobile allocation/performance remain unverified.
+
+Account cookies can now survive Android process restart through `AndroidArenaSessionStore`: AES-256-GCM with an AndroidKeyStore key, origin-bound authenticated data, and AtomicFile under `getNoBackupFilesDir`. Only the original opaque 30-day `brax_session` capability is persisted, never passwords, platform owner credentials, room/TURN credentials, inventory or a locally authenticated identity. The native client validates expiry/version/origin/token and waits for `/api/account?action=me` before granting any identity. Startup refreshes a restored session and server-owned inventory. Explicit logout clears storage and memory even when the network fails; a successful password change persists the rotated token. A secure-store failure stays memory-only and is surfaced to the user. Non-Android platforms retain memory-only sessions. The built-in Android JNI module is explicitly enabled; no third-party storage package is added. Device JNI/keystore execution, reinstall and Android lifecycle checks remain blocked with the APK build.
+
+Primary platform references: https://developer.android.com/privacy-and-security/keystore and https://developer.android.com/reference/android/security/keystore/KeyGenParameterSpec .
+
+The workflow now supports an explicit `[build-apk]` push on the existing migration branch in addition to `workflow_dispatch` with `build_apk=true`. Missing activation produces a visible failing prerequisite job when APK was requested. Ordinary source pushes remain source validation only. A dispatch/retry must use a newly checked preflight after secrets are configured; do not infer success from a skipped build.
+
+**Migration is still incomplete.** Remaining source work includes uploaded-avatar/camera/crop, legacy platform-owner sign-in handoff, original menu/champion presentation fidelity, night-market procedural layers, complete source world/camera/impact presentation and legacy-browser paired-action compatibility. Import/shader/runtime visual comparison, two-device multiplayer/voice, mobile performance and a real ARM64 IL2CPP APK are required before calling this a finished phone migration. Do not add unverified replacement artwork or launch the local Editor. Preserve source v271 assets and continue on this branch.

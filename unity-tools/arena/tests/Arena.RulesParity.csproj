@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <LangVersion>9</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../../../unity-arena/Assets/Arena/Domain/*.cs" />
+    <Compile Include="RulesParityRunner.cs" />
+    <Compile Include="CombatParityRunner.cs" />
+    <Compile Include="MatchParityRunner.cs" />
+    <Compile Include="MediaParityRunner.cs" />
+    <Compile Include="AdventureParityRunner.cs" />
+    <Compile Include="GestureParityRunner.cs" />
+    <Compile Include="ClinchParityRunner.cs" />
+    <Compile Include="ArmContactParityRunner.cs" />
+    <Compile Include="MovingStrikeParityRunner.cs" />
+    <Compile Include="TrainingParityRunner.cs" />
+    <Compile Include="ProgressParityRunner.cs" />
+    <Compile Include="ChallengeParityRunner.cs" />
+    <Compile Include="CpuParityRunner.cs" />
+    <Compile Include="ReplayParityRunner.cs" />
+    <Compile Include="BloodParityRunner.cs" />
+    <Compile Include="InputParityRunner.cs" />
+    <Compile Include="OnlineProtocolRunner.cs" />
+    <Compile Include="../../../unity-arena/Assets/Arena/Runtime/ArenaOnlineClient*.cs" />
+    <Compile Include="../../../unity-arena/Assets/Arena/Runtime/ArenaRankTracker.cs" />
+    <Compile Include="../../../unity-arena/Assets/Arena/Runtime/PendingArenaResults.cs" />
+    <Compile Include="RankingProtocolRunner.cs" />
+    <Compile Include="CinematicParityRunner.cs" />
+    <Compile Include="AdventureProtocolRunner.cs" />
+    <Compile Include="DuelProtocolRunner.cs" />
+    <Compile Include="TournamentProtocolRunner.cs" />
+    <Compile Include="../../../unity-arena/Assets/Arena/Runtime/ArenaDuelSession.cs" />
+    <Compile Include="../../../unity-arena/Assets/Arena/Runtime/ArenaAdventureTracker.cs" />
+    <Compile Include="../../../unity-arena/Assets/Arena/Runtime/ProgressFileStore.cs" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+</Project>

@@ -17,6 +17,32 @@ __pycache__/
 # Original attachments remain in the supplied ZIPs; extract locally for reproduction.
 /source-assets/new-fighters-input/
 
-# Export: environment files and local credentials
-.dev.vars*
-!.dev.vars.example
+/arena-package/
+
+# Reproducible diagnostic raster intermediates
+docs/acceptance/**/tex*.bin
+docs/acceptance/**/.tex*.bin*
+docs/acceptance/**/raster
+
+# Exact selected motion sources are restored from the tracked archive parts.
+/source-assets/gestures-236/*.fbx
+
+# Isolated, hash-verified CI reconstruction of the published Arena source.
+native-source/
+arena-ci-preflight.json
+arena-native-assets.tar.gz
+arena-native-assets.sha256
+
+unity-arena/Assets/Arena/Resources/Fighters/
+unity-arena/Assets/Arena/Resources/Fighters.meta
+unity-arena/Assets/Arena/Scenes/
+unity-arena/Assets/Arena/Scenes.meta
+
+# Hash-verified, reproducible native offline media (never commit generated payloads).
+native-media/
+unity-arena/Assets/StreamingAssets/
+unity-arena/Assets/StreamingAssets.meta
+unity-arena/Assets/Arena/Resources/ArenaMediaCatalog.json
+unity-arena/Assets/Arena/Resources/ArenaMediaCatalog.json.meta
+arena-native-media.tar.gz
+arena-native-media.sha256

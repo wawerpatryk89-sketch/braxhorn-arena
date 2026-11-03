@@ -1,0 +1,223 @@
+name: Arena Unity migration - native validation
+
+on:
+  workflow_dispatch:
+    inputs:
+      build_apk:
+        description: 'Build an Android APK after Unity activation is configured'
+        required: false
+        default: false
+        type: boolean
+  push:
+    branches: ['codex/arena-unity6-migration-20261102']
+    paths: ['unity-arena/**', 'unity-tools/arena/**', '.github/workflows/arena-unity-migration.yml']
+  pull_request:
+    paths: ['unity-arena/**', 'unity-tools/arena/**', '.github/workflows/arena-unity-migration.yml']
+
+permissions:
+  contents: read
+
+jobs:
+  ci-preflight:
+    name: Check cloud build prerequisites (no secret values)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      activation: ${{ steps.check.outputs.activation }}
+      source: ${{ steps.check.outputs.source }}
+      build_requested: ${{ steps.request.outputs.build }}
+    steps:
+      - name: Record explicit APK request
+        id: request
+        env:
+          REQUEST_ANDROID: ${{ (github.event_name == 'workflow_dispatch' && inputs.build_apk) || (github.event_name == 'push' && contains(github.event.head_commit.message, '[build-apk]')) }}
+        run: echo "build=$REQUEST_ANDROID" >> "$GITHUB_OUTPUT"
+      - uses: actions/checkout@v4
+      - name: Check activation inputs and pinned source availability
+        id: check
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
+        run: python3 unity-tools/arena/ci-preflight.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: arena-ci-preflight-${{ github.sha }}
+          path: arena-ci-preflight.json
+          if-no-files-found: error
+  campaign-parity:
+    name: Native C# rules and match regression tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Generate reference from frozen published rules
+        run: |
+          node unity-tools/arena/tests/campaign-reference.mjs
+          node unity-tools/arena/tests/combat-reference.mjs
+          node unity-tools/arena/tests/media-reference.mjs
+          node unity-tools/arena/tests/duel-wire-reference.mjs
+      - name: Compare native rules with every reference state
+        run: dotnet run --project unity-tools/arena/tests/Arena.RulesParity.csproj -- unity-tools/arena/tests/campaign-reference.json.gz unity-tools/arena/tests
+      - name: Report scope
+        run: |
+          echo 'C# source-rule comparisons and native match regression tests. This job does not execute the Unity renderer or build Android packages.' >> "$GITHUB_STEP_SUMMARY"
+
+  native-assets:
+    name: Export and verify all v271 fighters for Unity
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install Pillow==11.3.0
+      - name: Restore exact published inputs (hash checked)
+        run: python unity-tools/arena/prepare-source.py
+      - name: Apply the verified published outfit model patches
+        run: node --loader ./native-source/scripts/krov-three-loader.mjs unity-tools/arena/restore-published-models.mjs
+      - name: Verify original gait conversion and coordinate reflection
+        working-directory: native-source
+        run: node --loader ./scripts/krov-three-loader.mjs unity-tools/arena/tests/gait-export.mjs
+      - name: Bake all 18 original models and action poses
+        working-directory: native-source
+        run: node --max-old-space-size=8192 --loader ./scripts/krov-three-loader.mjs unity-tools/arena/export-source.mjs
+      - name: Validate complete asset payload
+        working-directory: native-source
+        run: python unity-tools/arena/validate-export.py
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Verify full native match with every actual fighter and outfit
+        run: |
+          node unity-tools/arena/tests/campaign-reference.mjs
+          node unity-tools/arena/tests/combat-reference.mjs
+          node unity-tools/arena/tests/media-reference.mjs
+          node unity-tools/arena/tests/duel-wire-reference.mjs
+          dotnet run --project unity-tools/arena/tests/Arena.RulesParity.csproj -- unity-tools/arena/tests/campaign-reference.json.gz unity-tools/arena/tests native-source/unity-arena/Assets/Arena/SourceData
+      - name: Package native source data and provenance
+        run: |
+          tar -C native-source/unity-arena/Assets/Arena -czf arena-native-assets.tar.gz SourceData
+          sha256sum arena-native-assets.tar.gz > arena-native-assets.sha256
+      - uses: actions/upload-artifact@v4
+        with:
+          name: arena-native-assets-${{ github.sha }}
+          path: |
+            arena-native-assets.tar.gz
+            arena-native-assets.sha256
+            unity-tools/arena/source-lock.json
+          compression-level: 0
+          if-no-files-found: error
+          retention-days: 90
+
+  native-media:
+    name: Verify and package 21 original arenas and 30 adventure films
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install Pillow==11.3.0
+      - name: Install the video validation/transcode tool
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - name: Restore original media with locked SHA-256 hashes
+        run: python unity-tools/arena/export-media.py --project native-media/unity-arena
+      - name: Package offline media and provenance
+        run: |
+          tar -C native-media/unity-arena/Assets -czf arena-native-media.tar.gz StreamingAssets Arena/Resources/ArenaMediaCatalog.json
+          sha256sum arena-native-media.tar.gz > arena-native-media.sha256
+      - uses: actions/upload-artifact@v4
+        with:
+          name: arena-native-media-${{ github.sha }}
+          path: |
+            arena-native-media.tar.gz
+            arena-native-media.sha256
+            unity-tools/arena/media/source-lock.json
+          compression-level: 0
+          if-no-files-found: error
+          retention-days: 90
+
+  unity-activation-required:
+    name: Report missing Unity activation for Arena
+    needs: ci-preflight
+    if: needs.ci-preflight.outputs.build_requested == 'true' && needs.ci-preflight.outputs.activation != 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo '::error::Arena repository has no complete Unity activation inputs. Configure UNITY_EMAIL, UNITY_PASSWORD and UNITY_LICENSE (or UNITY_SERIAL) in repository Actions secrets. No local Editor is required. No APK was built.'
+          exit 1
+
+  android-native-review:
+    name: Build native Unity combat integration APK (ARM64)
+    needs: [ci-preflight, campaign-parity, native-assets, native-media]
+    if: needs.ci-preflight.outputs.build_requested == 'true' && needs.ci-preflight.outputs.activation == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+          persist-credentials: false
+      - uses: actions/download-artifact@v4
+        with:
+          name: arena-native-assets-${{ github.sha }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: arena-native-media-${{ github.sha }}
+      - name: Restore verified Unity source payload
+        run: |
+          sha256sum -c arena-native-assets.sha256
+          tar -xzf arena-native-assets.tar.gz -C unity-arena/Assets/Arena
+          sha256sum -c arena-native-media.sha256
+          tar -xzf arena-native-media.tar.gz -C unity-arena/Assets
+      - uses: game-ci/unity-builder@4423ee75828dff56037d1d1cfdac6b68e3a6ba00
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
+        with:
+          projectPath: unity-arena
+          unityVersion: 6000.3.27f2
+          targetPlatform: Android
+          buildMethod: Braxhorn.Arena.Editor.ArenaBuild.AndroidCombat
+          allowDirtyBuild: true
+          versioning: None
+      - name: Verify native artifact exists
+        run: |
+          test -s build/Android/BraxhornArena-UnityCombat.apk
+          sha256sum build/Android/BraxhornArena-UnityCombat.apk > build/Android/apk.sha256
+      - uses: actions/upload-artifact@v4
+        with:
+          name: arena-unity-combat-apk-${{ github.sha }}
+          path: build/Android/
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: arena-unity-build-logs-${{ github.sha }}
+          path: |
+            artifacts/
+            unity-arena/Logs/
+          if-no-files-found: ignore
